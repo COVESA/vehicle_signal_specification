@@ -9,6 +9,13 @@
 #
 # Seat signals
 #
+# VSS offer two methods to control a seat.
+# As most seat signals are actuators it is possible to request a specific setting,
+# e.g. to request that seat decline shall be 23 degrees.
+# It is also possible to control seat position by switch buttons (boolean actuators)
+# If a switch is engaged (== has the value true) the seat is expected to move according to
+# the selected switch. The movement is normally supposed to continue until either the switch is released,
+# (== has the value false), or until the maximum/minimum value supported by the vehicle has been reached.
 
 HasPassenger:
   datatype: boolean
@@ -31,15 +38,15 @@ IsBelted:
 
 Heating:
   datatype: int8
-  type: sensor
+  type: actuator
   min: -100
   max: 100
   unit: percent
-  description: Seat cooling / heating. 0 = off. -100 = max cold. +100 = max heat
+  description: Seat cooling / heating. 0 = off. -100 = max cold. +100 = max heat.
 
 Massage:
   datatype: uint8
-  type: sensor
+  type: actuator
   min: 0
   max: 100
   unit: percent
@@ -47,40 +54,47 @@ Massage:
 
 Recline:
   datatype: int8
-  type: sensor
+  type: actuator
   min: -90
   max: 90
   unit: degrees
-  description: Recline level. -90 = Max forward recline. 90 max backward recline
+  description: Recline level. -90 = Max forward recline. 90 max backward recline.
 
 Position:
   datatype: uint16
-  type: sensor
+  type: actuator
   min: 0
   max: 1000
   unit: mm
-  description: Seat horizontal position. 0 = Frontmost. 1000 = Rearmost
+  description: Seat horizontal position. 0 = Frontmost. 1000 = Rearmost.
+
+Height:
+  datatype: uint16
+  type: actuator
+  min: 0
+  max: 1000
+  unit: mm
+  description: Seat vertical position. 0 = Lowermost. 1000 = Uppermost.
 
 Cushion:
   type: branch
-  description: Cushion signals.
+  description: Cushion (leg support) signals.
 
 Cushion.Height:
   datatype: uint16
-  type: sensor
+  type: actuator
   min: 0
   max: 500
   unit: mm
-  description: Height of the seat front. 0 = Lowermost. 500 = Uppermost.
+  description: Height of the seat cushion (leg support), relative to seat. 0 = Lowermost. 500 = Uppermost.
 
 Cushion.Length:
   datatype: uint16
-  type: sensor
+  type: actuator
   min: 0
   max: 500
   unit: mm
-  description: Forward length of cushion (leg support). 0 = Rearmost. 500 = Forwardmost.
-
+  description: Forward length of cushion (leg support), relative to seat. 0 = Rearmost. 500 = Forwardmost.
 
 Lumbar:
   type: branch
@@ -88,15 +102,14 @@ Lumbar:
 
 Lumbar.Inflation:
   datatype: uint8
-  type: sensor
+  type: actuator
   min: 0
   max: 255
   description: Lumbar support inflation. 0 = Fully deflated. 255 = Fully inflated.
 
-
 Lumbar.Height:
   datatype: uint8
-  type: sensor
+  type: actuator
   min: 0
   max: 255
   description: Lumbar support position. 0 = Lowermost. 255 = Uppermost.
@@ -107,7 +120,7 @@ SideBolster:
 
 SideBolster.Inflation:
   datatype: uint8
-  type: sensor
+  type: actuator
   min: 0
   max: 255
   description: Side bolster support inflation. 0 = Fully deflated. 255 = Fully inflated.
@@ -118,11 +131,11 @@ HeadRestraint:
 
 HeadRestraint.Height:
   datatype: uint8
-  type: sensor
+  type: actuator
   min: 0
   max: 255
   unit: mm
-  description: Height of head restraint. 0 = Bottommost. 255 = Topmost.
+  description: Height of head restraint. 0 = Bottommost. 255 = Uppermost.
 
 Airbag:
   type: branch
@@ -143,133 +156,133 @@ Switch:
 Switch.Warmer:
   datatype: boolean
   type: actuator
-  description: Warmer switch for Seat heater
+  description: Warmer switch for Seat heater (SingleSeat.Heating)
 
 Switch.Cooler:
   datatype: boolean
   type: actuator
-  description: Cooler switch for Seat heater
+  description: Cooler switch for Seat heater (SingleSeat.Heating)
 
 Switch.Forward:
   datatype: boolean
   type: actuator
-  description: Seat forward switch engaged
+  description: Seat forward switch engaged (SingleSeat.Position)
 
 Switch.Backward:
   datatype: boolean
   type: actuator
-  description: Seat forward switch engaged
+  description: Seat backward switch engaged (SingleSeat.Position)
 
 Switch.Up:
   datatype: boolean
   type: actuator
-  description: Seat up switch engaged
+  description: Seat up switch engaged (SingleSeat.Height)
 
 Switch.Down:
   datatype: boolean
   type: actuator
-  description: Seat down switch engaged
+  description: Seat down switch engaged (SingleSeat.Height)
 
 Switch.HeadRestraint:
   type: branch
-  description: Head restraint switches
+  description: Switches for SingleSeat.HeadRestraint.Height
 
 Switch.HeadRestraint.Up:
   datatype: boolean
   type: actuator
-  description: Head restraint up switch engaged
+  description: Head restraint up switch engaged (SingleSeat.HeadRestraint.Height)
 
 Switch.HeadRestraint.Down:
   datatype: boolean
   type: actuator
-  description: Head restraint down switch engaged
+  description: Head restraint down switch engaged (SingleSeat.HeadRestraint.Height)
 
 Switch.Massage:
   type: branch
-  description: Massage switches
+  description: Switches for SingleSeat.Massage
 
 Switch.Massage.Increase:
   datatype: boolean
   type: actuator
-  description: Increase massage level switch engaged
+  description: Increase massage level switch engaged (SingleSeat.Massage)
 
 Switch.Massage.Decrease:
   datatype: boolean
   type: actuator
-  description: Decrease massage level switch engaged
+  description: Decrease massage level switch engaged (SingleSeat.Massage)
 
 Switch.Recline:
   type: branch
-  description: Recline switches
+  description: Switches for SingleSeat.Recline
 
 Switch.Recline.Backward:
   datatype: boolean
   type: actuator
-  description: Seatback recline backward switch engaged
+  description: Seatback recline backward switch engaged (SingleSeat.Recline)
 
 Switch.Recline.Forward:
   datatype: boolean
   type: actuator
-  description: Seatback recline forward switch engaged
+  description: Seatback recline forward switch engaged (SingleSeat.Recline)
 
 Switch.Cushion:
   type: branch
-  description: Cushion switches
+  description: Switches for SingleSeat.Cushion
 
 Switch.Cushion.Up:
   datatype: boolean
   type: actuator
-  description: Seat cushion up switch engaged
+  description: Seat cushion up switch engaged (SingleSeat.Cushion.Height)
 
 Switch.Cushion.Down:
   datatype: boolean
   type: actuator
-  description: Seat cushion down switch engaged
+  description: Seat cushion down switch engaged (SingleSeat.Cushion.Height)
 
 Switch.Cushion.Forward:
   datatype: boolean
   type: actuator
-  description: Seat cushion forward/lengthen switch engaged
+  description: Seat cushion forward/lengthen switch engaged (SingleSeat.Cushion.Length)
 
 Switch.Cushion.Backward:
   datatype: boolean
   type: actuator
-  description: Seat cushion backward/shorten switch engaged
+  description: Seat cushion backward/shorten switch engaged (SingleSeat.Cushion.Length)
 
 Switch.Lumbar:
   type: branch
-  description: Lumbar switches
+  description: Switches for SingleSeat.Lumbar
 
 Switch.Lumbar.Up:
   datatype: boolean
   type: actuator
-  description: Lumbar up switch engaged
+  description: Lumbar up switch engaged (SingleSeat.Lumbar.Height)
 
 Switch.Lumbar.Down:
   datatype: boolean
   type: actuator
-  description: Lumbar down switch engaged
+  description: Lumbar down switch engaged (SingleSeat.Lumbar.Height)
 
 Switch.Lumbar.Inflate:
   datatype: boolean
   type: actuator
-  description: Lumbar inflation switch engaged
+  description: Lumbar inflation switch engaged (SingleSeat.Lumbar.Inflation)
 
 Switch.Lumbar.Deflate:
   datatype: boolean
   type: actuator
-  description: Lumbar deflation switch engaged
+  description: Lumbar deflation switch engaged (SingleSeat.Lumbar.Inflation)
 
 Switch.SideBolster:
   type: branch
-  description: Side bolster switches
+  description: Switches for SingleSeat.SideBolster
 
 Switch.SideBolster.Inflate:
   datatype: boolean
   type: actuator
-  description: Side bolster inflation switch engaged
+  description: Side bolster inflation switch engaged (SingleSeat.SideBolster.Inflation)
 
 Switch.SideBolster.Deflate:
   datatype: boolean
   type: actuator
-  description: Side bolster deflation switch engaged
+  description: Side bolster deflation switch engaged (SingleSeat.SideBolster.Inflation)
