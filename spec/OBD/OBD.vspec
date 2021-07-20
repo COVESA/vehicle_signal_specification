@@ -161,141 +161,44 @@ AirStatus:
   type: sensor
   description: PID 12 - Secondary air status
 
+# OBD supports reporting of up to 8 oxygen sensors
+# PID 13 or PID 1D can be used as bitmasks to define logical location of the sensors
+# Example 1: PID 13 = 0x11 means that PID 14 and PID 18 shall be present
+# PID 14 is then first sensor on bank 1, PID 18 is the first sensor on bank2
+# Vehicles with more than 2 banks report sensor mapping in PID 1D instead of PID 13
+#
+OxygenSensorsIn2Banks:
+  datatype: uint8
+  type: sensor
+  description: PID 13 - Presence of oxygen sensors in 2 banks. [A0..A3] == Bank 1, Sensors 1-4. [A4..A7] == Bank 2, Sensors 1-4
+  
 O2:
+  instances:
+    - Sensor[1,8]
   type: branch
-  description: PID 13 - Presence of oxygen sensors for the banks
+  description: Oxygen sensors (PID 14 - PID 1B)
 
-O2.Bank1:
-  type: branch
-  description: Oxygen sensors on bank 1, at most 4 sensors per bank
-
-O2.Bank1.Sensor1:
-  type: branch
-  description: Oxygen sensor
-
-O2.Bank1.Sensor1.Voltage:
+O2.Voltage:
   datatype: float
   type: sensor
   unit: V
-  description: PID 14 - Sensor voltage
-
-O2.Bank1.Sensor2:
-  type: branch
-  description: Oxygen sensor
-
-O2.Bank1.Sensor2.Voltage:
+  description: PID 1x (byte A) - Sensor voltage
+  
+O2.ShortTermFuelTrim:
   datatype: float
   type: sensor
-  unit: V
-  description: PID 15 - Sensor voltage
+  unit: percent
+  description: PID 1x (byte B) - Short term fuel trim
 
-O2.Bank1.Sensor3:
-  type: branch
-  description: Oxygen sensor
+OBDStandards:
+  datatype: uint8
+  type: attribute
+  description: PID 1C - OBD standards this vehicle conforms to
 
-O2.Bank1.Sensor3.Voltage:
-  datatype: float
+OxygenSensorsIn4Banks:
+  datatype: uint8
   type: sensor
-  unit: V
-  description: PID 16 - Sensor voltage
-
-O2.Bank1.Sensor4:
-  type: branch
-  description: Oxygen sensor
-
-O2.Bank1.Sensor4.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 17 - Sensor voltage
-
-O2.Bank2:
-  type: branch
-  description: Oxygen sensors on bank 2, at most 4 sensors per bank
-
-O2.Bank2.Sensor1:
-  type: branch
-  description: Oxygen sensor
-
-O2.Bank2.Sensor1.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 18 - Sensor voltage
-
-O2.Bank2.Sensor2:
-  type: branch
-  description: Oxygen sensor
-
-O2.Bank2.Sensor2.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 19 - Sensor voltage
-
-O2.Bank2.Sensor3:
-  type: branch
-  description: Oxygen sensor
-
-O2.Bank2.Sensor3.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 1A - Sensor voltage
-
-O2.Bank2.Sensor4:
-  type: branch
-  description: Oxygen sensor
-
-O2.Bank2.Sensor4.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 1B - Sensor voltage
-
-O2Alt:
-  type: branch
-  description: PID 1D - Presence of alternate oxygen sensors for the banks
-
-O2Alt.Bank1:
-  type: branch
-  description: Alternate oxygen sensors on bank 1, at most 4 sensors per bank
-
-O2Alt.Bank1.Sensor1:
-  type: branch
-  description: Alternate oxygen sensor
-
-O2Alt.Bank1.Sensor2:
-  type: branch
-  description: Alternate oxygen sensor
-
-O2Alt.Bank1.Sensor3:
-  type: branch
-  description: Alternate oxygen sensor
-
-O2Alt.Bank1.Sensor4:
-  type: branch
-  description: Alternate oxygen sensor
-
-O2Alt.Bank2:
-  type: branch
-  description: Alternate oxygen sensors on bank 2, at most 4 sensors per bank
-
-O2Alt.Bank2.Sensor1:
-  type: branch
-  description: Alternate oxygen sensor
-
-O2Alt.Bank2.Sensor2:
-  type: branch
-  description: Alternate oxygen sensor
-
-O2Alt.Bank2.Sensor3:
-  type: branch
-  description: Alternate oxygen sensor
-
-O2Alt.Bank2.Sensor4:
-  type: branch
-  description: Alternate oxygen sensor
+  description: PID 1D - Presence of oxygen sensors in 4 banks. Similar to PID 13, but [A0..A7] == [B1S1, B1S2, B2S1, B2S2, B3S1, B3S2, B4S1, B4S2]
 
 AuxInputStatus:
   datatype: boolean
@@ -332,136 +235,27 @@ FuelRailPressureDirect:
   description: PID 23 - Fuel rail pressure direct inject
 
 O2WR:
+  instances:
+    - Sensor[1,8]
   type: branch
-  description: Wide range/band oxygen sensors
+  description: Wide range/band oxygen sensors (PID 24 - 2B and PID 34 - 3B)
 
-O2WR.Sensor1:
-  type: branch
-  description: Wide range/band oxygen sensor 1
-
-O2WR.Sensor1.Voltage:
+O2WR.Lambda:
+  datatype: float
+  type: sensor
+  description: PID 2x (byte AB) and PID 3x (byte AB) - Lambda for wide range/band oxygen sensor
+  
+O2WR.Voltage:
   datatype: float
   type: sensor
   unit: V
-  description: PID 24 - Lambda voltage for wide range/band oxygen sensor 1
+  description: PID 2x (byte CD) - Voltage for wide range/band oxygen sensor
 
-O2WR.Sensor1.Current:
+O2WR.Current:
   datatype: float
   type: sensor
   unit: A
-  description: PID 34 - Lambda current for wide range/band oxygen sensor 1
-
-O2WR.Sensor2:
-  type: branch
-  description: Wide range/band oxygen sensor 2
-
-O2WR.Sensor2.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 25 - Lambda voltage for wide range/band oxygen sensor 2
-
-O2WR.Sensor2.Current:
-  datatype: float
-  type: sensor
-  unit: A
-  description: PID 35 - Lambda current for wide range/band oxygen sensor 2
-
-O2WR.Sensor3:
-  type: branch
-  description: Wide range/band oxygen sensor 3
-
-O2WR.Sensor3.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 26 - Lambda voltage for wide range/band oxygen sensor 3
-
-O2WR.Sensor3.Current:
-  datatype: float
-  type: sensor
-  unit: A
-  description: PID 36 - Lambda current for wide range/band oxygen sensor 4
-
-O2WR.Sensor4:
-  type: branch
-  description: Wide range/band oxygen sensor 4
-
-O2WR.Sensor4.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 27 - Lambda voltage for wide range/band oxygen sensor 4
-
-O2WR.Sensor4.Current:
-  datatype: float
-  type: sensor
-  unit: A
-  description: PID 37 - Lambda current for wide range/band oxygen sensor 4
-
-O2WR.Sensor5:
-  type: branch
-  description: Wide range/band oxygen sensor 5
-
-O2WR.Sensor5.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 28 - Lambda voltage for wide range/band oxygen sensor 5
-
-O2WR.Sensor5.Current:
-  datatype: float
-  type: sensor
-  unit: A
-  description: PID 38 - Lambda current for wide range/band oxygen sensor 5
-
-O2WR.Sensor6:
-  type: branch
-  description: Wide range/band oxygen sensor 6
-
-O2WR.Sensor6.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 29 - Lambda voltage for wide range/band oxygen sensor 6
-
-O2WR.Sensor6.Current:
-  datatype: float
-  type: sensor
-  unit: A
-  description: PID 39 - Lambda current for wide range/band oxygen sensor 6
-
-O2WR.Sensor7:
-  type: branch
-  description: Wide range/band oxygen sensor 7
-
-O2WR.Sensor7.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 2A - Lambda voltage for wide range/band oxygen sensor 7
-
-O2WR.Sensor7.Current:
-  datatype: float
-  type: sensor
-  unit: A
-  description: PID 3A - Lambda current for wide range/band oxygen sensor 7
-
-O2WR.Sensor8:
-  type: branch
-  description: Wide range/band oxygen sensor 8
-
-O2WR.Sensor8.Voltage:
-  datatype: float
-  type: sensor
-  unit: V
-  description: PID 2B - Lambda voltage for wide range/band oxygen sensor 8
-
-O2WR.Sensor8.Current:
-  datatype: float
-  type: sensor
-  unit: A
-  description: PID 3B - Lambda current for wide range/band oxygen sensor 8
+  description: PID 3x (byte CD) - Current for wide range/band oxygen sensor
 
 CommandedEGR:
   datatype: float
@@ -682,25 +476,49 @@ ShortTermO2Trim1:
   datatype: float
   type: sensor
   unit: percent
-  description: PID 55 - Short term secondary O2 trim - Bank 1
+  description: PID 55 (byte A) - Short term secondary O2 trim - Bank 1
+  
+ShortTermO2Trim3:
+  datatype: float
+  type: sensor
+  unit: percent
+  description: PID 55 (byte B) - Short term secondary O2 trim - Bank 3
 
 LongTermO2Trim1:
   datatype: float
   type: sensor
   unit: percent
-  description: PID 56 - Long term secondary O2 trim - Bank 1
+  description: PID 56 (byte A) - Long term secondary O2 trim - Bank 1
+  
+LongTermO2Trim3:
+  datatype: float
+  type: sensor
+  unit: percent
+  description: PID 56 (byte B) - Long term secondary O2 trim - Bank 3
 
 ShortTermO2Trim2:
   datatype: float
   type: sensor
   unit: percent
-  description: PID 57 - Short term secondary O2 trim - Bank 2
+  description: PID 57 (byte A) - Short term secondary O2 trim - Bank 2
+  
+ShortTermO2Trim4:
+  datatype: float
+  type: sensor
+  unit: percent
+  description: PID 57 (byte B) - Short term secondary O2 trim - Bank 4
 
 LongTermO2Trim2:
   datatype: float
   type: sensor
   unit: percent
-  description: PID 58 - Long term secondary O2 trim - Bank 2
+  description: PID 58 (byte A) - Long term secondary O2 trim - Bank 2
+  
+LongTermO2Trim4:
+  datatype: float
+  type: sensor
+  unit: percent
+  description: PID 58 (byte B) - Long term secondary O2 trim - Bank 4
 
 FuelRailPressureAbsolute:
   datatype: float
