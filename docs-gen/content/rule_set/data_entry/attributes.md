@@ -1,7 +1,7 @@
 ---
 title: "Attributes"
 date: 2019-08-04T12:37:31+02:00
-weight: 5
+weight: 4
 ---
 
 An attribute is a signal with a default value, specified by
