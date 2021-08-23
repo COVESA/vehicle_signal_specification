@@ -2,13 +2,13 @@
 # Makefile to generate specifications
 #
 
-.PHONY: clean all travis_targets json franca csv tests binary protobuf ttl graphql ocf c install deploy
+.PHONY: clean all travis_targets json franca yaml csv tests binary protobuf ttl graphql ocf c install deploy
 
-all: clean json franca csv binary tests protobuf graphql
+all: clean json franca yaml csv binary tests protobuf graphql
 
 # All mandatory targets that shall be built and pass on each pull request for
 # vehicle-signal-specification or vss-tools
-travis_targets: clean json franca binary csv tests deploy
+travis_targets: clean json franca yaml binary csv tests deploy
 
 
 # Additional targets that shall be built by travis, but where it is not mandatory
@@ -30,6 +30,8 @@ json:
 franca:
 	${TOOLSDIR}/vspec2franca.py -v $$(cat VERSION)  -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).fidl
 
+yaml:
+	${TOOLSDIR}/vspec2yaml.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).yaml
 
 csv:
 	${TOOLSDIR}/vspec2csv.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).csv
