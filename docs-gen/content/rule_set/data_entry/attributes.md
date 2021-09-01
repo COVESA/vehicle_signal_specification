@@ -6,11 +6,15 @@ weight: 4
 
 An attribute is a signal with a default value, specified by
 its ```default``` member.
+The standard Vehicle Signal Specification include default values for most attributes. 
+It is expected that these default values do not fit all values.
+This means that an OEM must override the standard default values if a vehicle needs a different value.
 
 Attribute values can also change, similar to sensor values.
 The latter can be useful for attribute values that are likely to change during the lifetime of the vehicle.
 However, attribute values should typically not change more than once per ignition cycle,
 or else it should be defined as a sensor instead.
+
 
 Below is an example of a complete attribute describing engine power
 
@@ -21,4 +25,28 @@ MaxPower:
   default: 0
   unit: kW
   description: Peak power, in kilowatts, that engine can generate.
+```
+
+It is possible to give default values also for arrays. In this case square brackets shall be used. The value for each element in the array shall be specified. The size of the array is given by the number of elements specified within the square brackets.
+
+Example 1: Empty Array
+
+```YAML
+  default: []
+```
+
+Example 2: Array with 3 elements, first element has value 1, second element value 2, third element value 0
+
+```YAML
+  default: [1, 2, 0]
+```
+
+Full example, array with two elements, first with value2, second with value 3:
+
+```YAML
+SeatPosCount:
+  datatype: uint8[]
+  type: attribute
+  default: [2, 3]
+  description: Number of seats across each row from the front to the rear
 ```

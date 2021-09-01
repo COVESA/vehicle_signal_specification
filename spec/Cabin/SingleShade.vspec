@@ -8,7 +8,7 @@
 
 #
 # Definition of a single blind / curtain that can cover either
-# a side window or the rear window.
+# a side window, the rear window or a sunroof.
 #
 
 # Include a slider control switch for the blind
@@ -20,4 +20,4 @@ Position:
   min: 0
   max: 100
   unit: percent
-  description: Position of side window blind. 0 = Fully retracted. 100 = Fully deployed.
+  description: Position of window blind. 0 = Fully retracted. 100 = Fully deployed.

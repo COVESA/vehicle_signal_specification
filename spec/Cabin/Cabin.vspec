@@ -94,64 +94,83 @@ Lights:
 
 ##
 # Door signals and attributes
+# The default VSS (i.e. this file) assumes a vehicle with two rows of doors
+# with two doors in front row and two doors in second row.
+# For real deployments this needs to be overridden with actual values
+# Row1 is the frontmost row.
+# Row2-RowX are subsequent rows of doors.
+#
+# Note that rear door (for hatchback and station wagons) shall typically not be represented
+# as a door, but rather be represented as a trunk (Vehicle.Body.Trunk) and
+# rear shade (Vehicle.Cabin.RearShade)
 ##
 Door:
   type: branch
   instances:
-    - Row[1,4]
+    - Row[1,2]
     - ["Left","Right"]
   description: All doors, including windows and switches
 #include SingleDoor.vspec Door
 
+# Default value based on instance declaration above with 2 rows and 2 doors in each row.
 DoorCount:
   datatype: uint8
   type: attribute
-  default: 0
+  default: 4
   description: Number of doors in vehicle
 
 
 
 ##
 # Seat signals and attributes
+# The default VSS (i.e. this file) assumes a vehicle with two rows of seats
+# with two seats in front row and three seats in second row.
+# For real deployments this needs to be overridden with actual values
 # Row1 is the frontmost row.
-# Row2-Row4 are subsequent rows of seats.
+# Row2-RowX are subsequent rows of seats.
 #
-# Within each row there are five seat positions
+# Within each row there are up to Y seat positions
 # Pos1 is leftmost.
-# Pos5 is rightmost.
+# PosY is rightmost.
+#
+# The value of Y shall consider the row with most number of seats in the vehicle.
+# If a vehicle e.g. have 2 seats in front row and 3 seats in second row, then Pos
+# shall be defined as Pos[1,3]
+# Which seats that actually exist can be defined by SeatPosCount
 ##
 
 Seat:
   type: branch
   instances:
-    - Row[1,4]
-    - Pos[1,5]
+    - Row[1,2]
+    - Pos[1,3]
   description: All seats.
 #include SingleSeat.vspec Seat
 
 #
 # Seat attributes.
 #
+# Default value is position 1, i.e. a typical LHD vehicle
 DriverPosition:
   datatype: uint8
   type: attribute
-  default: 0
-  description: The position of the driver seat in row 1. (1-5)
+  default: 1
+  description: The position of the driver seat in row 1.
 
+# Default value corresponds to two rows of seats
 SeatRowCount:
   datatype: uint8
   type: attribute
-  default: 0
+  default: 2
   description: Number of seat rows in vehicle
 
 
+# Default value corresponds to two seats in front row and 3 seats in second row
 SeatPosCount:
   datatype: uint8[]
   type: attribute
-  default: 0
+  default: [2, 3]
   description: Number of seats across each row from the front to the rear
-
-
 
 ##
 # Convertible roof status
