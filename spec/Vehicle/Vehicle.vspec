@@ -162,6 +162,11 @@ IgnitionOffTime:
   unit: s
   description: Accumulated ignition off time in seconds.
 
+AccessoryOn:
+  datatype: boolean
+  type: sensor
+  description: Indicates whether the vehicle accessory is on or off.
+
 DriveTime:
   datatype: uint32
   type: sensor
