@@ -18,11 +18,6 @@ url = "https://github.com/genivi/vehicle_signal_specification"
 weight = 10
 
 [[menu.shortcuts]]
-name = "<i class='fas fa-newspaper'></i> News"
-url = "/news"
-weight = 11
-
-[[menu.shortcuts]]
 name = "<i class='fas fa-download'></i> Releases"
-url = "/releases"
+url = "https://github.com/GENIVI/vehicle_signal_specification/releases"
 weight = 12
