@@ -1,23 +1,26 @@
 # VSS-Layers
 
 VSS layers is an extension mechanism that has been implicitly included since
-the VSS development started, and recently there have been more discussions to
-formalize the concept.
+the VSS development started, and now more formally defined.
 
 Even before the concept had a name it was in practice implemented in the
 initial tools because they behaved like layers in the following ways:
 
 1. Overriding definitions was possible with subsequent re-definition of
    the same signal
+
 2. It was possible to add custom metadata fields to each signal, in
    addition to the VSS "core" model metadata ("name", "type", "datatype",
    "description", and in recent editions "instances", "deprecation" etc.)
 
-There are two main ways to add a metadata relationship in the plain VSS
+Later on, tools were written to warn about unknown metadata as a quality
+measure, but this needs to be adjusted when layers are used.
+
+There is one main way to add a metadata relationship in the plain VSS
 (meta)model.  In the VSSo (ontology) environment there may also be additional
 ways.
 
-The most obvious one is to list new metadata below a signal definition.
+List new metadata below a signal definition:
 
 VSS core model metadata:
 ```
@@ -53,12 +56,11 @@ signal:
 
 `Vehicle.Powertrain.ElectricMotor.Motor.CoolantTemperature`
 
+
 This principle for file-inclusions and namespacing applies to VSS-layers in
 the same way as the core VSS.  For full details, refer to the VSS
-documentation.
-
-Note however, that later examples in this text will use the full path for
-clarity.  E.g.: `Vehicle.Chassis.Wheel.Brake.Fluidlevel`
+documentation. Note however, that later examples in this text will use the
+full path for clarity.  E.g.: `Vehicle.Chassis.Wheel.Brake.Fluidlevel`
 
 ## Usage of VSS-layers
 
@@ -104,8 +106,9 @@ layered on top of the core model and catalog, not included in it.
 
 ### Data classification
 
-An example of information that would be applicable only in some situations is to classify data into privacy sensitivity categories.
-Other classification reasons can be envisioned as well.
+An example of information that would be applicable only in some situations is
+to classify data into privacy sensitivity categories. Other classification
+reasons can be envisioned as well.
 
 Noteworthy for this example, and likely many others:
 
@@ -155,89 +158,15 @@ The layer concept itself is able to do all of the following:
 VSS-layers can also define new concepts as described in the following
 scenarios:
 
-## VSS-layer definition variants
-
-There are two obvious approaches to add new information to a data model like
-VSS.
-
-#### Standard Layer
-
-The first option is to list the signal first and add metadata below
-it. This is straight forward since it mirrors the core VSS definition.
-
-Let's call that a `Standard Layer`.
-
-Here we see an arbitrary example of adding the known accuracy of a particular
-measurement in this particular system (likely to be unique per vehicle model
-due to the sensors involved), and defining which ECU in the electrical
-architecture is responsible to produce the original data for this signal.
-
-```
-Vehicle.Chassis.Wheel2.Brake.Fluidlevel:
-   accuracy:  -1% - +2%
-   ECU:  BrakeManagementUnit
-```
-
-#### Reverse Layer
-
-The second way is to flip the definition around.  First define the new
-concept, and below it list metadata (that is specific to the concept).
-The definitions of the metadata is is likely to refer back to the VSS signal
-names.
-
-Let's call that a `Reverse Layer`.
-
-The following arbitrary example defines a permission concept, which writes the
-name of the permission first, and below it lists all signals that are allowed
-to be accessed by an actor that holds this permission.
-Here the idea is written with one example permission named FINE_LOCATION.
-It defines the permission concept by using a prefix and by defining metadata
-names that are unique to the permission concept (`readable` and `writable`).
-
-Here the metadata fields refer back to VSS signals using an `[` array `]` of
-fully-qualified path names (FQN).  Tools might also support #include with a
-designated namespace/branch name and partially-qualified path names, in the
-same way as the VSS core definition does.
-
-```
-vss.remote-interface.permissions.gnss.FINE_LOCATION:
-  readable: [ Vehicle.Location.Latitude, Vehicle.Location.Longitude ]
-  writable: [ ]
-```
-
-This could be modeled as a Standard Layer but it would require listing some of
-the permission names under many of the signals.  For some signal groups
-these may be even spread out in different parts of the VSS definition.
-
-Access control groups are likely to be a many-to-many relationship so there is
-a challenge either way it is done, but defining this using a Reverse Layer
-appears to be the more convenient and familiar option for most cases.
-
-Noteworthy details in the Reverse Layer example is:
-
-The new concept can use namespacing as deep as desired (in this example, the
-prefix `vss.remote-interface.permissions.` is used by all definitions).  The
-definitions themselves may also add additional branches (in this case `gnss.`
-), as desired.
-
 ## Tool support
 
-Both `Standard Layer` and `Reverse Layer` concepts shall be supported in
-the VSS Layer general concept and depending on the needs and preferences, any
-combination of these two approaches can be chosen.  Individual tools may
-however prefer a particular layer format and content.
+VSS Layer general concept shall be supported in vss-tools, wherever it is
+applicable.
 
 VSS processing tools shall generally support any number of input layers of the
 supported type, and if nothing else is documented then tools shall process the
 layers in the given order (later layers redefine or override earlier layers).
 Tools may optionally provide information (warning or other logs) when
 information is redefined.
-
-Tools are recommended to have an appropriate input parameter (-r) to define
-the files that are to be processed using `Reverse Layer` logic, or
-alternatively a way to specify the unique _prefix_ of the non-signal concepts.
-The latter opens up for having both standard and reverse definitions in the same
-file, if this is ever desired.   Through this designation of reverse logic the
-tools will not interpret concepts as signal names.
 
 
