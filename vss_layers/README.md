@@ -20,20 +20,103 @@ There is one main way to add a metadata relationship in the plain VSS
 (meta)model.  In the VSSo (ontology) environment there may also be additional
 ways.
 
-List new metadata below a signal definition:
+
+Example how to list new metadata below a signal definition:
 
 VSS core model metadata:
 ```
-Motor.CoolantTemperature
+Motor.CoolantTemperature:
   datatype: int16
   type: sensor
   unit: celsius
   description: Motor coolant temperature (if applicable).
 ```
 
+### Removal of nodes
+
+Various ideas:
+
+Removal example, using empty value = removal
+```
+Motor.CoolantTemperature:
+  datatype: int16
+  type:              <- removes "type:" entirely (*if* we allow type to be removed)
+  unit: celsius
+  description: Motor coolant temperature (if applicable).
+```
+
+Removal example, using no meta-data = remove signal
+```
+Motor.CoolantTemperature:  <- removed because meta-data is empty
+
+Vehicle.Powertrain.Transmission.Speed:
+  datatype: int32          <- modified
+```
+
+Removal example, requires all signals to be named in "deployment file" otherwise they are not included
+(in a code generator for example):
+
+"deployment file"
+```
+Motor.CoolantTemperature:   <- signal mentioned, therefore included
+   deployment_stuff: foo
+```
+
+### Tool invocation
+
+Example with flags to define if it's a (m)odel or (R)emoval file:
+```
+ $ mytool -m vss_rel_2.yaml -m privacy_layer.yaml -m deployment_info.yaml -R stuff_to_remove.yaml
+```
+... in this case nodes listed in stuff_to_remove.yaml gets removed.
+
+
+Example with flags to define if it's a (m)odel or (I)nclusion file:
+```
+ $ mytool -m vss_rel_2.yaml -m privacy_layer.yaml -m deployment_info.yaml -I deployment_whitelist.yaml
+```
+... in this case any node NOT listed in deployment_whitelist.yaml gets removed (not used in output).
+
+Proposal: "Allow" tools to include equivalent of -R and -I flags, one or the
+other or both, depending on need.
+
+Also support a manifest file instead of listing on command line
+```
+ $ mytool -f filelist.txt
+```
+
+filelist.txt example 1:
+```
+ vss_rel_2.2
+ +vss_privacy_info
+ +deployment
+ -removed_signals
+```
+
+filelist.txt example 2:
+```
+ basemodel: vss_rel_2.2
+ layer: vss_privacy_info
+ modification: ...
+ deployment: mydepl.yaml
+```
+
+filelist.txt example 3:
+```
+ model: vss_rel_2.2
+ model: vss_privacy_info
+ model: ...
+ Removal: mydepl.yaml
+```
+
+
+TODO:
+- Define how to modify instances
+
+
 Example of layered additional metadata:
 ```
-Motor.CoolantTemperature
+Motor.CoolantTemperature:
   my_unique_concept: true
 ```
 
