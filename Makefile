@@ -2,7 +2,7 @@
 # Makefile to generate specifications
 #
 
-.PHONY: clean all travis_targets json franca yaml csv tests binary protobuf ttl graphql ocf c install deploy
+.PHONY: clean all travis_targets json franca yaml csv tests binary protobuf ttl graphql ocf c install deploy pdf
 
 all: clean json franca yaml csv binary tests protobuf graphql
 
@@ -17,7 +17,7 @@ travis_targets: clean json franca yaml binary csv tests deploy
 # from time to time
 # Can be run from e.g. travis with "make -k travis_optional || true" to continue
 # even if errors occur and not do not halt travis build if errors occur
-travis_optional: clean c ocf protobuf ttl graphql
+travis_optional: clean c ocf protobuf ttl graphql pdf
 
 DESTDIR?=/usr/local
 TOOLSDIR?=./vss-tools
@@ -58,6 +58,10 @@ ttl:
 c:
 	(cd ${TOOLSDIR}/contrib/vspec2c/; make )
 	PYTHONPATH=${TOOLSDIR} ${TOOLSDIR}/contrib/vspec2c.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).h vss_rel_$$(cat VERSION)_macro.h
+
+pdf: csv
+	cd ${TOOLSDIR}/contrib
+	${TOOLSDIR}/contrib/csv2pdf.sh vss_rel_$$(cat VERSION).csv
 
 clean:
 	rm -f vss_rel_*
