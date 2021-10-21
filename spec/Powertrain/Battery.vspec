@@ -8,8 +8,21 @@
 #
 
 #
-# Signals, attributes and actuators around the electric powertrain.
+# Signals and attributes related to the traction battery in vehicles with electrical powertrain.
+# For some vehicles the traction battery is referred to as the high voltage battery.
 #
+
+# It might be possible to disconnect the traction battery used by an electric powertrain.
+# This is achieved by connectors, typically one for plus and one for minus.
+PowerConnected:
+  datatype: boolean
+  type: sensor
+  description: Indicating if the power (positive terminator) of the traction battery is connected to the powertrain.
+
+GroundConnected:
+  datatype: boolean
+  type: sensor
+  description: Indicating if the ground (negative terminator) of the traction battery is connected to the powertrain.
 
 Temperature:
   datatype: float
@@ -163,7 +176,6 @@ Charging.TimeToComplete:
   type: sensor
   unit: s
   description: The time needed to complete the current charging process to the set charge limit. 0 if charging is complete, negative number if no charging process is active.
-
 
 Charging.Timer:
   type: branch
