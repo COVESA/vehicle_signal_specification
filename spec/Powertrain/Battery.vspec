@@ -159,7 +159,7 @@ Charging.ChargeRate:
   description: Current charging rate, as in kilometers of range added per hour.
 
 Charging.TimeToComplete:
-  datatype: uint32
+  datatype: int32
   type: sensor
   unit: s
   description: The time needed to complete the current charging process to the set charge limit. 0 if charging is complete, negative number if no charging process is active.
