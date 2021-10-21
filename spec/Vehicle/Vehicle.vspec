@@ -145,11 +145,26 @@ VehicleIdentification.knownVehicleDamages:
 #
 # Vehicle signals
 #
+
+LowVoltageSystemState:
+  datatype: string
+  type: sensor
+  enum: [
+    "UNDEFINED", # State of low voltage system not known
+    "LOCK",      # Low voltage system off, steering lock or equivalent engaged
+    "OFF",       # Low voltage system off, steering lock or equivalent not engaged
+    "ACC",       # Vehicle Accessories on/living
+    "ON",        # Engine start enabled (e.g. ignition on, diesel pre-heating, electrical drive released)
+    "START"      # Engine starter relay closed (not applicable for electrical vehicles)
+    ]
+  description: State of the supply voltage of the control units (usually 12V).
+
 IgnitionOn:
   datatype: boolean
   type: sensor
   description: Indicates whether the vehicle ignition is on or off.
-  
+  deprecation: V2.2 replaced by LowVoltageSystemState
+
 IgnitionOnTime:
   datatype: uint32
   type: sensor
