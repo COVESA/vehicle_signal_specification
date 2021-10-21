@@ -12,23 +12,25 @@
 # For some vehicles the traction battery is referred to as the high voltage battery.
 #
 
-# It might be possible to disconnect the traction battery used by an electric powertrain.
-# This is achieved by connectors, typically one for plus and one for minus.
-PowerConnected:
+IsPowerConnected:
   datatype: boolean
   type: sensor
   description: Indicating if the power (positive terminator) of the traction battery is connected to the powertrain.
+  comment: It might be possible to disconnect the traction battery used by an electric powertrain.
+           This is achieved by connectors, typically one for plus and one for minus.
 
-GroundConnected:
+IsGroundConnected:
   datatype: boolean
   type: sensor
   description: Indicating if the ground (negative terminator) of the traction battery is connected to the powertrain.
+  comment: It might be possible to disconnect the traction battery used by an electric powertrain.
+           This is achieved by connectors, typically one for plus and one for minus.
 
 Temperature:
   datatype: float
   type: sensor
   unit: celsius
-  description: Temperature of the battery pack
+  description: Temperature of the battery pack.
 
 StateOfCharge:
   type: branch
@@ -56,43 +58,43 @@ StateOfCharge.Target:
   min: 0
   max: 100
   unit: percent
-  description: Target state of charge set (eg. by customer).
+  description: Target state of charge set (eg. by customer). Shall never exceed Charging.ChargeLimit.
 
 GrossCapacity:
   datatype: uint16
   type: attribute
   unit: kWh
-  description: Gross capacity of the battery
+  description: Gross capacity of the battery.
 
 NetCapacity:
   datatype: uint16
   type: attribute
   unit: kWh
-  description: Net capacity of the battery
+  description: Net capacity of the battery.
 
 NominalVoltage:
   datatype: uint16
   type: attribute
   unit: V
-  description: Nominal Voltage of the battery
+  description: Nominal Voltage of the battery.
 
 ReferentVoltage:
   datatype: uint16
   type: attribute
   unit: V
-  description: Referent Voltage of the battery
+  description: Referent Voltage of the battery.
 
 AccumulatedChargedEnergy:
   datatype: float
   type: sensor
   unit: kWh
-  description: The accumulated energy delivered to the battery during charging over lifetime.
+  description: The accumulated energy delivered to the battery during charging over lifetime of the battery.
 
 AccumulatedConsumedEnergy:
   datatype: float
   type: sensor
   unit: kWh
-  description: The accumulated energy leaving HV battery for propulsion and auxiliary loads over lifetime.
+  description: The accumulated energy leaving HV battery for propulsion and auxiliary loads over lifetime of the battery.
 
 Range:
   datatype: uint32
@@ -102,7 +104,7 @@ Range:
 
 Charging:
   type: branch
-  description: Properties related to battery charging
+  description: Properties related to battery charging.
   
 Charging.ChargeLimit:
   datatype: uint8
@@ -122,12 +124,12 @@ Charging.ChargePortFlap:
   datatype: string
   type: actuator
   enum: [ 'open', 'closed' ]
-  description: Signal indicating if charge port cover is open or closed, can potentially be controlled manually.
+  description: Status of the charge port cover, can potentially be controlled manually.
 
-Charging.ChargePlugStatus:
+Charging.IsChargingCableConnected:
   datatype: boolean
   type: sensor
-  description: Signal indicating if charge plug is connected or not.
+  description: Indicates if a charging cable is connected to the vehicle or not.
 
 Charging.ChargePlugType:
   datatype: string
@@ -142,10 +144,11 @@ Charging.Mode:
   enum: [ 'manual', 'timer', 'grid' ]
   description: Control of the charge process - manually initiated (plug-in event, companion app, etc), timer-based or grid-controlled (eg ISO 15118).
 
-Charging.Status:
+Charging.IsCharging:
   datatype: boolean
   type: sensor
-  description: State of charging process.
+  description: True if charging is ongoing. 
+               Charging is considered to be ongoing if energy is flowing from charger to vehicle.
 
 Charging.StartStopCharging:
   datatype: string
@@ -171,26 +174,34 @@ Charging.ChargeRate:
   unit: km/h
   description: Current charging rate, as in kilometers of range added per hour.
 
+
 Charging.TimeToComplete:
   datatype: uint32
   type: sensor
   unit: s
-  description: The time needed to complete the current charging process to the set charge limit. 0 if charging is complete, negative number if no charging process is active.
+  description: The time needed for the current charging process to reach StateOfCharge.Target.
+               0 if charging is complete or no charging process is active or planned.
+  comment: Shall consider time set by Charging.Timer.Time. 
+           E.g. if charging shall start in 3 hours and 2 hours of charging is needed, then Charging.TimeToComplete shall report 5 hours.
 
 Charging.Timer:
   type: branch
   description: Properties related to timing of battery charging sessions.
 
-Charging.Timer.Time:
-  datatype: uint32
-  type: actuator
-  unit: s
-  description: Time value for next charging-related action (Unix timestamp, seconds).
-
 Charging.Timer.Mode:
   datatype: string
   type: actuator
-  enum: [ 'starttime', 'endtime', 'depaturetime' ]
-  description: Defines whether Timer.Time is defining start- or endtime of a charging action; departuretime denotes that target time should be taken from vehicle-level desired departure-time setting.
+  enum: [ 'inactive', 'starttime', 'endtime' ]
+  description: "Defines timer mode for charging:
+               'inactive' - no timer set, charging may start as soon as battery is connected to a charger.
+               'starttime' - charging shall start at Charging.Timer.Time.
+               'endtime' - charging shall be finished (reach StateOfCharge.Target) at Charging.Timer.Time.
+               When charging is completed the vehicle shall change mode to 'inactive' or set a new Charging.Timer.Time.
+               Charging shall start immediately if mode is 'starttime' or 'endtime' and Charging.Timer.Time is a time in the past."
 
+Charging.Timer.Time:
+  datatype: string
+  type: actuator
+  description: Time for next charging-related action, formatted according to ISO 8601 with UTC time zone.
+               Value has no significance if Charging.Timer.Mode is 'inactive'.
 
