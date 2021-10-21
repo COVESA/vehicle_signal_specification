@@ -119,23 +119,16 @@ FuelType:
   description: Type of fuel that the engine runs on.
 
 
-#
-# More attributes here
-# MaxRPM. Supercharged / Turbocharged, etc, octane, etc
-#
 
-#
-# Engine
-#
-Engine:
-  type: branch
-  description: Engine signals
-
+Running:
+  datatype: boolean
+  type: sensor
+  description: Engine Running. True if engine is rotating (Engine.Speed > 0).
 
 #
 # Engine rotations per minute
 #
-Engine.Speed:
+Speed:
   datatype: uint16
   type: sensor
   unit: rpm
@@ -143,11 +136,10 @@ Engine.Speed:
   max: 20000
   description: Engine speed measured as rotations per minute.
 
-
 #
 # Engine coolant temperature
 #
-Engine.ECT:
+ECT:
   datatype: int16
   type: sensor
   unit: celsius
@@ -159,7 +151,7 @@ Engine.ECT:
 #
 # Engine Oil Temperature
 #
-Engine.EOT:
+EOT:
   datatype: int16
   type: sensor
   unit: celsius
@@ -171,7 +163,7 @@ Engine.EOT:
 #
 # Manifold Air Pressure
 #
-Engine.MAP:
+MAP:
   datatype: int16
   type: sensor
   unit: kPa
@@ -183,7 +175,7 @@ Engine.MAP:
 #
 # Mass Air Flow
 #
-Engine.MAF:
+MAF:
   datatype: int16
   type: sensor
   unit: g/s
@@ -194,7 +186,7 @@ Engine.MAF:
 #
 # Throttle Position
 #
-Engine.TPS:
+TPS:
   datatype: int8
   type: sensor
   unit: percent
@@ -206,7 +198,7 @@ Engine.TPS:
 #
 # Engine Oil Pressure
 #
-Engine.EOP:
+EOP:
   datatype: int16
   type: sensor
   unit: kPa
@@ -218,7 +210,7 @@ Engine.EOP:
 #
 # Current Power
 #
-Engine.Power:
+Power:
   datatype: int16
   type: sensor
   unit: kW
@@ -229,7 +221,7 @@ Engine.Power:
 #
 # Current Torque
 #
-Engine.Torque:
+Torque:
   datatype: int16
   type: sensor
   unit: Nm
@@ -262,7 +254,7 @@ DieselParticulateFilter.OutletTemperature:
   datatype: float
   type: sensor
   unit: celsius
-  description: Outlet temperature of Diesel Particulate Filter.  
+  description: Outlet temperature of Diesel Particulate Filter.
   
 #
 # Current delta pressure of Diesel Particulate Filter
@@ -271,6 +263,6 @@ DieselParticulateFilter.DeltaPressure:
   datatype: float
   type: sensor
   unit: Pa
-  description: Delta Pressure of Diesel Particulate Filter.  
+  description: Delta Pressure of Diesel Particulate Filter.
   
   

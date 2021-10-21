@@ -39,19 +39,10 @@ MaxRegenTorque:
   unit: Nm
   description: Peak regen/brake torque, in newton meter, that the motor(s) can generate.
 
-
-#
-# Motor
-#
-Motor:
-  type: branch
-  description: motor signals
-
-
 #
 # Motor rotations per minute
 #
-Motor.Rpm:
+Rpm:
   datatype: int32
   type: sensor
   unit: rpm
@@ -63,7 +54,7 @@ Motor.Rpm:
 #
 # Motor temperature
 #
-Motor.Temperature:
+Temperature:
   datatype: int16
   type: sensor
   unit: celsius
@@ -75,7 +66,7 @@ Motor.Temperature:
 #
 # Motor coolant temperature (if applicable)
 #
-Motor.CoolantTemperature:
+CoolantTemperature:
   datatype: int16
   type: sensor
   unit: celsius
@@ -87,7 +78,7 @@ Motor.CoolantTemperature:
 #
 # Current Power
 #
-Motor.Power:
+Power:
   datatype: int16
   type: sensor
   unit: kW
@@ -98,7 +89,7 @@ Motor.Power:
 #
 # Current Torque
 #
-Motor.Torque:
+Torque:
   datatype: int16
   type: sensor
   unit: Nm
