@@ -22,8 +22,6 @@ boolean    | boolean value              | 0/false | 1/true
 float      | floating point number      | -3.4e -38 | 3.4e 38
 double     | double precision floating point number | -1.7e -300 | 1.7e 300
 string     | character string           | n/a  | n/a
-byteBuffer | buffer of bytes (aka BLOB) | n/a | n/a
-
 
 ## Arrays
 
