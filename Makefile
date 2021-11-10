@@ -43,17 +43,20 @@ binary:
 	gcc -shared -o ${TOOLSDIR}/binary/binarytool.so -fPIC ${TOOLSDIR}/binary/binarytool.c
 	${TOOLSDIR}/vspec2binary.py ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).binary
 
+# All scripts in contrib must have PYTHONPATH set to fetch local "vspec"
+# If not, an older potentially incompatible cached version might be used
+
 protobuf:
-	${TOOLSDIR}/contrib/vspec2protobuf.py  -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).proto
+	PYTHONPATH=${TOOLSDIR} ${TOOLSDIR}/contrib/vspec2protobuf.py  -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).proto
 
 graphql:
-	${TOOLSDIR}/contrib/vspec2graphql.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).graphql.ts
+	PYTHONPATH=${TOOLSDIR} ${TOOLSDIR}/contrib/vspec2graphql.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).graphql.ts
 
 ocf:
-	${TOOLSDIR}/contrib/ocf/vspec2ocf.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ocf.json
+	PYTHONPATH=${TOOLSDIR} ${TOOLSDIR}/contrib/ocf/vspec2ocf.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ocf.json
 
 ttl:
-	${TOOLSDIR}/contrib/vspec2ttl/vspec2ttl.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ttl
+	PYTHONPATH=${TOOLSDIR} ${TOOLSDIR}/contrib/vspec2ttl/vspec2ttl.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ttl
 
 c:
 	(cd ${TOOLSDIR}/contrib/vspec2c/; make )
