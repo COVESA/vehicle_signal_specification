@@ -14,14 +14,14 @@ Please find the official documentation at: [Vehicle Signal Specification](https:
 To use a specific version of VSS in your toolchain, head over to our [releases page](https://github.com/COVESA/vehicle_signal_specification/releases/).
 
 
-**Latest release:** [2.1](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v2.1)
+[Latest release](https://github.com/COVESA/vehicle_signal_specification/releases/latest)
 
 ### Discuss all things VSS, "meet" the community
 The community has regular calls to discuss topics around VSS. This includes specific tickets in this repository as well as the broader direction in which VSS is evolving.  You can find current call coordinates and dates in [our wiki](https://github.com/COVESA/vehicle_signal_specification/wiki/Weekly-meeting#meeting). 
 
 
 ### Contribute to VSS
-Work towards version 2.2 is continuously ongoing in the [master branch](https://github.com/COVESA/vehicle_signal_specification/tree/master)
+Work towards the next version is continuously ongoing in the [master branch](https://github.com/COVESA/vehicle_signal_specification/tree/master)
 
 To work with the specification directly, you need to clone this repository.
 
