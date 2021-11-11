@@ -12,4 +12,4 @@ Fig 1 shows the schematics of the top-level process.
 *Fig 1. Generating documents from specification*
 
 
-Some helpful tools are available in the [vss-tools project](https://github.com/GENIVI/vss-tools).
+Some helpful tools are available in the [vss-tools project](https://github.com/covesa/vss-tools).
