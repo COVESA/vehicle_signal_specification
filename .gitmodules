@@ -1,6 +1,6 @@
 [submodule "vss-tools"]
 	path = vss-tools
-	url = https://github.com/GENIVI/vss-tools
+	url = https://github.com/covesa/vss-tools
 [submodule "docs-gen/themes/learn"]
 	path = docs-gen/themes/learn
 	url = https://github.com/matcornic/hugo-theme-learn.git
