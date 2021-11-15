@@ -53,13 +53,6 @@ Vehicle.Private:
 
 #include Private/Private.vspec Vehicle.Private
 
-Vehicle.Media:
-  type: branch
-  description: Media service data.
-
-#include Media/Media.vspec Vehicle.Media
-
-
 
 #
 # The power train branch used to host the signals and attributes.
@@ -128,17 +121,6 @@ Vehicle.Powertrain.FuelSystem:
 # fuels system branch created above.
 #include Powertrain/FuelSystem.vspec Vehicle.Powertrain.FuelSystem
 
-
-#
-# The fuel cell signals and attributes used to host the signals in FuelCell.vspec.
-#
-Vehicle.Powertrain.FuelCell:
-  type: branch
-  description: Fuel Cell data.
-
-# Include the fuel cell vspec file and attach all its signals and attributes under the
-# fuel cell branch created above.
-#include Powertrain/FuelCell.vspec Vehicle.Powertrain.FuelCell
 
 
 #
