@@ -17,7 +17,7 @@ travis_targets: clean json franca yaml binary csv tests deploy
 # from time to time
 # Can be run from e.g. travis with "make -k travis_optional || true" to continue
 # even if errors occur and not do not halt travis build if errors occur
-travis_optional: clean c ocf protobuf ttl graphql pdf
+travis_optional: pdf clean c ocf protobuf ttl graphql 
 
 DESTDIR?=/usr/local
 TOOLSDIR?=./vss-tools
@@ -61,6 +61,7 @@ c:
 
 pdf: csv
 	cd ${TOOLSDIR}/contrib
+	pandoc --list-input-formats
 	${TOOLSDIR}/contrib/csv2pdf.sh vss_rel_$$(cat VERSION).csv
 
 clean:
