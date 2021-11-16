@@ -9,8 +9,9 @@ entry example is given below:
 ```YAML
 Speed:
   type: sensor
-  description: The vehicle speed, as measured by the drivetrain.
-  datatype: uint16
+  description: The vehicle speed.
+  comment: For engine speed see Vehicle.Powertrain.CombustionEngine.Engine.Speed.
+  datatype: float
   unit: km/h
   min: 0
   max: 300
@@ -24,13 +25,21 @@ all parental branches included in the name must be defined as well.
 Defines the type of the node. This can be ```branch```,
 ```sensor```, ```actuator```, ```stream``` or attribute.
 
-**```description```**  
-A description string to be included (when applicable) in the various
-specification files generated from this data entry.
-
 **```datatype```**  
 The string value of the type specifies the scalar type of the data entry
 value. See [data type](#data-type) chapter for a list of available types.
+
+**```description```**  
+Describes the meaning and content of the signal.
+The `description`shall together with other mandatory members like `datatype` and `unit` provide sufficient information
+to understand what the signal contains and how signal values shall be constructed or interpreted.
+Recommended to start with a capital letter and end with a dot (`.`).
+
+**```comment ```**  *[optional]* `since version 3.0`
+A comment can be used to provide additional informal information on a signal.
+This could include background information on the rationale for the signal design,
+references to related signals, standards and similar.
+Recommended to start with a capital letter and end with a dot (`.`).
 
 **```min```** *[optional]*  
 The minimum value, within the interval of the given ```type```, that the

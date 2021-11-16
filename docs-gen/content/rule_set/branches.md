@@ -28,8 +28,14 @@ The value ```branch``` specifies that this is a branch entry (as
 opposed to a signal entry). This is the default, in case ```type``` is omitted.
 
 **```description```**  
-A description string to be included (when applicable) in the various
-specification files generated from this branch entry.
+Describes the meaning and content of the branch.
+Recommended to start with a capital letter and end with a dot (`.`).
+
+**```comment ```**  *[optional]* `since version 3.0`
+A comment can be used to provide additional informal information on a branch.
+This could include background information on the rationale for the branch,
+references to related branches, standards and similar.
+Recommended to start with a capital letter and end with a dot (`.`).
 
 **```aggregate```** *[optional]*  
 Defines whether or not this branch is an aggregate.
