@@ -34,9 +34,6 @@ jobs:
       - name: Test optional targets. NOTE - always succeeds
         run: make -k travis_optional || true
 
-      - name: Test csv2pdf
-        run: vss-tools/contrib/csv2pdf.py vss_rel*.csv
-
       - name: Install hugo
         env:
           HUGO_VER : 0.78.1
