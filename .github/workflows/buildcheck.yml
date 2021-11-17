@@ -24,6 +24,9 @@ jobs:
           pip install -r requirements.txt
           python setup.py -q install
 
+      - name: Test optional targets. NOTE - always succeeds
+        run: make -k travis_optional || true
+        
       - name: Test mandatory targets
         run: make travis_targets
 
