@@ -31,6 +31,7 @@ jobs:
       - name: Test optional targets. NOTE - always succeeds
         run: |
           sudo apt-get install -y pandoc  # For csv2pdf
+          pandoc --version
           make -k travis_optional || true
           ls -al vss-tools/contrib *.pdf
 
