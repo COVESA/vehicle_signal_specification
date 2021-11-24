@@ -4,7 +4,7 @@ date: 2019-08-04T12:37:31+02:00
 weight: 4
 ---
 
-An attribute is a signal with a default value, specified by
+An attribute is an entity that has a  default value, specified by
 its ```default``` member.
 The standard Vehicle Signal Specification include default values for most attributes. 
 It is expected that these default values do not fit all values.

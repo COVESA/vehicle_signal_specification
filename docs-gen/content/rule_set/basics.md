@@ -56,7 +56,7 @@ The exact use of ```PosX``` elements and how they correlate to actual
 positions in the car, is dependent on the actual vehicle using the
 spec.
 
-## PARENT NODES
+## Parent Nodes
 If a new leaf node is defined, all parent branches included in its name must
 be included as well, as shown below:
 
@@ -72,7 +72,19 @@ The branches do not have to be defined in any specific order as long
 as each branch component is defined somewhere in the vspec file (or an
 included vspec file).
 
-## DEPRECATION `since version 2.1`
+## Naming Conventions
+
+The recommended naming convention for node elements is to use camel case notation starting with a capital letter. It is recommended to use only
+`A-Z`, `a-z` and `0-9` in node names. For boolean signals it is recommended to start the name with `Is`.
+
+Examples:
+
+```
+SomeBranch.AnotherBranch.MySignalName
+Cabin.Door.Row1.Left.IsLocked
+```
+
+## Deprecation `since version 2.1`
 
 During the process of model development, nodes might be
 moved or deleted. Giving developers a chance to adopt to the
