@@ -163,36 +163,6 @@ LowVoltageSystemState:
     ]
   description: State of the supply voltage of the control units (usually 12V).
 
-IgnitionOn:
-  datatype: boolean
-  type: sensor
-  description: Indicates whether the vehicle ignition is on or off.
-  deprecation: V2.2 replaced by LowVoltageSystemState
-
-IgnitionOnTime:
-  datatype: uint32
-  type: sensor
-  unit: s
-  description: Accumulated ignition on time in seconds.
-
-IgnitionOffTime:
-  datatype: uint32
-  type: sensor
-  unit: s
-  description: Accumulated ignition off time in seconds.
-
-DriveTime:
-  datatype: uint32
-  type: sensor
-  unit: s
-  description: Accumulated drive time in seconds.
-
-IdleTime:
-  datatype: uint32
-  type: sensor
-  unit: s
-  description: Accumulated idle time in seconds.
-
 Speed:
   datatype: float
   type: sensor

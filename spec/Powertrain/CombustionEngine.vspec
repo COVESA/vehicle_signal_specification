@@ -136,6 +136,22 @@ Speed:
   max: 20000
   description: Engine speed measured as rotations per minute.
 
+
+EngineHours:
+  datatype: float
+  type: sensor
+  description: Accumulated time during engine lifetime with 'engine speed (rpm) > 0'.
+  unit: h
+
+IdleHours:
+  datatype: float
+  type: sensor
+  description: Accumulated idling time during engine lifetime.
+               Definition of idling is not standardized.
+  comment: Vehicles may calculate accumulated idle time for an engine.
+           It might be based on engine speed (rpm) below a certain limit or any other mechanism.
+  unit: h
+
 #
 # Engine coolant temperature
 #
