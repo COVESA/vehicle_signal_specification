@@ -17,6 +17,7 @@
 #
 # Engine attributes
 #
+
 Displacement:
   datatype: uint16
   type: attribute
@@ -56,27 +57,7 @@ NumberOfValvesPerCylinder:
 CompressionRatio:
   datatype: string
   type: attribute
-  description: Engine compression ratio.
-
-EngineOilLevel:
-  datatype: string
-  type: attribute
-  enum: [ 
-    "critically_low",  # Critically low, immediate action required
-    "low",             # Level below recommended range, but not critical
-    "normal",          # Within normal range, no need for driver action
-    "high",            # Level above recommended range, but not critical
-    "critically_high"  # Critically high, immediate action required
-    ]
-  description: Vehicle oil level.
-
-# In addition to this a signal a vehicle can report remaining time to service (including e.g. oil change)
-# by Vehicle.Service.TimeToService
-OilLifeRemaining:
-  datatype: int32
-  type: sensor
-  description: Remaining engine oil life in seconds. Negative values can be used to indicate that lifetime has been exceeded.
-  unit: s
+  description: Engine compression ratio, specified in the format 'X:1', e.g. '9.2:1'.
 
 EngineOilCapacity:
   datatype: float
@@ -102,7 +83,7 @@ MaxTorque:
   type: attribute
   default: 0
   unit: Nm
-  description: Peak power, in newton meter, that the engine can generate.
+  description: Peak torque, in newton meter, that the engine can generate.
 
 AspirationType:
   datatype: string
@@ -118,12 +99,31 @@ FuelType:
   default: "unknown"
   description: Type of fuel that the engine runs on.
 
+EngineOilLevel:
+  datatype: string
+  type: sensor
+  enum: [ 
+    "critically_low",  # Critically low, immediate action required
+    "low",             # Level below recommended range, but not critical
+    "normal",          # Within normal range, no need for driver action
+    "high",            # Level above recommended range, but not critical
+    "critically_high"  # Critically high, immediate action required
+    ]
+  description: Engine oil level.
 
+OilLifeRemaining:
+  datatype: int32
+  type: sensor
+  description: Remaining engine oil life in seconds.
+               Negative values can be used to indicate that lifetime has been exceeded.
+  comment: In addition to this a signal a vehicle can report remaining time to service (including e.g. oil change)
+           by Vehicle.Service.TimeToService.
+  unit: s
 
-Running:
+IsRunning:
   datatype: boolean
   type: sensor
-  description: Engine Running. True if engine is rotating (Engine.Speed > 0).
+  description: Engine Running. True if engine is rotating (Speed > 0).
 
 #
 # Engine rotations per minute
@@ -132,8 +132,6 @@ Speed:
   datatype: uint16
   type: sensor
   unit: rpm
-  min: 0
-  max: 20000
   description: Engine speed measured as rotations per minute.
 
 #
@@ -143,8 +141,6 @@ ECT:
   datatype: int16
   type: sensor
   unit: celsius
-  min: -50
-  max: 200
   description: Engine coolant temperature.
 
 
@@ -155,42 +151,35 @@ EOT:
   datatype: int16
   type: sensor
   unit: celsius
-  min: -50
-  max: 300
   description: Engine oil temperature.
 
 
 #
-# Manifold Air Pressure
+# Manifold Absolute Pressure
 #
 MAP:
-  datatype: int16
+  datatype: uint16
   type: sensor
   unit: kPa
-  min: 0
-  max: 1000
-  description: Manifold air pressure possibly boosted using forced induction.
+  description: Manifold absolute pressure possibly boosted using forced induction.
 
 
 #
 # Mass Air Flow
 #
 MAF:
-  datatype: int16
+  datatype: uint16
   type: sensor
   unit: g/s
-  min: 0
-  max: 3000
   description: Grams of air drawn into engine per second.
 
 #
 # Throttle Position
 #
 TPS:
-  datatype: int8
+  datatype: uint8
   type: sensor
   unit: percent
-  min: 0
   max: 100
   description: Current throttle position.
 
@@ -199,11 +188,9 @@ TPS:
 # Engine Oil Pressure
 #
 EOP:
-  datatype: int16
+  datatype: uint16
   type: sensor
   unit: kPa
-  min: 0
-  max: 1000
   description: Engine oil pressure.
 
 
@@ -211,32 +198,28 @@ EOP:
 # Current Power
 #
 Power:
-  datatype: int16
+  datatype: uint16
   type: sensor
   unit: kW
-  min: 0
-  max: 2000
-  description: Current engine power output.
+  description: Current engine power output. Shall be reported as 0 during engine breaking.
 
 #
 # Current Torque
 #
 Torque:
-  datatype: int16
+  datatype: uint16
   type: sensor
   unit: Nm
-  min: 0
-  max: 3000
-  description: Current engine torque.
-
-
+  description: Current engine torque. Shall be reported as 0 during engine breaking.
+  comment: During engine breaking the engine delivers a negative torque to the transmission.
+           This negative torque shall be ignored, instead 0 shall be reported.
 
 #
 # Diesel Particulate Filter
 #
 DieselParticulateFilter:
   type: branch
-  description: Diesel Particulate Filter signals
+  description: Diesel Particulate Filter signals.
 
 #
 # Current inlet Temperature of Diesel Particulate Filter
