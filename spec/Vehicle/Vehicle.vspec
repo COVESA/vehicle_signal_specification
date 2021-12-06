@@ -385,6 +385,15 @@ Trailer.Connected:
   description: Signal indicating if trailer is connected or not.
 
 #
+# Time
+#
+
+Time:
+  datatype: string
+  type: sensor
+  description: Current date and time in the vehicle, formatted according to ISO 8601.
+
+#
 # Location
 #
 
