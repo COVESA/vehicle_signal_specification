@@ -362,6 +362,11 @@ CurrentLocation:
   type: branch
   description: The current latitude and longitude of the vehicle.
 
+CurrentLocation.Timestamp:
+  datatype: string
+  type: sensor
+  description: GNSS Timestamp for latest position, formatted according to ISO 8601.
+
 CurrentLocation.Latitude:
   datatype: double
   type: sensor
