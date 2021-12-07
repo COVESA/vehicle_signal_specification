@@ -16,7 +16,7 @@ Media:
 Media.Action:
   datatype: string
   type: actuator
-  enum: [ "unknown", "Stop", "Play", "FastForward", "FastBackward", "SkipForward",  "SkipBackward" ]
+  allowed: [ "unknown", "Stop", "Play", "FastForward", "FastBackward", "SkipForward",  "SkipBackward" ]
   description: Tells if the media was
 
 Media.Played:
@@ -26,7 +26,7 @@ Media.Played:
 Media.Played.Source:
   datatype: string
   type: actuator
-  enum: [ "unknown", "SiriusXM", "AM", "FM", "DAB", "TV",  "CD", "DVD", "AUX", "USB", "Disk", "Bluetooth", "Internet", "Voice", "Beep" ]
+  allowed: [ "unknown", "SiriusXM", "AM", "FM", "DAB", "TV",  "CD", "DVD", "AUX", "USB", "Disk", "Bluetooth", "Internet", "Voice", "Beep" ]
   description: Media selected for playback
 
 Media.Played.Artist:
@@ -102,41 +102,41 @@ HMI.CurrentLanguage:
 HMI.DateFormat:
   datatype: string
   type: actuator
-  enum: [ "YYYY MM DD", "DD MM YYYY", "MM DD YYYY", "YY MM DD", "DD MM YY", "MM DD YY"]
+  allowed: [ "YYYY MM DD", "DD MM YYYY", "MM DD YYYY", "YY MM DD", "DD MM YY", "MM DD YY"]
   description: Date format used in the current HMI
 
 HMI.TimeFormat:
   datatype: string
   type: actuator
-  enum: [ "12HR", "24HR" ]
+  allowed: [ "12HR", "24HR" ]
   description: Time format used in the current HMI
 
 HMI.DistanceUnit:
   datatype: string
   type: actuator
-  enum: [ "mi", "km" ]
+  allowed: [ "mi", "km" ]
   description: Distance unit used in the current HMI
 
 HMI.FuelEconomyUnits:
   datatype: string
   type: actuator
-  enum: [ "mpg_UK", "mpg_US", "mpl", "km/l", "l/100km" ]
+  allowed: [ "mpg_UK", "mpg_US", "mpl", "km/l", "l/100km" ]
   description: Fuel economy unit used in the current HMI
 
 HMI.EVEconomyUnits:
   datatype: string
   type: actuator
-  enum: [ "mi/kWh", "km/kWh", "kWh/100mi", "kWh/100km", "Wh/mi", "Wh/km" ]
+  allowed: [ "mi/kWh", "km/kWh", "kWh/100mi", "kWh/100km", "Wh/mi", "Wh/km" ]
   description: EV fuel economy unit used in the current HMI
 
 HMI.TemperatureUnit:
   datatype: string
   type: actuator
-  enum: [ "C", "F" ]
+  allowed: [ "C", "F" ]
   description: Temperature unit used in the current HMI
 
 HMI.DayNightMode:
   datatype: string
   type: actuator
-  enum: [ "Day", "Night" ]
+  allowed: [ "Day", "Night" ]
   description: Current display theme

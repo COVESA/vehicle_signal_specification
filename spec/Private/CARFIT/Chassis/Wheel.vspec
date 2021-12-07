@@ -45,7 +45,7 @@ Tire.Condition:
 
 Tire.Condition.Tread:
   type: String,
-  enum: [ good, flat spot, low, uneven, separated, other damage ]
+  allowed: [ good, flat spot, low, uneven, separated, other damage ]
   description: The condition of the tread
 
 Tire.Condition.Sidewall:
@@ -73,7 +73,7 @@ Wheel.Balance:
 
 Wheel.Condition:
   type: String,
-  enum: [ good, dents, cracks, flat spot, other damage ]
+  allowed: [ good, dents, cracks, flat spot, other damage ]
   description: The condition of the tread
 
 Wheel.Bearing:

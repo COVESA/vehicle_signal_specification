@@ -16,7 +16,7 @@
 Type:
   datatype: string
   type: attribute
-  enum: [ "unknown", "sequential", "H", "automatic", "DSG", "CVT" ]
+  allowed: [ "unknown", "sequential", "H", "automatic", "DSG", "CVT" ]
   default: "unknown"
   description: Transmission type.
 
@@ -30,7 +30,7 @@ GearCount:
 DriveType:
   datatype: string
   type: attribute
-  enum: [ "unknown", "forward wheel drive", "rear wheel drive", "all wheel drive" ]
+  allowed: [ "unknown", "forward wheel drive", "rear wheel drive", "all wheel drive" ]
   default: "unknown"
   description: Drive type.
 
@@ -77,7 +77,7 @@ SelectedGear:
 PerformanceMode:
   datatype: string
   type: actuator
-  enum: [ "normal", "sport", "economy", "snow", "rain" ]
+  allowed: [ "normal", "sport", "economy", "snow", "rain" ]
   description: Current gearbox performance mode.
 
 
@@ -87,7 +87,7 @@ PerformanceMode:
 GearChangeMode:
   datatype: string
   type: actuator
-  enum: [ "manual", "automatic" ]
+  allowed: [ "manual", "automatic" ]
   description: Is the gearbox in automatic or manual (paddle) mode.
 
 

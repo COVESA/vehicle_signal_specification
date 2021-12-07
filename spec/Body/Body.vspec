@@ -18,7 +18,7 @@ BodyType:
 RefuelPosition:
   datatype: string
   type: attribute
-  enum: ["front_left", "front_right", "middle_left", "middle_right", "rear_left", "rear_right"]
+  allowed: ["front_left", "front_right", "middle_left", "middle_right", "rear_left", "rear_right"]
   description: Location of the fuel cap or charge port.
 
 #
@@ -93,7 +93,7 @@ Windshield.Wiping:
 Windshield.Wiping.Status:
   datatype: string
   type: actuator
-  enum: ["off", "slow", "medium", "fast", "interval", "rainsensor"]
+  allowed: ["off", "slow", "medium", "fast", "interval", "rainsensor"]
   description: Wiper status.
 
 Windshield.IsHeatingOn:
@@ -150,7 +150,7 @@ ChargingPort:
 ChargingPort.Type:
   datatype: string
   type: attribute
-  enum: [ "unknown", "Not_Fitted", "AC_Type_1", "AC_Type_2", "AC_GBT", "AC_DC_Type_1_Combo", "AC_DC_Type_2_Combo", "DC_GBT", "DC_Chademo" ]
+  allowed: [ "unknown", "Not_Fitted", "AC_Type_1", "AC_Type_2", "AC_GBT", "AC_DC_Type_1_Combo", "AC_DC_Type_2_Combo", "DC_GBT", "DC_Chademo" ]
   default: "unknown"
   description: Indicates the primary charging type fitted to the vehicle.
 

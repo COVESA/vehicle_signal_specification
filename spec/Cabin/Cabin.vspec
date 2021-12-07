@@ -58,7 +58,7 @@ Sunroof.Position:
 Sunroof.Switch:
   datatype: string
   type: actuator
-  enum: [ "Inactive", "Close", "Open", "OneShotClose", "OneShotOpen", "TiltUp", "TiltDown" ]
+  allowed: [ "Inactive", "Close", "Open", "OneShotClose", "OneShotOpen", "TiltUp", "TiltDown" ]
   description: Switch controlling sliding action such as window, sunroof, or shade.
 
 Sunroof.Shade:
@@ -182,5 +182,5 @@ Convertible:
 Convertible.Status:
   datatype: string
   type: sensor
-  enum: ["undefined", "closed", "open", "closing", "opening", "stalled"]
+  allowed: ["undefined", "closed", "open", "closing", "opening", "stalled"]
   description: Roof status on convertible vehicles.

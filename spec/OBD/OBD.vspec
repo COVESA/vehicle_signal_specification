@@ -54,7 +54,7 @@ Status.DTCCount:
 Status.IgnitionType:
   datatype: string
   type: sensor
-  enum: [ "spark", "compression" ]
+  allowed: [ "spark", "compression" ]
   description: Type of the ignition for ICE - spark = spark plug ignition, compression = self-igniting (Diesel engines)
 
 DTCList:
@@ -362,7 +362,7 @@ DriveCycleStatus.DTCCount:
 DriveCycleStatus.IgnitionType:
   datatype: string
   type: sensor
-  enum: [ "spark", "compression" ]
+  allowed: [ "spark", "compression" ]
   description: Type of the ignition for ICE - spark = spark plug ignition, compression = self-igniting (Diesel engines)
 
 ControlModuleVoltage:

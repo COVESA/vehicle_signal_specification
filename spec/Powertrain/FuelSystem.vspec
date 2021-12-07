@@ -13,14 +13,14 @@
 FuelType:
   datatype: string
   type: attribute
-  enum: [ "unknown", "gasoline", "diesel", "electric", "hybrid", "E85", "CNG", "LPG" ]
+  allowed: [ "unknown", "gasoline", "diesel", "electric", "hybrid", "E85", "CNG", "LPG" ]
   default: "unknown"
   description: Defines the fuel type of the vehicle.
 
 HybridType:
   datatype: string
   type: attribute
-  enum: [ "unknown", "not_applicable", "stop_start", "belt_ISG", "CIMG", "PHEV" ]
+  allowed: [ "unknown", "not_applicable", "stop_start", "belt_ISG", "CIMG", "PHEV" ]
   default: "unknown"
   description: Defines the hybrid type of the vehicle.
 

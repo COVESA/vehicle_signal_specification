@@ -39,7 +39,7 @@ Bore:
 Configuration:
   datatype: string
   type: attribute
-  enum: [ "unknown", "straight", "V", "boxer", "W",
+  allowed: [ "unknown", "straight", "V", "boxer", "W",
         "rotary", "radial", "square", "H", "U", "opposed", "X" ]
   description: Engine configuration.
   default: "unknown"
@@ -88,21 +88,21 @@ MaxTorque:
 AspirationType:
   datatype: string
   type: attribute
-  enum: [ "unknown", "natural", "supercharger", "turbocharger" ]
+  allowed: [ "unknown", "natural", "supercharger", "turbocharger" ]
   default: "unknown"
   description: Type of aspiration (natural, turbocharger, supercharger etc).
 
 FuelType:
   datatype: string
   type: attribute
-  enum: [ "unknown", "gasoline", "diesel", "E85", "CNG" ]
+  allowed: [ "unknown", "gasoline", "diesel", "E85", "CNG" ]
   default: "unknown"
   description: Type of fuel that the engine runs on.
 
 EngineOilLevel:
   datatype: string
   type: sensor
-  enum: [ 
+  allowed: [ 
     "critically_low",  # Critically low, immediate action required
     "low",             # Level below recommended range, but not critical
     "normal",          # Within normal range, no need for driver action

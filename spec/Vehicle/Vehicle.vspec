@@ -156,7 +156,7 @@ VehicleIdentification.KnownVehicleDamages:
 LowVoltageSystemState:
   datatype: string
   type: sensor
-  enum: [
+  allowed: [
     "UNDEFINED", # State of low voltage system not known
     "LOCK",      # Low voltage system off, steering lock or equivalent engaged
     "OFF",       # Low voltage system off, steering lock or equivalent not engaged

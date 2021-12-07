@@ -50,18 +50,18 @@ Recommended to start with a capital letter and end with a dot (`.`).
 The minimum value, within the interval of the given ```type```, that the
 data entry can be assigned.
 If omitted, the minimum value will be the "Min" value for the given type.
-Cannot be specified if ```enum``` is specified for the same data entry.
+Cannot be specified if ```allowed``` is defined for the same data entry.
 
 **```max```** *[optional]*  
 The maximum value, within the interval of the given ```type```, that the
 data entry can be assigned.
 If omitted, the maximum value will be the "Max" value for the given type.
-Cannot be specified if ```enum``` is specified for the same data entry.
+Cannot be specified if ```allowed``` is defined for the same data entry.
 
 **```unit```** *[optional]*    
 The unit of measurement that the data entry has. See [Unit
 Type](#data-unit-type) chapter for a list of available unit types. This
-cannot be specified if ```enum``` is specified as the signal type.
+cannot be specified if ```allowed``` is defined as the signal type.
 
 **```sensor```** *[optional]*  
 The sensing appliance used to produce the data entry.

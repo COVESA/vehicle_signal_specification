@@ -29,5 +29,5 @@ Temperature:
 AirDistribution:
   datatype: string
   type: actuator
-  enum: [ "up", "middle", "down" ]
+  allowed: [ "up", "middle", "down" ]
   description: Direction of airstream

@@ -144,7 +144,7 @@ SteeringWheel.Position:
   datatype: string
   type: attribute
   default: front_left
-  enum: ["front_left", "front_right"]
+  allowed: ["front_left", "front_right"]
   description: Position of the steering wheel on the left or right side of the vehicle.
 
 #

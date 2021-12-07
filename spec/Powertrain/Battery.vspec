@@ -123,7 +123,7 @@ Charging.MaximumChargingCurrent:
 Charging.ChargePortFlap:
   datatype: string
   type: actuator
-  enum: [ 'open', 'closed' ]
+  allowed: [ 'open', 'closed' ]
   description: Status of the charge port cover, can potentially be controlled manually.
 
 Charging.IsChargingCableConnected:
@@ -135,13 +135,13 @@ Charging.ChargePlugType:
   datatype: string
   type: attribute
   default: ccs
-  enum: [ 'type 1', 'type 2', 'ccs', 'chademo' ]
+  allowed: [ 'type 1', 'type 2', 'ccs', 'chademo' ]
   description: Type of charge plug available on the vehicle (CSS includes Type2).
 
 Charging.Mode:
   datatype: string
   type: actuator
-  enum: [ 'manual', 'timer', 'grid' ]
+  allowed: [ 'manual', 'timer', 'grid' ]
   description: Control of the charge process - manually initiated (plug-in event, companion app, etc), timer-based or grid-controlled (eg ISO 15118).
 
 Charging.IsCharging:
@@ -153,7 +153,7 @@ Charging.IsCharging:
 Charging.StartStopCharging:
   datatype: string
   type: actuator
-  enum: [ 'start', 'stop' ]
+  allowed: [ 'start', 'stop' ]
   description: Start or stop the charging process.
 
 Charging.ChargeCurrent:
@@ -191,7 +191,7 @@ Charging.Timer:
 Charging.Timer.Mode:
   datatype: string
   type: actuator
-  enum: [ 'inactive', 'starttime', 'endtime' ]
+  allowed: [ 'inactive', 'starttime', 'endtime' ]
   description: "Defines timer mode for charging:
                'inactive' - no timer set, charging may start as soon as battery is connected to a charger.
                'starttime' - charging shall start at Charging.Timer.Time.
