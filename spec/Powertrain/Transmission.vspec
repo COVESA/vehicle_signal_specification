@@ -1,4 +1,5 @@
 #
+# (C) 2021 Robert Bosch GmbH
 # (C) 2018 Volvo Cars
 # (C) 2016 Jaguar Land Rover
 #
@@ -22,7 +23,7 @@ Type:
 
 
 GearCount:
-  datatype: uint8
+  datatype: int8
   type: attribute
   default: 0
   description: Number of forward gears in the transmission. -1 = CVT.
@@ -34,9 +35,6 @@ DriveType:
   default: "unknown"
   description: Drive type.
 
-#
-# More transmissions (gear ratios etc)
-#
 
 #
 # Current odometer reading for the transmission
@@ -61,7 +59,6 @@ CurrentGear:
   type: sensor
   description: The current gear. 0=Neutral, 1/2/..=Forward, -1/-2/..=Reverse.
 
-
 #
 # Selected gear
 #
@@ -70,6 +67,25 @@ SelectedGear:
   type: actuator
   description: The selected gear. 0=Neutral, 1/2/..=Forward, -1/-2/..=Reverse, 126=Park, 127=Drive.
 
+IsParkLockEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is the transmission park lock engaged or not. False = Disengaged. True = Engaged.
+
+IsLowRangeEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is gearbox in low range mode or not. False = Normal/High range engaged. True = Low range engaged.
+  comment: The possibility to switch between low and high gear range is typically only available
+           in heavy vehicles and off-road vehicles.
+
+IsElectricalPowertrainEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is electrical powertrain mechanically connected/engaged to the drivetrain or not.
+               False = Disconnected/Disengaged. True = Connected/Engaged.
+  comment: In some hybrid solutions it is possible to disconnect/disengage the electrical powertrain mechanically
+           to avoid induced voltage reaching a too high level when driving at high speed.
 
 #
 # Current mode
@@ -97,17 +113,50 @@ GearChangeMode:
 Temperature:
   datatype: int16
   type: sensor
-  min: -50
-  max: 200
   unit: celsius
-  description: The current gearbox temperature
+  description: The current gearbox temperature.
 
 
 #
 # Clutch
 #
+ClutchEngagement:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Clutch engagement. 0% = Clutch fully disengaged. 100% = Clutch fully engaged.
+
 ClutchWear:
   datatype: uint8
   type: sensor
   unit: percent
+  max: 100
   description: Clutch wear as a percent. 0 = no wear. 100 = worn.
+
+DiffLockFrontEngagement:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Front Diff Lock engagement. 0% = Diff lock fully disengaged. 100% = Diff lock fully engaged.
+
+DiffLockRearEngagement:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Rear Diff Lock engagement. 0% = Diff lock fully disengaged. 100% = Diff lock fully engaged.
+
+TorqueDistribution:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: -100
+  max: 100
+  description: Torque distribution between front and rear axle in percent.
+               -100% = Full torque to front axle, 0% = 50:50 Front/Rear, 100% = Full torque to rear axle.
+
