@@ -231,6 +231,43 @@ Torque:
            This negative torque shall be ignored, instead 0 shall be reported.
 
 #
+# Diesel Exhaust Fluid
+#
+
+DieselExhaustFluid:
+  type: branch
+  description: Signals related to Diesel Exhaust Fluid (DEF).
+               DEF is called AUS32 in ISO 22241.
+  comment: In retail and marketing other names are typically used for the fluid.
+
+DieselExhaustFluid.Capacity:
+  datatype: float
+  type: attribute
+  unit: l
+  description: Capacity in liters of the Diesel Exhaust Fluid Tank.
+
+DieselExhaustFluid.Level:
+  datatype: uint8
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Level of the Diesel Exhaust Fluid tank as percent of capacity. 0 = empty. 100 = full.
+
+DieselExhaustFluid.Range:
+  datatype: uint32
+  type: sensor
+  unit: m
+  description: Remaining range in meters of the Diesel Exhaust Fluid present in the vehicle.
+
+DieselExhaustFluid.IsLevelLow:
+  datatype: boolean
+  type: sensor
+  description: Indicates if the Diesel Exhaust Fluid level is low.
+               True if level is low.
+               Definition of low is vehicle dependent.
+
+#
 # Diesel Particulate Filter
 #
 DieselParticulateFilter:
