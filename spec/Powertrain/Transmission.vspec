@@ -39,19 +39,6 @@ DriveType:
 #
 
 #
-# Current vehicle speed
-#
-Speed:
-  datatype: int32
-  type: sensor
-  min: -250
-  max: 250
-  unit: km/h
-  description: Vehicle speed, as sensed by the gearbox.
-  deprecation: V2.1 removed because doubled with Vehicle.Speed
-
-
-#
 # Current odometer reading for the transmission
 #
 # Note that this signal refers to the distance travelled by the transmission and not the vehicle.
@@ -65,19 +52,6 @@ TravelledDistance:
   type: sensor
   unit: km
   description: Odometer reading, total distance travelled during the lifetime of the transmission.
-
-
-#
-# Current gear
-#
-Gear:
-  datatype: int8
-  type: actuator
-  min: -1
-  max: 16
-  description: Current gear. 0=Neutral. -1=Reverse
-  deprecation: V2.2 replaced by CurrentGear and SelectedGear
-
 
 #
 # Current gear
