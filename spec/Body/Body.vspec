@@ -157,3 +157,16 @@ ChargingPort.Type:
   enum: [ "unknown", "Not_Fitted", "AC_Type_1", "AC_Type_2", "AC_GBT", "AC_DC_Type_1_Combo", "AC_DC_Type_2_Combo", "DC_GBT", "DC_Chademo" ]
   default: "unknown"
   description: Indicates the primary charging type fitted to the vehicle
+
+##
+# Spoilers
+##
+
+RearMainSpoilerPosition:
+  datatype: float
+  unit: percent
+  type: actuator
+  min: 0
+  max: 100
+  description: Rear spoiler position, 0% = Spoiler fully stowed. 100% = Spoiler fully exposed.
+
