@@ -41,6 +41,17 @@ arraysize: 5
 An example for the usage of `arrays` is `Vehicle.OBD.DTCList` which contains a list
 of Diagnostic Trouble Codes (DTCs) present in a vehicle.
 
+## Timestamps
+
+Timestamps are in VSS typically represented as strings, formatted according to ISO 8601.
+Timestamps shall be expressed in UTC (Coordinated Universal Time), with special UTC designator ("Z"). 
+Time resolution SHALL at least be seconds, with subsecond resolution as an optional degree of precision when desired.
+The time and date format shall be as shown below, where the sub-second data and delimiter is optional.
+
+```
+YYYY-MM-DDTHH:MM:SS.ssssssZ
+```
+
 ## Data Streams
 
 Data Entries, which describe sensors offering binary streams

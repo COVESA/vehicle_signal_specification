@@ -358,7 +358,7 @@ CurrentLocation:
 CurrentLocation.Timestamp:
   datatype: string
   type: sensor
-  description: GNSS Timestamp for latest position, formatted according to ISO 8601.
+  description: GNSS Timestamp for latest position, formatted according to ISO 8601 with UTC time zone.
 
 CurrentLocation.Latitude:
   datatype: double
@@ -366,7 +366,7 @@ CurrentLocation.Latitude:
   min: -90
   max: 90
   unit: degrees
-  description: Current latitude of vehicle.
+  description: Current latitude of vehicle according to WGS 84.
 
 CurrentLocation.Longitude:
   datatype: double
@@ -374,7 +374,7 @@ CurrentLocation.Longitude:
   min: -180
   max: 180
   unit: degrees
-  description: Current longitude of vehicle.
+  description: Current longitude of vehicle according to WGS 84.
 
 CurrentLocation.Heading:
   datatype: double
@@ -394,5 +394,5 @@ CurrentLocation.Altitude:
   datatype: double
   type: sensor
   unit: m
-  description: Current elevation of the position.
+  description: Current altitude relative to WGS 84 reference ellipsoid.
 
