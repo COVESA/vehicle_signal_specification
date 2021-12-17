@@ -134,9 +134,21 @@ Charging.IsChargingCableConnected:
 Charging.ChargePlugType:
   datatype: string
   type: attribute
-  default: ccs
-  allowed: [ 'type 1', 'type 2', 'ccs', 'chademo' ]
-  description: Type of charge plug available on the vehicle (CSS includes Type2).
+  enum: [
+    IEC_TYPE_1_AC,     # Yazaki
+    IEC_TYPE_2_AC,     # Mennekes
+    IEC_TYPE_3_AC,     # Scame
+    IEC_TYPE_4_DC,     # CHAdeMO
+    IEC_TYPE_1_CCS_DC, # Combo 1
+    IEC_TYPE_2_CCS_DC, # Combo 2
+    TESLA_ROADSTER,
+    TESLA_HPWC,
+    TESLA_SUPERCHARGER,
+    GBT_AC,
+    GBT_DC,
+    OTHER
+    ]
+  description: Type of charge plug available on the vehicle.
 
 Charging.Mode:
   datatype: string
