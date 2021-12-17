@@ -134,9 +134,34 @@ Charging.IsChargingCableConnected:
 Charging.ChargePlugType:
   datatype: string
   type: attribute
-  default: 'CCS'
-  allowed: ['TYPE_1', 'TYPE_2', 'CCS', 'CHADEMO']
-  description: Type of charge plug available on the vehicle (CSS includes Type2).
+  allowed: [
+    'IEC_TYPE_1_AC',
+    'IEC_TYPE_2_AC',
+    'IEC_TYPE_3_AC',
+    'IEC_TYPE_4_DC',
+    'IEC_TYPE_1_CCS_DC',
+    'IEC_TYPE_2_CCS_DC',
+    'TESLA_ROADSTER',
+    'TESLA_HPWC',
+    'TESLA_SUPERCHARGER',
+    'GBT_AC',
+    'GBT_DC',
+    'OTHER'
+    ]
+  description: Type of charge plug (charging connector) available on the vehicle.
+               IEC types refer to IEC 62196,  GBT refers to  GB/T 20234.
+  comment:     IEC_TYPE_1_AC refers to Type 1 as defined in IEC 62196-2. Also known as Yazaki or J1772 connector.
+               IEC_TYPE_2_AC refers to Type 2 as defined in IEC 62196-2. Also known as Mennekes connector.
+               IEC_TYPE_3_AC refers to Type 3 as defined in IEC 62196-2. Also known as Scame connector.
+               IEC_TYPE_4_DC refers to AA configuration as defined in IEC 62196-3. Also known as Type 4 or CHAdeMO connector.
+               IEC_TYPE_1_CCS_DC refers to EE Configuration as defined in IEC 62196-3. Also known as CCS1 or Combo1 connector.
+               IEC_TYPE_2_CCS_DC refers to FF Configuration as defined in IEC 62196-3. Also known as CCS2 or Combo2 connector.
+               TESLA_ROADSTER, TESLA_HPWC (High Power Wall Connector) and TESLA_SUPERCHARGER refer to non-standardized charging
+               plugs/methods used by Tesla.
+               GBT_AC refers to connector specified in GB/T 20234.2.
+               GBT_DC refers to connector specified in GB/T 20234.3. Also specified as BB Configuration in IEC 62196-3.
+               OTHER shall be used if the vehicle has a charging connector, but not one of the connectors listed above.
+               For additional information see https://en.wikipedia.org/wiki/IEC_62196.
 
 Charging.Mode:
   datatype: string
