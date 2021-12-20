@@ -17,31 +17,31 @@
 
 VersionVSS:
   type: branch
-  description: Supported Version of VSS
+  description: Supported Version of VSS.
 
 VersionVSS.Major:
   datatype: uint32
   type: attribute
   default: 3
-  description: Supported Version of VSS - Major version
+  description: Supported Version of VSS - Major version.
 
 VersionVSS.Minor:
   datatype: uint32
   type: attribute
   default: 0  
-  description: Supported Version of VSS - Minor version
+  description: Supported Version of VSS - Minor version.
 
 VersionVSS.Patch:
   datatype: uint32
   type: attribute
   default: 0
-  description: Supported Version of VSS - Patch version
+  description: Supported Version of VSS - Patch version.
 
 VersionVSS.Label:
   datatype: string
   type: attribute
   default: "develop"
-  description: Label to further describe the version
+  description: Label to further describe the version.
 
 #
 # Vehicle identification attributes.
@@ -49,99 +49,102 @@ VersionVSS.Label:
 
 VehicleIdentification:
   type: branch
-  description: Attributes that identify a vehicle
+  description: Attributes that identify a vehicle.
 
 VehicleIdentification.VIN:
   datatype: string
   type: attribute
-  description: 17-character Vehicle Identification Number (VIN) as defined by ISO 3779
+  description: 17-character Vehicle Identification Number (VIN) as defined by ISO 3779.
 
 VehicleIdentification.WMI:
   datatype: string
   type: attribute
-  description: 3-character World Manufacturer Identification (WMI) as defined by ISO 3780
+  description: 3-character World Manufacturer Identification (WMI) as defined by ISO 3780.
 
 VehicleIdentification.Brand:
   datatype: string
   type: attribute
-  description: Vehicle brand or manufacturer
+  description: Vehicle brand or manufacturer.
 
 VehicleIdentification.Model:
   datatype: string
   type: attribute
-  description: Vehicle model
+  description: Vehicle model.
 
 VehicleIdentification.Year:
   datatype: uint16
   type: attribute
-  description: Model year of the vehicle
+  description: Model year of the vehicle.
 
 
 #
-# Imports from schema.org/Car
-#
+# Imports from https://schema.org/Car
+# Names from https://schema.org/Car reused, but first character capitalized
+# Example: Original schema.org name: https://schema.org/acrissCode
+#          Name used in VSS: VehicleIdentification.AcrissCode
+# Note: Only a subset of the properties from https://schema.org/Car have been imported.
 
-VehicleIdentification.ACRISSCode:
+VehicleIdentification.AcrissCode:
   datatype: string
   type: attribute
   description: The ACRISS Car Classification Code is a code used by many car rental companies.
 
-VehicleIdentification.bodyType:
+VehicleIdentification.BodyType:
   datatype: string
   type: attribute
   description: Indicates the design and body style of the vehicle (e.g. station wagon, hatchback, etc.).
 
-VehicleIdentification.dateVehicleFirstRegistered:
+VehicleIdentification.DateVehicleFirstRegistered:
   datatype: string
   type: attribute
-  description: The date of the first registration of the vehicle with the respective public authorities.
+  description: The date in ISO 8601 format of the first registration of the vehicle with the respective public authorities.
 
-VehicleIdentification.meetsEmissionStandard:
+VehicleIdentification.MeetsEmissionStandard:
   datatype: string
   type: attribute
   description: Indicates that the vehicle meets the respective emission standard.
 
-VehicleIdentification.productionDate:
+VehicleIdentification.ProductionDate:
   datatype: string
   type: attribute
-  description: The date of production of the item, e.g. vehicle.
+  description: The date in ISO 8601 format of production of the item, e.g. vehicle.
 
-VehicleIdentification.purchaseDate:
+VehicleIdentification.PurchaseDate:
   datatype: string
   type: attribute
-  description: The date the item e.g. vehicle was purchased by the current owner.
+  description: The date in ISO 8601 format of the item e.g. vehicle was purchased by the current owner.
 
-VehicleIdentification.vehicleModelDate:
+VehicleIdentification.VehicleModelDate:
   datatype: string
   type: attribute
-  description: The release date of a vehicle model (often used to differentiate versions of the same make and model).
+  description: The release date in ISO 8601 format of a vehicle model (often used to differentiate versions of the same make and model).
 
-VehicleIdentification.vehicleConfiguration:
+VehicleIdentification.VehicleConfiguration:
   datatype: string
   type: attribute
   description: A short text indicating the configuration of the vehicle, e.g. '5dr hatchback ST 2.5 MT 225 hp' or 'limited edition'.
 
-VehicleIdentification.vehicleSeatingCapacity:
+VehicleIdentification.VehicleSeatingCapacity:
   datatype: uint16
   type: attribute
   description: The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.
 
-VehicleIdentification.vehicleSpecialUsage:
+VehicleIdentification.VehicleSpecialUsage:
   datatype: string
   type: attribute
   description: Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school.
 
-VehicleIdentification.vehicleinteriorColor:
+VehicleIdentification.VehicleInteriorColor:
   datatype: string
   type: attribute
   description: The color or color combination of the interior of the vehicle.
 
-VehicleIdentification.vehicleinteriorType:
+VehicleIdentification.VehicleInteriorType:
   datatype: string
   type: attribute
   description: The type or material of the interior of the vehicle (e.g. synthetic fabric, leather, wood, etc.).
 
-VehicleIdentification.knownVehicleDamages:
+VehicleIdentification.KnownVehicleDamages:
   datatype: string
   type: attribute
   description: A textual description of known damages, both repaired and unrepaired.
@@ -167,7 +170,7 @@ Speed:
   datatype: float
   type: sensor
   unit: km/h
-  description: Vehicle speed
+  description: Vehicle speed.
 
 TravelledDistance:
   datatype: float
@@ -179,7 +182,7 @@ TripMeterReading:
   datatype: float
   type: sensor
   unit: km
-  description: Current trip meter reading
+  description: Current trip meter reading.
 
 AmbientAirTemperature:
   datatype: float
@@ -191,13 +194,13 @@ AmbientAirTemperature:
 IsMoving:
   datatype: boolean
   type: sensor
-  description: Indicates whether the vehicle is stationary or moving
+  description: Indicates whether the vehicle is stationary or moving.
 
 AverageSpeed:
   datatype: float
   type: sensor
   unit: km/h
-  description: Average speed for the current trip
+  description: Average speed for the current trip.
 
 
 #
@@ -205,7 +208,7 @@ AverageSpeed:
 #
 Acceleration:
   type: branch
-  description: Spatial acceleration
+  description: Spatial acceleration.
 
 Acceleration.Longitudinal:
   datatype: float
@@ -231,7 +234,7 @@ Acceleration.Vertical:
 #
 AngularVelocity:
   type: branch
-  description: Spatial rotation
+  description: Spatial rotation.
 
 AngularVelocity.Roll:
   datatype: int16
@@ -261,14 +264,14 @@ RoofLoad:
   unit: kg
   description: The permitted total weight of cargo and installations (e.g. a roof rack) on top of the vehicle.
 
-cargoVolume:
+CargoVolume:
   datatype: float
   type: attribute
   unit: l
   description: The available volume for cargo or luggage. For automobiles, this is usually the trunk volume.
   min: 0
 
-emissionsCO2:
+EmissionsCO2:
   datatype: int16
   type: attribute
   description: The CO2 emissions.
@@ -340,9 +343,9 @@ Width:
 #
 Trailer:
   type: branch
-  description: Trailer signals
+  description: Trailer signals.
 
-Trailer.Connected:
+Trailer.IsConnected:
   datatype: boolean
   type: sensor
   description: Signal indicating if trailer is connected or not.

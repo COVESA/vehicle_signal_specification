@@ -15,20 +15,20 @@ FuelType:
   type: attribute
   enum: [ "unknown", "gasoline", "diesel", "electric", "hybrid", "E85", "CNG", "LPG" ]
   default: "unknown"
-  description: Defines the fuel type of the vehicle
+  description: Defines the fuel type of the vehicle.
 
 HybridType:
   datatype: string
   type: attribute
   enum: [ "unknown", "not_applicable", "stop_start", "belt_ISG", "CIMG", "PHEV" ]
   default: "unknown"
-  description: Defines the hybrid type of the vehicle
+  description: Defines the hybrid type of the vehicle.
 
 TankCapacity:
   datatype: float
   type: attribute
   unit: l
-  description: Capacity of the fuel tank in liters
+  description: Capacity of the fuel tank in liters.
 
 Level:
   datatype: uint8
@@ -73,12 +73,12 @@ TimeSinceStart:
   unit: s
   description: Time in seconds elapsed since start of current trip.
 
-EngineStopStartEnabled:
+IsEngineStopStartEnabled:
   datatype: boolean
   type: sensor
-  description: Indicates whether eco start stop is currently enabled
+  description: Indicates whether eco start stop is currently enabled.
 
-LowFuelLevel:
+IsFuelLevelLow:
   datatype: boolean
   type: sensor
-  description: Indicates that the fuel level is low (e.g. <50km range)
+  description: Indicates that the fuel level is low (e.g. <50km range).

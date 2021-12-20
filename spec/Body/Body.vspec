@@ -13,37 +13,37 @@
 BodyType:
   datatype: string
   type: attribute
-  description: Body type code as defined by ISO 3779
+  description: Body type code as defined by ISO 3779.
 
 RefuelPosition:
   datatype: string
   type: attribute
   enum: ["front_left", "front_right", "middle_left", "middle_right", "rear_left", "rear_right"]
-  description: Location of the fuel cap or charge port
+  description: Location of the fuel cap or charge port.
 
 #
 # Hood description
 #
 Hood:
   type: branch
-  description: Hood status
+  description: Hood status.
 
 Hood.IsOpen:
   datatype: boolean
   type: actuator
-  description: hood open or closed. True = Open. False = Closed
+  description: Hood open or closed. True = Open. False = Closed.
 
 #
 # Trunk description
 #
 Trunk:
   type: branch
-  description: Trunk status
+  description: Trunk status.
 
 Trunk.IsOpen:
   datatype: boolean
   type: actuator
-  description: Trunk open or closed. True = Open. False = Closed
+  description: Trunk open or closed. True = Open. False = Closed.
 
 Trunk.IsLocked:
   datatype: boolean
@@ -56,7 +56,7 @@ Trunk.IsLocked:
 #
 Horn:
   type: branch
-  description: Horn signals
+  description: Horn signals.
 
 Horn.IsActive:
   datatype: boolean
@@ -69,9 +69,9 @@ Horn.IsActive:
 #
 Raindetection:
   type: branch
-  description: Rainsensor signals
+  description: Rainsensor signals.
 
-Raindetection.intensity:
+Raindetection.Intensity:
   datatype: uint8
   type: sensor
   unit: percent
@@ -84,32 +84,28 @@ Raindetection.intensity:
 Windshield:
   type: branch
   instances: ["Front", "Rear"]
-  description: Windshield signals
+  description: Windshield signals.
 
 Windshield.Wiping:
   type: branch
-  description: Windshield wiper signals
+  description: Windshield wiper signals.
 
 Windshield.Wiping.Status:
   datatype: string
   type: actuator
   enum: ["off", "slow", "medium", "fast", "interval", "rainsensor"]
-  description: Wiper status
+  description: Wiper status.
 
-Windshield.Heating:
-  type: branch
-  description: Windshield heater signals
-
-Windshield.Heating.Status:
+Windshield.IsHeatingOn:
   datatype: boolean
   type: actuator
-  description: Windshield heater status. 0 - off, 1 - on
+  description: Windshield heater status. False - off, True - on.
 
 Windshield.WasherFluid:
   type: branch
   description: Windshield washer fluid signals
 
-Windshield.WasherFluid.LevelLow:
+Windshield.WasherFluid.IsLevelLow:
   datatype: boolean
   type: sensor
   description: Low level indication for washer fluid. True = Level Low. False = Level OK.
@@ -127,7 +123,7 @@ Windshield.WasherFluid.Level:
 ##
 Lights:
   type: branch
-  description: All lights
+  description: All lights.
 
 # Include lights specification and attach it to the Lights branch
 #include ExteriorLights.vspec Lights
@@ -139,7 +135,7 @@ Lights:
 Mirrors:
   type: branch
   instances: ["Left", "Right"]
-  description: All mirrors
+  description: All mirrors.
 # Include mirrors specification and attach it to the Mirrors branch
 #include ExteriorMirrors.vspec Mirrors
 
@@ -149,14 +145,14 @@ Mirrors:
 
 ChargingPort:
   type: branch
-  description: Collects Information about the charging port
+  description: Collects Information about the charging port.
 
 ChargingPort.Type:
   datatype: string
   type: attribute
   enum: [ "unknown", "Not_Fitted", "AC_Type_1", "AC_Type_2", "AC_GBT", "AC_DC_Type_1_Combo", "AC_DC_Type_2_Combo", "DC_GBT", "DC_Chademo" ]
   default: "unknown"
-  description: Indicates the primary charging type fitted to the vehicle
+  description: Indicates the primary charging type fitted to the vehicle.
 
 ##
 # Spoilers

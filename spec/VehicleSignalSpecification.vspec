@@ -29,24 +29,6 @@ Vehicle:
 
 #include Vehicle/Vehicle.vspec Vehicle
 
-
-
-#
-# An uncontrolled private branch.
-#
-# Top level speed, location, and other vehicle state?
-# odo. trip.
-# Alias Speed -> Drivetrain.Transmission.Speed
-#
-# Global.Speed
-# Global.Location
-# Global.Odometer
-#
-# Keep to minimum
-#
-# Put in accuracy as attribute for signal
-#
-
 Vehicle.Private:
   type: branch
   description: Uncontrolled branch where non-public signals can be defined.

@@ -28,7 +28,7 @@
 # The criteria for setting "ServiceDue" is not specified by VSS.
 # It may, but do not need to, be based on DistanceToService and TimeToService.
 #
-ServiceDue:
+IsServiceDue:
   datatype: boolean
   type: sensor
   description: Indicates if vehicle needs service (of any kind). True = Service needed now or in the near future. False = No known need for service.

@@ -17,7 +17,7 @@
 # the selected switch. The movement is normally supposed to continue until either the switch is released,
 # (== has the value false), or until the maximum/minimum value supported by the vehicle has been reached.
 
-HasPassenger:
+IsOccupied:
   datatype: boolean
   type: sensor
   description: Does the seat have a passenger in it.
@@ -127,7 +127,7 @@ SideBolster.Inflation:
 
 HeadRestraint:
   type: branch
-  description: Head restraint settings
+  description: Head restraint settings.
 
 HeadRestraint.Height:
   datatype: uint8
@@ -139,7 +139,7 @@ HeadRestraint.Height:
 
 Airbag:
   type: branch
-  description: Airbag signals
+  description: Airbag signals.
 
 Airbag.IsDeployed:
   datatype: boolean
@@ -153,136 +153,136 @@ Switch:
   type: branch
   description: Seat switch signals
 
-Switch.Warmer:
+Switch.IsWarmerEngaged:
   datatype: boolean
   type: actuator
-  description: Warmer switch for Seat heater (SingleSeat.Heating)
+  description: Warmer switch for Seat heater (SingleSeat.Heating).
 
-Switch.Cooler:
+Switch.IsCoolerEngaged:
   datatype: boolean
   type: actuator
-  description: Cooler switch for Seat heater (SingleSeat.Heating)
+  description: Cooler switch for Seat heater (SingleSeat.Heating).
 
-Switch.Forward:
+Switch.IsForwardEngaged:
   datatype: boolean
   type: actuator
-  description: Seat forward switch engaged (SingleSeat.Position)
+  description: Seat forward switch engaged (SingleSeat.Position).
 
-Switch.Backward:
+Switch.IsBackwardEngaged:
   datatype: boolean
   type: actuator
-  description: Seat backward switch engaged (SingleSeat.Position)
+  description: Seat backward switch engaged (SingleSeat.Position).
 
-Switch.Up:
+Switch.IsUpEngaged:
   datatype: boolean
   type: actuator
-  description: Seat up switch engaged (SingleSeat.Height)
+  description: Seat up switch engaged (SingleSeat.Height).
 
-Switch.Down:
+Switch.IsDownEngaged:
   datatype: boolean
   type: actuator
-  description: Seat down switch engaged (SingleSeat.Height)
+  description: Seat down switch engaged (SingleSeat.Height).
 
 Switch.HeadRestraint:
   type: branch
-  description: Switches for SingleSeat.HeadRestraint.Height
+  description: Switches for SingleSeat.HeadRestraint.Height.
 
-Switch.HeadRestraint.Up:
+Switch.HeadRestraint.IsUpEngaged:
   datatype: boolean
   type: actuator
-  description: Head restraint up switch engaged (SingleSeat.HeadRestraint.Height)
+  description: Head restraint up switch engaged (SingleSeat.HeadRestraint.Height).
 
-Switch.HeadRestraint.Down:
+Switch.HeadRestraint.IsDownEngaged:
   datatype: boolean
   type: actuator
-  description: Head restraint down switch engaged (SingleSeat.HeadRestraint.Height)
+  description: Head restraint down switch engaged (SingleSeat.HeadRestraint.Height).
 
 Switch.Massage:
   type: branch
-  description: Switches for SingleSeat.Massage
+  description: Switches for SingleSeat.Massage.
 
-Switch.Massage.Increase:
+Switch.Massage.IsIncreaseEngaged:
   datatype: boolean
   type: actuator
-  description: Increase massage level switch engaged (SingleSeat.Massage)
+  description: Increase massage level switch engaged (SingleSeat.Massage).
 
-Switch.Massage.Decrease:
+Switch.Massage.IsDecreaseEngaged:
   datatype: boolean
   type: actuator
-  description: Decrease massage level switch engaged (SingleSeat.Massage)
+  description: Decrease massage level switch engaged (SingleSeat.Massage).
 
 Switch.Recline:
   type: branch
-  description: Switches for SingleSeat.Recline
+  description: Switches for SingleSeat.Recline.
 
-Switch.Recline.Backward:
+Switch.Recline.IsBackwardEngaged:
   datatype: boolean
   type: actuator
-  description: Seatback recline backward switch engaged (SingleSeat.Recline)
+  description: Seatback recline backward switch engaged (SingleSeat.Recline).
 
-Switch.Recline.Forward:
+Switch.Recline.IsForwardEngaged:
   datatype: boolean
   type: actuator
-  description: Seatback recline forward switch engaged (SingleSeat.Recline)
+  description: Seatback recline forward switch engaged (SingleSeat.Recline).
 
 Switch.Cushion:
   type: branch
-  description: Switches for SingleSeat.Cushion
+  description: Switches for SingleSeat.Cushion.
 
-Switch.Cushion.Up:
+Switch.Cushion.IsUpEngaged:
   datatype: boolean
   type: actuator
-  description: Seat cushion up switch engaged (SingleSeat.Cushion.Height)
+  description: Seat cushion up switch engaged (SingleSeat.Cushion.Height).
 
-Switch.Cushion.Down:
+Switch.Cushion.IsDownEngaged:
   datatype: boolean
   type: actuator
-  description: Seat cushion down switch engaged (SingleSeat.Cushion.Height)
+  description: Seat cushion down switch engaged (SingleSeat.Cushion.Height).
 
-Switch.Cushion.Forward:
+Switch.Cushion.IsForwardEngaged:
   datatype: boolean
   type: actuator
-  description: Seat cushion forward/lengthen switch engaged (SingleSeat.Cushion.Length)
+  description: Seat cushion forward/lengthen switch engaged (SingleSeat.Cushion.Length).
 
-Switch.Cushion.Backward:
+Switch.Cushion.IsBackwardEngaged:
   datatype: boolean
   type: actuator
-  description: Seat cushion backward/shorten switch engaged (SingleSeat.Cushion.Length)
+  description: Seat cushion backward/shorten switch engaged (SingleSeat.Cushion.Length).
 
 Switch.Lumbar:
   type: branch
-  description: Switches for SingleSeat.Lumbar
+  description: Switches for SingleSeat.Lumbar.
 
-Switch.Lumbar.Up:
+Switch.Lumbar.IsUpEngaged:
   datatype: boolean
   type: actuator
-  description: Lumbar up switch engaged (SingleSeat.Lumbar.Height)
+  description: Lumbar up switch engaged (SingleSeat.Lumbar.Height).
 
-Switch.Lumbar.Down:
+Switch.Lumbar.IsDownEngaged:
   datatype: boolean
   type: actuator
-  description: Lumbar down switch engaged (SingleSeat.Lumbar.Height)
+  description: Lumbar down switch engaged (SingleSeat.Lumbar.Height).
 
-Switch.Lumbar.Inflate:
+Switch.Lumbar.IsInflateEngaged:
   datatype: boolean
   type: actuator
-  description: Lumbar inflation switch engaged (SingleSeat.Lumbar.Inflation)
+  description: Lumbar inflation switch engaged (SingleSeat.Lumbar.Inflation).
 
-Switch.Lumbar.Deflate:
+Switch.Lumbar.IsDeflateEngaged:
   datatype: boolean
   type: actuator
-  description: Lumbar deflation switch engaged (SingleSeat.Lumbar.Inflation)
+  description: Lumbar deflation switch engaged (SingleSeat.Lumbar.Inflation).
 
 Switch.SideBolster:
   type: branch
-  description: Switches for SingleSeat.SideBolster
+  description: Switches for SingleSeat.SideBolster.
 
-Switch.SideBolster.Inflate:
+Switch.SideBolster.IsInflateEngaged:
   datatype: boolean
   type: actuator
-  description: Side bolster inflation switch engaged (SingleSeat.SideBolster.Inflation)
+  description: Side bolster inflation switch engaged (SingleSeat.SideBolster.Inflation).
 
-Switch.SideBolster.Deflate:
+Switch.SideBolster.IsDeflateEngaged:
   datatype: boolean
   type: actuator
-  description: Side bolster deflation switch engaged (SingleSeat.SideBolster.Inflation)
+  description: Side bolster deflation switch engaged (SingleSeat.SideBolster.Inflation).

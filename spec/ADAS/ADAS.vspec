@@ -25,7 +25,7 @@
 
 CruiseControl:
   type: branch
-  description: Signals from Cruise Control system
+  description: Signals from Cruise Control system.
 
 CruiseControl.IsActive:
   datatype: boolean
@@ -37,9 +37,9 @@ CruiseControl.SpeedSet:
   datatype: float
   type: actuator
   unit: km/h
-  description: Set cruise control speed in kilometers per hour
+  description: Set cruise control speed in kilometers per hour.
 
-CruiseControl.Error:
+CruiseControl.IsError:
   datatype: boolean
   type: sensor
   description: Indicates if cruise control system incurred and error condition. True = Error. False = NoError.
@@ -49,19 +49,19 @@ CruiseControl.Error:
 #
 LaneDepartureDetection:
   type: branch
-  description: Signals from Land Departure Detection System
+  description: Signals from Lane Departure Detection System.
 
 LaneDepartureDetection.IsActive:
   datatype: boolean
   type: actuator
   description: Indicates if lane departure detection system is enabled. True = Enabled. False = Disabled.
 
-LaneDepartureDetection.Warning:
+LaneDepartureDetection.IsWarning:
   datatype: boolean
   type: sensor
-  description: Indicates if lane departure detection registered a lane departure
+  description: Indicates if lane departure detection registered a lane departure.
 
-LaneDepartureDetection.Error:
+LaneDepartureDetection.IsError:
   datatype: boolean
   type: sensor
   description: Indicates if lane departure system incurred an error condition. True = Error. False = No Error.
@@ -71,14 +71,14 @@ LaneDepartureDetection.Error:
 #
 ObstacleDetection:
   type: branch
-  description: Signals form Obstacle Sensor System
+  description: Signals form Obstacle Sensor System.
 
 ObstacleDetection.IsActive:
   datatype: boolean
   type: actuator
   description: Indicates if obstacle sensor system is enabled. True = Enabled. False = Disabled.
 
-ObstacleDetection.Error:
+ObstacleDetection.IsError:
   datatype: boolean
   type: sensor
   description: Indicates if obstacle sensor system incurred an error condition. True = Error. False = No Error.
@@ -90,7 +90,7 @@ ObstacleDetection.Error:
 #
 ABS:
   type: branch
-  description: Antilock Braking System signals
+  description: Antilock Braking System signals.
 
 ABS.IsActive:
   datatype: boolean
@@ -98,7 +98,7 @@ ABS.IsActive:
   description: Indicates if ABS is enabled. True = Enabled. False = Disabled.
 
 
-ABS.Error:
+ABS.IsError:
   datatype: boolean
   type: sensor
   description: Indicates if ABS incurred an error condition. True = Error. False = No Error.
@@ -114,14 +114,14 @@ ABS.IsEngaged:
 #
 TCS:
   type: branch
-  description: Traction Control System signals
+  description: Traction Control System signals.
 
 TCS.IsActive:
   datatype: boolean
   type: actuator
   description: Indicates if TCS is enabled. True = Enabled. False = Disabled.
 
-TCS.Error:
+TCS.IsError:
   datatype: boolean
   type: sensor
   description: Indicates if TCS incurred an error condition. True = Error. False = No Error.
@@ -137,14 +137,14 @@ TCS.IsEngaged:
 #
 ESC:
   type: branch
-  description: Electronic Stability Control System signals
+  description: Electronic Stability Control System signals.
 
 ESC.IsActive:
   datatype: boolean
   type: actuator
-  description: Indicates if ECS is enabled. True = Enabled. False = Disabled.
+  description: Indicates if ESC is enabled. True = Enabled. False = Disabled.
 
-ESC.Error:
+ESC.IsError:
   datatype: boolean
   type: sensor
   description: Indicates if ESC incurred an error condition. True = Error. False = No Error.

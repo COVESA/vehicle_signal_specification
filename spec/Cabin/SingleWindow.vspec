@@ -9,10 +9,10 @@
 #
 # Definition of a Window
 #
-isOpen:
+IsOpen:
   datatype: boolean
   type: sensor
-  description: Is window open or closed
+  description: Is window open or closed?
 
 Position:
   datatype: uint8
@@ -22,7 +22,7 @@ Position:
   unit: percent
   description: Window position. 0 = Fully closed 100 = Fully opened.
 
-ChildLock:
+IsChildLockEngaged:
   datatype: boolean
   type: sensor
   description: Is window child lock engaged. True = Engaged. False = Disengaged.

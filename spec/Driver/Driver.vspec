@@ -15,9 +15,9 @@ DistractionLevel:
   datatype: float
   type: sensor
   unit: percent
-  description: Distraction level of the driver will be the level how much the driver is distracted, by multiple factors. E.g. Driving situation, acustical or optical signales inside the cockpit, phone calls
+  description: Distraction level of the driver will be the level how much the driver is distracted, by multiple factors. E.g. Driving situation, acustical or optical signales inside the cockpit, phone calls.
 
-EyesOnRoad:
+IsEyesOnRoad:
   datatype: boolean
   type: sensor
   description: Has driver the eyes on road or not?

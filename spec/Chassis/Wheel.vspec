@@ -19,7 +19,7 @@ Brake.FluidLevel:
   unit: percent
   description: Brake fluid level as percent. 0 = Empty. 100 = Full.
 
-Brake.FluidLevelLow:
+Brake.IsFluidLevelLow:
   datatype: boolean
   type: sensor
   description: Brake fluid level status. True = Brake fluid level low. False = Brake fluid level OK.
@@ -29,7 +29,7 @@ Brake.PadWear:
   type: sensor
   description: Brake pad wear as percent. 0 = No Wear. 100 = Worn.
 
-Brake.BrakesWorn:
+Brake.IsBrakesWorn:
   datatype: boolean
   type: sensor
   description: Brake pad wear status. True = Worn. False = Not Worn.
@@ -40,15 +40,15 @@ Brake.BrakesWorn:
 #
 Tire:
   type: branch
-  description: Tire signals for wheel
+  description: Tire signals for wheel.
 
 Tire.Pressure:
   datatype: uint16
   type: sensor
   unit: kPa
-  description: Tire pressure in kilo-Pascal
+  description: Tire pressure in kilo-Pascal.
 
-Tire.PressureLow:
+Tire.IsPressureLow:
   datatype: boolean
   type: sensor
   description: Tire Pressure Status. True = Low tire pressure. False = Good tire pressure.

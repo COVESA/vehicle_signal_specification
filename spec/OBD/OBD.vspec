@@ -41,7 +41,7 @@ Status:
   type: branch
   description: PID 01 - OBD status
 
-Status.MIL:
+Status.IsMILOn:
   datatype: boolean
   type: sensor
   description: Malfunction Indicator Light (MIL) False = Off, True = On
@@ -200,7 +200,7 @@ OxygenSensorsIn4Banks:
   type: sensor
   description: PID 1D - Presence of oxygen sensors in 4 banks. Similar to PID 13, but [A0..A7] == [B1S1, B1S2, B2S1, B2S2, B3S1, B3S2, B4S1, B4S2]
 
-AuxInputStatus:
+IsPTOActive:
   datatype: boolean
   type: sensor
   description: PID 1E - Auxiliary input status (power take off)
@@ -349,7 +349,7 @@ DriveCycleStatus:
   type: branch
   description: PID 41 - OBD status for the current drive cycle
 
-DriveCycleStatus.MIL:
+DriveCycleStatus.IsMILOn:
   datatype: boolean
   type: sensor
   description: Malfunction Indicator Light (MIL) - False = Off, True = On

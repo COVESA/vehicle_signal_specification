@@ -33,7 +33,7 @@ HVAC:
 ##
 Infotainment:
   type: branch
-  description: Infotainment system
+  description: Infotainment system.
 
 
 #include Infotainment.vspec Infotainment
@@ -50,7 +50,7 @@ Sunroof.Position:
   type: sensor
   min: -100
   max: 100
-  description: Sunroof position. 0 = Fully closed 100 = Fully opened. -100 = Fully tilted
+  description: Sunroof position. 0 = Fully closed 100 = Fully opened. -100 = Fully tilted.
 
 #
 # Sunroof controlling switch.
@@ -63,7 +63,7 @@ Sunroof.Switch:
 
 Sunroof.Shade:
   type: branch
-  description: Sun roof shade status
+  description: Sun roof shade status.
 
 # Include shade specification also used by side and rear window.
 #include SingleShade.vspec Sunroof.Shade
@@ -73,13 +73,13 @@ Sunroof.Shade:
 #
 RearviewMirror:
   type: branch
-  description: Rearview mirror
+  description: Rearview mirror.
 
 RearviewMirror.DimmingLevel:
   datatype: uint8
   type: actuator
   unit: percent
-  description: Dimming level of rearview mirror. 0 = undimmed. 100 = fully dimmed
+  description: Dimming level of rearview mirror. 0 = undimmed. 100 = fully dimmed.
 
 
 ##
@@ -87,7 +87,7 @@ RearviewMirror.DimmingLevel:
 ##
 Lights:
   type: branch
-  description: Interior lights signals and sensors
+  description: Interior lights signals and sensors.
 
 # Include the lights specification and attach it under the Lights branch.x
 #include InteriorLights.vspec Lights
@@ -109,7 +109,7 @@ Door:
   instances:
     - Row[1,2]
     - ["Left","Right"]
-  description: All doors, including windows and switches
+  description: All doors, including windows and switches.
 #include SingleDoor.vspec Door
 
 # Default value based on instance declaration above with 2 rows and 2 doors in each row.
@@ -117,7 +117,7 @@ DoorCount:
   datatype: uint8
   type: attribute
   default: 4
-  description: Number of doors in vehicle
+  description: Number of doors in vehicle.
 
 
 
@@ -150,37 +150,37 @@ Seat:
 #
 # Seat attributes.
 #
-# Default value is position 1, i.e. a typical LHD vehicle
 DriverPosition:
   datatype: uint8
   type: attribute
   default: 1
   description: The position of the driver seat in row 1.
+  comment: Default value is position 1, i.e. a typical LHD vehicle.
 
-# Default value corresponds to two rows of seats
 SeatRowCount:
   datatype: uint8
   type: attribute
   default: 2
-  description: Number of seat rows in vehicle
+  description: Number of seat rows in vehicle.
+  comment: Default value corresponds to two rows of seats.
 
 
-# Default value corresponds to two seats in front row and 3 seats in second row
 SeatPosCount:
   datatype: uint8[]
   type: attribute
   default: [2, 3]
-  description: Number of seats across each row from the front to the rear
+  description: Number of seats across each row from the front to the rear.
+  comment: Default value corresponds to two seats in front row and 3 seats in second row.
 
 ##
 # Convertible roof status
 ##
 Convertible:
   type: branch
-  description: Convertible roof
+  description: Convertible roof.
 
 Convertible.Status:
   datatype: string
   type: sensor
   enum: ["undefined", "closed", "open", "closing", "opening", "stalled"]
-  description: Roof status on convertible vehicles
+  description: Roof status on convertible vehicles.
