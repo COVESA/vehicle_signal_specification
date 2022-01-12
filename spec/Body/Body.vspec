@@ -87,16 +87,57 @@ Windshield:
   type: branch
   instances: ["Front", "Rear"]
   description: Windshield signals.
-
+  
 Windshield.Wiping:
   type: branch
   description: Windshield wiper signals.
 
-Windshield.Wiping.Status:
+Windshield.Wiping.Mode:
   datatype: string
   type: actuator
   allowed: ['OFF', 'SLOW', 'MEDIUM', 'FAST', 'INTERVAL', 'RAIN_SENSOR']
-  description: Wiper status.
+  description: Wiper mode requested by user/driver.
+               INTERVAL indicates intermittent wiping, with fixed time interval between each wipe.
+               RAIN_SENSOR indicates intermittent wiping based on rain intensity.
+
+Windshield.Wiping.Intensity:
+  datatype: uint8
+  type: actuator
+  description: Relative intensity/sensitivity for interval and rain sensor mode as requested by user/driver.
+               Has no significance if Windshield.Wiping.Mode is OFF/SLOW/MEDIUM/FAST
+               0 - wipers inactive.
+               1 - minimum intensity (lowest frequency/sensitivity, longest interval).
+               2/3/4/... - higher intensity (higher frequency/sensitivity, shorter interval).
+               Maximum value supported is vehicle specific.
+
+Windshield.Wiping.System:
+  type: branch
+#  instances: [Primary, Secondary]
+  description: Signals to control behavior of wipers in detail.
+               By default VSS expects only one instance.
+  comment:     These signals are typically not directly available to the user/driver of the vehicle.
+               A vehicle may have multiple mechanically disconnected wiper systems serving the same windshield.
+               If that is the case for a vehicle it is recommended to add
+               instance declarations for Primary and Secondary, possibly in a layer.
+               Primary then refers to the primary wiper system for the windshield.
+               Secondary then refers to the secondary wiper system for the same windshield.
+
+#include WiperSystem.vspec Windshield.Wiping.System
+
+Windshield.Wiping.WiperWear:
+  datatype: uint8
+  type: sensor
+  max: 100
+  description: Wiper wear as percent.
+               0 = No Wear.
+               100 = Worn. Replacement required.
+               Method for calculating or estimating wiper wear is vehicle specific.
+               For windshields with multiple wipers the wear reported shall correspond to the most worn wiper.
+
+Windshield.Wiping.IsWipersWorn:
+  datatype: boolean
+  type: sensor
+  description: Wiper wear status. True = Worn, Replacement recommended or required. False = Not Worn.
 
 Windshield.IsHeatingOn:
   datatype: boolean
@@ -118,8 +159,6 @@ Windshield.WasherFluid.Level:
   max: 100
   type: sensor
   description: Washer fluid level as a percent. 0 = Empty. 100 = Full.
-
-
 
 ##
 #  Lights definition
