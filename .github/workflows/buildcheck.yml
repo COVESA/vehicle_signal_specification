@@ -12,23 +12,40 @@ jobs:
         with:
           submodules: true
 
-      - name: Setup Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.8
+      - name: Install pyenv
+        run: |
+          # Needed for using exact python version, which is
+          # required in `Pipfile`.
+          curl https://pyenv.run | bash
+          export PATH="$HOME/.pyenv/bin:$PATH"
+          pyenv install 3.8.12
 
       - name: Install python packages
         run: |
           python -V
+          python -m pip --quiet --no-input install --upgrade pip 
+          python -m pip --quiet --no-input install --upgrade pipenv wheel
           cd vss-tools
-          pip install -r requirements.txt
-          python setup.py -q install
-
+          pipenv install
+          pipenv run python setup.py -q install
+        env:
+          PIPENV_VENV_IN_PROJECT: 1
+          
       - name: Test mandatory targets
-        run: make travis_targets
+        run: |
+          pipenv install
+          pipenv run make travis_targets
+        env:
+          PIPENV_PIPFILE: ./vss-tools/Pipfile
+          PIPENV_VENV_IN_PROJECT: 1
 
       - name: Test optional targets. NOTE - always succeeds
-        run: make -k travis_optional || true
+        run: |
+          pipenv install
+          pipenv run make -k travis_optional || true
+        env:
+          PIPENV_PIPFILE: ./vss-tools/Pipfile
+          PIPENV_VENV_IN_PROJECT: 1
 
       - name: Install hugo
         env:
