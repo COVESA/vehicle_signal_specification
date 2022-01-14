@@ -1,4 +1,5 @@
 #
+# (C) 2022 Robert Bosch GmbH
 # (C) 2018 Volvo Cars
 # (C) 2016 Jaguar Land Rover
 #
@@ -22,6 +23,42 @@
 #  AntiSkid (Better name)
 #  TerrainMode
 #
+
+ActiveAutonomyLevel:
+  datatype: string
+  type: sensor
+  allowed: [
+    SAE_0, 
+    SAE_1,
+    SAE_2,   
+    SAE_2_DISENGAGING,
+    SAE_3,     
+    SAE_3_DISENGAGING, # Level 3 AD functions will disengage, driver notified
+    SAE_4,
+    SAE_4_DISENGAGING, # Level 4 AD functions will disengage, driver notified
+    SAE_5
+  ]
+  description: Indicates the currently active level of autonomy according to SAE J3016 taxonomy.
+  comment: For SAE levels 3 and 4 the system is required to expected to alert the driver if
+           if the system will disengage. Level 4 systems are required to reach a safe state
+           even if the driver does not take over. Only level 5 systems are required to not 
+           rely on a driver at all. While level 2 systems require the driver to be monitoring
+           the system at all times, and maybe even provide lateral control, many level 2
+           or "Level 2.5" systems, do warn the driver shortly before reaching there operational
+           limits, therefore we also support the DISENGAGING state for SAE_2  
+
+SupportedAutonomyLevel:
+  datatype: string
+  type: attribute
+  allowed: [
+    SAE_0, 
+    SAE_1,
+    SAE_2,   
+    SAE_3,     
+    SAE_4,
+    SAE_5
+  ]
+  description: Indicates the highest level of autonomy according to SAE J3016 taxonomy the vehicle is capable of.
 
 CruiseControl:
   type: branch
