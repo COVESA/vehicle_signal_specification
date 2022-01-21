@@ -64,17 +64,15 @@ Position:
   datatype: uint16
   type: actuator
   min: 0
-  max: 1000
   unit: mm
-  description: Seat horizontal position. 0 = Frontmost. 1000 = Rearmost.
+  description: Seat horizontal position. 0 = Frontmost.
 
 Height:
   datatype: uint16
   type: actuator
   min: 0
-  max: 1000
   unit: mm
-  description: Seat vertical position. 0 = Lowermost. 1000 = Uppermost.
+  description: Seat vertical position. 0 = Lowermost.
 
 Cushion:
   type: branch
@@ -84,17 +82,15 @@ Cushion.Height:
   datatype: uint16
   type: actuator
   min: 0
-  max: 500
   unit: mm
-  description: Height of the seat cushion (leg support), relative to seat. 0 = Lowermost. 500 = Uppermost.
+  description: Height of the seat cushion (leg support), relative to seat. 0 = Lowermost.
 
 Cushion.Length:
   datatype: uint16
   type: actuator
   min: 0
-  max: 500
   unit: mm
-  description: Forward length of cushion (leg support), relative to seat. 0 = Rearmost. 500 = Forwardmost.
+  description: Forward length of cushion (leg support), relative to seat. 0 = Rearmost.
 
 Lumbar:
   type: branch
@@ -111,8 +107,8 @@ Lumbar.Height:
   datatype: uint8
   type: actuator
   min: 0
-  max: 255
-  description: Lumbar support position. 0 = Lowermost. 255 = Uppermost.
+  unit: mm
+  description: Lumbar support position. 0 = Lowermost.
 
 SideBolster:
   type: branch
@@ -133,9 +129,8 @@ HeadRestraint.Height:
   datatype: uint8
   type: actuator
   min: 0
-  max: 255
   unit: mm
-  description: Height of head restraint. 0 = Bottommost. 255 = Uppermost.
+  description: Height of head restraint. 0 = Bottommost.
 
 Airbag:
   type: branch

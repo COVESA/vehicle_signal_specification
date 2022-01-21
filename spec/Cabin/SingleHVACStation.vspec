@@ -21,8 +21,6 @@ FanSpeed:
 Temperature:
   datatype: int8
   type: actuator
-  min: -50
-  max: 50
   unit: celsius
   description: Temperature
 
