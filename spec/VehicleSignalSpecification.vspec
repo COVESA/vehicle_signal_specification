@@ -12,9 +12,7 @@
 #
 # This top level vehicle specification file includes all other vspec
 # files into a complete specification that can be processed
-# by the document generation tools available in
-#
-# https://github.com/GENIVI/vehicle_signal_specification/tree/develop/tools
+# by the tools available in https://github.com/COVESA/vss-tools
 #
 
 #
