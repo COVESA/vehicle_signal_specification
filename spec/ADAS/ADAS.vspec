@@ -39,13 +39,14 @@ ActiveAutonomyLevel:
     SAE_5
   ]
   description: Indicates the currently active level of autonomy according to SAE J3016 taxonomy.
-  comment: For SAE levels 3 and 4 the system is required to expected to alert the driver if
-           if the system will disengage. Level 4 systems are required to reach a safe state
-           even if the driver does not take over. Only level 5 systems are required to not 
-           rely on a driver at all. While level 2 systems require the driver to be monitoring
-           the system at all times, and maybe even provide lateral control, many level 2
-           or "Level 2.5" systems, do warn the driver shortly before reaching there operational
-           limits, therefore we also support the DISENGAGING state for SAE_2  
+  comment: Follows https://www.sae.org/news/2019/01/sae-updates-j3016-automated-driving-graphic 
+           taxonomy. For SAE levels 3 and 4 the system is required to alert the driver before it 
+           will disengage. Level 4 systems are required to reach a safe state even if a driver does 
+           not take over. Only level 5 systems are required to not rely on a driver at all. 
+           While level 2 systems require the driver to be monitoring the system at all times, 
+           many level 2 systems, often termed "level 2.5" systems, do warn the driver shortly 
+           before reaching their operational limits, therefore we also support the DISENGAGING 
+           state for SAE_2.  
 
 SupportedAutonomyLevel:
   datatype: string
