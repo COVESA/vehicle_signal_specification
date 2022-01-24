@@ -30,12 +30,12 @@ ActiveAutonomyLevel:
   allowed: [
     SAE_0, 
     SAE_1,
-    SAE_2,   
     SAE_2_DISENGAGING,
-    SAE_3,     
+    SAE_2,   
     SAE_3_DISENGAGING, # Level 3 AD functions will disengage, driver notified
+    SAE_3,  
+    SAE_4_DISENGAGING, # Level 4 AD functions will disengage, driver notified   
     SAE_4,
-    SAE_4_DISENGAGING, # Level 4 AD functions will disengage, driver notified
     SAE_5
   ]
   description: Indicates the currently active level of autonomy according to SAE J3016 taxonomy.
