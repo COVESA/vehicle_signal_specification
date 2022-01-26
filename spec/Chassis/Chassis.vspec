@@ -143,8 +143,8 @@ SteeringWheel.Extension:
 SteeringWheel.Position:
   datatype: string
   type: attribute
-  default: front_left
-  allowed: ["front_left", "front_right"]
+  default: 'FRONT_LEFT'
+  allowed: ['FRONT_LEFT', 'FRONT_RIGHT']
   description: Position of the steering wheel on the left or right side of the vehicle.
 
 #

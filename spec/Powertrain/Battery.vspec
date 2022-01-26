@@ -123,7 +123,7 @@ Charging.MaximumChargingCurrent:
 Charging.ChargePortFlap:
   datatype: string
   type: actuator
-  allowed: [ 'open', 'closed' ]
+  allowed: ['OPEN', 'CLOSED']
   description: Status of the charge port cover, can potentially be controlled manually.
 
 Charging.IsChargingCableConnected:
@@ -134,14 +134,14 @@ Charging.IsChargingCableConnected:
 Charging.ChargePlugType:
   datatype: string
   type: attribute
-  default: ccs
-  allowed: [ 'type 1', 'type 2', 'ccs', 'chademo' ]
+  default: 'CCS'
+  allowed: ['TYPE_1', 'TYPE_2', 'CCS', 'CHADEMO']
   description: Type of charge plug available on the vehicle (CSS includes Type2).
 
 Charging.Mode:
   datatype: string
   type: actuator
-  allowed: [ 'manual', 'timer', 'grid' ]
+  allowed: ['MANUAL', 'TIMER', 'GRID']
   description: Control of the charge process - manually initiated (plug-in event, companion app, etc), timer-based or grid-controlled (eg ISO 15118).
 
 Charging.IsCharging:
@@ -153,7 +153,7 @@ Charging.IsCharging:
 Charging.StartStopCharging:
   datatype: string
   type: actuator
-  allowed: [ 'start', 'stop' ]
+  allowed: ['START', 'STOP']
   description: Start or stop the charging process.
 
 Charging.ChargeCurrent:
@@ -191,11 +191,11 @@ Charging.Timer:
 Charging.Timer.Mode:
   datatype: string
   type: actuator
-  allowed: [ 'inactive', 'starttime', 'endtime' ]
+  allowed: ['INACTIVE', 'START_TIME', 'END_TIME']
   description: "Defines timer mode for charging:
-               'inactive' - no timer set, charging may start as soon as battery is connected to a charger.
-               'starttime' - charging shall start at Charging.Timer.Time.
-               'endtime' - charging shall be finished (reach StateOfCharge.Target) at Charging.Timer.Time.
+               INACTIVE - no timer set, charging may start as soon as battery is connected to a charger.
+               START_TIME - charging shall start at Charging.Timer.Time.
+               END_TIME - charging shall be finished (reach StateOfCharge.Target) at Charging.Timer.Time.
                When charging is completed the vehicle shall change mode to 'inactive' or set a new Charging.Timer.Time.
                Charging shall start immediately if mode is 'starttime' or 'endtime' and Charging.Timer.Time is a time in the past."
 

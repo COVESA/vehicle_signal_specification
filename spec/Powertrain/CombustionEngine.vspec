@@ -39,10 +39,10 @@ Bore:
 Configuration:
   datatype: string
   type: attribute
-  allowed: [ "unknown", "straight", "V", "boxer", "W",
-        "rotary", "radial", "square", "H", "U", "opposed", "X" ]
+  allowed: ['UNKNOWN', 'STRAIGHT', 'V', 'BOXER', 'W',
+        'ROTARY', 'RADIAL', 'SQUARE', 'H', 'U', 'OPPOSED', 'X']
   description: Engine configuration.
-  default: "unknown"
+  default: 'UNKNOWN'
 
 NumberOfCylinders:
   datatype: uint16
@@ -88,26 +88,26 @@ MaxTorque:
 AspirationType:
   datatype: string
   type: attribute
-  allowed: [ "unknown", "natural", "supercharger", "turbocharger" ]
-  default: "unknown"
+  allowed: ['UNKNOWN', 'NATURAL', 'SUPERCHARGER', 'TURBOCHARGER']
+  default: 'UNKNOWN'
   description: Type of aspiration (natural, turbocharger, supercharger etc).
 
 FuelType:
   datatype: string
   type: attribute
-  allowed: [ "unknown", "gasoline", "diesel", "E85", "CNG" ]
-  default: "unknown"
+  allowed: ['UNKNOWN', 'GASOLINE', 'DIESEL', 'E85', 'CNG']
+  default: 'UNKNOWN'
   description: Type of fuel that the engine runs on.
 
 EngineOilLevel:
   datatype: string
   type: sensor
   allowed: [ 
-    "critically_low",  # Critically low, immediate action required
-    "low",             # Level below recommended range, but not critical
-    "normal",          # Within normal range, no need for driver action
-    "high",            # Level above recommended range, but not critical
-    "critically_high"  # Critically high, immediate action required
+    'CRITICALLY_LOW',  # Critically low, immediate action required
+    'LOW',             # Level below recommended range, but not critical
+    'NORMAL',          # Within normal range, no need for driver action
+    'HIGH',            # Level above recommended range, but not critical
+    'CRITICALLY_HIGH'  # Critically high, immediate action required
     ]
   description: Engine oil level.
 

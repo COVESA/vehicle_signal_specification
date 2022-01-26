@@ -13,8 +13,8 @@ For `attributes` it is possible to optionally set a default value.
 SteeringWheel.Position:
   datatype: string
   type: attribute
-  default: FRONT_LEFT
-  allowed: [FRONT_LEFT, FRONT_RIGHT]
+  default: 'FRONT_LEFT'
+  allowed: ['FRONT_LEFT', 'FRONT_RIGHT']
   description: Position of the steering wheel on the left or right side of the vehicle.
 
 ```
@@ -30,7 +30,7 @@ list.
 
 For string values used for `default` and `allowed` statements it is recommended to start with `A-Z`
 and then use only `A-Z`, `0-9` and underscore (`_`).
-Single(`'`) and double (`"`) quotes shall be used only if necessary, and are not needed if the naming recommendation is followed.
+It is recommended to use single quotes (`'`) as tooling otherwise might handle literals like `OFF` as boolean values with unexpected result.
 It is recommended not to specify a dedicated value corresponding to "unknown" or "undefined" unless there is a relevant use-case for that particular signal.
 The background is that a signal with an array of allowed values shall be handled just as any other signal.
 If e.g. the value of current speed or vehicle weight is unknown, then the vehicle shall not publish the corresponding signal.

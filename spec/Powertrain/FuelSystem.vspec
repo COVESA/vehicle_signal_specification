@@ -13,15 +13,15 @@
 FuelType:
   datatype: string
   type: attribute
-  allowed: [ "unknown", "gasoline", "diesel", "electric", "hybrid", "E85", "CNG", "LPG" ]
-  default: "unknown"
+  allowed: ['UNKNOWN', 'GASOLINE', 'DIESEL', 'ELECTRIC', 'HYBRID', 'E85', 'CNG', 'LPG']
+  default: 'UNKNOWN'
   description: Defines the fuel type of the vehicle.
 
 HybridType:
   datatype: string
   type: attribute
-  allowed: [ "unknown", "not_applicable", "stop_start", "belt_ISG", "CIMG", "PHEV" ]
-  default: "unknown"
+  allowed: ['UNKNOWN', 'NOT_APPLICABLE', 'STOP_START', 'BELT_ISG', 'CIMG', 'PHEV']
+  default: 'UNKNOWN'
   description: Defines the hybrid type of the vehicle.
 
 TankCapacity:

@@ -17,8 +17,8 @@
 Type:
   datatype: string
   type: attribute
-  allowed: [ "unknown", "sequential", "H", "automatic", "DSG", "CVT" ]
-  default: "unknown"
+  allowed: ['UNKNOWN', 'SEQUENTIAL', 'H', 'AUTOMATIC', 'DSG', 'CVT']
+  default: 'UNKNOWN'
   description: Transmission type.
 
 
@@ -31,8 +31,8 @@ GearCount:
 DriveType:
   datatype: string
   type: attribute
-  allowed: [ "unknown", "forward wheel drive", "rear wheel drive", "all wheel drive" ]
-  default: "unknown"
+  allowed: ['UNKNOWN', 'FORWARD_WHEEL_DRIVE', 'REAR_WHEEL_DRIVE', 'ALL_WHEEL_DRIVE']
+  default: 'UNKNOWN'
   description: Drive type.
 
 
@@ -93,7 +93,7 @@ IsElectricalPowertrainEngaged:
 PerformanceMode:
   datatype: string
   type: actuator
-  allowed: [ "normal", "sport", "economy", "snow", "rain" ]
+  allowed: ['NORMAL', 'SPORT', 'ECONOMY', 'SNOW', 'RAIN']
   description: Current gearbox performance mode.
 
 
@@ -103,7 +103,7 @@ PerformanceMode:
 GearChangeMode:
   datatype: string
   type: actuator
-  allowed: [ "manual", "automatic" ]
+  allowed: ['MANUAL', 'AUTOMATIC']
   description: Is the gearbox in automatic or manual (paddle) mode.
 
 

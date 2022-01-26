@@ -16,7 +16,7 @@ Media:
 Media.Action:
   datatype: string
   type: actuator
-  allowed: [ "unknown", "Stop", "Play", "FastForward", "FastBackward", "SkipForward",  "SkipBackward" ]
+  allowed: ['UNKNOWN', 'STOP', 'PLAY', 'FAST_FORWARD', 'FAST_BACKWARD', 'SKIP_FORWARD', 'SKIP_BACKWARD']
   description: Tells if the media was
 
 Media.Played:
@@ -26,7 +26,7 @@ Media.Played:
 Media.Played.Source:
   datatype: string
   type: actuator
-  allowed: [ "unknown", "SiriusXM", "AM", "FM", "DAB", "TV",  "CD", "DVD", "AUX", "USB", "Disk", "Bluetooth", "Internet", "Voice", "Beep" ]
+  allowed: ['UNKNOWN', 'SIRIUS_XM', 'AM', 'FM', 'DAB', 'TV', 'CD', 'DVD', 'AUX', 'USB', 'DISK', 'BLUETOOTH', 'INTERNET', 'VOICE', 'BEEP']
   description: Media selected for playback
 
 Media.Played.Artist:
@@ -102,41 +102,41 @@ HMI.CurrentLanguage:
 HMI.DateFormat:
   datatype: string
   type: actuator
-  allowed: [ "YYYY MM DD", "DD MM YYYY", "MM DD YYYY", "YY MM DD", "DD MM YY", "MM DD YY"]
+  allowed: ['YYYY_MM_DD', 'DD_MM_YYYY', 'MM_DD_YYYY', 'YY_MM_DD', 'DD_MM_YY', 'MM_DD_YY']
   description: Date format used in the current HMI
 
 HMI.TimeFormat:
   datatype: string
   type: actuator
-  allowed: [ "12HR", "24HR" ]
+  allowed: ['HR_12', 'HR_24']
   description: Time format used in the current HMI
 
 HMI.DistanceUnit:
   datatype: string
   type: actuator
-  allowed: [ "mi", "km" ]
+  allowed: ['MILES', 'KILOMETERS']
   description: Distance unit used in the current HMI
 
 HMI.FuelEconomyUnits:
   datatype: string
   type: actuator
-  allowed: [ "mpg_UK", "mpg_US", "mpl", "km/l", "l/100km" ]
+  allowed: ['MPG_UK', 'MPG_US', 'MILES_PER_LITER', 'KILOMETERS_PER_LITER', 'LITERS_PER_100_KILOMETERS']
   description: Fuel economy unit used in the current HMI
 
 HMI.EVEconomyUnits:
   datatype: string
   type: actuator
-  allowed: [ "mi/kWh", "km/kWh", "kWh/100mi", "kWh/100km", "Wh/mi", "Wh/km" ]
+  allowed: ['MILES_PER_KILOWATT_HOUR', 'KILOMETERS_PER_KILOWATT_HOUR', 'KILOWATT_HOURS_PER_100_MILES', 'KILOWATT_HOURS_PER_100_KILOMETERS', 'WATT_HOURS_PER_MILE', 'WATT_HOURS_PER_KILOMETER']
   description: EV fuel economy unit used in the current HMI
 
 HMI.TemperatureUnit:
   datatype: string
   type: actuator
-  allowed: [ "C", "F" ]
+  allowed: ['C', 'F']
   description: Temperature unit used in the current HMI
 
 HMI.DayNightMode:
   datatype: string
   type: actuator
-  allowed: [ "Day", "Night" ]
+  allowed: ['DAY', 'NIGHT']
   description: Current display theme

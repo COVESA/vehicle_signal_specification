@@ -40,7 +40,7 @@ VersionVSS.Patch:
 VersionVSS.Label:
   datatype: string
   type: attribute
-  default: "develop"
+  default: 'develop'
   description: Label to further describe the version.
 
 #
@@ -157,12 +157,12 @@ LowVoltageSystemState:
   datatype: string
   type: sensor
   allowed: [
-    "UNDEFINED", # State of low voltage system not known
-    "LOCK",      # Low voltage system off, steering lock or equivalent engaged
-    "OFF",       # Low voltage system off, steering lock or equivalent not engaged
-    "ACC",       # Vehicle Accessories on/living
-    "ON",        # Engine start enabled (e.g. ignition on, diesel pre-heating, electrical drive released)
-    "START"      # Engine starter relay closed (not applicable for electrical vehicles)
+    'UNDEFINED', # State of low voltage system not known
+    'LOCK',      # Low voltage system off, steering lock or equivalent engaged
+    'OFF',       # Low voltage system off, steering lock or equivalent not engaged
+    'ACC',       # Vehicle Accessories on/living
+    'ON',        # Engine start enabled (e.g. ignition on, diesel pre-heating, electrical drive released)
+    'START'      # Engine starter relay closed (not applicable for electrical vehicles)
     ]
   description: State of the supply voltage of the control units (usually 12V).
 

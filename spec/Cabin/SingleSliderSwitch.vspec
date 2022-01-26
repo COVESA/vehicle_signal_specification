@@ -13,5 +13,5 @@
 Switch:
   datatype: string
   type: actuator
-  allowed: [ "Inactive", "Close", "Open", "OneShotClose", "OneShotOpen" ]
+  allowed: ['INACTIVE', 'CLOSE', 'OPEN', 'ONE_SHOT_CLOSE', 'ONE_SHOT_OPEN']
   description: Switch controlling sliding action such as window, sunroof, or blind.
