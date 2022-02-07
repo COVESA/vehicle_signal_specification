@@ -10,6 +10,10 @@
 # EV Motor signals and attributes
 #
 
+EngineCode:
+  datatype: string
+  type: attribute
+  description: Engine code designation, as specified by vehicle manufacturer.
 
 MaxPower:
   datatype: uint16
