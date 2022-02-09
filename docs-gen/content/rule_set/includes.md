@@ -41,7 +41,7 @@ included file will override the previous specifications.
 
 
 ## REUSING SIGNAL TREES
-Complete subtrees of signals and attributes can be reused by including
+Complete subtrees of signals can be reused by including
 them multiple times, attaching them to different branches each time
 they are included.
 

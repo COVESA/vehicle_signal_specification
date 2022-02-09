@@ -9,7 +9,7 @@ chapter: false
 The Vehicle Signal Specification introduces a domain taxonomy for vehicle signals.
 It can be used as standard in automotive applications to communicate information
 around the vehicle, which is semantically well defined. It focuses on vehicle
-signals, in the sense of classical sensors and actuators with the raw data
+signals, in the sense of classical attributes, sensors and actuators with the raw data
 communicated over vehicle buses and data which is more commonly associated with
 the infotainment system alike.
 

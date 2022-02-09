@@ -38,7 +38,7 @@ element as an enumerated value
 
 ## DECLARING VS. DEFINING ATTRIBUTES
 The signal extension mechanism described above is also used to declare
-an attribute in one vspec file and define it in another.  This is used
+an attribute in one vspec file and define it in another. This is used
 to setup a attribute structure standard in the core specification that
 is to be defined on a per-deployment (vehicle) basis.
 

@@ -6,15 +6,15 @@ weight: 4
 
 An attribute is an entity that has a  default value, specified by
 its ```default``` member.
-The standard Vehicle Signal Specification include default values for most attributes. 
-It is expected that these default values do not fit all values.
-This means that an OEM must override the standard default values if a vehicle needs a different value.
+The standard Vehicle Signal Specification does not include default values for all attributes.
+If a default value has not been specified then the OEM must define a default value matching the actual vehicle.
+If the standard defines a default value but it does not fit the actual vehicle,
+then the OEM must override the standard default value.
 
 Attribute values can also change, similar to sensor values.
 The latter can be useful for attribute values that are likely to change during the lifetime of the vehicle.
 However, attribute values should typically not change more than once per ignition cycle,
 or else it should be defined as a sensor instead.
-
 
 Below is an example of a complete attribute describing engine power
 
