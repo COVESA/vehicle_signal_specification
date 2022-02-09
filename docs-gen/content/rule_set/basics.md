@@ -72,18 +72,6 @@ The branches do not have to be defined in any specific order as long
 as each branch component is defined somewhere in the vspec file (or an
 included vspec file).
 
-## Naming Conventions
-
-The recommended naming convention for node elements is to use camel case notation starting with a capital letter. It is recommended to use only
-`A-Z`, `a-z` and `0-9` in node names. For boolean signals it is recommended to start the name with `Is`.
-
-Examples:
-
-```
-SomeBranch.AnotherBranch.MySignalName
-Cabin.Door.Row1.Left.IsLocked
-```
-
 ## Deprecation `since version 2.1`
 
 During the process of model development, nodes might be
@@ -103,6 +91,27 @@ Navigation.CurrentLocation:
   type: branch
   description: The current latitude and longitude of the vehicle.
   deprecation: V2.1 moved to Vehicle.CurrentLocation
-```  
+```
 
 It is recommended for servers, which are implementing protocols for the vehicle signal specification, to serve old and new nodes during the deprecation period described above.
+
+## Style Guide
+
+The VSS specification must adhere to YAML syntax. To keep the standardized VSS specification in this repository consistent the following style guide is provided.
+
+### Naming Conventions
+
+The recommended naming convention for node elements is to use camel case notation starting with a capital letter. It is recommended to use only
+`A-Z`, `a-z` and `0-9` in node names. For boolean signals it is recommended to start the name with `Is`.
+
+Examples:
+
+```
+SomeBranch.AnotherBranch.MySignalName
+Cabin.Door.Row1.Left.IsLocked
+```
+Naming convention for string literals can be found in the [chapter](/vehicle_signal_specification/rule_set/data_entry/allowed)for specifying allowed values.
+
+### Line Length
+
+It is recommended that line length for files in this repository ( e.g. `*.vspec` and `*.md` files) shall not exceed 120 characters. This is not a strict limit, it is e.g. not recommended to split long URLs present in files over multiple lines.
