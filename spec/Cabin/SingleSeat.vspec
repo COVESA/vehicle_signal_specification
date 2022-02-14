@@ -1,4 +1,5 @@
 #
+# (C) 2022 Robert Bosch GmbH
 # (C) 2018 Volvo Cars
 # (C) 2016 Jaguar Land Rover
 #
@@ -16,6 +17,12 @@
 # If a switch is engaged (== has the value true) the seat is expected to move according to
 # the selected switch. The movement is normally supposed to continue until either the switch is released,
 # (== has the value false), or until the maximum/minimum value supported by the vehicle has been reached.
+#
+# Seat settings are sometimes defined relative to vehicle x/y/z-axis as defined by ISO 8855:
+# x-axis is the axis going forward/backward on the vehicle
+# y-axis is the axis going left/right on the vehicle
+# z-axis is the axis going up/down on the vehicle
+#
 
 IsOccupied:
   datatype: boolean
@@ -52,86 +59,109 @@ Massage:
   unit: percent
   description: Seat massage level. 0 = off. 100 = max massage.
 
-Recline:
-  datatype: int8
-  type: actuator
-  min: -90
-  max: 90
-  unit: degrees
-  description: Recline level. -90 = Max forward recline. 90 max backward recline.
-
 Position:
   datatype: uint16
   type: actuator
   min: 0
   unit: mm
-  description: Seat horizontal position. 0 = Frontmost.
+  description: Seat position on vehicle x-axis. Position is relative to the frontmost position supported by the seat.
+               0 = Frontmost position supported.
 
 Height:
   datatype: uint16
   type: actuator
   min: 0
   unit: mm
-  description: Seat vertical position. 0 = Lowermost.
+  description: Seat position on vehicle z-axis. Position is relative within available movable range of the seating.
+               0 = Lowermost position supported.
 
-Cushion:
+Tilt:
+  datatype: float
+  type: actuator
+  unit: degrees
+  description: Tilting of seat relative to vehicle z-axis. 0 = seating is flat, seat and vehicle z-axis are parallel.
+               Positive degrees = seat tilted backwards, seat z-axis is tilted backward.
+
+Backrest:
   type: branch
-  description: Cushion (leg support) signals.
+  description: Describes signals related to the backrest of the seat.
+           
+Backrest.Recline:
+  datatype: float
+  type: actuator
+  unit: degrees
+  description: Backrest recline compared to seat z-axis (seat vertical axis).
+               0 degrees = Upright/Vertical backrest.
+               Negative degrees for forward recline. Positive degrees for backward recline.
+  comment:     Seat z-axis depends on seat tilt. This means that movement of backrest due to seat tilting will not
+               affect Backrest.Recline as long as the angle between Seating and Backrest are constant.
+               Absolute recline relative to vehicle z-axis can be calculated as Tilt + Backrest.Recline.
 
-Cushion.Height:
+Backrest.Lumbar:
+  type: branch
+  description: Adjustable lumbar support mechanisms in seats allow the user to change the seat back shape.
+
+Backrest.Lumbar.Support:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Lumbar support (in/out position). 0 = Innermost position. 100 = Outermost position.
+
+Backrest.Lumbar.Height:
+  datatype: uint8
+  type: actuator
+  min: 0
+  unit: mm
+  description: Height of lumbar support. Position is relative within available movable range of the lumbar support.
+               0 = Lowermost position supported.
+
+Backrest.SideBolster:
+  type: branch
+  description: Backrest side bolster (lumbar side support) settings.
+
+Backrest.SideBolster.Support:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Side bolster support. 0 = Minimum support (widest side bolster setting).
+               100 = Maximum support.
+
+Seating:
+  type: branch
+  description: Describes signals related to the seating/base of the seat.
+  comment: Seating is here considered as the part of the seat that supports the thighs.
+           Additional cushions (if any) for support of lower legs is not covered by this branch.
+
+Seating.Length:
   datatype: uint16
   type: actuator
   min: 0
   unit: mm
-  description: Height of the seat cushion (leg support), relative to seat. 0 = Lowermost.
+  description: Length adjustment of seating. 0 = Adjustable part of seating in rearmost position
+               (Shortest length of seating).
 
-Cushion.Length:
-  datatype: uint16
-  type: actuator
-  min: 0
-  unit: mm
-  description: Forward length of cushion (leg support), relative to seat. 0 = Rearmost.
-
-Lumbar:
+Headrest:
   type: branch
-  description: Lumbar signals
+  description: Headrest settings.
 
-Lumbar.Inflation:
-  datatype: uint8
-  type: actuator
-  min: 0
-  max: 255
-  description: Lumbar support inflation. 0 = Fully deflated. 255 = Fully inflated.
-
-Lumbar.Height:
+Headrest.Height:
   datatype: uint8
   type: actuator
   min: 0
   unit: mm
-  description: Lumbar support position. 0 = Lowermost.
+  description: Position of headrest relative to movable range of the head rest. 0 = Bottommost position supported.
 
-SideBolster:
-  type: branch
-  description: Side bolster settings
-
-SideBolster.Inflation:
-  datatype: uint8
+Headrest.Angle:
+  datatype: float
   type: actuator
-  min: 0
-  max: 255
-  description: Side bolster support inflation. 0 = Fully deflated. 255 = Fully inflated.
-
-HeadRestraint:
-  type: branch
-  description: Head restraint settings.
-
-HeadRestraint.Height:
-  datatype: uint8
-  type: actuator
-  min: 0
-  unit: mm
-  description: Height of head restraint. 0 = Bottommost.
-
+  unit: degrees
+  description: Headrest angle, relative to backrest, 0 degrees if parallel to backrest,
+               Positive degrees = tilted forward.
+  
 Airbag:
   type: branch
   description: Airbag signals.
@@ -142,7 +172,7 @@ Airbag.IsDeployed:
   description: Airbag deployment status. True = Airbag deployed. False = Airbag not deployed.
 
 
-#--------------------------------------
+#---------------------- SWITCHES ----------------------
 
 Switch:
   type: branch
@@ -178,19 +208,105 @@ Switch.IsDownEngaged:
   type: actuator
   description: Seat down switch engaged (SingleSeat.Height).
 
-Switch.HeadRestraint:
+Switch.IsTiltForwardEngaged:
+  datatype: boolean
+  type: actuator
+  description: Tilt forward switch engaged (SingleSeat.Tilt).
+
+Switch.IsTiltBackwardEngaged:
+  datatype: boolean
+  type: actuator
+  description: Tilt backward switch engaged (SingleSeat.Tilt).
+  
+Switch.Backrest:
   type: branch
-  description: Switches for SingleSeat.HeadRestraint.Height.
+  description: Describes switches related to the backrest of the seat.
 
-Switch.HeadRestraint.IsUpEngaged:
+Switch.Backrest.IsReclineForwardEngaged:
   datatype: boolean
   type: actuator
-  description: Head restraint up switch engaged (SingleSeat.HeadRestraint.Height).
+  description: Backrest recline forward switch engaged (SingleSeat.Backrest.Recline).
 
-Switch.HeadRestraint.IsDownEngaged:
+Switch.Backrest.IsReclineBackwardEngaged:
   datatype: boolean
   type: actuator
-  description: Head restraint down switch engaged (SingleSeat.HeadRestraint.Height).
+  description: Backrest recline backward switch engaged (SingleSeat.Backrest.Recline).
+
+Switch.Backrest.Lumbar:
+  type: branch
+  description: Switches for SingleSeat.Backrest.Lumbar.
+
+Switch.Backrest.Lumbar.IsMoreSupportEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is switch for more lumbar support engaged (SingleSeat.Backrest.Lumbar.Support).
+  
+Switch.Backrest.Lumbar.IsLessSupportEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is switch for less lumbar support engaged (SingleSeat.Backrest.Lumbar.Support).
+
+Switch.Backrest.Lumbar.IsUpEngaged:
+  datatype: boolean
+  type: actuator
+  description: Lumbar up switch engaged (SingleSeat.Backrest.Lumbar.Support).
+
+Switch.Backrest.Lumbar.IsDownEngaged:
+  datatype: boolean
+  type: actuator
+  description: Lumbar down switch engaged (SingleSeat.Backrest.Lumbar.Support).
+
+Switch.Backrest.SideBolster:
+  type: branch
+  description: Switches for SingleSeat.Backrest.SideBolster.
+
+Switch.Backrest.SideBolster.IsMoreSupportEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is switch for more side bolster support engaged (SingleSeat.Backrest.SideBolster.Support).
+
+Switch.Backrest.SideBolster.IsLessSupportEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is switch for less side bolster support engaged (SingleSeat.Backrest.SideBolster.Support).
+
+Switch.Seating:
+  type: branch
+  description: Describes switches related to the seating of the seat.
+  
+Switch.Seating.IsForwardEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is switch to increase seating length engaged (SingleSeat.Seating.Length).
+
+Switch.Seating.IsBackwardEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is switch to decrease seating length engaged (SingleSeat.Seating.Length).
+
+Switch.Headrest:
+  type: branch
+  description: Switches for SingleSeat.Headrest.
+
+Switch.Headrest.IsUpEngaged:
+  datatype: boolean
+  type: actuator
+  description: Head rest up switch engaged (SingleSeat.Headrest.Height).
+
+Switch.Headrest.IsDownEngaged:
+  datatype: boolean
+  type: actuator
+  description: Head rest down switch engaged (SingleSeat.Headrest.Height).
+  
+Switch.Headrest.IsForwardEngaged:
+  datatype: boolean
+  type: actuator
+  description: Head rest forward switch engaged (SingleSeat.Headrest.Angle).
+
+Switch.Headrest.IsBackwardEngaged:
+  datatype: boolean
+  type: actuator
+  description: Head rest backward switch engaged (SingleSeat.Headrest.Angle).
 
 Switch.Massage:
   type: branch
@@ -206,78 +322,3 @@ Switch.Massage.IsDecreaseEngaged:
   type: actuator
   description: Decrease massage level switch engaged (SingleSeat.Massage).
 
-Switch.Recline:
-  type: branch
-  description: Switches for SingleSeat.Recline.
-
-Switch.Recline.IsBackwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seatback recline backward switch engaged (SingleSeat.Recline).
-
-Switch.Recline.IsForwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seatback recline forward switch engaged (SingleSeat.Recline).
-
-Switch.Cushion:
-  type: branch
-  description: Switches for SingleSeat.Cushion.
-
-Switch.Cushion.IsUpEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seat cushion up switch engaged (SingleSeat.Cushion.Height).
-
-Switch.Cushion.IsDownEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seat cushion down switch engaged (SingleSeat.Cushion.Height).
-
-Switch.Cushion.IsForwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seat cushion forward/lengthen switch engaged (SingleSeat.Cushion.Length).
-
-Switch.Cushion.IsBackwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seat cushion backward/shorten switch engaged (SingleSeat.Cushion.Length).
-
-Switch.Lumbar:
-  type: branch
-  description: Switches for SingleSeat.Lumbar.
-
-Switch.Lumbar.IsUpEngaged:
-  datatype: boolean
-  type: actuator
-  description: Lumbar up switch engaged (SingleSeat.Lumbar.Height).
-
-Switch.Lumbar.IsDownEngaged:
-  datatype: boolean
-  type: actuator
-  description: Lumbar down switch engaged (SingleSeat.Lumbar.Height).
-
-Switch.Lumbar.IsInflateEngaged:
-  datatype: boolean
-  type: actuator
-  description: Lumbar inflation switch engaged (SingleSeat.Lumbar.Inflation).
-
-Switch.Lumbar.IsDeflateEngaged:
-  datatype: boolean
-  type: actuator
-  description: Lumbar deflation switch engaged (SingleSeat.Lumbar.Inflation).
-
-Switch.SideBolster:
-  type: branch
-  description: Switches for SingleSeat.SideBolster.
-
-Switch.SideBolster.IsInflateEngaged:
-  datatype: boolean
-  type: actuator
-  description: Side bolster inflation switch engaged (SingleSeat.SideBolster.Inflation).
-
-Switch.SideBolster.IsDeflateEngaged:
-  datatype: boolean
-  type: actuator
-  description: Side bolster deflation switch engaged (SingleSeat.SideBolster.Inflation).
