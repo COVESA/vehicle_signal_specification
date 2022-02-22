@@ -1,7 +1,7 @@
 #
+# (C) 2020 Robert Bosch GmbH
 # (C) 2018 Volvo Cars
 # (C) 2016 Jaguar Land Rover
-# (C) 2020 Robert Bosch GmbH
 #
 # All files and artifacts in this repository are licensed under the
 # provisions of the license provided by the LICENSE file in this repository.
@@ -11,6 +11,18 @@
 # Signals and attributes related to the traction battery in vehicles with electrical powertrain.
 # For some vehicles the traction battery is referred to as the high voltage battery.
 #
+
+Id:
+  datatype: string
+  type: attribute
+  description: Battery Identification Number as assigned by OEM.
+  comment: This could be serial number, part number plus serial number, UUID, 
+           or any other identifier that the OEM want to use to uniquely identify the battery individual. 
+
+ProductionDate:
+  datatype: string
+  type: attribute
+  description: Production date of battery in ISO8601 format, e.g. YYYY-MM-DD.
 
 IsPowerConnected:
   datatype: boolean
@@ -27,10 +39,49 @@ IsGroundConnected:
            This is achieved by connectors, typically one for plus and one for minus.
 
 Temperature:
+  type: branch
+  description: Temperature Information for the battery pack.
+
+Temperature.Average:
   datatype: float
   type: sensor
   unit: celsius
-  description: Temperature of the battery pack.
+  description: Current average temperature of the battery cells.
+
+Temperature.Min:
+  datatype: float
+  type: sensor
+  unit: celsius
+  description: Current minimum temperature of the battery cells, i.e. temperature of the coldest cell.
+
+Temperature.Max:
+  datatype: float
+  type: sensor
+  unit: celsius
+  description: Current maximum temperature of the battery cells, i.e. temperature of the hottest cell.
+
+GrossCapacity:
+  datatype: uint16
+  type: attribute
+  unit: kWh
+  description: Gross capacity of the battery.
+
+NetCapacity:
+  datatype: uint16
+  type: sensor
+  unit: kWh
+  description: Total net capacity of the battery considering aging.
+  
+  
+StateofHealth:
+  datatype: float
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Calculated battery state of health at standard conditions.
+  comment: Exact formula is implementation dependent.
+           Could be e.g. current capacity at 20 degrees Celsius divided with original capacity at the same temperature.
 
 StateOfCharge:
   type: branch
@@ -42,7 +93,8 @@ StateOfCharge.Current:
   datatype: float
   min: 0
   max: 100.00
-  description: Physical state of charge of the high voltage battery. This is not necessarily the state of charge being displayed to the customer.
+  description: Physical state of charge of the high voltage battery, relative to net capacity.
+               This is not necessarily the state of charge being displayed to the customer.
 
 StateOfCharge.Displayed:
   type: sensor
@@ -52,37 +104,38 @@ StateOfCharge.Displayed:
   max: 100.00
   description: State of charge displayed to the customer.
 
-StateOfCharge.Target:
-  type: actuator
-  datatype: uint8
-  min: 0
-  max: 100
-  unit: percent
-  description: Target state of charge set (eg. by customer). Shall never exceed Charging.ChargeLimit.
-
-GrossCapacity:
-  datatype: uint16
-  type: attribute
-  unit: kWh
-  description: Gross capacity of the battery.
-
-NetCapacity:
-  datatype: uint16
-  type: attribute
-  unit: kWh
-  description: Net capacity of the battery.
-
 NominalVoltage:
   datatype: uint16
   type: attribute
   unit: V
   description: Nominal Voltage of the battery.
+  comment: Nominal voltage typically refers to voltage of fully charged battery when delivering rated capacity.
 
-ReferentVoltage:
+MaxVoltage:
   datatype: uint16
   type: attribute
   unit: V
-  description: Referent Voltage of the battery.
+  description: Max allowed voltage of the battery, e.g. during charging.
+
+CurrentVoltage:
+  datatype: float
+  type: sensor
+  unit: V
+  description: Current Voltage of the battery.
+
+CurrentCurrent:
+  datatype: float
+  type: sensor
+  unit: A
+  description: Current current flowing in/out of battery. Positive = Current flowing in to battery, e.g. during charging.
+               Negative = Current flowing out of battery, e.g. during driving.
+
+CurrentPower:
+  datatype: float
+  type: sensor
+  unit: W
+  description: Current electrical energy flowing in/out of battery. Positive = Energy flowing in to battery, e.g. during charging.
+               Negative = Energy flowing out of battery, e.g. during driving.
 
 AccumulatedChargedEnergy:
   datatype: float
@@ -96,6 +149,24 @@ AccumulatedConsumedEnergy:
   unit: kWh
   description: The accumulated energy leaving HV battery for propulsion and auxiliary loads over lifetime of the battery.
 
+AccumulatedChargedThroughput:
+  datatype: float
+  type: sensor
+  unit: Ah
+  description: The accumulated charge throughput delivered to the battery during charging over lifetime of the battery.
+
+AccumulatedConsumedThroughput:
+  datatype: float
+  type: sensor
+  unit: Ah
+  description: The accumulated charge throughput leaving HV battery for propulsion and auxiliary loads over lifetime of the battery.
+
+PowerLoss:
+  datatype: float
+  type: sensor
+  unit: W
+  description: Electrical energy lost by power dissipation to heat inside the battery.
+
 Range:
   datatype: uint32
   type: sensor
@@ -105,20 +176,42 @@ Range:
 Charging:
   type: branch
   description: Properties related to battery charging.
-  
+
 Charging.ChargeLimit:
   datatype: uint8
   type: actuator
   min: 0
   max: 100
   unit: percent
-  description: Maximum charge level for battery, can potentially be set manually.
+  description: Target charge limit (state of charge) for battery.
 
 Charging.MaximumChargingCurrent:
+  type: branch
+  description: Maximum charging current that can be accepted by the system, as measured at the charging inlet.
+
+Charging.MaximumChargingCurrent.DC:
   datatype: float
   type: sensor
   unit: A
-  description: Maximum charging current that can be accepted by the system.
+  description: Maximum DC charging current at inlet that can be accepted by the system.
+
+Charging.MaximumChargingCurrent.Phase1:
+  datatype: float
+  type: sensor
+  unit: A
+  description: Maximum AC charging current (rms) at inlet for Phase 1 that can be accepted by the system.
+  
+Charging.MaximumChargingCurrent.Phase2:
+  datatype: float
+  type: sensor
+  unit: A
+  description: Maximum AC charging current (rms) at inlet for Phase 2 that can be accepted by the system.
+  
+Charging.MaximumChargingCurrent.Phase3:
+  datatype: float
+  type: sensor
+  unit: A
+  description: Maximum AC charging current (rms) at inlet for Phase 3 that can be accepted by the system.
 
 Charging.ChargePortFlap:
   datatype: string
@@ -129,10 +222,16 @@ Charging.ChargePortFlap:
 Charging.IsChargingCableConnected:
   datatype: boolean
   type: sensor
-  description: Indicates if a charging cable is connected to the vehicle or not.
+  description: Indicates if a charging cable is physically connected to the vehicle or not.
+
+Charging.IsChargingCableLocked:
+  datatype: boolean
+  type: Actuator
+  description: Is charging cable locked to prevent removal.
+  comment: Locking of charging cable can be used to prevent unintentional removing during charging.
 
 Charging.ChargePlugType:
-  datatype: string
+  datatype: string[]
   type: attribute
   allowed: [
     'IEC_TYPE_1_AC',
@@ -148,16 +247,17 @@ Charging.ChargePlugType:
     'GBT_DC',
     'OTHER'
     ]
-  description: Type of charge plug (charging connector) available on the vehicle.
+  description: Type of charge plug (charging inlet) available on the vehicle.
                IEC types refer to IEC 62196,  GBT refers to  GB/T 20234.
-  comment:     IEC_TYPE_1_AC refers to Type 1 as defined in IEC 62196-2. Also known as Yazaki or J1772 connector.
+  comment:     A vehicle may have multiple charging inlets.
+               IEC_TYPE_1_AC refers to Type 1 as defined in IEC 62196-2. Also known as Yazaki or J1772 connector.
                IEC_TYPE_2_AC refers to Type 2 as defined in IEC 62196-2. Also known as Mennekes connector.
                IEC_TYPE_3_AC refers to Type 3 as defined in IEC 62196-2. Also known as Scame connector.
                IEC_TYPE_4_DC refers to AA configuration as defined in IEC 62196-3. Also known as Type 4 or CHAdeMO connector.
                IEC_TYPE_1_CCS_DC refers to EE Configuration as defined in IEC 62196-3. Also known as CCS1 or Combo1 connector.
                IEC_TYPE_2_CCS_DC refers to FF Configuration as defined in IEC 62196-3. Also known as CCS2 or Combo2 connector.
                TESLA_ROADSTER, TESLA_HPWC (High Power Wall Connector) and TESLA_SUPERCHARGER refer to non-standardized charging
-               plugs/methods used by Tesla.
+               inlets/methods used by Tesla.
                GBT_AC refers to connector specified in GB/T 20234.2.
                GBT_DC refers to connector specified in GB/T 20234.3. Also specified as BB Configuration in IEC 62196-3.
                OTHER shall be used if the vehicle has a charging connector, but not one of the connectors listed above.
@@ -166,14 +266,25 @@ Charging.ChargePlugType:
 Charging.Mode:
   datatype: string
   type: actuator
-  allowed: ['MANUAL', 'TIMER', 'GRID']
-  description: Control of the charge process - manually initiated (plug-in event, companion app, etc), timer-based or grid-controlled (eg ISO 15118).
+  allowed: ['MANUAL', 'TIMER', 'GRID', 'PROFILE']
+  description: Control of the charge process.
+               MANUAL means manually initiated (plug-in event, companion app, etc).
+               TIMER means timer-based.
+               GRID means grid-controlled (eg ISO 15118).
+               PROFILE means controlled by profile download to vehicle.
+  comment:     The mechanism to provide a profile to the vehicle is currently not covered by VSS.
 
 Charging.IsCharging:
   datatype: boolean
   type: sensor
   description: True if charging is ongoing. 
                Charging is considered to be ongoing if energy is flowing from charger to vehicle.
+
+Charging.IsDischarging:
+  datatype: boolean
+  type: sensor
+  description: True if discharging (vehicle to grid) is ongoing. 
+               Discharging is considered to be ongoing if energy is flowing from vehicle to charger/grid.
 
 Charging.StartStopCharging:
   datatype: string
@@ -182,16 +293,72 @@ Charging.StartStopCharging:
   description: Start or stop the charging process.
 
 Charging.ChargeCurrent:
+  type: branch
+  description: Current charging current.
+
+Charging.ChargeCurrent.DC:
   datatype: float
   type: sensor
   unit: A
-  description: Current charging current.
+  description: Current DC charging current at inlet. Negative if returning energy to grid.
+
+Charging.ChargeCurrent.Phase1:
+  datatype: float
+  type: sensor
+  unit: A
+  description: Current AC charging current (rms) at inlet for Phase 1. Negative if returning energy to grid.
+
+Charging.ChargeCurrent.Phase2:
+  datatype: float
+  type: sensor
+  unit: A
+  description: Current AC charging current (rms) at inlet for Phase 2. Negative if returning energy to grid.
+
+Charging.ChargeCurrent.Phase3:
+  datatype: float
+  type: sensor
+  unit: A
+  description: Current AC charging current (rms) at inlet for Phase 3. Negative if returning energy to grid.
 
 Charging.ChargeVoltage:
+  type: branch
+  description: Current charging voltage, as measured at the charging inlet.
+
+Charging.ChargeVoltage.DC:
   datatype: float
   type: sensor
   unit: V
-  description: Current charging voltage.
+  description: Current DC charging voltage at charging inlet.
+
+Charging.ChargeVoltage.Phase1:
+  datatype: float
+  type: sensor
+  unit: V
+  description: Current AC charging voltage (rms) at inlet for Phase 1.
+
+Charging.ChargeVoltage.Phase2:
+  datatype: float
+  type: sensor
+  unit: V
+  description: Current AC charging voltage (rms) at inlet for Phase 2.
+
+Charging.ChargeVoltage.Phase3:
+  datatype: float
+  type: sensor
+  unit: V
+  description: Current AC charging voltage (rms) at inlet for Phase 3.
+
+Charging.PowerLoss:
+  datatype: float
+  type: sensor
+  unit: W
+  description: Electrical energy lost by power dissipation to heat inside the AC/DC converter.
+
+Charging.Temperature:
+  datatype: float
+  type: sensor
+  unit: celsius
+  description: Current temperature of AC/DC converter converting grid voltage to battery voltage.
 
 Charging.ChargeRate:
   datatype: float
@@ -199,15 +366,15 @@ Charging.ChargeRate:
   unit: km/h
   description: Current charging rate, as in kilometers of range added per hour.
 
-
 Charging.TimeToComplete:
   datatype: uint32
   type: sensor
   unit: s
-  description: The time needed for the current charging process to reach StateOfCharge.Target.
+  description: The time needed for the current charging process to reach Charging.ChargeLimit.
                0 if charging is complete or no charging process is active or planned.
-  comment: Shall consider time set by Charging.Timer.Time. 
-           E.g. if charging shall start in 3 hours and 2 hours of charging is needed, then Charging.TimeToComplete shall report 5 hours.
+  comment: Shall consider time set by Charging.Timer.Time.
+           E.g. if charging shall start in 3 hours and 2 hours of charging is needed,
+           then Charging.TimeToComplete shall report 5 hours.
 
 Charging.Timer:
   type: branch
@@ -220,7 +387,7 @@ Charging.Timer.Mode:
   description: "Defines timer mode for charging:
                INACTIVE - no timer set, charging may start as soon as battery is connected to a charger.
                START_TIME - charging shall start at Charging.Timer.Time.
-               END_TIME - charging shall be finished (reach StateOfCharge.Target) at Charging.Timer.Time.
+               END_TIME - charging shall be finished (reach Charging.ChargeLimit) at Charging.Timer.Time.
                When charging is completed the vehicle shall change mode to 'inactive' or set a new Charging.Timer.Time.
                Charging shall start immediately if mode is 'starttime' or 'endtime' and Charging.Timer.Time is a time in the past."
 
@@ -230,3 +397,20 @@ Charging.Timer.Time:
   description: Time for next charging-related action, formatted according to ISO 8601 with UTC time zone.
                Value has no significance if Charging.Timer.Mode is 'inactive'.
 
+DCDC:
+  type: branch
+  description: Properties related to DC/DC converter converting high voltage (from high voltage battery)
+               to vehicle low voltage (supply voltage, typically 12 Volts).
+
+DCDC.PowerLoss:
+  datatype: float
+  type: sensor
+  unit: W
+  description: Electrical energy lost by power dissipation to heat inside DC/DC converter.
+
+DCDC.Temperature:
+  datatype: float
+  type: sensor
+  unit: celsius
+  description: Current temperature of DC/DC converter converting battery high voltage
+               to vehicle low voltage (typically 12 Volts).
