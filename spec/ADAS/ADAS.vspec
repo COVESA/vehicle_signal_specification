@@ -10,18 +10,16 @@
 #
 # All Advanced Driver Assist System signals
 #
-
-#  ABS
-#  CruiseControl
-#    TargetSpeed
-#	Engaged
-#	DynamicDistance
-#  TorqueVectoring
-#  BrakeAssist
-#  LaneAssist
-#  ParkAssist
-#  AntiSkid (Better name)
-#  TerrainMode
+# Three signals are commonly used to describe status of a system.
+#
+# For systems that only takes action under specific circumstances (like ABS) two signals are often used:
+# IsEnabled indicates that the system has been turned on, is monitoring and is ready to take action
+# IsEngaged indicates that the system is currently taking action (e.g. regulating brake pressure)
+#
+# For systems that are taking action over an longer period of time (like Cruise Control) two signals are often used:
+# IsEnabled indicates that the system is enabled and available for e.g. configuration, but it is not yet taking action.
+# IsActive indicates that the system has been turned on and is continuously taking action,
+# (e.g. regulating speed and brakes)
 #
 
 ActiveAutonomyLevel:
@@ -46,7 +44,7 @@ ActiveAutonomyLevel:
            While level 2 systems require the driver to be monitoring the system at all times, 
            many level 2 systems, often termed "level 2.5" systems, do warn the driver shortly 
            before reaching their operational limits, therefore we also support the DISENGAGING 
-           state for SAE_2.  
+           state for SAE_2.
 
 SupportedAutonomyLevel:
   datatype: string
@@ -65,11 +63,17 @@ CruiseControl:
   type: branch
   description: Signals from Cruise Control system.
 
+CruiseControl.IsEnabled:
+  datatype: boolean
+  type: actuator
+  description: Indicates if cruise control system is enabled (e.g. ready to receive configurations and settings) 
+               True = Enabled. False = Disabled.
+
 CruiseControl.IsActive:
   datatype: boolean
   type: actuator
-  description: Indicates if cruise control system is enabled. True = Enabled. False = Disabled.
-
+  description: Indicates if cruise control system is active (i.e. actively controls speed).
+               True = Active. False = Inactive.
 
 CruiseControl.SpeedSet:
   datatype: float
@@ -80,7 +84,7 @@ CruiseControl.SpeedSet:
 CruiseControl.IsError:
   datatype: boolean
   type: sensor
-  description: Indicates if cruise control system incurred and error condition. True = Error. False = NoError.
+  description: Indicates if cruise control system incurred an error condition. True = Error. False = No Error.
 
 #
 # Lane Departure Detection System
@@ -89,7 +93,7 @@ LaneDepartureDetection:
   type: branch
   description: Signals from Lane Departure Detection System.
 
-LaneDepartureDetection.IsActive:
+LaneDepartureDetection.IsEnabled:
   datatype: boolean
   type: actuator
   description: Indicates if lane departure detection system is enabled. True = Enabled. False = Disabled.
@@ -111,16 +115,21 @@ ObstacleDetection:
   type: branch
   description: Signals form Obstacle Sensor System.
 
-ObstacleDetection.IsActive:
+ObstacleDetection.IsEnabled:
   datatype: boolean
   type: actuator
-  description: Indicates if obstacle sensor system is enabled. True = Enabled. False = Disabled.
+  description: Indicates if obstacle sensor system is enabled (i.e. monitoring for obstacles).
+               True = Enabled. False = Disabled.
+
+ObstacleDetection.IsWarning:
+  datatype: boolean
+  type: sensor
+  description: Indicates if obstacle sensor system registered an obstacle.
 
 ObstacleDetection.IsError:
   datatype: boolean
   type: sensor
   description: Indicates if obstacle sensor system incurred an error condition. True = Error. False = No Error.
-
 
 
 #
@@ -130,11 +139,10 @@ ABS:
   type: branch
   description: Antilock Braking System signals.
 
-ABS.IsActive:
+ABS.IsEnabled:
   datatype: boolean
   type: actuator
   description: Indicates if ABS is enabled. True = Enabled. False = Disabled.
-
 
 ABS.IsError:
   datatype: boolean
@@ -154,7 +162,7 @@ TCS:
   type: branch
   description: Traction Control System signals.
 
-TCS.IsActive:
+TCS.IsEnabled:
   datatype: boolean
   type: actuator
   description: Indicates if TCS is enabled. True = Enabled. False = Disabled.
@@ -177,7 +185,7 @@ ESC:
   type: branch
   description: Electronic Stability Control System signals.
 
-ESC.IsActive:
+ESC.IsEnabled:
   datatype: boolean
   type: actuator
   description: Indicates if ESC is enabled. True = Enabled. False = Disabled.
@@ -191,3 +199,51 @@ ESC.IsEngaged:
   datatype: boolean
   type: sensor
   description: Indicates if ESC is currently regulating vehicle stability. True = Engaged. False = Not Engaged.
+
+
+#
+# Electronic Brakeforce Distribution (EBD)
+#
+EBD:
+  type: branch
+  description: Electronic Brakeforce Distribution (EBD) System signals.
+
+EBD.IsEnabled:
+  datatype: boolean
+  type: actuator
+  description: Indicates if EBD is enabled. True = Enabled. False = Disabled.
+
+EBD.IsError:
+  datatype: boolean
+  type: sensor
+  description: Indicates if EBD incurred an error condition. True = Error. False = No Error.
+
+EBD.IsEngaged:
+  datatype: boolean
+  type: sensor
+  description: Indicates if EBD is currently regulating vehicle brakeforce distribution.
+               True = Engaged. False = Not Engaged.
+
+
+#
+# Emergency Brake Assist (EBA)
+#
+EBA:
+  type: branch
+  description: Emergency Brake Assist (EBA) System signals.
+
+EBA.IsEnabled:
+  datatype: boolean
+  type: actuator
+  description: Indicates if EBA is enabled. True = Enabled. False = Disabled.
+
+EBA.IsError:
+  datatype: boolean
+  type: sensor
+  description: Indicates if EBA incurred an error condition. True = Error. False = No Error.
+
+EBA.IsEngaged:
+  datatype: boolean
+  type: sensor
+  description: Indicates if EBA is currently regulating brake pressure. True = Engaged. False = Not Engaged.
+
