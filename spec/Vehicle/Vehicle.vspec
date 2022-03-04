@@ -209,7 +209,7 @@ AverageSpeed:
 #
 Acceleration:
   type: branch
-  description: Spatial acceleration.
+  description: Spatial acceleration. Axis definitions according to ISO 8855.
 
 Acceleration.Longitudinal:
   datatype: float
@@ -235,22 +235,22 @@ Acceleration.Vertical:
 #
 AngularVelocity:
   type: branch
-  description: Spatial rotation.
+  description: Spatial rotation. Axis definitions according to ISO 8855.
 
 AngularVelocity.Roll:
-  datatype: int16
+  datatype: float
   type: sensor
   unit: degrees/s
   description: Vehicle rotation rate along X (longitudinal).
 
 AngularVelocity.Pitch:
-  datatype: int16
+  datatype: float
   type: sensor
   unit: degrees/s
   description: Vehicle rotation rate along Y (lateral).
 
 AngularVelocity.Yaw:
-  datatype: int16
+  datatype: float
   type: sensor
   unit: degrees/s
   description: Vehicle rotation rate along Z (vertical).
