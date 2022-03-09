@@ -37,6 +37,10 @@ This could include background information on the rationale for the branch,
 references to related branches, standards and similar.
 Recommended to start with a capital letter and end with a dot (`.`).
 
+**```instances```** *[optional]*  
+For specifying that multiple instances of this branch exist, for more information see documentation on
+[instances](/vehicle_signal_specification/rule_set/instances/).
+
 **```aggregate```** *[optional]*  
 Defines whether or not this branch is an aggregate.
 If not defined, this defaults to ```false```.
@@ -44,3 +48,5 @@ An aggregate is a collection of signals that make sense to handle together in a 
 A typical example could be GNSS location, where latitude and longitude make sense to read
 and write together. This is supposed to be deployment and tool specific,
 and for that reason no branches are aggregates by default in VSS.
+For branches that both have `instances` defined and `aggregate: true`, then aggregate refers to the signals for
+individual instances, i.e. signals for different instances can be handled separately.
