@@ -4,11 +4,11 @@ date: 2019-07-31T15:27:36+02:00
 weight: 5
 ---
 
-As VSS resembles primarily the physical structure of the vehicle, so
-quite often you'll find repetitions of branches and data entries
-(e.g. doors, axles, etc), which leads to hard-coded repetitions of
-branches and data entries in the specification. Instances remove the need of
-repeating definitions, by defining at the node itself how often it occurs in
+VSS resembles primarily the physical structure of the vehicle, so
+quite often there is a need to repeat branches and data entries
+(e.g. doors, axles, etc). To avoid hard-coded repetitions of
+branches and data entries in the specification an instance-concept is supported.
+Instances remove the need of repeating definitions, by defining at the node itself how often it occurs in
 the resulting tree. They are meant as a short-cut in the specification and
 interpreted by the tools.
 
@@ -25,10 +25,11 @@ interpreted by the tools.
    * a list of strings, where each element defines a single instance, e.g.
      `['Left','Right']` results into two instances of every following
      data entry in the path, named `Left` and `Right`
-   * a string, followed by a range defined through `[n,m]`, with `n,m` as integer and `n <= m`, which defines the number of instances:
+   * a string, followed by a range defined through `[n,m]`, with `n,m` as integer and `n <= m`,
+     which defines the number of instances.
      `Position[1,4]` results into 4 instances of every following
      data entry in the path, named `Position1`, `Position2`, `Position3`
-     and `Position4`.
+     and `Position4`. It is in VSS recommended to use `1` as start index for the first row/axle/position/...
 4. If multiple instances occur in one node or on the path to a data entry,
    the instances get combined, by the order of occurrence. Following the example above,
    four position instances will be created for each of the 'Left' and 'Right' instances,
@@ -114,7 +115,7 @@ VSS offers the possibility to control windshield heating separately for front an
 and VSS also gives the possibility to report washer fluid level separately for each windshield.
 This fits very well for a vehicle that has separate washer fluid containers for front and rear windshield
 and that offers heating for both windshields. But that is not the case for all vehicles,
-it is not even certain that all vehicles have two windshields. this sections gives recommendations on how
+it is not even certain that all vehicles have two windshields. This sections gives recommendations on how
 to use VSS for a vehicle if the VSS specification does not offer an exact match of the capabilities of the vehicle.
 
 ```YAML
