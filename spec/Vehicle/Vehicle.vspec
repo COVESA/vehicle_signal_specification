@@ -370,7 +370,7 @@ CurrentLocation.Latitude:
   min: -90
   max: 90
   unit: degrees
-  description: Current latitude of vehicle according to WGS 84.
+  description: Current latitude of vehicle according to WGS 84, as measured at position of GNSS receiver antenna.
 
 CurrentLocation.Longitude:
   datatype: double
@@ -378,7 +378,7 @@ CurrentLocation.Longitude:
   min: -180
   max: 180
   unit: degrees
-  description: Current longitude of vehicle according to WGS 84.
+  description: Current longitude of vehicle according to WGS 84, as measured at position of GNSS receiver antenna.
 
 CurrentLocation.Heading:
   datatype: double
@@ -399,10 +399,47 @@ CurrentLocation.Altitude:
   datatype: double
   type: sensor
   unit: m
-  description: Current altitude relative to WGS 84 reference ellipsoid.
+  description: Current altitude relative to WGS 84 reference ellipsoid, as measured at position of GNSS receiver antenna.
 
 CurrentLocation.VerticalAccuracy:
   datatype: double
   type: sensor
   unit: m
   description: Accuracy of altitude.
+
+CurrentLocation.GNSSReceiver:
+  type: branch
+  description: Information on the GNSS receiver used for determining current location.
+
+CurrentLocation.GNSSReceiver.Status:
+  datatype: string
+  type: sensor
+  allowed: ['NO_FIX', 'FIX_2D', 'FIX_3D']
+  description: Fix status of GNSS receiver.
+
+CurrentLocation.GNSSReceiver.MountingPosition:
+  type: branch
+  description: Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
+               Axis definitions according to ISO 8855. Origo at center of (first) rear axle.
+
+CurrentLocation.GNSSReceiver.MountingPosition.X:
+  datatype: int16
+  type: attribute
+  description: Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
+               Axis definitions according to ISO 8855. Origo at center of (first) rear axle.
+               Positive values = forward of rear axle. Negative values = backward of rear axle.
+
+CurrentLocation.GNSSReceiver.MountingPosition.Y:
+  datatype: int16
+  type: attribute
+  description: Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
+               Axis definitions according to ISO 8855. Origo at center of (first) rear axle.
+               Positive values = left of vehicle center. Negative values = right of vehicle center.
+               
+CurrentLocation.GNSSReceiver.MountingPosition.Z:
+  datatype: int16
+  type: attribute
+  description: Mounting position of GNSS receiver on Z-axis.
+               Axis definitions according to ISO 8855. Origo at center of (first) rear axle.
+               Positive values = above center of rear axle. Negative values = below center of rear axle.
+               
