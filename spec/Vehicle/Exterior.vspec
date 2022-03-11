@@ -1,0 +1,32 @@
+#
+# (C) 2022 Robert Bosch GmbH
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+#
+
+AirTemperature:
+  datatype: float
+  type: sensor
+  unit: celsius
+  description: Air temperature outside the vehicle.
+
+Humidity:
+  datatype: float
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Relative humidity outside the vehicle.
+               0 = Dry, 100 = Air fully saturated.
+
+LightIntensity:
+  datatype: float
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Light intensity outside the vehicle.
+               0 = No light detected, 100 = Fully lit.
+  comment: Mapping to physical units and calculation method is sensor specific.

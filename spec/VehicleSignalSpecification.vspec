@@ -173,6 +173,16 @@ Vehicle.Driver:
 
 #include Driver/Driver.vspec Vehicle.Driver
 
+
+#
+# Exterior information
+#
+Vehicle.Exterior:
+  type: branch
+  description: Information about exterior measured by vehicle.
+
+#include Vehicle/Exterior.vspec Vehicle.Exterior
+
 #
 # Service information
 #

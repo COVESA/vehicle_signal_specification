@@ -185,13 +185,6 @@ TripMeterReading:
   unit: km
   description: Current trip meter reading.
 
-AmbientAirTemperature:
-  datatype: float
-  type: sensor
-  unit: celsius
-  description: Ambient air temperature outside the vehicle.
-
-
 IsMoving:
   datatype: boolean
   type: sensor
