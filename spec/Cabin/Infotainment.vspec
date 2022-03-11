@@ -80,7 +80,7 @@ Navigation.DestinationSet.Latitude:
   min: -90
   max: 90
   unit: degrees
-  description: Latitude of destination according to WGS 84.
+  description: Latitude of destination in WGS 84 geodetic coordinates.
 
 Navigation.DestinationSet.Longitude:
   datatype: double
@@ -88,7 +88,7 @@ Navigation.DestinationSet.Longitude:
   min: -180
   max: 180
   unit: degrees
-  description: Longitude of destination according to WGS 84.
+  description: Longitude of destination in WGS 84 geodetic coordinates.
 
 HMI:
   type: branch
