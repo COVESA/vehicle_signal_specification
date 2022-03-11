@@ -200,6 +200,45 @@ ESC.IsEngaged:
   type: sensor
   description: Indicates if ESC is currently regulating vehicle stability. True = Engaged. False = Not Engaged.
 
+ESC.IsStrongCrossWindDetected:
+  datatype: boolean
+  type: sensor
+  description: Indicates if the ESC system is detecting strong cross winds.
+               True = Strong cross winds detected. False = No strong cross winds detected.
+               
+ESC.RoadFriction:
+  type: branch
+  description: Road friction values reported by the ESC system.
+
+ESC.RoadFriction.MostProbable:
+  datatype: float
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Most probable road friction, as calculated by the ESC system.
+               Exact meaning of most probable is implementation specific.
+               0 = no friction, 100 = maximum friction.
+
+ESC.RoadFriction.LowerBound:
+  datatype: float
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Lower bound road friction, as calculated by the ESC system.
+               5% possibility that road friction is below this value.
+               0 = no friction, 100 = maximum friction.
+
+ESC.RoadFriction.UpperBound:
+  datatype: float
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Upper bound road friction, as calculated by the ESC system.
+               95% possibility that road friction is below this value.
+               0 = no friction, 100 = maximum friction.
 
 #
 # Electronic Brakeforce Distribution (EBD)
@@ -223,7 +262,6 @@ EBD.IsEngaged:
   type: sensor
   description: Indicates if EBD is currently regulating vehicle brakeforce distribution.
                True = Engaged. False = Not Engaged.
-
 
 #
 # Emergency Brake Assist (EBA)
