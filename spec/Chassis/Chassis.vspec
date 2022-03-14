@@ -178,3 +178,11 @@ Brake.PedalPosition:
   unit: percent
   description: Brake pedal position as percent. 0 = Not depressed. 100 = Fully depressed.
 
+Brake.IsDriverEmergencyBrakingDetected:
+  datatype: boolean
+  type: sensor
+  description: Indicates if emergency braking initiated by driver is detected.
+               True = Emergency braking detected. False = Emergency braking not detected.
+  comment: Detection of emergency braking can trigger Emergency Brake Assist (EBA) to engage.
+  
+
