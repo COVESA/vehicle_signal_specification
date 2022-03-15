@@ -1,6 +1,6 @@
 ---
 title: Rule Set
-weight: 2
+weight: 20
 chapter: true
 ---
 
