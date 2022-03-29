@@ -5,7 +5,9 @@ chapter: false
 ---
 
 
-
+{{% notice warning %}}
+**DISCLAIMER:** The following information about open source licensing shall not be considered legal advice. For advice on licensing, COVESA suggests that you contact your open source officer or legal counsel.
+{{% /notice %}}
 ## Which license applies
 
 VSS as well as the VSS-tools are covered by the [Mozilla Public License 2.0 (MPL-2.0)](https://opensource.org/licenses/MPL-2.0). The MPL-2.0 is an OSI approved Open Source license that gives you a lot of freedom using VSS in your products, or for (academic) research while providing a solid legal framework should you choose to contribute to either the standards or the tools.
