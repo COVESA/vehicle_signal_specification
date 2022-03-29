@@ -38,6 +38,7 @@ Hood.IsOpen:
 #
 Trunk:
   type: branch
+  instances: ["Front", "Rear"]
   description: Trunk status.
 
 Trunk.IsOpen:
