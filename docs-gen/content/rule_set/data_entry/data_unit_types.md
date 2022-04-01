@@ -33,6 +33,7 @@ kg            | Weight                          | Mass measured in kilograms
 lbs           | Weight                          | Mass measured in pounds
 V             | Electric Potential              | Electric potential measured in volts
 A             | Electric Current                | Electric current measured in amperes
+Ah            | Electric Charge                 | Electric charge measured in ampere hours
 ms            | Time                            | Time measured in milliseconds
 s             | Time                            | Time measured in seconds
 min           | Time                            | Time measured in minutes
