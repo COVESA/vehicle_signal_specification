@@ -99,13 +99,6 @@ AspirationType:
   default: 'UNKNOWN'
   description: Type of aspiration (natural, turbocharger, supercharger etc).
 
-FuelType:
-  datatype: string
-  type: attribute
-  allowed: ['UNKNOWN', 'GASOLINE', 'DIESEL', 'E85', 'CNG']
-  default: 'UNKNOWN'
-  description: Type of fuel that the engine runs on.
-
 EngineOilLevel:
   datatype: string
   type: sensor

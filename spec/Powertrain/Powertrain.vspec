@@ -14,3 +14,12 @@ Range:
   type: sensor
   unit: m
   description: Remaining range in meters using all energy sources available in the vehicle.
+
+Type:
+  datatype: string
+  type: attribute
+  allowed: ['COMBUSTION', 'HYBRID', 'ELECTRIC']
+  description: Defines the powertrain type of the vehicle.
+  comment: For vehicles with a combustion engine (including hybrids) more detailed information on fuels supported can
+           be found in FuelSystem.SupportedFuelTypes and FuelSystem.SupportedFuels.
+  

@@ -10,12 +10,22 @@
 # Fuel system for ICE / hybrids
 #
 
-FuelType:
-  datatype: string
+SupportedFuelTypes:
+  datatype: string[]
   type: attribute
-  allowed: ['UNKNOWN', 'GASOLINE', 'DIESEL', 'ELECTRIC', 'HYBRID', 'E85', 'CNG', 'LPG']
-  default: 'UNKNOWN'
-  description: Defines the fuel type of the vehicle.
+  allowed: ['GASOLINE', 'DIESEL', 'E85', 'LPG', 'CNG', 'LNG', 'H2', 'OTHER']
+  description: High level information of fuel types supported
+  comment: If a vehicle also has an electric drivetrain (e.g. hybrid) that will be obvious from the PowerTrain.Type signal.
+
+SupportedFuel:
+  datatype: string[]
+  type: attribute
+  allowed: ['E5_95', 'E5_98', 'E10_95', 'E10_98', 'E85', 'B7', 'B10', 'B20', 'B30', 'B100',
+            'XTL', 'LPG', 'CNG', 'LNG', 'H2', 'OTHER']
+  description: Detailed information on fuels supported by the vehicle.
+               Identifiers originating from DIN EN 16942:2021-08, appendix B,
+               with additional suffix for octane (RON) where relevant.
+  comment: RON 95 is sometimes referred to as Super, RON 98 as Super Plus.
 
 HybridType:
   datatype: string
