@@ -191,3 +191,11 @@ Vehicle.Service:
   description: Service data.
 
 #include Vehicle/Service.vspec Vehicle.Service
+#
+# Connectivity information
+#
+Vehicle.Connectivity:
+  type: branch
+  description: Connectivity data.
+
+#include Vehicle/Connectivity.vspec Vehicle.Connectivity

@@ -1,0 +1,23 @@
+#
+# (C) 2022 Robert Bosch GmbH
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+#
+# Connectivity data
+#
+# This file contains signals related to connectivity between Vehicle and X (V2X).
+# Initially it contains only a single signal specifying if connectivity available.
+# May later be extended with information on type of connectivity available (e.g., Wi-Fi, Cellular), signal strength,
+# and throughput.
+#
+
+IsConnectivityAvailable:
+  datatype: boolean
+  type: sensor
+  description: Indicates if connectivity between vehicle and cloud is available.
+               True = Connectivity is available. False = Connectivity is not available.
+  comment: This signal can be used by onboard vehicle services to decide what features that
+           shall be offered to the driver, for example disable the 'check for update' button if vehicle does
+           not have connectivity.
