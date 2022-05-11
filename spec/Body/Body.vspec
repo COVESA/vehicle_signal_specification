@@ -76,6 +76,7 @@ Raindetection.Intensity:
   datatype: uint8
   type: sensor
   unit: percent
+  max: 100
   description: Rain intensity. 0 = Dry, No Rain. 100 = Covered.
 
 
@@ -114,6 +115,7 @@ Windshield.WasherFluid.IsLevelLow:
 Windshield.WasherFluid.Level:
   datatype: uint8
   unit: percent
+  max: 100
   type: sensor
   description: Washer fluid level as a percent. 0 = Empty. 100 = Full.
 

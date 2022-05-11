@@ -15,6 +15,8 @@ DistractionLevel:
   datatype: float
   type: sensor
   unit: percent
+  min: 0
+  max: 100
   description: Distraction level of the driver will be the level how much the driver is distracted, by multiple factors. E.g. Driving situation, acustical or optical signales inside the cockpit, phone calls.
 
 IsEyesOnRoad:
@@ -26,12 +28,16 @@ AttentiveProbability:
   datatype: float
   type: sensor
   unit: percent
+  min: 0
+  max: 100
   description: Probability of attentiveness of the driver.
 
 FatigueLevel:
   datatype: float
   type: sensor
   unit: percent
+  min: 0
+  max: 100
   description: Fatigueness level of driver. Evaluated by multiple factors like trip time, behaviour of steering, eye status.
 
 HeartRate:

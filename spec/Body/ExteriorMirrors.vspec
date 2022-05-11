@@ -13,6 +13,8 @@
 Tilt:
   datatype: int8
   unit: percent
+  min: -100
+  max: 100
   type: actuator
   description: Mirror tilt as a percent. 0 = Center Position. 100 = Fully Upward Position. -100 = Fully Downward Position.
 
@@ -20,6 +22,8 @@ Pan:
   datatype: int8
   type: actuator
   unit: percent
+  min: -100
+  max: 100
   description: Mirror pan as a percent. 0 = Center Position. 100 = Fully Left Position. -100 = Fully Right Position.
 
 IsHeatingOn:

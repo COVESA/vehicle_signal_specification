@@ -17,6 +17,7 @@ Brake.FluidLevel:
   datatype: uint8
   type: sensor
   unit: percent
+  max: 100
   description: Brake fluid level as percent. 0 = Empty. 100 = Full.
 
 Brake.IsFluidLevelLow:
@@ -27,6 +28,8 @@ Brake.IsFluidLevelLow:
 Brake.PadWear:
   datatype: uint8
   type: sensor
+  unit: percent
+  max: 100
   description: Brake pad wear as percent. 0 = No Wear. 100 = Worn.
 
 Brake.IsBrakesWorn:
