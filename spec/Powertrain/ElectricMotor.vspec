@@ -46,7 +46,7 @@ MaxRegenTorque:
 #
 # Motor rotations per minute
 #
-Rpm:
+Speed:
   datatype: int32
   type: sensor
   unit: rpm
