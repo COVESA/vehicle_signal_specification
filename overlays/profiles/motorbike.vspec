@@ -1,0 +1,45 @@
+#
+# (C) 2022, Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+#
+# This file contains adoptions to the main spec concering motorbikes.
+# It mainly addresses istantiation issues (e.g. wheels) and 
+# additional signals, which are motorbike specific (e.g. handlebars).
+# 
+# Currently this file serves as a very early draft, which serves 
+# more as an example of overlays and is not considered a part of the
+# official specification.
+
+
+# Branches used for the structure, not adopted in any way
+Vehicle:
+    type: branch
+
+Vehicle.Chassis:
+    type: branch
+
+Vehicle.Chassis.Axle:
+    type: branch
+
+# Changed instantiation
+Vehicle.Chassis.Axle.Wheel:
+    type: branch
+    instances: ["Center"]
+
+# Branches used for the structure, not adopted in any way
+Vehicle.Cabin:
+    type: branch
+
+# Additional cabin information
+Vehicle.Cabin.Handlebar:
+  type: branch
+  description: Branch for the handlebar of a motorbike.
+
+Vehicle.Cabin.Handlebar.GripHeating:
+  type: sensor
+  datatype: string
+  allowed: ["HEATING_OFF", "HEATING_STEP_1", "HEATING_STEP_2", "HEATING_STEP_3", "HEATING_STEP_4", "HEATING_STEP_5", "HEATING_AUTOMATIC"]
+  description: Grip Heating Status in motorbikes. The signal shows if the handlebar grip heating is on or not, and if yes, to which level.
