@@ -73,7 +73,7 @@ NetCapacity:
   description: Total net capacity of the battery considering aging.
   
   
-StateofHealth:
+StateOfHealth:
   datatype: float
   type: sensor
   unit: percent
