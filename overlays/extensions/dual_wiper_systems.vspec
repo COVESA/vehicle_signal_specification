@@ -1,0 +1,33 @@
+#
+# (C) 2022 Robert Bosch GmbH
+#
+# Overlay to extend wiper system to support multiple instances
+# Dependencies to other overlays: None
+# Known conflicts with other overlays: None
+#
+Vehicle:
+  type: branch
+
+Vehicle.Body:
+  type: branch
+  description: All body components.
+
+Vehicle.Body.Windshield:
+  type: branch
+  instances: ["Front", "Rear"]
+  description: Windshield signals.
+  
+Vehicle.Body.Windshield.Wiping:
+  type: branch
+  description: Windshield wiper signals.
+
+# Standard VSS does not specify instances
+# This overlay specifies two instances, Primary and Secondary
+
+Vehicle.Body.Windshield.Wiping.System:
+  type: branch
+  instances: [Primary, Secondary]
+  description: Signals to control behavior of wipers in detail.
+  comment:     These signals are typically not directly available to the user/driver of the vehicle.
+               Primary refers to the primary wiper system for the windshield.
+               Secondary refers to the secondary wiper system for the same windshield.
