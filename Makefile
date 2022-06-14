@@ -8,7 +8,7 @@ all: clean json franca yaml csv binary tests protobuf graphql
 
 # All mandatory targets that shall be built and pass on each pull request for
 # vehicle-signal-specification or vss-tools
-travis_targets: clean json franca yaml binary csv tests deploy
+travis_targets: clean json franca yaml binary csv tests deploy graphql
 
 
 # Additional targets that shall be built by travis, but where it is not mandatory
@@ -17,7 +17,7 @@ travis_targets: clean json franca yaml binary csv tests deploy
 # from time to time
 # Can be run from e.g. travis with "make -k travis_optional || true" to continue
 # even if errors occur and not do not halt travis build if errors occur
-travis_optional: clean c ocf protobuf ttl graphql
+travis_optional: clean c ocf protobuf ttl
 
 DESTDIR?=/usr/local
 TOOLSDIR?=./vss-tools
@@ -47,7 +47,7 @@ protobuf:
 	${TOOLSDIR}/contrib/vspec2protobuf.py  -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).proto
 
 graphql:
-	${TOOLSDIR}/contrib/vspec2graphql.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).graphql.ts
+	${TOOLSDIR}/vspec2graphql.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).graphql.ts
 
 ocf:
 	${TOOLSDIR}/contrib/ocf/vspec2ocf.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ocf.json
