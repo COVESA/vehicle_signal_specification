@@ -161,10 +161,11 @@ Windshield.WasherFluid.Level:
 ##
 Lights:
   type: branch
+  instances: ["HighBeam", "LowBeam", "Running", "Backup", "Parking", "Brake", "RearFog", "FrontFog", "Hazard", "LeftIndicator", "RightIndicator"]
   description: All lights.
 
 # Include lights specification and attach it to the Lights branch
-#include ExteriorLights.vspec Lights
+#include GenericLights.vspec Lights
 
 
 ##
