@@ -5,3 +5,8 @@ IsOn:
   datatype: boolean
   type: actuator
   description: Indicates if light is on or off. True = On. False = Off.
+
+HasDefect:
+  datatype: boolean
+  type: sensor
+  description: Indicates if light is defect. True = Light is defect. False = Light has no defect.
