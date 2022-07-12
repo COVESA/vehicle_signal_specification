@@ -6,7 +6,7 @@ weight: 7
 
 VSS defines the standard catalog for vehicle signals independent of the used protocol and environment.
 In order to adopt the specification we realize that certain additions and modifications to the standard catalog are necessary.
-**VSS Overlay** are meant to bring you a standardized way of handling those changes.
+**VSS Overlays** are meant to bring you a standardized way of handling those changes.
 
 The following features with the intended usage patterns are currently supported:
 1. **Adding new nodes:** By adding nodes the standard catalog can be extended with proprietary concepts.
@@ -21,17 +21,17 @@ Extending the model with richer information is a fundamental feature enabled by 
 The standard catalogue is specified within COVESA and defines a common view of the major
 attributes, sensors and actuators of vehicles. This is used in many different scenarios,
 protocols and environments. Additional meta data might be required for data-governance,
--quality or -sources. The instanciation of branches might not fit your vehicle.
+-quality or -sources. The instantiation of branches might not fit your vehicle.
 Proprietrary signals might be needed for extending the specification for your own use-cases.
-Up to now you were on your own in these scenarios. Overlays give you now the chance to change
+Up to now you were on your own in these scenarios. Overlays give you the chance to change
 and modify the standard catalog in a standardized way.
 
 ### How does it work?
 
-Simply said, the tooling takes next to the original specification file, *n* additional
-spec files, which overwrite the original information, they contain. Before you start
-you should know:
-- **Overlay-files have to be by themselves valid specification files.**
+Simply said, the tooling accepts, *n* additional spec files, next to the original 
+specification file, which can overwrite or extend data in the VSS tree defined by 
+the original specification.Before you start you should know:
+- **Overlay-files have to be valid specification files by themselves.**
   In practice that means, that the path to a node has to be well defined.
   Just to specify the changes of a certain node isn't enough and needs the
   nodes, which form the path to the node in question.
@@ -105,11 +105,11 @@ Vehicle.Cabin.Door.IsOpen:
 
 ### Overlays in the standard catalog
 
-With the feature of overlay, we introduced a new folder in the
+With the feature of overlays, we introduced a new folder in the
 repository called `overlays`. In there you'll find two additional folders:
 
-* `Profiles`: Larger overlays to adapt VSS to a specific vehicle category, like motorbikes.
-* `Extensions`: Smaller overlays typically to be applied after applying profiles (if any).
+* `profiles`: Larger overlays to adapt VSS to a specific vehicle category, like motorbikes.
+* `extensions`: Smaller overlays typically to be applied after applying profiles (if any).
 
 {{% notice warning %}}
 **DISCLAIMER:** Use of overlays is a new concept for VSS.
