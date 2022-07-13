@@ -169,45 +169,45 @@ Lights.Beam:
   instances: ["Low","High"]
   description: Beam lights
 # Include lights specification and attach it to the Lights.Beam branch
-#include BeamLights.vspec Lights.Beam
+#include StaticLights.vspec Lights.Beam
 
 Lights.Running:
   type: branch
   description: Running lights
 # Include lights specification and attach it to the Lights.Running branch
-#include RunningLights.vspec Lights.Running
+#include StaticLights.vspec Lights.Running
 
 Lights.Backup:
   type: branch
   description: Backup lights
 # Include lights specification and attach it to the Lights.Backup branch
-#include BackupLights.vspec Lights.Backup
+#include StaticLights.vspec Lights.Backup
 
 Lights.Parking:
   type: branch
   description: Parking lights
 # Include lights specification and attach it to the Lights.Parking branch
-#include ParkingLights.vspec Lights.Parking
+#include StaticLights.vspec Lights.Parking
 
 Lights.Fog:
   type: branch
   instances: ["Rear","Front"]
   description: Fog lights
 # Include lights specification and attach it to the Lights.Fog branch
-#include FogLights.vspec Lights.Fog
+#include StaticLights.vspec Lights.Fog
 
 Lights.Hazard:
   type: branch
   description: Hazard lights
 # Include lights specification and attach it to the Lights.Hazard branch
-#include HazardLights.vspec Lights.Hazard
+#include SignalingLights.vspec Lights.Hazard
 
 Lights.Indicator:
   type: branch
   instances: ["Left","Right"]
   description: Indicator lights
 # Include lights specification and attach it to the Lights.Indicator branch
-#include IndicatorLights.vspec Lights.Indicator
+#include SignalingLights.vspec Lights.Indicator
 
 ##
 #  Mirrors definition
