@@ -167,45 +167,45 @@ Lights:
 Lights.Beam:
   type: branch
   instances: ["Low","High"]
-  description: Beam lights
+  description: Beam lights.
 # Include lights specification and attach it to the Lights.Beam branch
 #include StaticLights.vspec Lights.Beam
 
 Lights.Running:
   type: branch
-  description: Running lights
+  description: Running lights.
 # Include lights specification and attach it to the Lights.Running branch
 #include StaticLights.vspec Lights.Running
 
 Lights.Backup:
   type: branch
-  description: Backup lights
+  description: Backup lights.
 # Include lights specification and attach it to the Lights.Backup branch
 #include StaticLights.vspec Lights.Backup
 
 Lights.Parking:
   type: branch
-  description: Parking lights
+  description: Parking lights.
 # Include lights specification and attach it to the Lights.Parking branch
 #include StaticLights.vspec Lights.Parking
 
 Lights.Fog:
   type: branch
   instances: ["Rear","Front"]
-  description: Fog lights
+  description: Fog lights.
 # Include lights specification and attach it to the Lights.Fog branch
 #include StaticLights.vspec Lights.Fog
 
 Lights.Hazard:
   type: branch
-  description: Hazard lights
+  description: Hazard lights.
 # Include lights specification and attach it to the Lights.Hazard branch
 #include SignalingLights.vspec Lights.Hazard
 
 Lights.Indicator:
   type: branch
   instances: ["Left","Right"]
-  description: Indicator lights
+  description: Indicator lights.
 # Include lights specification and attach it to the Lights.Indicator branch
 #include SignalingLights.vspec Lights.Indicator
 
