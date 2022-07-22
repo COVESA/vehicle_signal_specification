@@ -1,0 +1,13 @@
+# (C) 2022 BMW Group - All rights reserved.
+# AUTHOR: Gerrit Grotewold BMW Group;
+
+IsActive:
+  datatype: string
+  type: actuator
+  allowed: ['INACTIVE', 'ACTIVE', 'ADAPTIVE']
+  description: Indicates if break-light is active. INACTIVE means lights are off. ACTIVE means lights are on. ADAPTIVE means that break-light is indicating emergency-breaking.
+
+HasDefect:
+  datatype: boolean
+  type: sensor
+  description: Indicates if light is defect. True = Light is defect. False = Light has no defect.
