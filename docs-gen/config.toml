@@ -5,7 +5,7 @@ theme = "learn"
 publishDir = "../docs"
 [params]
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
-  themeVariant = "green"
+  themeVariant = "blue"
   disableInlineCopyToClipBoard = true
   editURL = "https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/"
   disableLandingPageButton = true
