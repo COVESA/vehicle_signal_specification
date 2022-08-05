@@ -30,4 +30,5 @@ A release is tagged in git with the tag
 
 where [m.n] is the release number.
 
-Detailed instructions on how releases are created can be found in the [Release Checklist](https://github.com/COVESA/vehicle_signal_specification/wiki/Release-Checklist).
+Detailed instructions on how releases are created can be found in the
+[Release Instructions and Checklist](https://github.com/COVESA/vehicle_signal_specification/wiki/Release-Instructions-and-Checklist).
