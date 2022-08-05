@@ -29,7 +29,7 @@ VersionVSS.Major:
 VersionVSS.Minor:
   datatype: uint32
   type: attribute
-  default: 0  
+  default: 1
   description: Supported Version of VSS - Minor version.
 
 VersionVSS.Patch:
@@ -41,6 +41,7 @@ VersionVSS.Patch:
 VersionVSS.Label:
   datatype: string
   type: attribute
+  default: 'develop'
   description: Label to further describe the version.
 
 #
