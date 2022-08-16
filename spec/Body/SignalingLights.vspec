@@ -1,10 +1,10 @@
 # (C) 2022 BMW Group - All rights reserved.
 # AUTHOR: Gerrit Grotewold BMW Group;
 
-IsOn:
+IsSignaling:
   datatype: boolean
   type: actuator
-  description: Indicates if light is on or off. True = On. False = Off.
+  description: Indicates if light is signaling or off. True = signaling. False = Off.
 
 HasDefect:
   datatype: boolean

@@ -207,7 +207,7 @@ Lights.Hazard:
   description: Hazard lights.
 #include SignalingLights.vspec Lights.Hazard
 
-Lights.Indicator:
+Lights.DirectionIndicator:
   type: branch
   instances: ["Left","Right"]
   description: Indicator lights.
