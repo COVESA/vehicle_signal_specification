@@ -167,6 +167,16 @@ LowVoltageSystemState:
     ]
   description: State of the supply voltage of the control units (usually 12V).
 
+##
+#  Low voltage battery
+##
+LowVoltageBattery:
+  type: branch
+  description: Signals related to low voltage battery.
+
+#include Battery.vspec LowVoltageBattery
+
+
 Speed:
   datatype: float
   type: sensor
