@@ -193,13 +193,11 @@ Lights.Fog:
 
 Lights.LicensePlate:
   type: branch
-  instances: ["Rear","Front"]
   description: License plate lights.
 #include StaticLights.vspec Lights.LicensePlate
 
 Lights.Brake:
   type: branch
-  instance: ["Left","Right","Top"]
 #include BrakeLights.vspec Lights.Brake
 
 Lights.Hazard:
