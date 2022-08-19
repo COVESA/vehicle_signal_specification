@@ -8,7 +8,7 @@ IsActive:
   allowed: ['INACTIVE', 'ACTIVE', 'ADAPTIVE']
   description: Indicates if break-light is active. INACTIVE means lights are off. ACTIVE means lights are on. ADAPTIVE means that break-light is indicating emergency-breaking.
 
-HasDefect:
+IsDefect:
   datatype: boolean
   type: sensor
   description: Indicates if light is defect. True = Light is defect. False = Light has no defect.

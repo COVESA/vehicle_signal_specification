@@ -7,7 +7,7 @@ IsSignaling:
   type: actuator
   description: Indicates if light is signaling or off. True = signaling. False = Off.
 
-HasDefect:
+IsDefect:
   datatype: boolean
   type: sensor
   description: Indicates if light is defect. True = Light is defect. False = Light has no defect.
