@@ -161,7 +161,6 @@ Windshield.WasherFluid.Level:
 ##
 Lights:
   type: branch
-  instances: ["Beam", "Running", "Backup", "Parking", "Brake", "Fog", "Hazard", "Indicator"]
   description: Exterior lights.
 
 Lights.Beam:
@@ -209,7 +208,7 @@ Lights.DirectionIndicator:
   type: branch
   instances: ["Left","Right"]
   description: Indicator lights.
-#include SignalingLights.vspec Lights.Indicator
+#include SignalingLights.vspec Lights.DirectionIndicator
 
 ##
 #  Mirrors definition
