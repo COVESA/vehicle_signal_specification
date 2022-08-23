@@ -79,8 +79,12 @@ Tilt:
   datatype: float
   type: actuator
   unit: degrees
-  description: Tilting of seat relative to vehicle z-axis. 0 = seating is flat, seat and vehicle z-axis are parallel.
-               Positive degrees = seat tilted backwards, seat z-axis is tilted backward.
+  description: Tilting of seat (seating and backrest) relative to vehicle x-axis.
+               0 = seat bottom is flat, seat bottom and vehicle x-axis are parallel.
+               Positive degrees = seat tilted backwards, seat x-axis tilted upward, seat z-axis is tilted backward.
+  comment: In VSS it is assumed that tilting a seat affects both seating (seat bottom) and backrest, i.e. the angle
+           between seating and backrest will not be affected when changing Tilt.
+
 
 Backrest:
   type: branch
@@ -132,7 +136,7 @@ Backrest.SideBolster.Support:
 
 Seating:
   type: branch
-  description: Describes signals related to the seating/base of the seat.
+  description: Describes signals related to the seat bottom of the seat.
   comment: Seating is here considered as the part of the seat that supports the thighs.
            Additional cushions (if any) for support of lower legs is not covered by this branch.
 
