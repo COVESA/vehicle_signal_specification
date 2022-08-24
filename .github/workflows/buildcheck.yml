@@ -25,9 +25,13 @@ jobs:
           python -V
           python -m pip --quiet --no-input install --upgrade pip 
           python -m pip --quiet --no-input install --upgrade pipenv wheel
+          pipenv --version
+          pipenv run python --version
           cd vss-tools
-          pipenv install
-          pipenv run python setup.py -q install
+          
+          pipenv install --sequential
+          echo done!
+          pipenv run python setup.py install
         env:
           PIPENV_VENV_IN_PROJECT: 1
           
