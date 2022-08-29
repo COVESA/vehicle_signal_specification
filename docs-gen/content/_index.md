@@ -3,8 +3,11 @@ title: "Vehicle Signal Specification"
 ---
 # Vehicle Signal Specification
 
-This documentation gives you an overview of the current ```Vehicle Signal
-Specification```:
+The Vehicle Signal Specification (VSS) is an initiative by [COVESA](https://www.covesa.global/) to define a syntax and a catalogue for vehicle signals.
+The source code and releases can be found in the [VSS github repository](https://github.com/COVESA/vehicle_signal_specification).
+Some tools for parsing and converting VSS files can be found in the [VSS-tools github repository](https://github.com/COVESA/vss-tools).
+
+This documentation gives you an overview of VSS:
 
 * [Introduction](/vehicle_signal_specification/introduction) </br> Read this part if you want to know more
 about what the specification is all about, what's in and out and how to quickly
