@@ -18,7 +18,7 @@ interpreted by the tools.
 
 ## Definition
 
-### How can I instances for my `branch`?
+### How can I create instances for my `branch`?
 
 1. An instance can be defined in any branch.
 2. The instantiation is done for every node in the following path.
@@ -42,13 +42,13 @@ interpreted by the tools.
 Often it makes sense to instantiate all child-nodes of a branch.
 But there are cases, when nodes are linked more the general concept of
 a branch, but not to the single instance. This could be the `DoorCount`,
-which would rather be `Door.Count`, `WheelDiamater`, which is rather linked
+which would rather be `Door.Count`, `WheelDiameter`, which is rather linked
 to an axle rather than the wheel itself or `Brake.FluidLevel` which is not
 measured for a single break, but rather a system indication. 
 
 To exclude a child-node from the instantiation of the *direct* parent node, set the
 keyword `instantiate` to `false` (`true` by default). Please check the following
-example for details. 
+example for details.
 
 ## Example
 

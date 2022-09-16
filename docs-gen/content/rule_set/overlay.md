@@ -18,11 +18,11 @@ Extending the model with richer information is a fundamental feature enabled by 
 
 ### Scenarios for using Overlays
 
-The standard catalogue is specified within COVESA and defines a common view of the major
+The standard catalog is specified within COVESA and defines a common view of the major
 attributes, sensors and actuators of vehicles. This is used in many different scenarios,
 protocols and environments. Additional meta data might be required for data-governance,
 -quality or -sources. The instantiation of branches might not fit your vehicle.
-Proprietrary signals might be needed for extending the specification for your own use-cases.
+Proprietary signals might be needed for extending the specification for your own use-cases.
 Up to now you were on your own in these scenarios. Overlays give you the chance to change
 and modify the standard catalog in a standardized way.
 
