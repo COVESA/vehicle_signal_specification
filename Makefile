@@ -17,7 +17,7 @@ travis_targets: clean json franca yaml binary csv graphql ddsidl tests tar
 # from time to time
 # Can be run from e.g. travis with "make -k travis_optional || true" to continue
 # even if errors occur and not do not halt travis build if errors occur
-travis_optional: clean c ocf protobuf ttl
+travis_optional: clean protobuf ttl
 
 DESTDIR?=/usr/local
 TOOLSDIR?=./vss-tools
@@ -50,15 +50,8 @@ protobuf:
 graphql:
 	${TOOLSDIR}/vspec2graphql.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).graphql.ts
 
-ocf:
-	${TOOLSDIR}/contrib/ocf/vspec2ocf.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ocf.json
-
 ttl:
 	${TOOLSDIR}/contrib/vspec2ttl/vspec2ttl.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ttl
-
-c:
-	(cd ${TOOLSDIR}/contrib/vspec2c/; make )
-	PYTHONPATH=${TOOLSDIR} ${TOOLSDIR}/contrib/vspec2c.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).h vss_rel_$$(cat VERSION)_macro.h
 
 # Include all offically supported outputs (i.e. those created by travis_targets)
 # Exception is binary as it might be target specific and library anyway needs to be rebuilt
@@ -68,12 +61,10 @@ tar:
 
 clean:
 	rm -f vss_rel_*
-	(cd ${TOOLSDIR}/contrib/vspec2c/; make clean)
 
 install:
 	git submodule init
 	git submodule update
 	(cd ${TOOLSDIR}/; python3 setup.py install --install-scripts=${DESTDIR}/bin)
-	$(MAKE) DESTDIR=${DESTDIR} -C ${TOOLSDIR}/vspec2c install
 	install -d ${DESTDIR}/share/vss
 	(cd spec; cp -r * ${DESTDIR}/share/vss)
