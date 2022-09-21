@@ -29,7 +29,7 @@ jobs:
           pipenv run python --version
           cd vss-tools
           
-          pipenv install --sequential
+          pipenv install
           echo done!
           pipenv run python setup.py install
         env:
