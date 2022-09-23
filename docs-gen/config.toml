@@ -21,3 +21,7 @@ weight = 10
 name = "<i class='fas fa-download'></i> Releases"
 url = "https://github.com/covesa/vehicle_signal_specification/releases"
 weight = 12
+
+# Generation of JSON index to allow search
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
