@@ -33,8 +33,8 @@ specification file, which can overwrite or extend data in the VSS tree defined b
 the original specification.Before you start you should know:
 - **Overlay-files have to be valid specification files by themselves.**
   In practice that means, that the path to a node has to be well defined.
-  Just to specify the changes of a certain node isn't enough and needs the
-  nodes, which form the path to the node in question.
+- **You can omit parent branches if there is no need to change them**
+  Tooling supports implicit branches.
 - **Order matters.** The order on how the overlay files are called in the CLI
   command matters! An example is shown in the figure below. 
 
@@ -44,10 +44,10 @@ separate overlay files, an example call of the tooling and the resulting tree.
 ![Include directive](/vehicle_signal_specification/images/overlay.drawio.png)<br>
 *Figure: Overview on how overlays work within VSS*
 
+
 ```YAML
-# The file has to be a valid specification by itself
-# so the path to new nodes or nodes, which will be
-# altered has to be well defined
+# In this overlay all parent branches are included.
+# That is not mandatory, as tooling supports implicit branches.
 
 Vehicle:
     type: branch
@@ -74,26 +74,15 @@ Vehicle.Cabin.Door.IsOpen:
 *File: overlay_1.vspec*
 
 ```YAML
-# The file has to be a valid specification by itself
-# so the path to new nodes or nodes, which will be
-# altered has to be well defined
 
-Vehicle:
-    type: branch
-
-Vehicle.Cabin:
-    type: branch
-
-Vehicle.Cabin.NewBranch: #< extend branch of overlay_1...
-    type: branch
+# This overlay use implicit branches.
+# This means that tooling will either reuse the existing Vehicle.Cabin.NewBranch,
+# or if not found create it with default values.
 
 Vehicle.Cabin.NewBranch.HasNewAttribute: #< ...with a new attribute
     type: attribute
     description: "new test attribute"
     datatype: string
-
-Vehicle.Cabin.Door:
-    type: branch
 
 Vehicle.Cabin.Door.IsOpen:
     type: sensor
