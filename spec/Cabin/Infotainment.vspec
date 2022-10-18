@@ -52,7 +52,10 @@ Media.Played.URI:
 Media.Played.PlaybackSpeed:
   datatype: float
   type: actuator
-  description: Current playback speed of media being played
+  description: Current playback speed of media being played.
+  comment: 1 means normal speed.
+           <1 means slower playback than normal.
+           >1 means faster playback than normal.
 
 Media.DeclinedURI:
   datatype: string
