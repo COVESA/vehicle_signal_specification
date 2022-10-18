@@ -49,6 +49,12 @@ Media.Played.URI:
   type: sensor
   description: User Resource associated with the media
 
+Media.Played.PlaybackSpeed:
+  datatype: float
+  type: actuator
+  allowed: [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2]
+  description: Current playback speed of media being played
+
 Media.DeclinedURI:
   datatype: string
   type: sensor
