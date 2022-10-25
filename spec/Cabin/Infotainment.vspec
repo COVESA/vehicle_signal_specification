@@ -135,7 +135,7 @@ HMI.TemperatureUnit:
   allowed: ['C', 'F']
   description: Temperature unit used in the current HMI
  
-HMI.TirePressureUnit
+HMI.TirePressureUnit:
   datatype: string
   type: actuator
   allowed: [‘psi’, ‘kPa’, ’bar’]
