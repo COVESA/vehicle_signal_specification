@@ -134,6 +134,12 @@ HMI.TemperatureUnit:
   type: actuator
   allowed: ['C', 'F']
   description: Temperature unit used in the current HMI
+ 
+HMI.TirePressureUnit
+  datatype: string
+  type: actuator
+  allowed: [‘psi’, ‘kPa’, ’bar’]
+  description: Tire pressure unit used in the current HMI 
 
 HMI.DayNightMode:
   datatype: string
