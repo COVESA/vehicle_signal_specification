@@ -142,7 +142,7 @@ HMI.DayNightMode:
   description: Current display theme
   
 HMI.SmartphoneMirroring:
-	datatype: string
-	type: sensor
-	allowed: [ 'AndoridAuto', 'AppleCarplay', 'MirrorLink', 'UNKNOWN' ]
-	description: Mirroring info for connectivity of user's smartphone
+  datatype: string
+  type: sensor
+  allowed: [ 'AndoridAuto', 'AppleCarplay', 'MirrorLink', 'UNKNOWN' ]
+  description: Mirroring info for connectivity of user's smartphone
