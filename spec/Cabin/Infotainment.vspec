@@ -90,6 +90,13 @@ Navigation.DestinationSet.Longitude:
   unit: degrees
   description: Longitude of destination in WGS 84 geodetic coordinates.
 
+Navigation.Volume:
+  datatype: uint8
+  type: actuator
+  min: 0
+  max: 100
+  description: Current navigation volume
+
 HMI:
   type: branch
   description: HMI related signals
