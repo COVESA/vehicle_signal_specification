@@ -93,7 +93,7 @@ Navigation.DestinationSet.Longitude:
 Navigation.Mute:
   datatype: string
   type: actuator
-  allowed: ['Muted', 'Alerts only', 'Unmuted']
+  allowed: ['MUTED', 'ALERT_ONLY', 'UNMUTED']
   description: Navigation mute state that was selected.  
 
 HMI:
