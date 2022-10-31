@@ -89,6 +89,12 @@ Navigation.DestinationSet.Longitude:
   max: 180
   unit: degrees
   description: Longitude of destination in WGS 84 geodetic coordinates.
+  
+Navigation.Mute:
+  datatype: string
+  type: actuator
+  allowed: ['Muted', 'Alerts only', 'Unmuted']
+  description: Navigation mute state that was selected.  
 
 HMI:
   type: branch
