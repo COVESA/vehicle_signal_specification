@@ -49,13 +49,13 @@ Media.Played.URI:
   type: sensor
   description: User Resource associated with the media
 
-Media.Played.PlaybackSpeed:
+Media.Played.PlaybackRate:
   datatype: float
   type: actuator
-  description: Current playback speed of media being played.
-  comment: 1 means normal speed.
-           <1 means slower playback than normal.
-           >1 means faster playback than normal.
+  description: Current playback rate of media being played.
+  comment: The normal playback rate is multiplied by this value to obtain the current rate, so a value of 1.0 indicates normal speed.
+           Values of lower than 1.0 make the media play slower than normal.
+           Values of higher than 1.0 make the media play faster than normal.
 
 Media.DeclinedURI:
   datatype: string
