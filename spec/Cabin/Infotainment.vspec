@@ -141,8 +141,23 @@ HMI.DayNightMode:
   allowed: ['DAY', 'NIGHT']
   description: Current display theme
   
-HMI.SmartphoneMirroring:
+SmartphoneProjection:
+  type: branch
+  description: All smartphone projection actions.
+  
+SmartphoneProjection.Active:
   datatype: string
+  type: actuator
+  allowed: [ 'NONE', 'ACTIVE',  'INACTIVE' ]
+  description: Projection activation info.
+  
+SmartphoneProjection.Source:
+  datatype: string
+  type: actuator
+  allowed: ['USB', 'BLUETOOTH', 'WIFI']
+  description: Connectivity source selected for projection.
+
+SmartphoneProjection.List:
+  datatype: string[]
   type: sensor
-  allowed: [ 'AndoridAuto', 'AppleCarplay', 'MirrorLink', 'UNKNOWN' ]
-  description: Mirroring info for connectivity of user's smartphone
+  description: Supportable list for projection.
