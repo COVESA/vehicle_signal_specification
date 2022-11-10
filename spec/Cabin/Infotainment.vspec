@@ -157,7 +157,8 @@ SmartphoneProjection.Source:
   allowed: ['USB', 'BLUETOOTH', 'WIFI']
   description: Connectivity source selected for projection.
 
-SmartphoneProjection.List:
+SmartphoneProjection.SupportedMode:
   datatype: string[]
   type: sensor
+  allowed: [ 'ANDROID_AUTO', 'APPLE_CARPLAY', 'MIRROR_LINK', 'OTHER' ]
   description: Supportable list for projection.
