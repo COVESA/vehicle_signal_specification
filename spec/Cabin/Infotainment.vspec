@@ -64,6 +64,7 @@ Media.Volume:
   type: actuator
   min: 0
   max: 100
+  unit: percent  
   description: Current Media Volume
 
 Navigation:
@@ -95,6 +96,7 @@ Navigation.Volume:
   type: actuator
   min: 0
   max: 100
+  unit: percent    
   description: Current navigation volume
 
 HMI:
