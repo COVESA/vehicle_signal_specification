@@ -150,6 +150,7 @@ SmartphoneProjection.Active:
   type: actuator
   allowed: [ 'NONE', 'ACTIVE',  'INACTIVE' ]
   description: Projection activation info.
+  comment: NONE indicates that projection is not supported.
   
 SmartphoneProjection.Source:
   datatype: string
@@ -159,6 +160,6 @@ SmartphoneProjection.Source:
 
 SmartphoneProjection.SupportedMode:
   datatype: string[]
-  type: sensor
+  type: attribute
   allowed: [ 'ANDROID_AUTO', 'APPLE_CARPLAY', 'MIRROR_LINK', 'OTHER' ]
   description: Supportable list for projection.
