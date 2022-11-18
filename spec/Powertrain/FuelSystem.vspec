@@ -76,8 +76,12 @@ ConsumptionSinceStart:
   type: sensor
   unit: l
   description: Fuel amount in liters consumed since start of current trip.
+  comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
+           The signal may however keep the value of the last trip until a new trip is started.
 
 TimeSinceStart:
+  deprecation: V3.1 replaced by Vehicle.StartTime
   datatype: uint32
   type: sensor
   unit: s

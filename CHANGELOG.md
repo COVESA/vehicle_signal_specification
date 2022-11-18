@@ -133,12 +133,25 @@ No change to tooling is implemented, as the vss-tools already today give a warni
 Warning: Attribute(s) sensor in element Temperature not a core or known extended attribute.
 ```
 
+### Deprecated or Deleted signals
+
+* `Vehicle.TravelledDistance` deprecated from 3.1. New signal `Vehicle.TraveledDistance`added.
+  Background is to be aligned with VSS style guide using American English.
+* `Vehicle.Powertrain.FuelSystem.TimeSinceStart` deprecated from 3.1. New signal `Vehicle.StartTime` added.
+  Reason is that `TimeSinceStart` is not powertrain-related and other signals related to current trip are located on top-level.
+  After discussion it was agreed that it is better to have a signal for start time rather than duration.
+
 ## Planned Changes VSS 4.0
 
 ### Actuator and Sensor Attributes
 
 The attributes `sensor` and `actuator`, deprecated from VSS 3.1, will be removed from the [VSS syntax](docs-gen/content/rule_set/data_entry/sensor_actuator.md).
 
+
+### Deprecated or Deleted signals
+
+* `Vehicle.TravelledDistance` ,deprecated from VSS 3.1, will be removed.
+* `Vehicle.Powertrain.FuelSystem.TimeSinceStart` ,deprecated from VSS 3.1, will be removed.
 
 ## Planned Changes VSS 5.0
 

@@ -184,16 +184,50 @@ Speed:
   description: Vehicle speed.
 
 TravelledDistance:
+  deprecation: V3.1 moved to Vehicle.TraveledDistance
   datatype: float
   type: sensor
   unit: km
-  description: Odometer reading, total distance travelled during the lifetime of the vehicle.
+  description: Odometer reading, total distance traveled during the lifetime of the vehicle.
+
+TraveledDistance:
+  datatype: float
+  type: sensor
+  unit: km
+  description: Odometer reading, total distance traveled during the lifetime of the vehicle.
+
+TraveledDistanceSinceStart:
+  datatype: float
+  type: sensor
+  unit: km
+  description: Distance traveled since start of current trip.
+  comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
+           The signal may however keep the value of the last trip until a new trip is started.
+
+StartTime:
+  datatype: string
+  type: sensor
+  description: Start time of current or latest trip, formatted according to ISO 8601 with UTC time zone.
+  comment: This signal is supposed to be set whenever a new trip starts.
+           A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
+
+EndTime:
+  datatype: string
+  type: sensor
+  description: End time of latest trip, formatted according to ISO 8601 with UTC time zone.
+  comment: This signal is supposed to be set whenever a trip ends.
+           A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
+           If EndTime is later than StartTime that means no trip is ongoing and duration of latest trip can be calculated by EndTime - StartTime.
 
 TripMeterReading:
   datatype: float
-  type: sensor
+  type: actuator
   unit: km
-  description: Current trip meter reading.
+  description: Trip meter reading.
+  comment: The trip meter is an odometer that can be manually reset by the driver
 
 IsBrokenDown:
   datatype: boolean
@@ -214,7 +248,10 @@ AverageSpeed:
   type: sensor
   unit: km/h
   description: Average speed for the current trip.
-
+  comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
+           The signal may however keep the value of the last trip until a new trip is started.
+           Calculation of average speed may exclude periods when the vehicle for example is not moving or transmission is in neutral.
 
 #
 # Spatial Acceleration
