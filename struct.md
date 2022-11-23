@@ -63,6 +63,7 @@ For VSS 4.0 it is not necessary that vss-tools do semantic check, i.e. if someon
 
 DeliveryList:
   datatype: DeliveryInffo
+  comment: Note: Spelling error on line above, will only be detected if semantic check is implemented
   type: sensor
   description: List of deliveries
 ```
@@ -125,6 +126,17 @@ DeliveryInfo.Receiver:
 
 DeliveryList:
   datatype: DeliveryInfo[]
+  type: sensor
+  description: List of deliveries
+```
+
+By default the array has an arbitrary number of element and may be empty.
+If a fixed size array is wanted the keyword `arraysize` can be used to specify size:
+
+```
+DeliveryList:
+  datatype: DeliveryInfo[]
+  arraysize: 5
   type: sensor
   description: List of deliveries
 ```
@@ -294,4 +306,29 @@ DeliveryInfo.Open.Close:
   description: Time the address close
   
 ```
+
+## Default Values
+
+VSS supports default values for attributes, and there is a [discussion](https://github.com/COVESA/vehicle_signal_specification/issues/377)
+to allow it also for sensors/actuators. For structs the following syntax shall be used
+
+
+```
+{<value of element 1>, < value of element 2>, ...}
+```
+
+Default values shall also be supported for arrays:
+
+```
+DeliveryList:
+  datatype: DeliveryInfo[]
+  type: attribute
+  default: [{'Munich','BMW'},{'Feuerbach','Bosch'}]
+  description: List of deliveries
+```
+
+TBD: How important do we see it to support default values for structs? So far we do not do any syntatic/semantic checks on default values, i.e. check that they are compatible with the used type.
+I do not know if any exporter as of today do something "advanced" with the given default value.
+If they just copy it as-is or ignores it then adding struct support would not be a big effort.
+But translating it to something useful for the target format might be a bigger effort.
 
