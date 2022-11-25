@@ -33,7 +33,6 @@ We need to decide how far we must go before we can release VSS 4.0, we does not 
 
 * We may start to use structs in VSS standard catalog.
 
-
 ## Simple Usage
 
 ```
@@ -51,21 +50,21 @@ DeliveryInfo.Receiver:
   type: item
   description: Name of receiver
 
-DeliveryList:
+Delivery:
   datatype: DeliveryInfo
   type: sensor
-  description: List of deliveries
+  description: Delivery
 ```
 
 For VSS 4.0 it is not necessary that vss-tools do semantic check, i.e. if someone would add an extra `f` by mistake like this:
 
 ```
 
-DeliveryList:
+Delivery:
   datatype: DeliveryInffo
   comment: Note: Spelling error on line above, will only be detected if semantic check is implemented
   type: sensor
-  description: List of deliveries
+  description: Delivery
 ```
 
 ... then VSS-tools does not necessarily need to give an error (stretch goal to have semantic check that referred type exist).
@@ -74,29 +73,89 @@ DeliveryList:
 
 For now, two ways of referring to a type shall be considered correct:
 
-### Reference to a struct definition within same branch
+* Reference by (leaf) name to a struct definition within same branch
+* Reference by absolute path
 
-As the example above.
+Relative paths (e.g. `../Powertrain.SomeStruct`) shall not be supported.
+Structs in parent branches will not be visible, in those cases absolute path needs to be used instead
 
-TBD: Or do we want a more flexible approach, i.e. if you specify "ABC" as datatype, that a tool shall search upwards in all parent branches?
+Examples:
 
-I.e. If a signal `A.B.C.D` is defined with type `X`, then the following priority order shall apply:
 
-* If `A.B.C.X` exists, then it will be used.
-* Else if `A.B.X` exists, then it will be used.
-* Else if `A.X` exists, then it will be used.
+```
+A:
+  type: branch
+  description: Branch A.
 
-### Reference by absolute path
+A.DeliveryInfo:
+  type: struct
+  
+A.DeliveryInfo.Address:
+  datatype: string
+  type: item
 
-Reference by full path shall also be allowed. For now relative paths (e.g. `../Powertrain` shall not be supported).
-But vss-tools does not need to resolve or verify that type reference is correct in VSS 4.0.
+A.DeliveryInfo.Receiver:
+  datatype: string
+  type: item
+
+A.Delivery1:
+  datatype: DeliveryInfo /* OK - As DeliveryInfo defined in same branch as Delivery1 */
+  type: sensor
+
+
+A.Delivery2:
+  datatype: A.DeliveryInfo /* OK - Addressing using absolute path */
+  type: sensor
+
+A.B:
+  type: branch
+
+A.B.Delivery3:
+  datatype: DeliveryInfo /* ERROR - No DeliverInfo defined in branch A.B */
+  type: sensor
+
+A.B.Delivery4:
+  datatype: A.DeliveryInfo /* OK - Addressing using absolute path */
+  type: sensor
+  
+A.B.Deliver5:
+  datatype: ../DeliveryInfo /* ERROR - Relative paths not supported */
+  type: sensor
 
 ```
 
-DeliveryList:
-  datatype: Vehicle.Some.Branch.DeliveryInfo
+### Order of declaration/definition
+
+The struct type must be defined before it is used.
+
+**TBD: I think this makes it easier for our implementation, but the question is if we want this to be a requirement also in the long term**
+
+Example:
+
+```
+A:
+  type: branch
+  description: Branch A.
+  
+  
+A.Delivery1:
+  datatype: DeliveryInfo /* ERROR - DeliveryInfo has not been defined yet! */
   type: sensor
-  description: List of deliveries
+
+A.DeliveryInfo:
+  type: struct
+  
+A.DeliveryInfo.Address:
+  datatype: string
+  type: item
+
+A.DeliveryInfo.Receiver:
+  datatype: string
+  type: item
+
+A.Delivery2:
+  datatype: DeliveryInfo /* OK - Now DeliveryInfo has been defined */
+  type: sensor
 ```
 
 ## Expectations on VSS implementations (e.g. VISS, KUKSA.val)
@@ -192,58 +251,13 @@ DeliveryInfo.Open:
   type: item
   description: When is receiver available
 
-DeliveryList:
+Delivery:
   datatype: DeliveryInfo
   type: sensor
-  description: List of deliveries
+  description: Delivery
 ```
 
-TBD: Where shall the inner struct be defined? Shall it be allowed to define it within a struct as well, or does it need to be defined within a branch like above? If allowed to be defined within a struct, how do we want name resolution to work, only support exact (current) scope and absolute path, or a more flexible setup searching upwards.
-
-I.e. shall the following alternative style (where the struct `OpenHours` is defined within `DeliveryInfo`) be allowed or even preferred?
-
-```
-
-DeliveryInfo:
-  type: struct
-  description: A struct type containing info for each delivery
-
-DeliveryInfo.OpenHours:
-  type: struct
-  description: A struct type containing information on open hours
-  
-DeliveryInfo.OpenHours.Open:
-  datatype: uint8
-  type: item
-  max: 24
-  description: Time the address opens
-  
-DeliveryInfo.OpenHours.Close:
-  datatype: uint8
-  type: item
-  max: 24
-  description: Time the address close
-  
-DeliveryInfo.Address:
-  datatype: string
-  type: item
-  description: Destination address
-
-DeliveryInfo.Receiver:
-  datatype: string
-  type: item
-  description: Name of receiver
-  
-DeliveryInfo.Open:
-  datatype: OpenHours
-  type: item
-  description: When is receiver available
-
-DeliveryList:
-  datatype: DeliveryInfo
-  type: sensor
-  description: List of deliveries
-```
+For now it shall not be allowed to define a struct within a struct, all structs must be defined within a branch.
 
 ## Inline Struct
 
@@ -306,18 +320,61 @@ DeliveryInfo.Open.Close:
   description: Time the address close
   
 ```
+**Proposal: For now inline/anonymous structs shall not be allowed! That could potentially be added later if needed**
 
 ## Default Values
 
-VSS supports default values for attributes, and there is a [discussion](https://github.com/COVESA/vehicle_signal_specification/issues/377)
-to allow it also for sensors/actuators. For structs the following syntax shall be used
+VSS supports [default values for attributes](https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/attributes/),
+and there is a [discussion](https://github.com/COVESA/vehicle_signal_specification/issues/377)
+to allow it also for sensors/actuators. 
+
+For structs it needs to be discussed if default values shall be given on the signal itself or on individual items.
+
+Example showing default values on items:
+
+```
+DeliveryInfo:
+  type: struct
+  description: A struct type containing info for each delivery
+  
+DeliveryInfo.Address:
+  datatype: string
+  type: item
+  default: 'Feuerbach'
+  description: Destination address
+
+DeliveryInfo.Receiver:
+  datatype: string
+  type: item
+  default: 'Bosch'
+  description: Name of receiver
+
+FirstDelivery:
+  datatype: DeliveryInfo
+  type: attribute
+  description: First delivery
+```
+
+
+
+For structs the following syntax could be used
 
 
 ```
 {<value of element 1>, < value of element 2>, ...}
 ```
+Example showing `default` on signal of struct type:
 
-Default values shall also be supported for arrays:
+```
+FirstDelivery:
+  datatype: DeliveryInfo
+  type: attribute
+  default: {'Munich','BMW'}
+  description: First delivery
+```
+
+
+Default values could also be supported for arrays:
 
 ```
 DeliveryList:
@@ -332,3 +389,51 @@ I do not know if any exporter as of today do something "advanced" with the given
 If they just copy it as-is or ignores it then adding struct support would not be a big effort.
 But translating it to something useful for the target format might be a bigger effort.
 
+**Proposal: It shall for now not be allowed to use default for signals of struct type or for items! **
+
+
+## Allowed Values
+
+VSS supports [specification of allowed values](https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/allowed/).
+As of today it is theoretically supported for all datatypes, but there is an [issue](https://github.com/COVESA/vehicle_signal_specification/issues/502)
+discussing if it is to be supported only for string data and possible integer-based types.
+
+Using `allowed` for `type: item` shall be supported (if `allowed` is supported for the used datatype).
+
+```
+DeliveryInfo:
+  type: struct
+  description: A struct type containing info for each delivery
+  
+DeliveryInfo.Address:
+  datatype: string
+  type: item
+  allowed: ['Munich','Feuerbach']
+  description: Destination address
+
+DeliveryInfo.Receiver:
+  datatype: string
+  type: item
+  allowed: ['BMW','Bosch']
+  description: Name of receiver
+
+DeliveryList:
+  datatype: DeliveryInfo[]
+  type: sensor
+  description: List of deliveries
+```
+
+
+Theoretically `allowed` for signals of struct type could be supported if supported for all contained data types.
+The example below follows the guidelines for [array types](https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/allowed/#allowed-values-for-array-types).
+The usefulness could however be debated, and semantic check could be time consuming
+
+```
+DeliveryList:
+  datatype: DeliveryInfo[]
+  type: attribute
+  allowed: [{'Munich','BMW'},{'Feuerbach','Bosch'}]
+  description: List of deliveries
+```
+
+**Proposal: It shall for now not be allowed to use allowed for signals of struct type! (But allowed to use it for items)**
