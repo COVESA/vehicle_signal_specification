@@ -170,6 +170,26 @@ Lights:
   type: branch
   description: Exterior lights.
 
+Lights.LightSwitch:
+  datatype: string
+  type: actuator
+  allowed: ['OFF', 'POSITION', 'DAYTIME_RUNNING_LIGHTS', 'AUTO', 'BEAM']
+  description: Status of the vehicle main light switch.
+  comment: A vehicle typically does not support all alternatives.
+           Which lights that actually are lit may vary according to vehicle configuration and local legislation.
+           OFF is typically indicated by 0.
+           POSITION is typically indicated by ISO 7000 symbol 0456.
+           DAYTIME_RUNNING_LIGHTS (DRL) can be indicated by ISO 7000 symbol 2611.
+           AUTO indicates that vehicle automatically selects suitable lights.
+           BEAM is typically indicated by ISO 7000 symbol 0083.
+
+Lights.IsHighBeamSwitchOn:
+  datatype: boolean
+  type: actuator
+  description: Status of the high beam switch. True = high beam enabled. False = high beam not enabled.
+  comment: This signal indicates the status of the switch and does not indicate if low or high beam actually are on.
+           That typically depends on vehicle logic and other signals like Lights.LightSwitch and Vehicle.LowVoltageSystemState.
+
 Lights.Beam:
   type: branch
   instances: ["Low","High"]
