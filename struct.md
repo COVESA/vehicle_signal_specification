@@ -5,158 +5,141 @@ I.e. what you can do still claiming that the model is correct VSS.
 It only to a limited extent show implications for vss-tools, and then only for syntactic/semantic checks.
 As of now it does not state how exporters are affected.
 
-## Proposed VSS 4.0 acceptance criteria and increments
+## Rationale and Recommendations on intended usage
 
-We need to decide how far we must go before we can release VSS 4.0, we does not need to go the whole way in one step
+### Background
 
-### Increment 1
+VSS currently supports only the following types:
 
-* Syntax can be used without VSS-tools complaining
-* No semantic check by VSS-tools
-* No documentation
-* Not used in VSS standard catalog
-* Struct not supported by VSS-tools exporters
+* Integer-based types (e.g. uint8, int32)
+* Float-based types (float, double)
+* String
+* Boolean
 
+In addition to this VSS supports arrays of the types given above. There are cases where this may not be sufficient.
+Typical use-cases are when something cannot be described by a single value, but multiple values are needed.
 
-### Increment 2
+A few hypothetical examples include:
 
-* Semantic check on type-references by VSS-tools
-* Syntax documented
-* Well defined behavior for all exporters (e.g. either support, and/or give warning if used)
+* GPS locations, where latitude and longitude must be handled together
+* Obstacles - where each obstacle may contain information like, category, probability and location
+* Errors/Warnings - where each item might contain information on category and priority
 
-### Increment 3
+VSS supports a keyword `aggregate`that can be used on branches to indicate that the branch shall be read and written in atomic operations,
+but that has not been considered sufficient and the semantic interpretation could be difficult if the branch contains a mix of sensors, attributes and actuators.
 
-* All "standard" exporters in vss-tools support structs
-* Guidelines on when to consider using structs rather than branches documented
+### Intended usage
 
-### Increment 4
+The proposed struct support in VSS is introduced to facilitate logical binding/grouping of data that originates from the same source.
+It is intended to be used only when it is important that the data is read or written in an atomic operation.
+It is not intended to be used to specify how data shall be packaged and serialized when transported.
 
-* We may start to use structs in VSS standard catalog.
+By this reason VSS-project will not introduce smaller datatypes (like `uint1`,`uint4`) to enable bit-encoding of data.
+The order of elements in a struct is from a VSS perspective considered as arbitrary.
+The VSS-project will by this reason not publish guidelines on how to order items in the struct to minimize size,
+and no concept for introducing padding will exist.
 
-## Simple Usage
+Structs shall be used in VSS standard catalog only when considered to give a significant advantage compared to using only primitive types.
+
+## General Idea
+
+Structs shall be defined similar to VSS signals and branches. A struct must be defined within a branch and a struct contain of one or more items.
+
+Structs shall be defined in a separate tree. This means that signal definitions and types cannot exist in the same files.
+Tooling must thus be refactored to accept one (or more) parameters for specifying type definition(s), possibly with an argument like
+`-t ./spec/vss_types.vspec` as in the example below:
 
 ```
-DeliveryInfo:
+./vss-tools/vspec2csv.py -I ./spec -t ./spec/vss_types.vspec ./spec/VehicleSignalSpecification.vspec my_output.csv
+```
+
+The top level types file (e.g. `vss_types.vspec`) can refer to other type files similar to the
+[top VSS file](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/VehicleSignalSpecification.vspec).
+Tooling may in the future support overlays for type declaration similar to how it is supported for signals.
+
+**TBD: What naming restriction shall apply**
+
+Shall it be allowed to use the same branch names in the type tree as in the signal tree, or must they be totally separated?
+If we consider using standard VSS catalog where all signals resides in the `Vehicle` top branch,
+is it then allowed to call the top-level in the type tree `Vehicle` as well?
+That could be useful if we want to use paths like `Vehicle.Types.SomeType`for VSS standard catalog in the future.
+Or shall it be required to have a totally separate tree, e.g. starting with `Types`?
+
+Theoretically we could allow to have exactly the same branch structure in the signal files as in the type files and even reuse the same name (with full path)
+as it anyway is clear from context whether we refer to a type or not. I.e. theoretically we could allow the signal `Vehicle.A.B` to refer to the struct `Vehicle.A.B`
+
+*Alternative 1: Do not enforce any restrictions on syntactic/semantic level, i.e. tooling shall support any naming style of the types. This does not prevent us from agreeing that top level name shall be e.g. "Types" in the standard catalog*
+
+*Alternative 2: Require that top path for the type file must be "Types", i.e. tooling shall give error if another name is found!*
+
+
+## Simple Definition and Usage
+
+This could be a hypothetical content of a VSS type file
+
+```
+Types:
+  type: branch
+  
+Types.DeliveryInfo:
   type: struct
   description: A struct type containing info for each delivery
   
-DeliveryInfo.Address:
+Types.DeliveryInfo.Address:
   datatype: string
   type: item
   description: Destination address
 
-DeliveryInfo.Receiver:
+Types.DeliveryInfo.Receiver:
   datatype: string
   type: item
   description: Name of receiver
+```
 
+This struct definition could then be referenced from the VSS signal tree
+
+```
 Delivery:
-  datatype: DeliveryInfo
+  datatype: Types.DeliveryInfo
   type: sensor
-  description: Delivery
 ```
 
 For VSS 4.0 it is not necessary that vss-tools do semantic check, i.e. if someone would add an extra `f` by mistake like this:
 
 ```
-
 Delivery:
-  datatype: DeliveryInffo
+  datatype: Types.DeliveryInffo
   comment: Note: Spelling error on line above, will only be detected if semantic check is implemented
   type: sensor
-  description: Delivery
 ```
 
 ... then VSS-tools does not necessarily need to give an error (stretch goal to have semantic check that referred type exist).
+
+The type file may contain sub-branches and `#include`-statements just like regular VSS files
+
+```
+Types:
+  type: branch
+  
+Types.Powertrain:
+  type: branch
+  description: Powertrain types.
+#include Powertrain/Powertrain.vspec Types.Powertrain
+
+```
 
 ## Name resolution
 
 For now, two ways of referring to a type shall be considered correct:
 
-* Reference by (leaf) name to a struct definition within same branch
+* Reference by (leaf) name to a struct definition within a branch with the same name in the type tree
 * Reference by absolute path
 
 Relative paths (e.g. `../Powertrain.SomeStruct`) shall not be supported.
-Structs in parent branches will not be visible, in those cases absolute path needs to be used instead
+Structs in parent branches will not be visible, in those cases absolute path needs to be used instead.
 
-Examples:
+*The reference by leaf name is applicable only for structs referncing other structs, and for the case that the type branch has the same name/path as the signal branch, if allowed!*
 
-
-```
-A:
-  type: branch
-  description: Branch A.
-
-A.DeliveryInfo:
-  type: struct
-  
-A.DeliveryInfo.Address:
-  datatype: string
-  type: item
-
-A.DeliveryInfo.Receiver:
-  datatype: string
-  type: item
-
-A.Delivery1:
-  datatype: DeliveryInfo /* OK - As DeliveryInfo defined in same branch as Delivery1 */
-  type: sensor
-
-
-A.Delivery2:
-  datatype: A.DeliveryInfo /* OK - Addressing using absolute path */
-  type: sensor
-
-A.B:
-  type: branch
-
-A.B.Delivery3:
-  datatype: DeliveryInfo /* ERROR - No DeliverInfo defined in branch A.B */
-  type: sensor
-
-A.B.Delivery4:
-  datatype: A.DeliveryInfo /* OK - Addressing using absolute path */
-  type: sensor
-  
-A.B.Deliver5:
-  datatype: ../DeliveryInfo /* ERROR - Relative paths not supported */
-  type: sensor
-
-```
-
-### Order of declaration/definition
-
-The struct type must be defined before it is used.
-
-**TBD: I think this makes it easier for our implementation, but the question is if we want this to be a requirement also in the long term**
-
-Example:
-
-```
-A:
-  type: branch
-  description: Branch A.
-  
-  
-A.Delivery1:
-  datatype: DeliveryInfo /* ERROR - DeliveryInfo has not been defined yet! */
-  type: sensor
-
-A.DeliveryInfo:
-  type: struct
-  
-A.DeliveryInfo.Address:
-  datatype: string
-  type: item
-
-A.DeliveryInfo.Receiver:
-  datatype: string
-  type: item
-
-A.Delivery2:
-  datatype: DeliveryInfo /* OK - Now DeliveryInfo has been defined */
-  type: sensor
-```
 
 ## Expectations on VSS implementations (e.g. VISS, KUKSA.val)
 
@@ -169,22 +152,8 @@ It shall be possible to specify that there shall be a struct of the array
 
 
 ```
-DeliveryInfo:
-  type: struct
-  description: A struct type containing info for each delivery
-  
-DeliveryInfo.Address:
-  datatype: string
-  type: item
-  description: Destination address
-
-DeliveryInfo.Receiver:
-  datatype: string
-  type: item
-  description: Name of receiver
-
 DeliveryList:
-  datatype: DeliveryInfo[]
+  datatype: Types.DeliveryInfo[]
   type: sensor
   description: List of deliveries
 ```
@@ -194,7 +163,7 @@ If a fixed size array is wanted the keyword `arraysize` can be used to specify s
 
 ```
 DeliveryList:
-  datatype: DeliveryInfo[]
+  datatype: Types.DeliveryInfo[]
   arraysize: 5
   type: sensor
   description: List of deliveries
@@ -210,7 +179,7 @@ For array types (like above) VSS implementations may support several mechanisms
     * Writing/Reading a single instance, e.g. `DeliveryList[2]` (index mechanism is implementation dependent)
     * Appending/Deleting individual instances
     * Searching for instances with specific conditions.
-    
+
 ## Structure in Structure
 
 It shall be possible to refer to a structure type from within a structure
@@ -251,76 +220,39 @@ DeliveryInfo.Open:
   type: item
   description: When is receiver available
 
-Delivery:
-  datatype: DeliveryInfo
-  type: sensor
-  description: Delivery
 ```
 
-For now it shall not be allowed to define a struct within a struct, all structs must be defined within a branch.
+### Order of declaration/definition
 
-## Inline Struct
-
-As an alternate approach we could consider supporting inline / anonymous structs
-
-```
-
-DeliveryList:
-  datatype: struct[]
-  type: sensor
-  description: List of deliveries
-  
-DeliveryList.Address:
-  datatype: string
-  type: item
-  description: Destination address
-
-DeliveryList.Receiver:
-  datatype: string
-  type: item
-  description: Name of receiver
+The order of declaration/definition shall not matter.
+As signals and types are defined in different trees this is a topic only for struct definitions referring to other struct definitions.
+A hypothetical example is shown below. An item in the struct `DeliveryInfo` can refer to the struct `OpenHours` even if that struct
+is defined further down in the same file.
 
 ```
+DeliveryInfo:
+  type: struct
+  description: A struct type containing info for each delivery
 
-This could also work for struct in struct
-
-```
-
-
-DeliveryList:
-  datatype: struct[]
-  type: sensor
-  description: List of deliveries
-  
-DeliveryList.Address:
-  datatype: string
-  type: item
-  description: Destination address
-
-DeliveryList.Receiver:
-  datatype: string
-  type: item
-  description: Name of receiver
+...
 
 DeliveryInfo.Open:
-  datatype: struct
+  datatype: OpenHours
   type: item
   description: When is receiver available
 
-DeliveryInfo.Open.Open:
-  datatype: uint8
-  type: item
-  max: 24
-  description: Time the address opens
-  
-DeliveryInfo.Open.Close:
-  datatype: uint8
-  type: item
-  max: 24
-  description: Time the address close
-  
+OpenHours:
+  type: struct
+  description: A struct type containing information on open hours
+
+...
+
 ```
-**Proposal: For now inline/anonymous structs shall not be allowed! That could potentially be added later if needed**
+
+
+## Inline Struct
+
+Inline/anonymous structs shall not be supported!
 
 ## Default Values
 
@@ -328,68 +260,9 @@ VSS supports [default values for attributes](https://covesa.github.io/vehicle_si
 and there is a [discussion](https://github.com/COVESA/vehicle_signal_specification/issues/377)
 to allow it also for sensors/actuators. 
 
-For structs it needs to be discussed if default values shall be given on the signal itself or on individual items.
-
-Example showing default values on items:
-
-```
-DeliveryInfo:
-  type: struct
-  description: A struct type containing info for each delivery
-  
-DeliveryInfo.Address:
-  datatype: string
-  type: item
-  default: 'Feuerbach'
-  description: Destination address
-
-DeliveryInfo.Receiver:
-  datatype: string
-  type: item
-  default: 'Bosch'
-  description: Name of receiver
-
-FirstDelivery:
-  datatype: DeliveryInfo
-  type: attribute
-  description: First delivery
-```
-
-
-
-For structs the following syntax could be used
-
-
-```
-{<value of element 1>, < value of element 2>, ...}
-```
-Example showing `default` on signal of struct type:
-
-```
-FirstDelivery:
-  datatype: DeliveryInfo
-  type: attribute
-  default: {'Munich','BMW'}
-  description: First delivery
-```
-
-
-Default values could also be supported for arrays:
-
-```
-DeliveryList:
-  datatype: DeliveryInfo[]
-  type: attribute
-  default: [{'Munich','BMW'},{'Feuerbach','Bosch'}]
-  description: List of deliveries
-```
-
-TBD: How important do we see it to support default values for structs? So far we do not do any syntatic/semantic checks on default values, i.e. check that they are compatible with the used type.
-I do not know if any exporter as of today do something "advanced" with the given default value.
-If they just copy it as-is or ignores it then adding struct support would not be a big effort.
-But translating it to something useful for the target format might be a bigger effort.
-
-**Proposal: It shall for now not be allowed to use default for signals of struct type or for items! **
+It is proposed for now that default values shall not be supported for signals of struct type.
+This also mean that VSS does not need to specify notation for struct values.
+An exception is arrays of struct-types, where "empty array", i.e. `[]` shall be supported as default value.
 
 
 ## Allowed Values
@@ -398,42 +271,40 @@ VSS supports [specification of allowed values](https://covesa.github.io/vehicle_
 As of today it is theoretically supported for all datatypes, but there is an [issue](https://github.com/COVESA/vehicle_signal_specification/issues/502)
 discussing if it is to be supported only for string data and possible integer-based types.
 
-Using `allowed` for `type: item` shall be supported (if `allowed` is supported for the used datatype).
-
-```
-DeliveryInfo:
-  type: struct
-  description: A struct type containing info for each delivery
-  
-DeliveryInfo.Address:
-  datatype: string
-  type: item
-  allowed: ['Munich','Feuerbach']
-  description: Destination address
-
-DeliveryInfo.Receiver:
-  datatype: string
-  type: item
-  allowed: ['BMW','Bosch']
-  description: Name of receiver
-
-DeliveryList:
-  datatype: DeliveryInfo[]
-  type: sensor
-  description: List of deliveries
-```
+Using `allowed` for `type: item` shall be allowed (if `allowed` is supported for the used datatype).
+Using `allowed` for signals and items of struct type or array of struct type shall not be allowed.
+Theoretically `allowed` for signals of struct type could be supported if supported for all contained da
 
 
-Theoretically `allowed` for signals of struct type could be supported if supported for all contained data types.
-The example below follows the guidelines for [array types](https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/allowed/#allowed-values-for-array-types).
-The usefulness could however be debated, and semantic check could be time consuming
+## Proposed VSS 4.0 acceptance criteria and increments
 
-```
-DeliveryList:
-  datatype: DeliveryInfo[]
-  type: attribute
-  allowed: [{'Munich','BMW'},{'Feuerbach','Bosch'}]
-  description: List of deliveries
-```
+It is proposed that introduction of struct support shall be performed in increments
 
-**Proposal: It shall for now not be allowed to use allowed for signals of struct type! (But allowed to use it for items)**
+### Increment 1
+
+* VSS-tools adapted to accept struct data as input.
+* Syntactical check of struct definitions implemented.
+* VSS-tools accepts reference to struct types.
+* No semantic check by VSS-tools.
+* No documentation.
+* Not used in VSS standard catalog.
+* Struct not supported by VSS-tools exporters.
+
+
+### Increment 2
+
+* Semantic check on type-references by VSS-tools.
+* Syntax documented.
+* Well defined behavior for all exporters (e.g. either support, and/or give warning if used).
+
+### Increment 3
+
+* All "standard" exporters in vss-tools support structs.
+* Guidelines on when to consider using structs rather than branches documented.
+
+### Increment 4
+
+* Struct support released as a new VSS major release.
+* Downstream projects (VISS, VSSO, KUKSA.val) can start integrating struct support.
+* We may start to use structs in VSS standard catalog.
+
