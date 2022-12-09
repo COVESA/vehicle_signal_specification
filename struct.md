@@ -25,9 +25,6 @@ A few hypothetical examples include:
 * Obstacles - where each obstacle may contain information like, category, probability and location
 * Errors/Warnings - where each item might contain information on category and priority
 
-VSS supports a keyword `aggregate`that can be used on branches to indicate that the branch shall be read and written in atomic operations,
-but that has not been considered sufficient and the semantic interpretation could be difficult if the branch contains a mix of sensors, attributes and actuators.
-
 ### Intended usage
 
 The proposed struct support in VSS is introduced to facilitate logical binding/grouping of data that originates from the same source.
@@ -41,9 +38,34 @@ and no concept for introducing padding will exist.
 
 Structs shall be used in VSS standard catalog only when considered to give a significant advantage compared to using only primitive types.
 
-## General Idea
 
-Structs shall be defined similar to VSS signals and branches. A struct must be defined within a branch and a struct contain of one or more items.
+### Structs vs. Aggregate
+
+VSS supports a keyword `aggregate` that can be used on branches to indicate that the branch preferably shall be read and written in atomic operations.
+The keyword is however currently not used in the standard catalog, and it is not known if any implementation exists that actually consider it.
+There have been criticism that `aggregate` changes the semantic meaning of branches and signals, i.e. that a signal is no longer handed as an independent object.
+The exact meaning of `aggregate` is furthermore not well defined by VSS. Shall for example a write request (or update of sensor values) be rejected by an implementation
+if not all signals in the branch are updated in the same operation.
+Semantic interpretation is also ambiguous if the branch contains a mix of sensors, attributes and actuators.
+
+Using structs as datatype is better aligned with the view that VSS signals are independent objects, and the semantic ambiguities related to `aggregate` are not present for structs.
+
+**TBD**:
+
+*Shall we keep `aggregate`, or remove it? If it is to be kept, does it need to be better defined to be able to argue why it is still needed? Do we know of anyone or any implementation actually using it?*
+
+## General Idea and Basic Semantics
+
+A signal of struct type shall be defined in the same way as other VSS signals, the only difference would be that instead of using a primitive type there shall be a reference to a struct datatype.
+This means that structs can be used for all types of VSS signals (o.e. sensor, attribute and actuator).
+If a signal of struct type is sent or received, VSS expects all included items to have valid values, i.e. all items are mandatory
+For example, if a struct contains the items A, B and C - then it is expected that the sent signal contains value for all items.
+If some items are considered optional then the value range of the items must be adapted to include values indicating "not available" or "undefined",
+or additional items needs to be added to indicate which items that have valid values.
+
+VSS makes no assumption on how structs are transferred or stored by implementations.
+It is however expected that they are read and written by atomic operations.
+This means that the data storage shall be "locked" while the items of the struct are read, preventing changes to happen while reading/writing the items.
 
 Structs shall be defined in a separate tree. This means that signal definitions and types cannot exist in the same files.
 Tooling must thus be refactored to accept one (or more) parameters for specifying type definition(s), possibly with an argument like
@@ -55,23 +77,13 @@ Tooling must thus be refactored to accept one (or more) parameters for specifyin
 
 The top level types file (e.g. `vss_types.vspec`) can refer to other type files similar to the
 [top VSS file](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/VehicleSignalSpecification.vspec).
-Tooling may in the future support overlays for type declaration similar to how it is supported for signals.
+Tooling may in the future support overlays for type declarations similar to how it is supported for signals.
 
-**TBD: What naming restriction shall apply**
+## Naming Restrictions
 
-Shall it be allowed to use the same branch names in the type tree as in the signal tree, or must they be totally separated?
-If we consider using standard VSS catalog where all signals resides in the `Vehicle` top branch,
-is it then allowed to call the top-level in the type tree `Vehicle` as well?
-That could be useful if we want to use paths like `Vehicle.Types.SomeType`for VSS standard catalog in the future.
-Or shall it be required to have a totally separate tree, e.g. starting with `Types`?
-
-Theoretically we could allow to have exactly the same branch structure in the signal files as in the type files and even reuse the same name (with full path)
-as it anyway is clear from context whether we refer to a type or not. I.e. theoretically we could allow the signal `Vehicle.A.B` to refer to the struct `Vehicle.A.B`
-
-*Alternative 1: Do not enforce any restrictions on syntactic/semantic level, i.e. tooling shall support any naming style of the types. This does not prevent us from agreeing that top level name shall be e.g. "Types" in the standard catalog*
-
-*Alternative 2: Require that top path for the type file must be "Types", i.e. tooling shall give error if another name is found!*
-
+The VSS syntax and tooling shall not enforce any restrictions on naming for the type tree. It may even use the same branch structure as the signal tree.
+This means that it theoretically at the same time could exist both a signal `A.B.C` and a struct `A.B.C`.
+This is not a problem as it always from context is clear whether a name refers to a signal or a type.
 
 ## Simple Definition and Usage
 
@@ -132,14 +144,26 @@ Types.Powertrain:
 
 For now, two ways of referring to a type shall be considered correct:
 
-* Reference by (leaf) name to a struct definition within a branch with the same name in the type tree
+* Reference by (leaf) name to a struct definition within a branch with the same name in the type tree.
 * Reference by absolute path
 
 Relative paths (e.g. `../Powertrain.SomeStruct`) shall not be supported.
 Structs in parent branches will not be visible, in those cases absolute path needs to be used instead.
 
-*The reference by leaf name is applicable only for structs referncing other structs, and for the case that the type branch has the same name/path as the signal branch, if allowed!*
+*The reference by leaf name is applicable only for structs referencing other structs, and for the special case that the type branch has the same name/path as the signal branch!*
 
+Parsers shall first look for a matching type in a branch with the same name, and if not found consider the name given to be an absolute name.
+
+Example:
+
+```
+A.B.C:
+  datatype: Types.D
+  type: sensor
+```
+
+The parser shall first check if a type `A.B.Types.D` exist in the type tree, and if so use it.
+If not found it shall search for the type `Types.D` in the type tree.
 
 ## Expectations on VSS implementations (e.g. VISS, KUKSA.val)
 
@@ -264,6 +288,8 @@ It is proposed for now that default values shall not be supported for signals of
 This also mean that VSS does not need to specify notation for struct values.
 An exception is arrays of struct-types, where "empty array", i.e. `[]` shall be supported as default value.
 
+It shall be possible to define default values for items (unless the item is of struct type).
+If all items of a struct type have default values, then a signal (or item) using the struct type is also considered to have a default value.
 
 ## Allowed Values
 
@@ -273,7 +299,8 @@ discussing if it is to be supported only for string data and possible integer-ba
 
 Using `allowed` for `type: item` shall be allowed (if `allowed` is supported for the used datatype).
 Using `allowed` for signals and items of struct type or array of struct type shall not be allowed.
-Theoretically `allowed` for signals of struct type could be supported if supported for all contained da
+
+(Theoretically `allowed` for signals of struct type could be supported if supported for all contained items, but that would require additional effort to define syntax and for tooling to parse specified values).
 
 
 ## Proposed VSS 4.0 acceptance criteria and increments
