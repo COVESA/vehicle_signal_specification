@@ -1,0 +1,221 @@
+# This file defines units supported in the VSS catalog
+# It has precedence over the file defined in https://github.com/COVESA/vss-tools/blob/master/vspec/config.yaml
+# This file must be specified with the -u parameter when using vss-tools
+units:
+  mm:
+    label: millimeter
+    description: Distance measured in millimeters
+    domain: distance
+  cm:
+    label: centimeter
+    description: Distance measured in centimeters
+    domain: distance
+  m:
+    label: meter
+    description: Distance measured in meters
+    domain: distance
+  km:
+    label: kilometer
+    description: Distance measured in kilometers
+    domain: distance
+  inch:
+    label: inch
+    description: Distance measured in inches
+    domain: distance
+  km/h:
+    label: kilometer per hour
+    description: Speed measured in kilometers per hours
+    domain: speed
+  m/s:
+    label: meters per second
+    description: Speed measured in meters per second
+    domain: speed
+  m/s^2:
+    label: meters per second squared
+    description: Acceleration measured in meters per second squared
+    domain: acceleration
+  cm/s^2:
+    label: centimeters per second squared
+    description: Acceleration measured in centimeters per second squared
+    domain: acceleration
+  ml:
+    label: milliliter
+    description: Volume measured in milliliters
+    domain: volume
+  l:
+    label: liter
+    description: Volume measured in liters
+    domain: volume
+  cm^3:
+    label: cubic centimeters
+    description: Volume measured in cubic centimeters
+    domain: volume
+  celsius:
+    label: degree celsius
+    description: Temperature measured in degree celsius
+    domain: temperature
+  degrees:
+    label: degree
+    description: Angle measured in degrees
+    domain: angle
+  degrees/s:
+    label: degree per second
+    description: Angular speed measured in degrees per second
+    domain: angular speed
+  W:
+    label: watt
+    description: Power measured in watts
+    domain: power
+  kW:
+    label: kilowatt
+    description: Power measured in kilowatts
+    domain: power
+  PS:
+    label: horsepower
+    description: Power measured in horsepower
+    domain: power
+  kWh:
+    label: kilowatt hours
+    description: Energy consumption measured in kilowatt hours
+    domain: energy consumption
+  g:
+    label: gram
+    description: Mass measured in grams
+    domain: mass
+  kg:
+    label: kilogram
+    description: Mass measured in kilograms
+    domain: mass
+  lbs:
+    label: pound
+    description: Mass measured in pounds
+    domain: mass
+  V:
+    label: volt
+    description: Electric potential measured in volts
+    domain: electric potential
+  A:
+    label: ampere
+    description: Electric current measured in amperes
+    domain: electric current
+  Ah:
+    label: ampere hours
+    description: Electric charge measured in ampere hours
+    domain: electric charge
+  ms:
+    label: millisecond
+    description: Time measured in milliseconds
+    domain: time
+  s:
+    label: second
+    description: Time measured in seconds
+    domain: time
+  min:
+    label: minute
+    description: Time measured in minutes
+    domain: time
+  h:
+    label: hour
+    description: Time measured in hours
+    domain: time
+  day:
+    label: days
+    description: Time measured in days
+    domain: time
+  weeks:
+    label: weeks
+    description: Time measured in weeks
+    domain: time
+  months:
+    label: months
+    description: Time measured in months
+    domain: time
+  years:
+    label: years
+    description: Time measured in years
+    domain: time
+  UNIX Timestamp:
+    label: UNIX Timestamp
+    description: Unix time is a system for describing a point in time. It is the number of seconds that have elapsed since the Unix epoch, excluding leap seconds.
+    domain: point in time
+  mbar:
+    label: millibar
+    description: Pressure measured in millibars
+    domain: pressure
+  Pa:
+    label: pascal
+    description: Pressure measured in pascal
+    domain: pressure
+  kPa:
+    label: kilopascal
+    description: Pressure measured in kilopascal
+    domain: pressure
+  stars:
+    label: stars
+    description: Rating measured in stars
+    domain: rating
+  g/s:
+    label: grams per second
+    description: Mass per time measured in grams per second
+    domain: mass per time
+  g/km:
+    label: grams per kilometer
+    description: Mass per distance measured in grams per kilometers
+    domain: mass per distance
+  kWh/100km:
+    label: kilowatt hours per 100 kilometers
+    description: Energy consumption per distance measured in kilowatt hours per 100 kilometers
+    domain: energy consumption per distance
+  ml/100km:
+    label: milliliter per 100 kilometers
+    description: Volume per distance measured in milliliters per 100 kilometers
+    domain: volume per distance
+  l/100km:
+    label: liter per 100 kilometers
+    description: Volume per distance measured in liters per 100 kilometers
+    domain: volume per distance
+  l/h:
+    label: liter per hour
+    description: Flow measured in liters per hour
+    domain: flow
+  mpg:
+    label: miles per gallon
+    description: Distance per volume measured in miles per gallon
+    domain: distance per volume
+  N:
+    label: newton
+    description: Force measured in newton
+    domain: force
+  Nm:
+    label: newton meter
+    description: Torque measured in newton meters
+    domain: torque
+  rpm:
+    label: revolutions per minute
+    description: Rotational speed measured in revolutions per minute
+    domain: rotational speed
+  Hz:
+    label: frequency
+    description: Frequency measured in hertz
+    domain: frequency
+  ratio:
+    label: ratio
+    description: Relation measured as ratio
+    domain: relation
+  percent:
+    label: percent
+    description: Relation measured in percent
+    domain: relation
+  nm/km:
+    label: nano meter per kilometer
+    description: nm/km
+    domain: nm/km
+  dBm:
+    label: decibel milliwatt
+    description: Power level expressed in decibels with reference to one milliwatt
+    domain: relation
+  kN:
+    label: kilo newton
+    description: Force measured in kilo newton
+    domain: force
+  
