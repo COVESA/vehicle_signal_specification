@@ -167,8 +167,8 @@ HMI.TemperatureUnit:
 HMI.TirePressureUnit:
   datatype: string
   type: actuator
-  allowed: [‘PSI’, ‘KPA’, ’BAR’]
-  description: Tire pressure unit used in the current HMI 
+  allowed: ['PSI', 'KPA', 'BAR']
+  description: Tire pressure unit used in the current HMI
 
 
 HMI.Brightness:
