@@ -211,3 +211,20 @@ SmartphoneProjection.SupportedMode:
   type: attribute
   allowed: [ 'ANDROID_AUTO', 'APPLE_CARPLAY', 'MIRROR_LINK', 'OTHER' ]
   description: Supportable list for projection.
+
+PowerOptimize:
+  type: branch
+  description: All PowerOptimize actions.
+
+PowerOptimize.DisplayBrightnessLevel:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Display BrightnessLevel in the case of PowerOptimize
+               0 = Lowest brightness possible.
+               100 = Maximum Brightness possible.
+
+
+
