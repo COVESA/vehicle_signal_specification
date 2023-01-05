@@ -38,7 +38,6 @@ and no concept for introducing padding will exist.
 
 Structs shall be used in VSS standard catalog only when considered to give a significant advantage compared to using only primitive types.
 
-
 ### Structs vs. Aggregate
 
 VSS supports a keyword `aggregate` that can be used on branches to indicate that the branch preferably shall be read and written in atomic operations.
@@ -47,12 +46,12 @@ There have been criticism that `aggregate` changes the semantic meaning of branc
 The exact meaning of `aggregate` is furthermore not well defined by VSS. Shall for example a write request (or update of sensor values) be rejected by an implementation
 if not all signals in the branch are updated in the same operation.
 Semantic interpretation is also ambiguous if the branch contains a mix of sensors, attributes and actuators.
-
 Using structs as datatype is better aligned with the view that VSS signals are independent objects, and the semantic ambiguities related to `aggregate` are not present for structs.
 
-**TBD**:
-
-*Shall we keep `aggregate`, or remove it? If it is to be kept, does it need to be better defined to be able to argue why it is still needed? Do we know of anyone or any implementation actually using it?*
+Aggregate could however be useful as information on deployment level.
+It gives the possibility to indicate that in this particular deployment the signals in the branch shall be treated as an aggregate.
+Exact meaning of the `aggregate` keyword is then deployment specific.
+With this view, aggregate shall never be used in the standard catalog, but can be used in overlays for deployment-specific purposes.
 
 ## General Idea and Basic Semantics
 
