@@ -498,7 +498,7 @@ CurrentLocation.GNSSReceiver.MountingPosition.Y:
                Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
                Positive values = left of origin. Negative values = right of origin.
                Left/Right is as seen from driver perspective, i.e. by a person looking forward.
-               
+
 CurrentLocation.GNSSReceiver.MountingPosition.Z:
   datatype: int16
   type: attribute
@@ -506,4 +506,6 @@ CurrentLocation.GNSSReceiver.MountingPosition.Z:
   description: Mounting position of GNSS receiver on Z-axis.
                Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
                Positive values = above center of rear axle. Negative values = below center of rear axle.
-               
+
+#include include/PowerOptimize.vspec
+

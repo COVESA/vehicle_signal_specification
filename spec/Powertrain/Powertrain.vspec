@@ -22,4 +22,5 @@ Type:
   description: Defines the powertrain type of the vehicle.
   comment: For vehicles with a combustion engine (including hybrids) more detailed information on fuels supported can
            be found in FuelSystem.SupportedFuelTypes and FuelSystem.SupportedFuels.
-  
+
+#include include/PowerOptimize.vspec

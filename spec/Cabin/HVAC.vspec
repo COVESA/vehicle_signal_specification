@@ -43,3 +43,5 @@ AmbientAirTemperature:
   type: sensor
   unit: celsius
   description: Ambient air temperature inside the vehicle.
+  
+#include include/PowerOptimize.vspec

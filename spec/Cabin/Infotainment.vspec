@@ -188,7 +188,7 @@ HMI.DayNightMode:
   type: actuator
   allowed: ['DAY', 'NIGHT']
   description: Current display theme
-  
+
 SmartphoneProjection:
   type: branch
   description: All smartphone projection actions.
@@ -211,3 +211,5 @@ SmartphoneProjection.SupportedMode:
   type: attribute
   allowed: [ 'ANDROID_AUTO', 'APPLE_CARPLAY', 'MIRROR_LINK', 'OTHER' ]
   description: Supportable list for projection.
+
+#include include/PowerOptimize.vspec
