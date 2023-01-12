@@ -81,7 +81,7 @@ ConsumptionSinceStart:
            The signal may however keep the value of the last trip until a new trip is started.
 
 TimeSinceStart:
-  deprecation: V3.1 replaced by Vehicle.StartTime
+  deprecation: V3.1 replaced by Vehicle.StartTime and Vehicle.TripDuration
   datatype: uint32
   type: sensor
   unit: s
