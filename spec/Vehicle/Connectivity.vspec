@@ -34,13 +34,13 @@ ConnectivityType:
 CurrentDownload:
   datatype: float
   type: sensor
-  unit: MB/s
+  unit: MiB/s
   description: Download bandwidth currently in-use.
 
 CurrentUpload:
   datatype: float
   type: sensor
-  unit: MB/s
+  unit: MiB/s
   description: Upload bandwidth currently in-use.
 
 Cellular:
@@ -51,7 +51,6 @@ Cellular.SignalStrength:
   type: sensor
   datatype: int8
   unit: dBm
-  max: 0
   description: Cellular connectivity signal strength.
   
 Cellular.NetworkType:
@@ -83,14 +82,14 @@ Cellular.DataUsage:
   
 Cellular.DataUsage.Limit:
   type: attribute
-  unit: MB
+  unit: MiB
   datatype: uint32
   min: 0
   description: Data usage limit in megabytes.
   
 Cellular.DataUsage.Current:
   type: sensor
-  unit: MB
+  unit: MiB
   datatype: uint32
   min: 0
   description: Amount of data used this cycle.
