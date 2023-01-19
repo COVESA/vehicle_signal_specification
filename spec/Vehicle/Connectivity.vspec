@@ -21,3 +21,131 @@ IsConnectivityAvailable:
   comment: This signal can be used by onboard vehicle services to decide what features that
            shall be offered to the driver, for example disable the 'check for update' button if vehicle does
            not have connectivity.
+           
+ConnectivityType:
+  datatype: string[]
+  type: attribute
+  allowed: [
+    'CELLULAR',
+    'WIFI'
+    ]
+  description: Type of connectivity currently available.
+  
+CurrentDownload:
+  datatype: float
+  type: sensor
+  unit: MB/s
+  description: Download bandwidth currently in-use.
+
+CurrentUpload:
+  datatype: float
+  type: sensor
+  unit: MB/s
+  description: Upload bandwidth currently in-use.
+
+Cellular:
+  type: branch
+  description: Properties related to cellular connectivity.
+  
+Cellular.SignalStrength:
+  type: sensor
+  datatype: int8
+  unit: dBm
+  max: 0
+  description: Cellular connectivity signal strength.
+  
+Cellular.NetworkType:
+  datatype: string[]
+  type: sensor
+  allowed: [
+    '2G',
+    '3G',
+    '4G',
+    '5G'
+    ]
+  description: Type of cellular network that is currently in-use.
+  comment:      There are a lot of subtypes that fall under the general '~G' types, but these aren't expanded upon here.
+  
+Cellular.NetworkSubtype:
+  datatype: string
+  type: sensor
+  description: Cellular network technology that is currently in-use.
+  comment:     For example, LTE and WiMAX both fall under the '4G' umbrella but are substantially different.
+  
+Cellular.Carrier:
+  datatype: string
+  type: sensor
+  description: Carrier that is currently in-use.
+
+Cellular.DataUsage:
+  type: branch
+  description: Information on cellular data usage.
+  
+Cellular.DataUsage.Limit:
+  type: attribute
+  unit: MB
+  datatype: uint32
+  min: 0
+  description: Data usage limit in megabytes.
+  
+Cellular.DataUsage.Current:
+  type: sensor
+  unit: MB
+  datatype: uint32
+  min: 0
+  description: Amount of data used this cycle.
+  
+Cellular.DataUsage.CycleLength:
+  type: attribute
+  unit: day
+  datatype: uint16
+  min: 0
+  description: Length of a data cycle.
+  comment:     Defines the period where the current data usage is relevant.
+  
+Cellular.DataUsage.CycleReset:
+  type: attribute
+  unit: day
+  datatype: uint16
+  min: 0
+  description: Time until the next data cycle starts.
+  
+WiFi:
+  type: branch
+  description: Properties related to WiFi connectivity.
+  
+WiFi.SignalStrength:
+  type: sensor
+  datatype: int8
+  unit: dBm
+  max: 0
+  description: WiFi connectivity signal strength.
+
+WiFi.SSID:
+  type: sensor
+  datatype: string
+  description: SSID of connected WiFi network.
+
+WiFi.NetworkType:
+  datatype: string[]
+  type: sensor
+  allowed: [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '6e',
+    '7'
+    ]
+  description: Type of WiFi network that is currently in-use.
+
+WiFi.IsMetered:
+  datatype: boolean
+  type: sensor
+  description: Indicates if the WiFi connectivity is metered.
+               True = Metered. False = Not metered.
+  comment: This signal can be used by onboard vehicle services to limit features such as background update downloads when on metered networks.
+
