@@ -40,7 +40,7 @@ The figure below shows an example snapshot of a generated tree of the
 specification. The leafs contain the actual information as shown in the figure.
 Before going into detail of the specification, let's dig deeper into taxonomies.
 
-![Example tree](/vehicle_signal_specification/images/tree.png?classes=shadow&width=60pc)
+![Example tree](https://covesa.github.io/vehicle_signal_specification/images/tree.png?classes=shadow&width=60pc)
 
 ## VSS usage for other domains
 
