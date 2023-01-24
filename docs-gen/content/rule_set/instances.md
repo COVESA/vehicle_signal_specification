@@ -44,7 +44,7 @@ But there are cases, when nodes are linked more the general concept of
 a branch, but not to the single instance. This could be the `DoorCount`,
 which would rather be `Door.Count`, `WheelDiameter`, which is rather linked
 to an axle rather than the wheel itself or `Brake.FluidLevel` which is not
-measured for a single break, but rather a system indication. 
+measured for a single brake, but rather a system indication. 
 
 To exclude a child-node from the instantiation of the *direct* parent node, set the
 keyword `instantiate` to `false` (`true` by default). Please check the following
