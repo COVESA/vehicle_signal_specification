@@ -13,7 +13,7 @@ Please note that, from a YAML perspective, the include directive is just another
 The file [VehicleSignalSpecification.vspec](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/VehicleSignalSpecification.vspec) serves as root
 and includes other *vspec* files from the [VSS repository](https://github.com/COVESA/vehicle_signal_specification).
 
-The raw specification files can with help of tools in the [vss-tools repository](https://github.com/COVESA/vss-tools) be converted to other formats that are more user friendly to read. Converted representations are also included as release artifacts for each [VSS release](https://github.com/COVESA/vehicle_signal_specification/releases).
+The raw specification files can, with help of tools in the [vss-tools repository](https://github.com/COVESA/vss-tools), be converted to other formats that are more user friendly to read. Converted representations are also included as release artifacts for each [VSS release](https://github.com/COVESA/vehicle_signal_specification/releases).
 
 ## Addressing Nodes
 
