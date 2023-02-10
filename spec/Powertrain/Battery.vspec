@@ -104,7 +104,7 @@ StateOfCharge.Displayed:
   max: 100.00
   description: State of charge displayed to the customer.
 
-StateOfCharge.CurrentNetCharge;
+StateOfCharge.CurrentNetCharge:
   type: sensor
   datatype: float
   unit: kWh
@@ -383,8 +383,8 @@ Charging.TimeToComplete:
            then Charging.TimeToComplete shall report 5 hours.
 
 Charging.Displayed:
-  type: uint32
-  datatype: float
+  type: sensor
+  datatype: uint32
   unit: s
   description: The time displayed to the customer which is needed for the current charging process to reach complete charge.
 
