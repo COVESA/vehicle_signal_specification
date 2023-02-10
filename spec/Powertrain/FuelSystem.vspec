@@ -40,6 +40,12 @@ TankCapacity:
   unit: l
   description: Capacity of the fuel tank in liters.
 
+TankNetCapacity:
+  datatype: float
+  type: sensor
+  unit: l
+  description: Net capacity of fuel tank in liters.
+
 Level:
   datatype: uint8
   type: sensor

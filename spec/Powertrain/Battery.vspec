@@ -104,6 +104,12 @@ StateOfCharge.Displayed:
   max: 100.00
   description: State of charge displayed to the customer.
 
+StateOfCharge.CurrentNetCharge;
+  type: sensor
+  datatype: float
+  unit: kWh
+  description: Current net state of charge of the high voltage battery expressed in kWh.
+
 NominalVoltage:
   datatype: uint16
   type: attribute
@@ -375,6 +381,12 @@ Charging.TimeToComplete:
   comment: Shall consider time set by Charging.Timer.Time.
            E.g. if charging shall start in 3 hours and 2 hours of charging is needed,
            then Charging.TimeToComplete shall report 5 hours.
+
+Charging.Displayed:
+  type: uint32
+  datatype: float
+  unit: s
+  description: The time displayed to the customer which is needed for the current charging process to reach complete charge.
 
 Charging.Timer:
   type: branch
