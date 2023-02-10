@@ -104,11 +104,12 @@ StateOfCharge.Displayed:
   max: 100.00
   description: State of charge displayed to the customer.
 
-StateOfCharge.CurrentNetCharge:
+StateOfCharge.CurrentEnergy:
   type: sensor
   datatype: float
   unit: kWh
-  description: Current net state of charge of the high voltage battery expressed in kWh.
+  description: Physical state of charge of high voltage battery expressed in kWh.
+  comment: Current energy could be calculated as .StateOfCharge.Current * .NetCapacity.
 
 NominalVoltage:
   datatype: uint16
@@ -386,7 +387,8 @@ Charging.Displayed:
   type: sensor
   datatype: uint32
   unit: s
-  description: The time displayed to the customer which is needed for the current charging process to reach complete charge.
+  description: The time displayed to the customer which is needed for the current charging process to reach complete NetCapacity of the battery.
+  comment: Calculated time for reaching 100% of NetCapacity.
 
 Charging.Timer:
   type: branch
