@@ -151,10 +151,10 @@ VehicleIdentification.KnownVehicleDamages:
   description: A textual description of known damages, both repaired and unrepaired.
 
 VehicleIdentification.OptionalExtras:
-  datatype:string[]
+  datatype: string[]
   type: attribute
   description: Optional extras refers to all car equipment options that are not installed as standard by the manufacturer.
-
+  comment: Allowed values are not standardized, each OEM can specify detail descriptions of array elements.
 #
 # Vehicle signals
 #
