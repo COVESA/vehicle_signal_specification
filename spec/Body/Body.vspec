@@ -1,4 +1,5 @@
 #
+# (C) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
 # (C) 2018 Volvo Cars
 # (C) 2016 Jaguar Land Rover
 #
@@ -57,6 +58,12 @@ Trunk.IsLocked:
   datatype: boolean
   type: actuator
   description: Is trunk locked or unlocked. True = Locked. False = Unlocked.
+
+Trunk.IsLightOn:
+  datatype: boolean
+  type: actuator
+  description: Is trunk light on
+  comment: V4.0 Moved from Vehicle.Cabin.Lights.IsTrunkOn because Trunk is not defined as part of the Cabin.
 
 
 #
@@ -224,6 +231,7 @@ Lights.LicensePlate:
 
 Lights.Brake:
   type: branch
+  description: Brake lights.
 #include BrakeLights.vspec Lights.Brake
 
 Lights.Hazard:

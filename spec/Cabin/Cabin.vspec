@@ -86,12 +86,12 @@ RearviewMirror.DimmingLevel:
 ##
 # Interior lights signals and sensors
 ##
-Lights:
+Light:
   type: branch
-  description: Interior lights signals and sensors.
+  description: Light that is part of the Cabin.
+  comment: V4.0 branch renamed from "Lights" to "Light" to comply with singular naming of entities. Use SingleConfigurableLight.vspec to describe interior lights that can be configured.
+#include InteriorLights.vspec Light
 
-# Include the lights specification and attach it under the Lights branch.x
-#include InteriorLights.vspec Lights
 
 ##
 # Door signals and attributes

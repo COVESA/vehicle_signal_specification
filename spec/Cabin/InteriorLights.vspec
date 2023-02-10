@@ -1,4 +1,5 @@
 #
+# (C) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
 # (C) 2018 Volvo Cars
 # (C) 2016 Jaguar Land Rover
 #
@@ -10,57 +11,55 @@
 # All interior lights and sensors
 #
 
+#
+# Non-configurable lights
+#
 IsGloveBoxOn:
   datatype: boolean
   type: actuator
   description: Is glove box light on
-
-IsTrunkOn:
-  datatype: boolean
-  type: actuator
-  description: Is trunk light light on
 
 IsDomeOn:
   datatype: boolean
   type: actuator
   description: Is central dome light light on
 
-AmbientLight:
+PerceivedAmbientLight:
   datatype: uint8
   type: sensor
   unit: percent
   min: 0
   max: 100
-  description: How much ambient light is detected in cabin. 0 = No ambient light. 100 = Full brightness
-
-LightIntensity:
-  datatype: uint8
-  type: sensor
-  unit: percent
-  min: 0
-  max: 100
-  description: Intensity of the interior lights. 0 = Off. 100 = Full brightness.
+  description: The percentage of ambient light that is measured (e.g., by a sensor) inside the cabin. 0 = No ambient light. 100 = Full brightness.
+  comment: V4.0 named changed from "AmbientLight" to "PerceivedAmbientLight". This is a read-only property that refers to the pre-existing light (e.g., natural light). If you are looking for the in-cabin decorative lights that sometimes are also called "AmbientLights", please refer to the branch Vehicle.Cabin.Light.AmbientLight.
 
 #
-# First / front row lights
+# Configurable lights
 #
 Spotlight:
   type: branch
-  instances: Row[1,4]
+  instances: 
+    - Row[1,2]
+    - ["Driver","Passenger"]
   description: Spotlight for a specific area in the vehicle.
+#include SingleConfigurableLight.vspec Spotlight
 
-Spotlight.IsSharedOn:
-  datatype: boolean
-  type: sensor
-  description: Is a shared light across a specific row on
 
-Spotlight.IsLeftOn:
-  datatype: boolean
+AmbientLight:
+  type: branch
+  instances: 
+    - Row[1,2]
+    - ["DriverSide","PassengerSide"]
+  description: Decorative coloured light inside the cabin, usually mounted on the door, cealing, etc.
+#include SingleConfigurableLight.vspec AmbientLight
+
+InteractiveLightBar:
+  type: branch
+  description: Decorative coloured light bar that supports effects. It is usually mounted on the dashboard (e.g., BMW i7 Interactive bar).
+#include SingleConfigurableLight.vspec InteractiveLightBar
+
+InteractiveLightBar.Effect:
   type: actuator
-  description: Is light on the left side switched on
-
-
-Spotlight.IsRightOn:
-  datatype: boolean
-  type: actuator
-  description: Is light on the right side switched on
+  datatype: string
+  description: Light effect selection from a predefined set of allowed values.
+  comment: Default and allowed values are OEM-specific and should be defined accordingly (e.g., with the use of overlays).
