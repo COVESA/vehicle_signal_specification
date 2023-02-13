@@ -1,4 +1,5 @@
 #
+# (C) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
 # (C) 2018 Volvo Cars
 # (C) 2016 Jaguar Land Rover
 #
@@ -46,7 +47,9 @@ LightIntensity:
 #
 Spotlight:
   type: branch
-  instances: Row[1,4]
+  instances: 
+    - Row[1,4]
+    - ["Driver","Passenger"]
   description: Spotlight for a specific area in the vehicle.
 
 Spotlight.IsSharedOn:

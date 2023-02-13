@@ -1,4 +1,5 @@
 #
+# (C) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
 # (C) 2018 Volvo Cars
 # (C) 2016 Jaguar Land Rover
 #
@@ -109,7 +110,7 @@ Door:
   type: branch
   instances:
     - Row[1,2]
-    - ["Left","Right"]
+    - ["Driver","Passenger"]
   description: All doors, including windows and switches.
 #include SingleDoor.vspec Door
 
@@ -130,13 +131,6 @@ DoorCount:
 # Row1 is the frontmost row.
 # Row2-RowX are subsequent rows of seats.
 #
-# Within each row there are up to Y seat positions
-# Pos1 is leftmost.
-# PosY is rightmost.
-#
-# The value of Y shall consider the row with most number of seats in the vehicle.
-# If a vehicle e.g. have 2 seats in front row and 3 seats in second row, then Pos
-# shall be defined as Pos[1,3]
 # Which seats that actually exist can be defined by SeatPosCount
 ##
 
@@ -144,7 +138,7 @@ Seat:
   type: branch
   instances:
     - Row[1,2]
-    - Pos[1,3]
+    - ["Driver","Middle","Passenger"]
   description: All seats.
 #include SingleSeat.vspec Seat
 
@@ -152,11 +146,12 @@ Seat:
 # Seat attributes.
 #
 DriverPosition:
-  datatype: uint8
+  datatype: string
   type: attribute
-  default: 1
+  allowed: ['LEFT', 'RIGHT']
+  default: 'LEFT'
   description: The position of the driver seat in row 1.
-  comment: Default value is position 1, i.e. a typical LHD vehicle.
+  comment: Default value is position 'LEFT', i.e. a typical LHD vehicle.
 
 SeatRowCount:
   datatype: uint8
