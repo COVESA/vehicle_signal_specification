@@ -16,7 +16,7 @@ IsOpen:
 
 Position:
   datatype: uint8
-  type: sensor
+  type: actuator
   min: 0
   max: 100
   unit: percent
@@ -24,7 +24,7 @@ Position:
 
 IsChildLockEngaged:
   datatype: boolean
-  type: sensor
+  type: actuator
   description: Is window child lock engaged. True = Engaged. False = Disengaged.
 
 # Include the window controlling switch and attach it to the
