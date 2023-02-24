@@ -149,6 +149,7 @@ Warning: Attribute(s) sensor in element Temperature not a core or known extended
 * `Vehicle.Powertrain.FuelSystem.TimeSinceStart` deprecated from 3.1. New signal `Vehicle.StartTime` added.
   Reason is that `TimeSinceStart` is not powertrain-related and other signals related to current trip are located on top-level.
   After discussion it was agreed that it is better to have a signal for start time rather than duration.
+* Refactoring of signals in `Vehicle.Body.Lights` branch performed, some signals have new names.
 
 ## Planned Changes VSS 4.0
 
