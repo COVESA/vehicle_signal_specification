@@ -61,6 +61,7 @@ ttl:
 # Include all offically supported outputs (i.e. those created by travis_targets).
 # Exception is binary as it might be target specific and library anyway needs to be rebuilt.
 # As of today all artifacts generated for release shall include UUID if supported.
+# Note: From VSS 3.1 individual files are uploaded instead of tar file, but this command kept for now anyway
 tar:
 	tar -czvf vss_rel_$$(cat VERSION).tar.gz vss_rel_$$(cat VERSION).json vss_rel_$$(cat VERSION).fidl vss_rel_$$(cat VERSION).yaml \
 	vss_rel_$$(cat VERSION).csv vss_rel_$$(cat VERSION).graphql.ts vss_rel_$$(cat VERSION).idl
