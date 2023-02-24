@@ -2,7 +2,7 @@
 title: "Struct Types"
 date: 2019-08-04T11:11:48+02:00
 weight: 15
-----
+---
 
 *COVESA is in the process of introducing struct support.*
 *It is a still an experimental feature, and information on this page may be incorrect, may change, or may not be supported by tooling yet!*
