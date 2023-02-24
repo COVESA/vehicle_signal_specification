@@ -1,7 +1,7 @@
 ---
 title: "Attributes"
 date: 2019-08-04T12:37:31+02:00
-weight: 4
+weight: 40
 ---
 
 An attribute is an entity that has a default value, specified by
@@ -50,3 +50,5 @@ SeatPosCount:
   default: [2, 3]
   description: Number of seats across each row from the front to the rear
 ```
+
+Using default values for structs is not allowed!
