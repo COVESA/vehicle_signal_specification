@@ -17,12 +17,6 @@ Wheelbase:
   unit: mm
   description: Overall wheel base, in mm.
 
-Track:
-  datatype: uint16
-  type: attribute
-  default: 0
-  unit: mm
-  description: Overall wheel tracking, in mm.
 
 #
 # Axle definition
@@ -43,6 +37,30 @@ AxleCount:
 #
 # Axle attributes
 #
+
+Axle.TreadWidth:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: The lateral distance between the centerlines of the base tires at ground, including camber angle.
+               If there are dual rear wheels, measure from the midway points between the inner and outer tires.
+  comment: Corresponds to SAE J1100-2009 W101.
+
+Axle.TrackWidth:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: The lateral distance between the centers of the wheels, measured along the spindle, or axle axis.
+               If there are dual rear wheels, measure from the midway points between the inner and outer tires.
+  comment: Corresponds to SAE J1100-2009 W102.
+
+Axle.AxleWidth:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: The lateral distance between the wheel mounting faces, measured along the spindle axis.
+  comment: Corresponds to SAE J1100-2009 W113.
+
 Axle.WheelCount:
   datatype: uint8
   type: attribute
