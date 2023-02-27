@@ -116,7 +116,10 @@ ParkingBrake.IsEngaged:
   type: actuator
   description: Parking brake status. True = Parking Brake is Engaged. False = Parking Brake is not Engaged.
 
-
+ParkingBrake.IsAutoApplyEnabled:
+  datatype: boolean
+  type: actuator
+  description: Indicates if parking brake will be automatically engaged when the vehicle engine is turned off.
 #
 # Steering Wheel
 #
