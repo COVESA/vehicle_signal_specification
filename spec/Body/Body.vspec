@@ -224,6 +224,7 @@ Lights.LicensePlate:
 
 Lights.Brake:
   type: branch
+  description: Brake lights.
 #include BrakeLights.vspec Lights.Brake
 
 Lights.Hazard:
