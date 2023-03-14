@@ -49,7 +49,7 @@ Spotlight:
   type: branch
   instances: 
     - Row[1,4]
-    - ["Driver","Passenger"]
+    - ["DriverSide","PassengerSide"]
   description: Spotlight for a specific area in the vehicle.
 
 Spotlight.IsSharedOn:
