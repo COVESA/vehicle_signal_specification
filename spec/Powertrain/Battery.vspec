@@ -189,6 +189,7 @@ Charging.ChargeLimit:
   type: actuator
   min: 0
   max: 100
+  default: 100
   unit: percent
   description: Target charge limit (state of charge) for battery.
 
@@ -382,13 +383,6 @@ Charging.TimeToComplete:
   comment: Shall consider time set by Charging.Timer.Time.
            E.g. if charging shall start in 3 hours and 2 hours of charging is needed,
            then Charging.TimeToComplete shall report 5 hours.
-
-Charging.Displayed:
-  type: sensor
-  datatype: uint32
-  unit: s
-  description: The time displayed to the customer which is needed for the current charging process to reach complete NetCapacity of the battery.
-  comment: Calculated time for reaching 100% of NetCapacity.
 
 Charging.Timer:
   type: branch

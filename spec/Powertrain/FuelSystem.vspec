@@ -40,17 +40,17 @@ TankCapacity:
   unit: l
   description: Capacity of the fuel tank in liters.
 
-FuelStatus:
+AbsoluteLevel:
   datatype: float
   type: sensor
   unit: l
   description: Current available fuel in the fuel tank expressed in liters.
 
-Level:
+RelativeLevel:
   datatype: uint8
   type: sensor
   unit: percent
-  min: 0
+  min: 0              
   max: 100
   description: Level in fuel tank as percent of capacity. 0 = empty. 100 = full.
 
