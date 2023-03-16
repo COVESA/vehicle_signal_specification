@@ -1,7 +1,7 @@
 ---
 title: "Data Unit Types"
 date: 2019-08-04T12:36:12+02:00
-weight: 2
+weight: 20
 ---
 
 ## Introduction to Data Unit Types in VSS

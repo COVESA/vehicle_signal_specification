@@ -60,7 +60,13 @@ Axle.WheelWidth:
   unit: inch
   description: Width of wheels (rims without tires), in inches, as per ETRTO / TRA standard.
 
-
+Axle.SteeringAngle:
+  datatype: float
+  type: sensor
+  unit: degrees
+  description: Single track two-axle model steering angle.
+               Angle according to ISO 8855. Positive = degrees to the left. Negative = degrees to the right.
+  comment: Single track two-axle model steering angle refers to the angle that a centrally mounted wheel would have.
 #
 # Tire attributes
 #
@@ -110,7 +116,10 @@ ParkingBrake.IsEngaged:
   type: actuator
   description: Parking brake status. True = Parking Brake is Engaged. False = Parking Brake is not Engaged.
 
-
+ParkingBrake.IsAutoApplyEnabled:
+  datatype: boolean
+  type: actuator
+  description: Indicates if parking brake will be automatically engaged when the vehicle engine is turned off.
 #
 # Steering Wheel
 #

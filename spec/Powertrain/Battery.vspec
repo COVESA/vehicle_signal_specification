@@ -104,6 +104,13 @@ StateOfCharge.Displayed:
   max: 100.00
   description: State of charge displayed to the customer.
 
+StateOfCharge.CurrentEnergy:
+  type: sensor
+  datatype: float
+  unit: kWh
+  description: Physical state of charge of high voltage battery expressed in kWh.
+  comment: Current energy could be calculated as .StateOfCharge.Current * .NetCapacity.
+
 NominalVoltage:
   datatype: uint16
   type: attribute
@@ -182,6 +189,7 @@ Charging.ChargeLimit:
   type: actuator
   min: 0
   max: 100
+  default: 100
   unit: percent
   description: Target charge limit (state of charge) for battery.
 

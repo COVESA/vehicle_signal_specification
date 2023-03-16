@@ -2,13 +2,14 @@
 
 The intention of this document is to highlight major changes in the VSS specification (syntax and/or signals).
 It shall include all changes that affect backward compatibility or may be important to know when upgrading from one version to another.
+It typically does not list all changes to signals.
 It includes changes that are included in released version, but also changes planned for upcoming releases.
 
 *This document only contains changes introduced in VSS 3.0 or later!*
 
 
 
-## VSS 3.0 (Latest Release)
+## VSS 3.0
 
 [Complete release notes](https://github.com/COVESA/vehicle_signal_specification/releases/tag/v3.0)
 
@@ -106,7 +107,15 @@ Warning: Attribute(s) enum in element Position not a core or known extended attr
 The signals in `Vehicle.Cabin.Seat` have been significantly refactored.
 The background is that the old representation included limitations and ambiguities.
 
-## Planned Changes VSS 3.1 
+## VSS 3.1 (Latest Release)
+
+### Struct Support (Experimental)
+
+VSS has been extended with syntax to define structs, and to use them for signals.
+For more information see [VSS documentation](XXX).
+For VSS 3.1 support is only experimental and syntax may change.
+
+*Note: Only a subset of VSS-tools for VSS 3.1 supports structs!*
 
 ### Actuator and Sensor Attributes
 
@@ -133,12 +142,30 @@ No change to tooling is implemented, as the vss-tools already today give a warni
 Warning: Attribute(s) sensor in element Temperature not a core or known extended attribute.
 ```
 
+### Deprecated or Deleted signals
+
+* `Vehicle.TravelledDistance` deprecated from 3.1. New signal `Vehicle.TraveledDistance`added.
+  Background is to be aligned with VSS style guide using American English.
+* `Vehicle.Powertrain.FuelSystem.TimeSinceStart` deprecated from 3.1. New signal `Vehicle.StartTime` added.
+  Reason is that `TimeSinceStart` is not powertrain-related and other signals related to current trip are located on top-level.
+  After discussion it was agreed that it is better to have a signal for start time rather than duration.
+* Refactoring of signals in `Vehicle.Body.Lights` branch performed, some signals have new names.
+
 ## Planned Changes VSS 4.0
+
+### Struct Support (Official)
+
+The struct feature shall now be officially supported.
 
 ### Actuator and Sensor Attributes
 
 The attributes `sensor` and `actuator`, deprecated from VSS 3.1, will be removed from the [VSS syntax](docs-gen/content/rule_set/data_entry/sensor_actuator.md).
 
+
+### Deprecated or Deleted signals
+
+* `Vehicle.TravelledDistance` ,deprecated from VSS 3.1, will be removed.
+* `Vehicle.Powertrain.FuelSystem.TimeSinceStart` ,deprecated from VSS 3.1, will be removed.
 
 ## Planned Changes VSS 5.0
 

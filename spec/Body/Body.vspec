@@ -224,6 +224,7 @@ Lights.LicensePlate:
 
 Lights.Brake:
   type: branch
+  description: Brake lights.
 #include BrakeLights.vspec Lights.Brake
 
 Lights.Hazard:
@@ -258,3 +259,5 @@ RearMainSpoilerPosition:
   min: 0
   max: 100
   description: Rear spoiler position, 0% = Spoiler fully stowed. 100% = Spoiler fully exposed.
+
+#include include/PowerOptimize.vspec

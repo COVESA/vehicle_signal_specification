@@ -40,11 +40,17 @@ TankCapacity:
   unit: l
   description: Capacity of the fuel tank in liters.
 
-Level:
+AbsoluteLevel:
+  datatype: float
+  type: sensor
+  unit: l
+  description: Current available fuel in the fuel tank expressed in liters.
+
+RelativeLevel:
   datatype: uint8
   type: sensor
   unit: percent
-  min: 0
+  min: 0              
   max: 100
   description: Level in fuel tank as percent of capacity. 0 = empty. 100 = full.
 
@@ -76,8 +82,12 @@ ConsumptionSinceStart:
   type: sensor
   unit: l
   description: Fuel amount in liters consumed since start of current trip.
+  comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
+           The signal may however keep the value of the last trip until a new trip is started.
 
 TimeSinceStart:
+  deprecation: V3.1 replaced by Vehicle.StartTime and Vehicle.TripDuration
   datatype: uint32
   type: sensor
   unit: s

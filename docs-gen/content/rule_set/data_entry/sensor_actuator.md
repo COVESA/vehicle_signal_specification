@@ -1,7 +1,7 @@
 ---
 title: "Sensors & Actuators"
 date: 2019-08-04T12:37:03+02:00
-weight: 3
+weight: 30
 ---
 
 Sensors are signals to read values of properties in a vehicle. Values of sensors typically change over time. Reading a sensor shall return the current actual value of the related property, e.g. the current speed or the current position of the seat. 
@@ -67,10 +67,10 @@ cannot be specified if ```allowed``` is defined as the signal type.
 The sensing appliance used to produce the data entry.
 
 *The VSS signal metadata attributes `sensor` and `actuator` are no longer considered part of the core VSS syntax*
-*If needed, they shall be used as additional metadata, see [overlays](../overlay.md) *
+*If needed, they shall be used as additional metadata, see [overlays](../overlay.md)*
 
 **```actuator```** *[optional]* `deprecated since version 3.1`
 The actuating appliance consuming the data entry.
 
 *The VSS signal metadata attributes `sensor` and `actuator` are no longer considered part of the core VSS syntax*
-*If needed, they shall be used as additional metadata, see [overlays](../overlay.md) *
+*If needed, they shall be used as additional metadata, see [overlays](../overlay.md)*

@@ -1,7 +1,7 @@
 ---
 title: "Value restrictions"
 date: 2019-08-04T12:37:12+02:00
-weight: 5
+weight: 50
 ---
 
 ## Specifying allowed values
