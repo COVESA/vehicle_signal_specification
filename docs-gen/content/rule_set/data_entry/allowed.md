@@ -47,25 +47,25 @@ The actual value of the signal is expected to contain a subset of the values spe
 Example:
 
 ```YAML
-FavoriteColors:
+DogBreeds:
   datatype: string[]
   type: attribute
-  allowed: ['RED', 'GREEN', 'BLUE', 'YELLOW', 'BROWN']
-  description: Driver's favorite colors.
+  allowed: ['AKITA', 'BOXER', 'DACHSHUND', 'PAPILLON', 'PUG', 'VIZSLA']
+  description: Brief list of dog breeds.
 ```
 
 Examples of valid arrays:
 
 ```
   [] # Empty array
-  ['RED']
-  ['YELLOW', 'BROWN', 'RED', 'GREEN', 'BLUE']
-  ['BLUE', 'BLUE'] # duplication is allowed
+  ['BOXER']
+  ['PAPILLON', 'VIZSLA', 'BOXER', 'AKITA', 'DACHSHUND']
+  ['PUG', 'PUG'] # duplication is allowed
 ```
 
 
 Example of an invalid array:
 
 ```
-  ['RED', 'BLUE', 'BLACK'] # BLACK is not an allowed value
+  ['PAPILLON', 'VIZSLA', 'LOBSTER'] # LOBSTER is not in the allowed value list
 ```
