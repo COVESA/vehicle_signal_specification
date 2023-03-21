@@ -25,6 +25,7 @@ Position:
 IsChildLockEngaged:
   datatype: boolean
   type: actuator
+  instantiate: False
   description: Is window child lock engaged. True = Engaged. False = Disengaged.
 
 # Include the window controlling switch and attach it to the
