@@ -36,7 +36,8 @@ Window:
 IsChildLockActive:
   datatype: boolean
   type: sensor
-  description: Is door child lock engaged. True = Engaged. False = Disengaged.
+  description: Is door child lock active. True = Door cannot be opened from inside.
+               False = Door can be opened from inside.
 
 #
 # Window shade / curtain status
