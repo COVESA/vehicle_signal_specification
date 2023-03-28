@@ -121,6 +121,12 @@ DoorCount:
   description: Number of doors in vehicle.
 
 
+IsWindowChildLockEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is window child lock engaged. True = Engaged. False = Disengaged.
+  comment: Window child lock refers to the functionality to disable the move window button next to most windows,
+           so that they only can be operated by the driver.
 
 ##
 # Seat signals and attributes
