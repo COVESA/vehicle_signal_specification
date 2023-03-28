@@ -23,18 +23,18 @@ jobs:
       - name: Install python packages
         run: |
           python -V
-          python -m pip --quiet --no-input install --upgrade pip 
+          python -m pip --quiet --no-input install --upgrade pip
           python -m pip --quiet --no-input install --upgrade pipenv wheel
           pipenv --version
           pipenv run python --version
           cd vss-tools
-          
+
           pipenv install
           echo done!
           pipenv run python setup.py install
         env:
           PIPENV_VENV_IN_PROJECT: 1
-          
+
       - name: Test mandatory targets
         run: |
           pipenv install

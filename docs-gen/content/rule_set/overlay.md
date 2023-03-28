@@ -10,9 +10,9 @@ In order to adopt the specification we realize that certain additions and modifi
 
 The following features with the intended usage patterns are currently supported:
 1. **Adding new nodes:** By adding nodes the standard catalog can be extended with proprietary concepts.
-1. **Changing the value of existing metadata:** The standard catalog defines metadata based on what is assumed to be an average vehicle. 
+1. **Changing the value of existing metadata:** The standard catalog defines metadata based on what is assumed to be an average vehicle.
 Configurations may differ slightly (e.g. the instantiation of number of available seats), or special situations that require a (limited) modification of existing metadata.
-1. **Adding new key/value pairs as additional metadata:** 
+1. **Adding new key/value pairs as additional metadata:**
 Extending the model with richer information is a fundamental feature enabled by the layer concept.  For example, deploying VSS into a specific scenario or with a particular binding/technology often needs some additional information.
 1. **Multiple layer files:** VSS layers can be split into several files in order to clearly separate concerns. Layering allows all the features above to be applied in a composable manner. In order to keep a determinstic result a clear order has to remain.
 
@@ -28,15 +28,15 @@ and modify the standard catalog in a standardized way.
 
 ### How does it work?
 
-Simply said, the tooling accepts, *n* additional spec files, next to the original 
-specification file, which can overwrite or extend data in the VSS tree defined by 
+Simply said, the tooling accepts, *n* additional spec files, next to the original
+specification file, which can overwrite or extend data in the VSS tree defined by
 the original specification.Before you start you should know:
 - **Overlay-files have to be valid specification files by themselves.**
   In practice that means, that the path to a node has to be well defined.
 - **You can omit parent branches if there is no need to change them**
   Tooling supports implicit branches.
 - **Order matters.** The order on how the overlay files are called in the CLI
-  command matters! An example is shown in the figure below. 
+  command matters! An example is shown in the figure below.
 
 The Figure below illustrates an example of the main specification and two
 separate overlay files, an example call of the tooling and the resulting tree.

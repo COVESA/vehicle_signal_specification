@@ -50,7 +50,7 @@ RelativeLevel:
   datatype: uint8
   type: sensor
   unit: percent
-  min: 0              
+  min: 0
   max: 100
   description: Level in fuel tank as percent of capacity. 0 = empty. 100 = full.
 

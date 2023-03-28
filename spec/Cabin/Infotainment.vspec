@@ -72,7 +72,7 @@ Media.Volume:
   type: actuator
   min: 0
   max: 100
-  unit: percent  
+  unit: percent
   description: Current Media Volume
 
 Navigation:
@@ -98,19 +98,19 @@ Navigation.DestinationSet.Longitude:
   max: 180
   unit: degrees
   description: Longitude of destination in WGS 84 geodetic coordinates.
-  
+
 Navigation.Mute:
   datatype: string
   type: actuator
   allowed: ['MUTED', 'ALERT_ONLY', 'UNMUTED']
-  description: Navigation mute state that was selected.  
+  description: Navigation mute state that was selected.
 
 Navigation.Volume:
   datatype: uint8
   type: actuator
   min: 0
   max: 100
-  unit: percent    
+  unit: percent
   description: Current navigation volume
 
 HMI:
@@ -192,14 +192,14 @@ HMI.DayNightMode:
 SmartphoneProjection:
   type: branch
   description: All smartphone projection actions.
-  
+
 SmartphoneProjection.Active:
   datatype: string
   type: actuator
   allowed: [ 'NONE', 'ACTIVE',  'INACTIVE' ]
   description: Projection activation info.
   comment: NONE indicates that projection is not supported.
-  
+
 SmartphoneProjection.Source:
   datatype: string
   type: actuator

@@ -16,8 +16,8 @@ Id:
   datatype: string
   type: attribute
   description: Battery Identification Number as assigned by OEM.
-  comment: This could be serial number, part number plus serial number, UUID, 
-           or any other identifier that the OEM want to use to uniquely identify the battery individual. 
+  comment: This could be serial number, part number plus serial number, UUID,
+           or any other identifier that the OEM want to use to uniquely identify the battery individual.
 
 ProductionDate:
   datatype: string
@@ -71,8 +71,8 @@ NetCapacity:
   type: sensor
   unit: kWh
   description: Total net capacity of the battery considering aging.
-  
-  
+
+
 StateOfHealth:
   datatype: float
   type: sensor
@@ -208,13 +208,13 @@ Charging.MaximumChargingCurrent.Phase1:
   type: sensor
   unit: A
   description: Maximum AC charging current (rms) at inlet for Phase 1 that can be accepted by the system.
-  
+
 Charging.MaximumChargingCurrent.Phase2:
   datatype: float
   type: sensor
   unit: A
   description: Maximum AC charging current (rms) at inlet for Phase 2 that can be accepted by the system.
-  
+
 Charging.MaximumChargingCurrent.Phase3:
   datatype: float
   type: sensor
@@ -285,13 +285,13 @@ Charging.Mode:
 Charging.IsCharging:
   datatype: boolean
   type: sensor
-  description: True if charging is ongoing. 
+  description: True if charging is ongoing.
                Charging is considered to be ongoing if energy is flowing from charger to vehicle.
 
 Charging.IsDischarging:
   datatype: boolean
   type: sensor
-  description: True if discharging (vehicle to grid) is ongoing. 
+  description: True if discharging (vehicle to grid) is ongoing.
                Discharging is considered to be ongoing if energy is flowing from vehicle to charger/grid.
 
 Charging.StartStopCharging:

@@ -159,4 +159,3 @@ TorqueDistribution:
   max: 100
   description: Torque distribution between front and rear axle in percent.
                -100% = Full torque to front axle, 0% = 50:50 Front/Rear, 100% = Full torque to rear axle.
-

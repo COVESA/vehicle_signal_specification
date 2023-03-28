@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MPL%202.0-blue.svg)](https://opensource.org/licenses/MPL-2.0)
 [![Build Status](https://github.com/COVESA/vehicle_signal_specification/actions/workflows/buildcheck.yml/badge.svg)](https://github.com/COVESA/vehicle_signal_specification/actions/workflows/buildcheck.yml?query=branch%3Amaster)
 
-The overall goal of the Vehicle Signal Specification (VSS)  is to create a common understanding of vehicle signals in order to reach a “common language” independent of the protocol or serialisation format. 
+The overall goal of the Vehicle Signal Specification (VSS)  is to create a common understanding of vehicle signals in order to reach a “common language” independent of the protocol or serialisation format.
 
 Please find the official documentation at: [Vehicle Signal Specification](https://covesa.github.io/vehicle_signal_specification/)
 
@@ -17,7 +17,7 @@ To use a specific version of VSS in your toolchain, head over to our [releases p
 [Latest release](https://github.com/COVESA/vehicle_signal_specification/releases/latest)
 
 ### Discuss all things VSS, "meet" the community
-The community has regular calls to discuss topics around VSS. This includes specific tickets in this repository as well as the broader direction in which VSS is evolving.  You can find current call coordinates and dates in [our wiki](https://github.com/COVESA/vehicle_signal_specification/wiki/Weekly-meeting#meeting). 
+The community has regular calls to discuss topics around VSS. This includes specific tickets in this repository as well as the broader direction in which VSS is evolving.  You can find current call coordinates and dates in [our wiki](https://github.com/COVESA/vehicle_signal_specification/wiki/Weekly-meeting#meeting).
 
 
 ### Contribute to VSS
@@ -47,4 +47,3 @@ VSS is an open standard and we invite anybody to contribute. Currently VSS conta
  - [Jaguar Land Rover](https://www.jaguarlandrover.com/)
  - [Robert Bosch GmbH](https://www.bosch.com/)
  - [Geotab Inc](https://www.geotab.com/about/).
-
