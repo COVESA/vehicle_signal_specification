@@ -60,6 +60,22 @@ Temperature.Max:
   unit: celsius
   description: Current maximum temperature of the battery cells, i.e. temperature of the hottest cell.
 
+CellVoltage:
+  type: branch
+  description: Voltage information for cells in the battery pack.
+
+CellVoltage.Min:
+  datatype: float
+  type: sensor
+  unit: V
+  description: Current voltage of the battery cell with lowest voltage.
+
+CellVoltage.Max:
+  datatype: float
+  type: sensor
+  unit: V
+  description: Current voltage of the battery cell with highest voltage.
+
 GrossCapacity:
   datatype: uint16
   type: attribute
