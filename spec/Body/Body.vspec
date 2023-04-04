@@ -243,7 +243,7 @@ Lights.DirectionIndicator:
 ##
 Mirrors:
   type: branch
-  instances: ["Left", "Right"]
+  instances: ["DriverSide", "PassengerSide"]
   description: All mirrors.
 # Include mirrors specification and attach it to the Mirrors branch
 #include ExteriorMirrors.vspec Mirrors
