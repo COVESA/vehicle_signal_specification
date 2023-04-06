@@ -30,7 +30,7 @@ Vehicle.X.InstantiatedSignal:
   type: attribute
   description: "Instantiated Signal"
   datatype: string
-  
+
 Vehicle.X.NotInstantiatedSignal:
   type: attribute
   description: "Not Instantiated Signal"

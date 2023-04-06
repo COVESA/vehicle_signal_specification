@@ -94,7 +94,7 @@ Windshield:
   type: branch
   instances: ["Front", "Rear"]
   description: Windshield signals.
-  
+
 Windshield.Wiping:
   type: branch
   description: Windshield wiper signals.

@@ -48,7 +48,7 @@ VSS struct support is further described on [this page](data_types_struct).
 ## Timestamps
 
 Timestamps are in VSS typically represented as strings, formatted according to ISO 8601.
-Timestamps shall be expressed in UTC (Coordinated Universal Time), with special UTC designator ("Z"). 
+Timestamps shall be expressed in UTC (Coordinated Universal Time), with special UTC designator ("Z").
 Time resolution SHALL at least be seconds, with subsecond resolution as an optional degree of precision when desired.
 The time and date format shall be as shown below, where the sub-second data and delimiter is optional.
 

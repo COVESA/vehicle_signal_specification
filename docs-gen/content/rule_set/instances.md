@@ -44,7 +44,7 @@ But there are cases, when nodes are linked more the general concept of
 a branch, but not to the single instance. This could be the `DoorCount`,
 which would rather be `Door.Count`, `WheelDiameter`, which is rather linked
 to an axle rather than the wheel itself or `Brake.FluidLevel` which is not
-measured for a single break, but rather a system indication. 
+measured for a single break, but rather a system indication.
 
 To exclude a child-node from the instantiation of the *direct* parent node, set the
 keyword `instantiate` to `false` (`true` by default). Please check the following
@@ -116,9 +116,9 @@ Vehicle.Cabin.Door.Row4.Right.IsOpen
 
 It is possible to override the default instantiation provided by VSS by redefining the branch with
 different instantiation information. If multiple definitions of a branch exist with different
-instance definitions, then the last found definition will be used. 
+instance definitions, then the last found definition will be used.
 As an example, if only two rows of doors are needed, then the default VSS instance definition
-can be overridden by redefining the Door branch as shown in the example below. 
+can be overridden by redefining the Door branch as shown in the example below.
 
 ```YAML
 #Redefinition changing number of rows from 4 to 2
@@ -185,7 +185,7 @@ Vehicle.Body.Windshield:
 
 - Accept that a `branch Vehicle.Body.Windshield.Rear` will exist in the generated VSS representation,
   use mechanisms outside VSS to ignore that branch
-  
+
 ### Recommendation: Features shared among instances
 
 If a feature is shared among instances, it is recommended to publish that feature for all concerned instances.

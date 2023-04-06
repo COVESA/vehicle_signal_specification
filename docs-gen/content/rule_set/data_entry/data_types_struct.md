@@ -96,11 +96,11 @@ This could be a hypothetical content of a VSS type file
 ```
 Types:
   type: branch
-  
+
 Types.DeliveryInfo:
   type: struct
   description: A struct type containing info for each delivery
-  
+
 Types.DeliveryInfo.Address:
   datatype: string
   type: property
@@ -125,7 +125,7 @@ The type file may contain sub-branches and `#include`-statements just like regul
 ```
 Types:
   type: branch
-  
+
 Types.Powertrain:
   type: branch
   description: Powertrain types.
@@ -143,7 +143,7 @@ In Type Tree:
 
 In Signal Tree:
 * Reference by absolute path
-* Reference by (leaf) name to a struct definition within a branch with the same name in the type tree.  
+* Reference by (leaf) name to a struct definition within a branch with the same name in the type tree.
 **Note that the experimental feature supports only absolute path name resolution in the signal tree.**
 
 Relative paths (e.g. `../Powertrain.SomeStruct`) shall not be supported.
@@ -162,7 +162,7 @@ A.B.C:
 ```
 
 The parser shall first check if a type `A.B.Types.D` exist in the type tree, and if so use it.
-If not found it shall search for the type `Types.D` in the type tree.  
+If not found it shall search for the type `Types.D` in the type tree.
 **Note that the experimental feature supports only exact name resolution in the signal tree.**
 
 ## Expectations on VSS implementations (e.g. VISS, KUKSA.val)
@@ -212,13 +212,13 @@ It is allowed to refer to a structure type from within a structure
 OpenHours:
   type: struct
   description: A struct type containing information on open hours
-  
+
 OpenHours.Open:
   datatype: uint8
   type: property
   max: 24
   description: Time the address opens
-  
+
 OpenHours.Close:
   datatype: uint8
   type: property
@@ -228,7 +228,7 @@ OpenHours.Close:
 DeliveryInfo:
   type: struct
   description: A struct type containing info for each delivery
-  
+
 DeliveryInfo.Address:
   datatype: string
   type: property
@@ -238,7 +238,7 @@ DeliveryInfo.Receiver:
   datatype: string
   type: property
   description: Name of receiver
-  
+
 DeliveryInfo.Open:
   datatype: OpenHours
   type: property

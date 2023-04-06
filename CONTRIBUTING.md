@@ -39,7 +39,7 @@ This is the typical workflow for preparing a pull request. A Github account is r
 ## Handling of the created Pull Request
 
 1. The PR creator shall follow up on any comments or questions received on the Pull Request.
-2. The PR will be discussed at one of the next VSS weekly meetings. 
+2. The PR will be discussed at one of the next VSS weekly meetings.
    It is preferable if the PR creator can participate and give a quick introduction on the rationale for the change.
 3. Unless trivial, PRs shall typically be open for at least a week before merging is considered, to give time for comments.
 4. If needed, the PR creator needs to refactor the PR to address received comments and remarks.
@@ -51,6 +51,16 @@ This is the typical workflow for preparing a pull request. A Github account is r
 
 This section includes general guidelines and recommendations for anyone interested in contributing to VSS.
 
+### All contributions must follow COVESA contribution guidelines
+
+COVESA has defined [contribution guidelines](https://www.covesa.global/contribute).
+
+Every contribution must carry the following sign-off line with your real name and email address:
+"Signed-off-by: Firstname Lastname <firstname.lastname@example.com>".
+By supplying this sign-off line, you indicate your acceptance of the COVESA Certificate of Origin.
+
+If using git command line you can add a sign-off by using the `-s` argument when creating a commit.
+
 ### VSS Signals shall be generic
 
 Signals added to standard VSS shall be generic, i.e. it shall be possible that other manufacturers can reuse the signal.
@@ -58,7 +68,7 @@ Manufacturer-specific signals shall preferably be part of private overlays, and 
 
 ### Logical path
 
-VSS aims to put all signals in a logical path based on physical topology of the vehicle. 
+VSS aims to put all signals in a logical path based on physical topology of the vehicle.
 As an example, signals related to wheels should typically reside under `Vehicle.Chassis.Axle`.
 When proposing a new signal, reuse an existing path if a relevant path exists.
 
@@ -97,6 +107,18 @@ If it is unlikely that someone is interested in decimals for this value, select 
 Select a size which with reasonable margins can cover all vehicles.
 If it is likely that decimal values are needed select float or if relevant double.
 
+### Use the repository pre-commit hook
+
+The repository has [configuration file](.pre-commit-config.yaml) with pre-commits hooks.
+It executes a number of checks that typically must pass for a new Pull Request to be accepted and merged.
+You must manually configure pre-commit to use the provided hooks by running `pre-commit install` from the
+respository top folder.
+
+```bash
+~/vehicle_signal_specification$: pip install pre-commit
+~/vehicle_signal_specification$: pre-commit install
+```
+
 ### Avoid backward incompatible changes
 
 VSS sometimes change or remove existing signals, but only if there is a good reason.
@@ -107,4 +129,3 @@ Merging can be delayed, as VSS may decide to wait with the change until the next
 To avoid time consuming refactoring it could for bigger contributions be relevant to ask VSS if the wanted changes
 seems to be reasonable and likely will be accepted by VSS. Create an [issue](https://github.com/COVESA/vehicle_signal_specification/issues)
 and describe what you intend to do and ask for feedback. You can also create a draft pull request at an early stage and ask for comments.
-

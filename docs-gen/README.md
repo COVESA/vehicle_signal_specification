@@ -2,7 +2,7 @@
 
 The VSS documentation is realized with GitHub Pages. It is generated from
 the markdown files in the ```/docs-gen``` directory of this repository.
-The static webpage is generated automatically after every PR merged to master 
+The static webpage is generated automatically after every PR merged to master
 and deployed into a branch called `gh-pages`.
 
 

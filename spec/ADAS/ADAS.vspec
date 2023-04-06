@@ -32,18 +32,18 @@ ActiveAutonomyLevel:
     'SAE_2',
     'SAE_3_DISENGAGING', # Level 3 AD functions will disengage, driver notified
     'SAE_3',
-    'SAE_4_DISENGAGING', # Level 4 AD functions will disengage, driver notified   
+    'SAE_4_DISENGAGING', # Level 4 AD functions will disengage, driver notified
     'SAE_4',
     'SAE_5'
   ]
   description: Indicates the currently active level of autonomy according to SAE J3016 taxonomy.
-  comment: Follows https://www.sae.org/news/2019/01/sae-updates-j3016-automated-driving-graphic 
-           taxonomy. For SAE levels 3 and 4 the system is required to alert the driver before it 
-           will disengage. Level 4 systems are required to reach a safe state even if a driver does 
-           not take over. Only level 5 systems are required to not rely on a driver at all. 
-           While level 2 systems require the driver to be monitoring the system at all times, 
-           many level 2 systems, often termed "level 2.5" systems, do warn the driver shortly 
-           before reaching their operational limits, therefore we also support the DISENGAGING 
+  comment: Follows https://www.sae.org/news/2019/01/sae-updates-j3016-automated-driving-graphic
+           taxonomy. For SAE levels 3 and 4 the system is required to alert the driver before it
+           will disengage. Level 4 systems are required to reach a safe state even if a driver does
+           not take over. Only level 5 systems are required to not rely on a driver at all.
+           While level 2 systems require the driver to be monitoring the system at all times,
+           many level 2 systems, often termed "level 2.5" systems, do warn the driver shortly
+           before reaching their operational limits, therefore we also support the DISENGAGING
            state for SAE_2.
 
 SupportedAutonomyLevel:
@@ -66,7 +66,7 @@ CruiseControl:
 CruiseControl.IsEnabled:
   datatype: boolean
   type: actuator
-  description: Indicates if cruise control system is enabled (e.g. ready to receive configurations and settings) 
+  description: Indicates if cruise control system is enabled (e.g. ready to receive configurations and settings)
                True = Enabled. False = Disabled.
 
 CruiseControl.IsActive:
@@ -205,7 +205,7 @@ ESC.IsStrongCrossWindDetected:
   type: sensor
   description: Indicates if the ESC system is detecting strong cross winds.
                True = Strong cross winds detected. False = No strong cross winds detected.
-               
+
 ESC.RoadFriction:
   type: branch
   description: Road friction values reported by the ESC system.
@@ -286,4 +286,3 @@ EBA.IsEngaged:
   description: Indicates if EBA is currently regulating brake pressure. True = Engaged. False = Not Engaged.
 
 #include include/PowerOptimize.vspec
-

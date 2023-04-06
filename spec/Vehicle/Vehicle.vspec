@@ -471,7 +471,7 @@ CurrentLocation.GNSSReceiver:
 CurrentLocation.GNSSReceiver.FixType:
   datatype: string
   type: sensor
-  allowed: ['NONE', 
+  allowed: ['NONE',
             'TWO_D',
             'TWO_D_SATELLITE_BASED_AUGMENTATION',
             'TWO_D_GROUND_BASED_AUGMENTATION',
@@ -513,4 +513,3 @@ CurrentLocation.GNSSReceiver.MountingPosition.Z:
                Positive values = above center of rear axle. Negative values = below center of rear axle.
 
 #include include/PowerOptimize.vspec
-
