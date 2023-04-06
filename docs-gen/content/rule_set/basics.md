@@ -17,6 +17,11 @@ The raw specification files can, with help of tools in the [vss-tools repository
 be converted to other formats that are more user friendly to read.
 Converted representations are also included as release artifacts for each [VSS release](https://github.com/COVESA/vehicle_signal_specification/releases).
 
+VSS is in itself case sensitive.
+This means that keywords, signal names, types and values normally shall be given with the case specified.
+It is however recommended not to take advantage of this and reuse the same name with different case,
+as some implementations may treat VSS identifiers as case insensitive.
+
 ## Addressing Nodes
 
 Tree nodes are addressed, left-to-right, from the root of the tree

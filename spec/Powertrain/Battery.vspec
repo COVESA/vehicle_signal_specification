@@ -250,7 +250,7 @@ Charging.IsChargingCableConnected:
 
 Charging.IsChargingCableLocked:
   datatype: boolean
-  type: Actuator
+  type: actuator
   description: Is charging cable locked to prevent removal.
   comment: Locking of charging cable can be used to prevent unintentional removing during charging.
 
