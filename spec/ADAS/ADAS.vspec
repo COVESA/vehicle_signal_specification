@@ -285,5 +285,27 @@ EBA.IsEngaged:
   type: sensor
   description: Indicates if EBA is currently regulating brake pressure. True = Engaged. False = Not Engaged.
 
+#
+# Driver Monitoring System (DMS)
+#
+DMS:
+  type: branch
+  description: Driver Monitoring System signals.
+
+DMS.IsEnabled:
+  datatype: boolean
+  type: actuator
+  description: Indicates if DMS is enabled. True = Enabled. False = Disabled.
+
+DMS.IsWarning:
+  datatype: boolean
+  type: sensor
+  description: Indicates if DMS has registered a driver alert condition.
+
+DMS.IsError:
+  datatype: boolean
+  type: sensor
+  description: Indicates if DMS incurred an error condition. True = Error. False = No Error.
+
 #include include/PowerOptimize.vspec
 
