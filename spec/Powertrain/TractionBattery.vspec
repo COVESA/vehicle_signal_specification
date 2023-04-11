@@ -24,6 +24,13 @@ ProductionDate:
   type: attribute
   description: Production date of battery in ISO8601 format, e.g. YYYY-MM-DD.
 
+ErrorCodes:
+  datatype: string[]
+  type: sensor
+  description: Current error codes related to the battery, if any.
+  comment:     Error code format is not defined, it may be DTCs according to OBD II (SAE-J2012DA_201812)
+               standard ([P|C|B|U]XXXXX ) or any other format.
+
 IsPowerConnected:
   datatype: boolean
   type: sensor
@@ -60,6 +67,12 @@ Temperature.Max:
   unit: celsius
   description: Current maximum temperature of the battery cells, i.e. temperature of the hottest cell.
 
+Temperature.CellTemperature:
+  datatype: float[]
+  type: sensor
+  description: Array of cell temperatures. Length or array shall correspond to number of cells in vehicle.
+  comment: Cells are identified by relative position in array.
+
 CellVoltage:
   type: branch
   description: Voltage information for cells in the battery pack.
@@ -70,11 +83,29 @@ CellVoltage.Min:
   unit: V
   description: Current voltage of the battery cell with lowest voltage.
 
+CellVoltage.IdMin:
+  datatype: uint16
+  type: sensor
+  description: Identifier of the battery cell with lowest voltage.
+  comment: Identifier is supposed to be relative index of the cell, starting with 0 the first cell.
+
 CellVoltage.Max:
   datatype: float
   type: sensor
   unit: V
   description: Current voltage of the battery cell with highest voltage.
+
+CellVoltage.IdMax:
+  datatype: uint16
+  type: sensor
+  description: Identifier of the battery cell with highest voltage.
+  comment: Identifier is supposed to be relative index of the cell, starting with 0 the first cell.
+
+CellVoltage.CellVoltages:
+  datatype: float[]
+  type: sensor
+  description: Array of cell voltages. Length or array shall correspond to number of cells in vehicle.
+  comment: Cells are identified by relative position in array.
 
 GrossCapacity:
   datatype: uint16
@@ -87,7 +118,6 @@ NetCapacity:
   type: sensor
   unit: kWh
   description: Total net capacity of the battery considering aging.
-
 
 StateOfHealth:
   datatype: float
@@ -296,13 +326,21 @@ Charging.ChargePlugType:
 Charging.Mode:
   datatype: string
   type: actuator
-  allowed: ['MANUAL', 'TIMER', 'GRID', 'PROFILE']
-  description: Control of the charge process.
+  allowed: ['DEACTIVATED', 'AUTOMATIC', 'TRIGGERED', 'TIMER', 'PROFILE', 'EXTERNAL_ENTITY', 'MANUAL', 'GRID']
+  description: Describes how the charging process is controlled.
+               DEACTIVATED means that charging and discharging is deactivated, nothing will happen if charger is connected.
+               AUTOMATIC means charging will be initiated as soon as charger is connected.
+               TRIGGERED means charging will be initiated when triggered by user.
+               TIMER means charging is timer-based.
+               PROFILE means charging is controlled by profile downloaded to vehicle.
+               EXTERNAL_ENTITY means charging/discharging is controlled by the external entity connected to the vehicle.
+               This includes GRID-controlled charging (e.g. ISO 15118), but also other cases where vehicle is
+               connected to an arbitrary load that is powered by the vehicle.
                MANUAL means manually initiated (plug-in event, companion app, etc).
-               TIMER means timer-based.
                GRID means grid-controlled (e.g. ISO 15118).
-               PROFILE means controlled by profile download to vehicle.
-  comment:     The mechanism to provide a profile to the vehicle is currently not covered by VSS.
+  deprecation: V4.1 - MANUAL and GRID are deprecated, please use AUTOMATIC/TRIGGERED or EXTERNAL_ENITY instead.
+  comment:     EXTERNAL_ENTITY is the only mode where discharge may occur.
+               The mechanism to provide a profile to the vehicle is currently not covered by VSS.
 
 Charging.IsCharging:
   datatype: boolean
