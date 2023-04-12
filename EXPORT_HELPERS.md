@@ -1,9 +1,10 @@
 ## Proposal / Discussion Draft: Consistent & Documented Export Formats
 
-Goal of this proposal is to get consistent and conformant formatted exports of the VSS,
-from VSS-TOOLS or other potential 3rd-party implementations, resulting in a high degree of
-interoperability between implementations using a particular format (such as IDL), and to
-ease the creation of interoperable examples and reference implementations for a given format.
+Goal of this proposal is to produce consistent and conformant formatted exports of the VSS via
+the VSS-TOOLS or other potential 3rd-party implementations, resulting in a high degree of stability and
+interoperability between implementations using a particular format (such as IDL).
+
+This consistency and stability can ease the creation of interoperable examples and reference implementations for a given format.  
 This draft focuses on IDL, but is intended to also maximize interoperability within other export formats.
 
 To enable this capability, the following changes are proposed:
@@ -11,12 +12,14 @@ To enable this capability, the following changes are proposed:
 - Create a document to describe the recommended formatting and structure of the resulting exported (IDL or other) files.
 - Modify the exporters in VSS-TOOLS to conform to the above document.
 - Utilize the `arraysize` and `stringsizemax` to set the dimensions of the exported array/sequence/string types.
-- Introduce 3 new keywords to the VSS: `memberof`, `membergroup`, `isogroup` to be used as:
+- Introduce 3 new keywords to the VSS: `memberof`, `membergroup`, `isogroup`, used as:
     - To have a `branch` entity create a namespace in the export (named for itself), add:
         - `memberof: namespace`
     - To create named group containers in the export for elements, add to the branch entry:
-        - `membergroup <list of names>` to create containers that may be referenced in the parent of this branch.
+        - `membergroup <list of names>` to create containers that may also be referenced in the parent of this branch.
         - `isogroup <list of names>` to create containers that will not be referenced in the parent of this branch.
+    - To assign `membergroup` struct names to be referenced in a parent struct:
+        - `memberof: <list of parent struct names to insert reference into>`
     - To assign VSS elements to specific named group containers in the export, add to element entry:
         - `memberof: <list of group containers>`
 
@@ -27,7 +30,7 @@ information to consistently produce IDL that conforms to the above document.
 
 Examples of this export guidance on IDL includes:  
 
-**Namespaces**  
+### Namespaces
 In IDL, namespaces are expressed with a `module { ... }` container around the affected definitions.
 A sensible approach to namespacing in VSS would be to use containers for the major sections of
 the specification, such as: `ADAS`, `Body`, `Cabin`, `Chassis`, `OBD`, and `Powertrain`, all residing
@@ -45,7 +48,7 @@ within a top-level container for `Vehicle`.   The resulting IDL would look like:
 Note that only the `branch` entries that have this keyword will receive a namespace for their descendent types.
 All `branch` entries beneath them will be implemented as `struct`.
 
-**Creating structs from VSS elements**  
+### Creating structs from VSS elements
 Using the new keywords to define and assign elements to structs, the VSS can be tailored to match the intended usage
 patterns of the underlying signals.  For example:
 
@@ -119,10 +122,10 @@ such as:
   };
 ```
 
-**Including Descendent Structs in Parent Structs**
+### Including Descendent Structs in Parent Structs
 The VSS structure in some places implies that a struct might be included in its parent struct, 
 such as how `Vehicle.Powertrain.TractionBattery` might want to include its `Temperature` and `StateOfCharge` 
-descendant structs -- but there is no guidance in the VSS to support this grouping.
+descendant structs -- but there is no directive in the VSS to enforce this grouping.
 
 The added keywords could enforce the inclusion of references to descendant types within a parent,
 enabling data structures such as:
@@ -154,12 +157,13 @@ in the controlling document for each format (IDL, etc.).  For the IDL example, t
 
 
 ## Rationale
-This change seeks to enable VSS to take the most advantage of the capabilities of IDL and DDS.
+This change seeks to enable VSS to take the most advantage of the capabilities of IDL and DDS.  
 DDS (Data Description Service) is a (very) data-centric communications framework that uses IDL as its primary type definition language.
 Systems built on DDS can take advantage of the features that are built-in to the DDS standard, thereby avoiding the need to create 
-these features -- DDS handles it.  Some capabilities (in brief):
+these features -- DDS handles it.  
+Some capabilities (in brief):
 
-- **Content Filtering**: Subscribers to data topics can designate a filtering specification on the data elements within that topic, such as only allowing temperature readings if they are above 90C.  This filtering spec can be automatically moved to the *publisher* of that data, wherein it won't put data on the network if it doesn't meet the filter spec for the subscriber.
+- **Content Filtering**: Subscribers to data topics can designate a filtering specification on the data elements within that topic's data type, such as only allowing temperature readings if they are above 90C.  This filtering spec can be automatically moved to the *publisher* of that data, wherein it won't put data on the network if it doesn't meet the filter spec for the subscriber.
 
 - **Keyed Topics**: a data type definition (struct) can have one or more members designated as a `key`; This key 
 value will uniquely identify the source of the data, enabling many sources to share the same data topic 
@@ -175,6 +179,8 @@ assured of interoperability by using common data type definitions.   This approa
 to ensure interoperability between independently-created applications.
 
 This is why it's so important when expressing the VSS in IDL through a stable set of data type definitions, that they represent
-the most common usage patterns (groupings) for those signals.
+the most common usage patterns (groupings) for those signals -- and retain a consistent and stable type definition to ensure interoperability.
+Also note that DDS supports the notion of *type extensibility*, whereby elements can be appended to types while still retaining
+forward & backward compatibility.
 
 (Looking forward to a lively discussion :) 
