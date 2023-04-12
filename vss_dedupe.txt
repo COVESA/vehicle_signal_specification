@@ -1,0 +1,572 @@
+['Vehicle:VersionVSS']
+  attribute uint32 Major
+  attribute uint32 Minor
+  attribute uint32 Patch
+  attribute string Label
+['Vehicle:VehicleIdentification']
+  attribute string VIN
+  attribute string WMI
+  attribute string Brand
+  attribute string Model
+  attribute uint16 Year
+  attribute string AcrissCode
+  attribute string BodyType
+  attribute string DateVehicleFirstRegistered
+  attribute string MeetsEmissionStandard
+  attribute string ProductionDate
+  attribute string PurchaseDate
+  attribute string VehicleModelDate
+  attribute string VehicleConfiguration
+  attribute uint16 VehicleSeatingCapacity
+  attribute string VehicleSpecialUsage
+  attribute string VehicleInteriorColor
+  attribute string VehicleInteriorType
+  attribute string KnownVehicleDamages
+  attribute string[] OptionalExtras
+['Vehicle']
+  attribute string StartTime
+  attribute int16 RoofLoad
+  attribute float CargoVolume
+  attribute int16 EmissionsCO2
+  attribute uint16 CurbWeight
+  attribute uint16 GrossWeight
+  attribute uint16 MaxTowWeight
+  attribute uint16 MaxTowBallWeight
+  attribute uint16 Length
+  attribute uint16 Height
+  attribute uint16 Width
+  sensor    string LowVoltageSystemState
+  sensor    float Speed
+  sensor    float TravelledDistance
+  sensor    float TraveledDistance
+  sensor    float TraveledDistanceSinceStart
+  sensor    float TripDuration
+  sensor    boolean IsBrokenDown
+  sensor    boolean IsMoving
+  sensor    float AverageSpeed
+  sensor    uint16 CurrentOverallWeight
+  actuator  float TripMeterReading
+  actuator  uint8 PowerOptimizeLevel
+['Vehicle:LowVoltageBattery']
+  attribute uint16 NominalVoltage
+  attribute uint16 NominalCapacity
+  sensor    float CurrentVoltage
+  sensor    float CurrentCurrent
+['Vehicle:Acceleration']
+  sensor    float Longitudinal
+  sensor    float Lateral
+  sensor    float Vertical
+['Vehicle:AngularVelocity']
+  sensor    float Roll
+  sensor    float Pitch
+  sensor    float Yaw
+['Vehicle:Trailer']
+  sensor    boolean IsConnected
+['Vehicle:CurrentLocation']
+  sensor    string Timestamp
+  sensor    double Latitude
+  sensor    double Longitude
+  sensor    double Heading
+  sensor    double HorizontalAccuracy
+  sensor    double Altitude
+  sensor    double VerticalAccuracy
+['Vehicle:CurrentLocation:GNSSReceiver']
+  sensor    string FixType
+['Vehicle:CurrentLocation:GNSSReceiver:MountingPosition']
+  attribute int16 X
+  attribute int16 Y
+  attribute int16 Z
+['Vehicle:Powertrain']
+  attribute string Type
+  sensor    float AccumulatedBrakingEnergy
+  sensor    uint32 Range
+  actuator  uint8 PowerOptimizeLevel
+['Vehicle:Powertrain:CombustionEngine']
+  attribute string EngineCode
+  attribute uint16 Displacement
+  attribute float StrokeLength
+  attribute float Bore
+  attribute string Configuration
+  attribute uint16 NumberOfCylinders
+  attribute uint16 NumberOfValvesPerCylinder
+  attribute string CompressionRatio
+  attribute float EngineOilCapacity
+  attribute float EngineCoolantCapacity
+  attribute uint16 MaxPower
+  attribute uint16 MaxTorque
+  attribute string AspirationType
+  sensor    string EngineOilLevel
+  sensor    int32 OilLifeRemaining
+  sensor    boolean IsRunning
+  sensor    uint16 Speed
+  sensor    float EngineHours
+  sensor    float IdleHours
+  sensor    int16 ECT
+  sensor    int16 EOT
+  sensor    uint16 _MAP
+  sensor    uint16 MAF
+  sensor    uint8 TPS
+  sensor    uint16 EOP
+  sensor    uint16 Power
+  sensor    uint16 Torque
+['Vehicle:Powertrain:CombustionEngine:DieselExhaustFluid']
+  attribute float Capacity
+  sensor    uint8 Level
+  sensor    uint32 Range
+  sensor    boolean IsLevelLow
+['Vehicle:Powertrain:CombustionEngine:DieselParticulateFilter']
+  sensor    float InletTemperature
+  sensor    float OutletTemperature
+  sensor    float DeltaPressure
+['Vehicle:Powertrain:Transmission']
+  attribute string Type
+  attribute int8 GearCount
+  attribute string DriveType
+  sensor    float TravelledDistance
+  sensor    int8 CurrentGear
+  sensor    int16 Temperature
+  sensor    uint8 ClutchWear
+  actuator  int8 SelectedGear
+  actuator  boolean IsParkLockEngaged
+  actuator  boolean IsLowRangeEngaged
+  actuator  boolean IsElectricalPowertrainEngaged
+  actuator  string PerformanceMode
+  actuator  string GearChangeMode
+  actuator  float ClutchEngagement
+  actuator  float DiffLockFrontEngagement
+  actuator  float DiffLockRearEngagement
+  actuator  float TorqueDistribution
+['Vehicle:Powertrain:ElectricMotor']
+  attribute string EngineCode
+  attribute uint16 MaxPower
+  attribute uint16 MaxTorque
+  attribute uint16 MaxRegenPower
+  attribute uint16 MaxRegenTorque
+  sensor    int32 Speed
+  sensor    int16 Temperature
+  sensor    int16 CoolantTemperature
+  sensor    int16 Power
+  sensor    int16 Torque
+['Vehicle:Powertrain:TractionBattery']
+  attribute string Id
+  attribute string ProductionDate
+  attribute uint16 GrossCapacity
+  attribute uint16 NominalVoltage
+  attribute uint16 MaxVoltage
+  sensor    boolean IsPowerConnected
+  sensor    boolean IsGroundConnected
+  sensor    uint16 NetCapacity
+  sensor    float StateOfHealth
+  sensor    float CurrentVoltage
+  sensor    float CurrentCurrent
+  sensor    float CurrentPower
+  sensor    float AccumulatedChargedEnergy
+  sensor    float AccumulatedConsumedEnergy
+  sensor    float AccumulatedChargedThroughput
+  sensor    float AccumulatedConsumedThroughput
+  sensor    float PowerLoss
+  sensor    uint32 Range
+['Vehicle:Powertrain:TractionBattery:Temperature']
+  sensor    float Average
+  sensor    float Min
+  sensor    float Max
+['Vehicle:Powertrain:TractionBattery:StateOfCharge']
+  sensor    float Current
+  sensor    float Displayed
+  sensor    float CurrentEnergy
+['Vehicle:Powertrain:TractionBattery:Charging']
+  attribute string[] ChargePlugType
+  sensor    boolean IsChargingCableConnected
+  sensor    boolean IsCharging
+  sensor    boolean IsDischarging
+  sensor    float PowerLoss
+  sensor    float Temperature
+  sensor    float ChargeRate
+  sensor    uint32 TimeToComplete
+  actuator  uint8 ChargeLimit
+  actuator  string ChargePortFlap
+  actuator  boolean IsChargingCableLocked
+  actuator  string Mode
+  actuator  string StartStopCharging
+['Vehicle:Powertrain:TractionBattery:Charging:MaximumChargingCurrent', 'Vehicle:Powertrain:TractionBattery:Charging:ChargeCurrent']
+  sensor    float DC
+  sensor    float Phase1
+  sensor    float Phase2
+  sensor    float Phase3
+['Vehicle:Powertrain:TractionBattery:Charging:ChargeVoltage']
+  sensor    float DC
+  sensor    float Phase1
+  sensor    float Phase2
+  sensor    float Phase3
+['Vehicle:Powertrain:TractionBattery:Charging:Timer']
+  actuator  string Mode
+  actuator  string Time
+['Vehicle:Powertrain:TractionBattery:DCDC']
+  sensor    float PowerLoss
+  sensor    float Temperature
+['Vehicle:Powertrain:FuelSystem']
+  attribute string[] SupportedFuelTypes
+  attribute string[] SupportedFuel
+  attribute string HybridType
+  attribute float TankCapacity
+  sensor    float AbsoluteLevel
+  sensor    uint8 RelativeLevel
+  sensor    uint32 Range
+  sensor    float InstantConsumption
+  sensor    float AverageConsumption
+  sensor    float ConsumptionSinceStart
+  sensor    uint32 TimeSinceStart
+  sensor    boolean IsEngineStopStartEnabled
+  sensor    boolean IsFuelLevelLow
+['Vehicle:Body']
+  attribute string BodyType
+  attribute string RefuelPosition
+  actuator  float RearMainSpoilerPosition
+  actuator  uint8 PowerOptimizeLevel
+['Vehicle:Body:Hood']
+  actuator  boolean IsOpen
+['Vehicle:Body:Trunk:Front', 'Vehicle:Body:Trunk:Rear']
+  actuator  boolean IsOpen
+  actuator  boolean IsLocked
+['Vehicle:Body:Horn']
+  actuator  boolean IsActive
+['Vehicle:Body:Raindetection']
+  sensor    uint8 Intensity
+['Vehicle:Body:Windshield:Front:Wiping', 'Vehicle:Body:Windshield:Rear:Wiping']
+  sensor    uint8 WiperWear
+  sensor    boolean IsWipersWorn
+  actuator  string Mode
+  actuator  uint8 Intensity
+['Vehicle:Body:Windshield:Front:Wiping:System', 'Vehicle:Body:Windshield:Rear:Wiping:System']
+  sensor    float DriveCurrent
+  sensor    boolean IsWiping
+  sensor    boolean IsEndingWipeCycle
+  sensor    boolean IsWiperError
+  sensor    boolean IsPositionReached
+  sensor    boolean IsBlocked
+  sensor    boolean IsOverheated
+  actuator  string Mode
+  actuator  uint8 Frequency
+  actuator  float TargetPosition
+  actuator  float ActualPosition
+['Vehicle:Body:Windshield:Front', 'Vehicle:Body:Windshield:Rear']
+  actuator  boolean IsHeatingOn
+['Vehicle:Body:Windshield:Front:WasherFluid', 'Vehicle:Body:Windshield:Rear:WasherFluid']
+  sensor    boolean IsLevelLow
+  sensor    uint8 Level
+['Vehicle:Body:Lights']
+  actuator  string LightSwitch
+  actuator  boolean IsHighBeamSwitchOn
+['Vehicle:Body:Lights:Beam:Low', 'Vehicle:Body:Lights:Beam:High', 'Vehicle:Body:Lights:Running', 'Vehicle:Body:Lights:Backup', 'Vehicle:Body:Lights:Parking', 'Vehicle:Body:Lights:Fog:Rear', 'Vehicle:Body:Lights:Fog:Front', 'Vehicle:Body:Lights:LicensePlate']
+  sensor    boolean IsDefect
+  actuator  boolean IsOn
+['Vehicle:Body:Lights:Brake']
+  sensor    boolean IsDefect
+  actuator  string IsActive
+['Vehicle:Body:Lights:Hazard', 'Vehicle:Body:Lights:DirectionIndicator:Left', 'Vehicle:Body:Lights:DirectionIndicator:Right']
+  sensor    boolean IsDefect
+  actuator  boolean IsSignaling
+['Vehicle:Body:Mirrors:Left', 'Vehicle:Body:Mirrors:Right']
+  actuator  int8 Tilt
+  actuator  int8 Pan
+  actuator  boolean IsHeatingOn
+['Vehicle:Cabin:RearShade', 'Vehicle:Cabin:Sunroof:Shade', 'Vehicle:Cabin:Door:Row1:Left:Shade', 'Vehicle:Cabin:Door:Row1:Right:Shade', 'Vehicle:Cabin:Door:Row2:Left:Shade', 'Vehicle:Cabin:Door:Row2:Right:Shade']
+  actuator  string _Switch
+  actuator  uint8 Position
+['Vehicle:Cabin:HVAC:Station:Row1:Left', 'Vehicle:Cabin:HVAC:Station:Row1:Right', 'Vehicle:Cabin:HVAC:Station:Row2:Left', 'Vehicle:Cabin:HVAC:Station:Row2:Right', 'Vehicle:Cabin:HVAC:Station:Row3:Left', 'Vehicle:Cabin:HVAC:Station:Row3:Right', 'Vehicle:Cabin:HVAC:Station:Row4:Left', 'Vehicle:Cabin:HVAC:Station:Row4:Right']
+  actuator  uint8 FanSpeed
+  actuator  int8 Temperature
+  actuator  string AirDistribution
+['Vehicle:Cabin:HVAC']
+  sensor    float AmbientAirTemperature
+  actuator  boolean IsRecirculationActive
+  actuator  boolean IsFrontDefrosterActive
+  actuator  boolean IsRearDefrosterActive
+  actuator  boolean IsAirConditioningActive
+  actuator  uint8 PowerOptimizeLevel
+['Vehicle:Cabin:Infotainment:Media']
+  sensor    string DeclinedURI
+  actuator  string Action
+  actuator  string SelectedURI
+  actuator  uint8 Volume
+['Vehicle:Cabin:Infotainment:Media:Played']
+  sensor    string Artist
+  sensor    string Album
+  sensor    string Track
+  sensor    string URI
+  actuator  string Source
+  actuator  float PlaybackRate
+['Vehicle:Cabin:Infotainment:Navigation:DestinationSet']
+  actuator  double Latitude
+  actuator  double Longitude
+['Vehicle:Cabin:Infotainment:Navigation']
+  actuator  string Mute
+  actuator  uint8 Volume
+['Vehicle:Cabin:Infotainment:HMI']
+  sensor    string CurrentLanguage
+  actuator  string DateFormat
+  actuator  string TimeFormat
+  actuator  string DistanceUnit
+  actuator  string FuelVolumeUnit
+  actuator  string FuelEconomyUnits
+  actuator  string EVEconomyUnits
+  actuator  string TemperatureUnit
+  actuator  string TirePressureUnit
+  actuator  float Brightness
+  actuator  string DayNightMode
+['Vehicle:Cabin:Infotainment:SmartphoneProjection']
+  attribute string[] SupportedMode
+  actuator  string Active
+  actuator  string Source
+['Vehicle:Cabin:Infotainment']
+  actuator  uint8 PowerOptimizeLevel
+['Vehicle:Cabin:Sunroof']
+  sensor    int8 Position
+  actuator  string _Switch
+['Vehicle:Cabin:RearviewMirror']
+  actuator  uint8 DimmingLevel
+['Vehicle:Cabin:Lights']
+  sensor    uint8 AmbientLight
+  sensor    uint8 LightIntensity
+  actuator  boolean IsGloveBoxOn
+  actuator  boolean IsTrunkOn
+  actuator  boolean IsDomeOn
+['Vehicle:Cabin:Lights:Spotlight:Row1', 'Vehicle:Cabin:Lights:Spotlight:Row2', 'Vehicle:Cabin:Lights:Spotlight:Row3', 'Vehicle:Cabin:Lights:Spotlight:Row4']
+  sensor    boolean IsSharedOn
+  actuator  boolean IsLeftOn
+  actuator  boolean IsRightOn
+['Vehicle:Cabin:Door:Row1:Left', 'Vehicle:Cabin:Door:Row1:Right', 'Vehicle:Cabin:Door:Row2:Left', 'Vehicle:Cabin:Door:Row2:Right']
+  sensor    boolean IsChildLockActive
+  actuator  boolean IsOpen
+  actuator  boolean IsLocked
+['Vehicle:Cabin:Door:Row1:Left:Window', 'Vehicle:Cabin:Door:Row1:Right:Window', 'Vehicle:Cabin:Door:Row2:Left:Window', 'Vehicle:Cabin:Door:Row2:Right:Window']
+  sensor    boolean IsOpen
+  sensor    uint8 Position
+  sensor    boolean IsChildLockEngaged
+  actuator  string _Switch
+['Vehicle:Cabin']
+  attribute uint8 DoorCount
+  attribute uint8 DriverPosition
+  attribute uint8 SeatRowCount
+  attribute uint8[] SeatPosCount
+  actuator  uint8 PowerOptimizeLevel
+['Vehicle:Cabin:Seat:Row1:Pos1', 'Vehicle:Cabin:Seat:Row1:Pos2', 'Vehicle:Cabin:Seat:Row1:Pos3', 'Vehicle:Cabin:Seat:Row2:Pos1', 'Vehicle:Cabin:Seat:Row2:Pos2', 'Vehicle:Cabin:Seat:Row2:Pos3']
+  sensor    boolean IsOccupied
+  sensor    boolean IsBelted
+  actuator  int8 Heating
+  actuator  uint8 Massage
+  actuator  uint16 Position
+  actuator  uint16 Height
+  actuator  float Tilt
+['Vehicle:Cabin:Seat:Row1:Pos1:Occupant:Identifier', 'Vehicle:Cabin:Seat:Row1:Pos2:Occupant:Identifier', 'Vehicle:Cabin:Seat:Row1:Pos3:Occupant:Identifier', 'Vehicle:Cabin:Seat:Row2:Pos1:Occupant:Identifier', 'Vehicle:Cabin:Seat:Row2:Pos2:Occupant:Identifier', 'Vehicle:Cabin:Seat:Row2:Pos3:Occupant:Identifier', 'Vehicle:Driver:Identifier']
+  sensor    string Subject
+  sensor    string Issuer
+['Vehicle:Cabin:Seat:Row1:Pos1:Backrest', 'Vehicle:Cabin:Seat:Row1:Pos2:Backrest', 'Vehicle:Cabin:Seat:Row1:Pos3:Backrest', 'Vehicle:Cabin:Seat:Row2:Pos1:Backrest', 'Vehicle:Cabin:Seat:Row2:Pos2:Backrest', 'Vehicle:Cabin:Seat:Row2:Pos3:Backrest']
+  actuator  float Recline
+['Vehicle:Cabin:Seat:Row1:Pos1:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row1:Pos2:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row1:Pos3:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row2:Pos1:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row2:Pos2:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row2:Pos3:Backrest:Lumbar']
+  actuator  float Support
+  actuator  uint8 Height
+['Vehicle:Cabin:Seat:Row1:Pos1:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row1:Pos2:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row1:Pos3:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row2:Pos1:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row2:Pos2:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row2:Pos3:Backrest:SideBolster']
+  actuator  float Support
+['Vehicle:Cabin:Seat:Row1:Pos1:Seating', 'Vehicle:Cabin:Seat:Row1:Pos2:Seating', 'Vehicle:Cabin:Seat:Row1:Pos3:Seating', 'Vehicle:Cabin:Seat:Row2:Pos1:Seating', 'Vehicle:Cabin:Seat:Row2:Pos2:Seating', 'Vehicle:Cabin:Seat:Row2:Pos3:Seating']
+  actuator  uint16 Length
+['Vehicle:Cabin:Seat:Row1:Pos1:Headrest', 'Vehicle:Cabin:Seat:Row1:Pos2:Headrest', 'Vehicle:Cabin:Seat:Row1:Pos3:Headrest', 'Vehicle:Cabin:Seat:Row2:Pos1:Headrest', 'Vehicle:Cabin:Seat:Row2:Pos2:Headrest', 'Vehicle:Cabin:Seat:Row2:Pos3:Headrest']
+  actuator  uint8 Height
+  actuator  float Angle
+['Vehicle:Cabin:Seat:Row1:Pos1:Airbag', 'Vehicle:Cabin:Seat:Row1:Pos2:Airbag', 'Vehicle:Cabin:Seat:Row1:Pos3:Airbag', 'Vehicle:Cabin:Seat:Row2:Pos1:Airbag', 'Vehicle:Cabin:Seat:Row2:Pos2:Airbag', 'Vehicle:Cabin:Seat:Row2:Pos3:Airbag']
+  sensor    boolean IsDeployed
+['Vehicle:Cabin:Seat:Row1:Pos1:_Switch', 'Vehicle:Cabin:Seat:Row1:Pos2:_Switch', 'Vehicle:Cabin:Seat:Row1:Pos3:_Switch', 'Vehicle:Cabin:Seat:Row2:Pos1:_Switch', 'Vehicle:Cabin:Seat:Row2:Pos2:_Switch', 'Vehicle:Cabin:Seat:Row2:Pos3:_Switch']
+  actuator  boolean IsWarmerEngaged
+  actuator  boolean IsCoolerEngaged
+  actuator  boolean IsForwardEngaged
+  actuator  boolean IsBackwardEngaged
+  actuator  boolean IsUpEngaged
+  actuator  boolean IsDownEngaged
+  actuator  boolean IsTiltForwardEngaged
+  actuator  boolean IsTiltBackwardEngaged
+['Vehicle:Cabin:Seat:Row1:Pos1:_Switch:Backrest', 'Vehicle:Cabin:Seat:Row1:Pos2:_Switch:Backrest', 'Vehicle:Cabin:Seat:Row1:Pos3:_Switch:Backrest', 'Vehicle:Cabin:Seat:Row2:Pos1:_Switch:Backrest', 'Vehicle:Cabin:Seat:Row2:Pos2:_Switch:Backrest', 'Vehicle:Cabin:Seat:Row2:Pos3:_Switch:Backrest']
+  actuator  boolean IsReclineForwardEngaged
+  actuator  boolean IsReclineBackwardEngaged
+['Vehicle:Cabin:Seat:Row1:Pos1:_Switch:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row1:Pos2:_Switch:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row1:Pos3:_Switch:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row2:Pos1:_Switch:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row2:Pos2:_Switch:Backrest:Lumbar', 'Vehicle:Cabin:Seat:Row2:Pos3:_Switch:Backrest:Lumbar']
+  actuator  boolean IsMoreSupportEngaged
+  actuator  boolean IsLessSupportEngaged
+  actuator  boolean IsUpEngaged
+  actuator  boolean IsDownEngaged
+['Vehicle:Cabin:Seat:Row1:Pos1:_Switch:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row1:Pos2:_Switch:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row1:Pos3:_Switch:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row2:Pos1:_Switch:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row2:Pos2:_Switch:Backrest:SideBolster', 'Vehicle:Cabin:Seat:Row2:Pos3:_Switch:Backrest:SideBolster']
+  actuator  boolean IsMoreSupportEngaged
+  actuator  boolean IsLessSupportEngaged
+['Vehicle:Cabin:Seat:Row1:Pos1:_Switch:Seating', 'Vehicle:Cabin:Seat:Row1:Pos2:_Switch:Seating', 'Vehicle:Cabin:Seat:Row1:Pos3:_Switch:Seating', 'Vehicle:Cabin:Seat:Row2:Pos1:_Switch:Seating', 'Vehicle:Cabin:Seat:Row2:Pos2:_Switch:Seating', 'Vehicle:Cabin:Seat:Row2:Pos3:_Switch:Seating']
+  actuator  boolean IsForwardEngaged
+  actuator  boolean IsBackwardEngaged
+['Vehicle:Cabin:Seat:Row1:Pos1:_Switch:Headrest', 'Vehicle:Cabin:Seat:Row1:Pos2:_Switch:Headrest', 'Vehicle:Cabin:Seat:Row1:Pos3:_Switch:Headrest', 'Vehicle:Cabin:Seat:Row2:Pos1:_Switch:Headrest', 'Vehicle:Cabin:Seat:Row2:Pos2:_Switch:Headrest', 'Vehicle:Cabin:Seat:Row2:Pos3:_Switch:Headrest']
+  actuator  boolean IsUpEngaged
+  actuator  boolean IsDownEngaged
+  actuator  boolean IsForwardEngaged
+  actuator  boolean IsBackwardEngaged
+['Vehicle:Cabin:Seat:Row1:Pos1:_Switch:Massage', 'Vehicle:Cabin:Seat:Row1:Pos2:_Switch:Massage', 'Vehicle:Cabin:Seat:Row1:Pos3:_Switch:Massage', 'Vehicle:Cabin:Seat:Row2:Pos1:_Switch:Massage', 'Vehicle:Cabin:Seat:Row2:Pos2:_Switch:Massage', 'Vehicle:Cabin:Seat:Row2:Pos3:_Switch:Massage']
+  actuator  boolean IsIncreaseEngaged
+  actuator  boolean IsDecreaseEngaged
+['Vehicle:Cabin:Convertible']
+  sensor    string Status
+['Vehicle:ADAS']
+  attribute string SupportedAutonomyLevel
+  sensor    string ActiveAutonomyLevel
+  actuator  uint8 PowerOptimizeLevel
+['Vehicle:ADAS:CruiseControl']
+  sensor    boolean IsError
+  actuator  boolean IsEnabled
+  actuator  boolean IsActive
+  actuator  float SpeedSet
+['Vehicle:ADAS:LaneDepartureDetection', 'Vehicle:ADAS:ObstacleDetection']
+  sensor    boolean IsWarning
+  sensor    boolean IsError
+  actuator  boolean IsEnabled
+['Vehicle:ADAS:ABS', 'Vehicle:ADAS:TCS', 'Vehicle:ADAS:EBD', 'Vehicle:ADAS:EBA']
+  sensor    boolean IsError
+  sensor    boolean IsEngaged
+  actuator  boolean IsEnabled
+['Vehicle:ADAS:ESC']
+  sensor    boolean IsError
+  sensor    boolean IsEngaged
+  sensor    boolean IsStrongCrossWindDetected
+  actuator  boolean IsEnabled
+['Vehicle:ADAS:ESC:RoadFriction']
+  sensor    float MostProbable
+  sensor    float LowerBound
+  sensor    float UpperBound
+['Vehicle:Chassis']
+  attribute uint16 Wheelbase
+  attribute uint16 Track
+  attribute uint8 AxleCount
+['Vehicle:Chassis:Axle:Row1', 'Vehicle:Chassis:Axle:Row2']
+  attribute uint8 WheelCount
+  attribute float WheelDiameter
+  attribute float WheelWidth
+  attribute float TireDiameter
+  attribute uint16 TireWidth
+  attribute uint8 TireAspectRatio
+  sensor    float SteeringAngle
+['Vehicle:Chassis:Axle:Row1:Wheel:Left:Brake', 'Vehicle:Chassis:Axle:Row1:Wheel:Right:Brake', 'Vehicle:Chassis:Axle:Row2:Wheel:Left:Brake', 'Vehicle:Chassis:Axle:Row2:Wheel:Right:Brake']
+  sensor    uint8 FluidLevel
+  sensor    boolean IsFluidLevelLow
+  sensor    uint8 PadWear
+  sensor    boolean IsBrakesWorn
+['Vehicle:Chassis:Axle:Row1:Wheel:Left:Tire', 'Vehicle:Chassis:Axle:Row1:Wheel:Right:Tire', 'Vehicle:Chassis:Axle:Row2:Wheel:Left:Tire', 'Vehicle:Chassis:Axle:Row2:Wheel:Right:Tire']
+  sensor    uint16 Pressure
+  sensor    boolean IsPressureLow
+  sensor    float Temperature
+['Vehicle:Chassis:Axle:Row1:Wheel:Left', 'Vehicle:Chassis:Axle:Row1:Wheel:Right', 'Vehicle:Chassis:Axle:Row2:Wheel:Left', 'Vehicle:Chassis:Axle:Row2:Wheel:Right']
+  sensor    float Speed
+['Vehicle:Chassis:ParkingBrake']
+  actuator  boolean IsEngaged
+  actuator  boolean IsAutoApplyEnabled
+['Vehicle:Chassis:SteeringWheel']
+  attribute string Position
+  sensor    int16 Angle
+  actuator  uint8 Tilt
+  actuator  uint8 Extension
+['Vehicle:Chassis:Accelerator']
+  sensor    uint8 PedalPosition
+['Vehicle:Chassis:Brake']
+  sensor    uint8 PedalPosition
+  sensor    boolean IsDriverEmergencyBrakingDetected
+['Vehicle:OBD']
+  attribute uint8 OBDStandards
+  sensor    uint32 PidsA
+  sensor    string[] DTCList
+  sensor    string FreezeDTC
+  sensor    string FuelStatus
+  sensor    float EngineLoad
+  sensor    float CoolantTemperature
+  sensor    float ShortTermFuelTrim1
+  sensor    float LongTermFuelTrim1
+  sensor    float ShortTermFuelTrim2
+  sensor    float LongTermFuelTrim2
+  sensor    float FuelPressure
+  sensor    float _MAP
+  sensor    float EngineSpeed
+  sensor    float Speed
+  sensor    float TimingAdvance
+  sensor    float IntakeTemp
+  sensor    float MAF
+  sensor    float ThrottlePosition
+  sensor    string AirStatus
+  sensor    uint8 OxygenSensorsIn2Banks
+  sensor    uint8 OxygenSensorsIn4Banks
+  sensor    boolean IsPTOActive
+  sensor    float RunTime
+  sensor    uint32 PidsB
+  sensor    float DistanceWithMIL
+  sensor    float FuelRailPressureVac
+  sensor    float FuelRailPressureDirect
+  sensor    float CommandedEGR
+  sensor    float EGRError
+  sensor    float CommandedEVAP
+  sensor    float FuelLevel
+  sensor    uint8 WarmupsSinceDTCClear
+  sensor    float DistanceSinceDTCClear
+  sensor    float EVAPVaporPressure
+  sensor    float BarometricPressure
+  sensor    uint32 PidsC
+  sensor    float ControlModuleVoltage
+  sensor    float AbsoluteLoad
+  sensor    float CommandedEquivalenceRatio
+  sensor    float RelativeThrottlePosition
+  sensor    float AmbientAirTemperature
+  sensor    float ThrottlePositionB
+  sensor    float ThrottlePositionC
+  sensor    float AcceleratorPositionD
+  sensor    float AcceleratorPositionE
+  sensor    float AcceleratorPositionF
+  sensor    float ThrottleActuator
+  sensor    float RunTimeMIL
+  sensor    float TimeSinceDTCCleared
+  sensor    float MaxMAF
+  sensor    string FuelType
+  sensor    float EthanolPercent
+  sensor    float EVAPVaporPressureAbsolute
+  sensor    float EVAPVaporPressureAlternate
+  sensor    float ShortTermO2Trim1
+  sensor    float ShortTermO2Trim3
+  sensor    float LongTermO2Trim1
+  sensor    float LongTermO2Trim3
+  sensor    float ShortTermO2Trim2
+  sensor    float ShortTermO2Trim4
+  sensor    float LongTermO2Trim2
+  sensor    float LongTermO2Trim4
+  sensor    float FuelRailPressureAbsolute
+  sensor    float RelativeAcceleratorPosition
+  sensor    float HybridBatteryRemaining
+  sensor    float OilTemperature
+  sensor    float FuelInjectionTiming
+  sensor    float FuelRate
+['Vehicle:OBD:Status', 'Vehicle:OBD:DriveCycleStatus']
+  sensor    boolean IsMILOn
+  sensor    uint8 DTCCount
+  sensor    string IgnitionType
+['Vehicle:OBD:O2:Sensor1', 'Vehicle:OBD:O2:Sensor2', 'Vehicle:OBD:O2:Sensor3', 'Vehicle:OBD:O2:Sensor4', 'Vehicle:OBD:O2:Sensor5', 'Vehicle:OBD:O2:Sensor6', 'Vehicle:OBD:O2:Sensor7', 'Vehicle:OBD:O2:Sensor8']
+  sensor    float Voltage
+  sensor    float ShortTermFuelTrim
+['Vehicle:OBD:O2WR:Sensor1', 'Vehicle:OBD:O2WR:Sensor2', 'Vehicle:OBD:O2WR:Sensor3', 'Vehicle:OBD:O2WR:Sensor4', 'Vehicle:OBD:O2WR:Sensor5', 'Vehicle:OBD:O2WR:Sensor6', 'Vehicle:OBD:O2WR:Sensor7', 'Vehicle:OBD:O2WR:Sensor8']
+  sensor    float Lambda
+  sensor    float Voltage
+  sensor    float Current
+['Vehicle:OBD:Catalyst:Bank1', 'Vehicle:OBD:Catalyst:Bank2']
+  sensor    float Temperature1
+  sensor    float Temperature2
+['Vehicle:Driver']
+  sensor    float DistractionLevel
+  sensor    boolean IsEyesOnRoad
+  sensor    float AttentiveProbability
+  sensor    float FatigueLevel
+  sensor    uint16 HeartRate
+['Vehicle:Exterior']
+  sensor    float AirTemperature
+  sensor    float Humidity
+  sensor    float LightIntensity
+['Vehicle:Service']
+  sensor    boolean IsServiceDue
+  sensor    float DistanceToService
+  sensor    int32 TimeToService
+['Vehicle:Connectivity']
+  sensor    boolean IsConnectivityAvailable
