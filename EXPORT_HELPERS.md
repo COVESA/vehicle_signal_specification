@@ -50,10 +50,16 @@ All `branch` entries beneath them will be implemented as `struct`.
 
 ### Creating structs from VSS elements
 Using the new keywords to define and assign elements to structs, the VSS can be tailored to match the intended usage
-patterns of the underlying signals.  For example:
+patterns of the underlying signals, assinging them to one or more structs.  
 
 Some signals should 'obviously' be grouped together, such as `Vehicle.AngularVelocity`, `Vehicle.CurrentLocation`, etc..,
-resulting in structs that match this most likely usage pattern:
+```
+Vehicle.AngularVelocity
+  float Roll sensor
+  float Pitch sensor
+  float Yaw sensor
+```
+This should result in structs that match this most likely usage pattern:
 ```
   struct AngularVelocity {
     float Roll;
@@ -121,6 +127,38 @@ such as:
     uint16 CurrentOverallWeight;
   };
 ```
+To handle both cases above, the `memberof` and `membergroup`/`isogroup` keywords are used on the member elements and their 
+containing branch definitions:
+```
+AngularVelocity:
+  type: branch
+  description: Spatial rotation. Axis definitions according to ISO 8855.
+  memberof: VehicleTop
+  membergroup: VehicleAngularVelocity
+
+AngularVelocity.Roll:
+  datatype: float
+  type: sensor
+  unit: degrees/s
+  description: Vehicle rotation rate along X (longitudinal).
+  memberof: VehicleAngularVelocity
+
+AngularVelocity.Pitch:
+  datatype: float
+  type: sensor
+  unit: degrees/s
+  description: Vehicle rotation rate along Y (lateral).
+  memberof: VehicleAngularVelocity
+
+AngularVelocity.Yaw:
+  datatype: float
+  type: sensor
+  unit: degrees/s
+  description: Vehicle rotation rate along Z (vertical).
+  memberof: VehicleAngularVelocity
+```
+Note that this enables branches to create multiple struct definitions, and signals to be assigned to multiple struct defintions.
+
 
 ### Including Descendent Structs in Parent Structs
 The VSS structure in some places implies that a struct might be included in its parent struct, 
@@ -157,30 +195,21 @@ in the controlling document for each format (IDL, etc.).  For the IDL example, t
 
 
 ## Rationale
-This change seeks to enable VSS to take the most advantage of the capabilities of IDL and DDS.  
+This change seeks to enable VSS to take the most advantage of the capabilities of the exported-to technology.
+In this first example, the target is IDL and DDS.  
 DDS (Data Description Service) is a (very) data-centric communications framework that uses IDL as its primary type definition language.
-Systems built on DDS can take advantage of the features that are built-in to the DDS standard, thereby avoiding the need to create 
-these features -- DDS handles it.  
-Some capabilities (in brief):
-
-- **Content Filtering**: Subscribers to data topics can designate a filtering specification on the data elements within that topic's data type, such as only allowing temperature readings if they are above 90C.  This filtering spec can be automatically moved to the *publisher* of that data, wherein it won't put data on the network if it doesn't meet the filter spec for the subscriber.
-
-- **Keyed Topics**: a data type definition (struct) can have one or more members designated as a `key`; This key 
-value will uniquely identify the source of the data, enabling many sources to share the same data topic 
-without identity contention.
-
-- **Transport Independence**: system design is decoupled from the underlying transport, meaning that the application software need not change if the application uses TCP, UDP, Shared Memory, Serial, Radio, Backplane, etc.   Secure or insecure transports, reliable or not.
-
-- **A long list of capabilities** -- time-based filtering, persistence, liveliness, security, reliability, redundancy, batching, type extensibility, and many more capabilities are part of the open/published standard of DDS, from which more than 12 implementations have been created.
+DDS has a large number of tunable features / QoS / security / capabilities that enable it to work in extremely challenging environments
+where TCP/UDP alone cannot, all while decoupling the applications from these transport-level troubles.
 
 Systems based on DDS do well by having a defined set of data types, from which many applications can be created and will be
 assured of interoperability by using common data type definitions.   This approach has been very successful in the ROS
 (Robot Operating System) ecosystem, which uses a common set of data types and a data-centric communications framework (DDS)
 to ensure interoperability between independently-created applications.
 
-This is why it's so important when expressing the VSS in IDL through a stable set of data type definitions, that they represent
-the most common usage patterns (groupings) for those signals -- and retain a consistent and stable type definition to ensure interoperability.
-Also note that DDS supports the notion of *type extensibility*, whereby elements can be appended to types while still retaining
-forward & backward compatibility.
+This is why it's so important when expressing the VSS in IDL that the resulting data type (struct) definitions:
+- represent the usage patterns of the member signals (signals are grouped together per their use)
+- retain a stable and consistent definition (to ensure long-term interoperability)
+
+In short, this proposal seeks to enable the VSS to be more concisely defined at the implementation end.
 
 (Looking forward to a lively discussion :) 
