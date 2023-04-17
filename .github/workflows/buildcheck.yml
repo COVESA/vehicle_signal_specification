@@ -20,7 +20,7 @@ jobs:
           export PATH="$HOME/.pyenv/bin:$PATH"
           pyenv install 3.8.12
 
-      - name: Install python packages
+      - name: Install vss-tools dependencies
         run: |
           python -V
           python -m pip --quiet --no-input install --upgrade pip
@@ -28,7 +28,7 @@ jobs:
           pipenv --version
           pipenv run python --version
           cd vss-tools
-
+          sudo apt install -y protobuf-compiler
           pipenv install
           echo done!
           pipenv run python setup.py install
