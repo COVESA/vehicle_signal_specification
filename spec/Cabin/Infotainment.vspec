@@ -189,6 +189,21 @@ HMI.DayNightMode:
   allowed: ['DAY', 'NIGHT']
   description: Current display theme
 
+HMI.IsScreenAlwaysOn:
+  datatype: boolean
+  type: actuator
+  description: used to prevent the screen going black if no action placed
+
+HMI.LastActionTime:
+  datatype: string
+  type: sensor
+  description: Time for last hmi action, formatted according to ISO 8601 with UTC time zone.
+
+HMI.DisplayOffTime:
+  datatype: string
+  type: actuator
+  description: Time used to make display off
+
 SmartphoneProjection:
   type: branch
   description: All smartphone projection actions.
