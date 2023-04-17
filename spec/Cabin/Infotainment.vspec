@@ -192,7 +192,7 @@ HMI.DayNightMode:
 HMI.IsScreenAlwaysOn:
   datatype: boolean
   type: actuator
-  description: used to prevent the screen going black if no action placed
+  description: Used to prevent the screen going black if no action placed.
 
 HMI.LastActionTime:
   datatype: string
@@ -202,7 +202,7 @@ HMI.LastActionTime:
 HMI.DisplayOffTime:
   datatype: string
   type: actuator
-  description: Time used to make display off
+  description: Time used to make display off.
 
 SmartphoneProjection:
   type: branch
