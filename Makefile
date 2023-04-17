@@ -50,7 +50,7 @@ binary:
 	${TOOLSDIR}/vspec2binary.py --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).binary
 
 protobuf:
-	${TOOLSDIR}/contrib/vspec2protobuf.py  -I ./spec -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).proto
+	${TOOLSDIR}/vspec2protobuf.py  -I ./spec -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).proto
 
 graphql:
 	${TOOLSDIR}/vspec2graphql.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).graphql.ts
