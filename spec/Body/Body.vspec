@@ -130,6 +130,7 @@ Windshield.Wiping.System:
 Windshield.Wiping.WiperWear:
   datatype: uint8
   type: sensor
+  unit: percent
   max: 100
   description: Wiper wear as percent.
                0 = No Wear.

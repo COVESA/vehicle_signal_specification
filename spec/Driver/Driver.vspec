@@ -48,4 +48,5 @@ FatigueLevel:
 HeartRate:
   datatype: uint16
   type: sensor
+  unit: bpm
   description: Heart rate of the driver.
