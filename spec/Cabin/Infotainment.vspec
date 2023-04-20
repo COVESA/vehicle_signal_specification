@@ -127,7 +127,7 @@ HMI.FontSize:
   type: actuator
   allowed: ['STANDARD', 'LARGE', 'EXTRA_LARGE']
   description: Font size used in the current HMI
-  
+
 HMI.DateFormat:
   datatype: string
   type: actuator
