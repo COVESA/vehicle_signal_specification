@@ -122,6 +122,12 @@ HMI.CurrentLanguage:
   type: sensor
   description: ISO 639-1 standard language code for the current HMI
 
+HMI.FontSize:
+  datatype: string
+  type: actuator
+  allowed: ['STANDARD', 'LARGE', 'EXTRA_LARGE']
+  description: Font size used in the current HMI
+
 HMI.DateFormat:
   datatype: string
   type: actuator
