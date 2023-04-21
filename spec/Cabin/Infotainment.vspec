@@ -113,6 +113,12 @@ Navigation.Volume:
   unit: percent
   description: Current navigation volume
 
+Navigation.GuidanceVoice:
+  datatype: string
+  type: actuator
+  allowed: ['STANDARD_MALE', 'STANDARD_FEMALE', 'ETC']
+  description: Navigation guidance state that was selected.
+
 HMI:
   type: branch
   description: HMI related signals
