@@ -118,6 +118,7 @@ Navigation.GuidanceVoice:
   type: actuator
   allowed: ['STANDARD_MALE', 'STANDARD_FEMALE', 'ETC']
   description: Navigation guidance state that was selected.
+  comment: ETC indicates a voice alternative not covered by the explicitly listed alternatives.
 
 HMI:
   type: branch
