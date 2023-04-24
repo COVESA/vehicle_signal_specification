@@ -24,6 +24,11 @@ IsEyesOnRoad:
   type: sensor
   description: Has driver the eyes on road or not?
 
+IsHandsOnWheel:
+  datatype: boolean
+  type: sensor
+  description: Are the driver's hands on the steering wheel or not?
+
 AttentiveProbability:
   datatype: float
   type: sensor
