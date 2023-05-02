@@ -1,0 +1,13 @@
+#
+# (C) 2022 Bayerische Motoren Werke Aktiengesellschaft (BMW AG) - All rights reserved.
+#
+
+IsSignaling:
+  datatype: boolean
+  type: actuator
+  description: Indicates if light is signaling or off. True = signaling. False = Off.
+
+IsDefect:
+  datatype: boolean
+  type: sensor
+  description: Indicates if light is defect. True = Light is defect. False = Light has no defect.

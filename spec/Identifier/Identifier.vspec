@@ -5,7 +5,7 @@
 # provisions of the license provided by the LICENSE file in this repository.
 #
 #
-# Identifier 
+# Identifier
 # Based on OAuth 2.0. Subject is the UserID inside the claim of the Issuer Domain.
 #
 
@@ -13,7 +13,7 @@ Subject:
   datatype: string
   type: sensor
   description: Subject for the authentication of the occupant. E.g. UserID 7331677.
-  
+
 Issuer:
   datatype: string
   type: sensor

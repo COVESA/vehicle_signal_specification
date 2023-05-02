@@ -102,7 +102,7 @@ AspirationType:
 EngineOilLevel:
   datatype: string
   type: sensor
-  allowed: [ 
+  allowed: [
     'CRITICALLY_LOW',  # Critically low, immediate action required
     'LOW',             # Level below recommended range, but not critical
     'NORMAL',          # Within normal range, no need for driver action
@@ -282,7 +282,7 @@ DieselParticulateFilter.InletTemperature:
   type: sensor
   unit: celsius
   description: Inlet temperature of Diesel Particulate Filter.
-  
+
 #
 # Current outlet Temperature of Diesel Particulate Filter
 #
@@ -291,7 +291,7 @@ DieselParticulateFilter.OutletTemperature:
   type: sensor
   unit: celsius
   description: Outlet temperature of Diesel Particulate Filter.
-  
+
 #
 # Current delta pressure of Diesel Particulate Filter
 #
@@ -300,5 +300,3 @@ DieselParticulateFilter.DeltaPressure:
   type: sensor
   unit: Pa
   description: Delta Pressure of Diesel Particulate Filter.
-  
-  

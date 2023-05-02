@@ -23,13 +23,13 @@ VersionVSS:
 VersionVSS.Major:
   datatype: uint32
   type: attribute
-  default: 3
+  default: 4
   description: Supported Version of VSS - Major version.
 
 VersionVSS.Minor:
   datatype: uint32
   type: attribute
-  default: 0  
+  default: 0
   description: Supported Version of VSS - Minor version.
 
 VersionVSS.Patch:
@@ -150,6 +150,11 @@ VehicleIdentification.KnownVehicleDamages:
   type: attribute
   description: A textual description of known damages, both repaired and unrepaired.
 
+VehicleIdentification.OptionalExtras:
+  datatype: string[]
+  type: attribute
+  description: Optional extras refers to all car equipment options that are not installed as standard by the manufacturer.
+  comment: Allowed values are not standardized, each OEM can specify detail descriptions of array elements.
 #
 # Vehicle signals
 #
@@ -167,6 +172,16 @@ LowVoltageSystemState:
     ]
   description: State of the supply voltage of the control units (usually 12V).
 
+##
+#  Low voltage battery
+##
+LowVoltageBattery:
+  type: branch
+  description: Signals related to low voltage battery.
+
+#include Battery.vspec LowVoltageBattery
+
+
 Speed:
   datatype: float
   type: sensor
@@ -174,16 +189,53 @@ Speed:
   description: Vehicle speed.
 
 TravelledDistance:
+  deprecation: V3.1 moved to Vehicle.TraveledDistance
   datatype: float
   type: sensor
   unit: km
-  description: Odometer reading, total distance travelled during the lifetime of the vehicle.
+  description: Odometer reading, total distance traveled during the lifetime of the vehicle.
+
+TraveledDistance:
+  datatype: float
+  type: sensor
+  unit: km
+  description: Odometer reading, total distance traveled during the lifetime of the vehicle.
+
+TraveledDistanceSinceStart:
+  datatype: float
+  type: sensor
+  unit: km
+  description: Distance traveled since start of current trip.
+  comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
+           The signal may however keep the value of the last trip until a new trip is started.
+
+StartTime:
+  datatype: string
+  type: attribute
+  default: '0000-01-01T00:00Z'
+  description: Start time of current or latest trip, formatted according to ISO 8601 with UTC time zone.
+  comment: This signal is supposed to be set whenever a new trip starts.
+           A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
+           The default value indicates that the vehicle never has been started, or that latest start time is unknown.
+
+TripDuration:
+  datatype: float
+  type: sensor
+  unit: s
+  description: Duration of latest trip.
+  comment: This signal is not assumed to be continuously updated, but instead set to 0 when a trip starts
+           and set to the the actual duration of the trip when a trip ends.
+           A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
 
 TripMeterReading:
   datatype: float
-  type: sensor
+  type: actuator
   unit: km
-  description: Current trip meter reading.
+  description: Trip meter reading.
+  comment: The trip meter is an odometer that can be manually reset by the driver
 
 IsBrokenDown:
   datatype: boolean
@@ -204,7 +256,10 @@ AverageSpeed:
   type: sensor
   unit: km/h
   description: Average speed for the current trip.
-
+  comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+           A trip is considered to end when engine is no longer enabled.
+           The signal may however keep the value of the last trip until a new trip is started.
+           Calculation of average speed may exclude periods when the vehicle for example is not moving or transmission is in neutral.
 
 #
 # Spatial Acceleration
@@ -416,7 +471,7 @@ CurrentLocation.GNSSReceiver:
 CurrentLocation.GNSSReceiver.FixType:
   datatype: string
   type: sensor
-  allowed: ['NONE', 
+  allowed: ['NONE',
             'TWO_D',
             'TWO_D_SATELLITE_BASED_AUGMENTATION',
             'TWO_D_GROUND_BASED_AUGMENTATION',
@@ -448,7 +503,7 @@ CurrentLocation.GNSSReceiver.MountingPosition.Y:
                Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
                Positive values = left of origin. Negative values = right of origin.
                Left/Right is as seen from driver perspective, i.e. by a person looking forward.
-               
+
 CurrentLocation.GNSSReceiver.MountingPosition.Z:
   datatype: int16
   type: attribute
@@ -456,4 +511,5 @@ CurrentLocation.GNSSReceiver.MountingPosition.Z:
   description: Mounting position of GNSS receiver on Z-axis.
                Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
                Positive values = above center of rear axle. Negative values = below center of rear axle.
-               
+
+#include include/PowerOptimize.vspec

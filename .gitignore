@@ -4,10 +4,4 @@
 *.id
 
 # Generated files
-vss_rel_*.cnative
-vss_rel_*.csv
-vss_rel_*.fidl
-vss_rel_*.binary
-vss_rel_*.h
-vss_rel_*.json
-vss_rel_*_macro.h
+vss_rel_*

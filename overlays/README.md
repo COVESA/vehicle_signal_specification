@@ -3,7 +3,7 @@
 This directory contains overlays for VSS. Use of overlays is a new concept for VSS.
 The overlays in this folder shall currently be seen as examples only, and are not part of the official VSS specification.
 
-## Profiles 
+## Profiles
 
 Larger overlays to adapt VSS to a specific vehicle category, like motorbikes.
 

@@ -18,6 +18,8 @@ interpreted by the tools.
 
 ## Definition
 
+### How can I create instances for my `branch`?
+
 1. An instance can be defined in any branch.
 2. The instantiation is done for every node in the following path.
 3. Instances are defined with the key-word `instances`, followed by its
@@ -35,6 +37,19 @@ interpreted by the tools.
    four position instances will be created for each of the 'Left' and 'Right' instances,
    resulting into a total number of 8 instances.
 
+### How can I exclude child-nodes from instantiation?
+
+Often it makes sense to instantiate all child-nodes of a branch.
+But there are cases, when nodes are linked more the general concept of
+a branch, but not to the single instance. This could be the `DoorCount`,
+which would rather be `Door.Count`, `WheelDiameter`, which is rather linked
+to an axle rather than the wheel itself or `Brake.FluidLevel` which is not
+measured for a single break, but rather a system indication.
+
+To exclude a child-node from the instantiation of the *direct* parent node, set the
+keyword `instantiate` to `false` (`true` by default). Please check the following
+example for details.
+
 ## Example
 
 The example from above in the specification:
@@ -49,7 +64,16 @@ Door:
   description: All doors, including windows and switches
 #include SingleDoor.vspec Door
 
+Door.Count:
+  datatype: uint8
+  type: attribute
+  default: 4
+  instantiate: false
+  description: Number of doors in vehicle.
+```
 
+
+```yml
 # SingleDoor.vspec
 
 #
@@ -65,6 +89,7 @@ Results in the following dot-notated output:
 
 ```
 Vehicle.Cabin.Door
+Vehicle.Cabin.Door.Count
 Vehicle.Cabin.Door.Row1
 Vehicle.Cabin.Door.Row1.Left
 Vehicle.Cabin.Door.Row1.Left.IsOpen
@@ -91,9 +116,9 @@ Vehicle.Cabin.Door.Row4.Right.IsOpen
 
 It is possible to override the default instantiation provided by VSS by redefining the branch with
 different instantiation information. If multiple definitions of a branch exist with different
-instance definitions, then the last found definition will be used. 
+instance definitions, then the last found definition will be used.
 As an example, if only two rows of doors are needed, then the default VSS instance definition
-can be overridden by redefining the Door branch as shown in the example below. 
+can be overridden by redefining the Door branch as shown in the example below.
 
 ```YAML
 #Redefinition changing number of rows from 4 to 2
@@ -160,7 +185,7 @@ Vehicle.Body.Windshield:
 
 - Accept that a `branch Vehicle.Body.Windshield.Rear` will exist in the generated VSS representation,
   use mechanisms outside VSS to ignore that branch
-  
+
 ### Recommendation: Features shared among instances
 
 If a feature is shared among instances, it is recommended to publish that feature for all concerned instances.

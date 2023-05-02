@@ -185,7 +185,7 @@ OxygenSensorsIn2Banks:
   datatype: uint8
   type: sensor
   description: PID 13 - Presence of oxygen sensors in 2 banks. [A0..A3] == Bank 1, Sensors 1-4. [A4..A7] == Bank 2, Sensors 1-4
-  
+
 O2:
   instances:
     - Sensor[1,8]
@@ -197,7 +197,7 @@ O2.Voltage:
   type: sensor
   unit: V
   description: PID 1x (byte A) - Sensor voltage
-  
+
 O2.ShortTermFuelTrim:
   datatype: float
   type: sensor
@@ -253,7 +253,7 @@ O2WR.Lambda:
   datatype: float
   type: sensor
   description: PID 2x (byte AB) and PID 3x (byte AB) - Lambda for wide range/band oxygen sensor
-  
+
 O2WR.Voltage:
   datatype: float
   type: sensor
@@ -483,7 +483,7 @@ ShortTermO2Trim1:
   type: sensor
   unit: percent
   description: PID 55 (byte A) - Short term secondary O2 trim - Bank 1
-  
+
 ShortTermO2Trim3:
   datatype: float
   type: sensor
@@ -495,7 +495,7 @@ LongTermO2Trim1:
   type: sensor
   unit: percent
   description: PID 56 (byte A) - Long term secondary O2 trim - Bank 1
-  
+
 LongTermO2Trim3:
   datatype: float
   type: sensor
@@ -507,7 +507,7 @@ ShortTermO2Trim2:
   type: sensor
   unit: percent
   description: PID 57 (byte A) - Short term secondary O2 trim - Bank 2
-  
+
 ShortTermO2Trim4:
   datatype: float
   type: sensor
@@ -519,7 +519,7 @@ LongTermO2Trim2:
   type: sensor
   unit: percent
   description: PID 58 (byte A) - Long term secondary O2 trim - Bank 2
-  
+
 LongTermO2Trim4:
   datatype: float
   type: sensor

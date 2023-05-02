@@ -16,8 +16,8 @@ Id:
   datatype: string
   type: attribute
   description: Battery Identification Number as assigned by OEM.
-  comment: This could be serial number, part number plus serial number, UUID, 
-           or any other identifier that the OEM want to use to uniquely identify the battery individual. 
+  comment: This could be serial number, part number plus serial number, UUID,
+           or any other identifier that the OEM want to use to uniquely identify the battery individual.
 
 ProductionDate:
   datatype: string
@@ -60,6 +60,22 @@ Temperature.Max:
   unit: celsius
   description: Current maximum temperature of the battery cells, i.e. temperature of the hottest cell.
 
+CellVoltage:
+  type: branch
+  description: Voltage information for cells in the battery pack.
+
+CellVoltage.Min:
+  datatype: float
+  type: sensor
+  unit: V
+  description: Current voltage of the battery cell with lowest voltage.
+
+CellVoltage.Max:
+  datatype: float
+  type: sensor
+  unit: V
+  description: Current voltage of the battery cell with highest voltage.
+
 GrossCapacity:
   datatype: uint16
   type: attribute
@@ -71,8 +87,8 @@ NetCapacity:
   type: sensor
   unit: kWh
   description: Total net capacity of the battery considering aging.
-  
-  
+
+
 StateOfHealth:
   datatype: float
   type: sensor
@@ -103,6 +119,13 @@ StateOfCharge.Displayed:
   min: 0
   max: 100.00
   description: State of charge displayed to the customer.
+
+StateOfCharge.CurrentEnergy:
+  type: sensor
+  datatype: float
+  unit: kWh
+  description: Physical state of charge of high voltage battery expressed in kWh.
+  comment: Current energy could be calculated as .StateOfCharge.Current * .NetCapacity.
 
 NominalVoltage:
   datatype: uint16
@@ -182,6 +205,7 @@ Charging.ChargeLimit:
   type: actuator
   min: 0
   max: 100
+  default: 100
   unit: percent
   description: Target charge limit (state of charge) for battery.
 
@@ -200,13 +224,13 @@ Charging.MaximumChargingCurrent.Phase1:
   type: sensor
   unit: A
   description: Maximum AC charging current (rms) at inlet for Phase 1 that can be accepted by the system.
-  
+
 Charging.MaximumChargingCurrent.Phase2:
   datatype: float
   type: sensor
   unit: A
   description: Maximum AC charging current (rms) at inlet for Phase 2 that can be accepted by the system.
-  
+
 Charging.MaximumChargingCurrent.Phase3:
   datatype: float
   type: sensor
@@ -226,7 +250,7 @@ Charging.IsChargingCableConnected:
 
 Charging.IsChargingCableLocked:
   datatype: boolean
-  type: Actuator
+  type: actuator
   description: Is charging cable locked to prevent removal.
   comment: Locking of charging cable can be used to prevent unintentional removing during charging.
 
@@ -277,13 +301,13 @@ Charging.Mode:
 Charging.IsCharging:
   datatype: boolean
   type: sensor
-  description: True if charging is ongoing. 
+  description: True if charging is ongoing.
                Charging is considered to be ongoing if energy is flowing from charger to vehicle.
 
 Charging.IsDischarging:
   datatype: boolean
   type: sensor
-  description: True if discharging (vehicle to grid) is ongoing. 
+  description: True if discharging (vehicle to grid) is ongoing.
                Discharging is considered to be ongoing if energy is flowing from vehicle to charger/grid.
 
 Charging.StartStopCharging:

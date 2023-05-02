@@ -20,17 +20,21 @@ jobs:
           export PATH="$HOME/.pyenv/bin:$PATH"
           pyenv install 3.8.12
 
-      - name: Install python packages
+      - name: Install vss-tools dependencies
         run: |
           python -V
-          python -m pip --quiet --no-input install --upgrade pip 
+          python -m pip --quiet --no-input install --upgrade pip
           python -m pip --quiet --no-input install --upgrade pipenv wheel
+          pipenv --version
+          pipenv run python --version
           cd vss-tools
+          sudo apt install -y protobuf-compiler
           pipenv install
-          pipenv run python setup.py -q install
+          echo done!
+          pipenv run python setup.py install
         env:
           PIPENV_VENV_IN_PROJECT: 1
-          
+
       - name: Test mandatory targets
         run: |
           pipenv install
@@ -49,10 +53,10 @@ jobs:
 
       - name: Install hugo
         env:
-          HUGO_VER : 0.78.1
+          HUGO_VER : 0.103.1
         run: |
-          curl -LO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VER}/hugo_${HUGO_VER}_Linux-64bit.deb
-          sudo dpkg -i hugo_${HUGO_VER}_Linux-64bit.deb
+          curl -LO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VER}/hugo_${HUGO_VER}_linux-amd64.deb
+          sudo dpkg -i hugo_${HUGO_VER}_linux-amd64.deb
 
       - name: Make docs
         run: |

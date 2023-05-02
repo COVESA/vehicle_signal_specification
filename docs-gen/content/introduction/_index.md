@@ -6,4 +6,4 @@ chapter: true
 
 # Introduction
 
-Discover what the Vehicle Signal  Specification is all about.
+Discover what the Vehicle Signal Specification is all about.
