@@ -79,13 +79,17 @@ Tilt:
   datatype: float
   type: actuator
   unit: degrees
-  description: Tilting of seat relative to vehicle z-axis. 0 = seating is flat, seat and vehicle z-axis are parallel.
-               Positive degrees = seat tilted backwards, seat z-axis is tilted backward.
+  description: Tilting of seat (seating and backrest) relative to vehicle x-axis.
+               0 = seat bottom is flat, seat bottom and vehicle x-axis are parallel.
+               Positive degrees = seat tilted backwards, seat x-axis tilted upward, seat z-axis is tilted backward.
+  comment: In VSS it is assumed that tilting a seat affects both seating (seat bottom) and backrest, i.e. the angle
+           between seating and backrest will not be affected when changing Tilt.
+
 
 Backrest:
   type: branch
   description: Describes signals related to the backrest of the seat.
-           
+
 Backrest.Recline:
   datatype: float
   type: actuator
@@ -132,7 +136,7 @@ Backrest.SideBolster.Support:
 
 Seating:
   type: branch
-  description: Describes signals related to the seating/base of the seat.
+  description: Describes signals related to the seat bottom of the seat.
   comment: Seating is here considered as the part of the seat that supports the thighs.
            Additional cushions (if any) for support of lower legs is not covered by this branch.
 
@@ -161,7 +165,7 @@ Headrest.Angle:
   unit: degrees
   description: Headrest angle, relative to backrest, 0 degrees if parallel to backrest,
                Positive degrees = tilted forward.
-  
+
 Airbag:
   type: branch
   description: Airbag signals.
@@ -217,7 +221,7 @@ Switch.IsTiltBackwardEngaged:
   datatype: boolean
   type: actuator
   description: Tilt backward switch engaged (SingleSeat.Tilt).
-  
+
 Switch.Backrest:
   type: branch
   description: Describes switches related to the backrest of the seat.
@@ -240,7 +244,7 @@ Switch.Backrest.Lumbar.IsMoreSupportEngaged:
   datatype: boolean
   type: actuator
   description: Is switch for more lumbar support engaged (SingleSeat.Backrest.Lumbar.Support).
-  
+
 Switch.Backrest.Lumbar.IsLessSupportEngaged:
   datatype: boolean
   type: actuator
@@ -273,7 +277,7 @@ Switch.Backrest.SideBolster.IsLessSupportEngaged:
 Switch.Seating:
   type: branch
   description: Describes switches related to the seating of the seat.
-  
+
 Switch.Seating.IsForwardEngaged:
   datatype: boolean
   type: actuator
@@ -297,7 +301,7 @@ Switch.Headrest.IsDownEngaged:
   datatype: boolean
   type: actuator
   description: Head rest down switch engaged (SingleSeat.Headrest.Height).
-  
+
 Switch.Headrest.IsForwardEngaged:
   datatype: boolean
   type: actuator
@@ -321,4 +325,3 @@ Switch.Massage.IsDecreaseEngaged:
   datatype: boolean
   type: actuator
   description: Decrease massage level switch engaged (SingleSeat.Massage).
-

@@ -1,4 +1,5 @@
 #
+# (C) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
 # (C) 2018 Volvo Cars
 # (C) 2016 Jaguar Land Rover
 #
@@ -14,7 +15,7 @@ Station:
   type: branch
   instances:
     - Row[1,4]
-    - ["Left","Right"]
+    - ["Driver","Passenger"]
   description: HVAC for single station in the vehicle
 #include SingleHVACStation.vspec Station
 
@@ -43,3 +44,5 @@ AmbientAirTemperature:
   type: sensor
   unit: celsius
   description: Ambient air temperature inside the vehicle.
+
+#include include/PowerOptimize.vspec

@@ -27,12 +27,6 @@ Vehicle:
 
 #include Vehicle/Vehicle.vspec Vehicle
 
-Vehicle.Private:
-  type: branch
-  description: Uncontrolled branch where non-public signals can be defined.
-
-#include Private/Private.vspec Vehicle.Private
-
 
 #
 # The power train branch used to host the signals and attributes.

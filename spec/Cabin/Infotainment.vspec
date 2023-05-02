@@ -49,6 +49,14 @@ Media.Played.URI:
   type: sensor
   description: User Resource associated with the media
 
+Media.Played.PlaybackRate:
+  datatype: float
+  type: actuator
+  description: Current playback rate of media being played.
+  comment: The normal playback rate is multiplied by this value to obtain the current rate, so a value of 1.0 indicates normal speed.
+           Values of lower than 1.0 make the media play slower than normal.
+           Values of higher than 1.0 make the media play faster than normal.
+
 Media.DeclinedURI:
   datatype: string
   type: sensor
@@ -64,6 +72,7 @@ Media.Volume:
   type: actuator
   min: 0
   max: 100
+  unit: percent
   description: Current Media Volume
 
 Navigation:
@@ -89,6 +98,20 @@ Navigation.DestinationSet.Longitude:
   max: 180
   unit: degrees
   description: Longitude of destination in WGS 84 geodetic coordinates.
+
+Navigation.Mute:
+  datatype: string
+  type: actuator
+  allowed: ['MUTED', 'ALERT_ONLY', 'UNMUTED']
+  description: Navigation mute state that was selected.
+
+Navigation.Volume:
+  datatype: uint8
+  type: actuator
+  min: 0
+  max: 100
+  unit: percent
+  description: Current navigation volume
 
 HMI:
   type: branch
@@ -117,6 +140,12 @@ HMI.DistanceUnit:
   allowed: ['MILES', 'KILOMETERS']
   description: Distance unit used in the current HMI
 
+HMI.FuelVolumeUnit:
+  datatype: string
+  type: actuator
+  allowed: ['LITER', 'GALLON_US', 'GALLON_UK']
+  description: Fuel volume unit used in the current HMI
+
 HMI.FuelEconomyUnits:
   datatype: string
   type: actuator
@@ -135,8 +164,52 @@ HMI.TemperatureUnit:
   allowed: ['C', 'F']
   description: Temperature unit used in the current HMI
 
+HMI.TirePressureUnit:
+  datatype: string
+  type: actuator
+  allowed: ['PSI', 'KPA', 'BAR']
+  description: Tire pressure unit used in the current HMI
+
+
+HMI.Brightness:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Brightness of the HMI, relative to supported range.
+               0 = Lowest brightness possible.
+               100 = Maximum Brightness possible.
+  comment: The value 0 does not necessarily correspond to a turned off HMI,
+           as it may not be allowed/supported to turn off the HMI completely.
+
 HMI.DayNightMode:
   datatype: string
   type: actuator
   allowed: ['DAY', 'NIGHT']
   description: Current display theme
+
+SmartphoneProjection:
+  type: branch
+  description: All smartphone projection actions.
+
+SmartphoneProjection.Active:
+  datatype: string
+  type: actuator
+  allowed: [ 'NONE', 'ACTIVE',  'INACTIVE' ]
+  description: Projection activation info.
+  comment: NONE indicates that projection is not supported.
+
+SmartphoneProjection.Source:
+  datatype: string
+  type: actuator
+  allowed: ['USB', 'BLUETOOTH', 'WIFI']
+  description: Connectivity source selected for projection.
+
+SmartphoneProjection.SupportedMode:
+  datatype: string[]
+  type: attribute
+  allowed: [ 'ANDROID_AUTO', 'APPLE_CARPLAY', 'MIRROR_LINK', 'OTHER' ]
+  description: Supportable list for projection.
+
+#include include/PowerOptimize.vspec

@@ -61,3 +61,13 @@ Tire.Temperature:
   type: sensor
   unit: celsius
   description: Tire temperature in Celsius.
+
+
+#
+# Wheel signals
+#
+Speed:
+  datatype: float
+  type: sensor
+  unit: km/h
+  description: Rotational speed of a vehicle's wheel.

@@ -1,0 +1,13 @@
+# This check verifies that commits are signed-off
+# That is a requirement according to COVESA guidelines
+# See https://www.covesa.global/contribute
+# To sign-off use "git commit -s"
+name: DCO
+
+on: [pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tisonkun/actions-dco@v1.1

@@ -1,15 +1,16 @@
 #
 # (C) 2022, Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
+# (C) 2022 Robert Bosch GmbH
 #
 # All files and artifacts in this repository are licensed under the
 # provisions of the license provided by the LICENSE file in this repository.
 #
 #
 # This file contains adoptions to the main spec concering motorbikes.
-# It mainly addresses istantiation issues (e.g. wheels) and 
+# It mainly addresses istantiation issues (e.g. wheels) and
 # additional signals, which are motorbike specific (e.g. handlebars).
-# 
-# Currently this file serves as a very early draft, which serves 
+#
+# Currently this file serves as a very early draft, which serves
 # more as an example of overlays and is not considered a part of the
 # official specification.
 
@@ -43,3 +44,48 @@ Vehicle.Cabin.Handlebar.GripHeating:
   datatype: string
   allowed: ["HEATING_OFF", "HEATING_STEP_1", "HEATING_STEP_2", "HEATING_STEP_3", "HEATING_STEP_4", "HEATING_STEP_5", "HEATING_AUTOMATIC"]
   description: Grip Heating Status in motorbikes. The signal shows if the handlebar grip heating is on or not, and if yes, to which level.
+
+Vehicle.LeanAngle:
+    type: sensor
+    datatype: float
+    unit: degrees
+    description: Lean Angle of the Motorcycle in Y direction. 0 = upright,
+                 positive = leaning right from rider perspective,
+                 negative = leaning left from rider perspective.
+
+Vehicle.IMU:
+    type: branch
+    description: Information related to the Inertial Measurement Unit to record angular rates and velocity-related information.
+
+Vehicle.IMU.IsOK:
+    type: sensor
+    datatype: boolean
+    description: Indicates if IMU is working. True = OK. False = Failure.
+
+Vehicle.ADAS:
+    type: branch
+
+# Motorbikes typically have different ABS-systems for front and rear wheel
+Vehicle.ADAS.ABS:
+    type: branch
+    instances: ["Front","Rear"]
+
+Vehicle.Powertrain:
+    type: branch
+
+Vehicle.Powertrain.Transmission:
+    type: branch
+
+Vehicle.Powertrain.Transmission.IsClutchSwitchOperated:
+    type: sensor
+    datatype: boolean
+    description: Indicates if the Clutch switch is operated, so engine and transmission are partially or fully decoupled. False = Clutch switch not operated. True = Clutch switch operated.
+
+Vehicle.Powertrain.CombustionEngine:
+    type: branch
+
+Vehicle.Powertrain.CombustionEngine.FuelInjectionQuantity:
+    type: sensor
+    datatype: float
+    unit: ml
+    description: Amount of injected Fuel in millilitres per cylinder per injection.

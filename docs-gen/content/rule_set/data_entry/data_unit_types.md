@@ -1,7 +1,7 @@
 ---
 title: "Data Unit Types"
 date: 2019-08-04T12:36:12+02:00
-weight: 2
+weight: 20
 ---
 
 ## Introduction to Data Unit Types in VSS
@@ -52,7 +52,7 @@ Vehicle.Powertrain.FuelSystem.Level:
   min: 0
   max: 100
   description: Level in fuel tank as percent of capacity. 0 = empty. 100 = full.
-  
+
 ```
 
 In other cases, the formula for calculating the signal is not obvious and is not specified in VSS. A typical example is shown below for clutch wear.

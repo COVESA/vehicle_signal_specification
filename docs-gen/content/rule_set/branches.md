@@ -18,16 +18,16 @@ Trunk:
 
 The following elements are defined:
 
-**`Body.Trunk`**  
+**`Body.Trunk`**
 The list element name defines the dot-notated signal name to the signal.
 Please note that all parental branches included in the name must be defined as
 well.
 
-**```type```**  
+**```type```**
 The value ```branch``` specifies that this is a branch entry (as
 opposed to a signal entry). This is the default, in case ```type``` is omitted.
 
-**```description```**  
+**```description```**
 Describes the meaning and content of the branch.
 Recommended to start with a capital letter and end with a dot (`.`).
 
@@ -37,11 +37,11 @@ This could include background information on the rationale for the branch,
 references to related branches, standards and similar.
 Recommended to start with a capital letter and end with a dot (`.`).
 
-**```instances```** *[optional]*  
+**```instances```** *[optional]*
 For specifying that multiple instances of this branch exist, for more information see documentation on
 [instances](/vehicle_signal_specification/rule_set/instances/).
 
-**```aggregate```** *[optional]*  
+**```aggregate```** *[optional]*
 Defines whether or not this branch is an aggregate.
 If not defined, this defaults to ```false```.
 An aggregate is a collection of signals that make sense to handle together in a system.

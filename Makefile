@@ -2,13 +2,13 @@
 # Makefile to generate specifications
 #
 
-.PHONY: clean all travis_targets json franca yaml csv ddsidl tests binary protobuf ttl graphql ocf c install deploy
+.PHONY: clean all travis_targets json franca yaml csv ddsidl tests binary protobuf ttl graphql ocf c install overlays
 
-all: clean json franca yaml csv ddsidl binary tests protobuf graphql
+all: clean json franca yaml csv ddsidl binary tests protobuf graphql overlays ttl
 
 # All mandatory targets that shall be built and pass on each pull request for
 # vehicle-signal-specification or vss-tools
-travis_targets: clean json franca yaml binary csv graphql ddsidl tests deploy
+travis_targets: clean json franca yaml binary csv graphql ddsidl overlays tests tar
 
 
 # Additional targets that shall be built by travis, but where it is not mandatory
@@ -17,67 +17,61 @@ travis_targets: clean json franca yaml binary csv graphql ddsidl tests deploy
 # from time to time
 # Can be run from e.g. travis with "make -k travis_optional || true" to continue
 # even if errors occur and not do not halt travis build if errors occur
-travis_optional: clean c ocf protobuf ttl
+travis_optional: clean protobuf ttl
 
 DESTDIR?=/usr/local
 TOOLSDIR?=./vss-tools
-DEPLOYDIR?=./docs-gen/static/releases/nightly
-
 
 json:
-	${TOOLSDIR}/vspec2json.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).json
+	${TOOLSDIR}/vspec2json.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).json
 
 franca:
-	${TOOLSDIR}/vspec2franca.py -v $$(cat VERSION)  -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).fidl
+	${TOOLSDIR}/vspec2franca.py -v $$(cat VERSION)  -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).fidl
 
 yaml:
-	${TOOLSDIR}/vspec2yaml.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).yaml
+	${TOOLSDIR}/vspec2yaml.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).yaml
 
 csv:
-	${TOOLSDIR}/vspec2csv.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).csv
+	${TOOLSDIR}/vspec2csv.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).csv
 
 ddsidl:
-	${TOOLSDIR}/vspec2ddsidl.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).idl
+	${TOOLSDIR}/vspec2ddsidl.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).idl
+
+# Verifies that supported overlay combinations are syntactically correct.
+overlays:
+	${TOOLSDIR}/vspec2json.py -I ./spec --uuid -u ./spec/units.yaml -o overlays/profiles/motorbike.vspec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_motorbike.json
+	${TOOLSDIR}/vspec2json.py -I ./spec --uuid -u ./spec/units.yaml -o overlays/extensions/dual_wiper_systems.vspec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_dualwiper.json
 
 tests:
 	PYTHONPATH=${TOOLSDIR} pytest
 
 binary:
 	gcc -shared -o ${TOOLSDIR}/binary/binarytool.so -fPIC ${TOOLSDIR}/binary/binarytool.c
-	${TOOLSDIR}/vspec2binary.py ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).binary
+	${TOOLSDIR}/vspec2binary.py --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).binary
 
 protobuf:
-	${TOOLSDIR}/contrib/vspec2protobuf.py  -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).proto
+	${TOOLSDIR}/vspec2protobuf.py  -I ./spec -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).proto
 
 graphql:
-	${TOOLSDIR}/vspec2graphql.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).graphql.ts
-
-ocf:
-	${TOOLSDIR}/contrib/ocf/vspec2ocf.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ocf.json
+	${TOOLSDIR}/vspec2graphql.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).graphql.ts
 
 ttl:
-	${TOOLSDIR}/contrib/vspec2ttl/vspec2ttl.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ttl
+	${TOOLSDIR}/contrib/vspec2ttl/vspec2ttl.py -I ./spec -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ttl
 
-c:
-	(cd ${TOOLSDIR}/contrib/vspec2c/; make )
-	PYTHONPATH=${TOOLSDIR} ${TOOLSDIR}/contrib/vspec2c.py -I ./spec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).h vss_rel_$$(cat VERSION)_macro.h
+# Include all offically supported outputs (i.e. those created by travis_targets).
+# Exception is binary as it might be target specific and library anyway needs to be rebuilt.
+# As of today all artifacts generated for release shall include UUID if supported.
+# Note: From VSS 3.1 individual files are uploaded instead of tar file, but this command kept for now anyway
+tar:
+	tar -czvf vss_rel_$$(cat VERSION).tar.gz vss_rel_$$(cat VERSION).json vss_rel_$$(cat VERSION).fidl vss_rel_$$(cat VERSION).yaml \
+	vss_rel_$$(cat VERSION).csv vss_rel_$$(cat VERSION).graphql.ts vss_rel_$$(cat VERSION).idl
 
 clean:
 	rm -f vss_rel_*
-	(cd ${TOOLSDIR}/contrib/vspec2c/; make clean)
 
 install:
 	git submodule init
 	git submodule update
 	(cd ${TOOLSDIR}/; python3 setup.py install --install-scripts=${DESTDIR}/bin)
-	$(MAKE) DESTDIR=${DESTDIR} -C ${TOOLSDIR}/vspec2c install
 	install -d ${DESTDIR}/share/vss
 	(cd spec; cp -r * ${DESTDIR}/share/vss)
-
-deploy:
-	if [ -d $(DEPLOYDIR) ]; then \
-	  rm -f ${DEPLOYDIR}/vss_rel_*;\
-	else \
-	  mkdir -p ${DEPLOYDIR}; \
-	fi;
-	cp  vss_rel_* ${DEPLOYDIR}/

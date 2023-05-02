@@ -1,0 +1,38 @@
+#
+# (C) 2022 Robert Bosch GmbH
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+#
+# Signals and attributes related to the low voltage battery in Vehicles
+# This is the 12 Volt or 24 Volt battery typically used for infotainment systems and to start the combustion engine
+# in traditional petrol/diesel vehecles.
+#
+
+NominalVoltage:
+  datatype: uint16
+  type: attribute
+  unit: V
+  description: Nominal Voltage of the battery.
+  comment: Nominal voltage typically refers to voltage of fully charged battery when delivering rated capacity.
+
+NominalCapacity:
+  datatype: uint16
+  type: attribute
+  unit: Ah
+  description: Nominal capacity of the low voltage battery.
+
+CurrentVoltage:
+  datatype: float
+  type: sensor
+  unit: V
+  description: Current Voltage of the low voltage battery.
+
+CurrentCurrent:
+  datatype: float
+  type: sensor
+  unit: A
+  description: Current current flowing in/out of the low voltage battery. Positive = Current flowing in to battery,
+               e.g. during charging or driving.
+               Negative = Current flowing out of battery, e.g. when using the battery to start a combustion engine.
