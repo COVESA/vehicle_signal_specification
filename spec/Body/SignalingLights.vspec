@@ -1,6 +1,6 @@
 #
 # (C) 2022 Bayerische Motoren Werke Aktiengesellschaft (BMW AG) - All rights reserved.
-# 
+#
 
 IsSignaling:
   datatype: boolean

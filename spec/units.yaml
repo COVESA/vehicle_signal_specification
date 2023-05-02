@@ -218,4 +218,3 @@ units:
     label: kilo newton
     description: Force measured in kilo newton
     domain: force
-  

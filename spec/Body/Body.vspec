@@ -101,7 +101,7 @@ Windshield:
   type: branch
   instances: ["Front", "Rear"]
   description: Windshield signals.
-  
+
 Windshield.Wiping:
   type: branch
   description: Windshield wiper signals.
@@ -250,7 +250,7 @@ Lights.DirectionIndicator:
 ##
 Mirrors:
   type: branch
-  instances: ["Left", "Right"]
+  instances: ["DriverSide", "PassengerSide"]
   description: All mirrors.
 # Include mirrors specification and attach it to the Mirrors branch
 #include ExteriorMirrors.vspec Mirrors

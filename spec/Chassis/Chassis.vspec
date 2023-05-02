@@ -17,12 +17,6 @@ Wheelbase:
   unit: mm
   description: Overall wheel base, in mm.
 
-Track:
-  datatype: uint16
-  type: attribute
-  default: 0
-  unit: mm
-  description: Overall wheel tracking, in mm.
 
 #
 # Axle definition
@@ -43,6 +37,30 @@ AxleCount:
 #
 # Axle attributes
 #
+
+Axle.TreadWidth:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: The lateral distance between the centerlines of the base tires at ground, including camber angle.
+               If there are dual rear wheels, measure from the midway points between the inner and outer tires.
+  comment: Corresponds to SAE J1100-2009 W101.
+
+Axle.TrackWidth:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: The lateral distance between the centers of the wheels, measured along the spindle, or axle axis.
+               If there are dual rear wheels, measure from the midway points between the inner and outer tires.
+  comment: Corresponds to SAE J1100-2009 W102.
+
+Axle.AxleWidth:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: The lateral distance between the wheel mounting faces, measured along the spindle axis.
+  comment: Corresponds to SAE J1100-2009 W113.
+
 Axle.WheelCount:
   datatype: uint8
   type: attribute
@@ -116,7 +134,10 @@ ParkingBrake.IsEngaged:
   type: actuator
   description: Parking brake status. True = Parking Brake is Engaged. False = Parking Brake is not Engaged.
 
-
+ParkingBrake.IsAutoApplyEnabled:
+  datatype: boolean
+  type: actuator
+  description: Indicates if parking brake will be automatically engaged when the vehicle engine is turned off.
 #
 # Steering Wheel
 #
@@ -190,5 +211,3 @@ Brake.IsDriverEmergencyBrakingDetected:
   description: Indicates if emergency braking initiated by driver is detected.
                True = Emergency braking detected. False = Emergency braking not detected.
   comment: Detection of emergency braking can trigger Emergency Brake Assist (EBA) to engage.
-  
-

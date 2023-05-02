@@ -36,7 +36,7 @@
 # When there are multiple level signals in a subtree (like for the Cabin subtree) a feature may typically consider the "closest" level signal.
 #
 # Example 1: HVAC functionality (signals in branch Vehicle.Cabin.HVAC) may consider Vehicle.Cabin.HVAC.PowerOptimizeLevel
-# Example 2: Sunroof functionality (signals in branch Vehicle.Cabin.Sunroof) may consider Vehicle.Cabin.PowerOptimizeLevel 
+# Example 2: Sunroof functionality (signals in branch Vehicle.Cabin.Sunroof) may consider Vehicle.Cabin.PowerOptimizeLevel
 #            as there is no specific level signal in Vehicle.Cabin.Sunroof.
 # Example 3: Tire monitoring systems may consider Vehicle.PowerOptimizeLevel as there is no dedicated signal for Chassis branch.
 #
@@ -45,7 +45,7 @@
 # Level 10 means that power consumption shall be minimized. Non-essential functionality shall be disabled.
 # Essential functionality to fulfill legal and safety requirements shall still be enabled.
 # Intermediate numbers (1-9) indicates intermediate states, where a higher number indicates a more aggressive power optimization policy.
-# 
+#
 # This allows for subsystems to implement their own power saving logic.
 # It is totally up to the subsystem to know "what to do" for different power optimize levels.
 # It is also assumed that the subsystem knows what is required for legal and safety reasons and does not turn off
@@ -97,7 +97,7 @@
 # Power Optimization
 ##
 
-  
+
 PowerOptimizeLevel:
   datatype: uint8
   type: actuator

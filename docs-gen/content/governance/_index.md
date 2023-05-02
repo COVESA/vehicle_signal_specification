@@ -44,7 +44,7 @@ The VSS repositories contain some artifacts that can be considered normative, i.
   ([source](https://github.com/COVESA/vehicle_signal_specification/tree/master/docs-gen), [generated](https://covesa.github.io/vehicle_signal_specification/))
 * Support the signals currently defined in VSS.
     * The signals in source format (*.vspec files) can be found in [Github repository](https://github.com/COVESA/vehicle_signal_specification/tree/master/spec).
-    * Derived formats supported by VSS project are included in each [release](https://github.com/COVESA/vehicle_signal_specification/releases), 
+    * Derived formats supported by VSS project are included in each [release](https://github.com/COVESA/vehicle_signal_specification/releases),
       originating from the tools in the [VSS-tools github repository](https://github.com/COVESA/vss-tools).
 
 In addition to this the VSS repositores contain artifacts that currently are considered non-normative. This includes immature concepts and work-in progress. Non-normative content include:
@@ -72,4 +72,3 @@ A history of past changes and planned changes that affects backward compatibilit
 ## Release Process
 
 The release process is further described in the [Github repository](https://github.com/COVESA/vehicle_signal_specification/blob/master/RELEASE_PROCESS.md).
-

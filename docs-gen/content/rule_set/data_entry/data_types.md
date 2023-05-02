@@ -1,7 +1,7 @@
 ---
 title: "Data Types"
 date: 2019-08-04T11:11:48+02:00
-weight: 1
+weight: 10
 ---
 
 Each [data entry](/vehicle_signal_specification/rule_set/data_entry) specifies a ```datatype``` from the following set (from Franca IDL). Datatypes shall not be used in [branch entry](/vehicle_signal_specification/rule_set/branches)
@@ -41,10 +41,14 @@ arraysize: 5
 An example for the usage of `arrays` is `Vehicle.OBD.DTCList` which contains a list
 of Diagnostic Trouble Codes (DTCs) present in a vehicle.
 
+## Structs
+
+VSS struct support is further described on [this page](data_types_struct).
+
 ## Timestamps
 
 Timestamps are in VSS typically represented as strings, formatted according to ISO 8601.
-Timestamps shall be expressed in UTC (Coordinated Universal Time), with special UTC designator ("Z"). 
+Timestamps shall be expressed in UTC (Coordinated Universal Time), with special UTC designator ("Z").
 Time resolution SHALL at least be seconds, with subsecond resolution as an optional degree of precision when desired.
 The time and date format shall be as shown below, where the sub-second data and delimiter is optional.
 

@@ -39,8 +39,8 @@ PerceivedAmbientLight:
 Spotlight:
   type: branch
   instances: 
-    - Row[1,2]
-    - ["Driver","Passenger"]
+    - Row[1,4]
+    - ["DriverSide","PassengerSide"]
   description: Spotlight for a specific area in the vehicle.
 #include SingleConfigurableLight.vspec Spotlight
 
