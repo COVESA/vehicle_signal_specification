@@ -86,13 +86,6 @@ ConsumptionSinceStart:
            A trip is considered to end when engine is no longer enabled.
            The signal may however keep the value of the last trip until a new trip is started.
 
-TimeSinceStart:
-  deprecation: V3.1 replaced by Vehicle.StartTime and Vehicle.TripDuration
-  datatype: uint32
-  type: sensor
-  unit: s
-  description: Time in seconds elapsed since start of current trip.
-
 IsEngineStopStartEnabled:
   datatype: boolean
   type: sensor

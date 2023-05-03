@@ -188,13 +188,6 @@ Speed:
   unit: km/h
   description: Vehicle speed.
 
-TravelledDistance:
-  deprecation: V3.1 moved to Vehicle.TraveledDistance
-  datatype: float
-  type: sensor
-  unit: km
-  description: Odometer reading, total distance traveled during the lifetime of the vehicle.
-
 TraveledDistance:
   datatype: float
   type: sensor
