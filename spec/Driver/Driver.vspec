@@ -17,7 +17,7 @@ DistractionLevel:
   unit: percent
   min: 0
   max: 100
-  description: Distraction level of the driver will be the level how much the driver is distracted, by multiple factors. E.g. Driving situation, acustical or optical signales inside the cockpit, phone calls.
+  description: Distraction level of the driver, which can be evaluated by multiple factors e.g. driving situation, acoustical or optical signals inside the cockpit, ongoing phone calls.
 
 IsEyesOnRoad:
   datatype: boolean
@@ -43,7 +43,7 @@ FatigueLevel:
   unit: percent
   min: 0
   max: 100
-  description: Fatigueness level of driver. Evaluated by multiple factors like trip time, behaviour of steering, eye status.
+  description: Fatigue level of the driver, which can be evaluated by multiple factors e.g. trip time, behaviour of steering, eye status.
 
 HeartRate:
   datatype: uint16

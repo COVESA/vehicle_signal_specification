@@ -84,7 +84,7 @@ Horn.IsActive:
 #
 Raindetection:
   type: branch
-  description: Rainsensor signals.
+  description: Rain sensor signals.
 
 Raindetection.Intensity:
   datatype: uint8

@@ -226,7 +226,7 @@ TripDuration:
   unit: s
   description: Duration of latest trip.
   comment: This signal is not assumed to be continuously updated, but instead set to 0 when a trip starts
-           and set to the the actual duration of the trip when a trip ends.
+           and set to the actual duration of the trip when a trip ends.
            A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
            A trip is considered to end when engine is no longer enabled.
 

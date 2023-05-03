@@ -15,7 +15,7 @@ Wheelbase:
   type: attribute
   default: 0
   unit: mm
-  description: Overall wheel base, in mm.
+  description: Overall wheelbase, in mm.
 
 
 #

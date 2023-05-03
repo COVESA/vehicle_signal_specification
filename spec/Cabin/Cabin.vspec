@@ -71,18 +71,18 @@ Sunroof.Shade:
 #include SingleShade.vspec Sunroof.Shade
 
 #
-# Rearview mirror signals
+# Rear-view mirror signals
 #
 RearviewMirror:
   type: branch
-  description: Rearview mirror.
+  description: Rear-view mirror.
 
 RearviewMirror.DimmingLevel:
   datatype: uint8
   type: actuator
   unit: percent
   max: 100
-  description: Dimming level of rearview mirror. 0 = undimmed. 100 = fully dimmed.
+  description: Dimming level of rear-view mirror. 0 = Undimmed. 100 = Fully dimmed.
 
 
 ##

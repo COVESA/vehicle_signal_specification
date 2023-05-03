@@ -294,7 +294,7 @@ Charging.Mode:
   description: Control of the charge process.
                MANUAL means manually initiated (plug-in event, companion app, etc).
                TIMER means timer-based.
-               GRID means grid-controlled (eg ISO 15118).
+               GRID means grid-controlled (e.g. ISO 15118).
                PROFILE means controlled by profile download to vehicle.
   comment:     The mechanism to provide a profile to the vehicle is currently not covered by VSS.
 
