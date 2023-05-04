@@ -1,5 +1,5 @@
 ---
-title: "Value restrictions"
+title: "Value Restrictions"
 date: 2019-08-04T12:37:12+02:00
 weight: 50
 ---
@@ -72,4 +72,4 @@ Example of an invalid array:
 
 ## Allowed for struct types
 
-Please see [struct]({{< ref "data_types_struct.md#allowed-values" >}} ) documentation.
+Please see [struct]({{< ref "data_types_struct#allowed-values" >}} ) documentation.

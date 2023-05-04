@@ -27,24 +27,30 @@ Once hugo is installed please follow the following steps:
 hugo version
 ```
 The following outcome is expected:
+
 ```
 Hugo Static Site Generator v0.xx.xx ...
 ```
+
 #### Clone the submodule containing the theme
 
 Run the following git commands to init and fetch the submodules:
+
 ```
 git submodule init
 git submodule update
 ```
+
 Reference: [Git Documentation](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
 
 #### Test locally on your server:
 
 Within the repository
+
 ```
 hugo server -D -s ./docs-gen
 ```
+
 Optional ```-D:``` include draft pages as well. Afterwards, you can access the
 page under http://localhost:1313/vehicle_signal_specification.
 
