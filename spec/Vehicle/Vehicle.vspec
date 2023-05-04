@@ -29,7 +29,7 @@ VersionVSS.Major:
 VersionVSS.Minor:
   datatype: uint32
   type: attribute
-  default: 0
+  default: 1
   description: Supported Version of VSS - Minor version.
 
 VersionVSS.Patch:
@@ -41,8 +41,9 @@ VersionVSS.Patch:
 VersionVSS.Label:
   datatype: string
   type: attribute
-  default: ''
+  default: 'dev'
   description: Label to further describe the version.
+  comment: COVESA VSS project typically use dev for latest master, and empty string for released versions.
 
 #
 # Vehicle identification attributes.
