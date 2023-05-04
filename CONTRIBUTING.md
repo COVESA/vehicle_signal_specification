@@ -56,7 +56,9 @@ This section includes general guidelines and recommendations for anyone interest
 COVESA has defined [contribution guidelines](https://www.covesa.global/contribute).
 
 Every contribution must carry the following sign-off line with your real name and email address:
-"Signed-off-by: Firstname Lastname <firstname.lastname@example.com>".
+
+`Signed-off-by: Firstname Lastname <firstname.lastname@example.com>`
+
 By supplying this sign-off line, you indicate your acceptance of the COVESA Certificate of Origin.
 
 If using git command line you can add a sign-off by using the `-s` argument when creating a commit.
