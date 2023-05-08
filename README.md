@@ -42,7 +42,7 @@ git submodule update --init
 
 ## Contributors
 VSS is an open standard and we invite anybody to contribute. Currently VSS contains - among others - significant  contributions from
- - [Bayerische Motoren Werke Aktiengesellschaft (BMW AG)](https://www.bmwgroup.com/)
+ - [Bayerische Motoren Werke Aktiengesellschaft (BMW AG)](https://www.bmwgroup.com/en.html)
  - [Volvo Cars](https://www.volvocars.com/)
  - [Jaguar Land Rover](https://www.jaguarlandrover.com/)
  - [Robert Bosch GmbH](https://www.bosch.com/)

@@ -4,7 +4,8 @@ date: 2019-08-04T11:11:48+02:00
 weight: 10
 ---
 
-Each [data entry](/vehicle_signal_specification/rule_set/data_entry) specifies a ```datatype``` from the following set (from Franca IDL). Datatypes shall not be used in [branch entry](/vehicle_signal_specification/rule_set/branches)
+Each [data entry](/vehicle_signal_specification/rule_set/data_entry/) specifies a ```datatype``` from the following set (from Franca IDL).
+Datatypes shall not be used in [branch entry](/vehicle_signal_specification/rule_set/branches/)
 
 ## Supported datatypes
 
@@ -43,7 +44,7 @@ of Diagnostic Trouble Codes (DTCs) present in a vehicle.
 
 ## Structs
 
-VSS struct support is further described on [this page](data_types_struct).
+VSS struct support is further described on [this page](/vehicle_signal_specification/rule_set/data_entry/data_types_struct/).
 
 ## Timestamps
 

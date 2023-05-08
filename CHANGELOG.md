@@ -112,7 +112,6 @@ The background is that the old representation included limitations and ambiguiti
 ### Struct Support (Experimental)
 
 VSS has been extended with syntax to define structs, and to use them for signals.
-For more information see [VSS documentation](XXX).
 For VSS 3.1 support is only experimental and syntax may change.
 
 *Note: Only a subset of VSS-tools for VSS 3.1 supports structs!*

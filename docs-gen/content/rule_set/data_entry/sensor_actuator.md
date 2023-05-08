@@ -32,7 +32,7 @@ Defines the type of the node. This can be `branch`,
 
 **```datatype```**
 The string value of the type specifies the scalar type of the data entry
-value. See [data type](data_types/) chapter for a list of available types.
+value. See [data type](/vehicle_signal_specification/rule_set/data_entry/data_types/) chapter for a list of available types.
 
 **```description```**
 Describes the meaning and content of the signal.
@@ -59,6 +59,6 @@ If omitted, the maximum value will be the "Max" value for the given type.
 Cannot be specified if ```allowed``` is defined for the same data entry.
 
 **```unit```** *[optional]*
-The unit of measurement that the data entry has. See [Unit
-Type](data_unit_types/) chapter for a list of available unit types. This
+The unit of measurement that the data entry has. See [Data Unit Types](/vehicle_signal_specification/rule_set/data_entry/data_unit_types/)
+chapter for a list of available unit types. This
 cannot be specified if ```allowed``` is defined as the signal type.

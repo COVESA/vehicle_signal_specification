@@ -43,7 +43,7 @@ Structs shall be used in VSS standard catalog only when considered to give a sig
 
 ## Structs vs. Aggregate
 
-VSS supports a keyword `aggregate` that can be used on [branches](https://covesa.github.io/vehicle_signal_specification/rule_set/branches/)
+VSS supports a keyword `aggregate` that can be used on [branches](/vehicle_signal_specification/rule_set/branches/)
 to indicate that the branch preferably shall be read and written in atomic operations.
 The keyword is however currently not used in the standard catalog, and it is not known if any implementation exists that actually consider it.
 There have been criticism that `aggregate` changes the semantic meaning of branches and signals, i.e. that a signal is no longer handed as an independent object.
@@ -280,7 +280,7 @@ then a signal (or item) using the struct type is also considered to have a defau
 
 ## Allowed Values
 
-VSS supports [specification of allowed values](https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/allowed/).
+VSS supports [specification of allowed values](/vehicle_signal_specification/rule_set/data_entry/allowed/).
 
 Using `allowed` for `type: property` is allowed (if `allowed` is supported for the used datatype).
 Using `allowed` for signals and items of struct type or array of struct type is not allowed.
