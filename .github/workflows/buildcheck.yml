@@ -43,6 +43,14 @@ jobs:
           PIPENV_PIPFILE: ./vss-tools/Pipfile
           PIPENV_VENV_IN_PROJECT: 1
 
+      - name: Test that ddsidl is correct
+        run: |
+          pipenv install cyclonedds
+          pipenv run idlc *.idl
+        env:
+          PIPENV_PIPFILE: ./vss-tools/Pipfile
+          PIPENV_VENV_IN_PROJECT: 1
+
       - name: Test optional targets. NOTE - always succeeds
         run: |
           pipenv install
