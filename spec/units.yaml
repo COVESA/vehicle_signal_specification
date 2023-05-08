@@ -1,6 +1,4 @@
-# This file defines units supported in the VSS catalog
-# It has precedence over the file defined in https://github.com/COVESA/vss-tools/blob/master/vspec/config.yaml
-# This file must be specified with the -u parameter when using vss-tools
+# This file defines units supported in the VSS standard catalog
 units:
   mm:
     label: millimeter
