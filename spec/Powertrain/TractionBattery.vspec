@@ -416,6 +416,52 @@ Charging.ChargeVoltage.Phase3:
   unit: V
   description: Current AC charging voltage (rms) at inlet for Phase 3.
 
+Charging.AveragePower:
+  datatype: float
+  type: sensor
+  unit: kW
+  description: Average charging power of last or current charging event.
+
+Charging.MaxPower:
+  datatype: float
+  type: sensor
+  unit: kW
+  description: Maximum charging power of last or current charging event.
+
+Charging.EvseId:
+  datatype: string
+  type: sensor
+  description: EVSE charging point ID (without separators) of last or current charging event according to ISO 15118-2 Annex H.
+  comment: Length of id between 7 and 37 characters. ZZ00000 to be used if SECC cannot provide id
+
+Charging.Location:
+  type: branch
+  description: Location of last or current charging event.
+  comment: This may depending on implementation represent the location of (the charge port of) the vehicle during charging,
+           or the actual location of the charger/load connected to the vehicle.
+
+Charging.Location.Latitude:
+  datatype: double
+  type: sensor
+  min: -90
+  max: 90
+  unit: degrees
+  description: Latitude of last or current charging event in WGS 84 geodetic coordinates.
+
+Charging.Location.Longitude:
+  datatype: double
+  type: sensor
+  min: -180
+  max: 180
+  unit: degrees
+  description: Longitude of last or current charging event in WGS 84 geodetic coordinates.
+
+Charging.Location.Altitude:
+  datatype: double
+  type: sensor
+  unit: m
+  description: Altitude relative to WGS 84 reference ellipsoid of last or current charging event.
+
 Charging.PowerLoss:
   datatype: float
   type: sensor
