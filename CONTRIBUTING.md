@@ -26,15 +26,15 @@ This is the typical workflow for preparing a pull request. A Github account is r
 1. Create a personal or company fork of the [VSS repository](https://github.com/COVESA/vehicle_signal_specification)
    and/or [VSS-Tools repository](https://github.com/COVESA/vss-tools).
 2. Clone the forked repository into your local development environment.
-3. Create a local branch based on the VSS master branch to use for the proposed changes.
-4. Introduce the wanted changes or extensions in your local development environment, see guidelines below.
+3. Set up your local development environment, see [BUILD.md](BUILD.md) for some guidance.
+4. Create a local branch based on the VSS master branch to use for the proposed changes.
+5. Introduce the wanted changes or extensions in your local development environment, see guidelines below.
    If you want change/extend VSS-signals, it is the *.vspec files in the [spec](https://github.com/COVESA/vehicle_signal_specification/tree/master/spec) folder that
    needs to be updated.
-5. Run "make travis_targets" to verify that the changes are syntactically correct and does not introduce any side effects.
-   This will verify that tools and test-cases in vss-tools repository accepts the changes.
-6. Create a commit and upload to your own fork.
-7. In the GitHub UI create a Pull Request from your fork to the master branch of [the VSS repository](https://github.com/COVESA/vehicle_signal_specification).
-8. Validate that automatic build checks for the PR succeed.
+6. Verify that your changes fulfil VSS Continuous Integration requirements, see [BUILD.md](BUILD.md) for some guidance.
+7. Create a commit and upload to your own fork.
+8. In the GitHub UI create a Pull Request from your fork to the master branch of [the VSS repository](https://github.com/COVESA/vehicle_signal_specification).
+9. Validate that automatic build checks for the PR succeed.
 
 ## Handling of the created Pull Request
 
@@ -57,7 +57,7 @@ COVESA has defined [contribution guidelines](https://www.covesa.global/contribut
 
 Every contribution must carry the following sign-off line with your real name and email address:
 
-`Signed-off-by: Firstname Lastname <firstname.lastname@example.com>`
+`Signed-off-by: Firstname Lastname <you@example.com>`
 
 By supplying this sign-off line, you indicate your acceptance of the COVESA Certificate of Origin.
 
@@ -98,6 +98,7 @@ Try to reuse the same style as used for existing signals.
 Only specify min/max-values if there is a logical reason to limit the range.
 Boolean signals should start with `Is*`.
 American English is preferred over British English.
+No trailing blanks.
 Follow the style guide in the [documentation](https://covesa.github.io/vehicle_signal_specification/rule_set/basics/#style-guide).
 
 ### No scaling, SI-unit, natural datatype
@@ -108,18 +109,6 @@ see [documentation](https://covesa.github.io/vehicle_signal_specification/rule_s
 If it is unlikely that someone is interested in decimals for this value, select a signed or unsigned integer type.
 Select a size which with reasonable margins can cover all vehicles.
 If it is likely that decimal values are needed select float or if relevant double.
-
-### Use the repository pre-commit hook
-
-The repository has [configuration file](.pre-commit-config.yaml) with pre-commits hooks.
-It executes a number of checks that typically must pass for a new Pull Request to be accepted and merged.
-You must manually configure pre-commit to use the provided hooks by running `pre-commit install` from the
-respository top folder.
-
-```bash
-~/vehicle_signal_specification$: pip install pre-commit
-~/vehicle_signal_specification$: pre-commit install
-```
 
 ### Avoid backward incompatible changes
 
