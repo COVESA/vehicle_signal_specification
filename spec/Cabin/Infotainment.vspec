@@ -113,6 +113,13 @@ Navigation.Volume:
   unit: percent
   description: Current navigation volume
 
+Navigation.GuidanceVoice:
+  datatype: string
+  type: actuator
+  allowed: ['STANDARD_MALE', 'STANDARD_FEMALE', 'ETC']
+  description: Navigation guidance state that was selected.
+  comment: ETC indicates a voice alternative not covered by the explicitly listed alternatives.
+
 HMI:
   type: branch
   description: HMI related signals
@@ -121,6 +128,12 @@ HMI.CurrentLanguage:
   datatype: string
   type: sensor
   description: ISO 639-1 standard language code for the current HMI
+
+HMI.FontSize:
+  datatype: string
+  type: actuator
+  allowed: ['STANDARD', 'LARGE', 'EXTRA_LARGE']
+  description: Font size used in the current HMI
 
 HMI.DateFormat:
   datatype: string
