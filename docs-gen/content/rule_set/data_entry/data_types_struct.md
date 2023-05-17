@@ -74,7 +74,8 @@ It is however expected that they are read and written by atomic operations.
 This means that the data storage shall be "locked" while the items of the struct are read, preventing changes to happen while reading/writing the items.
 
 Structs shall be defined in a separate tree. This means that signal definitions and types cannot exist in the same files.
-Tooling must thus accept one (or more) parameters for specifying type definition(s)
+Tooling must thus accept one (or more) parameters for specifying type definition(s).
+The tree must have a branch as root, i.e. it is not possible to have a struct as root.
 
 The top level types file(s) (e.g. `vss_types.vspec`) can refer to other type files similar to the
 [top VSS file](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/VehicleSignalSpecification.vspec).
