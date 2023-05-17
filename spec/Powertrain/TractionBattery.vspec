@@ -196,6 +196,12 @@ Range:
   unit: m
   description: Remaining range in meters using only battery.
 
+TimeRemaining:
+  datatype: uint32
+  type: sensor
+  unit: s
+  description: Time remaining in seconds before the battery is empty.
+
 Charging:
   type: branch
   description: Properties related to battery charging.

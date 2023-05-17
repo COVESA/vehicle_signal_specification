@@ -60,6 +60,12 @@ Range:
   unit: m
   description: Remaining range in meters using only liquid fuel.
 
+TimeRemaining:
+  datatype: uint32
+  type: sensor
+  unit: s
+  description: Time remaining in seconds before the fuel tank is empty.
+
 InstantConsumption:
   datatype: float
   type: sensor

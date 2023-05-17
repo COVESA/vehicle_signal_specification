@@ -15,6 +15,12 @@ Range:
   unit: m
   description: Remaining range in meters using all energy sources available in the vehicle.
 
+TimeRemaining:
+  datatype: uint32
+  type: sensor
+  unit: s
+  description: Time remaining in seconds before all energy sources available in the vehicle are empty.
+
 Type:
   datatype: string
   type: attribute
