@@ -1,19 +1,9 @@
 ---
-title: "Software"
-date: 2021-07-04T13:31:46+0000
+title: "Software & Solutions"
+date: 2023-05-18T13:31:46+0000
 weight: 3
 ---
 
-Various software frameworks exist to work with VSS data. If something is missing here, please [open an issue](https://github.com/covesa/vehicle_signal_specification/issues) and tell us.
+Various software frameworks and products exist to work with VSS data. Some are Open Source, some are commercial prducts and services. There are solutions to work with VSS in-vehicle, as well as using it in the cloud.
 
-### W3C VISS2 reference server
-A reference server written in Go for the VISSv2 specification can be found at [https://github.com/w3c/automotive-viss2](https://github.com/w3c/automotive-viss2).
-
-### KUKSA.val in-vehicle VISS server
-A VISS server written in C++, optimized for containerized deployments on vehicle computers is provided by the [KUKSA project](https://github.com/eclipse/kuksa.val).
-
-### IoT Event Analytics Plattform
-[IoT Event Analytics](https://github.com/covesa/iot-event-analytics) is a Complex Event Processing platform for the Vehicle Edge. The IoTEA tooling can automatically import VSS an data model, and it can optionally use KUKSA.val to ingest live data from a vehicle.
-
-### AOS
-The [AOS platform](https://aoscloud.io/) can support VSS to access vehicle data.
+The best entry-point for an up-to-date introduction to VSS products and Use Cases is the [COVESA VSS wiki](https://wiki.covesa.global/display/WIK4/VSS+Resources+at+a+Glance).
