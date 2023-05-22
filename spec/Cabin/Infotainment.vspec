@@ -183,6 +183,19 @@ HMI.TirePressureUnit:
   allowed: ['PSI', 'KPA', 'BAR']
   description: Tire pressure unit used in the current HMI
 
+HMI.SpeedUnit:
+  datatype: string
+  type: actuator
+  allowed: ['METERS_PER_SECOND', 'MILES_PER_HOUR', 'KILOMETERS_PER_HOUR']
+  description: Speed unit used in the current HMI
+
+HMI.EVEnergyUnits:
+  datatype: string
+  type: actuator
+  allowed: ['WATT_HOURS','AMPERE_HOURS', 'KILOWATT_HOURS']
+  description: EV energy unit used in the current HMI
+  comment: Ampere hours is by definition not an energy unit, but can be used as a measurement of energy
+           if the voltage, like nominal voltage of the battery, is known.
 
 HMI.Brightness:
   datatype: float
