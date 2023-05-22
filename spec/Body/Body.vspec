@@ -17,6 +17,8 @@ BodyType:
   description: Body type code as defined by ISO 3779.
 
 RefuelPosition:
+  deprecation: v4.1 replaced with Vehicle.Powertrain.TractionBattery.Charging.ChargePortPosition
+               and Vehicle.Powertrain.FuelSystem.RefuelPortPosition
   datatype: string
   type: attribute
   allowed: ['FRONT_LEFT', 'FRONT_RIGHT', 'MIDDLE_LEFT', 'MIDDLE_RIGHT', 'REAR_LEFT', 'REAR_RIGHT']

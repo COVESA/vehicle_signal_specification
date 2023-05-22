@@ -101,3 +101,18 @@ IsFuelLevelLow:
   datatype: boolean
   type: sensor
   description: Indicates that the fuel level is low (e.g. <50km range).
+
+RefuelPortPosition:
+  datatype: string[]
+  type: attribute
+  allowed: ['FRONT_LEFT', 'FRONT_MIDDLE', 'FRONT_RIGHT',
+            'REAR_LEFT', 'REAR_MIDDLE', 'REAR_RIGHT',
+            'LEFT_FRONT', 'LEFT_MIDDLE', 'LEFT_REAR',
+            'RIGHT_FRONT', 'RIGHT_MIDDLE', 'RIGHT_REAR']
+  description: Position of refuel port(s).
+               First part indicates side of vehicle, second part relative position on that side.
+
+IsFuelPortFlapOpen:
+  datatype: boolean
+  type: actuator
+  description: Status of the fuel port flap(s). True if at least one is open.
