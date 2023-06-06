@@ -142,6 +142,11 @@ VehicleIdentification.VehicleSpecialUsage:
   type: attribute
   description: Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school.
 
+VehicleIdentification.VehicleExteriorColor:
+  datatype: string
+  type: attribute
+  description: The main color of the exterior within the basic color palette (eg. red, blue, black, white, ...).
+
 VehicleIdentification.VehicleInteriorColor:
   datatype: string
   type: attribute
