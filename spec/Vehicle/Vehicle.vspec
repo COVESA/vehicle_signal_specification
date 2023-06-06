@@ -101,6 +101,12 @@ VehicleIdentification.DateVehicleFirstRegistered:
   type: attribute
   description: The date in ISO 8601 format of the first registration of the vehicle with the respective public authorities.
 
+VehicleIdentification.LicensePlate:
+  datatype: string
+  type: attribute
+  description: The license plate of the vehicle.
+  comment: Depending on the context, this attribute might not be up to date or might be misconfigured, and therefore should be considered untrustworthy in the absence of another method of verification.
+
 VehicleIdentification.MeetsEmissionStandard:
   datatype: string
   type: attribute
