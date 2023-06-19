@@ -120,6 +120,14 @@ Navigation.GuidanceVoice:
   description: Navigation guidance state that was selected.
   comment: ETC indicates a voice alternative not covered by the explicitly listed alternatives.
 
+Navigation.MapScaleMode:
+  datatype: string
+  type: actuator
+  allowed: ['SCALE_FIXED_MODE', 'AUTO_SCALE_MODE']
+  description: Map Scale Mode state that was selected.
+  comment: SCALE FIXED MODE indicates a map scale is fixed.
+           AUTO_SCALE_MODE indicates a map scale is set automatically according to the speed, road class and guidance distance.
+           
 HMI:
   type: branch
   description: HMI related signals
