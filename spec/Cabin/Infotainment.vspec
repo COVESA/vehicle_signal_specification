@@ -127,7 +127,7 @@ Navigation.MapScaleMode:
   description: Map Scale Mode state that was selected.
   comment: SCALE FIXED MODE indicates a map scale is fixed.
            AUTO_SCALE_MODE indicates a map scale is set automatically according to the speed, road class and guidance distance.
-           
+
 HMI:
   type: branch
   description: HMI related signals
