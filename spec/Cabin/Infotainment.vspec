@@ -120,12 +120,16 @@ Navigation.GuidanceVoice:
   description: Navigation guidance state that was selected.
   comment: ETC indicates a voice alternative not covered by the explicitly listed alternatives.
 
-Navigation.IsAutoScaleMode:
+Navigation.Map:
+  type: branch
+  description: All map actions
+
+Navigation.Map.IsAutoScaleModeUsed:
   datatype: boolean
   type: actuator
-  description: Used to select auto scale mode.
-  comment: If it is True then auto scale mode is used.
-           If it is False then fixed mode is used.
+  description: Used to select auto-scaling mode. This feature dynamically adjusts the zoom level of the map to provide an optimal view based on the current speed of the vehicle
+  comment: If true, then auto-scaling mode is used.
+           If false, then manual-scaling mode is used.
 
 HMI:
   type: branch
