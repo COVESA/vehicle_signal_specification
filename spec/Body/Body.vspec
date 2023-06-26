@@ -208,7 +208,7 @@ Lights.Beam:
 
 Lights.Running:
   type: branch
-  description: Running lights.
+  description: Daytime running lights (DRL).
 #include StaticLights.vspec Lights.Running
 
 Lights.Backup:
