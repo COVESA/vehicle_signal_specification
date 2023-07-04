@@ -16,10 +16,11 @@
 ##
 RearShade:
   type: branch
-  description: Rear window shade.
+  description: Rear window shade. Open = Retracted, Closed = Deployed.
+               Start position for RearShade is Open/Retracted.
 
 # Include the same shade spec used for sunroof and side windows.
-#include SingleShade.vspec RearShade
+#include ../include/MovableItem.vspec RearShade
 
 ##
 # HVAC signals
@@ -65,10 +66,11 @@ Sunroof.Switch:
 
 Sunroof.Shade:
   type: branch
-  description: Sun roof shade status.
+  description: Sun roof shade status. Open = Retracted, Closed = Deployed.
+               Start position for Sunroof.Shade is Open/Retracted.
 
 # Include shade specification also used by side and rear window.
-#include SingleShade.vspec Sunroof.Shade
+#include ../include/MovableItem.vspec Sunroof.Shade
 
 #
 # Rear-view mirror signals

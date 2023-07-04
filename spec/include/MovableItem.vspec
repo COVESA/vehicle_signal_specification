@@ -1,0 +1,40 @@
+#
+# (C) 2018 Volvo Cars
+# (C) 2016 Jaguar Land Rover
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+#
+# Generic signals to control movable items such as door, sunroof, window, blind, etc.
+# The meaning of Open/Close and Start/End position is item dependent and shall better be
+# described by the item using MovableItem.
+#
+# Start position is typically the "default position", where doors/windows/sunroofs are typically closed,
+# but shades/blinders are typically open/retracted.
+#
+# For Shade/Blinders and similar items:
+# "Open" means the Shade/blinder is fully retracted and does not obstruct light
+# "Close" means the Shade/blinder is fully deployed and obstruct light as much as possible
+#
+
+IsOpen:
+  datatype: boolean
+  type: actuator
+  description: Is item open or closed? True = Fully or partially open. False = Fully closed.
+
+Position:
+  datatype: uint8
+  type: actuator
+  min: 0
+  max: 100
+  unit: percent
+  description: Item position. 0 = Start position 100 = End position.
+  comment: Relationship between Open/Close and Start/End position is item dependent.
+
+Switch:
+  datatype: string
+  type: actuator
+  allowed: ['INACTIVE', 'CLOSE', 'OPEN', 'ONE_SHOT_CLOSE', 'ONE_SHOT_OPEN']
+  description: Switch controlling sliding action such as window, sunroof, or blind.
