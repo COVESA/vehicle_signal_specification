@@ -51,12 +51,15 @@ SeatBeltHeight:
                Position is relative within available movable range of the seat belt.
                0 = Lowermost position supported.
 Heating:
+  deprecation: v4.1 replaced with HeatingCooling
   datatype: int8
   type: actuator
   min: -100
   max: 100
   unit: percent
   description: Seat cooling / heating. 0 = off. -100 = max cold. +100 = max heat.
+
+#include include/ItemHeatingCooling.vspec
 
 Massage:
   datatype: uint8
