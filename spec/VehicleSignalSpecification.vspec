@@ -82,7 +82,7 @@ Vehicle.Powertrain.TractionBattery:
   type: branch
   description: Battery Management data.
 
-#include Powertrain/Battery.vspec Vehicle.Powertrain.TractionBattery
+#include Powertrain/TractionBattery.vspec Vehicle.Powertrain.TractionBattery
 
 
 #

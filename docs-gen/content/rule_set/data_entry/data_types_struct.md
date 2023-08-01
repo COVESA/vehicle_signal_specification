@@ -4,8 +4,8 @@ date: 2019-08-04T11:11:48+02:00
 weight: 15
 ---
 
-*COVESA is in the process of introducing struct support.*
-*It is a still an experimental feature, and information on this page may be incorrect, may change, or may not be supported by tooling yet!*
+*Structs are a newly introduced feature to the VSS-syntax.*
+*Please note that all [VSS-tools](https://github.com/COVESA/vss-tools) exporters do not yet support structs.*
 
 ## Introduction
 
@@ -34,7 +34,7 @@ The struct support in VSS is introduced to facilitate logical binding/grouping o
 It is intended to be used only when it is important that the data is read or written in an atomic operation.
 It is not intended to be used to specify how data shall be packaged and serialized when transported.
 
-By this reason VSS-project will not introduce smaller datatypes (like `uint1`,`uint4`) to enable bit-encoding of data.
+By this reason VSS-project will not introduce shorter datatypes (like `uint1`,`uint4`) to enable bit-encoding of data.
 The order of elements in a struct is from a VSS perspective considered as arbitrary.
 The VSS project will by this reason not publish guidelines on how to order items in the struct to minimize size,
 and no concept for introducing padding will exist.
@@ -43,7 +43,7 @@ Structs shall be used in VSS standard catalog only when considered to give a sig
 
 ## Structs vs. Aggregate
 
-VSS supports a keyword `aggregate` that can be used on [branches](https://covesa.github.io/vehicle_signal_specification/rule_set/branches/)
+VSS supports a keyword `aggregate` that can be used on [branches](/vehicle_signal_specification/rule_set/branches/)
 to indicate that the branch preferably shall be read and written in atomic operations.
 The keyword is however currently not used in the standard catalog, and it is not known if any implementation exists that actually consider it.
 There have been criticism that `aggregate` changes the semantic meaning of branches and signals, i.e. that a signal is no longer handed as an independent object.
@@ -74,11 +74,14 @@ It is however expected that they are read and written by atomic operations.
 This means that the data storage shall be "locked" while the items of the struct are read, preventing changes to happen while reading/writing the items.
 
 Structs shall be defined in a separate tree. This means that signal definitions and types cannot exist in the same files.
-Tooling must thus accept one (or more) parameters for specifying type definition(s)
+Tooling must thus accept one (or more) parameters for specifying type definition(s).
+The tree must have a branch as root, i.e. it is not possible to have a struct as root.
 
-The top level types file (e.g. `vss_types.vspec`) can refer to other type files similar to the
+The top level types file(s) (e.g. `vss_types.vspec`) can refer to other type files similar to the
 [top VSS file](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/VehicleSignalSpecification.vspec).
-Tooling may in the future support overlays for type declarations similar to how it is supported for signals.
+It is possible to specify that multiple type files shall be used, but all types must belong to the same root.
+This means if the first file defines `A.B`, then the seconds file can define `A.C`, but not `X.Y` as that would
+result in two roots (`A` and `X`).
 
 For current vss-tools support for structs see [documentation](https://github.com/COVESA/vss-tools/blob/master/docs/vspec2x.md) in the vss-tools repository.
 
@@ -135,7 +138,7 @@ Types.Powertrain:
 
 ## Name resolution
 
-Two ways of referring to a type shall be considered correct:
+Two ways of referring to a type are considered correct:
 
 In Type Tree:
 * Reference by absolute path
@@ -143,27 +146,11 @@ In Type Tree:
 
 In Signal Tree:
 * Reference by absolute path
-* Reference by (leaf) name to a struct definition within a branch with the same name in the type tree.
-**Note that the experimental feature supports only absolute path name resolution in the signal tree.**
 
-Relative paths (e.g. `../Powertrain.SomeStruct`) shall not be supported.
+Relative paths (e.g. `../Powertrain.SomeStruct`) are not allowed.
 Structs in parent branches will not be visible, in those cases absolute path needs to be used instead.
 
-*The reference by leaf name is applicable only for structs referencing other structs, and for the special case that the type branch has the same name/path as the signal branch!*
-
-Parsers shall first look for a matching type in a branch with the same name, and if not found consider the name given to be an absolute name.
-
-Example:
-
-```
-A.B.C:
-  datatype: Types.D
-  type: sensor
-```
-
-The parser shall first check if a type `A.B.Types.D` exist in the type tree, and if so use it.
-If not found it shall search for the type `Types.D` in the type tree.
-**Note that the experimental feature supports only exact name resolution in the signal tree.**
+*The reference by leaf name is applicable only for structs referencing other structs!*
 
 ## Expectations on VSS implementations (e.g. VISS, KUKSA.val)
 
@@ -194,7 +181,7 @@ DeliveryList:
 ```
 
 
-## Expectations on VSS implementations (e.g. VISS, KUKSA.val)
+### Expectations on VSS implementations (e.g. VISS, KUKSA.val)
 
 For array types (like above) VSS implementations may support several mechanisms
 
@@ -252,6 +239,9 @@ The order of declaration/definition shall not matter.
 As signals and types are defined in different trees this is a topic only for struct definitions referring to other struct definitions.
 A hypothetical example is shown below. An item in the struct `DeliveryInfo` can refer to the struct `OpenHours` even if that struct
 is defined further down in the same file.
+If using `-vt < file>` multiple times all files except the first will be treated similar to overlays.
+This means that is allowed to define `A.B.C` in multiple files, but then subsequent (re-)definitions will overwrite
+what has been defined previously.
 
 ```
 DeliveryInfo:
@@ -275,15 +265,13 @@ OpenHours:
 
 ## Inline Struct
 
-Inline/anonymous structs shall not be supported!
+Inline/anonymous structs are not allowed!
 
 ## Default Values
 
-VSS supports [default values for attributes](/vehicle_signal_specification/rule_set/data_entry/attributes/),
-and there is a [discussion](https://github.com/COVESA/vehicle_signal_specification/issues/377)
-to allow it also for sensors/actuators.
+VSS supports [default values](/vehicle_signal_specification/rule_set/data_entry/attributes/).
 
-Default values are not supported for signals of struct type.
+Default values are not allowed for signals of struct type.
 This also mean that VSS does not need to specify notation for struct values.
 An exception is arrays of struct-types, where "empty array", i.e. `[]` shall be supported as default value.
 
@@ -293,9 +281,7 @@ then a signal (or item) using the struct type is also considered to have a defau
 
 ## Allowed Values
 
-VSS supports [specification of allowed values](https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/allowed/).
-As of today it is theoretically supported for all datatypes, but there is an [issue](https://github.com/COVESA/vehicle_signal_specification/issues/502)
-discussing if it is to be supported only for string data and possible integer-based types.
+VSS supports [specification of allowed values](/vehicle_signal_specification/rule_set/data_entry/allowed/).
 
 Using `allowed` for `type: property` is allowed (if `allowed` is supported for the used datatype).
 Using `allowed` for signals and items of struct type or array of struct type is not allowed.

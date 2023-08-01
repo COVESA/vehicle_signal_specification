@@ -118,7 +118,7 @@ Examples:
 SomeBranch.AnotherBranch.MySignalName
 Vehicle.Cabin.Door.Row1.Left.IsLocked
 ```
-Naming convention for string literals can be found in the [chapter](/vehicle_signal_specification/rule_set/data_entry/allowed)for specifying allowed values.
+Naming convention for string literals can be found in the [chapter](/vehicle_signal_specification/rule_set/data_entry/allowed/)for specifying allowed values.
 
 ### Line Length
 

@@ -29,7 +29,7 @@ VersionVSS.Major:
 VersionVSS.Minor:
   datatype: uint32
   type: attribute
-  default: 0
+  default: 1
   description: Supported Version of VSS - Minor version.
 
 VersionVSS.Patch:
@@ -41,8 +41,9 @@ VersionVSS.Patch:
 VersionVSS.Label:
   datatype: string
   type: attribute
-  default: 'develop'
+  default: 'dev'
   description: Label to further describe the version.
+  comment: COVESA VSS project typically use dev for latest master, and empty string for released versions.
 
 #
 # Vehicle identification attributes.
@@ -100,6 +101,12 @@ VehicleIdentification.DateVehicleFirstRegistered:
   type: attribute
   description: The date in ISO 8601 format of the first registration of the vehicle with the respective public authorities.
 
+VehicleIdentification.LicensePlate:
+  datatype: string
+  type: attribute
+  description: The license plate of the vehicle.
+  comment: Depending on the context, this attribute might not be up to date or might be misconfigured, and therefore should be considered untrustworthy in the absence of another method of verification.
+
 VehicleIdentification.MeetsEmissionStandard:
   datatype: string
   type: attribute
@@ -134,6 +141,11 @@ VehicleIdentification.VehicleSpecialUsage:
   datatype: string
   type: attribute
   description: Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school.
+
+VehicleIdentification.VehicleExteriorColor:
+  datatype: string
+  type: attribute
+  description: The main color of the exterior within the basic color palette (eg. red, blue, black, white, ...).
 
 VehicleIdentification.VehicleInteriorColor:
   datatype: string
@@ -188,13 +200,6 @@ Speed:
   unit: km/h
   description: Vehicle speed.
 
-TravelledDistance:
-  deprecation: V3.1 moved to Vehicle.TraveledDistance
-  datatype: float
-  type: sensor
-  unit: km
-  description: Odometer reading, total distance traveled during the lifetime of the vehicle.
-
 TraveledDistance:
   datatype: float
   type: sensor
@@ -226,7 +231,7 @@ TripDuration:
   unit: s
   description: Duration of latest trip.
   comment: This signal is not assumed to be continuously updated, but instead set to 0 when a trip starts
-           and set to the the actual duration of the trip when a trip ends.
+           and set to the actual duration of the trip when a trip ends.
            A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
            A trip is considered to end when engine is no longer enabled.
 

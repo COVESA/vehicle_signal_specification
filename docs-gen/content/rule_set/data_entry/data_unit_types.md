@@ -132,4 +132,9 @@ ratio         | Relation                        | Relation measured as ratio
 percent       | Relation                        | Relation measured in percent
 ... | ... | ...
 
-VSS tooling use the list specified in [config.yaml](https://github.com/COVESA/vss-tools/blob/master/vspec/config.yaml) to validate that only supported types are used in the signal specification.
+[VSS-Tools](https://github.com/COVESA/vss-tools) require that a unit file is available when transforming *.vspec files.
+It can be specified by the `-u` parameter, and if not given the tools will search for a file `units.yaml`
+in the same directory as the root *.vspec file.
+
+The VSS standard catalog is based on [units.yaml](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/units.yaml),
+i.e. only units from that file can be used.

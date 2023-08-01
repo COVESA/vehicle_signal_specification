@@ -30,3 +30,13 @@ IsHeatingOn:
   datatype: boolean
   type: actuator
   description: Mirror Heater on or off. True = Heater On. False = Heater Off.
+
+IsLocked:
+  datatype: boolean
+  type: actuator
+  description: Is mirror movement locked? True = Locked, mirror will not react to Tilt/Pan change. False = Unlocked.
+
+IsFolded:
+  datatype: boolean
+  type: actuator
+  description: Is mirror folded? True = Fully or partially folded. False = Fully unfolded.

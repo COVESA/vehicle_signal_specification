@@ -56,6 +56,7 @@ Mode:
 
 Frequency:
   datatype: uint8
+  unit: cpm
   type: actuator
   description: Wiping frequency/speed, measured in cycles per minute.
                The signal concerns the actual speed of the wiper blades when moving.

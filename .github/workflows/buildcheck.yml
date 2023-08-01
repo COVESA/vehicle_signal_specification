@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
 
@@ -39,6 +39,14 @@ jobs:
         run: |
           pipenv install
           pipenv run make travis_targets
+        env:
+          PIPENV_PIPFILE: ./vss-tools/Pipfile
+          PIPENV_VENV_IN_PROJECT: 1
+
+      - name: Test that ddsidl is correct
+        run: |
+          pipenv install cyclonedds
+          pipenv run idlc *.idl
         env:
           PIPENV_PIPFILE: ./vss-tools/Pipfile
           PIPENV_VENV_IN_PROJECT: 1

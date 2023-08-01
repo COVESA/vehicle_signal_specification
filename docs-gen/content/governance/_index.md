@@ -63,7 +63,7 @@ VSS is however an evolving syntax and catalog and there are still areas where ch
 Changes that breaks backward compatibility are typically introduced only in major releases (e.g. `X.0`) and shall be documented in release notes.
 This concerns changes to syntax and signals, but also to tools.
 
-The VSS project has introduced a [deprecation concept](../rule_set/basics.md#deprecation-since-version-21).
+The VSS project has introduced a [deprecation concept]({{< ref "../rule_set/basics.md#deprecation-since-version-21" >}}).
 If possible, when e.g. renaming or moving a signal or changing tools the old signal or parameter set shall be kept but marked as deprecated.
 That allows the change to be introduced in a minor version (e.g. `X.Y`). The old signal shall be removed first in the next major release, or later if needed.
 

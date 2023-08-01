@@ -1,5 +1,5 @@
 ---
-title: "Value restrictions"
+title: "Value Restrictions"
 date: 2019-08-04T12:37:12+02:00
 weight: 50
 ---
@@ -27,7 +27,7 @@ in a list.  Only values can be assigned to the data entry, which are
 specified in this list.
 
 The `datatype` specifier gives the type of the individual elements of the `allowed`
-list.
+list. In general `allowed:` is valid for all datatypes, including integer- and float-based types, unless othwerise specified.
 
 ## Recommendation on String values
 
@@ -69,3 +69,7 @@ Example of an invalid array:
 ```
   ['PAPILLON', 'VIZSLA', 'LOBSTER'] # LOBSTER is not in the allowed value list
 ```
+
+## Allowed for struct types
+
+Please see [struct]({{< ref "data_types_struct#allowed-values" >}} ) documentation.

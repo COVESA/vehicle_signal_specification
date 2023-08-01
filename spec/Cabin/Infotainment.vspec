@@ -113,6 +113,24 @@ Navigation.Volume:
   unit: percent
   description: Current navigation volume
 
+Navigation.GuidanceVoice:
+  datatype: string
+  type: actuator
+  allowed: ['STANDARD_MALE', 'STANDARD_FEMALE', 'ETC']
+  description: Navigation guidance state that was selected.
+  comment: ETC indicates a voice alternative not covered by the explicitly listed alternatives.
+
+Navigation.Map:
+  type: branch
+  description: All map actions
+
+Navigation.Map.IsAutoScaleModeUsed:
+  datatype: boolean
+  type: actuator
+  description: Used to select auto-scaling mode. This feature dynamically adjusts the zoom level of the map to provide an optimal view based on the current speed of the vehicle
+  comment: If true, then auto-scaling mode is used.
+           If false, then manual-scaling mode is used.
+
 HMI:
   type: branch
   description: HMI related signals
@@ -121,6 +139,12 @@ HMI.CurrentLanguage:
   datatype: string
   type: sensor
   description: ISO 639-1 standard language code for the current HMI
+
+HMI.FontSize:
+  datatype: string
+  type: actuator
+  allowed: ['STANDARD', 'LARGE', 'EXTRA_LARGE']
+  description: Font size used in the current HMI
 
 HMI.DateFormat:
   datatype: string
@@ -170,6 +194,19 @@ HMI.TirePressureUnit:
   allowed: ['PSI', 'KPA', 'BAR']
   description: Tire pressure unit used in the current HMI
 
+HMI.SpeedUnit:
+  datatype: string
+  type: actuator
+  allowed: ['METERS_PER_SECOND', 'MILES_PER_HOUR', 'KILOMETERS_PER_HOUR']
+  description: Speed unit used in the current HMI
+
+HMI.EVEnergyUnits:
+  datatype: string
+  type: actuator
+  allowed: ['WATT_HOURS','AMPERE_HOURS', 'KILOWATT_HOURS']
+  description: EV energy unit used in the current HMI
+  comment: Ampere hours is by definition not an energy unit, but can be used as a measurement of energy
+           if the voltage, like nominal voltage of the battery, is known.
 
 HMI.Brightness:
   datatype: float
@@ -188,6 +225,23 @@ HMI.DayNightMode:
   type: actuator
   allowed: ['DAY', 'NIGHT']
   description: Current display theme
+
+HMI.IsScreenAlwaysOn:
+  datatype: boolean
+  type: actuator
+  description: Used to prevent the screen going black if no action placed.
+
+HMI.LastActionTime:
+  datatype: string
+  type: sensor
+  description: Time for last hmi action, formatted according to ISO 8601 with UTC time zone.
+
+HMI.DisplayOffDuration:
+  datatype: uint16
+  type: actuator
+  unit: s
+  description: Duration in seconds before the display is turned off. Value shall be 0 if screen never shall turn off.
+  comment: Display shall be turned off at HMI.LastActionTime + HMI.DisplayOffDuration, unless HMI.IsScreenAlwaysOn==True.
 
 SmartphoneProjection:
   type: branch
