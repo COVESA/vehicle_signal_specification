@@ -24,6 +24,13 @@ ProductionDate:
   type: attribute
   description: Production date of battery in ISO8601 format, e.g. YYYY-MM-DD.
 
+ErrorCodes:
+  datatype: string[]
+  type: sensor
+  description: Current error codes related to the battery, if any.
+  comment:     Error code format is not defined, it may be DTCs according to OBD II (SAE-J2012DA_201812)
+               standard ([P|C|B|U]XXXXX ) or any other format.
+
 IsPowerConnected:
   datatype: boolean
   type: sensor
@@ -60,6 +67,12 @@ Temperature.Max:
   unit: celsius
   description: Current maximum temperature of the battery cells, i.e. temperature of the hottest cell.
 
+Temperature.CellTemperature:
+  datatype: float[]
+  type: sensor
+  description: Array of cell temperatures. Length or array shall correspond to number of cells in vehicle.
+  comment: Cells are identified by relative position in array.
+
 CellVoltage:
   type: branch
   description: Voltage information for cells in the battery pack.
@@ -70,11 +83,29 @@ CellVoltage.Min:
   unit: V
   description: Current voltage of the battery cell with lowest voltage.
 
+CellVoltage.IdMin:
+  datatype: uint16
+  type: sensor
+  description: Identifier of the battery cell with lowest voltage.
+  comment: Identifier is supposed to be relative index of the cell, starting with 0 the first cell.
+
 CellVoltage.Max:
   datatype: float
   type: sensor
   unit: V
   description: Current voltage of the battery cell with highest voltage.
+
+CellVoltage.IdMax:
+  datatype: uint16
+  type: sensor
+  description: Identifier of the battery cell with highest voltage.
+  comment: Identifier is supposed to be relative index of the cell, starting with 0 the first cell.
+
+CellVoltage.CellVoltages:
+  datatype: float[]
+  type: sensor
+  description: Array of cell voltages. Length or array shall correspond to number of cells in vehicle.
+  comment: Cells are identified by relative position in array.
 
 GrossCapacity:
   datatype: uint16
@@ -87,7 +118,6 @@ NetCapacity:
   type: sensor
   unit: kWh
   description: Total net capacity of the battery considering aging.
-
 
 StateOfHealth:
   datatype: float
@@ -196,6 +226,12 @@ Range:
   unit: m
   description: Remaining range in meters using only battery.
 
+TimeRemaining:
+  datatype: uint32
+  type: sensor
+  unit: s
+  description: Time remaining in seconds before the battery is empty.
+
 Charging:
   type: branch
   description: Properties related to battery charging.
@@ -238,10 +274,18 @@ Charging.MaximumChargingCurrent.Phase3:
   description: Maximum AC charging current (rms) at inlet for Phase 3 that can be accepted by the system.
 
 Charging.ChargePortFlap:
+  deprecation: V4.1 - Replaced with Charging.IsChargePortFlapOpen
   datatype: string
   type: actuator
   allowed: ['OPEN', 'CLOSED']
-  description: Status of the charge port cover, can potentially be controlled manually.
+  description: Status of the charge port cover(s), can potentially be controlled manually.
+               OPEN if at least one is open.
+
+Charging.IsChargePortFlapOpen:
+  datatype: boolean
+  type: actuator
+  description: Status of the charge port flap(s), can potentially be controlled manually.
+               True if at least one is open.
 
 Charging.IsChargingCableConnected:
   datatype: boolean
@@ -255,6 +299,7 @@ Charging.IsChargingCableLocked:
   comment: Locking of charging cable can be used to prevent unintentional removing during charging.
 
 Charging.ChargePlugType:
+  deprecation: V4.1 renamed to Charging.ChargePortType
   datatype: string[]
   type: attribute
   allowed: [
@@ -271,9 +316,12 @@ Charging.ChargePlugType:
     'GBT_DC',
     'OTHER'
     ]
-  description: Type of charge plug (charging inlet) available on the vehicle.
+  description: Type of charge plugs (charging inlet) available on the vehicle.
+               A charge plug type may occur multiple times in the list if there are multiple instances of that charge
+               plug type.
                IEC types refer to IEC 62196,  GBT refers to  GB/T 20234.
   comment:     A vehicle may have multiple charging inlets.
+               The signal Charging.ChargePlugPosition can be used to indicate position of the charge plug.
                IEC_TYPE_1_AC refers to Type 1 as defined in IEC 62196-2. Also known as Yazaki or J1772 connector.
                IEC_TYPE_2_AC refers to Type 2 as defined in IEC 62196-2. Also known as Mennekes connector.
                IEC_TYPE_3_AC refers to Type 3 as defined in IEC 62196-2. Also known as Scame connector.
@@ -287,16 +335,75 @@ Charging.ChargePlugType:
                OTHER shall be used if the vehicle has a charging connector, but not one of the connectors listed above.
                For additional information see https://en.wikipedia.org/wiki/IEC_62196.
 
+Charging.ChargePortType:
+  datatype: string[]
+  type: attribute
+  allowed: [
+    'IEC_TYPE_1_AC',
+    'IEC_TYPE_2_AC',
+    'IEC_TYPE_3_AC',
+    'IEC_TYPE_4_DC',
+    'IEC_TYPE_1_CCS_DC',
+    'IEC_TYPE_2_CCS_DC',
+    'TESLA_ROADSTER',
+    'TESLA_HPWC',
+    'TESLA_SUPERCHARGER',
+    'GBT_AC',
+    'GBT_DC',
+    'OTHER'
+    ]
+  description: Type of charge ports (charging inlet) available on the vehicle.
+               A charge port type may occur multiple times in the list if there are multiple instances of that charge
+               port type.
+               IEC types refer to IEC 62196,  GBT refers to  GB/T 20234.
+  comment:     A vehicle may have multiple charging ports.
+               The signal Charging.ChargePortPosition can be used to indicate position of the charge port.
+               IEC_TYPE_1_AC refers to Type 1 as defined in IEC 62196-2. Also known as Yazaki or J1772 connector.
+               IEC_TYPE_2_AC refers to Type 2 as defined in IEC 62196-2. Also known as Mennekes connector.
+               IEC_TYPE_3_AC refers to Type 3 as defined in IEC 62196-2. Also known as Scame connector.
+               IEC_TYPE_4_DC refers to AA configuration as defined in IEC 62196-3. Also known as Type 4 or CHAdeMO connector.
+               IEC_TYPE_1_CCS_DC refers to EE Configuration as defined in IEC 62196-3. Also known as CCS1 or Combo1 connector.
+               IEC_TYPE_2_CCS_DC refers to FF Configuration as defined in IEC 62196-3. Also known as CCS2 or Combo2 connector.
+               TESLA_ROADSTER, TESLA_HPWC (High Power Wall Connector) and TESLA_SUPERCHARGER refer to non-standardized charging
+               ports/methods used by Tesla.
+               GBT_AC refers to connector specified in GB/T 20234.2.
+               GBT_DC refers to connector specified in GB/T 20234.3. Also specified as BB Configuration in IEC 62196-3.
+               OTHER shall be used for charging ports not included in the list above.
+               For additional information see https://en.wikipedia.org/wiki/IEC_62196.
+
+Charging.ChargePortPosition:
+  datatype: string[]
+  type: attribute
+  allowed: ['FRONT_LEFT', 'FRONT_MIDDLE', 'FRONT_RIGHT',
+            'REAR_LEFT', 'REAR_MIDDLE', 'REAR_RIGHT',
+            'LEFT_FRONT', 'LEFT_MIDDLE', 'LEFT_REAR',
+            'RIGHT_FRONT', 'RIGHT_MIDDLE', 'RIGHT_REAR']
+  description: Location of the charge port(s).
+               First part indicates side of vehicle, second part relative position on that side.
+               If supported, the list in this attribute shall have the same length as Charging.ChargePortType,
+               and use same the relative order.
+  comment: Example - If this signal is [LEFT_FRONT, RIGHT_FRONT] and Charging.ChargePortType is
+           [IEC_TYPE_2_AC, GBT_AC] that means that there is Mennekes port on the left side of the vehicle near
+           the front, and a GB/T AC port on the right side, near the front.
+
 Charging.Mode:
   datatype: string
   type: actuator
-  allowed: ['MANUAL', 'TIMER', 'GRID', 'PROFILE']
-  description: Control of the charge process.
+  allowed: ['DEACTIVATED', 'AUTOMATIC', 'TRIGGERED', 'TIMER', 'PROFILE', 'EXTERNAL_ENTITY', 'MANUAL', 'GRID']
+  description: Describes how the charging process is controlled.
+               DEACTIVATED means that charging and discharging is deactivated, nothing will happen if charger is connected.
+               AUTOMATIC means charging will be initiated as soon as charger is connected.
+               TRIGGERED means charging will be initiated when triggered by user.
+               TIMER means charging is timer-based.
+               PROFILE means charging is controlled by profile downloaded to vehicle.
+               EXTERNAL_ENTITY means charging/discharging is controlled by the external entity connected to the vehicle.
+               This includes GRID-controlled charging (e.g. ISO 15118), but also other cases where vehicle is
+               connected to an arbitrary load that is powered by the vehicle.
                MANUAL means manually initiated (plug-in event, companion app, etc).
-               TIMER means timer-based.
-               GRID means grid-controlled (eg ISO 15118).
-               PROFILE means controlled by profile download to vehicle.
-  comment:     The mechanism to provide a profile to the vehicle is currently not covered by VSS.
+               GRID means grid-controlled (e.g. ISO 15118).
+  deprecation: V4.1 - MANUAL and GRID are deprecated, please use AUTOMATIC/TRIGGERED or EXTERNAL_ENITY instead.
+  comment:     EXTERNAL_ENTITY is the only mode where discharge may occur.
+               The mechanism to provide a profile to the vehicle is currently not covered by VSS.
 
 Charging.IsCharging:
   datatype: boolean
@@ -371,6 +478,52 @@ Charging.ChargeVoltage.Phase3:
   type: sensor
   unit: V
   description: Current AC charging voltage (rms) at inlet for Phase 3.
+
+Charging.AveragePower:
+  datatype: float
+  type: sensor
+  unit: kW
+  description: Average charging power of last or current charging event.
+
+Charging.MaxPower:
+  datatype: float
+  type: sensor
+  unit: kW
+  description: Maximum charging power of last or current charging event.
+
+Charging.EvseId:
+  datatype: string
+  type: sensor
+  description: EVSE charging point ID (without separators) of last or current charging event according to ISO 15118-2 Annex H.
+  comment: Length of id between 7 and 37 characters. ZZ00000 to be used if SECC cannot provide id
+
+Charging.Location:
+  type: branch
+  description: Location of last or current charging event.
+  comment: This may depending on implementation represent the location of (the charge port of) the vehicle during charging,
+           or the actual location of the charger/load connected to the vehicle.
+
+Charging.Location.Latitude:
+  datatype: double
+  type: sensor
+  min: -90
+  max: 90
+  unit: degrees
+  description: Latitude of last or current charging event in WGS 84 geodetic coordinates.
+
+Charging.Location.Longitude:
+  datatype: double
+  type: sensor
+  min: -180
+  max: 180
+  unit: degrees
+  description: Longitude of last or current charging event in WGS 84 geodetic coordinates.
+
+Charging.Location.Altitude:
+  datatype: double
+  type: sensor
+  unit: m
+  description: Altitude relative to WGS 84 reference ellipsoid of last or current charging event.
 
 Charging.PowerLoss:
   datatype: float

@@ -107,12 +107,11 @@ Warning: Attribute(s) enum in element Position not a core or known extended attr
 The signals in `Vehicle.Cabin.Seat` have been significantly refactored.
 The background is that the old representation included limitations and ambiguities.
 
-## VSS 3.1 (Latest Release)
+## VSS 3.1
 
 ### Struct Support (Experimental)
 
 VSS has been extended with syntax to define structs, and to use them for signals.
-For more information see [VSS documentation](XXX).
 For VSS 3.1 support is only experimental and syntax may change.
 
 *Note: Only a subset of VSS-tools for VSS 3.1 supports structs!*
@@ -151,21 +150,34 @@ Warning: Attribute(s) sensor in element Temperature not a core or known extended
   After discussion it was agreed that it is better to have a signal for start time rather than duration.
 * Refactoring of signals in `Vehicle.Body.Lights` branch performed, some signals have new names.
 
-## Planned Changes VSS 4.0
+## VSS 4.0 (Latest Release)
 
 ### Struct Support (Official)
 
-The struct feature shall now be officially supported.
+The VSS-syntax now supports structs.
+Note however that not all exporters in [VSS-tools](https://github.com/COVESA/vss-tools) 4.0 support structs yet.
+
+### Change of instance handling for seats, doors, mirrors and other branches.
+
+Previously many signals used position for instance, where position 1 meant the leftmost item.
+This caused problems for some use-cases where it was more practical to reference to a door by its relative position,
+like the "DriverSide" door, as you then can describe wanted behavior in the same way for both LHD and RHD vehicles.
+By that reason instance handling has for some signal been changed to use `["DriverSide","Middle","PassengerSide"]`.
 
 ### Actuator and Sensor Attributes
 
-The attributes `sensor` and `actuator`, deprecated from VSS 3.1, will be removed from the [VSS syntax](docs-gen/content/rule_set/data_entry/sensor_actuator.md).
-
+The attributes `sensor` and `actuator`, deprecated from VSS 3.1,
+have been removed from the [VSS syntax](docs-gen/content/rule_set/data_entry/sensor_actuator.md).
 
 ### Deprecated or Deleted signals
 
-* `Vehicle.TravelledDistance` ,deprecated from VSS 3.1, will be removed.
-* `Vehicle.Powertrain.FuelSystem.TimeSinceStart` ,deprecated from VSS 3.1, will be removed.
+* `Vehicle.TravelledDistance`
+* `Vehicle.Powertrain.FuelSystem.TimeSinceStart`
+
+
+## Planned Changes VSS 4.1
+
+-
 
 ## Planned Changes VSS 5.0
 

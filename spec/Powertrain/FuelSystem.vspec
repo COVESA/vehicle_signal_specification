@@ -60,6 +60,12 @@ Range:
   unit: m
   description: Remaining range in meters using only liquid fuel.
 
+TimeRemaining:
+  datatype: uint32
+  type: sensor
+  unit: s
+  description: Time remaining in seconds before the fuel tank is empty.
+
 InstantConsumption:
   datatype: float
   type: sensor
@@ -86,13 +92,6 @@ ConsumptionSinceStart:
            A trip is considered to end when engine is no longer enabled.
            The signal may however keep the value of the last trip until a new trip is started.
 
-TimeSinceStart:
-  deprecation: V3.1 replaced by Vehicle.StartTime and Vehicle.TripDuration
-  datatype: uint32
-  type: sensor
-  unit: s
-  description: Time in seconds elapsed since start of current trip.
-
 IsEngineStopStartEnabled:
   datatype: boolean
   type: sensor
@@ -102,3 +101,18 @@ IsFuelLevelLow:
   datatype: boolean
   type: sensor
   description: Indicates that the fuel level is low (e.g. <50km range).
+
+RefuelPortPosition:
+  datatype: string[]
+  type: attribute
+  allowed: ['FRONT_LEFT', 'FRONT_MIDDLE', 'FRONT_RIGHT',
+            'REAR_LEFT', 'REAR_MIDDLE', 'REAR_RIGHT',
+            'LEFT_FRONT', 'LEFT_MIDDLE', 'LEFT_REAR',
+            'RIGHT_FRONT', 'RIGHT_MIDDLE', 'RIGHT_REAR']
+  description: Position of refuel port(s).
+               First part indicates side of vehicle, second part relative position on that side.
+
+IsFuelPortFlapOpen:
+  datatype: boolean
+  type: actuator
+  description: Status of the fuel port flap(s). True if at least one is open.

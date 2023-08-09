@@ -43,6 +43,13 @@ IsBelted:
   type: sensor
   description: Is the belt engaged.
 
+SeatBeltHeight:
+  datatype: uint16
+  type: actuator
+  unit: mm
+  description: Seat belt position on vehicle z-axis.
+               Position is relative within available movable range of the seat belt.
+               0 = Lowermost position supported.
 Heating:
   datatype: int8
   type: actuator

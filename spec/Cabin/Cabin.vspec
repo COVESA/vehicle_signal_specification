@@ -49,6 +49,7 @@ Sunroof:
 Sunroof.Position:
   datatype: int8
   type: sensor
+  unit: percent
   min: -100
   max: 100
   description: Sunroof position. 0 = Fully closed 100 = Fully opened. -100 = Fully tilted.
@@ -70,29 +71,29 @@ Sunroof.Shade:
 #include SingleShade.vspec Sunroof.Shade
 
 #
-# Rearview mirror signals
+# Rear-view mirror signals
 #
 RearviewMirror:
   type: branch
-  description: Rearview mirror.
+  description: Rear-view mirror.
 
 RearviewMirror.DimmingLevel:
   datatype: uint8
   type: actuator
   unit: percent
   max: 100
-  description: Dimming level of rearview mirror. 0 = undimmed. 100 = fully dimmed.
+  description: Dimming level of rear-view mirror. 0 = Undimmed. 100 = Fully dimmed.
 
 
 ##
 # Interior lights signals and sensors
 ##
-Lights:
+Light:
   type: branch
-  description: Interior lights signals and sensors.
+  description: Light that is part of the Cabin.
+  comment: V4.0 branch renamed from "Lights" to "Light" to comply with singular naming of entities. Use SingleConfigurableLight.vspec to describe interior lights that can be configured.
+#include InteriorLights.vspec Light
 
-# Include the lights specification and attach it under the Lights branch.x
-#include InteriorLights.vspec Lights
 
 ##
 # Door signals and attributes
@@ -155,9 +156,8 @@ DriverPosition:
   datatype: string
   type: attribute
   allowed: ['LEFT', 'MIDDLE', 'RIGHT']
-  default: 'LEFT'
   description: The position of the driver seat in row 1.
-  comment: Default value is position 'LEFT', i.e. a typical LHD vehicle. Some signals use DriverSide and PassengerSide as instances. If this signal specifies that DriverPosition is LEFT or MIDDLE, then DriverSide refers to left side and PassengerSide to right side. If this signal specifies that DriverPosition is RIGHT, then DriverSide refers to right side and PassengerSide to left side.
+  comment: Some signals use DriverSide and PassengerSide as instances. If this signal specifies that DriverPosition is LEFT or MIDDLE, then DriverSide refers to left side and PassengerSide to right side. If this signal specifies that DriverPosition is RIGHT, then DriverSide refers to right side and PassengerSide to left side.
 
 SeatRowCount:
   datatype: uint8

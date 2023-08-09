@@ -1,0 +1,30 @@
+#
+# (C) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+#
+# Generic specification for a light whose color and brightness can be configured.
+#
+
+IsLightOn:
+  type: actuator
+  datatype: boolean
+  description: Indicates whether the light is turned on. True = On, False = Off.
+
+Intensity:
+  type: actuator
+  datatype: uint8
+  unit: percent
+  min: 1
+  max: 100
+  description: How much of the maximum possible brightness of the light is used. 1 = Maximum attenuation, 100 = No attenuation (i.e. full brightness).
+  comment: Minimum value cannot be zero as on/off is controlled by the actuator IsLightOn. V4.0 moved from Cabin.Lights.AmbientLight.Intensity to enable individual control of lights via the SingleConfigurableLight.vspec.
+
+Color:
+  type: actuator
+  datatype: string
+  description: Hexadecimal color code represented as a 3-byte RGB (i.e. Red, Green, and Blue) value preceded by a hash symbol "#". Allowed range "#000000" to "#FFFFFF".
+  comment: For example; "#C0C0C0" = Silver, "#FFD700" = Gold, "#000000" = Black, "#FFFFFF" = White, etc.
