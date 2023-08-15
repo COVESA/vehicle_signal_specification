@@ -19,7 +19,7 @@ FanSpeed:
   description: Fan Speed, 0 = off. 100 = max
 
 Temperature:
-  datatype: int8
+  datatype: float
   type: actuator
   unit: celsius
   description: Temperature
