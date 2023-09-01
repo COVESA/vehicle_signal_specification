@@ -224,3 +224,15 @@ units:
     label: beats per minute
     description: Number of human heart beats per minute
     domain: frequency
+  Ohm:
+    label: resistance
+    description: Electrical resistance measured in ohms
+    domain: electric resistance
+  Wh/km:
+    description:  Energy consumption per distance measured in watt hours per  kilometer
+    label: watt hour per km
+    domain: energy consumption per distance
+  lbs/inch^2:
+    description: Pressure measured in pounds per square inch
+    label: pounds per square inch
+    domain: pressure
