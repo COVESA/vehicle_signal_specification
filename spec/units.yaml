@@ -232,7 +232,7 @@ units:
     description:  Energy consumption per distance measured in watt hours per  kilometer
     label: watt hour per km
     domain: energy consumption per distance
-  lbs/inch^2:
+  psi:
     description: Pressure measured in pounds per square inch
     label: pounds per square inch
     domain: pressure
