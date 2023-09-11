@@ -1,6 +1,7 @@
+## Copyright (c) 2022 Contributors to COVESA
 #
-# (C) 2022 Bayerische Motoren Werke Aktiengesellschaft (BMW AG) - All rights reserved.
-#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
 
 IsOn:
   datatype: boolean

@@ -1,11 +1,8 @@
-#
-# (C) 2022, Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
-# (C) 2022 Robert Bosch GmbH
+## Copyright (c) 2022 Contributors to COVESA
 #
 # All files and artifacts in this repository are licensed under the
 # provisions of the license provided by the LICENSE file in this repository.
-#
-#
+
 # This file contains adoptions to the main spec concering motorbikes.
 # It mainly addresses istantiation issues (e.g. wheels) and
 # additional signals, which are motorbike specific (e.g. handlebars).

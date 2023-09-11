@@ -1,9 +1,7 @@
-#
-# (C) 2023 Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
+## Copyright (c) 2023 Contributors to COVESA
 #
 # All files and artifacts in this repository are licensed under the
 # provisions of the license provided by the LICENSE file in this repository.
-#
 
 #
 # Generic specification for a light whose color and brightness can be configured.

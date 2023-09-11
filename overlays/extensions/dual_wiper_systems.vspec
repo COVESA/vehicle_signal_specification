@@ -1,6 +1,8 @@
+## Copyright (c) 2022 Contributors to COVESA
 #
-# (C) 2022 Robert Bosch GmbH
-#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+
 # Overlay to extend wiper system to support multiple instances
 # Dependencies to other overlays: None
 # Known conflicts with other overlays: None

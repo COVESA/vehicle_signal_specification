@@ -63,6 +63,17 @@ By supplying this sign-off line, you indicate your acceptance of the COVESA Cert
 
 If using git command line you can add a sign-off by using the `-s` argument when creating a commit.
 
+Each file shall have copyright statement of this form, inspired by the [Eclipse generic copyright header](https://www.eclipse.org/projects/handbook/#ip-copyright-headers)
+
+```
+# Copyright (c) XXXX Contributors to COVESA
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+```
+
+Where XXXX is the year the file was originally created, no need to update or append new years or a range of years later.
+
 ### VSS Signals shall be generic
 
 Signals added to standard VSS shall be generic, i.e. it shall be possible that other manufacturers can reuse the signal.

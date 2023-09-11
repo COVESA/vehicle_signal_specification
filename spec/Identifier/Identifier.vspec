@@ -1,9 +1,8 @@
-#
-# (C) 2020 Robert Bosch GmbH
+## Copyright (c) 2020 Contributors to COVESA
 #
 # All files and artifacts in this repository are licensed under the
 # provisions of the license provided by the LICENSE file in this repository.
-#
+
 #
 # Identifier
 # Based on OAuth 2.0. Subject is the UserID inside the claim of the Issuer Domain.
