@@ -10,11 +10,15 @@ quite often there is a need to repeat branches and data entries
 branches and data entries in the specification an instance-concept is supported.
 Instances remove the need of repeating definitions, by defining at the node itself how often it occurs in
 the resulting tree. They are meant as a short-cut in the specification and
-interpreted by the tools.
+interpreted by the tools. As an example is shown below for doors:
 
-![Example tree](/vehicle_signal_specification/images/instances.png?width=60pc)
+<!-- Image source in docs-gen/image_source/instance_tree.puml -->
+![Example tree](/vehicle_signal_specification/images/instance_tree.png)
 
+When expanded this corresponds to:
 
+<!-- Image source in docs-gen/image_source/instance_tree_expand.puml -->
+![Example tree](/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc)
 
 ## Definition
 
@@ -25,8 +29,8 @@ interpreted by the tools.
 3. Instances are defined with the key-word `instances`, followed by its
    definition, which can be either:
    * a list of strings, where each element defines a single instance, e.g.
-     `['Left','Right']` results into two instances of every following
-     data entry in the path, named `Left` and `Right`
+     `['DriverSide','PassengerSide']` results into two instances of every following
+     data entry in the path, named `DriverSide` and `PassengerSide`
    * a string, followed by a range defined through `[n,m]`, with `n,m` as integer and `n <= m`,
      which defines the number of instances.
      `Position[1,4]` results into 4 instances of every following
@@ -34,17 +38,14 @@ interpreted by the tools.
      and `Position4`. It is in VSS recommended to use `1` as start index for the first row/axle/position/...
 4. If multiple instances occur in one node or on the path to a data entry,
    the instances get combined, by the order of occurrence. Following the example above,
-   four position instances will be created for each of the 'Left' and 'Right' instances,
+   four position instances will be created for each of the 'DriverSide' and 'PasengerSide' instances,
    resulting into a total number of 8 instances.
 
 ### How can I exclude child-nodes from instantiation?
 
 Often it makes sense to instantiate all child-nodes of a branch.
-But there are cases, when nodes are linked more the general concept of
-a branch, but not to the single instance. This could be the `DoorCount`,
-which would rather be `Door.Count`, `WheelDiameter`, which is rather linked
-to an axle rather than the wheel itself or `Brake.FluidLevel` which is not
-measured for a single break, but rather a system indication.
+But there could be cases, when nodes are linked more the general concept of
+a branch, but not to the single instance.
 
 To exclude a child-node from the instantiation of the *direct* parent node, set the
 keyword `instantiate` to `false` (`true` by default). Please check the following
@@ -59,17 +60,16 @@ The example from above in the specification:
 Door:
   type: branch
   instances:
-    - Row[1,4]
-    - ["Left","Right"]
+    - Row[1,2]
+    - ["DriverSide","PassengerSide"]
   description: All doors, including windows and switches
 #include SingleDoor.vspec Door
 
-Door.Count:
+Door.SomeSignal:
   datatype: uint8
   type: attribute
-  default: 4
   instantiate: false
-  description: Number of doors in vehicle.
+  description: A door signal that should not be instantiated.
 ```
 
 
@@ -85,31 +85,14 @@ IsOpen:
   description: Is door open or closed
 ```
 
-Results in the following dot-notated output:
+Results in the following signals:
 
 ```
-Vehicle.Cabin.Door
-Vehicle.Cabin.Door.Count
-Vehicle.Cabin.Door.Row1
-Vehicle.Cabin.Door.Row1.Left
-Vehicle.Cabin.Door.Row1.Left.IsOpen
-Vehicle.Cabin.Door.Row1.Right
-Vehicle.Cabin.Door.Row1.Right.IsOpen
-Vehicle.Cabin.Door.Row2
-Vehicle.Cabin.Door.Row2.Left
-Vehicle.Cabin.Door.Row2.Left.IsOpen
-Vehicle.Cabin.Door.Row2.Right
-Vehicle.Cabin.Door.Row2.Right.IsOpen
-Vehicle.Cabin.Door.Row3
-Vehicle.Cabin.Door.Row3.Left
-Vehicle.Cabin.Door.Row3.Left.IsOpen
-Vehicle.Cabin.Door.Row3.Right
-Vehicle.Cabin.Door.Row3.Right.IsOpen
-Vehicle.Cabin.Door.Row4
-Vehicle.Cabin.Door.Row4.Left
-Vehicle.Cabin.Door.Row4.Left.IsOpen
-Vehicle.Cabin.Door.Row4.Right
-Vehicle.Cabin.Door.Row4.Right.IsOpen
+Vehicle.Cabin.Door.SomeSignal
+Vehicle.Cabin.Door.Row1.DriverSide.IsOpen
+Vehicle.Cabin.Door.Row1.PassengerSide.IsOpen
+Vehicle.Cabin.Door.Row2.DriverSide.IsOpen
+Vehicle.Cabin.Door.Row2.PassengerSide.IsOpen
 ```
 
 ## Redefinition
@@ -117,17 +100,17 @@ Vehicle.Cabin.Door.Row4.Right.IsOpen
 It is possible to override the default instantiation provided by VSS by redefining the branch with
 different instantiation information. If multiple definitions of a branch exist with different
 instance definitions, then the last found definition will be used.
-As an example, if only two rows of doors are needed, then the default VSS instance definition
+As an example, if three row of doors are needed, then the default VSS instance definition
 can be overridden by redefining the Door branch as shown in the example below.
 
 ```YAML
-#Redefinition changing number of rows from 4 to 2
+#Redefinition changing number of rows from 2 to 3
 #The redefinition must appear "after" the original definition
 Vehicle.Cabin.Door:
   type: branch
   instances:
-    - Row[1,2]
-    - ["Left","Right"]
+    - Row[1,3]
+    - ["DriverSide","PassengerSide"]
   description: All doors, including windows and switches
 ```
 
