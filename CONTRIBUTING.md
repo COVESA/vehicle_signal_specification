@@ -63,15 +63,25 @@ By supplying this sign-off line, you indicate your acceptance of the COVESA Cert
 
 If using git command line you can add a sign-off by using the `-s` argument when creating a commit.
 
-Each file shall have copyright statement of this form, inspired by the [Eclipse generic copyright header](https://www.eclipse.org/projects/handbook/#ip-copyright-headers)
+For certain files it is requested that a copyright and license statement is added as file header.
+This currently applies to the following file types:
+
+* VSS source files (`*.vspec`)
+* Python files (vss-tools, `*.py`)
+
+Those files shall have copyright statement of this form, inspired by the [Eclipse generic copyright header](https://www.eclipse.org/projects/handbook/#ip-copyright-headers).
+Copyright/License-statement may also be added to other files if considered relevant.
 
 ```
-# Copyright (c) XXXX Contributors to COVESA
+# Copyright (c) {year} Contributors to COVESA
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-```
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
 
+```
 Where XXXX is the year the file was originally created, no need to update or append new years or a range of years later.
 
 ### VSS Signals shall be generic
