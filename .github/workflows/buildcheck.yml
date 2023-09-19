@@ -38,7 +38,7 @@ jobs:
       - name: Test mandatory targets
         run: |
           pipenv install
-          pipenv run make travis_targets
+          pipenv run make mandatory_targets
         env:
           PIPENV_PIPFILE: ./vss-tools/Pipfile
           PIPENV_VENV_IN_PROJECT: 1
@@ -54,7 +54,7 @@ jobs:
       - name: Test optional targets. NOTE - always succeeds
         run: |
           pipenv install
-          pipenv run make -k travis_optional || true
+          pipenv run make -k optional_targets || true
         env:
           PIPENV_PIPFILE: ./vss-tools/Pipfile
           PIPENV_VENV_IN_PROJECT: 1
