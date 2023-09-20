@@ -1,0 +1,15 @@
+@startuml
+card "instances: \n  - Row[1,2] \n  - ["DriverSide","PassengerSide"]" as C111
+usecase Vehicle as N1
+usecase Cabin as N11
+usecase Door as N111
+usecase IsOpen as N1112
+usecase Window as N1111
+usecase IsOpen as N11111
+N1--> N11
+N11--> N111
+N111--> N1111
+N111--> N1112
+N1111--> N11111
+N111 - C111
+@enduml
