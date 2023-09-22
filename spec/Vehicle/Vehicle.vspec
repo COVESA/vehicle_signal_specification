@@ -394,12 +394,37 @@ Height:
   description: Overall vehicle height.
 
 Width:
+  deprecation: v4.1 replaced with WidthExcludingMirrors and WidthIncludingMirrors
   datatype: uint16
   type: attribute
   default: 0
   unit: mm
   description: Overall vehicle width.
 
+WidthExcludingMirrors:
+  datatype: uint16
+  type: attribute
+  default: 0
+  unit: mm
+  description: Overall vehicle width excluding mirrors, as defined by SAE J1100-2009 W103.
+
+WidthIncludingMirrors:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: Overall vehicle width including mirrors, as defined by SAE J1100-2009 W144.
+
+WidthFoldedMirrors:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: Overall vehicle width with mirrors folded, as defined by SAE J1100-2009 W145.
+
+TurningDiameter:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: Minimum turning diameter, Wall-to-Wall, as defined by SAE J1100-2009 D102.
 
 #
 # Trailer
