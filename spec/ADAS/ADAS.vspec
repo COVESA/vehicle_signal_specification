@@ -34,12 +34,15 @@ ActiveAutonomyLevel:
     'SAE_3',
     'SAE_4_DISENGAGING', # Level 4 ADS will disengage, driver notified
     'SAE_4',
+    'SAE_5_DISENGAGING',
     'SAE_5'
   ]
-  description: Indicates the currently active levels of driving automation according to the SAE J3016 (Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles).
+  description: Indicates the currently active levels of driving automation according to 
+               the SAE J3016 (Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles).
   comment: Complies with https://www.sae.org/standards/content/j3016_202104/ and https://www.sae.org/blog/sae-j3016-update. 
-           Level 2 DAS (Driving automation system) disengage immediately upon driver request.
-           Level 3 ADS (Automated driving system) 
+           Level 5 and 4 ADS (Automated driving system) disengages, if appropriate, only after it achieves a minimal risk condition or a driver is performing the DDT.
+           Level 3 ADS alerts a DDT fallback-ready user to become the driver upon disengagement of the ADS.
+           Level 2 DAS (Driving automation system)     
 For SAE levels 3 and 4 the system is required to alert the driver before it
            will disengage. 
 Level 4 systems are required to reach a safe state even if a driver does
@@ -53,12 +56,12 @@ SupportedAutonomyLevel:
   datatype: string
   type: attribute
   allowed: [
-    'SAE_0',
-    'SAE_1',
-    'SAE_2',
-    'SAE_3',
-    'SAE_4',
-    'SAE_5'
+    'SAE_0', # No Driving Automation
+    'SAE_1', # Driver Assistance
+    'SAE_2', # Partial Driving Automation
+    'SAE_3', # Conditional Driving Automation
+    'SAE_4', # High Driving Automation
+    'SAE_5'  # Full Driving Automation
   ]
   description: Indicates the highest levels of driving automation according to the SAE J3016 taxonomy the vehicle is capable of.
 
