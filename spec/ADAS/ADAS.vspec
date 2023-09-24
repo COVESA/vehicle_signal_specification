@@ -30,9 +30,9 @@ ActiveAutonomyLevel:
     'SAE_1',
     'SAE_2_DISENGAGING',
     'SAE_2',
-    'SAE_3_DISENGAGING', # Level 3 ADS will disengage, driver notified
+    'SAE_3_DISENGAGING', 
     'SAE_3',
-    'SAE_4_DISENGAGING', # Level 4 ADS will disengage, driver notified
+    'SAE_4_DISENGAGING', 
     'SAE_4',
     'SAE_5_DISENGAGING',
     'SAE_5'
