@@ -36,7 +36,7 @@ ActiveAutonomyLevel:
     'SAE_4',
     'SAE_5'
   ]
-  description: Indicates the currently active level of autonomy according to SAE J3016 taxonomy.
+  description: Indicates the currently active levels of driving automation according to SAE J3016 (Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles).
   comment: Follows https://www.sae.org/standards/content/j3016_202104/ and 
            https://www.sae.org/blog/sae-j3016-update. For SAE levels 3 and 4 the system is required to alert the driver before it
            will disengage. Level 4 systems are required to reach a safe state even if a driver does
