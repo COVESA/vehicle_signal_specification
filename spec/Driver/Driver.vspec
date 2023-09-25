@@ -7,6 +7,7 @@
 #
 # Driver data
 #
+# Driver data is the foundational input that the DMS (Driver Monitoring System) uses to assess, analyze, and ensure the driver's alertness, safety, and overall driving condition.
 
 
 #include ../Cabin/Occupant.vspec
@@ -43,7 +44,12 @@ FatigueLevel:
   unit: percent
   min: 0
   max: 100
-  description: Fatigue level of the driver, which can be evaluated by multiple factors e.g. trip time, behaviour of steering, eye status.
+  description: Fatigue level of the driver, which can be evaluated by multiple factors. For example, 
+               Trip time - The longer the trip time, the higher the potential fatigue level of the driver.
+               Behaviour of steering - Erratic or unsteady steering might indicate that the driver is distracted, fatigued, or impaired in some way.
+               Eye status - If the eyes are closed for an extended period, the DMS (Driver Monitoring System) will trigger an alert.
+               Heart rate - An irregular or decreased heart rate can indicate increased fatigue levels of the driver.
+               Driver's posture - Slouching or leaning excessively might indicate fatigue or distraction.
 
 HeartRate:
   datatype: uint16
