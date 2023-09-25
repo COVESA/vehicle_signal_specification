@@ -41,7 +41,7 @@ ActiveAutonomyLevel:
                the SAE J3016 (Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles).
   comment: Complies with https://www.sae.org/standards/content/j3016_202104/ and https://www.sae.org/blog/sae-j3016-update. 
            Level 5 and 4 ADS (Automated driving system) disengage, if appropriate, only after it achieves a minimal risk condition or a driver is performing the DDT.
-           Level 3 ADS disengages an appropriate time after issuing a request to intervene or immediately upon user request.
+           Level 3 ADS disengages either an appropriate time after issuing a request to intervene or immediately upon user request.
            Level 2 DAS (Driving automation system) disengages immediately upon driver request. 
            However, since many Level 2 DAS, often termed "Level 2.5", warn the driver shortly before reaching their operational limits,
            the VSS also supports the DISENGAGING state for SAE_2.
