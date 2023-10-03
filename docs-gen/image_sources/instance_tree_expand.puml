@@ -1,0 +1,53 @@
+@startuml
+
+usecase Vehicle as N1
+usecase Cabin as N11
+N1--> N11
+usecase Door as N111
+N11--> N111
+
+usecase Row1 as N111a
+N111-->N111a
+usecase Row2 as N111b
+N111-->N111b
+
+usecase DriverSide as N111aa
+usecase PassengerSide as N111ab
+N111a-->N111aa
+N111a-->N111ab
+
+usecase DriverSide as N111ba
+usecase PassengerSide as N111bb
+N111b-->N111ba
+N111b-->N111bb
+
+usecase IsOpen as N111aa2
+usecase Window as N111aa1
+usecase IsOpen as N111aa11
+N111aa-->N111aa1
+N111aa1-->N111aa11
+N111aa-->N111aa2
+
+usecase IsOpen as N111ab2
+usecase Window as N111ab1
+usecase IsOpen as N111ab11
+N111ab-->N111ab1
+N111ab1-->N111ab11
+N111ab-->N111ab2
+
+
+usecase IsOpen as N111ba2
+usecase Window as N111ba1
+usecase IsOpen as N111ba11
+N111ba-->N111ba1
+N111ba1-->N111ba11
+N111ba-->N111ba2
+
+usecase IsOpen as N111bb2
+usecase Window as N111bb1
+usecase IsOpen as N111bb11
+N111bb-->N111bb1
+N111bb1-->N111bb11
+N111bb-->N111bb2
+
+@enduml
