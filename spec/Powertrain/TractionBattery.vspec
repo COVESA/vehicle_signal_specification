@@ -21,6 +21,7 @@ Id:
 ProductionDate:
   datatype: string
   type: attribute
+  unit: iso8601
   description: Production date of battery in ISO8601 format, e.g. YYYY-MM-DD.
 
 ErrorCodes:
@@ -570,6 +571,7 @@ Charging.Timer.Mode:
 Charging.Timer.Time:
   datatype: string
   type: actuator
+  unit: iso8601
   description: Time for next charging-related action, formatted according to ISO 8601 with UTC time zone.
                Value has no significance if Charging.Timer.Mode is 'inactive'.
 
