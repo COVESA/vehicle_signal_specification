@@ -234,6 +234,7 @@ HMI.IsScreenAlwaysOn:
 HMI.LastActionTime:
   datatype: string
   type: sensor
+  unit: iso8601
   description: Time for last hmi action, formatted according to ISO 8601 with UTC time zone.
 
 HMI.DisplayOffDuration:
