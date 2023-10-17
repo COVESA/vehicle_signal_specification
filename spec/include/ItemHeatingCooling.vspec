@@ -1,0 +1,14 @@
+#
+# All files and artifacts in this repository are licensed under the
+# provisions of the license provided by the LICENSE file in this repository.
+#
+
+
+HeatingCooling:
+  datatype: int8
+  type: actuator
+  min: -100
+  max: 100
+  unit: percent
+  description: Heating or Cooling requsted for the Item.
+               -100 = Maximum cooling, 0 = Heating/cooling deactivated, 100 = Maximum heating.

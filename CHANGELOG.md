@@ -177,7 +177,10 @@ have been removed from the [VSS syntax](docs-gen/content/rule_set/data_entry/sen
 
 ## Planned Changes VSS 4.1
 
--
+
+### Deprecated or Deleted signals
+
+* `Vehicle.Cabin.Seat.*.*.Heating` deprecated from 4.1. New signal `Vehicle.Cabin.Seat.*.*.HeatingCooling` added.
 
 ## Planned Changes VSS 5.0
 

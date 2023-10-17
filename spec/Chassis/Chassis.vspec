@@ -167,6 +167,8 @@ SteeringWheel.Extension:
   unit: percent
   description: Steering wheel column extension from dashboard. 0 = Closest to dashboard. 100 = Furthest from dashboard.
 
+#include include/ItemHeatingCooling.vspec SteeringWheel
+
 #
 # Accelerator
 #

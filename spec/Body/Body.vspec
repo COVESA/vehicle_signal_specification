@@ -29,16 +29,12 @@ RefuelPosition:
 #
 Hood:
   type: branch
-  description: Hood status.
+  description: Hood status. Start position for Hood is Closed.
   comment: The hood is the hinged cover over the engine compartment of a motor vehicles.
            Depending on vehicle, it can be either in the front or back of the vehicle.
            Luggage compartments are in VSS called trunks, even if they are located at the front of the vehicle.
 
-Hood.IsOpen:
-  datatype: boolean
-  type: actuator
-  description: Hood open or closed. True = Open. False = Closed.
-
+#include ../include/MovableItem.vspec Hood
 
 #
 # Trunk description
@@ -46,20 +42,12 @@ Hood.IsOpen:
 Trunk:
   type: branch
   instances: ["Front", "Rear"]
-  description: Trunk status.
+  description: Trunk status. Start position for Trunk is Closed.
   comment: A trunk is a luggage compartment in a vehicle.
            Depending on vehicle, it can be either in the front or back of the vehicle.
            Some vehicles may have trunks both at the front and at the rear of the vehicle.
 
-Trunk.IsOpen:
-  datatype: boolean
-  type: actuator
-  description: Trunk open or closed. True = Open. False = Closed.
-
-Trunk.IsLocked:
-  datatype: boolean
-  type: actuator
-  description: Is trunk locked or unlocked. True = Locked. False = Unlocked.
+#include ../include/LockableMovableItem.vspec Trunk
 
 Trunk.IsLightOn:
   datatype: boolean
