@@ -223,12 +223,11 @@ Power:
 # Current Torque
 #
 Torque:
-  datatype: uint16
+  datatype: int16
   type: sensor
   unit: Nm
-  description: Current engine torque. Shall be reported as 0 during engine breaking.
+  description: Current engine torque. Shall be reported as a negative number during engine breaking.
   comment: During engine breaking the engine delivers a negative torque to the transmission.
-           This negative torque shall be ignored, instead 0 shall be reported.
 
 #
 # Diesel Exhaust Fluid
