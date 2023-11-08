@@ -5,30 +5,55 @@ weight: 1
 ---
 
 A branch entry describes a tree branch (or node) containing other branches and
-signals.
+signals.  Branches typically represent either a feature of interest (an object whose properties are being observed or reported), or a node that acts as a parent to a group of related properties.
 
-A branch entry example is given below:
+A branch entry representing a feature of interest is exemplified below:
 
 ```YAML
 Trunk:
   type: branch
-  description: All signals related to the rear trunk
-  aggregate: false
+  identifier: Vehicle.Body.Trunk
+  elementType: FeatureOfInterest
+  instances: ["Front", "Rear"]
+  definition: An enclosed lockable storage area in a sedan, coupe, or convertible separate from the passenger cabin
+  description: Trunk status.
+  comment: A trunk is a luggage compartment in a vehicle.
+           Depending on vehicle, it can be either in the front or back of the vehicle.
+           Some vehicles may have trunks both at the front and at the rear of the vehicle.
+```
+
+A branch entry representing a parent node is exemplified below:
+
+```YAML
+Windshield.Wiping:
+  type: branch
+  elementType: Node
+  description: Windshield wiper signals.
 ```
 
 The following elements are defined:
 
-**`Body.Trunk`**
+**`Trunk:`** or **`Windshield.Wiping:`**
 The list element name defines the dot-notated signal name to the signal.
 Please note that all parental branches included in the name must be defined as
-well.
+well.  In the case of ```Trunk```, it is a child of ```Vehicle.Body``` and thus both ```Vehicle``` and ```Vehicle.Body``` need to be defined.
 
 **```type```**
-The value ```branch``` specifies that this is a branch entry (as
-opposed to a signal entry). This is the default, in case ```type``` is omitted.
+The value ```branch``` specifies that this is a branch entry. This is the default, in case ```type``` is omitted.
+
+**```identifier```** *[optional]* 
+A set of characters that uniquely identifies the branch, usually the full path
+
+**```elementType```** *[optional]* 
+A type that categorizes the branch's role in the vehicle signal domain, or as a Node if the branch exists purely for tree traversal and has no vehicle signal domain signifcance on its own.
+- ```FeatureOfInterest```: A physical object whose properties can be observed and possibly manipulated.
+- ```Node```: A physical object whose properties can be observed and possibly manipulated.
+
+**```definition```*** [optional]* 
+A formal specification that includes the necessary and sufficient conditions for distinguishing this branch from anything else.  It is similar to a dictionary definition, and the conditions put forth can translate to formal axioms in an ontology and can be used for inferencing and automation.
 
 **```description```**
-Describes the meaning and content of the branch.
+Describes the meaning and content of the branch.  Descriptions can include any kind of information that helps humans conceptualize the entry, such as examples, physical properties, etc.
 Recommended to start with a capital letter and end with a dot (`.`).
 
 **```comment ```**  *[optional]* `since version 3.0`
