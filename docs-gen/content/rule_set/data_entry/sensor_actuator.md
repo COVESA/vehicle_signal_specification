@@ -31,8 +31,8 @@ Defines the type of the node. This can be `branch`,
 `sensor`, `actuator` or `attribute`.
 
 **```datatype```**
-The string value of the type specifies the scalar type of the data entry
-value. See [data type](/vehicle_signal_specification/rule_set/data_entry/data_types/) chapter for a list of available types.
+The string value of the datatype specifies the scalar type of the data entry
+value. See [datatype](/vehicle_signal_specification/rule_set/data_entry/data_types/) chapter for a list of available datatypes.
 
 **```description```**
 Describes the meaning and content of the signal.
@@ -47,18 +47,18 @@ references to related signals, standards and similar.
 Recommended to start with a capital letter and end with a dot (`.`).
 
 **```min```** *[optional]*
-The minimum value, within the interval of the given ```type```, that the
+The minimum value, within the interval of the given ```datatype```, that the
 data entry can be assigned.
-If omitted, the minimum value will be the "Min" value for the given type.
+If omitted, the minimum value will be the "Min" value for the given datatype.
 Cannot be specified if ```allowed``` is defined for the same data entry.
 
 **```max```** *[optional]*
-The maximum value, within the interval of the given ```type```, that the
+The maximum value, within the interval of the given ```datatype```, that the
 data entry can be assigned.
-If omitted, the maximum value will be the "Max" value for the given type.
+If omitted, the maximum value will be the "Max" value for the given datatype.
 Cannot be specified if ```allowed``` is defined for the same data entry.
 
 **```unit```** *[optional]*
-The unit of measurement that the data entry has. See [Data Unit Types](/vehicle_signal_specification/rule_set/data_entry/data_unit_types/)
-chapter for a list of available unit types. This
-cannot be specified if ```allowed``` is defined as the signal type.
+The unit of measurement that the data entry has. See [Data Units](/vehicle_signal_specification/rule_set/data_entry/data_unit_types/)
+chapter for a list of available units. This
+cannot be specified if ```allowed``` is defined for the same data entry.
