@@ -9,14 +9,14 @@ weight: 15
 
 ## Introduction
 
-VSS has historically supported only the following types:
+VSS has historically supported only the following datatypes:
 
-* Integer-based types (e.g. uint8, int32)
-* Float-based types (float, double)
+* Integer-based datatypes (e.g. uint8, int32)
+* Float-based datatypes (float, double)
 * String
 * Boolean
 
-In addition to this VSS arrays of the types given above has been supported.
+In addition to this VSS arrays of the datatypes given above has been supported.
 This has been considered insufficient for some use-cases.
 Typical examples are when something cannot be described by a single value, but multiple values are needed.
 
@@ -39,7 +39,7 @@ The order of elements in a struct is from a VSS perspective considered as arbitr
 The VSS project will by this reason not publish guidelines on how to order items in the struct to minimize size,
 and no concept for introducing padding will exist.
 
-Structs shall be used in VSS standard catalog only when considered to give a significant advantage compared to using only primitive types.
+Structs shall be used in VSS standard catalog only when considered to give a significant advantage compared to using only primitive datatypes.
 
 ## Structs vs. Aggregate
 
@@ -61,10 +61,10 @@ With this view, aggregate shall never be used in the standard catalog, but can b
 
 ## General Idea and Basic Semantics
 
-A signal of struct type shall be defined in the same way as other VSS signals,
-the only difference would be that instead of using a primitive type there shall be a reference to a struct datatype.
+A signal of struct datatype shall be defined in the same way as other VSS signals,
+the only difference would be that instead of using a primitive datatype there shall be a reference to a struct datatype.
 This means that structs can be used for all types of VSS signals (i.e. sensor, attribute and actuator).
-If a signal of struct type is sent or received, VSS expects all included items to have valid values, i.e. all items are mandatory.
+If a signal of struct datatype is sent or received, VSS expects all included items to have valid values, i.e. all items are mandatory.
 For example, if a struct contains the items A, B and C - then it is expected that the sent signal contains value for all items.
 If some items are considered optional then the value range of the items must be adapted to include values indicating "not available" or "undefined",
 or additional items needs to be added to indicate which items that have valid values.
@@ -73,13 +73,14 @@ VSS makes no assumption on how structs are transferred or stored by implementati
 It is however expected that they are read and written by atomic operations.
 This means that the data storage shall be "locked" while the items of the struct are read, preventing changes to happen while reading/writing the items.
 
-Structs shall be defined in a separate tree. This means that signal definitions and types cannot exist in the same files.
-Tooling must thus accept one (or more) parameters for specifying type definition(s).
+Structs shall be defined in a separate tree intended for definition of datatypes only.
+This means that signal definitions and struct definitions cannot exist in the same files.
+Tooling must thus accept one (or more) parameters for specifying datatype definition(s).
 The tree must have a branch as root, i.e. it is not possible to have a struct as root.
 
-The top level types file(s) (e.g. `vss_types.vspec`) can refer to other type files similar to the
+The top level datatypes file(s) (e.g. `vss_types.vspec`) can refer to other datatype files similar to the
 [top VSS file](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/VehicleSignalSpecification.vspec).
-It is possible to specify that multiple type files shall be used, but all types must belong to the same root.
+It is possible to specify that multiple datatype files shall be used, but all datatypes must belong to the same root.
 This means if the first file defines `A.B`, then the seconds file can define `A.C`, but not `X.Y` as that would
 result in two roots (`A` and `X`).
 
@@ -87,14 +88,14 @@ For current vss-tools support for structs see [documentation](https://github.com
 
 ## Naming Restrictions
 
-The VSS syntax and tooling shall not enforce any restrictions on naming for the type tree.
+The VSS syntax and tooling shall not enforce any restrictions on naming for the datatype tree.
 It may even use the same branch structure as the signal tree.
 This means that it theoretically at the same time could exist both a signal `A.B.C` and a struct `A.B.C`.
-This is not a problem as it always from context is clear whether a name refers to a signal or a type.
+This is not a problem as it always from context is clear whether a name refers to a signal or a datatype.
 
 ## Simple Definition and Usage
 
-This could be a hypothetical content of a VSS type file
+This could be a hypothetical content of a VSS datatype file
 
 ```
 Types:
@@ -102,7 +103,7 @@ Types:
 
 Types.DeliveryInfo:
   type: struct
-  description: A struct type containing info for each delivery
+  description: A struct datatype containing info for each delivery
 
 Types.DeliveryInfo.Address:
   datatype: string
@@ -123,7 +124,7 @@ Delivery:
   type: sensor
 ```
 
-The type file may contain sub-branches and `#include`-statements just like regular VSS files
+The datatype file may contain sub-branches and `#include`-statements just like regular VSS files
 
 ```
 Types:
@@ -131,16 +132,16 @@ Types:
 
 Types.Powertrain:
   type: branch
-  description: Powertrain types.
+  description: Powertrain datatypes.
 #include Powertrain/Powertrain.vspec Types.Powertrain
 
 ```
 
 ## Name resolution
 
-Two ways of referring to a type are considered correct:
+Two ways of referring to a datatype are considered correct:
 
-In Type Tree:
+In Datatype Tree:
 * Reference by absolute path
 * Reference by (leaf) name to a struct definition within the same branch
 
@@ -183,7 +184,7 @@ DeliveryList:
 
 ### Expectations on VSS implementations (e.g. VISS, KUKSA.val)
 
-For array types (like above) VSS implementations may support several mechanisms
+For array datatypes (like above) VSS implementations may support several mechanisms
 
 * It is expected that they can support read/write/subscribe of the whole array, i.e. write all or read all in the same request
 * They may optionally support additional operations like
@@ -193,12 +194,12 @@ For array types (like above) VSS implementations may support several mechanisms
 
 ## Structure in Structure
 
-It is allowed to refer to a structure type from within a structure
+It is allowed to refer to a structure datatype from within a structure
 
 ```
 OpenHours:
   type: struct
-  description: A struct type containing information on open hours
+  description: A struct datatype containing information on open hours
 
 OpenHours.Open:
   datatype: uint8
@@ -214,7 +215,7 @@ OpenHours.Close:
 
 DeliveryInfo:
   type: struct
-  description: A struct type containing info for each delivery
+  description: A struct datatype containing info for each delivery
 
 DeliveryInfo.Address:
   datatype: string
@@ -236,7 +237,7 @@ DeliveryInfo.Open:
 ## Order of declaration/definition
 
 The order of declaration/definition shall not matter.
-As signals and types are defined in different trees this is a topic only for struct definitions referring to other struct definitions.
+As signals and datatypes are defined in different trees this is a topic only for struct definitions referring to other struct definitions.
 A hypothetical example is shown below. An item in the struct `DeliveryInfo` can refer to the struct `OpenHours` even if that struct
 is defined further down in the same file.
 If using `-vt < file>` multiple times all files except the first will be treated similar to overlays.
@@ -246,7 +247,7 @@ what has been defined previously.
 ```
 DeliveryInfo:
   type: struct
-  description: A struct type containing info for each delivery
+  description: A struct datatype containing info for each delivery
 
 ...
 
@@ -257,7 +258,7 @@ DeliveryInfo.Open:
 
 OpenHours:
   type: struct
-  description: A struct type containing information on open hours
+  description: A struct datatype containing information on open hours
 
 ...
 
@@ -271,17 +272,17 @@ Inline/anonymous structs are not allowed!
 
 VSS supports [default values](/vehicle_signal_specification/rule_set/data_entry/attributes/).
 
-Default values are not allowed for signals of struct type.
+Default values are not allowed for signals of struct datatype.
 This also mean that VSS does not need to specify notation for struct values.
-An exception is arrays of struct-types, where "empty array", i.e. `[]` shall be supported as default value.
+An exception is arrays of struct-datatypes, where "empty array", i.e. `[]` shall be supported as default value.
 
-It shall be possible to define default values for properties (unless the item is of struct type).
-If all items of a struct type have default values,
-then a signal (or item) using the struct type is also considered to have a default value.
+It shall be possible to define default values for properties (unless the item is of struct datatype).
+If all items of a struct datatype have default values,
+then a signal (or item) using the struct datatype is also considered to have a default value.
 
 ## Allowed Values
 
 VSS supports [specification of allowed values](/vehicle_signal_specification/rule_set/data_entry/allowed/).
 
 Using `allowed` for `type: property` is allowed (if `allowed` is supported for the used datatype).
-Using `allowed` for signals and items of struct type or array of struct type is not allowed.
+Using `allowed` for signals and items of struct datatype or array of struct datatype is not allowed.

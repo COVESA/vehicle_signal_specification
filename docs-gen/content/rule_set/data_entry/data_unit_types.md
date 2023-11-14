@@ -1,13 +1,13 @@
 ---
-title: "Data Unit Types"
+title: "Data Units"
 date: 2019-08-04T12:36:12+02:00
 weight: 20
 ---
 
-## Introduction to Data Unit Types in VSS
+## Introduction to Data Units in VSS
 
-It is in VSS possible for signals to specify a unit of measurement from a list of predefined data unit types.
-For most signals in the VSS standard catalog, a data unit type has been selected. A typical example is `Vehicle.Speed`, as shown below.
+It is in VSS possible for signals to specify a unit of measurement from a list of predefined data units.
+For most signals in the VSS standard catalog, a data unit has been selected. A typical example is `Vehicle.Speed`, as shown below.
 
 ```
 Vehicle.Speed:
@@ -17,17 +17,17 @@ Vehicle.Speed:
   description: Vehicle speed.
 ```
 
-The ambition when selecting data unit types for signals in VSS standard catalog has been to use either a unit based on SI-units,
+The ambition when selecting data unit for signals in VSS standard catalog has been to use either a unit based on SI-units,
 or a unit commonly used within the vehicle industry. For the `Vehicle.Speed` example above this means that `km/h` has been selected,
 even if `m/s` from an SI-perspective would have been a better choice.
 
 It must be noted that the selected unit does not imply that the value of `Vehicle.Speed` always needs to be sent or visualized
 as `km/h` (with float as datatype). A user interface or API may show or request vehicle speed in any unit it likes,
 and a transport protocol may send speed in another unit, possibly also involving scaling and offset.
-But in protocols not explicitly specifying data unit types (like [VISS](https://raw.githack.com/w3c/automotive/gh-pages/spec/VISSv2_Core.html))
+But in protocols not explicitly specifying data units (like [VISS](https://raw.githack.com/w3c/automotive/gh-pages/spec/VISSv2_Core.html))
 it is expected that `Vehicle.Speed` is sent and received as `km/h` (without scaling or offset).
 
-In some cases it is natural to omit the data unit type. This concerns typically signals where data type `string` is used,
+In some cases it is natural to omit the data unit. This concerns typically signals where datatype `string` is used,
 but also signals where the value just represents a number, like in the example below:
 
 ```
@@ -37,9 +37,9 @@ Vehicle.Cabin.DoorCount:
   default: 4
   description: Number of doors in vehicle.
 ```
-### Logical Data Unit Types
+### Logical Data Units
 
-VSS supports `percent` as data unit type, typically with 0 to 100% as the allowed range.
+VSS supports `percent` as data unit, typically with 0 to 100% as the allowed range.
 In some cases, the definition on how to calculate the signal value is obvious, like for `Vehicle.Powertrain.FuelSystem.Level`
 below. It is likely that all VSS users will calculate fuel level in the same way, i.e. the meaning of a fuel level of 50%
 is well agreed, the liters of fuel in the tank is exactly 50% of nominal capacity.
@@ -72,12 +72,12 @@ Vehicle.Powertrain.Transmission.ClutchWear:
 ```
 
 
-## List of supported Data Unit Types
+## List of supported Data Unit
 
 This list composed with definition according to International Units (SI) and few automotive specific units: [Specification](https://www.iso.org/standard/30669.html), [Wikipedia](https://en.wikipedia.org/wiki/International_System_of_Units)
 
 
-Unit type     | Domain                          | Description
+Unit          | Domain                          | Description
 :-------------|:--------------------------------|:-------------
 mm            | Distance                        | Distance measured in millimeters
 cm            | Distance                        | Distance measured in centimeters
