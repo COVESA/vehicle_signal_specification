@@ -9,15 +9,15 @@ Sensors are signals to read values of properties in a vehicle. Values of sensors
 Actuators are used to control the desired value of a property. Some properties in a vehicle cannot change instantly. A typical example is position of a seat or a window. Reading a value of an actuator shall return the current actual value, e.g. the current position of the seat, rather than the wanted/desired position. A typical example could be if someone wants to change the position of a seat from 0 to 100. This can be changed by setting the corresponding actuator to 100. If the actuator is read directly after the set request it will still return 0 as it might take some seconds before the seat reaches the wanted position of 100. If the seat by some reason is blocked or cannot be moved due to safety reasons it might never reach the wanted position. It is up to the vehicle to decide how long time it shall try to reach the desired value and what to do if it needs to give up.
 
 A data entry for a sensor or actuator defines its members. A data
-entry example is given below:
+entry example for a data property is given below:
 
 ```YAML
 Speed:
   type: sensor
   identifier: Vehicle.Speed
-  elementType: SignalDefinition
+  elementType: SignalType
   featureOfInterest: Vehicle
-  property: Speed
+  property: DataProperty.Speed
   description: The vehicle speed.
   definition: The rate of change in the vehicle position per unit of time
   comment: For engine speed see Vehicle.Powertrain.CombustionEngine.Engine.Speed.
@@ -39,13 +39,14 @@ A set of characters that uniquely identifies the signal.  This is generally the 
 
 **```elementType```** *[optional]*
 A type that classifies the attribute in regards to the Vehicle Signal domain
-- ```SignalDefinition```: The entry defines a property of a feature of interest.
+- ```SignalType```: The entry defines a property of a feature of interest.
 
 **```featureOfInterest```** *[optional]*
 The identifier of the physical object whose properties can be observed and possibly manipulated by signals of this type
 
 **```property```** *[optional]*
-The identifier of the property being reported by signals of this type
+The identifier of the data property or object property being reported by signals of this type.
+For data properties, the `property` itself has a `datatype` and optional constraints on `unit`, `min`, and `max`.  Those defined for the signal should correspond or provide some explanation of why they differ.  If `unit`, `min`, or `max` are omitted, they are assumed to default to those defined by the `property`.
 
 **```description```**
 Describes the meaning and content of the signal.
@@ -84,3 +85,21 @@ data entry can be assigned.
 If omitted, the maximum value will be the "Max" value for the given type.
 Cannot be specified if ```allowed``` is defined for the same data entry.
 
+
+A data entry example for an object property is given below:
+```YAML
+AirDistribution:
+  datatype: string
+  type: actuator
+  identifier: Vehicle.Cabin.HVAC.Station.AirDistribution
+  elementType: SignalType
+  featureOfInterest: Vehicle.Cabin.HVAC.Station
+  property: ObjectProperty.VerticalDirection  
+  allowed: ['UP', 'MIDDLE', 'DOWN']
+  description: Direction of airstream
+  definition: The course over which something moves from up to down
+```
+
+**```property```** *[optional]*
+The identifier of the data property or object property being reported by signals of this type.
+For object properties, the `property` itself has a set of `allowed` values.  Those defined for the signal should correspond or provide some explanation of why they differ.  If omitted, they are assumed to default to those defined by the `property`.
