@@ -46,8 +46,8 @@ A set of characters that uniquely identifies the branch, usually the full path
 
 **```elementType```** *[optional]* 
 A type that categorizes the branch's role in the vehicle signal domain, or as a Node if the branch exists purely for tree traversal and has no vehicle signal domain signifcance on its own.
-- ```FeatureOfInterest```: A physical object whose properties can be observed and possibly manipulated.
-- ```Node```: A branch in the tree that does not correspond to a domain object.  These are generally used to group related nodes
+- ```FeatureOfInterest``` A physical object whose properties can be observed and possibly manipulated.
+- ```Node``` A branch in the tree that does not correspond to a domain object.  These are generally used to group related nodes.
 
 **```definition```*** [optional]* 
 A formal specification that includes the necessary and sufficient conditions for distinguishing this branch from anything else.  It is similar to a dictionary definition, and the conditions put forth can translate to formal axioms in an ontology and can be used for inferencing and automation.
