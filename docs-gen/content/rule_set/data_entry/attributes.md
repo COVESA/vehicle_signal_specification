@@ -23,9 +23,9 @@ MaxPower:
   datatype: uint16
   type: attribute
   identifier: Vehicle.Powertrain.CombustionEngine.MaxPower
-  elementType: SignalDefinition
+  elementType: SignalType
   featureOfInterest: Vehicle.Powertrain.CombustionEngine
-  property: MaximumPower
+  property: DataProperty.MaximumPower
   default: 0
   unit: kW
   definition: The maximum power that a combustion engine can generate
@@ -49,7 +49,7 @@ A set of characters that uniquely identifies the signal.  This is generally the 
 
 **```elementType```** *[optional]*
 A type that classifies the attribute in regards to the Vehicle Signal domain
-- ```SignalDefinition```: The entry defines a property of a feature of interest.
+- ```SignalType``` The entry defines a property of a feature of interest.
 
 **```featureOfInterest```** *[optional]*
 The identifier of the physical object whose properties can be observed and possibly manipulated by signals of this type
