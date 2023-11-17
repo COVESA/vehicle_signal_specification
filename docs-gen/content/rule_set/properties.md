@@ -8,12 +8,12 @@ A property entry describes an attribute, quality, or characteristic of a feature
 - ```DataProperty```: A property whose values are literals
 - ```ObjectProperty```: A property whose values are an object, often represented as an element in an enumeration
 
-A ```data property``` entry is exemplified below.  A data property is constrained by a datatype and, optionally, unit, min, and/or max.
+A ```data property``` entry is exemplified below.  A data property is constrained by a datatype and (optionally) unit, min, and/or max.
 
 ```YAML
-RotationalSpeedPercent:
-  type: property
-  identifier: RotationalSpeedPercent
+DataProperty.RotationalSpeedPercent:
+  type: dataProperty
+  identifier: DataProperty.RotationalSpeedPercent
   elementType: DataProperty
   datatype: uint8
   unit: percent
@@ -27,12 +27,11 @@ RotationalSpeedPercent:
 
 The following elements are defined:
 
-**`RotationalSpeedPercent:`**
-The list element name defines the property identifier.  There is no dot notation 
-as properties are reusable stand-alone elements.  
+**`DataProperty.RotationalSpeedPercent:`**
+The list element name defines the property identifier.  Properties are identified by their element type and name.  
 
 **```type```**
-The value ```property``` specifies that this is a property entry.
+The value ```dataProperty``` specifies that this is a data property entry.
 
 **```identifier```**
 A set of characters that uniquely identifies the property.  This is redundant to the heading and added for consistency with branches and signals.
@@ -70,20 +69,19 @@ Recommended to start with a capital letter and end with a dot (`.`).
 An ```object property``` entry is exemplified below.  The ```allowed``` field enumerates the possible values.
 
 ```YAML
-VerticalOrientation:
-  type: property
-  identifier: VerticalOrientation
+ObjectProperty.VerticalOrientation:
+  type: objectProperty
+  identifier: ObjectProperty.VerticalOrientation
   elementType: ObjectProperty
   allowed: ['UP', 'MIDDLE', 'DOWN']
   definition: An ordinal category indicating a position on, or direction of, the z (vertical) axis
   description: Typical examples include whether a vent it pointing up or down, or the pitch of a vehicle
 ```
-**`VerticalOrientation:`**
-The list element name defines the property identifier.  There is no dot notation 
-as properties are reusable stand-alone elements.  
+**`ObjectProperty.VerticalOrientation:`**
+The list element name defines the property identifier.  Properties are identified by their element type and name.  
 
 **```type```**
-The value ```property``` specifies that this is a property entry.
+The value ```objectProperty``` specifies that this is an object property entry.
 
 **```identifier```** 
 A set of characters that uniquely identifies the ```property```.  This is redundant to the heading and added for consistency with branches and signals.
