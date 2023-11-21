@@ -117,3 +117,5 @@ isAutoPowerOptimize:
                dynamically adjusting the power optimization level based on runtime conditions
                or features managed by the OEM. When set to 'false',
                manual control of the power optimization level is allowed.
+
+
