@@ -118,4 +118,3 @@ isAutoPowerOptimize:
                or features managed by the OEM. When set to 'false',
                manual control of the power optimization level is allowed.
 
-
