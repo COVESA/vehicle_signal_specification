@@ -173,7 +173,7 @@ Defing quantities is recommended, but currently optional for backward compatibil
 If tooling supports quantity files it can verify that all units provided in unit files
 use defined quantities.
 
-``
+```
 
   [
     <vss-quantity-identifier>: # Identifier preferably taken from a standard, like ISO 80000
