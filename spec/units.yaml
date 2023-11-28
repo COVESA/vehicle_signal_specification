@@ -379,6 +379,11 @@ dBm:
   unit: decibel milliwatt
   quantity: relation
   allowed-datatypes: ['numeric']
+dB:
+  definition: Ratio of two values of a physical quantity, usually power or intensity, on a logarithmic scale.
+  unit: decibel
+  quantity: relation
+  allowed-datatypes: ['numeric']
 
 # Resistance
 
