@@ -150,7 +150,7 @@ Warning: Attribute(s) sensor in element Temperature not a core or known extended
   After discussion it was agreed that it is better to have a signal for start time rather than duration.
 * Refactoring of signals in `Vehicle.Body.Lights` branch performed, some signals have new names.
 
-## VSS 4.0 (Latest Release)
+## VSS 4.0
 
 ### Struct Support (Official)
 
@@ -175,8 +175,21 @@ have been removed from the [VSS syntax](docs-gen/content/rule_set/data_entry/sen
 * `Vehicle.Powertrain.FuelSystem.TimeSinceStart`
 
 
-## Planned Changes VSS 4.1
+## VSS 4.1 (Latest Release)
 
+### Unit file syntax updated, Quantity file introduced
+
+A new syntax for unit files is introduced. Old syntax still supported.
+It is also possible to define quantity files, and a default quantity file (`quantities.yaml`)
+has been added
+
+### New signals
+
+Some signal have been added.
+
+### Updated tool dependency
+
+A new version of vss-tools is used, with support for static IDs and jsconschema.
 
 ### Deprecated or Deleted signals
 
