@@ -8,7 +8,7 @@ all: clean mandatory_targets optional_targets
 
 # All mandatory targets that shall be built and pass on each pull request for
 # vehicle-signal-specification or vss-tools
-mandatory_targets: clean json franca yaml binary csv graphql ddsidl id jsonschema overlays tests
+mandatory_targets: clean json json-noexpand franca yaml binary csv graphql ddsidl id jsonschema overlays tests
 
 # Additional targets that shall be built by travis, but where it is not mandatory
 # that the builds shall pass.
@@ -22,6 +22,9 @@ TOOLSDIR?=./vss-tools
 
 json:
 	${TOOLSDIR}/vspec2json.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).json
+
+json-noexpand:
+	${TOOLSDIR}/vspec2json.py -I ./spec --uuid -u ./spec/units.yaml --no-expand ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_noexpand.json
 
 jsonschema:
 	${TOOLSDIR}/vspec2jsonschema.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).jsonschema
