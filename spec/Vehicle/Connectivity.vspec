@@ -29,7 +29,7 @@ ConnectivityType:
   type: attribute
   allowed: [
     'CELLULAR',
-    'WIFI'
+    'WLAN'
     ]
   description: Type of connectivity currently available.
   
@@ -54,6 +54,14 @@ Cellular.SignalStrength:
   datatype: int8
   unit: dBm
   description: Cellular connectivity signal strength.
+
+Cellular.SignalStrength.Relative:
+  type: sensor
+  datatype: uint8
+  unit: percent
+  min: 0
+  max: 100
+  description: Cellular connectivity signal strength in percent.
   
 Cellular.NetworkType:
   datatype: string[]
@@ -105,23 +113,31 @@ Cellular.DataUsage.CycleStart:
   min: 0
   description: Time the current data cycle started at.
   
-WiFi:
+WLAN:
   type: branch
   description: Properties related to WiFi connectivity.
   
-WiFi.SignalStrength:
+WLAN.SignalStrength:
   type: sensor
   datatype: int8
   unit: dBm
   max: 0
   description: WiFi connectivity signal strength.
 
-WiFi.SSID:
+WLAN.SignalStrength.Relative:
+  type: sensor
+  datatype: uint8
+  unit: percent
+  min: 0
+  max: 100
+  description: WiFi connectivity signal strength in percent.
+
+WLAN.SSID:
   type: sensor
   datatype: string
   description: SSID of connected WiFi network.
 
-WiFi.NetworkType:
+WLAN.NetworkType:
   datatype: string[]
   type: sensor
   allowed: [
@@ -136,8 +152,9 @@ WiFi.NetworkType:
     '7'
     ]
   description: Type of WiFi network that is currently in-use.
+  comment: Defined as IEEE 802.11 generations, see https://en.wikipedia.org/wiki/Template:Wi-Fi_generations.
 
-WiFi.IsMetered:
+WLAN.IsMetered:
   datatype: boolean
   type: sensor
   description: Indicates if the WiFi connectivity is metered.
