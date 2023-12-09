@@ -66,13 +66,7 @@ Cellular.NetworkType:
     ]
   description: Type of cellular network that is currently in-use.
   comment:      There are a lot of subtypes that fall under the general '~G' types, but these aren't expanded upon here.
-  
-Cellular.NetworkSubtype:
-  datatype: string
-  type: sensor
-  description: Cellular network technology that is currently in-use.
-  comment:     For example, LTE and WiMAX both fall under the '4G' umbrella but are substantially different.
-  
+
 Cellular.Carrier:
   datatype: string
   type: sensor
