@@ -98,12 +98,12 @@ Cellular.DataUsage.CycleLength:
   description: Length of a data cycle.
   comment:     Defines the period where the current data usage is relevant.
   
-Cellular.DataUsage.CycleReset:
+Cellular.DataUsage.CycleStart:
   type: attribute
-  unit: day
-  datatype: uint16
+  unit: iso8601
+  datatype: string
   min: 0
-  description: Time until the next data cycle starts.
+  description: Time the current data cycle started at.
   
 WiFi:
   type: branch
