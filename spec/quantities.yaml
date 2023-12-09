@@ -78,3 +78,6 @@ relation:
 resistance:
   definition: Property of a resistive element, equal to the scalar
             quantity given by the quotient of voltage u and electric current i (IEC 80000-6:2022)
+data:
+  definition: TBD
+data-per-time:

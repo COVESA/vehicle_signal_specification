@@ -392,3 +392,19 @@ Ohm:
   unit: Ohm
   quantity: resistance
   allowed-datatypes: ['numeric']
+
+# Data
+
+MiB:
+  definition: Data measured in mebibytes
+  unit: mebibyte
+  quantity: data
+  allowed-datatypes: ['numeric']
+
+# Data transfer rate
+
+MiB/s:
+  definition: Data transfer rate measured in mebibytes per second
+  unit: mebibyte per second
+  quantity: data-per-time
+  allowed-datatypes: ['numeric']
