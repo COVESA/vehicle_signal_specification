@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: true
 
@@ -20,25 +20,33 @@ jobs:
           export PATH="$HOME/.pyenv/bin:$PATH"
           pyenv install 3.8.12
 
-      - name: Install python packages
+      - name: Install vss-tools dependencies
         run: |
           python -V
-          python -m pip --quiet --no-input install --upgrade pip 
+          python -m pip --quiet --no-input install --upgrade pip
           python -m pip --quiet --no-input install --upgrade pipenv wheel
           pipenv --version
           pipenv run python --version
           cd vss-tools
-          
+          sudo apt install -y protobuf-compiler
           pipenv install
           echo done!
           pipenv run python setup.py install
         env:
           PIPENV_VENV_IN_PROJECT: 1
-          
+
       - name: Test mandatory targets
         run: |
           pipenv install
-          pipenv run make travis_targets
+          pipenv run make mandatory_targets
+        env:
+          PIPENV_PIPFILE: ./vss-tools/Pipfile
+          PIPENV_VENV_IN_PROJECT: 1
+
+      - name: Test that ddsidl is correct
+        run: |
+          pipenv install cyclonedds
+          pipenv run idlc *.idl
         env:
           PIPENV_PIPFILE: ./vss-tools/Pipfile
           PIPENV_VENV_IN_PROJECT: 1
@@ -46,7 +54,7 @@ jobs:
       - name: Test optional targets. NOTE - always succeeds
         run: |
           pipenv install
-          pipenv run make -k travis_optional || true
+          pipenv run make -k optional_targets || true
         env:
           PIPENV_PIPFILE: ./vss-tools/Pipfile
           PIPENV_VENV_IN_PROJECT: 1
@@ -65,7 +73,7 @@ jobs:
       - name: Deploy docs
         # Only deploy docs if this was a push to master
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: docs # The folder the action should deploy.

@@ -1,16 +1,16 @@
+# Copyright (c) 2022 Contributors to COVESA
 #
-# (C) 2022, Bayerische Motoren Werke Aktiengesellschaft (BMW AG)
-# (C) 2022 Robert Bosch GmbH
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-#
-#
+# SPDX-License-Identifier: MPL-2.0
+
 # This file contains adoptions to the main spec concering motorbikes.
-# It mainly addresses istantiation issues (e.g. wheels) and 
+# It mainly addresses istantiation issues (e.g. wheels) and
 # additional signals, which are motorbike specific (e.g. handlebars).
-# 
-# Currently this file serves as a very early draft, which serves 
+#
+# Currently this file serves as a very early draft, which serves
 # more as an example of overlays and is not considered a part of the
 # official specification.
 
@@ -49,7 +49,7 @@ Vehicle.LeanAngle:
     type: sensor
     datatype: float
     unit: degrees
-    description: Lean Angle of the Motorcycle in Y direction. 0 = upright, 
+    description: Lean Angle of the Motorcycle in Y direction. 0 = upright,
                  positive = leaning right from rider perspective,
                  negative = leaning left from rider perspective.
 

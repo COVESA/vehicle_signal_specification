@@ -1,11 +1,10 @@
+# Copyright (c) 2016 Contributors to COVESA
 #
-# (C) 2020 Robert Bosch GmbH
-# (C) 2018 Volvo Cars
-# (C) 2016 Jaguar Land Rover
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-#
+# SPDX-License-Identifier: MPL-2.0
 
 #
 # ENGINE SPECIFICATION FILE
@@ -102,7 +101,7 @@ AspirationType:
 EngineOilLevel:
   datatype: string
   type: sensor
-  allowed: [ 
+  allowed: [
     'CRITICALLY_LOW',  # Critically low, immediate action required
     'LOW',             # Level below recommended range, but not critical
     'NORMAL',          # Within normal range, no need for driver action
@@ -154,7 +153,7 @@ IdleHours:
 # Engine coolant temperature
 #
 ECT:
-  datatype: int16
+  datatype: float
   type: sensor
   unit: celsius
   description: Engine coolant temperature.
@@ -164,7 +163,7 @@ ECT:
 # Engine Oil Temperature
 #
 EOT:
-  datatype: int16
+  datatype: float
   type: sensor
   unit: celsius
   description: Engine oil temperature.
@@ -223,12 +222,11 @@ Power:
 # Current Torque
 #
 Torque:
-  datatype: uint16
+  datatype: int16
   type: sensor
   unit: Nm
-  description: Current engine torque. Shall be reported as 0 during engine breaking.
+  description: Current engine torque. Shall be reported as a negative number during engine breaking.
   comment: During engine breaking the engine delivers a negative torque to the transmission.
-           This negative torque shall be ignored, instead 0 shall be reported.
 
 #
 # Diesel Exhaust Fluid
@@ -282,7 +280,7 @@ DieselParticulateFilter.InletTemperature:
   type: sensor
   unit: celsius
   description: Inlet temperature of Diesel Particulate Filter.
-  
+
 #
 # Current outlet Temperature of Diesel Particulate Filter
 #
@@ -291,7 +289,7 @@ DieselParticulateFilter.OutletTemperature:
   type: sensor
   unit: celsius
   description: Outlet temperature of Diesel Particulate Filter.
-  
+
 #
 # Current delta pressure of Diesel Particulate Filter
 #
@@ -300,5 +298,3 @@ DieselParticulateFilter.DeltaPressure:
   type: sensor
   unit: Pa
   description: Delta Pressure of Diesel Particulate Filter.
-  
-  

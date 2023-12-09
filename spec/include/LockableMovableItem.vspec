@@ -1,0 +1,17 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Add-on to MovableItems that also are lockable
+
+IsLocked:
+  datatype: boolean
+  type: actuator
+  description: Is item locked or unlocked. True = Locked. False = Unlocked.
+
+#include MovableItem.vspec

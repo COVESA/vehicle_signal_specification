@@ -1,0 +1,394 @@
+# This file defines units supported in the VSS standard catalog
+# See VSS documentation for information on syntax and intended content
+
+# Length
+
+mm:
+  definition: Length measured in millimeters
+  unit: millimeter
+  quantity: length
+  allowed-datatypes: ['numeric']
+cm:
+  definition: Length measured in centimeters
+  unit: centimeter
+  quantity: length
+  allowed-datatypes: ['numeric']
+m:
+  definition: Length measured in meters
+  unit: meter
+  quantity: length
+  allowed-datatypes: ['numeric']
+km:
+  definition: Length measured in kilometers
+  unit: kilometer
+  quantity: length
+  allowed-datatypes: ['numeric']
+inch:
+  definition: Distance measured in inches
+  unit: inch
+  quantity: length
+  allowed-datatypes: ['numeric']
+
+# Velocity
+
+km/h:
+  definition: Velocity measured in kilometers per hours
+  unit: kilometer per hour
+  quantity: velocity
+  allowed-datatypes: ['numeric']
+m/s:
+  definition: Speed measured in meters per second
+  unit: meters per second
+  quantity: velocity
+  allowed-datatypes: ['numeric']
+
+# Acceleration
+
+m/s^2:
+  definition: Acceleration measured in meters per second squared
+  unit: meters per second squared
+  quantity: acceleration
+  allowed-datatypes: ['numeric']
+cm/s^2:
+  definition: Acceleration measured in centimeters per second squared
+  unit: centimeters per second squared
+  quantity: acceleration
+  allowed-datatypes: ['numeric']
+
+# Volume
+
+ml:
+  description: Volume measured in milliliters
+  unit: milliliter
+  quantity: volume
+  allowed-datatypes: ['numeric']
+l:
+  definition: Volume measured in liters
+  unit: liter
+  quantity: volume
+  allowed-datatypes: ['numeric']
+cm^3:
+  definition: Volume measured in cubic centimeters
+  unit: cubic centimeters
+  quantity: volume
+  allowed-datatypes: ['numeric']
+
+# Temperature
+
+celsius:
+  definition: Temperature measured in degree celsius
+  unit: degree celsius
+  quantity: temperature
+  allowed-datatypes: ['numeric']
+
+# Angle
+
+degrees:
+  definition: Angle measured in degrees
+  unit: degree
+  quantity: angle
+  allowed-datatypes: ['numeric']
+
+# Angular Speed
+
+degrees/s:
+  definition: Angular speed measured in degrees per second
+  unit: degree per second
+  quantity: angular-speed
+  allowed-datatypes: ['numeric']
+
+# Power
+
+W:
+  definition: Power measured in watts
+  unit: watt
+  quantity: power
+  allowed-datatypes: ['numeric']
+kW:
+  definition: Power measured in kilowatts
+  unit: kilowatt
+  quantity: power
+  allowed-datatypes: ['numeric']
+PS:
+  definition: Power measured in horsepower
+  unit: horsepower
+  quantity: power
+  allowed-datatypes: ['numeric']
+
+# Work
+
+kWh:
+  definition: Energy consumption measured in kilowatt hours
+  unit: kilowatt hours
+  quantity: work
+  allowed-datatypes: ['numeric']
+
+# Mass
+
+g:
+  definition: Mass measured in grams
+  unit: gram
+  quantity: mass
+  allowed-datatypes: ['numeric']
+kg:
+  definition: Mass measured in kilograms
+  label: kilogram
+  quantity: mass
+  allowed-datatypes: ['numeric']
+lbs:
+  definition: Mass measured in pounds
+  unit: pound
+  quantity: mass
+  allowed-datatypes: ['numeric']
+
+# Voltage
+
+V:
+  definition: Electric potential measured in volts
+  unit: volt
+  quantity: voltage
+  allowed-datatypes: ['numeric']
+
+# Electric Current
+
+A:
+  definition: Electric current measured in amperes
+  unit: ampere
+  quantity: electric-current
+  allowed-datatypes: ['numeric']
+
+# Electric Charge
+
+Ah:
+  definition: Electric charge measured in ampere hours
+  unit: ampere hours
+  quantity: electric-charge
+  allowed-datatypes: ['numeric']
+
+# Duration
+
+ms:
+  definition: Duration measured in milliseconds
+  unit: millisecond
+  quantity: duration
+  allowed-datatypes: ['numeric']
+s:
+  definition: Duration measured in seconds
+  unit: second
+  quantity: duration
+  allowed-datatypes: ['numeric']
+min:
+  unit: minute
+  definition: Duration measured in minutes
+  quantity: duration
+  allowed-datatypes: ['numeric']
+h:
+  definition: Duration measured in hours
+  unit: hour
+  quantity: duration
+  allowed-datatypes: ['numeric']
+day:
+  definition: Duration measured in days
+  unit: days
+  quantity: duration
+  allowed-datatypes: ['numeric']
+weeks:
+  definition: Duration measured in weeks
+  unit: weeks
+  quantity: duration
+  allowed-datatypes: ['numeric']
+months:
+  definition: Duration measured in months
+  units: months
+  quantity: duration
+  allowed-datatypes: ['numeric']
+years:
+  definition: Duration measured in years
+  unit: years
+  quantity: duration
+  allowed-datatypes: ['numeric']
+
+# Datetime
+
+unix-time:
+  definition: Number of non-leap seconds which have passed since 00:00:00 UTC on Thursday, 1 January 1970
+  unit: UNIX Timestamp
+  quantity: datetime
+  allowed-datatypes: ['uint32','uint64','int64']
+iso8601:
+  definition: Date and Time expressed as a string according to ISO 8601
+  unit: ISO 8601
+  quantity: datetime
+  allowed-datatypes: ['string']
+
+# Pressure
+
+mbar:
+  definition: Pressure measured in millibars
+  unit: millibar
+  quantity: pressure
+  allowed-datatypes: ['numeric']
+Pa:
+  definition: Pressure measured in pascal
+  unit: pascal
+  quantity: pressure
+  allowed-datatypes: ['numeric']
+kPa:
+  definition: Pressure measured in kilopascal
+  unit: kilopascal
+  quantity: pressure
+  allowed-datatypes: ['numeric']
+psi:
+  definition: Pressure measured in pounds per square inch
+  unit: pounds per square inch
+  quantity: pressure
+  allowed-datatypes: ['numeric']
+
+# Rating
+
+stars:
+  definition: Rating measured in stars
+  unit: stars
+  quantity: rating
+  allowed-datatypes: ['numeric']
+
+# Mass per time
+
+g/s:
+  definition: Mass per time measured in grams per second
+  unit: grams per second
+  quantity: mass-per-time
+  allowed-datatypes: ['numeric']
+
+# Mass per distance
+
+g/km:
+  definition: Mass per distance measured in grams per kilometers
+  unit: grams per kilometer
+  quantity: mass-per-distance
+  allowed-datatypes: ['numeric']
+
+# Energy consumption per distance
+
+kWh/100km:
+  definition: Energy consumption per distance measured in kilowatt hours per 100 kilometers
+  unit: kilowatt hours per 100 kilometers
+  quantity: energy-consumption-per-distance
+  allowed-datatypes: ['numeric']
+Wh/km:
+  definition:  Energy consumption per distance measured in watt hours per kilometer
+  unit: watt hour per km
+  quantity: energy-consumption-per-distance
+  allowed-datatypes: ['numeric']
+
+# Volume per distance
+
+ml/100km:
+  definition: Volume per distance measured in milliliters per 100 kilometers
+  unit: milliliter per 100 kilometers
+  quantity: volume-per-distance
+  allowed-datatypes: ['numeric']
+l/100km:
+  definition: Volume per distance measured in liters per 100 kilometers
+  unit: liter per 100 kilometers
+  quantity: volume-per-distance
+  allowed-datatypes: ['numeric']
+
+# Volume flow rate
+
+l/h:
+  definition: Flow measured in liters per hour
+  unit: liter per hour
+  quantity: volume-flow-rate
+  allowed-datatypes: ['numeric']
+
+# Distance per volume
+
+mpg:
+  definition: Distance per volume measured in miles per gallon
+  unit: miles per gallon
+  quantity: distance-per-volume
+  allowed-datatypes: ['numeric']
+
+# Force
+
+N:
+  definition: Force measured in newton
+  unit: newton
+  quantity: force
+  allowed-datatypes: ['numeric']
+kN:
+  unit: kilo newton
+  definition: Force measured in kilo newton
+  quantity: force
+  allowed-datatypes: ['numeric']
+
+# Torque
+
+Nm:
+  definition: Torque measured in newton meters
+  unit: newton meter
+  quantity: torque
+  allowed-datatypes: ['numeric']
+
+# Rotational Speed
+
+rpm:
+  definition: Rotational speed measured in revolutions per minute
+  unit: revolutions per minute
+  quantity: rotational-speed
+  allowed-datatypes: ['numeric']
+
+# Frequency
+
+Hz:
+  definition: Frequency measured in hertz
+  unit: Hertz
+  quantity: frequency
+  allowed-datatypes: ['numeric']
+cpm:
+  definition: Number of cycles per minute
+  unit: cycles per minute
+  quantity: frequency
+  allowed-datatypes: ['numeric']
+bpm:
+  definition: Number of human heart beats per minute
+  unit: beats per minute
+  quantity: frequency
+  allowed-datatypes: ['numeric']
+
+# Relation
+
+ratio:
+  definition: Relation measured as ratio
+  unit: ratio
+  quantity: relation
+  allowed-datatypes: ['numeric']
+percent:
+  definition: Relation measured in percent
+  unit: percent
+  quantity: relation
+  allowed-datatypes: ['numeric']
+nm/km:
+  definition: nm/km
+  unit: nano meter per kilometer
+  quantity: relation
+  allowed-datatypes: ['numeric']
+dBm:
+  definition: Power level expressed in decibels with reference to one milliwatt
+  unit: decibel milliwatt
+  quantity: relation
+  allowed-datatypes: ['numeric']
+dB:
+  definition: Ratio of two values of a physical quantity, usually power or intensity, on a logarithmic scale.
+  unit: decibel
+  quantity: relation
+  allowed-datatypes: ['numeric']
+
+# Resistance
+
+Ohm:
+  definition: Electrical resistance measured in ohms
+  unit: Ohm
+  quantity: resistance
+  allowed-datatypes: ['numeric']

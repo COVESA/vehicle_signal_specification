@@ -1,9 +1,11 @@
+# Copyright (c) 2020 Contributors to COVESA
 #
-# (C) 2020 Robert Bosch GmbH
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-#
+# SPDX-License-Identifier: MPL-2.0
+
 #
 # Driver data
 #
@@ -17,12 +19,17 @@ DistractionLevel:
   unit: percent
   min: 0
   max: 100
-  description: Distraction level of the driver will be the level how much the driver is distracted, by multiple factors. E.g. Driving situation, acustical or optical signales inside the cockpit, phone calls.
+  description: Distraction level of the driver, which can be evaluated by multiple factors e.g. driving situation, acoustical or optical signals inside the cockpit, ongoing phone calls.
 
 IsEyesOnRoad:
   datatype: boolean
   type: sensor
   description: Has driver the eyes on road or not?
+
+IsHandsOnWheel:
+  datatype: boolean
+  type: sensor
+  description: Are the driver's hands on the steering wheel or not?
 
 AttentiveProbability:
   datatype: float
@@ -38,9 +45,10 @@ FatigueLevel:
   unit: percent
   min: 0
   max: 100
-  description: Fatigueness level of driver. Evaluated by multiple factors like trip time, behaviour of steering, eye status.
+  description: Fatigue level of the driver, which can be evaluated by multiple factors e.g. trip time, behaviour of steering, eye status.
 
 HeartRate:
   datatype: uint16
   type: sensor
+  unit: bpm
   description: Heart rate of the driver.

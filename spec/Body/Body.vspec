@@ -1,10 +1,10 @@
+# Copyright (c) 2016 Contributors to COVESA
 #
-# (C) 2018 Volvo Cars
-# (C) 2016 Jaguar Land Rover
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-#
+# SPDX-License-Identifier: MPL-2.0
 
 #
 # All body signals and attributes.
@@ -16,6 +16,8 @@ BodyType:
   description: Body type code as defined by ISO 3779.
 
 RefuelPosition:
+  deprecation: v4.1 replaced with Vehicle.Powertrain.TractionBattery.Charging.ChargePortPosition
+               and Vehicle.Powertrain.FuelSystem.RefuelPortPosition
   datatype: string
   type: attribute
   allowed: ['FRONT_LEFT', 'FRONT_RIGHT', 'MIDDLE_LEFT', 'MIDDLE_RIGHT', 'REAR_LEFT', 'REAR_RIGHT']
@@ -26,16 +28,12 @@ RefuelPosition:
 #
 Hood:
   type: branch
-  description: Hood status.
+  description: Hood status. Start position for Hood is Closed.
   comment: The hood is the hinged cover over the engine compartment of a motor vehicles.
            Depending on vehicle, it can be either in the front or back of the vehicle.
            Luggage compartments are in VSS called trunks, even if they are located at the front of the vehicle.
 
-Hood.IsOpen:
-  datatype: boolean
-  type: actuator
-  description: Hood open or closed. True = Open. False = Closed.
-
+#include ../include/MovableItem.vspec Hood
 
 #
 # Trunk description
@@ -43,20 +41,18 @@ Hood.IsOpen:
 Trunk:
   type: branch
   instances: ["Front", "Rear"]
-  description: Trunk status.
+  description: Trunk status. Start position for Trunk is Closed.
   comment: A trunk is a luggage compartment in a vehicle.
            Depending on vehicle, it can be either in the front or back of the vehicle.
            Some vehicles may have trunks both at the front and at the rear of the vehicle.
 
-Trunk.IsOpen:
-  datatype: boolean
-  type: actuator
-  description: Trunk open or closed. True = Open. False = Closed.
+#include ../include/LockableMovableItem.vspec Trunk
 
-Trunk.IsLocked:
+Trunk.IsLightOn:
   datatype: boolean
   type: actuator
-  description: Is trunk locked or unlocked. True = Locked. False = Unlocked.
+  description: Is trunk light on
+  comment: V4.0 Moved from Vehicle.Cabin.Lights.IsTrunkOn because Trunk is not defined as part of the Cabin.
 
 
 #
@@ -77,7 +73,7 @@ Horn.IsActive:
 #
 Raindetection:
   type: branch
-  description: Rainsensor signals.
+  description: Rain sensor signals.
 
 Raindetection.Intensity:
   datatype: uint8
@@ -94,7 +90,7 @@ Windshield:
   type: branch
   instances: ["Front", "Rear"]
   description: Windshield signals.
-  
+
 Windshield.Wiping:
   type: branch
   description: Windshield wiper signals.
@@ -130,6 +126,7 @@ Windshield.Wiping.System:
 Windshield.Wiping.WiperWear:
   datatype: uint8
   type: sensor
+  unit: percent
   max: 100
   description: Wiper wear as percent.
                0 = No Wear.
@@ -198,7 +195,7 @@ Lights.Beam:
 
 Lights.Running:
   type: branch
-  description: Running lights.
+  description: Daytime running lights (DRL).
 #include StaticLights.vspec Lights.Running
 
 Lights.Backup:
@@ -224,6 +221,7 @@ Lights.LicensePlate:
 
 Lights.Brake:
   type: branch
+  description: Brake lights.
 #include BrakeLights.vspec Lights.Brake
 
 Lights.Hazard:
@@ -242,7 +240,7 @@ Lights.DirectionIndicator:
 ##
 Mirrors:
   type: branch
-  instances: ["Left", "Right"]
+  instances: ["DriverSide", "PassengerSide"]
   description: All mirrors.
 # Include mirrors specification and attach it to the Mirrors branch
 #include ExteriorMirrors.vspec Mirrors
@@ -258,3 +256,5 @@ RearMainSpoilerPosition:
   min: 0
   max: 100
   description: Rear spoiler position, 0% = Spoiler fully stowed. 100% = Spoiler fully exposed.
+
+#include include/PowerOptimize.vspec

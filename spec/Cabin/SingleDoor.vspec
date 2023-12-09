@@ -1,33 +1,26 @@
+# Copyright (c) 2023 Contributors to COVESA
 #
-# (C) 2018 Volvo Cars
-# (C) 2016 Jaguar Land Rover
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-#
+# SPDX-License-Identifier: MPL-2.0
+
 
 #
-# Definition of a single door
+# Definition of a single door. Start position for Door is Closed.
 #
-IsOpen:
-  datatype: boolean
-  type: actuator
-  description: Is door open or closed
 
-IsLocked:
-  datatype: boolean
-  type: actuator
-  description: Is door locked or unlocked. True = Locked. False = Unlocked.
-
+#include ../include/LockableMovableItem.vspec
 
 #
 # Window description
 #
 Window:
   type: branch
-  description: Door window status
+  description: Door window status. Start position for Window is Closed.
 
-#include SingleWindow.vspec Window
+#include ../include/MovableItem.vspec Window
 
 #
 # Child lock active for door
@@ -36,16 +29,18 @@ Window:
 IsChildLockActive:
   datatype: boolean
   type: sensor
-  description: Is door child lock engaged. True = Engaged. False = Disengaged.
+  description: Is door child lock active. True = Door cannot be opened from inside.
+               False = Door can be opened from inside.
 
 #
 # Window shade / curtain status
 #
 Shade:
   type: branch
-  description: Side window shade
+  description: Side window shade. Open = Retracted, Closed = Deployed.
+               Start position for Shade is Open/Retracted.
 
 # Include the standard shade definition used by sunroof
 # and rear shade.
 
-#include SingleShade.vspec Shade
+#include ../include/MovableItem.vspec Shade

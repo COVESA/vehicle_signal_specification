@@ -44,7 +44,7 @@ The VSS repositories contain some artifacts that can be considered normative, i.
   ([source](https://github.com/COVESA/vehicle_signal_specification/tree/master/docs-gen), [generated](https://covesa.github.io/vehicle_signal_specification/))
 * Support the signals currently defined in VSS.
     * The signals in source format (*.vspec files) can be found in [Github repository](https://github.com/COVESA/vehicle_signal_specification/tree/master/spec).
-    * Derived formats supported by VSS project are included in each [release](https://github.com/COVESA/vehicle_signal_specification/releases), 
+    * Derived formats supported by VSS project are included in each [release](https://github.com/COVESA/vehicle_signal_specification/releases),
       originating from the tools in the [VSS-tools github repository](https://github.com/COVESA/vss-tools).
 
 In addition to this the VSS repositores contain artifacts that currently are considered non-normative. This includes immature concepts and work-in progress. Non-normative content include:
@@ -63,7 +63,7 @@ VSS is however an evolving syntax and catalog and there are still areas where ch
 Changes that breaks backward compatibility are typically introduced only in major releases (e.g. `X.0`) and shall be documented in release notes.
 This concerns changes to syntax and signals, but also to tools.
 
-The VSS project has introduced a [deprecation concept](../rule_set/basics.md#deprecation-since-version-21).
+The VSS project has introduced a [deprecation concept]({{< ref "../rule_set/basics.md#deprecation-since-version-21" >}}).
 If possible, when e.g. renaming or moving a signal or changing tools the old signal or parameter set shall be kept but marked as deprecated.
 That allows the change to be introduced in a minor version (e.g. `X.Y`). The old signal shall be removed first in the next major release, or later if needed.
 
@@ -72,4 +72,3 @@ A history of past changes and planned changes that affects backward compatibilit
 ## Release Process
 
 The release process is further described in the [Github repository](https://github.com/COVESA/vehicle_signal_specification/blob/master/RELEASE_PROCESS.md).
-

@@ -1,0 +1,17 @@
+name: verify-headers
+description: Verify that files affected by a PR include expected header
+
+branding:
+  icon: zap
+  color: gray-dark
+
+inputs:
+  files:
+    description: >
+      A comma-separated list of all files to check.
+    default: ''
+runs:
+  using: "composite"
+  steps:
+    - run: $GITHUB_ACTION_PATH/verify-headers.py
+      shell: bash

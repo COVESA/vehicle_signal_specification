@@ -1,7 +1,10 @@
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
+# Copyright (c) 2016 Contributors to COVESA
 #
-
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
 
 AccumulatedBrakingEnergy:
   datatype: float
@@ -15,6 +18,12 @@ Range:
   unit: m
   description: Remaining range in meters using all energy sources available in the vehicle.
 
+TimeRemaining:
+  datatype: uint32
+  type: sensor
+  unit: s
+  description: Time remaining in seconds before all energy sources available in the vehicle are empty.
+
 Type:
   datatype: string
   type: attribute
@@ -22,4 +31,5 @@ Type:
   description: Defines the powertrain type of the vehicle.
   comment: For vehicles with a combustion engine (including hybrids) more detailed information on fuels supported can
            be found in FuelSystem.SupportedFuelTypes and FuelSystem.SupportedFuels.
-  
+
+#include include/PowerOptimize.vspec

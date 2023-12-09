@@ -1,10 +1,10 @@
+# Copyright (c) 2016 Contributors to COVESA
 #
-# (C) 2018 Volvo Cars
-# (C) 2016 Jaguar Land Rover
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-#
+# SPDX-License-Identifier: MPL-2.0
 
 #
 # Chassis signals and attributes
@@ -15,14 +15,8 @@ Wheelbase:
   type: attribute
   default: 0
   unit: mm
-  description: Overall wheel base, in mm.
+  description: Overall wheelbase, in mm.
 
-Track:
-  datatype: uint16
-  type: attribute
-  default: 0
-  unit: mm
-  description: Overall wheel tracking, in mm.
 
 #
 # Axle definition
@@ -43,6 +37,30 @@ AxleCount:
 #
 # Axle attributes
 #
+
+Axle.TreadWidth:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: The lateral distance between the centerlines of the base tires at ground, including camber angle.
+               If there are dual rear wheels, measure from the midway points between the inner and outer tires.
+  comment: Corresponds to SAE J1100-2009 W101.
+
+Axle.TrackWidth:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: The lateral distance between the centers of the wheels, measured along the spindle, or axle axis.
+               If there are dual rear wheels, measure from the midway points between the inner and outer tires.
+  comment: Corresponds to SAE J1100-2009 W102.
+
+Axle.AxleWidth:
+  datatype: uint16
+  type: attribute
+  unit: mm
+  description: The lateral distance between the wheel mounting faces, measured along the spindle axis.
+  comment: Corresponds to SAE J1100-2009 W113.
+
 Axle.WheelCount:
   datatype: uint8
   type: attribute
@@ -60,7 +78,13 @@ Axle.WheelWidth:
   unit: inch
   description: Width of wheels (rims without tires), in inches, as per ETRTO / TRA standard.
 
-
+Axle.SteeringAngle:
+  datatype: float
+  type: sensor
+  unit: degrees
+  description: Single track two-axle model steering angle.
+               Angle according to ISO 8855. Positive = degrees to the left. Negative = degrees to the right.
+  comment: Single track two-axle model steering angle refers to the angle that a centrally mounted wheel would have.
 #
 # Tire attributes
 #
@@ -110,7 +134,10 @@ ParkingBrake.IsEngaged:
   type: actuator
   description: Parking brake status. True = Parking Brake is Engaged. False = Parking Brake is not Engaged.
 
-
+ParkingBrake.IsAutoApplyEnabled:
+  datatype: boolean
+  type: actuator
+  description: Indicates if parking brake will be automatically engaged when the vehicle engine is turned off.
 #
 # Steering Wheel
 #
@@ -140,12 +167,7 @@ SteeringWheel.Extension:
   unit: percent
   description: Steering wheel column extension from dashboard. 0 = Closest to dashboard. 100 = Furthest from dashboard.
 
-SteeringWheel.Position:
-  datatype: string
-  type: attribute
-  default: 'FRONT_LEFT'
-  allowed: ['FRONT_LEFT', 'FRONT_RIGHT']
-  description: Position of the steering wheel on the left or right side of the vehicle.
+#include include/ItemHeatingCooling.vspec SteeringWheel
 
 #
 # Accelerator
@@ -184,5 +206,3 @@ Brake.IsDriverEmergencyBrakingDetected:
   description: Indicates if emergency braking initiated by driver is detected.
                True = Emergency braking detected. False = Emergency braking not detected.
   comment: Detection of emergency braking can trigger Emergency Brake Assist (EBA) to engage.
-  
-

@@ -13,7 +13,14 @@ Please note that, from a YAML perspective, the include directive is just another
 The file [VehicleSignalSpecification.vspec](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/VehicleSignalSpecification.vspec) serves as root
 and includes other *vspec* files from the [VSS repository](https://github.com/COVESA/vehicle_signal_specification).
 
-The raw specification files can with help of tools in the [vss-tools repository](https://github.com/COVESA/vss-tools) be converted to other formats that are more user friendly to read. Converted representations are also included as release artifacts for each [VSS release](https://github.com/COVESA/vehicle_signal_specification/releases).
+The raw specification files can, with help of tools in the [vss-tools repository](https://github.com/COVESA/vss-tools),
+be converted to other formats that are more user friendly to read.
+Converted representations are also included as release artifacts for each [VSS release](https://github.com/COVESA/vehicle_signal_specification/releases).
+
+VSS is in itself case sensitive.
+This means that keywords, signal names, types and values normally shall be given with the case specified.
+It is however recommended not to take advantage of this and reuse the same name with different case,
+as some implementations may treat VSS identifiers as case insensitive.
 
 ## Addressing Nodes
 
@@ -111,7 +118,7 @@ Examples:
 SomeBranch.AnotherBranch.MySignalName
 Vehicle.Cabin.Door.Row1.Left.IsLocked
 ```
-Naming convention for string literals can be found in the [chapter](/vehicle_signal_specification/rule_set/data_entry/allowed)for specifying allowed values.
+Naming convention for string literals can be found in the [chapter](/vehicle_signal_specification/rule_set/data_entry/allowed/)for specifying allowed values.
 
 ### Line Length
 

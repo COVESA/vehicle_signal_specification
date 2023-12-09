@@ -1,0 +1,80 @@
+# This file defines available quantities for the units defined for the VSS standard catalog in the file unit.yaml.
+# See VSS documentation for information on syntax and intended content
+
+length:
+  definition: Linear extent in space between any two points (ISO 80000-3:2019)
+  remark: Length does not need to be measured along a straight line.
+          Length is one of the seven base quantities in the International System of Units (ISO 80000-1).
+velocity:
+  definition: Vector quantity giving the rate of change of a position vector (ISO 80000-3:2019)
+acceleration:
+  definition: Vector quantity giving the rate of change of velocity (ISO 80000-3:2019)
+volume:
+  definition: Extent of a three‑dimensional geometrical shape (ISO 80000-3:2019)
+temperature:
+  definition: Partial derivative of internal energy with respect to entropy at constant volume
+              and constant number of particles in the system (ISO 80000-3:2019)
+angle:
+  definition: TBD
+angular-speed:
+  definition: TBD
+power:
+  definition: Scalar product of force F acting to a body and its velocity (ISO 80000-4:2019)
+work:
+  definition: Process quantity describing the total action of a force F along a continuous curve
+              in three-dimensional space with infinitesimal displacement dr,
+              as a line integral of their scalar product (ISO 80000-4:2019)
+mass:
+  definition: Property of a body which expresses itself in terms of inertia
+              related to changes in its state of motion as well as
+              its gravitational attraction to other bodies (ISO 80000-4:2019)
+voltage:
+  definition: For a conductor, scalar quantity given by the
+              electric potential difference Vab (6-11.2) between
+              two points a and b respectively (IEC 80000-6:2022)
+electric-current:
+  definition: Scalar quantity equal to the quotient of the net
+              quasi-infinitesimal electric charge dQ
+              transferred through a surface during a quasiinfinitesimal
+              time interval and the duration dt of that interval (IEC 80000-6:2022)
+electric-charge:
+  definition: Additive scalar quantity attributed to any particle
+              and, generally, any system of them, to
+              characterize its electromagnetic interactions (IEC 80000-6:2022)
+duration:
+  definition: Measure of the time difference between two events (ISO 80000-3:2019)
+datetime:
+  definition: Specific point in time
+  remark: This quantity is not described in ISO 80000.
+  comment: Example usage of this quantity could be ISO 8601 string representation of date and time, or UNIX timestamp
+pressure:
+  definition: Quotient of the component of a force normal to a surface and its area (ISO 80000-4:2019)
+rating:
+  definition: TBD
+mass-per-time:
+  definition: TBD
+mass-per-distance:
+  definition: TBD
+energy-consumption-per-distance:
+  definition: TBD
+volume-per-distance:
+  definition: TBD
+volume-flow-rate:
+  definition: Scalar quantity characterizing the total flow through the two-dimensional domain A with
+              the normal vector en of a flowing fluid with velocity v as an integral (ISO 80000-4:2019)
+distance-per-volume:
+  definition: TBD
+force:
+  definition: Vector quantity describing interaction between bodies or particles (ISO 80000-4:2019)
+torque:
+  definition: quantity described by the scalar product M*eQ where M is moment of force and eQ is
+rotational-speed:
+  definition: TBD
+frequency:
+  definition: TBD
+relation:
+  definition: Dimensionsless quantity for relation between two values of the same quantity.
+  remark: This quantity is not described in ISO 80000.
+resistance:
+  definition: Property of a resistive element, equal to the scalar
+            quantity given by the quotient of voltage u and electric current i (IEC 80000-6:2022)

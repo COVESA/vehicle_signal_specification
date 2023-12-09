@@ -1,7 +1,7 @@
 ---
-title: "Value restrictions"
+title: "Value Restrictions"
 date: 2019-08-04T12:37:12+02:00
-weight: 5
+weight: 50
 ---
 
 ## Specifying allowed values
@@ -26,8 +26,8 @@ The `allowed` element is an array of values, all of which must be specified
 in a list.  Only values can be assigned to the data entry, which are
 specified in this list.
 
-The `datatype` specifier gives the type of the individual elements of the `allowed`
-list.
+The `datatype` specifier gives the datatype of the individual elements of the `allowed`
+list. In general `allowed:` is valid for all datatypes, including integer- and float-based datatypes, unless othwerise specified.
 
 ## Recommendation on String values
 
@@ -39,33 +39,37 @@ The background is that a signal with an array of allowed values shall be handled
 If e.g. the value of current speed or vehicle weight is unknown, then the vehicle shall not publish the corresponding signal.
 Similarly, for the example above, if the steering wheel position is unknown then `SteeringWheel.Position`shall not be published.
 
-## Allowed values for array types
+## Allowed values for array datatypes
 
-The `allowed` keyword can also be used for signals of array type. In that case, `allowed` specifies the only valid values for array elements.
+The `allowed` keyword can also be used for signals of array datatype. In that case, `allowed` specifies the only valid values for array elements.
 The actual value of the signal is expected to contain a subset of the values specified in `allowed`.
 
 Example:
 
 ```YAML
-FavoriteColors:
+DogBreeds:
   datatype: string[]
   type: attribute
-  allowed: ['RED', 'GREEN', 'BLUE', 'YELLOW', 'BROWN']
-  description: Driver's favorite colors.
+  allowed: ['AKITA', 'BOXER', 'DACHSHUND', 'PAPILLON', 'PUG', 'VIZSLA']
+  description: Brief list of dog breeds.
 ```
 
 Examples of valid arrays:
 
 ```
   [] # Empty array
-  ['RED']
-  ['YELLOW', 'BROWN', 'RED', 'GREEN', 'BLUE']
-  ['BLUE', 'BLUE'] # duplication is allowed
+  ['BOXER']
+  ['PAPILLON', 'VIZSLA', 'BOXER', 'AKITA', 'DACHSHUND']
+  ['PUG', 'PUG'] # duplication is allowed
 ```
 
 
 Example of an invalid array:
 
 ```
-  ['RED', 'BLUE', 'BLACK'] # BLACK is not an allowed value
+  ['PAPILLON', 'VIZSLA', 'LOBSTER'] # LOBSTER is not in the allowed value list
 ```
+
+## Allowed for struct datatypes
+
+Please see [struct]({{< ref "data_types_struct#allowed-values" >}} ) documentation.

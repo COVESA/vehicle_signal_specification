@@ -1,9 +1,11 @@
+# Copyright (c) 2022 Contributors to COVESA
 #
-# (C) 2022 Robert Bosch GmbH
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-#
+# SPDX-License-Identifier: MPL-2.0
+
 # This file describes signals for a wiper system interface, allowing movement for one or more wipers
 # to be controlled in great detail.
 #
@@ -15,7 +17,7 @@
 # just by counting number of wipers serving the windowshield.
 #
 # Examples:
-# - A traditional passenger vehicle typically only has 1 wiper system (drive) for front windshield, 
+# - A traditional passenger vehicle typically only has 1 wiper system (drive) for front windshield,
 #   serving two mechanically connected wiper blades.
 # - Some vehicles have two wiper systems / drives (primary and secondary) for front windshield,
 #   serving two electronically connected wiper blades.
@@ -23,7 +25,7 @@
 # For now VSS by default only support a single instance of wipersystem.
 # If a vehicle needs to support two wiper systems for a window it shall preferably by handld by a layer extension
 # specifying that two instances exist, as shown below:
-# 
+#
 # Windshield.Wiping.System:
 #   type: branch
 #  instances: [Primary, Secondary]
@@ -35,7 +37,7 @@
 # Wiper movement is controlled by the actuators Mode, Frequency and TargetPosition.
 # Wiper movement is started by setting Mode to WIPE and specifying Frequency and TargetPosition.
 # If required TargetPosition is within supported range wipers will start moving to TargetPosition (e.g. go to higher reversing position).
-# To continue the wiper movement or to trigger continuous wiping, 
+# To continue the wiper movement or to trigger continuous wiping,
 # a new TargetPosition (e.g. the lower reversing position) shall be requested as soon as IsEndingWipeCycle->True.
 # As long as IsEndingWipeCycle=False, an onging TargetPosition may be changed / corrected
 # By setting Mode to STOP_HOLD, the wiper will stop as soon as the ongoing TargetPosition is reached.
@@ -56,6 +58,7 @@ Mode:
 
 Frequency:
   datatype: uint8
+  unit: cpm
   type: actuator
   description: Wiping frequency/speed, measured in cycles per minute.
                The signal concerns the actual speed of the wiper blades when moving.
@@ -116,7 +119,7 @@ IsPositionReached:
   datatype: boolean
   type: sensor
   description: Indicates if a requested position has been reached.
-               IsPositionReached refers to the previous position in case the 
+               IsPositionReached refers to the previous position in case the
                TargetPosition is updated while IsEndingWipeCycle=True.
                True = Current or Previous TargetPosition reached.
                False = Position not (yet) reached, or wipers have moved away from the reached position.

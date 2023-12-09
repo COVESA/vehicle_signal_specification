@@ -1,10 +1,10 @@
+# Copyright (c) 2016 Contributors to COVESA
 #
-# (C) 2018 Volvo Cars
-# (C) 2016 Jaguar Land Rover
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-#
+# SPDX-License-Identifier: MPL-2.0
 
 #
 # All in-cabin originated signals and attributes
@@ -15,10 +15,11 @@
 ##
 RearShade:
   type: branch
-  description: Rear window shade.
+  description: Rear window shade. Open = Retracted, Closed = Deployed.
+               Start position for RearShade is Open/Retracted.
 
 # Include the same shade spec used for sunroof and side windows.
-#include SingleShade.vspec RearShade
+#include ../include/MovableItem.vspec RearShade
 
 ##
 # HVAC signals
@@ -48,6 +49,7 @@ Sunroof:
 Sunroof.Position:
   datatype: int8
   type: sensor
+  unit: percent
   min: -100
   max: 100
   description: Sunroof position. 0 = Fully closed 100 = Fully opened. -100 = Fully tilted.
@@ -63,35 +65,36 @@ Sunroof.Switch:
 
 Sunroof.Shade:
   type: branch
-  description: Sun roof shade status.
+  description: Sun roof shade status. Open = Retracted, Closed = Deployed.
+               Start position for Sunroof.Shade is Open/Retracted.
 
 # Include shade specification also used by side and rear window.
-#include SingleShade.vspec Sunroof.Shade
+#include ../include/MovableItem.vspec Sunroof.Shade
 
 #
-# Rearview mirror signals
+# Rear-view mirror signals
 #
 RearviewMirror:
   type: branch
-  description: Rearview mirror.
+  description: Rear-view mirror.
 
 RearviewMirror.DimmingLevel:
   datatype: uint8
   type: actuator
   unit: percent
   max: 100
-  description: Dimming level of rearview mirror. 0 = undimmed. 100 = fully dimmed.
+  description: Dimming level of rear-view mirror. 0 = Undimmed. 100 = Fully dimmed.
 
 
 ##
 # Interior lights signals and sensors
 ##
-Lights:
+Light:
   type: branch
-  description: Interior lights signals and sensors.
+  description: Light that is part of the Cabin.
+  comment: V4.0 branch renamed from "Lights" to "Light" to comply with singular naming of entities. Use SingleConfigurableLight.vspec to describe interior lights that can be configured.
+#include InteriorLights.vspec Light
 
-# Include the lights specification and attach it under the Lights branch.x
-#include InteriorLights.vspec Lights
 
 ##
 # Door signals and attributes
@@ -109,7 +112,7 @@ Door:
   type: branch
   instances:
     - Row[1,2]
-    - ["Left","Right"]
+    - ["DriverSide","PassengerSide"]
   description: All doors, including windows and switches.
 #include SingleDoor.vspec Door
 
@@ -121,6 +124,12 @@ DoorCount:
   description: Number of doors in vehicle.
 
 
+IsWindowChildLockEngaged:
+  datatype: boolean
+  type: actuator
+  description: Is window child lock engaged. True = Engaged. False = Disengaged.
+  comment: Window child lock refers to the functionality to disable the move window button next to most windows,
+           so that they only can be operated by the driver.
 
 ##
 # Seat signals and attributes
@@ -130,13 +139,6 @@ DoorCount:
 # Row1 is the frontmost row.
 # Row2-RowX are subsequent rows of seats.
 #
-# Within each row there are up to Y seat positions
-# Pos1 is leftmost.
-# PosY is rightmost.
-#
-# The value of Y shall consider the row with most number of seats in the vehicle.
-# If a vehicle e.g. have 2 seats in front row and 3 seats in second row, then Pos
-# shall be defined as Pos[1,3]
 # Which seats that actually exist can be defined by SeatPosCount
 ##
 
@@ -144,7 +146,7 @@ Seat:
   type: branch
   instances:
     - Row[1,2]
-    - Pos[1,3]
+    - ["DriverSide","Middle","PassengerSide"]
   description: All seats.
 #include SingleSeat.vspec Seat
 
@@ -152,11 +154,11 @@ Seat:
 # Seat attributes.
 #
 DriverPosition:
-  datatype: uint8
+  datatype: string
   type: attribute
-  default: 1
+  allowed: ['LEFT', 'MIDDLE', 'RIGHT']
   description: The position of the driver seat in row 1.
-  comment: Default value is position 1, i.e. a typical LHD vehicle.
+  comment: Some signals use DriverSide and PassengerSide as instances. If this signal specifies that DriverPosition is LEFT or MIDDLE, then DriverSide refers to left side and PassengerSide to right side. If this signal specifies that DriverPosition is RIGHT, then DriverSide refers to right side and PassengerSide to left side.
 
 SeatRowCount:
   datatype: uint8
@@ -185,3 +187,5 @@ Convertible.Status:
   type: sensor
   allowed: ['UNDEFINED', 'CLOSED', 'OPEN', 'CLOSING', 'OPENING', 'STALLED']
   description: Roof status on convertible vehicles.
+
+#include include/PowerOptimize.vspec

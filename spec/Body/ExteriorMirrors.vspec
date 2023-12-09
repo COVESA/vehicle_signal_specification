@@ -1,10 +1,10 @@
+# Copyright (c) 2016 Contributors to COVESA
 #
-# (C) 2018 Volvo Cars
-# (C) 2016 Jaguar Land Rover
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
 #
-# All files and artifacts in this repository are licensed under the
-# provisions of the license provided by the LICENSE file in this repository.
-#
+# SPDX-License-Identifier: MPL-2.0
 
 #
 # All exterior mirrors
@@ -30,3 +30,13 @@ IsHeatingOn:
   datatype: boolean
   type: actuator
   description: Mirror Heater on or off. True = Heater On. False = Heater Off.
+
+IsLocked:
+  datatype: boolean
+  type: actuator
+  description: Is mirror movement locked? True = Locked, mirror will not react to Tilt/Pan change. False = Unlocked.
+
+IsFolded:
+  datatype: boolean
+  type: actuator
+  description: Is mirror folded? True = Fully or partially folded. False = Fully unfolded.
