@@ -286,7 +286,7 @@ SmartphoneScreenMirroring.Source:
 SmartphoneScreenMirroring.Resolution:
   datatype: string
   type: attribute
-  allowed: [ '720p', '1080p', '4K' ]
-description: Display resolution for the mirrored content.
+  allowed: ['RES_720P', 'RES_1080P', 'RES_4K']
+  description: Display resolution for the mirrored content.
 
 #include include/PowerOptimize.vspec
