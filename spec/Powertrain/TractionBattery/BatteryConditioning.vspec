@@ -1,0 +1,86 @@
+# Copyright (c) 2023 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+############# Battery Conditioning Feature ##########################
+#
+# It may be beneficial to heat or cool a traction battery as preparation for
+# charging or driving, as that could reduce time needed for charging or could
+# improve battery performance. This file specifies signals that could be used for
+# a battery condition feature.
+#
+# VSS does not specify business logic for battery conditioning but a possible usage
+# of the signals could be like this:
+#
+# 1. The vehicle user specifies upcoming mode (Driving/Charging) and TargetTime,
+#    i.e the time for planned departure or when charging likely will start.
+# 2. Based on this and other factors like current battery temperature and outside temperature
+#    the battery condition system (onboard or offboard) calculates
+#    StartTime and wanted TargetTemperature.
+# 3. At StartTime the system is woken up (if not already awake), checks settings and if needed
+#    and feasible starts heating/cooling.
+# 4. When TargetTemperature is reached (possibly allowing range, like +-X degrees)
+#    the system will keep temperature within allowed range.
+# 5. At TargetTime, or possibly when other conditions occur like charging started or trip started,
+#    the system will be deactivated.
+
+BatteryConditioning:
+  type: branch
+  description: Properties related to preparing the vehicle battery for charging or driving.
+
+BatteryConditioning.IsActive:
+  datatype: boolean
+  type: sensor
+  description: Indicates if battery conditioning is active (i.e. actively monitors battery temperature).
+               True = Active. False = Inactive.
+  comment: This signal is typically true when mode is not INACTIVE and time is within defined
+           start/end times.
+
+BatteryConditioning.IsOngoing:
+  datatype: boolean
+  type: sensor
+  description: Indicating if battery conditioning is currently ongoing.
+               Battery conditioning is considered ongoing when the battery conditioning system
+               is actively heating or cooling the battery, or requesting heating or cooling.
+  comment: When battery conditioning is active, but temperature is already within acceptable range so that
+           no cooling or heating is needed then IsOngoing shall report False.
+
+BatteryConditioning.RequestedMode:
+  datatype: string
+  type: actuator
+  allowed: ['INACTIVE', 'FAST_CHARGING_PREPARATION', 'DRIVING_PREPARATION']
+  description: Defines requested mode for battery conditioning.
+               INACTIVE - Battery conditioning inactive.
+               FAST_CHARGING_PREPARATION - Battery conditioning for fast charging.
+               DRIVING_PREPARATION - Battery conditioning for driving.
+  comment: The Mode and TargetTime can be used to calculate TargetTemperature and StartTime
+
+BatteryConditioning.StartTime:
+  type: actuator
+  datatype: string
+  description: Start time for battery conditioning,
+               formatted according to ISO 8601 with UTC time zone.
+  unit: iso8601
+  comment: If the vehicle is asleep, this is the time the vehicle and the battery conditioning system must wake up
+          and start monitoring the battery and if necessary start heating/cooling of the battery.
+
+BatteryConditioning.TargetTime:
+  type: actuator
+  datatype: string
+  description: Target time when conditioning shall be finished, formatted according to ISO 8601 with UTC time zone.
+  unit: iso8601
+  comment: For FAST_CHARGING mode this is typically the time when charging is supposed to start.
+           For DRIVING mode this is typically the expected departure time.
+           Battery conditioning will be deactivated when this time has passed.
+
+BatteryConditioning.TargetTemperature:
+  datatype: float
+  type: actuator
+  unit: celsius
+  description: Target temperature for battery conditioning.
+  comment: Target temperature possibly differs between different modes as well as other factors.
+           Allowed deviation from target temperature is implementation dependent.

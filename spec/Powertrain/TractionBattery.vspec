@@ -592,3 +592,6 @@ DCDC.Temperature:
   unit: celsius
   description: Current temperature of DC/DC converter converting battery high voltage
                to vehicle low voltage (typically 12 Volts).
+
+
+#include TractionBattery/BatteryConditioning.vspec
