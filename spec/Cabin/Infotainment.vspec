@@ -274,7 +274,7 @@ SmartphoneScreenMirroring:
 SmartphoneScreenMirroring.Active:
   datatype: string
   type: actuator
-  allowed: [ 'NONE', 'ACTIVE',  'INACTIVE' ]
+  allowed: [ 'NONE', 'ACTIVE', 'INACTIVE' ]
   description: Mirroring activation info.
   comment: NONE indicates that mirroring is not supported.
 
