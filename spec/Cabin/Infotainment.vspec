@@ -267,4 +267,27 @@ SmartphoneProjection.SupportedMode:
   allowed: [ 'ANDROID_AUTO', 'APPLE_CARPLAY', 'MIRROR_LINK', 'OTHER' ]
   description: Supportable list for projection.
 
+SmartphoneScreenMirroring:
+  type: branch
+  description: All smartphone mirroring actions.
+
+SmartphoneScreenMirroring.Active:
+  datatype: string
+  type: actuator
+  allowed: [ 'NONE', 'ACTIVE', 'INACTIVE' ]
+  description: Mirroring activation info.
+  comment: NONE indicates that mirroring is not supported.
+
+SmartphoneScreenMirroring.Source:
+  datatype: string
+  type: actuator
+  allowed: ['USB', 'BLUETOOTH', 'WIFI']
+  description: Connectivity source selected for mirroring.
+
+SmartphoneScreenMirroring.Resolution:
+  datatype: string
+  type: attribute
+  allowed: ['RES_720P', 'RES_1080P', 'RES_4K']
+  description: Display resolution for the mirrored content.
+
 #include include/PowerOptimize.vspec
