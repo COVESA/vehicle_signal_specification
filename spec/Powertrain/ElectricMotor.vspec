@@ -57,7 +57,7 @@ Speed:
 # Motor temperature
 #
 Temperature:
-  datatype: int16
+  datatype: float
   type: sensor
   unit: celsius
   description: Motor temperature.
@@ -67,7 +67,7 @@ Temperature:
 # Motor coolant temperature (if applicable)
 #
 CoolantTemperature:
-  datatype: int16
+  datatype: float
   type: sensor
   unit: celsius
   description: Motor coolant temperature (if applicable).

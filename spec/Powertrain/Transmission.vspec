@@ -110,7 +110,7 @@ GearChangeMode:
 # Gearbox temperature
 #
 Temperature:
-  datatype: int16
+  datatype: float
   type: sensor
   unit: celsius
   description: The current gearbox temperature.

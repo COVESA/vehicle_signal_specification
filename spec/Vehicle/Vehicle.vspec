@@ -97,6 +97,7 @@ VehicleIdentification.BodyType:
 VehicleIdentification.DateVehicleFirstRegistered:
   datatype: string
   type: attribute
+  unit: iso8601
   description: The date in ISO 8601 format of the first registration of the vehicle with the respective public authorities.
 
 VehicleIdentification.LicensePlate:
@@ -113,16 +114,19 @@ VehicleIdentification.MeetsEmissionStandard:
 VehicleIdentification.ProductionDate:
   datatype: string
   type: attribute
+  unit: iso8601
   description: The date in ISO 8601 format of production of the item, e.g. vehicle.
 
 VehicleIdentification.PurchaseDate:
   datatype: string
   type: attribute
+  unit: iso8601
   description: The date in ISO 8601 format of the item e.g. vehicle was purchased by the current owner.
 
 VehicleIdentification.VehicleModelDate:
   datatype: string
   type: attribute
+  unit: iso8601
   description: The release date in ISO 8601 format of a vehicle model (often used to differentiate versions of the same make and model).
 
 VehicleIdentification.VehicleConfiguration:
@@ -217,6 +221,7 @@ StartTime:
   datatype: string
   type: attribute
   default: '0000-01-01T00:00Z'
+  unit: iso8601
   description: Start time of current or latest trip, formatted according to ISO 8601 with UTC time zone.
   comment: This signal is supposed to be set whenever a new trip starts.
            A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
@@ -447,6 +452,7 @@ CurrentLocation:
 CurrentLocation.Timestamp:
   datatype: string
   type: sensor
+  unit: iso8601
   description: Timestamp from GNSS system for current location, formatted according to ISO 8601 with UTC time zone.
 
 CurrentLocation.Latitude:

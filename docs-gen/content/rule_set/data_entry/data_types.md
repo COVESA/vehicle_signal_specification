@@ -1,15 +1,15 @@
 ---
-title: "Data Types"
+title: "Datatypes"
 date: 2019-08-04T11:11:48+02:00
 weight: 10
 ---
 
 Each [data entry](/vehicle_signal_specification/rule_set/data_entry/) specifies a ```datatype``` from the following set (from Franca IDL).
-Datatypes shall not be used in [branch entry](/vehicle_signal_specification/rule_set/branches/)
+Datatypes shall not be used for [branch entry](/vehicle_signal_specification/rule_set/branches/)
 
 ## Supported datatypes
 
-Name       | Type                       | Min  | Max
+Name       | Datatype                   | Min  | Max
 :----------|:---------------------------|:-----|:---
 uint8      | unsigned 8-bit integer     | 0    | 255
 int8       | signed 8-bit integer       | -128 | 127
@@ -61,7 +61,7 @@ YYYY-MM-DDTHH:MM:SS.ssssssZ
 
 Data Entries, which describe sensors offering binary streams
 (e.g. cameras), are not supported directly by VSS with a
-dedicated data type. Instead, they are described through the
+dedicated datatype. Instead, they are described through the
 meta data about the sensor itself and how to retrieve the
 corresponding data stream.
 
