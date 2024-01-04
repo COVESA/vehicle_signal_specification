@@ -197,4 +197,30 @@ A new version of vss-tools is used, with support for static IDs and jsconschema.
 
 ## Planned Changes VSS 5.0
 
--
+### OBD Branch deprecated
+
+The `Vehicle.OBD` branch is now deprecated. The plan is to remove it in VSS 6.0.
+The background is a decision that VSS standard catalog shall not contain a one-to-one representation of the OBD standard.
+Instead, VSS standard catalog may contain corresponding information elsewhere. As an example, instead of
+`Vehicle.OBD.EngineSpeed` (PID `0C`), the VSS signal `Vehicle.Powertrain.CombustionEngine.Speed` can be used.
+Note that not all signals in `Vehicle.OBD` has "duplicates", especially in the area of combustion engine control
+(like Oxygen sensor lambda and voltage readings) VSS currently does not have any counterparts in other parts of the tree.
+
+
+What to do if you as of today use signals from the OBD file
+
+* Check if any suitable replacement signal exist
+  Example: if you use `Vehicle.OBD.Speed`, consider using `Vehicle.Speed` instead
+* If not and the data may be of general interest; consider creating a pull request
+  with a replacement signal.
+  Example: VSS as of today only have Lambda information in OBD branch
+  If you need VSS signals for Lambda, consider creating new signals in
+  `Vehicle.Powertrain.CombustionEngine` branch.
+* If you really need the signals in this file and cannot replace them, then consider using the overlay file in the
+  `overlays` directory from VSS 6.0 onwards.
+
+## Planned Changes VSS 6.0
+
+### OBD Branch removed
+
+The `Vehicle.OBD` branch is now removed. If needed there is an OBD overlay in the `overlays` directory.

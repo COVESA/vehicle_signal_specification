@@ -184,6 +184,7 @@ Vehicle.Service:
   description: Service data.
 
 #include Vehicle/Service.vspec Vehicle.Service
+
 #
 # Connectivity information
 #
@@ -192,3 +193,5 @@ Vehicle.Connectivity:
   description: Connectivity data.
 
 #include Vehicle/Connectivity.vspec Vehicle.Connectivity
+
+#include Vehicle/Diagnostics.vspec Vehicle

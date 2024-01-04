@@ -45,6 +45,7 @@ ddsidl:
 overlays:
 	${TOOLSDIR}/vspec2json.py -I ./spec --uuid -u ./spec/units.yaml -o overlays/profiles/motorbike.vspec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_motorbike.json
 	${TOOLSDIR}/vspec2json.py -I ./spec --uuid -u ./spec/units.yaml -o overlays/extensions/dual_wiper_systems.vspec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_dualwiper.json
+	${TOOLSDIR}/vspec2json.py -I ./spec --uuid -u ./spec/units.yaml -o overlays/extensions/OBD.vspec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_obd.json
 
 tests:
 	PYTHONPATH=${TOOLSDIR} pytest
