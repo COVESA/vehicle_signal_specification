@@ -1,0 +1,47 @@
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# This file intends to provide data related to mid eye gaze.
+# Mid eye position refers to the center of a line drawn between the drivers eyes.
+# Absence of an eye does not affect mid eye position, as it shall be calculated as if both eyes were present.
+#
+# Gaze refers to the direction to the object the driver is looking at measured from
+# mid eye position.
+# Axis definitions correspond to the vehicle rear-axle coordinate system as defined by ISO 23150:2023 section 3.7.12
+#
+# Some examples (at long distance from vehicle)
+#            Object in front of vehicle (at far distance) - Azimuth==0, Elevation == 0
+#            Object to the left of vehicle (at far distance) - Azimuth==90, Elevation == 0
+#            Object to the right of vehicle (at far distance)- Azimuth==-90, Elevation == 0
+#            Object behind the vehicle (at far distance) - Azimuth==180 or -180, Elevation == 0
+#            Object right above the vehicle (at height) - Azimuth==<any>, Elevation == 90
+#            Object deep down below the vehicle - Azimuth==<any>, Elevation == -90
+
+Azimuth:
+  datatype: float
+  type: sensor
+  unit: degrees
+  min: -180
+  max: 180
+  description: Mid eye azimuth gaze (right-hand rule) on vehicle sprung mass Z-axis as defined by ISO 23150:2023
+               0 = Driver looking forward.
+               Positive values = Driver looking at something on the left side of driver.
+               Negative values = Driver looking at something on the right side of driver.
+
+Elevation:
+  datatype: float
+  type: sensor
+  unit: degrees
+  min: -90
+  max: 90
+  description: Elevation to observed object measured
+               as angle between vehicle sprung mass XY-plane as defined by ISO 23150:2023
+               at driver mid eye position and object.
+               0 = Driver looking at something at same height as mid eye position.
+               Positive values = Driver looking at something above mid eye position.
+               Negative values = Driver looking at something below mid eye position.
