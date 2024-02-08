@@ -27,17 +27,17 @@ in a list.  Only values can be assigned to the data entry, which are
 specified in this list.
 
 The `datatype` specifier gives the datatype of the individual elements of the `allowed`
-list. In general `allowed:` is valid for all datatypes, including integer- and float-based datatypes, unless othwerise specified.
+list. In general `allowed:` is valid for all datatypes, including integer- and float-based datatypes, unless otherwise specified.
 
 ## Recommendation on String values
 
-For string values used for `default` and `allowed` statements it is recommended to start with `A-Z`
-and then use only `A-Z`, `0-9` and underscore (`_`).
-It is recommended to use single quotes (`'`) as tooling otherwise might handle literals like `OFF` as boolean values with unexpected result.
+String values used for `default` and `allowed` statements may contain characters from the printable subset of the Unicode character set.
+If using [COVESA VSS-tools](https://github.com/COVESA/vss-tools) it is recommended to use single quotes (`'`) around values as tooling otherwise might handle literals like `OFF` as boolean values with unexpected result.
 It is recommended not to specify a dedicated value corresponding to "unknown" or "undefined" unless there is a relevant use-case for that particular signal.
 The background is that a signal with an array of allowed values shall be handled just as any other signal.
 If e.g. the value of current speed or vehicle weight is unknown, then the vehicle shall not publish the corresponding signal.
-Similarly, for the example above, if the steering wheel position is unknown then `SteeringWheel.Position`shall not be published.
+Similarly, for the example above, if the steering wheel position is unknown then
+`SteeringWheel.Position` shall not be published.
 
 ## Allowed values for array datatypes
 

@@ -20,9 +20,14 @@ int32      | signed 32-bit integer      | -2147483648 | 2147483647
 uint64     | unsigned 64-bit integer    | 0    | 2^64 - 1
 int64      | signed 64-bit integer      | -2^63 | 2^63 - 1
 boolean    | boolean value              | 0/false | 1/true
-float      | floating point number      | -3.4e -38 | 3.4e 38
-double     | double precision floating point number | -1.7e -300 | 1.7e 300
-string     | character string           | n/a  | n/a
+float      | IEEE 754-2008 binary32 floating point number | -3.40e 38 | 3.40e 38
+double     | IEEE 754-2008 binary64 floating point number | -1.80e 308 | 1.80e 308
+string     | character string (unicode)          | n/a  | n/a
+
+## Strings
+
+Strings in VSS supports the unicode character set. Actual encoding like UTF-8 or UTF-16 is not
+specified by VSS, that is to up to the Protocol/API/SDK implementing VSS support to decide.
 
 ## Arrays
 
@@ -45,17 +50,6 @@ of Diagnostic Trouble Codes (DTCs) present in a vehicle.
 ## Structs
 
 VSS struct support is further described on [this page](/vehicle_signal_specification/rule_set/data_entry/data_types_struct/).
-
-## Timestamps
-
-Timestamps are in VSS typically represented as strings, formatted according to ISO 8601.
-Timestamps shall be expressed in UTC (Coordinated Universal Time), with special UTC designator ("Z").
-Time resolution SHALL at least be seconds, with subsecond resolution as an optional degree of precision when desired.
-The time and date format shall be as shown below, where the sub-second data and delimiter is optional.
-
-```
-YYYY-MM-DDTHH:MM:SS.ssssssZ
-```
 
 ## Data Streams
 

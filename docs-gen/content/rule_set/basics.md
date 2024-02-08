@@ -24,15 +24,17 @@ as some implementations may treat VSS identifiers as case insensitive.
 
 ## Addressing Nodes
 
+VSS supports only a single tree, that means that all signals must belong to the same root.
+In the VSS standard catalog the root branch is called `Vehicle`, so all signals
+must be part of the `Vehicle` tree.
+
 Tree nodes are addressed, left-to-right, from the root of the tree
 toward the node itself. Each element in the name is delimited with
-a period ("."). The element hops from the root to the leaf is called ```path```.
+a period ("."). The element hops from the root to the leaf is called ```path```
 
 For example, the dimming status of the rearview mirror in the cabin is addressed:
 
-
     Vehicle.Cabin.RearviewMirror.Dimmed
-
 
 If there are an array of elements, such as door rows 1-3, they will be
 addressed with an index branch:
@@ -109,17 +111,24 @@ The VSS specification must adhere to YAML syntax. To keep the standardized VSS s
 
 ### Naming Conventions
 
-The recommended naming convention for node elements is to use camel case notation starting with a capital letter. It is recommended to use only
-`A-Z`, `a-z` and `0-9` in node names. For boolean signals it is recommended to start the name with `Is`.
+Node names in VSS must follow the restrictions specified in [Yaml](https://yaml.org/spec/1.2.2/#chapter-5-character-productions) i.e. must only use the printable subset of the Unicode character set.
+
+Tools and Generators supporting VSS may however put additional restrictions on which characters that are allowed. For maximum portability, node names in the VSS standard catalog must fulfill the following rules
+
+* Node names in the VSS standard catalog shall use camel case notation starting with a capital letter.
+* Node names in the VSS standard catalog shall use only `A-Z`, `a-z` and `0-9` in node names.
+* Boolean signals must start with `Is`.
+* Node names are case insensitive for comparison operations,
+  therefore the full path of node names must be unique e.g.
+  `Vehicle.Abc` and `Vehicle.ABC` are the same in comparison and therefore the presence of both is prohibited.
 
 Examples:
 
 ```
-SomeBranch.AnotherBranch.MySignalName
 Vehicle.Cabin.Door.Row1.Left.IsLocked
 ```
 Naming convention for string literals can be found in the [chapter](/vehicle_signal_specification/rule_set/data_entry/allowed/)for specifying allowed values.
 
 ### Line Length
 
-It is recommended that line length for files in this repository ( e.g. `*.vspec` and `*.md` files) shall not exceed 120 characters. This is not a strict limit, it is e.g. not recommended to split long URLs present in files over multiple lines.
+It is recommended that line length for files in this repository ( e.g. `*.vspec` and `*.md` files) shall not exceed 120 characters. This is not a strict limit, it is e.g. not recommended to split long URLs over multiple lines.
