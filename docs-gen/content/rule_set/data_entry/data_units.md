@@ -27,6 +27,12 @@ and a transport protocol may send speed in another unit, possibly also involving
 But in protocols not explicitly specifying data units (like [VISS](https://raw.githack.com/w3c/automotive/gh-pages/spec/VISSv2_Core.html))
 it is expected that `Vehicle.Speed` is sent and received as `km/h` (without scaling or offset).
 
+VSS does not offer any syntax for defining alternative units for a specific signal.
+The VSS project has specified for all units a corresponding quantity e.g. `velocity` for `km/h`.
+An API may use the quantity information to identify alternative units that can be used to represent the signal.
+The VSS list of units does not specify conversion factors, so even if VSS list both `km/h` and `m/s` as units for
+the quantity `velocity`, it is not specified how they relate to each other.
+
 In some cases it is natural to omit the data unit. This concerns typically signals where datatype `string` is used,
 but also signals where the value just represents a number (dimensionless quantities), like in the example below:
 
@@ -37,6 +43,7 @@ Vehicle.Cabin.DoorCount:
   default: 4
   description: Number of doors in vehicle.
 ```
+
 ### Logical Data Units
 
 VSS supports `percent` as data unit, typically with 0 to 100% as the allowed range.
@@ -71,21 +78,33 @@ Vehicle.Powertrain.Transmission.ClutchWear:
   description: Clutch wear as percent. 0 = no wear. 100 = worn.
 ```
 
-
-## List of supported Data Unit
+## Supported Data Units in VSS Standard Catalog
 
 The VSS syntax does not in itself specify what units can be used, the unit attribute as declared for signals in *.vspec files is optional and can contain an arbitrary string value.
-[VSS-Tools](https://github.com/COVESA/vss-tools) however require that all units used are defined.
+[VSS-Tools](https://github.com/COVESA/vss-tools) however require that all units used are defined,
+and at is also a requirement for signals in the VSS standard catalog.
 Units are defined by including them in a unit file with syntax as described below.
 One or more unit files can be specified by the `-u` parameter and, if not given, the tools search for a file `units.yaml`
 in the same directory as the root *.vspec file.
 
 For the VSS standard catalog the VSS-project has defined a set of units that can be used for signals in the VSS standard catalog.
 This list is composed of definitions according to International Units (SI) and few automotive-specific units:
-[Specification](https://www.iso.org/standard/30669.html), [Wikipedia](https://en.wikipedia.org/wiki/International_System_of_Units)
+[Specification](https://www.iso.org/standard/30669.html), [Wikipedia](https://en.wikipedia.org/wiki/International_System_of_Units).
+It can be noted that not all units in the list are currently used by the VSS standard catalog,
+but they may be used in the future or may be used for customization of the VSS catalog.
 
 The VSS list of units for the standard catalog exists in [units.yaml](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/units.yaml).
 
+### Addition of new Data Units to VSS standard catalog
+
+The [list of units](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/units.yaml) in VSS standard catalog
+is not static. New units can be added if needed for signals in the VSS standard catalog, or if the VSS-project considers that
+the unit might be useful for customization of the VSS tree. If you would like to propose a new unit to be added to the list
+please create a pull request where the new unit is added to
+[units.yaml](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/units.yaml).
+
+If the unit is needed for a new signal in the VSS standard catalog you can propose the new signal and the new unit
+in the same Pull Request.
 
 ## Unit file syntax
 
@@ -132,8 +151,8 @@ As an example, both `uint8` and `float` can be used to represent a length value.
 If using `uint8` you will have range restrictions, but that might be acceptable for some signals.
 For some units more specific datatype restrictions are relevant. Some examples:
 
-* A date/time expressed in ISO 8061 format can only be represented as a string
-* A UNIX Timestamp signal must be at least 32 bit unsigned to be able to handle date/time after year 2038.
+* A date/time expressed in ISO 8061 format (`unit: iso8601`) can only be represented as a string
+* A UNIX Timestamp signal (`unit: unix-time`) must be at least 32 bit unsigned to be able to handle date/time after year 2038.
 
 The `deprecation` keyword can be used to indicate that a specific unit may be removed in the future.
 Tooling shall preferably give a warning if a signal uses a deprecated unit or the unit used belongs to a deprecated quantity.
@@ -168,10 +187,10 @@ units:
 
 ## Quantity file syntax
 
-
-Defing quantities is recommended, but currently optional for backward compatibility reasons.
+Defining quantities is recommended, but currently optional for backward compatibility reasons.
 If tooling supports quantity files it can verify that all units provided in unit files
 use defined quantities.
+For the VSS standard catalog it is required that matching quantities have been defined for all units.
 
 ```
 
@@ -186,16 +205,28 @@ use defined quantities.
 ```
 
 
-The VSS list of quantitiess for the standard catalog exists in [quantities.yaml](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/quantities.yaml).
+The VSS list of quantities for the standard catalog exists in [quantities.yaml](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/quantities.yaml).
+
+### Addition of new Quantities to VSS standard catalog
+
+The [list of quantities](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/quantities.yaml) in VSS standard catalog
+is not static. New quantities can be added if needed for units in the VSS standard catalog, or if the VSS-project considers that
+the quantity might be useful for custom units. If you would like to propose a new quantity to be added to the list
+please create a pull request.
+
+If the quantity is needed for a new unit in the VSS standard catalog you can propose the new quantity and the new unit
+in the same Pull Request.
 
 ## Defining custom units
 
 It is possible to define custom units in a unit file.
 Assume for instance you want to have a signal showing remaining range in [furlong](https://en.wikipedia.org/wiki/Furlong).
 Then you could add an additional unit `furlong`. No need to specify `unit` or `symbol` as they equals the default (i.e. "furlong").
-As this is unit not commonly used and not described in any standards, it might be relevant to describe how it can be converted to other units.
+As this unit is not commonly used and not described in any standards, it might be relevant to describe how it can be converted to other units.
 That is however only informative, as it a custom unit a downstream implementation supporting unit conversion may not support automatic conversion
 of furlong to other units.
+
+
 
 ```
 units:
