@@ -50,7 +50,7 @@ tests:
 	PYTHONPATH=${TOOLSDIR} pytest
 
 binary:
-	gcc -shared -o ${TOOLSDIR}/binary/binarytool.so -fPIC ${TOOLSDIR}/binary/binarytool.c
+	cd ${TOOLSDIR}/binary && $(MAKE)
 	${TOOLSDIR}/vspec2binary.py --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).binary
 
 protobuf:
@@ -66,5 +66,5 @@ id:
 	${TOOLSDIR}/vspec2id.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).vspec
 
 clean:
-	rm -f ${TOOLSDIR}/binary/binarytool.so
+	cd ${TOOLSDIR}/binary && $(MAKE) clean
 	rm -f vss_rel_*
