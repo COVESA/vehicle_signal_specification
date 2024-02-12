@@ -76,7 +76,12 @@ This means that the data storage shall be "locked" while the items of the struct
 Structs shall be defined in a separate tree intended for definition of datatypes only.
 This means that signal definitions and struct definitions cannot exist in the same files.
 Tooling must thus accept one (or more) parameters for specifying datatype definition(s).
-The tree must have a branch as root, i.e. it is not possible to have a struct as root.
+The tree must have a single branch as root, i.e. it is not possible to have a struct as root.
+
+Currently no structs have been introduced to the VSS standard catalog, but it has been [agreed](https://github.com/COVESA/vehicle_signal_specification/issues/617)
+that the VSS standard catalog type root shall be called `Types`, and that types added to VSS standard catalog will be added to the `Types.Vehicle` branch.
+For example, if a type for GNSS location would be added to the VSS standard catalog in the future, it may be called `Types.Vehicle.GNSSLocationType`.
+User extensions could then be added as sub-branches to `Types`, like `Types.OEM.SomeOEMType`.
 
 The top level datatypes file(s) (e.g. `vss_types.vspec`) can refer to other datatype files similar to the
 [top VSS file](https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/VehicleSignalSpecification.vspec).
