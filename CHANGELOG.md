@@ -197,6 +197,18 @@ A new version of vss-tools is used, with support for static IDs and jsconschema.
 
 ## Planned Changes VSS 5.0
 
+### UUID removed from release artifacts
+
+VSS Release artifacts (VSS standard catalog in various formats) will no longer contain UUID information.
+If you need artifacts with UUID you need to generate the artifact yourself.
+
+Instructions:
+
+1. Clone the repo and check out the tag you want, for example `git checkout v5.0`
+2. Update submodules, for example `git submodule update --init`
+3. Add `--uuid` as argument to the relevant command in `Makefile`
+4. Run generation, for example `make csv`.
+
 ### OBD Branch deprecated
 
 The `Vehicle.OBD` branch is now deprecated. The plan is to remove it in VSS 6.0.
