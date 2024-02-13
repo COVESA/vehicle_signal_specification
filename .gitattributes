@@ -1,0 +1,4 @@
+*.vspec linguist-detectable
+*.vspec linguist-language=YAML
+docs-gen/** linguist-documentation
+Makefile -linguist-detectable
