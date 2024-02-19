@@ -52,6 +52,12 @@ Speed:
   unit: rpm
   description: Motor rotational speed measured as rotations per minute. Negative values indicate reverse driving mode.
 
+TimeInUse:
+  datatype: float
+  type: sensor
+  description: Accumulated time during engine lifetime when the vehicule state's is 'READY'.
+  comment: Vehicles may define their READY state.
+  unit: h
 
 #
 # Motor temperature
