@@ -66,8 +66,17 @@ Tire.Temperature:
 #
 # Wheel signals
 #
+
 Speed:
   datatype: float
   type: sensor
   unit: km/h
-  description: Rotational speed of a vehicle's wheel.
+  description: Linear speed of a vehicle's wheel.
+
+AngularSpeed:
+  datatype: float
+  type: sensor
+  unit: degrees/s
+  description: Angular (Rotational) speed of a vehicle's wheel.
+  comment: Positive if wheel is trying to drive vehicle forward.
+           Negative if wheel is trying to drive vehicle backward.
