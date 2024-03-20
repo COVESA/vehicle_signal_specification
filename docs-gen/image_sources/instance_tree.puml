@@ -1,5 +1,5 @@
 @startuml
-card "instances: \n  - Row[1,2] \n  - ["DriverSide","PassengerSide"]" as C111
+card "instances: \n  - Row[1,2] \n  - ["DriverSide", "PassengerSide", "Left", "Right"]" as C111
 usecase Vehicle as N1
 usecase Cabin as N11
 usecase Door as N111

@@ -11,15 +11,27 @@ N111-->N111a
 usecase Row2 as N111b
 N111-->N111b
 
+' Instance Level
+
 usecase DriverSide as N111aa
 usecase PassengerSide as N111ab
+usecase Left as N111ac
+usecase Right as N111ad
 N111a-->N111aa
 N111a-->N111ab
+N111a-->N111ac
+N111a-->N111ad
 
 usecase DriverSide as N111ba
 usecase PassengerSide as N111bb
+usecase Left as N111bc
+usecase Right as N111bd
 N111b-->N111ba
 N111b-->N111bb
+N111b-->N111bc
+N111b-->N111bd
+
+' Leaf Level
 
 usecase IsOpen as N111aa2
 usecase Window as N111aa1
@@ -35,6 +47,24 @@ N111ab-->N111ab1
 N111ab1-->N111ab11
 N111ab-->N111ab2
 
+' Left/Right for Row 1
+
+
+usecase IsOpen as N111ac2
+usecase Window as N111ac1
+usecase IsOpen as N111ac11
+N111ac-->N111ac1
+N111ac1-->N111ac11
+N111ac-->N111ac2
+
+usecase IsOpen as N111ad2
+usecase Window as N111ad1
+usecase IsOpen as N111ad11
+N111ad-->N111ad1
+N111ad1-->N111ad11
+N111ad-->N111ad2
+
+' Row 2
 
 usecase IsOpen as N111ba2
 usecase Window as N111ba1
@@ -49,5 +79,23 @@ usecase IsOpen as N111bb11
 N111bb-->N111bb1
 N111bb1-->N111bb11
 N111bb-->N111bb2
+
+
+' Left/Right for Row 2
+
+
+usecase IsOpen as N111bc2
+usecase Window as N111bc1
+usecase IsOpen as N111bc11
+N111bc-->N111bc1
+N111bc1-->N111bc11
+N111bc-->N111bc2
+
+usecase IsOpen as N111bd2
+usecase Window as N111bd1
+usecase IsOpen as N111bd11
+N111bd-->N111bd1
+N111bd1-->N111bd11
+N111bd-->N111bd2
 
 @enduml

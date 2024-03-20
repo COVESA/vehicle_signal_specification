@@ -10,17 +10,39 @@ quite often there is a need to repeat branches and data entries
 branches and data entries in the specification an instance-concept is supported.
 Instances remove the need of repeating definitions, by defining at the node itself how often it occurs in
 the resulting tree. They are meant as a short-cut in the specification and
-interpreted by the tools. As an example is shown below for doors:
+interpreted by the tools.
+
+The instance names defined in VSS can be seen as labels
+to reference particular instances. There is not necessarily a 1:1 relation between
+VSS instance identifiers and physical instances. A typical example could be instance identifiers
+for doors, windows and seats. For a left-hand drive vehicle, the driver seat may be referenced both
+as `DriverSide` and as `Left`. VSS does not provide any syntax to specify that VSS instance `A`
+(for this particular vehicle) actually refers to the same physical instances as `C`.
+It is up to the VSS implementation and deployment to manage this relationship, for example
+by a configuration file.
+
+
+As an example is shown below for doors. In VSS four instances of doors are specified for each row,
+but there are at most two physical doors on each side.
+`DriverSide`and `PassengerSide`can be considered as aliases for `Left`and `Right`, or vice versa.
 
 <!-- Image source in docs-gen/image_source/instance_tree.puml -->
 ![Example tree](/vehicle_signal_specification/images/instance_tree.png)
 
-When expanded this corresponds to:
+
+If expanded (for instance by [VSS-tools](https://github.com/COVESA/vss-tools)) this corresponds to:
 
 <!-- Image source in docs-gen/image_source/instance_tree_expand.puml -->
-![Example tree](/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc)
+![Example tree expanded](/vehicle_signal_specification/images/instance_tree_expand.png?width=70pc)
 
-## Definition
+Note that for example `Vehicle.Cabin.Door.Row1.DriverSide.IsOpen` and `Vehicle.Cabin.Door.Row1.Left.IsOpen` from
+a VSS perspective are considered as different signals. It is up to the implementation (for a LHD vehicle) to make
+sure that both signal names can be used to control the left door, so that the logical representation corresponds to the image below.
+
+<!-- Image source in docs-gen/image_source/instance_tree_expand_logical.puml -->
+![Example tree expanded logical](/vehicle_signal_specification/images/instance_tree_expand_logical.png?width=70pc)
+
+## VSS Syntax
 
 ### How can I create instances for my `branch`?
 
@@ -38,7 +60,7 @@ When expanded this corresponds to:
      and `Position4`. It is in VSS recommended to use `1` as start index for the first row/axle/position/...
 4. If multiple instances occur in one node or on the path to a data entry,
    the instances get combined, by the order of occurrence. Following the example above,
-   four position instances will be created for each of the 'DriverSide' and 'PasengerSide' instances,
+   four position instances will be created for each of the 'DriverSide' and 'PassengerSide' instances,
    resulting into a total number of 8 instances.
 
 ### How can I exclude child-nodes from instantiation?
@@ -61,7 +83,7 @@ Door:
   type: branch
   instances:
     - Row[1,2]
-    - ["DriverSide","PassengerSide"]
+    - ["DriverSide","PassengerSide", "Left", "Right"]
   description: All doors, including windows and switches
 #include SingleDoor.vspec Door
 
@@ -91,8 +113,12 @@ Results in the following signals:
 Vehicle.Cabin.Door.SomeSignal
 Vehicle.Cabin.Door.Row1.DriverSide.IsOpen
 Vehicle.Cabin.Door.Row1.PassengerSide.IsOpen
+Vehicle.Cabin.Door.Row1.Left.IsOpen
+Vehicle.Cabin.Door.Row1.Right.IsOpen
 Vehicle.Cabin.Door.Row2.DriverSide.IsOpen
 Vehicle.Cabin.Door.Row2.PassengerSide.IsOpen
+Vehicle.Cabin.Door.Row2.Left.IsOpen
+Vehicle.Cabin.Door.Row2.Right.IsOpen
 ```
 
 ## Redefinition

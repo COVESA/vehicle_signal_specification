@@ -112,7 +112,7 @@ Door:
   type: branch
   instances:
     - Row[1,2]
-    - ["DriverSide","PassengerSide"]
+    - ["DriverSide","PassengerSide", "Left", "Right"]
   description: All doors, including windows and switches.
 #include SingleDoor.vspec Door
 
@@ -146,7 +146,7 @@ Seat:
   type: branch
   instances:
     - Row[1,2]
-    - ["DriverSide","Middle","PassengerSide"]
+    - ["DriverSide","Middle","PassengerSide", "Left", "Right"]
   description: All seats.
 #include SingleSeat.vspec Seat
 
@@ -158,7 +158,11 @@ DriverPosition:
   type: attribute
   allowed: ['LEFT', 'MIDDLE', 'RIGHT']
   description: The position of the driver seat in row 1.
-  comment: Some signals use DriverSide and PassengerSide as instances. If this signal specifies that DriverPosition is LEFT or MIDDLE, then DriverSide refers to left side and PassengerSide to right side. If this signal specifies that DriverPosition is RIGHT, then DriverSide refers to right side and PassengerSide to left side.
+  comment: Some signals use DriverSide and PassengerSide as instances.
+           If this signal specifies that DriverPosition is LEFT or MIDDLE,
+           then DriverSide refers to left side and PassengerSide to right side.
+           If this signal specifies that DriverPosition is RIGHT,
+           then DriverSide refers to right side and PassengerSide to left side.
 
 SeatRowCount:
   datatype: uint8
