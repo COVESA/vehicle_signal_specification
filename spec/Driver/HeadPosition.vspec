@@ -1,0 +1,90 @@
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# This file intends to provide data related to head position.
+# Head position in this file refers to mid eye position.
+# Mid eye position refers to the center of a line drawn between the drivers eyes.
+# Absence of an eye does not affect mid eye position, as it shall be calculated as if both eyes were present.
+#
+# Position is given in the vehicle rear-axle coordinate system as defined by ISO 23150:2023 section 3.7.12
+# This coordinate system corresponds to a vehicle coordinate system as defined by ISO 8855:2011 section 2.11
+# with the vehicle reference point at centre of the (first) rear axle.
+#
+# With the definitions given below example values for a regular LHD passenger vehicle
+# could be something like
+#           X = 2000 mm (head position 2 meters in front of rear axle)
+#           Y = 600 mm (head position 60 cm left of vehicle center)
+#           Z = 1000 mm (head position 100 cm above center of rear axis)
+#
+# Head Roll/Pitch/Yaw refers to relationship between head axis system and the vehicle rear-axle coordinate system.
+#
+# Head axis system is defined as follows
+# Head X-axis corresponds to a vector from midway between left and right pre-auricular point and nasion.
+# Head Y-axis corresponds to a vector orthogonal to X going left from the head on the plane defined by left and right
+# pre-auricular point and nasion
+# Head Z-axis corresponds to vector orthogonal to X and Y going upward.
+#
+
+X:
+  datatype: int16
+  type: sensor
+  unit: mm
+  description: Longitudinal position of head center measured as mid eye position on X-axis
+               of the vehicle rear-axle coordinate system as defined by ISO 23150:2023 section 3.7.12
+               Mid eye position refers to the center of a line drawn between the center of the drivers eyes.
+               Positive values = forward of (first) rear-axle. Negative values = backward of (first) rear-axle.
+
+Y:
+  datatype: int16
+  type: sensor
+  unit: mm
+  description: Lateral position of head center measured as mid eye position on X-axis
+               of the vehicle rear-axle coordinate system as defined by ISO 23150:2023 section 3.7.12
+               Mid eye position refers to the center of a line drawn between the center of the drivers eyes.
+               Positive values = left of rear-axle center. Negative values = right of rear-axle center.
+
+Z:
+  datatype: int16
+  type: sensor
+  unit: mm
+  description: Height position of head center measured as mid eye position on X-axis
+               of the vehicle rear-axle coordinate system as defined by ISO 23150:2023 section 3.7.12
+               Mid eye position refers to the center of a line drawn between the center of the drivers eyes.
+               Positive values = above center of rear-axle reference point.
+               Negative values = below center of rear-axle reference point.
+
+Yaw:
+  datatype: float
+  type: sensor
+  unit: degrees
+  min: -180
+  max: 180
+  description: Head yaw angle, measured from the vehicle sprung mass X-axis as defined by ISO 23150:2023
+               to the head X-axis, around the vehicle Z-axis (right-hand rule).
+               0 = Head in normal position.
+               Positive values = Head turned left. Negative values = Head turned right.
+
+Pitch:
+  datatype: float
+  type: sensor
+  unit: degrees
+  min: -90
+  max: 90
+  description: Head pitch angle, measured as angle from vehicle sprung mass XY-plane as defined by ISO 23150:2023
+               to the head X-axis.
+               0 = Head in normal position.
+               Positive values = Head leaning up. Negative values = Head leaning down.
+Roll:
+  datatype: float
+  type: sensor
+  unit: degrees
+  min: -180
+  max: 180
+  description: Head roll angle about the head X-axis (right-hand rule).
+               0 = Head in normal position.
+               Positive values = Head leaning to the right. Negative values = Head leaning to the left.
