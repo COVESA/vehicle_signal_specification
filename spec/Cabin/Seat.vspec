@@ -35,7 +35,7 @@ Occupant:
 # Include the Cabin/Occupant.vspec file and attach all its data under the
 # Occupant branch created above.
 
-#include Occupant.vspec Occupant
+#include Seat/Occupant.vspec Occupant
 
 IsBelted:
   datatype: boolean

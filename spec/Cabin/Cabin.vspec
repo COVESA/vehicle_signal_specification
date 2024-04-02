@@ -148,7 +148,7 @@ Seat:
     - Row[1,2]
     - ["DriverSide","Middle","PassengerSide"]
   description: All seats.
-#include SingleSeat.vspec Seat
+#include Seat.vspec Seat
 
 #
 # Seat attributes.

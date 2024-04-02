@@ -11,7 +11,22 @@
 #
 
 
-#include ../Cabin/Occupant.vspec
+Identifier:
+  deprecation: v5.0 - use data from Vehicle.Cabin.Seat.*.*.Occupant.Identifier.
+  type: branch
+  description: Identifier attributes based on OAuth 2.0.
+
+Identifier.Subject:
+  deprecation: v5.0 - use data from Vehicle.Cabin.Seat.*.*.Occupant.Identifier.
+  datatype: string
+  type: sensor
+  description: Subject for the authentication of the occupant e.g. UserID 7331677.
+
+Identifier.Issuer:
+  deprecation: v5.0 - use data from Vehicle.Cabin.Seat.*.*.Occupant.Identifier.
+  datatype: string
+  type: sensor
+  description: Unique Issuer for the authentication of the occupant e.g. https://accounts.funcorp.com.
 
 DistractionLevel:
   datatype: float
@@ -52,13 +67,3 @@ HeartRate:
   type: sensor
   unit: bpm
   description: Heart rate of the driver.
-
-HeadPosition:
-  type: branch
-  description: The current position of the driver head on vehicle axis according to ISO 23150:2023.
-#include HeadPosition.vspec HeadPosition
-
-MidEyeGaze:
-  type: branch
-  description: Direction from mid eye position to object driver is looking at.
-#include MidEyeGaze.vspec MidEyeGaze
