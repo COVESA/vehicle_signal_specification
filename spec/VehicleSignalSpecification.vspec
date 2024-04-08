@@ -166,6 +166,17 @@ Vehicle.Driver:
 
 #include Driver/Driver.vspec Vehicle.Driver
 
+#
+# Occupant Data
+#
+
+Vehicle.Occupant:
+  type: branch
+  instances:
+    - Row[1,2]
+    - ["DriverSide","Middle","PassengerSide"]
+  description: Occupant (Driver or Passenger) data.
+#include Vehicle/Occupant.vspec Vehicle.Occupant
 
 #
 # Exterior information

@@ -11,16 +11,18 @@
 #
 
 Identifier:
+  deprecation: v5.0 - use data from Vehicle.Occupant.*.*.Identifier.
   type: branch
   description: Identifier attributes based on OAuth 2.0.
-#include Occupant/Identifier.vspec Identifier
 
-HeadPosition:
-  type: branch
-  description: The current position of the driver head on vehicle axis according to ISO 23150:2023.
-#include Occupant/HeadPosition.vspec HeadPosition
+Identifier.Subject:
+  deprecation: v5.0 - use data from Vehicle.Occupant.*.*.Identifier.
+  datatype: string
+  type: sensor
+  description: Subject for the authentication of the occupant e.g. UserID 7331677.
 
-MidEyeGaze:
-  type: branch
-  description: Direction from mid eye position to object driver is looking at.
-#include Occupant/MidEyeGaze.vspec MidEyeGaze
+Identifier.Issuer:
+  deprecation: v5.0 - use data from Vehicle.Occupant.*.*.Identifier.
+  datatype: string
+  type: sensor
+  description: Unique Issuer for the authentication of the occupant e.g. https://accounts.funcorp.com.

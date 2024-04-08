@@ -26,7 +26,7 @@
 # Head axis system is defined as follows
 # Head X-axis corresponds to a vector from midway between left and right pre-auricular point and nasion.
 # Head Y-axis corresponds to a vector orthogonal to X going left from the head on the plane defined by left and right
-# pre-auricular point and nasion
+# pre-auricular point and nasion.
 # Head Z-axis corresponds to vector orthogonal to X and Y going upward.
 #
 
