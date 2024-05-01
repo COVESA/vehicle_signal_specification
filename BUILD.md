@@ -23,7 +23,7 @@ can be used successfully with tools used in continuous integration.
 
 For detailed information on development environment and usage see [VSS-Tools](https://github.com/COVESA/vss-tools).
 
-### Set up you development environment
+### Set up your development environment
 
 You are free to use whatever development environment you want, but tools in [VSS-tools](https://github.com/COVESA/vss-tools)
 have typically been tested only on Linux, and in continuous integration "ubuntu-latest" is used for testing.
@@ -60,7 +60,7 @@ vss_rel_4.1-dev.csv
 ### Make sure that your changes pass CI checks
 
 Continuous Integration (CI) checks are defined in the [workflows](.github/workflows) folder.
-They consist of the following areas
+They consist of the following areas.
 
 #### Signoff
 All commits must be signed-off, see [CONTRIBUTING.md](CONTRIBUTING.md)

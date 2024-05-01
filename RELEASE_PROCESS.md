@@ -1,4 +1,4 @@
-**(C) 2016 Jaguar Land Rover**<br>
+**Copyright (c) 2016 Contributors to COVESA**<br />
 
 All files and artifacts in this repository are licensed under the
 provisions of the license provided by the LICENSE file in this repository.
@@ -19,12 +19,12 @@ contributors.
 
 Pull requests [PR] are **always** initiated from a **fork** and not through
 a feature branch in the main repository. PRs are reviewed, discussed and merged
-through the public github repository.
+through the public GitHub repository.
 A PR is merged earliest after one week to give a fair chance of reviewing.
 
 Each release is incrementally numbered, starting with 1.
 
-A release is tagged in git with the tag
+A release is tagged in git with the tag:
 
     v[m.n]
 
