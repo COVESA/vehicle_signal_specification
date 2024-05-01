@@ -1,13 +1,11 @@
 # VSS Changelog
 
-The intention of this document is to highlight major changes in the VSS specification (syntax and/or signals).
+The intent of this document is to highlight major changes in the VSS specification (syntax and/or signals).
 It shall include all changes that affect backward compatibility or may be important to know when upgrading from one version to another.
 It typically does not list all changes to signals.
 It includes changes that are included in released version, but also changes planned for upcoming releases.
 
 *This document only contains changes introduced in VSS 3.0 or later!*
-
-
 
 ## VSS 3.0
 
@@ -16,9 +14,9 @@ It includes changes that are included in released version, but also changes plan
 ### Instantiate
 
 A new attribute `instantiate` has been added to the syntax to exclude a child-node from the instantiation of the *direct* parent node.
-This attribute is by default true and is only relevant to use for signals
+This attribute is by default true and is only relevant to use for signals.
 
-An example on how this signals shall be handled by tools:
+An example on how these signals shall be handled by tools:
 
 ```YAML
 Vehicle.X:
@@ -78,8 +76,7 @@ From VSS 3.0 this attribute has been renamed to `allowed`. The background is tha
 as it does not correspond to enum definitions in many programming languages, but rather just is a limitation of what values
 that are supported by the signal.
 
-
-All signals in VSS previously using `enum`has been updated to use `allowed`, like in the example below:
+All signals in VSS previously using `enum` have been updated to use `allowed`, like in the example below:
 
 ```
 LowVoltageSystemState:
@@ -112,13 +109,13 @@ The background is that the old representation included limitations and ambiguiti
 ### Struct Support (Experimental)
 
 VSS has been extended with syntax to define structs, and to use them for signals.
-For VSS 3.1 support is only experimental and syntax may change.
+For VSS 3.1, support is only experimental and syntax may change.
 
 *Note: Only a subset of VSS-tools for VSS 3.1 supports structs!*
 
 ### Actuator and Sensor Attributes
 
-VSS has two attributes `sensor` and `actuator` that gives the possibility to specify which system/entity that provides the value
+VSS has two attributes `sensor` and `actuator` that gives the possibility to specify which system/entity provides the value
 or tries to actuate the value. A possible hypothetical example is shown below showing that it is `TemperatureSensorUnderDriverSeat` that
 provides the values of `Vehicle.Cabin.Temperature` and it is `HVACSystem` that tries to assure that the specified temperature is achieved.
 These two attributes have never been used by signals in the VSS repository and it has been decided that these attributes no longer shall
@@ -135,7 +132,7 @@ Vehicle.Cabin.Temperature:
 ```
 
 For VSS 3.1 the two attributes will remain in the VSS Syntax, but are marked as deprecated.
-No change to tooling is implemented, as the vss-tools already today give a warning if the attributes are used:
+No change to tooling is implemented, as the vss-tools already give a warning if the attributes are used:
 
 ```
 Warning: Attribute(s) sensor in element Temperature not a core or known extended attribute.
@@ -181,15 +178,15 @@ have been removed from the [VSS syntax](docs-gen/content/rule_set/data_entry/sen
 
 A new syntax for unit files is introduced. Old syntax still supported.
 It is also possible to define quantity files, and a default quantity file (`quantities.yaml`)
-has been added
+has been added.
 
 ### New signals
 
-Some signal have been added.
+Some signals have been added.
 
 ### Updated tool dependency
 
-A new version of vss-tools is used, with support for static IDs and jsconschema.
+A new version of vss-tools is used, with support for static IDs and jsonschema.
 
 ### Deprecated or Deleted signals
 
@@ -204,9 +201,9 @@ If you need artifacts with UUID you need to generate the artifact yourself.
 
 Instructions:
 
-1. Clone the repo and check out the tag you want, for example `git checkout v5.0`
-2. Update submodules, for example `git submodule update --init`
-3. Add `--uuid` as argument to the relevant command in `Makefile`
+1. Clone the repo and check out the tag you want, for example `git checkout v5.0`.
+2. Update submodules, for example `git submodule update --init`.
+3. Add `--uuid` as argument to the relevant command in `Makefile`.
 4. Run generation, for example `make csv`.
 
 ### OBD Branch deprecated
@@ -215,17 +212,17 @@ The `Vehicle.OBD` branch is now deprecated. The plan is to remove it in VSS 6.0.
 The background is a decision that VSS standard catalog shall not contain a one-to-one representation of the OBD standard.
 Instead, VSS standard catalog may contain corresponding information elsewhere. As an example, instead of
 `Vehicle.OBD.EngineSpeed` (PID `0C`), the VSS signal `Vehicle.Powertrain.CombustionEngine.Speed` can be used.
-Note that not all signals in `Vehicle.OBD` has "duplicates", especially in the area of combustion engine control
+Note that not all signals in `Vehicle.OBD` have "duplicates", especially in the area of combustion engine control
 (like Oxygen sensor lambda and voltage readings) VSS currently does not have any counterparts in other parts of the tree.
 
 
-What to do if you as of today use signals from the OBD file
+What to do if you as of today use signals from the OBD file:
 
-* Check if any suitable replacement signal exist
-  Example: if you use `Vehicle.OBD.Speed`, consider using `Vehicle.Speed` instead
+* Check if any suitable replacement signal exist.
+  Example: if you use `Vehicle.OBD.Speed`, consider using `Vehicle.Speed` instead.
 * If not and the data may be of general interest; consider creating a pull request
   with a replacement signal.
-  Example: VSS as of today only have Lambda information in OBD branch
+  Example: VSS as of today only have Lambda information in OBD branch.
   If you need VSS signals for Lambda, consider creating new signals in
   `Vehicle.Powertrain.CombustionEngine` branch.
 * If you really need the signals in this file and cannot replace them, then consider using the overlay file in the

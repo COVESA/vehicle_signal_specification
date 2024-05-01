@@ -1,12 +1,11 @@
 # VEHICLE SIGNAL SPECIFICATION
 
-
 [![License](https://img.shields.io/badge/License-MPL%202.0-blue.svg)](https://opensource.org/licenses/MPL-2.0)
 [![Build Status](https://github.com/COVESA/vehicle_signal_specification/actions/workflows/buildcheck.yml/badge.svg)](https://github.com/COVESA/vehicle_signal_specification/actions/workflows/buildcheck.yml?query=branch%3Amaster)
 
 The overall goal of the Vehicle Signal Specification (VSS) is to create a common understanding of vehicle signals in order to reach a “common language” independent of the protocol or serialisation format.
 
-Please find the official documentation at: [Vehicle Signal Specification](https://covesa.github.io/vehicle_signal_specification/)
+Please find the official documentation at: [Vehicle Signal Specification](https://covesa.github.io/vehicle_signal_specification/).
 
 ## Getting started
 
@@ -38,7 +37,7 @@ resulting in artifact names of the form `vss_rel_<version>.<type-suffix>` where 
 for released versions and `X.Y-dev` for ongoing work in master-branch towards version `X.Y`.
 
 Version is also visible in the [Vehicle.vspec](spec/Vehicle/Vehicle.vspec) file where `VersionVSS.Label` typically is
-`dev` for ongoing work in master-branch and an empty string for released versions.
+`-dev` for ongoing work in master-branch and an empty string for released versions.
 
 Versions are tagged in the form `vX.Y(.Z)` and the same syntax is used as names for VSS releases.
 VSS-tools is tagged but not released.
