@@ -7,6 +7,11 @@
 # SPDX-License-Identifier: MPL-2.0
 
 # This file intends to provide data related to head position.
+#
+# As specified in "Euro NCAP - Assessment Protocol - Safty Assist" section 3.5.3.1
+# (https://www.euroncap.com/media/80158/euro-ncap-assessment-protocol-sa-safe-driving-v104.pdf)
+# Head Movement (Owl) can be used to assess detection of driver distraction.
+#
 # Head position in this file refers to mid eye position.
 # Mid eye position refers to the center of a line drawn between the drivers eyes.
 # Absence of an eye does not affect mid eye position, as it shall be calculated as if both eyes were present.
