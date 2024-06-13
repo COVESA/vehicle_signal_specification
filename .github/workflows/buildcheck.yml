@@ -1,6 +1,9 @@
 name: Standard Build Check
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   buildtest:
@@ -16,9 +19,10 @@ jobs:
         run: |
           # Needed for using exact python version, which is
           # required in `Pipfile`.
+          # Make sure it is aligned with vss-tools/Pipfile
           curl https://pyenv.run | bash
           export PATH="$HOME/.pyenv/bin:$PATH"
-          pyenv install 3.8.12
+          pyenv install 3.10.6
 
       - name: Install vss-tools dependencies
         run: |
@@ -45,10 +49,10 @@ jobs:
 
       - name: Test that ddsidl is correct
         run: |
-          pipenv install cyclonedds
+          # Ignore vss-tools Pipfile for this use-case
+          pipenv install --ignore-pipfile cyclonedds
           pipenv run idlc *.idl
         env:
-          PIPENV_PIPFILE: ./vss-tools/Pipfile
           PIPENV_VENV_IN_PROJECT: 1
 
       - name: Test optional targets. NOTE - always succeeds
