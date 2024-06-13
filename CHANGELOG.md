@@ -228,6 +228,13 @@ What to do if you as of today use signals from the OBD file:
 * If you really need the signals in this file and cannot replace them, then consider using the overlay file in the
   `overlays` directory from VSS 6.0 onwards.
 
+### Update tool dependency
+
+#### Overlay Support
+
+VSS-tools support for overlays have been improved. It is now in many cases not necessary to specify
+`type` and `datatype` for items in the overlay if you are changing an existing item.
+
 ## Planned Changes VSS 6.0
 
 ### OBD Branch removed

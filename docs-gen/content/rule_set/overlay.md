@@ -92,6 +92,28 @@ Vehicle.Cabin.Door.IsOpen:
 ```
 *File: overlay_2.vspec*
 
+### Node content in Overlays
+
+If you are adding a node you need to specify all attributes required for that node type.
+If you are changing an existing node you typically only need to specify name and what is changed,
+like in the `Vehicle.Speed` example below.
+Vss-tools will then look up the node name and reuse existing definitions.
+An exception is if you are changing a node for a particular instance.
+In that case you need to give `type`and `datatype`even if they are not changed,
+as the lookup mechanism currently cannot extract them from the existing definition.
+
+```YAML
+# Type and Datatype not needed
+Vehicle.Speed:
+  unit: m/s
+
+# Type and Datatype needed as overlay affects a particular instance
+Vehicle.Occupant.Row1.DriverSide.HeadPosition.Yaw:
+  type: sensor
+  datatype: float
+  unit: mm
+```
+
 ### Overlays in the standard catalog
 
 With the feature of overlays, we introduced a new folder in the
