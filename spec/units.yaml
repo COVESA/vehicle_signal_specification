@@ -398,3 +398,11 @@ Ohm:
   unit: Ohm
   quantity: resistance
   allowed-datatypes: ['numeric']
+
+# Illuminance
+
+Lux:
+  definition: Light intensity in Lux
+  unit: lux
+  quantity: illuminance
+  allowed-datatypes: ['numeric']

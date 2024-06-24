@@ -78,3 +78,5 @@ relation:
 resistance:
   definition: Property of a resistive element, equal to the scalar
             quantity given by the quotient of voltage u and electric current i (IEC 80000-6:2022)
+illuminance:
+  definition: Illuminance is the total luminous flux incident on a surface, per unit area, usually measured in Lux
