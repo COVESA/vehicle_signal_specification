@@ -5,7 +5,7 @@
 
 The overall goal of the Vehicle Signal Specification (VSS) is to create a common understanding of vehicle signals in order to reach a “common language” independent of the protocol or serialisation format.
 
-Please find the official documentation at: [Vehicle Signal Specification](https://covesa.github.io/vehicle_signal_specification/).
+Generated documentation from latest commit on master branch is available at: [Vehicle Signal Specification Documentation](https://covesa.github.io/vehicle_signal_specification/).
 
 ## Getting started
 

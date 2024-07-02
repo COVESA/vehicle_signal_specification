@@ -112,7 +112,7 @@ Unit files follow the syntax defined below:
 
 ```
 [
- <vss-unit-identifier>: # Typically unit abbreviation, like km/h or mm, but
+ <vss-unit-identifier>: # Typically unit abbreviation, like km/h or mm, but no special characters
     definition: <string>
     [unit: <string>] # Full name of unit, optional, if not given assumed to be equal to vss-unit-identifier
     quantity: <string> # Quantity of the unit.

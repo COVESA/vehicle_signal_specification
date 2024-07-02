@@ -52,7 +52,7 @@ Run check with `Check linked documents recursively`
 The static page is generated with:
 
 - [HUGO](https://gohugo.io/)
-- [Learn Theme](https://themes.gohugo.io/hugo-theme-learn/)
+- [Learn Theme](https://github.com/matcornic/hugo-theme-learn)
 
 Please follow the [documentation](https://gohugo.io/documentation/) for installation and further questions around the framework.
 Currently, the HUGO version used for generating VSS documentation is `0.103.1`,

@@ -126,7 +126,7 @@ Follow the style guide in the [documentation](https://covesa.github.io/vehicle_s
 
 VSS is not concerned with how signals are transmitted and does not consider scaling/offset typically used in transport protocols.
 VSS signals typically use the unit used by humans when talking about the value, but prefers SI-units when feasible,
-see [documentation](https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/data_unit_types/) for all supported units.
+see [documentation](https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/data_units/) for all supported units.
 If it is unlikely that someone is interested in decimals for this value, select a signed or unsigned integer type.
 Select a size which with reasonable margins can cover all vehicles.
 If it is likely that decimal values are needed, select float or, if relevant, double.
