@@ -401,7 +401,7 @@ Ohm:
 
 # Illuminance
 
-Lux:
+lx:
   definition: Light intensity in Lux
   unit: lux
   quantity: illuminance
