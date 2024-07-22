@@ -15,53 +15,30 @@ jobs:
         with:
           submodules: true
 
-      - name: Install pyenv
-        run: |
-          # Needed for using exact python version, which is
-          # required in `Pipfile`.
-          # Make sure it is aligned with vss-tools/Pipfile
-          curl https://pyenv.run | bash
-          export PATH="$HOME/.pyenv/bin:$PATH"
-          pyenv install 3.10.6
-
       - name: Install vss-tools dependencies
         run: |
           python -V
           python -m pip --quiet --no-input install --upgrade pip
-          python -m pip --quiet --no-input install --upgrade pipenv wheel
-          pipenv --version
-          pipenv run python --version
+          python -m pip --quiet --no-input install --upgrade  wheel
           cd vss-tools
+          pip install -e .
+          pip install pytest
+          # idlc currently used both during python test and later in this script
+          pip install cyclonedds
           sudo apt install -y protobuf-compiler
-          pipenv install
           echo done!
-          pipenv run python setup.py install
-        env:
-          PIPENV_VENV_IN_PROJECT: 1
 
       - name: Test mandatory targets
         run: |
-          pipenv install
-          pipenv run make mandatory_targets
-        env:
-          PIPENV_PIPFILE: ./vss-tools/Pipfile
-          PIPENV_VENV_IN_PROJECT: 1
+          make mandatory_targets
 
       - name: Test that ddsidl is correct
         run: |
-          # Ignore vss-tools Pipfile for this use-case
-          pipenv install --ignore-pipfile cyclonedds
-          pipenv run idlc *.idl
-        env:
-          PIPENV_VENV_IN_PROJECT: 1
+          idlc vss_rel_*.idl
 
       - name: Test optional targets. NOTE - always succeeds
         run: |
-          pipenv install
-          pipenv run make -k optional_targets || true
-        env:
-          PIPENV_PIPFILE: ./vss-tools/Pipfile
-          PIPENV_VENV_IN_PROJECT: 1
+          make -k optional_targets || true
 
       - name: Install hugo
         env:

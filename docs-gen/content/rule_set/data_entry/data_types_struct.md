@@ -89,7 +89,7 @@ It is possible to specify that multiple datatype files shall be used, but all da
 This means if the first file defines `A.B`, then the seconds file can define `A.C`, but not `X.Y` as that would
 result in two roots (`A` and `X`).
 
-For current vss-tools support for structs see [documentation](https://github.com/COVESA/vss-tools/blob/master/docs/vspec2x.md) in the vss-tools repository.
+For current vss-tools support for structs see [documentation](https://github.com/COVESA/vss-tools/blob/master/docs/vspec.md) in the vss-tools repository.
 
 ## Naming Restrictions
 

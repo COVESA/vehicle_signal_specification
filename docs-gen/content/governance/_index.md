@@ -6,7 +6,7 @@ chapter: false
 
 # Governance
 
-The Vehicle Signal Specification (VSS) project is an initiative by [COVESA](https://www.covesa.global/) to define a syntax and a catalog for vehicle signals.
+The Vehicle Signal Specification (VSS) project is an initiative by [COVESA](https://covesa.global/) to define a syntax and a catalog for vehicle signals.
 
 The artifacts maintained by the VSS project consist of:
 
@@ -22,7 +22,7 @@ Anyone may propose changes to VSS. It is up to the VSS project to decide if the 
 The VSS project does not have any developers or maintainers paid by COVESA.
 Instead, the VSS project relies on voluntary contributions, typically from member organizations.
 The maintainers are expected to review incoming pull requests.
-All contributions must follow the [COVESA contribution guidelines](https://www.covesa.global/contribute).
+All contributions must follow the [COVESA contribution guidelines](https://covesa.global/contribute).
 
 In general, pull requests shall be opened for at least a week before being merged to give time for COVESA members to review the pull request and provide comments.
 In case of larger changes or changes that affect backward compatibility pull requests are typically opened for a longer period, to allow for a through review.

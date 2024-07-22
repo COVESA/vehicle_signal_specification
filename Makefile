@@ -20,53 +20,56 @@ optional_targets: clean protobuf ttl
 
 TOOLSDIR?=./vss-tools
 COMMON_ARGS=-u ./spec/units.yaml --strict
+COMMON_VSPEC_ARG=-s ./spec/VehicleSignalSpecification.vspec
 
 json:
-	${TOOLSDIR}/vspec2json.py ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).json
+	vspec export json ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION).json
 
 json-noexpand:
-	${TOOLSDIR}/vspec2json.py ${COMMON_ARGS} --no-expand ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_noexpand.json
+	vspec export json ${COMMON_ARGS} --no-expand ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION)_noexpand.json
 
 jsonschema:
-	${TOOLSDIR}/vspec2jsonschema.py ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).jsonschema
+	vspec export jsonschema ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION).jsonschema
 
 franca:
-	${TOOLSDIR}/vspec2franca.py --franca-vss-version $$(cat VERSION) ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).fidl
+	vspec export franca --franca-vss-version $$(cat VERSION) ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION).fidl
 
 yaml:
-	${TOOLSDIR}/vspec2yaml.py ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).yaml
+	vspec export yaml ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION).yaml
 
 csv:
-	${TOOLSDIR}/vspec2csv.py ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).csv
+	vspec export csv ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION).csv
 
 ddsidl:
-	${TOOLSDIR}/vspec2ddsidl.py ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).idl
+	vspec export ddsidl ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION).idl
 
 # Verifies that supported overlay combinations are syntactically correct.
 overlays:
-	${TOOLSDIR}/vspec2json.py ${COMMON_ARGS} -o overlays/profiles/motorbike.vspec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_motorbike.json
-	${TOOLSDIR}/vspec2json.py ${COMMON_ARGS} -o overlays/extensions/dual_wiper_systems.vspec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_dualwiper.json
-	${TOOLSDIR}/vspec2json.py ${COMMON_ARGS} -o overlays/extensions/OBD.vspec ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION)_obd.json
+	vspec export json ${COMMON_ARGS} -l overlays/profiles/motorbike.vspec ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION)_motorbike.json
+	vspec export json ${COMMON_ARGS} -l overlays/extensions/dual_wiper_systems.vspec ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION)_dualwiper.json
+	vspec export json ${COMMON_ARGS} -l overlays/extensions/OBD.vspec ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION)_obd.json
 
-tests:
+prepare_binary:
+	cd ${TOOLSDIR}/binary && $(MAKE)
+
+tests: prepare_binary
 	PYTHONPATH=${TOOLSDIR} pytest
 
-binary:
-	cd ${TOOLSDIR}/binary && $(MAKE)
-	${TOOLSDIR}/vspec2binary.py ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).binary
+binary: prepare_binary
+	vspec export binary ${COMMON_ARGS} ${COMMON_VSPEC_ARG} --bintool-dll ${TOOLSDIR}/binary/binarytool.so -o vss_rel_$$(cat VERSION).binary
 
 protobuf:
-	${TOOLSDIR}/vspec2protobuf.py ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).proto
+	vspec export protobuf ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION).proto
 
 graphql:
-	${TOOLSDIR}/vspec2graphql.py ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).graphql.ts
+	vspec export graphql ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION).graphql.ts
 
 # vspec2ttl does not use common generator framework
 ttl:
 	${TOOLSDIR}/contrib/vspec2ttl/vspec2ttl.py -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).ttl
 
 id:
-	${TOOLSDIR}/vspec2id.py ${COMMON_ARGS} ./spec/VehicleSignalSpecification.vspec vss_rel_$$(cat VERSION).vspec
+	vspec export id ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss_rel_$$(cat VERSION).vspec
 
 clean:
 	cd ${TOOLSDIR}/binary && $(MAKE) clean

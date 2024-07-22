@@ -13,7 +13,7 @@ There are two main methods to propose changes or extensions to VSS:
 - If you already have prepared changes or extension that you think would be interesting for COVESA to include in VSS
   then you can create a [Pull Request (PR)](https://github.com/COVESA/vehicle_signal_specification/pulls).
 
-All contributions must follow the [COVESA contribution guidelines](https://www.covesa.global/contribute).
+All contributions must follow the [COVESA contribution guidelines](https://covesa.global/contribute).
 
 The VSS project has regular meetings on Tuesdays at 16.00 CET and CEST in the summer (see [COVESA VSS Wiki](https://wiki.covesa.global/display/WIK4/VSS+-+Vehicle+Signal+Specification)).
 In the meetings Pull Requests (PRs) and Issues are discussed and, if a Pull Request is accepted, a decision to merge the PR will be made.
@@ -53,7 +53,7 @@ This section includes general guidelines and recommendations for anyone interest
 
 ### All contributions must follow COVESA contribution guidelines
 
-COVESA has defined [contribution guidelines](https://www.covesa.global/contribute).
+COVESA has defined [contribution guidelines](https://covesa.global/contribute).
 
 Every contribution (commit) must carry the following sign-off line with your real name and email address:
 

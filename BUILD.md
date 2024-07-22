@@ -45,16 +45,14 @@ An example to generate CSV from the *.vspec files in your current branch is:
 
 ```
 user@debian:~/vehicle_signal_specification$ make csv
-./vss-tools/vspec2csv.py -I ./spec --uuid -u ./spec/units.yaml ./spec/VehicleSignalSpecification.vspec vss_rel_$(cat VERSION).csv
-INFO     Output to csv format
-INFO     Known extended attributes:
-INFO     Added 56 units from ./spec/units.yaml
-INFO     Loading vspec from ./spec/VehicleSignalSpecification.vspec...
-INFO     Calling exporter...
-INFO     Generating CSV output...
-INFO     All done.
+vspec export csv -u ./spec/units.yaml --strict -s ./spec/VehicleSignalSpecification.vspec -o vss_rel_$(cat VERSION).csv
+[11:12:40] INFO     Added 30 quantities from /home/erik/vehicle_signal_specification/spec/quantities.yaml
+           INFO     Added 63 units from spec/units.yaml
+           INFO     Loading vspec from spec/VehicleSignalSpecification.vspec...
+[11:12:41] INFO     Check type usage
+           INFO     Generating CSV output...
 user@debian:~/vehicle_signal_specification$ ls *.csv
-vss_rel_4.1-dev.csv
+vss_rel_5.0-dev.csv
 ```
 
 ### Make sure that your changes pass CI checks
