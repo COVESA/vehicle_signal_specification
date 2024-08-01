@@ -10,6 +10,7 @@ In order to adopt the specification we realize that certain additions and modifi
 
 The following features with the intended usage patterns are currently supported:
 1. **Adding new nodes:** By adding nodes the standard catalog can be extended with proprietary concepts.
+1. **Deleting nodes:** Deleting nodes not relevant for the vehicle.
 1. **Changing the value of existing metadata:** The standard catalog defines metadata based on what is assumed to be an average vehicle.
 Configurations may differ slightly (e.g. the instantiation of number of available seats), or special situations that require a (limited) modification of existing metadata.
 1. **Adding new key/value pairs as additional metadata:**
@@ -112,6 +113,39 @@ Vehicle.Occupant.Row1.DriverSide.HeadPosition.Yaw:
   type: sensor
   datatype: float
   unit: mm
+```
+
+### Deleting nodes
+
+It is possible to delete nodes using the `delete` atrribute.
+You can delete indidvidual signals, branches, instances or a particular signal in a particular instance.
+A few examples are shown below.
+
+```YAML
+# Removing IsChildLockActive for DriverSide on Second Row
+Vehicle.Cabin.Door.Row2.DriverSide.IsChildLockActive:
+  datatype: boolean
+  type: sensor
+  delete: true
+
+# Removing Window for all Door instances
+Vehicle.Cabin.Door.Window:
+  delete: true
+
+# Removing Vehicle.Speed
+Vehicle.Speed:
+  delete: true
+```
+
+When using the `delete` argument vss-tools will print information on nodes removed.
+
+```bash
+INFO     Node Vehicle.Speed will be deleted.
+INFO     Node Vehicle.Cabin.Door.Row1.DriverSide.Window will be deleted.
+INFO     Node Vehicle.Cabin.Door.Row1.PassengerSide.Window will be deleted.
+INFO     Node Vehicle.Cabin.Door.Row2.DriverSide.Window will be deleted.
+INFO     Node Vehicle.Cabin.Door.Row2.DriverSide.IsChildLockActive will be deleted.
+INFO     Node Vehicle.Cabin.Door.Row2.PassengerSide.Window will be deleted.
 ```
 
 ### Overlays in the standard catalog
