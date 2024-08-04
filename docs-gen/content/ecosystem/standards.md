@@ -4,7 +4,7 @@ date: 2023-05-18T13:29:46+0000
 weight: 2
 ---
 
-Ohter standards or specifications sometimes reference VSS.
+Other standards or specifications sometimes reference VSS.
 
 
 ### W3C VISS
