@@ -86,6 +86,16 @@ CruiseControl.IsError:
   type: sensor
   description: Indicates if cruise control system incurred an error condition. True = Error. False = No Error.
 
+CruiseControl.AdaptiveDistance:
+  datatype: float
+  type: actuator
+  description: Distance in meters of forward detected object 
+
+CruiseControl.AdaptiveTimeGap:
+  datatype: float
+  type: actuator
+  description: Time in seconds before potential impact to forward object
+
 #
 # Lane Departure Detection System
 #
