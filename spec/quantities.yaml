@@ -67,7 +67,8 @@ distance-per-volume:
 force:
   definition: Vector quantity describing interaction between bodies or particles (ISO 80000-4:2019)
 torque:
-  definition: quantity described by the scalar product M*eQ where M is moment of force and eQ is
+  definition: Quantity described by the scalar product M*eQ where M is moment of force and
+              eQ is unit vector of direction with respect to which the torque is considered (ISO 80000-4:2019)
 rotational-speed:
   definition: TBD
 frequency:
