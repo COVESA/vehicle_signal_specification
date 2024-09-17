@@ -396,14 +396,6 @@ Height:
   unit: mm
   description: Overall vehicle height.
 
-Width:
-  deprecation: v4.1 replaced with WidthExcludingMirrors and WidthIncludingMirrors
-  datatype: uint16
-  type: attribute
-  default: 0
-  unit: mm
-  description: Overall vehicle width.
-
 WidthExcludingMirrors:
   datatype: uint16
   type: attribute
