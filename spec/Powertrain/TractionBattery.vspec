@@ -277,11 +277,10 @@ Charging.ChargingPort.SupportedInletTypes:
                For additional information see https://en.wikipedia.org/wiki/IEC_62196.
 
 Charging.ChargingPort.IsFlapOpen:
-  type: sensor
-  datatype: boolean
   type: actuator
+  datatype: boolean
   description: Status of the charging port flap(s).
-  comment: True = at least one flap of this port is open, False = All flaps of this port are clossed.
+  comment: True = at least one flap of this port is open, False = All flaps of this port are closed.
 
 Charging.ChargingPort.IsChargingCableConnected:
   datatype: boolean
