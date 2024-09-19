@@ -32,7 +32,8 @@ For development a typical workflow to set up the development environment is as f
 
 1. Clone the [VSS repository](https://github.com/COVESA/vehicle_signal_specification
 2. Get all submodules (`git submodule update --init`)
-3. Follow instructions in [VSS-tools](https://github.com/COVESA/vss-tools/blob/master/README.md) to install dependencies
+3. Follow instructions in [VSS-tools](https://github.com/COVESA/vss-tools/blob/master/README.md) to prepare an environment suitable for vss-tools (for example a Python virtual environment)
+3. Run [scripts/install_vss_tools.sh](https://github.com/COVESA/vehicle_signal_specification/blob/master/scripts/install_vss_tools.sh) to install vss-tools.
 4. Verify that your development environment is fully functional by running `make` from your `vehicle_signal_specification` folder.
 
 ### Generating artifacts
