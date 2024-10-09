@@ -26,10 +26,10 @@
 # Either a released version or a pre-release, referenced with "--pre"
 # See https://pypi.org/project/vss-tools/
 #
-pip install --pre vss-tools==5.0rc0
+# pip install --pre vss-tools==5.0rc0
 #
 #
 # *********************** RELEASES ***************************
 # For releases we should link to specific released pypi version.
 #
-# pip install vss-tools==4.2
+pip install vss-tools==5.0
