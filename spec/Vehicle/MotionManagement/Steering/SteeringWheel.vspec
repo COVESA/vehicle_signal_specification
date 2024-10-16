@@ -1,0 +1,71 @@
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# See vehicle_motion_management.md for more info
+
+Angle:
+  datatype: int16
+  type: sensor
+  unit: degrees
+  description: Represents the current input angle of the steering system,
+               typically corresponds to angle applied by driver on the steering-wheel.
+               Positive for angle in counterclockwise direction (based on ISO8855).
+
+AngleTarget:
+  datatype: int16
+  type: actuator
+  unit: degrees
+  description: Steering-wheel angle request to the steering actuator (external set-point for steer-by-wire).
+               Positive sign for angle in counterclockwise direction (based on ISO8855).
+
+AngleTargetMode:
+  datatype: uint8
+  type: actuator
+  description: Mode used for controlling Steering-wheel angle interface. 0 indicates interface disabled.
+               Other values activate vehicle specific modes.
+
+TorqueOffsetTarget:
+  datatype: int16
+  type: actuator
+  unit: Nm
+  description: Steering-wheel torque offset request to the steering actuator, added to the actuator internal calculated target value.
+               Positive sign for torque in counterclockwise direction (based on ISO8855).
+
+TorqueOffsetTargetMode:
+  datatype: uint8
+  type: actuator
+  description: Mode used for controlling steering-wheel torque offset interface. 0 indicates interface disabled.
+               Other values activate vehicle specific modes.
+
+TorqueTarget:
+  datatype: int16
+  type: actuator
+  unit: Nm
+  description: Steering-wheel torque request to the steering actuator (external set-point for steer-by-wire).
+               Positive sign for torque in counterclockwise direction (based on ISO8855).
+
+TorqueTargetMode:
+  datatype: uint8
+  type: actuator
+  description: Mode used for controlling Steering-wheel torque interface. 0 indicates interface disabled.
+               Other values activate vehicle specific modes.
+
+Torque:
+  datatype: int16
+  type: sensor
+  unit: Nm
+  description:  Represents the current input torque for steering system, typically corresponds to torque applied by driver on the steering wheel.
+                Positive for torque in counterclockwise direction (based on ISO8855).
