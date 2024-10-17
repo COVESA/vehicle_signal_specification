@@ -29,6 +29,11 @@ Media.Played.Source:
   allowed: ['UNKNOWN', 'SIRIUS_XM', 'AM', 'FM', 'DAB', 'TV', 'CD', 'DVD', 'AUX', 'USB', 'DISK', 'BLUETOOTH', 'INTERNET', 'VOICE', 'BEEP']
   description: Media selected for playback
 
+Media.Played.Genre:
+  datatype: string
+  type: sensor
+  description: Name of genre being played
+
 Media.Played.Artist:
   datatype: string
   type: sensor
