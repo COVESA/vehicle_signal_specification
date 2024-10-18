@@ -64,7 +64,7 @@ BatteryConditioning.StartTime:
   datatype: string
   description: Start time for battery conditioning,
                formatted according to ISO 8601 with UTC time zone.
-  unit: iso8601
+  format: iso8601
   comment: If the vehicle is asleep, this is the time the vehicle and the battery conditioning system must wake up
           and start monitoring the battery and if necessary start heating/cooling of the battery.
 
@@ -72,7 +72,7 @@ BatteryConditioning.TargetTime:
   type: actuator
   datatype: string
   description: Target time when conditioning shall be finished, formatted according to ISO 8601 with UTC time zone.
-  unit: iso8601
+  format: iso8601
   comment: For FAST_CHARGING mode this is typically the time when charging is supposed to start.
            For DRIVING mode this is typically the expected departure time.
            Battery conditioning will be deactivated when this time has passed.
