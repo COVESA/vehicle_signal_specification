@@ -1,0 +1,49 @@
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# See vehicle_motion_management.md for more info
+
+Torque:
+  datatype: int16
+  max: 0
+  unit: Nm
+  type: sensor
+  description: Estimated friction brake torque. Brake Torque < 0Nm.
+
+TorqueArbitrated:
+  datatype: int16
+  max: 0
+  unit: Nm
+  type: sensor
+  description: Brake system internally calculated friction brake torque target. Brake Torque < 0Nm.
+
+TorqueFrictionMaximum:
+  type: actuator
+  datatype: int16
+  max: 0
+  unit: Nm
+  description: Maximum wheel torque request for friction brake. Brake Torque < 0Nm.
+
+TorqueFrictionMinimum:
+  type: actuator
+  datatype: int16
+  max: 0
+  unit: Nm
+  description: Minimum wheel torque request for friction brake. Brake Torque < 0Nm.
+
+OmegaUpper:
+  type: actuator
+  datatype: uint16
+  unit: rad/s
+  description: Upper wheel speed limit request controlled by friction brake. ISO 8855 wheel-spin velocity.
+
+OmegaLower:
+  type: actuator
+  datatype: uint16
+  unit: rad/s
+  description: Lower wheel speed limit request controlled by friction brake. ISO 8855 wheel-spin velocity.

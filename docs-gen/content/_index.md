@@ -14,5 +14,6 @@ about what the specification is all about, what's in and out and how to quickly
 * [Governance](/vehicle_signal_specification/governance/) </br> Introduction to VSS governance model and change log.
 * [Rule Set](/vehicle_signal_specification/rule_set/) </br> Get familiar with the rule set behind the
 specification, the structure, the format and concepts.
+* [VSS Catalog](/vehicle_signal_specification/catalog/) </br> Information on content and design decisions related to the VSS catalog.
 * [License](/vehicle_signal_specification/license/) </br> Information on the VSS license.
 * [Ecosystem](/vehicle_signal_specification/ecosystem/) How to use the specification? Check out the existing tools and standards to transform or make use of VSS.

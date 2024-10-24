@@ -1,0 +1,60 @@
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# See vehicle_motion_management.md for more info
+
+VehicleForceMaximum:
+  type: actuator
+  datatype: int16
+  unit: N
+  max: 0
+  description: Maximum longitudinal brake force request (FxWhlSum).
+               Sum of all tyre longitudinal forces. Brake Force < 0N.
+
+VehicleForceElectricMinimumArbitrated:
+  type: sensor
+  datatype: int16
+  max: 0
+  unit: N
+  description: Brake system internally calculated regenerative force limit at vehicle level for eAxle actuation. Brake Force < 0N.
+
+VehicleForceElectric:
+  type: actuator
+  datatype: int16
+  max: 0
+  unit: N
+  description: Regenerative brake force request (FxWhlSum). Sum of all tyre longitudinal forces. Brake Force < 0N.
+
+VehicleForceDistributionFrontMaximum:
+  type: actuator
+  datatype: uint16
+  unit: percent
+  min: 0
+  max: 100
+  description: Maximum distribution range request of FxWhlSum to front axle.
+               0% = Complete longitudinal brake force shall be shifted to rear axle.
+               50% = At most 50% shall be shifted to front axle.
+               100%  = Complete longitudinal brake force may be shifted to front axle.
+
+VehicleForceDistributionFrontMinimum:
+  type: actuator
+  datatype: uint16
+  unit: percent
+  min: 0
+  max: 100
+  description: Minimum distribution range request of FxWhlSum to front axle.
+               0% = Complete longitudinal brake force may be shifted to rear axle.
+               50% = At least 50% shall be shifted to front axle.
+               100% = Complete longitudinal brake force shall be shifted to front axle.
+
+Axle:
+  type: branch
+  instances:
+    - Row[1,2]
+  description: MotionManagement for brake actuation for a specific electric axle.
+#include Brake/Axle.vspec Axle
