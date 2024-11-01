@@ -13,6 +13,15 @@ It includes changes that are included in released version, but also changes plan
 
 The `Vehicle.OBD` branch is now removed. If needed there is an OBD overlay in the `overlays` directory.
 
+### Support for new `pattern` keyword
+
+String types can now be restricted by a RegExp pattern.
+
+### Support for `default` for signals and properties using struct types.
+
+Previously the documentation stated that default values could not be given for struct types.
+That is now supported.
+
 ## VSS 5.0
 
 ### Signal Updates
