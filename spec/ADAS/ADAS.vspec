@@ -164,7 +164,7 @@ ObstacleDetection.TimeGap:
 
 ObstacleDetection.WarningType:
   datatype: string
-  type: sensor  
+  type: sensor
   allowed: [
     'UNDEFINED',      # Object detection warning not further categorized
     'CROSS_TRAFFIC',  # Detected object is on an indirect trajectory that may intersect
