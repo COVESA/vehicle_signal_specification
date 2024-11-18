@@ -96,6 +96,11 @@ CruiseControl.AdaptiveDistanceSet:
   type: actuator
   unit: m
   description: Distance in meters to keep from lead vehicle
+
+CruiseControl.AdaptiveDistanceSet:
+  datatype: uint8
+  type: actuator
+  description: Follow distance setting, commonly 1-5 with 1 being closest.
   
 #
 # Lane Departure Detection System
