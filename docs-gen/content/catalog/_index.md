@@ -1,10 +1,8 @@
 ---
 title: VSS Catalog
 weight: 25
-chapter: true
+chapter: false
 ---
-
-# VSS Catalog
 
 The source for the COVESA VSS Catalog can be found in `*.vspec` files in the [COVESA VSS Repository](https://github.com/COVESA/vehicle_signal_specification).
 Released versions of the catalog in various formats can be found at [release artifacts](https://github.com/COVESA/vehicle_signal_specification/releases).
