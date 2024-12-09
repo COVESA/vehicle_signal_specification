@@ -1,0 +1,51 @@
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# See vehicle_motion_management.md for more info
+
+RackPositionOffsetTarget:
+  datatype: int16
+  type: actuator
+  unit: mm
+  description: Rack position offset request to the axle steering actuator (for steer-by-wire),
+               added to the actuator internal calculated set-point.
+               Positive values without internal calculated set point change lead to a left movement of the vehicle (based on ISO8855).
+
+RackPositionOffsetTargetMode:
+  datatype: uint8
+  type: actuator
+  description: Mode used for controlling rack position offset interface of axle steering actuator.
+               0 indicates interface disabled. Other values activate vehicle specific modes.
+
+RackPosition:
+  datatype: int16
+  type: sensor
+  unit: mm
+  description: Represents the current position of the steering rack on axle steering actuator.
+               Positive values leads to a left turn of the vehicle (based on ISO8855).
+
+RackPositionTarget:
+  datatype: int16
+  type: actuator
+  unit: mm
+  description: Rack position request to the axle steering actuator (external set-point).
+               Positive values lead to a left turn of the vehicle (based on ISO8855).
+
+RackPositionTargetMode:
+  datatype: uint8
+  type: actuator
+  description: Mode used for controlling rack position interface of axle steering actuator.
+               0 indicates interface disabled. Other values activate vehicle specific modes.

@@ -11,14 +11,14 @@
 # ************ MASTER *************''
 # For master (ongoing development) we typically rely on latest master of vss-tools
 #
-pip install git+https://github.com/COVESA/vss-tools@master
+pip install --upgrade git+https://github.com/COVESA/vss-tools@master
 
 # Examples for other scenarios below
 #
 # ************ MAINTENANCE **********
 # For development in maintenance branches we could either refer to a fixed version of vss-tools
 # or refer to a maintenance branch of vss-tools
-# pip install git+https://github.com/COVESA/vss-tools@4.X
+# pip install --upgrade git+https://github.com/COVESA/vss-tools@4.X
 #
 #
 # ************* RELEASE CANDIDATES AND OTHER PRE-RELEASES ***************
@@ -26,10 +26,10 @@ pip install git+https://github.com/COVESA/vss-tools@master
 # Either a released version or a pre-release, referenced with "--pre"
 # See https://pypi.org/project/vss-tools/
 #
-# pip install --pre vss-tools==5.0.0.dev0
+# pip install --upgrade --pre vss-tools==5.0rc0
 #
 #
 # *********************** RELEASES ***************************
 # For releases we should link to specific released pypi version.
 #
-# pip install vss-tools==4.2
+# pip install --upgrade vss-tools==5.0

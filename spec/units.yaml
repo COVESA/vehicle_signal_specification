@@ -315,6 +315,11 @@ mpg:
   unit: miles per gallon
   quantity: distance-per-volume
   allowed-datatypes: ['numeric']
+km/l:
+  definition: Distance per volume measured in kilometers per liter
+  unit: kilometers per liter
+  quantity: distance-per-volume
+  allowed-datatypes: ['numeric']
 
 # Force
 

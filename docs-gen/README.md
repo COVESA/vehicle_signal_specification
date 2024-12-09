@@ -92,7 +92,7 @@ Within the repository
 hugo server -D -s ./docs-gen
 ```
 
-Optional ```-D:``` include draft pages as well. Afterwards, you can access the
+Optional ```-D``` include draft pages as well. Afterwards, you can access the
 page under http://localhost:1313/vehicle_signal_specification.
 
 ## Contribute
