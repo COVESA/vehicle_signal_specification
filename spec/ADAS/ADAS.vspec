@@ -97,7 +97,7 @@ CruiseControl.AdaptiveDistanceSet:
   unit: m
   description: Distance in meters to keep from lead vehicle
 
-CruiseControl.AdaptiveIntvervalSet:
+CruiseControl.AdaptiveIntervalSet:
   datatype: uint8
   type: actuator
   description: Follow distance setting, commonly 1-5 with 1 being closest.
