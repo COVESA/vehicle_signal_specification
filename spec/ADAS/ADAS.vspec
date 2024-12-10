@@ -95,6 +95,7 @@ CruiseControl.AdaptiveDistanceSet:
   datatype: float
   type: actuator
   unit: m
+  min: 0.0
   description: Distance in meters to keep from lead vehicle
 
 CruiseControl.AdaptiveIntervalSet:
@@ -154,10 +155,11 @@ ObstacleDetection.Distance:
   datatype: float
   type: sensor
   unit: m
+  min: 0.0
   description: Distance in meters to detected object
 
 ObstacleDetection.TimeGap:
-  datatype: int32
+  datatype: uint32
   type: sensor
   unit: ms
   description: Time in milliseconds before potential impact object
