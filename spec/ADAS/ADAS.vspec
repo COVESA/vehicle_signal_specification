@@ -86,6 +86,23 @@ CruiseControl.IsError:
   type: sensor
   description: Indicates if cruise control system incurred an error condition. True = Error. False = No Error.
 
+CruiseControl.IsAdaptive:
+  datatype: boolean
+  type: actuator
+  description: Indicates if cruise control system is adaptive (i.e. actively controls speed).
+
+CruiseControl.AdaptiveDistanceSet:
+  datatype: float
+  type: actuator
+  unit: m
+  min: 0.0
+  description: Distance in meters to keep from lead vehicle
+
+CruiseControl.AdaptiveIntervalSet:
+  datatype: uint8
+  type: actuator
+  description: Follow distance setting, commonly 1-5 with 1 being closest.
+
 #
 # Lane Departure Detection System
 #
@@ -113,6 +130,9 @@ LaneDepartureDetection.IsError:
 #
 ObstacleDetection:
   type: branch
+  instances:
+    - ["Front", "Rear"]
+    - ["Left", "Center", "Right"]
   description: Signals form Obstacle Sensor System.
 
 ObstacleDetection.IsEnabled:
@@ -131,6 +151,29 @@ ObstacleDetection.IsError:
   type: sensor
   description: Indicates if obstacle sensor system incurred an error condition. True = Error. False = No Error.
 
+ObstacleDetection.Distance:
+  datatype: float
+  type: sensor
+  unit: m
+  min: 0.0
+  description: Distance in meters to detected object
+
+ObstacleDetection.TimeGap:
+  datatype: uint32
+  type: sensor
+  unit: ms
+  description: Time in milliseconds before potential impact object
+
+ObstacleDetection.WarningType:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNDEFINED',      # Object detection warning not further categorized
+    'CROSS_TRAFFIC',  # Detected object is on an indirect trajectory that may intersect
+    'BLIND_SPOT',     # Detected object may not be in driver line of sight, including from mirrors
+    ]
+  description: Indicates the type of obstacle warning detected as some track not only the presence of an obstacle but potential intercepting trajectory or other characteristics.
+  comment: Undefined obstacle warning type would merely alert of presence of obstacle and may measure distance.
 
 #
 # Antilock Braking System
