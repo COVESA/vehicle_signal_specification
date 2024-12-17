@@ -214,19 +214,6 @@ years:
   quantity: duration
   allowed-datatypes: ['numeric']
 
-# Datetime
-
-unix-time:
-  definition: Number of non-leap seconds which have passed since 00:00:00 UTC on Thursday, 1 January 1970
-  unit: UNIX Timestamp
-  quantity: datetime
-  allowed-datatypes: ['uint32','uint64','int64']
-iso8601:
-  definition: Date and Time expressed as a string according to ISO 8601
-  unit: ISO 8601
-  quantity: datetime
-  allowed-datatypes: ['string']
-
 # Pressure
 
 mbar:
