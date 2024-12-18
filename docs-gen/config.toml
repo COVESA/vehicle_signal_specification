@@ -25,3 +25,8 @@ weight = 12
 # Generation of JSON index to allow search
 [outputs]
 home = ['html', 'rss', 'search', 'searchpage']
+
+# So that raw HTML content is enabled in Hugo project
+
+[markup.goldmark.renderer]
+unsafe = true
