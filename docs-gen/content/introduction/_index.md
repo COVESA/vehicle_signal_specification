@@ -23,7 +23,7 @@ The diagram below shows a generated tree of the VSS. Here you can see a mapping 
        style="height: 300px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
   <img src="/vehicle_signal_specification/images/datatypes_2.png" alt="Datatypes"
        style="height: 300px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-  <img src="/vehicle_signal_specification/images/Stacked types and releases.png" alt="Datatypes"
+  <img src="/vehicle_signal_specification/images/Versions_stacked.png" alt="Datatypes"
        style="height: 300px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
 
 </div>
