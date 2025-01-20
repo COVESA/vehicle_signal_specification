@@ -26,4 +26,3 @@ Click on the nodes to highlight the links, or hover over the links to see their 
 How the model changed in major releases.
 
 {{< donut_chart >}}
-
