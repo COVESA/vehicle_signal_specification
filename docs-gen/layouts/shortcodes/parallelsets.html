@@ -1,0 +1,182 @@
+<div id="sankey-chart-container" style="width: 100%; height: 720px;"></div>
+<script type="module">
+  import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+  import { csv } from "https://cdn.jsdelivr.net/npm/d3-fetch@3/+esm";
+  import { sankey as d3Sankey, sankeyLinkHorizontal } from "https://cdn.jsdelivr.net/npm/d3-sankey@0.12/+esm";
+
+  const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+  const width = 928 - margin.left - margin.right;
+  const height = 720 - margin.top - margin.bottom;
+
+  const sankey = d3Sankey()
+    .nodeSort((a, b) => b.value - a.value)
+    .linkSort((a, b) => b.value - a.value)
+    .nodeWidth(7)
+    .nodePadding(20)
+    .extent([[0, 5], [width, height - 5]]);
+
+  const color = d3.scaleOrdinal(["static"], ["#ccc"]).unknown("#ccc");
+
+  const colorMap = {
+    attribute: "#06D6A0", // Green for attributes
+    actuator: "#EF476F",   // Red for actuators
+    sensor: "#FFD166"      // Yellow for sensors
+  };
+
+  const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "max-width: 100%; height: auto;");
+
+  const container = document.getElementById("sankey-chart-container");
+  container.appendChild(svg.node());
+
+  function drawChart(data) {
+    const graph = _graph(data, d3);
+
+    const { nodes, links } = sankey({
+      nodes: graph.nodes.map(d => Object.create(d)),
+      links: graph.links.map(d => Object.create(d))
+    });
+
+    let highlightedNode = null;
+
+    function highlight(node) {
+      const relatedLinks = links.filter(link => link.source === node || link.target === node);
+      const relatedNodes = new Set(relatedLinks.flatMap(link => [link.source, link.target]));
+
+      resetHighlight();
+
+      // Highlight related links
+      svg.selectAll("path").attr("stroke", d =>
+        relatedLinks.includes(d) ? "#ff8800" : color(d.names[0]) // Use a distinct highlight color for links
+      ).attr("opacity", d =>
+        relatedLinks.includes(d) ? 0.7 : 1 // Set a moderate opacity for highlighted links
+      );
+    }
+
+    function resetHighlight() {
+      // Reset all links to their original color and full opacity
+      svg.selectAll("path")
+        .attr("stroke", d => color(d.names[0]))
+        .attr("opacity", 1);
+    }
+
+    function handleClick(event, d) {
+      if (highlightedNode === d) {
+        // If clicking the same node again, reset the highlight
+        highlightedNode = null;
+        resetHighlight();
+      } else {
+        // Highlight the clicked node's related links
+        highlightedNode = d;
+        highlight(d);
+      }
+    }
+
+    // Draw nodes
+    svg.append("g")
+      .selectAll("rect")
+      .data(nodes)
+      .join("rect")
+        .attr("x", d => d.x0)
+        .attr("y", d => d.y0)
+        .attr("height", d => d.y1 - d.y0)
+        .attr("width", d => d.x1 - d.x0)
+        .attr("fill", d => {
+          // Check node type and apply appropriate color
+          if (d.name === "attribute") return "#06D6A0";  // Green for attribute
+          if (d.name === "actuator") return "#EF476F";   // Red for actuator
+          if (d.name === "sensor") return "#FFD166";     // Yellow for sensor
+          return "#cc8800";  // Default gray color
+        })
+        .style("cursor", "pointer")
+        .on("click", handleClick) // Add click event listener
+      .append("title")
+        .text(d => `${d.name}\n${d.value.toLocaleString()}`);
+
+    // Draw links
+    svg.append("g")
+      .attr("fill", "none")
+      .selectAll("g")
+      .data(links)
+      .join("path")
+        .attr("d", sankeyLinkHorizontal())
+        .attr("stroke", d => color(d.names[0]))
+        .attr("stroke-width", d => d.width)
+        .style("mix-blend-mode", "multiply")
+        .on("mouseover", function(event, d) {
+          // Show the tooltip
+          d3.select(this).attr("stroke", "#ab5b00").attr("opacity", 0.7);
+        })
+        .on("mouseout", function(event, d) {
+          // Hide the tooltip
+          d3.select(this).attr("stroke", color(d.names[0])).attr("opacity", 1);
+        })
+      .append("title")
+        .text(d => `${d.names.join(" → ")}\n${d.value.toLocaleString()}`);
+
+    // Add node labels
+    svg.append("g")
+      .style("font", "18px sans-serif")
+      .selectAll("text")
+      .data(nodes)
+      .join("text")
+        .attr("x", d => d.x0 < width / 2 ? d.x1 + 6 : d.x0 - 6)
+        .attr("y", d => (d.y1 + d.y0) / 2)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
+        .text(d => d.name)
+      .append("tspan")
+        .attr("fill-opacity", 0.7)
+        .text(d => ` ${d.value.toLocaleString()}`);
+  }
+
+  function _graph(data, d3) {
+    const keys = data.columns.slice(0, -1);
+    let index = -1;
+    const nodes = [];
+    const nodeByKey = new d3.InternMap([], JSON.stringify);
+    const indexByKey = new d3.InternMap([], JSON.stringify);
+    const links = [];
+
+    for (const k of keys) {
+      for (const d of data) {
+        const key = [k, d[k]];
+        if (nodeByKey.has(key)) continue;
+        const node = { name: d[k] };
+        nodes.push(node);
+        nodeByKey.set(key, node);
+        indexByKey.set(key, ++index);
+      }
+    }
+
+    for (let i = 1; i < keys.length; ++i) {
+      const a = keys[i - 1];
+      const b = keys[i];
+      const prefix = keys.slice(0, i + 1);
+      const linkByKey = new d3.InternMap([], JSON.stringify);
+      for (const d of data) {
+        const names = prefix.map(k => d[k]);
+        const value = d.value || 1;
+        let link = linkByKey.get(names);
+        if (link) { link.value += value; continue; }
+        link = {
+          source: indexByKey.get([a, d[a]]),
+          target: indexByKey.get([b, d[b]]),
+          names,
+          value
+        };
+        links.push(link);
+        linkByKey.set(names, link);
+      }
+    }
+
+    return { nodes, links };
+  }
+
+  const dataUrl = "/vehicle_signal_specification/data/modified_vss_compact_metadata copy.csv";
+  csv(dataUrl).then(data => drawChart(data));
+</script>
+
