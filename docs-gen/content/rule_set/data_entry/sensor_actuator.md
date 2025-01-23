@@ -6,9 +6,8 @@ weight: 30
 
 # Property Types Overview
 
-
 ## `sensor` type
-Sensors are properties that, from a VSS-perspective, are read-only. 
+Sensors are properties that, from a VSS-perspective, are read-only.
 The values of a `sensor` property typically change over time and within an ignition cycle (i.e., a driving journey).
 Reading a `sensor` shall return the actual value of the related property (e.g., the current speed or the current position of the seat).
 
