@@ -30,7 +30,6 @@ It is up to the vehicle to decide how long time it shall try to reach the desire
 Attributes are properties whose values do not change within an ignition cycle (i.e., a driving journey).
 In other words, characteristics that are often static.
 For example, the color and model of a car.
-The standard Vehicle Signal Specification catalog does not include default values for all attributes.
 If a default value has not been specified, then the user of the specification must define the associated value matching the actual vehicle.
 For example, the specification might have the attribute `Brand` without a default value associated.
 Then, the user of the specification is responsible to assign `Some example brand` as the value for that attribute.
