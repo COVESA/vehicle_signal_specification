@@ -4,14 +4,34 @@ date: 2019-08-04T12:37:03+02:00
 weight: 30
 ---
 
-Sensors are signals to read values of properties in a vehicle. Values of sensors typically change over time. Reading a sensor shall return the current actual value of the related property, e.g. the current speed or the current position of the seat.
+# Property Types Overview
 
-Actuators are used to control the desired value of a property. Some properties in a vehicle cannot change instantly. A typical example is position of a seat or a window. Reading a value of an actuator shall return the current actual value, e.g. the current position of the seat, rather than the wanted/desired position. A typical example could be if someone wants to change the position of a seat from 0 to 100. This can be changed by setting the corresponding actuator to 100. If the actuator is read directly after the set request it will still return 0 as it might take some seconds before the seat reaches the wanted position of 100. If the seat by some reason is blocked or cannot be moved due to safety reasons it might never reach the wanted position. It is up to the vehicle to decide how long time it shall try to reach the desired value and what to do if it needs to give up.
+## `sensor` type
+Sensors are properties that, from a VSS-perspective, are read-only.
+The values of a `sensor` property typically change over time and within an ignition cycle (i.e., a driving journey).
+Reading a `sensor` shall return the actual value of the related property (e.g., the current speed or the current position of the seat).
 
-Attributes are signals that have a default value, specified by
-its ```default``` member.
-The standard Vehicle Signal Specification does not include default values for all attributes.
-If a default value has not been specified then the OEM must define a default value matching the actual vehicle.
+## `actuator` type
+Similarly, actuators are properties that, from a VSS-perspective, can be read and written.
+Actuators in VSS can be used to represent both the actual value (i.e., read) and the desired value of a property (i.e., write).
+The value written to a property that involves a slow mechanical action or certain motion might not be immediately reflected in a read operation if the property value is read immediately after a write operation.
+Some properties like `Window.Position` or `Seat.Position` are clear examples of things that might not change instantly.
+Hence, the written value (i.e., the desired target) and actual value may differ.
+Unless otherwise specified it is assumed that APIs implementing access to VSS data shall return actual value for read/subscribe-operations,
+and update the desired value for write-operations.
+
+A typical example could be if someone wants to change the position of a seat from 0 to 100. This can be changed by setting the corresponding actuator to 100.
+If the actuator is read directly after the set request it will still return 0 as it might take some seconds before the seat reaches the wanted position of 100.
+If the seat by some reason is blocked or cannot be moved due to safety reasons it might never reach the wanted position.
+It is up to the vehicle to decide how long time it shall try to reach the desired value and what to do if it needs to give up.
+
+## `attribute` type
+Attributes are properties whose values do not change within an ignition cycle (i.e., a driving journey).
+In other words, characteristics that are often static.
+For example, the color and model of a car.
+If a default value has not been specified, then the user of the specification must define the associated value matching the actual vehicle.
+For example, the specification might have the attribute `Brand` without a default value associated.
+Then, the user of the specification is responsible to assign `Some example brand` as the value for that attribute.
 If the standard defines a default value but it does not fit the actual vehicle,
 then the OEM must override the standard default value.
 
@@ -19,6 +39,8 @@ Attribute values can also change, similar to sensor values.
 The latter can be useful for attribute values that are likely to change during the lifetime of the vehicle.
 However, attribute values should typically not change more than once per ignition cycle,
 or else it should be defined as a sensor instead.
+
+# Data Entry
 
 A data entry for a signal defines its members. A data
 entry example is given below:
