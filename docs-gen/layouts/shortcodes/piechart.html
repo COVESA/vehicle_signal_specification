@@ -1,4 +1,4 @@
-<div id="chart-container" style="height: 550px; ">
+<div id="chart-container" style="height: 550px;">
   <div id="dataset-selector" style="margin-bottom: 20px;"></div>
   <div id="donut"></div>
 </div>
@@ -9,7 +9,7 @@
   console.log("Plot.js script loaded");
 
   console.log("Attempting to load CSV data from /data");
-  d3.csv("/vehicle_signal_specification/data/piechartnotexpanded.csv").then(data => {
+  d3.csv("/vehicle_signal_specification/data/piechart.csv").then(data => {
     console.log("CSV Data loaded successfully:", data);
 
     const width = 800; // Assuming a fixed width for the chart
@@ -22,7 +22,6 @@
       "Branches": "#26547C", // Blue for nodes with children
       "Actuators": "#EF476F", // Red for actuators
       "Sensors": "#FFD166", // Yellow for sensors
-
     };
 
     const svg = d3.create("svg")
@@ -43,7 +42,7 @@
     // Update chart function
     function updateChart(dataset) {
       console.log(`Updating chart with dataset: ${dataset}`);
-      const dataTransformed = data.map(d => ({ type: d.Type, value: d[dataset] }));
+      const dataTransformed = data.map(d => ({ type: d.Type, value: +d[dataset] }));
       const pieData = pie(dataTransformed);
 
       const totalValue = d3.sum(dataTransformed, d => d.value);
@@ -110,55 +109,56 @@
       return t => arc(i(t));
     }
 
-    // Initialize the chart with the default dataset "V5"
-    console.log("Initializing chart with dataset: V5");
-    updateChart("V5");
+    // Create dataset selector based on the CSV headers
+    console.log("Creating dataset selector");
+    const selectorContainer = document.getElementById("dataset-selector");
+    const datasetKeys = Object.keys(data[0]).slice(1); // Get dataset keys excluding the 'Type' column
+
+    // Determine the latest version to initialize the chart with
+    const latestVersion = datasetKeys[datasetKeys.length - 1];
+    console.log(`Initializing chart with dataset: ${latestVersion}`);
+    updateChart(latestVersion);
 
     console.log("Appending plot to #donut");
     document.getElementById("donut").appendChild(svg.node());
     console.log("Plot appended successfully");
 
-// Create dataset selector
-console.log("Creating dataset selector");
-const selectorContainer = document.getElementById("dataset-selector");
-const datasets = new Map([["V2.0", "V2"], ["V3.0", "V3"], ["V4.0", "V4"], ["V5.0", "V5"]]);
+    const radioForm = document.createElement("form");
+    radioForm.style.display = "inline-block"; // Ensure form is inline-block for center alignment
 
-const radioForm = document.createElement("form");
-radioForm.style.display = "inline-block"; // Ensure form is inline-block for center alignment
+    // Add a label before the radio buttons
+    const formLabel = document.createElement("span");
+    formLabel.textContent = "Release: ";
+    formLabel.style.fontWeight = "500";
+    formLabel.style.marginTop = "20px";
+    formLabel.style.marginRight = "10px";
+    radioForm.appendChild(formLabel);
 
-// Add a label before the radio buttons
-const formLabel = document.createElement("span");
-formLabel.textContent = "Release: ";
-formLabel.style.fontWeight = "500";
-formLabel.style.marginTop = "20px";
-formLabel.style.marginRight = "10px";
-radioForm.appendChild(formLabel);
+    datasetKeys.forEach(key => {
+      const label = document.createElement("label");
+      label.style.marginLeft = "15px"; // Add space between options
+      label.style.fontWeight = "500"; // Semibold text style
+      label.style.display = "inline-block"; // Ensure radio buttons are aligned horizontally
 
-datasets.forEach((value, key) => {
-  const label = document.createElement("label");
-  label.style.marginLeft = "15px"; // Add space between options
-  label.style.fontWeight = "500"; // Semibold text style
-  label.style.display = "inline-block"; // Ensure radio buttons are aligned horizontally
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "dataset";
+      input.value = key;
 
-  const input = document.createElement("input");
-  input.type = "radio";
-  input.name = "dataset";
-  input.value = value;
+      if (key === latestVersion) input.checked = true; // Default selection
+      input.addEventListener("change", () => {
+        console.log(`Dataset changed to: ${key}`);
+        updateChart(key);  // Trigger chart change based on the selected value
+      });
 
-  if (value === "V5") input.checked = true; // Default selection
-  input.addEventListener("change", () => {
-    console.log(`Dataset changed to: ${value}`);
-    updateChart(value);  // Trigger chart change based on the selected value
-  });
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(key));
 
-  label.appendChild(input);
-  label.appendChild(document.createTextNode(key));
+      radioForm.appendChild(label);
+    });
 
-  radioForm.appendChild(label);
-});
-
-selectorContainer.appendChild(radioForm);
-console.log("Dataset selector created successfully");
+    selectorContainer.appendChild(radioForm);
+    console.log("Dataset selector created successfully");
   }).catch(error => {
     console.error("Error loading CSV data:", error);
     document.getElementById("donut").innerText = "Error loading data. Please check the console for details.";
