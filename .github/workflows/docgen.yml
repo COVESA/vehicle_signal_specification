@@ -19,10 +19,11 @@ jobs:
       - name: Clone vss-tools-statistics-py-scripts repository
         run: |
           git clone -b stat-scripts https://github.com/Giaccomole/vss-tools-statistics-py-scripts
-          cd vss-tools-statistics-py-scripts
+          
 
       - name: UV
         run: |
+          cd vss-tools-statistics-py-scripts
           curl -LsSf https://astral.sh/uv/install.sh | sh
           uv sync
 
