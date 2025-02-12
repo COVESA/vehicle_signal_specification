@@ -24,9 +24,19 @@ jobs:
           uv sync
           uv run vspec stats piechart -s ../spec/VehicleSignalSpecification.vspec -o ../docs-gen/static/data/piechart.csv
           uv run vspec stats sankey -s ../spec/VehicleSignalSpecification.vspec -o ../docs-gen/static/data/sankey.csv
-          uv run vspec stats radial -s ../spec/VehicleSignalSpecification.vspec -o ../docs-gen/static/data/radial.csv
+          uv run vspec stats radial -s ../spec/VehicleSignalSpecification.vspec -o ../docs-gen/static/data/radial.json
           cd ..
 
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs-gen/static/data/piechart.csv docs-gen/static/data/sankey.csv docs-gen/static/data/radial.json
+          git commit -m "Update generated data files"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Install hugo
         env:
           HUGO_VER : 0.129.0
