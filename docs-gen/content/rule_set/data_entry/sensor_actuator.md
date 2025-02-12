@@ -59,7 +59,7 @@ VSS use a dot-notated name style where the full path of a data entry consists of
 When using `*.vspec` files to define a VSS catalog it is not necessary to give the full dot-notated name for each data-entry, as the
 `*.vspec` format supports [includes](../includes/) that can be used to append entries to a specific branch.
 
-In addition to `sensor`, `actuator`and `attribute` VSS also support entries to describe [struct data types](/vehicle_signal_specification/rule_set/data_entry/data_types_struct/). The information on data entry attributes below is partially valid also for structs.
+In addition to `sensor`, `actuator`and `attribute` VSS also supports entries to describe [struct data types](/vehicle_signal_specification/rule_set/data_entry/data_types_struct/). The information on data entry attributes below is partially valid also for structs.
 
 ## Mandatory Data Entry Attributes
 
