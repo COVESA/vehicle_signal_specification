@@ -35,6 +35,6 @@ Axle:
   instances:
     - Row[1,1]
   description: MotionManagement related to a specific axle.
-  comment: The instantiation only consider axles that are steerable.
+  comment: The instantiation only considers axles that are steerable.
            Row[1,1] indicates that one axle is steerable, but does not indicate which axle.
 #include Steering/Axle.vspec Axle

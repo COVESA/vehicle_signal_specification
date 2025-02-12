@@ -48,9 +48,9 @@ with two axles and two rows of seats. For other vehicles, see [recommendations o
 
 Typical naming conventions used in VSS standard catalog include:
 
-* When instances are defined by a range, e.g., `Position[m,n]`, VSS standard catalog use `1` as start index for the first instance.
+* When instances are defined by a range, e.g., `Position[m,n]`, VSS standard catalog uses `1` as start index for the first instance.
 * The instance definition `Row[n,m]`, e.g., `Row[1,2]`, is used to indicate that there are multiple rows of the entity. Rows are counted from the front of the vehicle.
-* For items located on either left or right side of the vehicle VSS standard catalog use two different conventions:
+* For items located on either left or right side of the vehicle VSS standard catalog uses two different conventions:
   * In some cases instances are defined relative to driver position, e.g., `["DriverSide", "PassengerSide"]`.
   * In other cases instances are defined based on physical position, e.g., `["Left","Right"]`.
 
@@ -179,8 +179,8 @@ Vehicle.Body.Windshield:
   description: Windshield signals
 ```
 
-- Accept that a `branch Vehicle.Body.Windshield.Rear` will exist in the generated VSS representation,
-  use mechanisms outside VSS to ignore that branch.
+- Accept that a `branch Vehicle.Body.Windshield.Rear` will exist in the generated VSS representation.
+  Use mechanisms outside VSS to ignore that branch.
 
 ### Recommendation: Features shared among instances
 
