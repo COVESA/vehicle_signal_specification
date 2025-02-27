@@ -23,20 +23,20 @@
     <meta itemprop="description" content="VSS resembles primarily the physical structure of the vehicle, so quite often there is a need to repeat branches and data entries (e.g. doors, axles, etc). To avoid hard-coded repetitions of branches and data entries in the specification an instance-concept is supported. Instances remove the need of repeating definitions, by defining at the node itself how often it occurs in the resulting tree. They are meant as a short-cut in the specification and interpreted by the tools.">
     <meta itemprop="datePublished" content="2019-07-31T15:27:36+02:00">
     <meta itemprop="dateModified" content="2019-07-31T15:27:36+02:00">
-    <meta itemprop="wordCount" content="896">
+    <meta itemprop="wordCount" content="1018">
     <title>Instances :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
 
-    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1739348488" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1739348488" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/nucleus.css?1739348488" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/auto-complete.css?1739348488" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1739348488" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1739348488" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/fonts.css?1739348488" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1739348488" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/theme.css?1739348488" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/theme-blue.css?1739348488" rel="stylesheet" id="R-variant-style">
-    <link href="/vehicle_signal_specification/css/chroma-learn.css?1739348488" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="/vehicle_signal_specification/css/variant.css?1739348488" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/print.css?1739348488" rel="stylesheet" media="print">
-    <script src="/vehicle_signal_specification/js/variant.js?1739348488"></script>
+    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1740667216" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1740667216" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/nucleus.css?1740667216" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/auto-complete.css?1740667216" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1740667216" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1740667216" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/fonts.css?1740667216" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1740667216" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/theme.css?1740667216" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/theme-blue.css?1740667216" rel="stylesheet" id="R-variant-style">
+    <link href="/vehicle_signal_specification/css/chroma-learn.css?1740667216" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/vehicle_signal_specification/css/variant.css?1740667216" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/print.css?1740667216" rel="stylesheet" media="print">
+    <script src="/vehicle_signal_specification/js/variant.js?1740667216"></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..';
@@ -72,6 +72,7 @@
     <li><a href="#definition">Definition</a>
       <ul>
         <li><a href="#how-can-i-create-instances-for-my-branch">How can I create instances for my <code>branch</code>?</a></li>
+        <li><a href="#use-of-instances-in-vss-standard-catalog">Use of instances in VSS Standard Catalog</a></li>
         <li><a href="#how-can-i-exclude-child-nodes-from-instantiation">How can I exclude child-nodes from instantiation?</a></li>
       </ul>
     </li>
@@ -131,12 +132,12 @@ Instances remove the need of repeating definitions, by defining at the node itse
 the resulting tree. They are meant as a short-cut in the specification and
 interpreted by the tools. As an example is shown below for doors:</p>
 <!-- Image source in docs-gen/image_source/instance_tree.puml -->
-<p><a href="#R-image-a063dc9ce56169f6e0bfb264156d525f" class="lightbox-link"><img alt="Example tree" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-a063dc9ce56169f6e0bfb264156d525f"><img alt="Example tree" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree.png"></a></p>
+<p><a href="#R-image-6dd645f9c23c076e7ac29c444d4b27d8" class="lightbox-link"><img alt="Example tree" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-6dd645f9c23c076e7ac29c444d4b27d8"><img alt="Example tree" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree.png"></a></p>
 <p>When expanded this corresponds to:</p>
 <!-- Image source in docs-gen/image_source/instance_tree_expand.puml -->
-<p><a href="#R-image-15d00ddd5812a29b4c271ad3d8036b19" class="lightbox-link"><img alt="Example tree" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc" style=" height: auto; width: 60pc;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-15d00ddd5812a29b4c271ad3d8036b19"><img alt="Example tree" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc"></a></p>
+<p><a href="#R-image-e7a8f0e8ea15340b8f167c1351de020a" class="lightbox-link"><img alt="Example tree" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc" style=" height: auto; width: 60pc;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e7a8f0e8ea15340b8f167c1351de020a"><img alt="Example tree" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc"></a></p>
 <h2 id="definition">Definition</h2>
 <h3 id="how-can-i-create-instances-for-my-branch">How can I create instances for my <code>branch</code>?</h3>
 <ol>
@@ -152,7 +153,7 @@ data entry in the path, named <code>DriverSide</code> and <code>PassengerSide</c
 which defines the number of instances.
 <code>Position[1,4]</code> results into 4 instances of every following
 data entry in the path, named <code>Position1</code>, <code>Position2</code>, <code>Position3</code>
-and <code>Position4</code>. It is in VSS recommended to use <code>1</code> as start index for the first row/axle/position/&hellip;</li>
+and <code>Position4</code>.</li>
 </ul>
 </li>
 <li>If multiple instances occur in one node or on the path to a data entry,
@@ -160,6 +161,20 @@ the instances get combined, by the order of occurrence. Following the example ab
 four position instances will be created for each of the &lsquo;DriverSide&rsquo; and &lsquo;PasengerSide&rsquo; instances,
 resulting into a total number of 8 instances.</li>
 </ol>
+<h3 id="use-of-instances-in-vss-standard-catalog">Use of instances in VSS Standard Catalog</h3>
+<p>The VSS standard catalog is configured to represent a typical passenger vehicle,
+with two axles and two rows of seats. For other vehicles, see <a href="/vehicle_signal_specification/rule_set/instances/index.html#recommendation-instance-mismatch">recommendations on instance mismatch</a> below.</p>
+<p>Typical naming conventions used in VSS standard catalog include:</p>
+<ul>
+<li>When instances are defined by a range, e.g., <code>Position[m,n]</code>, VSS standard catalog uses <code>1</code> as start index for the first instance.</li>
+<li>The instance definition <code>Row[n,m]</code>, e.g., <code>Row[1,2]</code>, is used to indicate that there are multiple rows of the entity. Rows are counted from the front of the vehicle.</li>
+<li>For items located on either left or right side of the vehicle VSS standard catalog uses two different conventions:
+<ul>
+<li>In some cases instances are defined relative to driver position, e.g., <code>[&quot;DriverSide&quot;, &quot;PassengerSide&quot;]</code>.</li>
+<li>In other cases instances are defined based on physical position, e.g., <code>[&quot;Left&quot;,&quot;Right&quot;]</code>.</li>
+</ul>
+</li>
+</ul>
 <h3 id="how-can-i-exclude-child-nodes-from-instantiation">How can I exclude child-nodes from instantiation?</h3>
 <p>Often it makes sense to instantiate all child-nodes of a branch.
 But there could be cases, when nodes are linked more the general concept of
@@ -209,7 +224,7 @@ can be overridden by redefining the Door branch as shown in the example below.</
 </span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">Row[1,3]</span>
 </span></span><span style="display:flex;"><span>    - [<span style="color:#e6db74">&#34;DriverSide&#34;</span>,<span style="color:#e6db74">&#34;PassengerSide&#34;</span>]
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">All doors, including windows and switches</span></span></span></code></pre></div><h2 id="recommendations">Recommendations</h2>
-<p>VSS is designed to cover a wide range of vehicles.
+<p>VSS standard catalog is designed to cover a wide range of vehicles.
 This means that the default instantiation used in VSS may not fit every vehicle.
 An example can be seen in the windshield signals defined in <code>Body.vspec</code>, parts of them are shown below.
 VSS offers the possibility to control windshield heating separately for front and rear windshield,
@@ -244,14 +259,14 @@ to use VSS for a vehicle if the VSS specification does not offer an exact match 
 of the following methods are recommended:</p>
 <ul>
 <li>Redefine the branch. If a vehicle for example does not have a rear windshield
-then append a redefinition at the end of the VSS:</li>
+then change instance definition in an <a href="https://covesa.github.io/vehicle_signal_specification/rule_set/overlay/" rel="external" target="_blank">overlay</a> :</li>
 </ul>
 <div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Vehicle.Body.Windshield</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">instances</span>: [<span style="color:#e6db74">&#34;Front&#34;</span>]
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">Windshield signals</span></span></span></code></pre></div><ul>
-<li>Accept that a <code>branch Vehicle.Body.Windshield.Rear</code> will exist in the generated VSS representation,
-use mechanisms outside VSS to ignore that branch</li>
+<li>Accept that a <code>branch Vehicle.Body.Windshield.Rear</code> will exist in the generated VSS representation.
+Use mechanisms outside VSS to ignore that branch.</li>
 </ul>
 <h3 id="recommendation-features-shared-among-instances">Recommendation: Features shared among instances</h3>
 <p>If a feature is shared among instances, it is recommended to publish that feature for all concerned instances.</p>
@@ -291,12 +306,12 @@ to ignore <code>Vehicle.Body.Windshield.Front.Heating</code>.</p>
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/vehicle_signal_specification/js/auto-complete.js?1739348488" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1739348488" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1739348488" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1739348488" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1739348488" defer></script>
-        <script src="/vehicle_signal_specification/js/search.js?1739348488" defer></script>
+        <script src="/vehicle_signal_specification/js/auto-complete.js?1740667216" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1740667216" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1740667216" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1740667216" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1740667216" defer></script>
+        <script src="/vehicle_signal_specification/js/search.js?1740667216" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation">
         <hr class="padding">
@@ -400,8 +415,8 @@ to ignore <code>Vehicle.Body.Windshield.Front.Heating</code>.</p>
         </div>
       </div>
     </aside>
-    <script src="/vehicle_signal_specification/js/clipboard.min.js?1739348488" defer></script>
-    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1739348488" defer></script>
-    <script src="/vehicle_signal_specification/js/theme.js?1739348488" defer></script>
+    <script src="/vehicle_signal_specification/js/clipboard.min.js?1740667216" defer></script>
+    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1740667216" defer></script>
+    <script src="/vehicle_signal_specification/js/theme.js?1740667216" defer></script>
   </body>
 </html>
