@@ -1,7 +1,6 @@
 ---
-title: "VSS Winnie the Pooh Extension Profile"
-date: 2023-05-18T13:29:46+0000
-weight: 2
+title: "VSS Winnie the Pooh Model Profile"
+weight: 20
 ---
 
 *This is just an example on how we could define extension profiles within documentation.*
