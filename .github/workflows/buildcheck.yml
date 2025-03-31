@@ -2,62 +2,40 @@ name: Standard Build Check
 
 on: [push, pull_request]
 
+env:
+  PYTHON_VERSION: "3.10.6"
+
 jobs:
   buildtest:
     name: Build Test
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
 
-      - name: Install pyenv
-        run: |
-          # Needed for using exact python version, which is
-          # required in `Pipfile`.
-          curl https://pyenv.run | bash
-          export PATH="$HOME/.pyenv/bin:$PATH"
-          pyenv install 3.8.12
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
 
       - name: Install vss-tools dependencies
         run: |
-          python -V
-          python -m pip --quiet --no-input install --upgrade pip
-          python -m pip --quiet --no-input install --upgrade pipenv wheel
-          pipenv --version
-          pipenv run python --version
-          cd vss-tools
+          pip install ./vss-tools pytest cyclonedds
           sudo apt install -y protobuf-compiler
-          pipenv install
-          echo done!
-          pipenv run python setup.py install
-        env:
-          PIPENV_VENV_IN_PROJECT: 1
 
       - name: Test mandatory targets
         run: |
-          pipenv install
-          pipenv run make mandatory_targets
-        env:
-          PIPENV_PIPFILE: ./vss-tools/Pipfile
-          PIPENV_VENV_IN_PROJECT: 1
+          make mandatory_targets
 
       - name: Test that ddsidl is correct
         run: |
-          pipenv install cyclonedds
-          pipenv run idlc *.idl
-        env:
-          PIPENV_PIPFILE: ./vss-tools/Pipfile
-          PIPENV_VENV_IN_PROJECT: 1
+          idlc *.idl
 
       - name: Test optional targets. NOTE - always succeeds
         run: |
-          pipenv install
-          pipenv run make -k optional_targets || true
-        env:
-          PIPENV_PIPFILE: ./vss-tools/Pipfile
-          PIPENV_VENV_IN_PROJECT: 1
+          make -k optional_targets || true
 
       - name: Install hugo
         env:
