@@ -58,7 +58,7 @@ cm/s^2:
 # Volume
 
 ml:
-  description: Volume measured in milliliters
+  definition: Volume measured in milliliters
   unit: milliliter
   quantity: volume
   allowed-datatypes: ['numeric']
@@ -132,7 +132,7 @@ g:
   allowed-datatypes: ['numeric']
 kg:
   definition: Mass measured in kilograms
-  label: kilogram
+  unit: kilogram
   quantity: mass
   allowed-datatypes: ['numeric']
 lbs:
@@ -199,7 +199,7 @@ weeks:
   allowed-datatypes: ['numeric']
 months:
   definition: Duration measured in months
-  units: months
+  unit: months
   quantity: duration
   allowed-datatypes: ['numeric']
 years:
@@ -276,7 +276,7 @@ kWh/100km:
   quantity: energy-consumption-per-distance
   allowed-datatypes: ['numeric']
 Wh/km:
-  definition:  Energy consumption per distance measured in watt hours per kilometer
+  definition: Energy consumption per distance measured in watt hours per kilometer
   unit: watt hour per km
   quantity: energy-consumption-per-distance
   allowed-datatypes: ['numeric']

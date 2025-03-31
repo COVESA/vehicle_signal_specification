@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   buildtest:
     name: Build Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
 
       - name: Install hugo
         env:
-          HUGO_VER : 0.103.1
+          HUGO_VER: 0.103.1
         run: |
           curl -LO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VER}/hugo_${HUGO_VER}_linux-amd64.deb
           sudo dpkg -i hugo_${HUGO_VER}_linux-amd64.deb
