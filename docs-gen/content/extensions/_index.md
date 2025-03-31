@@ -86,3 +86,5 @@ This information typically does not fit in the standard catalog, but could be pr
 
 * [Eclipse Kuksa VSS-DBC mapping](https://github.com/eclipse-kuksa/kuksa-can-provider/tree/main/mapping)
 * [VSS Winnie the Pooh Extension Profile](pooh.md)
+* [Cybersecurity Profile](cybersecurity_profile.md)
+* [Network Serialization Profile](network_serialization_profile.md)
