@@ -43,12 +43,5 @@
       <guid>https://covesa.github.io/vehicle_signal_specification/rule_set/includes/index.html</guid>
       <description>An include directive in a vspec file will read the file it refers to and the contents of that file will be inserted into the current buffer in place of the include directive. The included file will, in its turn, be scanned for include directives to be replaced, effectively forming a tree of included files.&#xA;See Fig 6 for an example of such a tree.&#xA;Fig 6. Include directives&#xA;The include directive has the following format:</description>
     </item>
-    <item>
-      <title>Overlay</title>
-      <link>https://covesa.github.io/vehicle_signal_specification/rule_set/overlay/index.html</link>
-      <pubDate>Sun, 04 Aug 2019 12:46:30 +0200</pubDate>
-      <guid>https://covesa.github.io/vehicle_signal_specification/rule_set/overlay/index.html</guid>
-      <description>VSS defines the standard catalog for vehicle signals independent of the used protocol and environment. In order to adopt the specification we realize that certain additions and modifications to the standard catalog are necessary. VSS Overlays are meant to bring you a standardized way of handling those changes.&#xA;The following features with the intended usage patterns are currently supported:&#xA;Adding new nodes: By adding nodes the standard catalog can be extended with proprietary concepts.</description>
-    </item>
   </channel>
 </rss>

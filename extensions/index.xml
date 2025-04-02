@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Extending and Customizing VSS :: Vehicle Signal Specification</title>
+    <link>https://covesa.github.io/vehicle_signal_specification/extensions/index.html</link>
+    <description>The VSS-project is active in three areas:&#xA;Defining a metamodel (syntax) for VSS datapoints. Defining the VSS Standard Catalog. Implementation of tooling (VSS-Tools). The VSS Standard Catalog defines a common view of the major attributes, sensors and actuators of vehicles. This is used in many different scenarios, protocols and environments. Additional meta data might be required for data-governance, -quality or -sources. The instantiation of branches might not fit your vehicle. Some signals in the VSS Signal Catalog may not be relevant or appropriate for your use-case, and proprietary signals might be needed for extending the specification for your own use-cases</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://covesa.github.io/vehicle_signal_specification/extensions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSS Overlay Mechanism</title>
+      <link>https://covesa.github.io/vehicle_signal_specification/extensions/overlay/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://covesa.github.io/vehicle_signal_specification/extensions/overlay/index.html</guid>
+      <description>VSS defines the standard catalog for vehicle signals independent of the used protocol and environment. In order to adopt the specification we realize that certain additions and modifications to the standard catalog are necessary. VSS Overlays are meant to bring you a standardized way of handling those changes.&#xA;The following features with the intended usage patterns are currently supported:&#xA;Adding new nodes: By adding nodes the standard catalog can be extended with proprietary concepts.</description>
+    </item>
+    <item>
+      <title>Cybersecurity Profile</title>
+      <link>https://covesa.github.io/vehicle_signal_specification/extensions/cybersecurity_profile/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://covesa.github.io/vehicle_signal_specification/extensions/cybersecurity_profile/index.html</guid>
+      <description>This profile can be used to specify how VSS signals can be extended to include cybersecurity attibutes.&#xA;Mapping Syntax The syntax for definition of a signal with cybersecurty attributes (in an overlay) is specified below.&#xA;&lt;VSS Signal name&gt;: type: &lt;VSS type&gt; datatype: &lt;VSS datatype&gt; cybersecurity: [authentication: {true|false}] [encryption: {true|false}] [integrity_check: {true|false}] [impact_profiles: {[{motion|privacy|regulation|safety|operational}]}] Set authentication attribute to true if you need to ensure serialized data is being exchanged between trusted entities or prevent unauthorized access to serialized data during transmission.</description>
+    </item>
+    <item>
+      <title>Network Serialization Profile</title>
+      <link>https://covesa.github.io/vehicle_signal_specification/extensions/network_serialization_profile/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://covesa.github.io/vehicle_signal_specification/extensions/network_serialization_profile/index.html</guid>
+      <description>This profile can be used to specify how VSS signals can be serialized on network as data signal.&#xA;Mapping Syntax The syntax for definition of a signal with network serialization data (in an overlay) is specified below.&#xA;&lt;VSS Signal name&gt;: type: &lt;VSS type&gt; datatype: &lt;VSS datatype&gt; network_serialization: signal: &lt;signal name in DBC or ARXML&gt; [interval_ms: &lt; data update interval in milliseconds&gt;] [on_change: {true|false}] [endianness: {big_endian|little_endian}] [default: &lt;default value or init value (physical) of the signal&gt;] [length_bits: &lt; length of signal in bits&gt;] [transform: .</description>
+    </item>
+  </channel>
+</rss>

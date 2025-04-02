@@ -37,6 +37,13 @@
       <description>The source for the COVESA VSS Catalog can be found in *.vspec files in the COVESA VSS Repository. Released versions of the catalog in various formats can be found at release artifacts.&#xA;Each signal in the VSS catalog has a description field and they may have a comment field. In some cases that is not sufficient to explain the rationale for the signal and how it is intended to be used.</description>
     </item>
     <item>
+      <title>Extending and Customizing VSS</title>
+      <link>https://covesa.github.io/vehicle_signal_specification/extensions/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://covesa.github.io/vehicle_signal_specification/extensions/index.html</guid>
+      <description>The VSS-project is active in three areas:&#xA;Defining a metamodel (syntax) for VSS datapoints. Defining the VSS Standard Catalog. Implementation of tooling (VSS-Tools). The VSS Standard Catalog defines a common view of the major attributes, sensors and actuators of vehicles. This is used in many different scenarios, protocols and environments. Additional meta data might be required for data-governance, -quality or -sources. The instantiation of branches might not fit your vehicle. Some signals in the VSS Signal Catalog may not be relevant or appropriate for your use-case, and proprietary signals might be needed for extending the specification for your own use-cases</description>
+    </item>
+    <item>
       <title>License</title>
       <link>https://covesa.github.io/vehicle_signal_specification/license/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

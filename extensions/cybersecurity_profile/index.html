@@ -5,34 +5,30 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.129.0">
     <meta name="generator" content="Relearn 6.0.0">
-    <meta name="description" content="A branch entry describes a tree branch (or node) containing other branches and signals.
-A branch entry example is given below:
-Vehicle.Trunk: type: branch description: All signals related to the rear trunk aggregate: falseEach data entry has a name, in the example above Vehicle.Trunk. VSS use a dot-notated name style where the full path of a branch consists of all parent branches from the root node separated by dots and at the end the name of the current branch.">
+    <meta name="description" content="This profile can be used to specify how VSS signals can be extended to include cybersecurity attibutes.
+Mapping Syntax The syntax for definition of a signal with cybersecurty attributes (in an overlay) is specified below.
+&lt;VSS Signal name&gt;: type: &lt;VSS type&gt; datatype: &lt;VSS datatype&gt; cybersecurity: [authentication: {true|false}] [encryption: {true|false}] [integrity_check: {true|false}] [impact_profiles: {[{motion|privacy|regulation|safety|operational}]}] Set authentication attribute to true if you need to ensure serialized data is being exchanged between trusted entities or prevent unauthorized access to serialized data during transmission.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Branch Entry :: Vehicle Signal Specification">
-    <meta name="twitter:description" content="A branch entry describes a tree branch (or node) containing other branches and signals.
-A branch entry example is given below:
-Vehicle.Trunk: type: branch description: All signals related to the rear trunk aggregate: falseEach data entry has a name, in the example above Vehicle.Trunk. VSS use a dot-notated name style where the full path of a branch consists of all parent branches from the root node separated by dots and at the end the name of the current branch.">
-    <meta property="og:url" content="https://covesa.github.io/vehicle_signal_specification/rule_set/branches/index.html">
+    <meta name="twitter:title" content="Cybersecurity Profile :: Vehicle Signal Specification">
+    <meta name="twitter:description" content="This profile can be used to specify how VSS signals can be extended to include cybersecurity attibutes.
+Mapping Syntax The syntax for definition of a signal with cybersecurty attributes (in an overlay) is specified below.
+&lt;VSS Signal name&gt;: type: &lt;VSS type&gt; datatype: &lt;VSS datatype&gt; cybersecurity: [authentication: {true|false}] [encryption: {true|false}] [integrity_check: {true|false}] [impact_profiles: {[{motion|privacy|regulation|safety|operational}]}] Set authentication attribute to true if you need to ensure serialized data is being exchanged between trusted entities or prevent unauthorized access to serialized data during transmission.">
+    <meta property="og:url" content="https://covesa.github.io/vehicle_signal_specification/extensions/cybersecurity_profile/index.html">
     <meta property="og:site_name" content="Vehicle Signal Specification">
-    <meta property="og:title" content="Branch Entry :: Vehicle Signal Specification">
-    <meta property="og:description" content="A branch entry describes a tree branch (or node) containing other branches and signals.
-A branch entry example is given below:
-Vehicle.Trunk: type: branch description: All signals related to the rear trunk aggregate: falseEach data entry has a name, in the example above Vehicle.Trunk. VSS use a dot-notated name style where the full path of a branch consists of all parent branches from the root node separated by dots and at the end the name of the current branch.">
+    <meta property="og:title" content="Cybersecurity Profile :: Vehicle Signal Specification">
+    <meta property="og:description" content="This profile can be used to specify how VSS signals can be extended to include cybersecurity attibutes.
+Mapping Syntax The syntax for definition of a signal with cybersecurty attributes (in an overlay) is specified below.
+&lt;VSS Signal name&gt;: type: &lt;VSS type&gt; datatype: &lt;VSS datatype&gt; cybersecurity: [authentication: {true|false}] [encryption: {true|false}] [integrity_check: {true|false}] [impact_profiles: {[{motion|privacy|regulation|safety|operational}]}] Set authentication attribute to true if you need to ensure serialized data is being exchanged between trusted entities or prevent unauthorized access to serialized data during transmission.">
     <meta property="og:locale" content="en-us">
     <meta property="og:type" content="article">
-    <meta property="article:section" content="Rule Set">
-    <meta property="article:published_time" content="2019-07-31T15:27:36+02:00">
-    <meta property="article:modified_time" content="2019-07-31T15:27:36+02:00">
-    <meta itemprop="name" content="Branch Entry :: Vehicle Signal Specification">
-    <meta itemprop="description" content="A branch entry describes a tree branch (or node) containing other branches and signals.
-A branch entry example is given below:
-Vehicle.Trunk: type: branch description: All signals related to the rear trunk aggregate: falseEach data entry has a name, in the example above Vehicle.Trunk. VSS use a dot-notated name style where the full path of a branch consists of all parent branches from the root node separated by dots and at the end the name of the current branch.">
-    <meta itemprop="datePublished" content="2019-07-31T15:27:36+02:00">
-    <meta itemprop="dateModified" content="2019-07-31T15:27:36+02:00">
-    <meta itemprop="wordCount" content="389">
-    <title>Branch Entry :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
+    <meta property="article:section" content="Extending and Customizing VSS">
+    <meta itemprop="name" content="Cybersecurity Profile :: Vehicle Signal Specification">
+    <meta itemprop="description" content="This profile can be used to specify how VSS signals can be extended to include cybersecurity attibutes.
+Mapping Syntax The syntax for definition of a signal with cybersecurty attributes (in an overlay) is specified below.
+&lt;VSS Signal name&gt;: type: &lt;VSS type&gt; datatype: &lt;VSS datatype&gt; cybersecurity: [authentication: {true|false}] [encryption: {true|false}] [integrity_check: {true|false}] [impact_profiles: {[{motion|privacy|regulation|safety|operational}]}] Set authentication attribute to true if you need to ensure serialized data is being exchanged between trusted entities or prevent unauthorized access to serialized data during transmission.">
+    <meta itemprop="wordCount" content="247">
+    <title>Cybersecurity Profile :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
 
     <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1743605672" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1743605672" rel="stylesheet"></noscript>
     <link href="/vehicle_signal_specification/css/nucleus.css?1743605672" rel="stylesheet">
@@ -64,7 +60,7 @@ Vehicle.Trunk: type: branch description: All signals related to the rear trunk a
       window.T_N_results_found = `{1} results found for "{0}"`;
     </script>
   </head>
-  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/vehicle_signal_specification/rule_set/branches/index.html">
+  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -77,8 +73,11 @@ Vehicle.Trunk: type: branch description: All signals related to the rear trunk a
               <div class="topbar-content">
                 <div class="topbar-content-wrapper"><nav class="TableOfContents">
   <ul>
-    <li><a href="#mandatory-branch-attributes">Mandatory Branch Attributes</a></li>
-    <li><a href="#optional-data-entry-attributes">Optional Data Entry Attributes</a></li>
+    <li><a href="#mapping-syntax">Mapping Syntax</a>
+      <ul>
+        <li><a href="#example">Example</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
                 </div>
@@ -87,16 +86,16 @@ Vehicle.Trunk: type: branch description: All signals related to the rear trunk a
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/index.html"><span itemprop="name">Vehicle Signal Specification</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/rule_set/index.html"><span itemprop="name">Rule Set</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Branch Entry</span><meta itemprop="position" content="3"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/extensions/index.html"><span itemprop="name">Extending and Customizing VSS</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Cybersecurity Profile</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
 				
-            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/rule_set/branches.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/extensions/cybersecurity_profile.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
             </div>
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/rule_set/basics/index.html" title="Basic Rules (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/extensions/overlay/index.html" title="VSS Overlay Mechanism (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/rule_set/data_entry/index.html" title="Data Entry (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/extensions/network_serialization_profile/index.html" title="Network Serialization Profile (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -116,71 +115,41 @@ Vehicle.Trunk: type: branch description: All signals related to the rear trunk a
             <header class="headline">
             </header>
 
-<h1 id="branch-entry">Branch Entry</h1>
+<h1 id="cybersecurity-profile">Cybersecurity Profile</h1>
 
-<p>A branch entry describes a tree branch (or node) containing other branches and
-signals.</p>
-<p>A branch entry example is given below:</p>
-<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Vehicle.Trunk</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">All signals related to the rear trunk</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">aggregate</span>: <span style="color:#66d9ef">false</span></span></span></code></pre></div><p>Each data entry has a name, in the example above <code>Vehicle.Trunk</code>.
-VSS use a dot-notated name style where the full path of a branch consists of all parent branches from the root node separated by dots and at the end the name of the current branch. In the standard VSS catalog the root node is called <code>Vehicle</code>.</p>
-<p>When using <code>*.vspec</code> files to define a VSS catalog it is not necessary to give the full dot-notated name for each branch as the
-<code>*.vspec</code> format supports <a href="../includes/">includes</a> that can be used to append entries to a specific branch.</p>
-<h2 id="mandatory-branch-attributes">Mandatory Branch Attributes</h2>
-<p>This is the list of attributes that must be specified for every data entry.</p>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-<th>Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>type</code></td>
-<td>Defines the type of the node. For a branch this must be <code>branch</code>.</td>
-<td>The default for <code>type</code> is <code>branch</code>.</td>
-</tr>
-<tr>
-<td><code>description</code></td>
-<td>Describes the meaning and content of the branch. Recommended to start with a capital letter and end with a dot (<code>.</code>).</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="optional-data-entry-attributes">Optional Data Entry Attributes</h2>
-<p>In additon to the mandatory attributes some optional attributes have been defined.
-There may be additional constraints on their usage not specified in the table below.</p>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-<th>Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>comment</code></td>
-<td>A comment can be used to provide additional informal information on a branch. This could include background information on the rationale for the branch, references to related branches, standards and similar. Recommended to start with a capital letter and end with a dot (<code>.</code>).</td>
-<td><em>since version 3.0</em></td>
-</tr>
-<tr>
-<td><code>instances</code></td>
-<td>For specifying that multiple instances of this branch exist, for more information see documentation on <a href="/vehicle_signal_specification/rule_set/instances/">instances</a>.</td>
-<td></td>
-</tr>
-<tr>
-<td><code>aggregate</code></td>
-<td>Defines whether or not this branch is an aggregate. If not defined, this defaults to <code>false</code>. An aggregate is a collection of signals that make sense to handle together in a system. A typical example could be GNSS location, where latitude and longitude make sense to read and write together. This is supposed to be deployment and tool specific, and for that reason no branches are aggregates by default in VSS. For branches that both have <code>instances</code> defined and <code>aggregate: true</code>, then aggregate refers to the signals for individual instances, i.e. signals for different instances can be handled separately.</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
+<p>This profile can be used to specify how VSS signals can be extended to include cybersecurity attibutes.</p>
+<h2 id="mapping-syntax">Mapping Syntax</h2>
+<p>The syntax for definition of a signal with cybersecurty attributes (in an overlay) is specified below.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">&lt;VSS Signal name&gt;</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">&lt;VSS type&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">&lt;VSS datatype&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cybersecurity</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[authentication</span>: {<span style="color:#66d9ef">true</span><span style="color:#ae81ff">|false}]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[encryption</span>: {<span style="color:#66d9ef">true</span><span style="color:#ae81ff">|false}]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[integrity_check</span>: {<span style="color:#66d9ef">true</span><span style="color:#ae81ff">|false}]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[impact_profiles</span>: {[{<span style="color:#ae81ff">motion|privacy|regulation|safety|operational}]}]</span></span></span></code></pre></div><ul>
+<li>Set <code>authentication</code> attribute to true if you need to ensure serialized data is being exchanged between trusted entities or prevent unauthorized access to serialized data during transmission. Sample implementation mechanisms are public-key infrastructure, token based authentication etc.</li>
+<li>Set <code>encryption</code> attribute to true to protect the confidentiality of serialized data or to ensure that even if serialized data is intercepted, it cannot be easily understood or misused. Sample implementation mechanisms are symmetric (e.g AES), asymetric (e.g RSA) or end-to-end encryption.</li>
+<li>Set <code>integrity_check</code> attribute to detect and prevent unauthorized alterations to serialized data or to maintain the accuracy and reliability of data as it is transmitted or stored. Sample implementation mechanisms are checksums, counters, hash based, message authentication codes etc</li>
+<li><code>impact_profiles</code> attribute indicate set of impact profiles that assess potential consequences of security issues. Possible values include:
+<ul>
+<li><code>motion</code>: Impact on vehicle movement or control systems.</li>
+<li><code>privacy</code>: Impact on the privacy of individuals and data protection.</li>
+<li><code>regulation</code>: Impact related to regulatory compliance and legal issues.</li>
+<li><code>safety</code>: Impact on personal safety and potential physical harm.</li>
+<li><code>operational</code>: Impact on system functionality and service availability.</li>
+</ul>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Vehicle.Body.Mirrors.DriverSide.Tilt</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">int8</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">actuator</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cybersecurity</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">authentication</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">encryption</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">integrity</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">impact_profiles</span>: [<span style="color:#ae81ff">operational]</span></span></span></code></pre></div>
             <footer class="footline">
             </footer>
           </article>
@@ -225,9 +194,9 @@ There may be additional constraints on their usage not specified in the table be
           <li data-nav-id="/vehicle_signal_specification/introduction/overview/index.html" class=""><a class="padding" href="/vehicle_signal_specification/introduction/overview/index.html">Overview</a></li>
           <li data-nav-id="/vehicle_signal_specification/introduction/taxonomy/index.html" class=""><a class="padding" href="/vehicle_signal_specification/introduction/taxonomy/index.html">Taxonomies</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/governance/index.html" class=""><a class="padding" href="/vehicle_signal_specification/governance/index.html">Governance</a></li>
-          <li data-nav-id="/vehicle_signal_specification/rule_set/index.html" class="parent "><a class="padding" href="/vehicle_signal_specification/rule_set/index.html">Rule Set</a><ul id="R-subsections-816430a737ffa7bef5da453d8c2d55d4" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/rule_set/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/index.html">Rule Set</a><ul id="R-subsections-816430a737ffa7bef5da453d8c2d55d4" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/rule_set/basics/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/basics/index.html">Basic Rules</a></li>
-          <li data-nav-id="/vehicle_signal_specification/rule_set/branches/index.html" class="active"><a class="padding" href="/vehicle_signal_specification/rule_set/branches/index.html">Branch Entry</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/branches/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/branches/index.html">Branch Entry</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/index.html" class="alwaysopen"><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/index.html">Data Entry</a><ul id="R-subsections-ba77ba218fcc0133bc138c588fbb6eb9" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/data_types/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/data_types/index.html">Datatypes</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/data_types_struct/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/data_types_struct/index.html">Struct Types</a></li>
@@ -239,9 +208,9 @@ There may be additional constraints on their usage not specified in the table be
           <li data-nav-id="/vehicle_signal_specification/rule_set/includes/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/includes/index.html">Includes</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/catalog/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/index.html">VSS Catalog</a><ul id="R-subsections-665f6cae1c56b0dcfe0d69bfe3f4be93" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html">Vehicle Motion Management</a></li></ul></li>
-          <li data-nav-id="/vehicle_signal_specification/extensions/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/index.html">Extending and Customizing VSS</a><ul id="R-subsections-6bd9c98d69baa9a2d1581189a2aaf28a" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/extensions/index.html" class="parent "><a class="padding" href="/vehicle_signal_specification/extensions/index.html">Extending and Customizing VSS</a><ul id="R-subsections-6bd9c98d69baa9a2d1581189a2aaf28a" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/extensions/overlay/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/overlay/index.html">VSS Overlay Mechanism</a></li>
-          <li data-nav-id="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html">Cybersecurity Profile</a></li>
+          <li data-nav-id="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html" class="active"><a class="padding" href="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html">Cybersecurity Profile</a></li>
           <li data-nav-id="/vehicle_signal_specification/extensions/network_serialization_profile/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/network_serialization_profile/index.html">Network Serialization Profile</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/license/index.html" class=""><a class="padding" href="/vehicle_signal_specification/license/index.html">License</a></li>
           <li data-nav-id="/vehicle_signal_specification/ecosystem/index.html" class=""><a class="padding" href="/vehicle_signal_specification/ecosystem/index.html">Ecosystem</a><ul id="R-subsections-30d29cf6aaa7fb1e0e056430337d3cd8" class="morespace collapsible-menu">
@@ -269,7 +238,7 @@ There may be additional constraints on their usage not specified in the table be
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/vehicle_signal_specification/rule_set/branches/index.html" lang="en-us" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html" lang="en-us" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>
