@@ -1,0 +1,15 @@
+unix-time:
+  description: Unix time in seconds
+  allowed-datatypes: ['uint32','uint64','int64']
+unix-time-ms:
+  description: Unix time in milliseconds
+  allowed-datatypes: ['uint32','uint64','int64']
+iso8601:
+  description: Date and Time expressed as a string according to ISO 8601
+  allowed-datatypes: ['string']
+ipv4:
+  description: Internet Protocol version 4
+  allowed-datatypes: ['string']
+ipv6:
+  description: Internet Protocol version 6
+  allowed-datatypes: ['string']
