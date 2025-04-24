@@ -28,6 +28,13 @@ IsOccupied:
   type: sensor
   description: Does the seat have a passenger in it.
 
+OccupancyStatus:
+  datatype: string
+  type: sensor
+  allowed: ['Unknown', 'Occupied', 'Empty']
+  description: Occupancy status of the seat.
+
+
 Occupant:
   deprecation: v5.0 - use data from Vehicle.Occupant.
   type: branch
@@ -53,6 +60,11 @@ SeatBeltHeight:
 
 #include include/ItemHeatingCooling.vspec
 
+HasMassageCapability:
+  datatype: boolean
+  type: attribute
+  description: Is the belt engaged.
+
 Massage:
   datatype: uint8
   type: actuator
@@ -70,6 +82,25 @@ MassageLevel:
   unit: percent
   description: Seat massage level. 0 = off. 100 = max massage.
 
+MassageStatus:
+  datatype: string
+  type: sensor
+  allowed: ['ON', 'OFF']
+  description: Massage status.  
+
+SupportedMassageTypes:
+  datatype: string[]
+  type: attribute
+  allowed:  ['Off','Roll','Knead','Anti Fatigue','Pulse','Stretch','Lumbar','Shoulder','Wave','Relief','Glide']
+  description:  Type of massage.
+
+MassageType:
+  datatype: string
+  type: actuator
+  allowed:  ['Off','Roll','Knead','Anti Fatigue','Pulse','Stretch','Lumbar','Shoulder','Wave','Relief','Glide']
+  description: Type of massage active.  
+  comment:  Must match the SupportedMassageTypes.  
+
 Position:
   datatype: uint16
   type: actuator
@@ -77,6 +108,7 @@ Position:
   unit: mm
   description: Seat position on vehicle x-axis. Position is relative to the frontmost position supported by the seat.
                0 = Frontmost position supported.
+
 
 Height:
   datatype: uint16
@@ -101,6 +133,8 @@ Backrest:
   type: branch
   description: Describes signals related to the backrest of the seat.
 
+#include include/ItemHeatingCooling.vspec Backrest
+
 Backrest.Recline:
   datatype: float
   type: actuator
@@ -111,6 +145,8 @@ Backrest.Recline:
   comment:     Seat z-axis depends on seat tilt. This means that movement of backrest due to seat tilting will not
                affect Backrest.Recline as long as the angle between Seating and Backrest are constant.
                Absolute recline relative to vehicle z-axis can be calculated as Tilt + Backrest.Recline.
+
+
 
 Backrest.Lumbar:
   type: branch
@@ -133,6 +169,30 @@ Backrest.LumbarSupport:
   min: 0
   max: 100
   description: Lumbar support (in/out position). 0 = Innermost position. 100 = Outermost position.
+
+Backrest.LumbarSupportTop:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Lumbar top support (in/out position). 0 = Innermost position. 100 = Outermost position.
+
+Backrest.LumbarSupportMid:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Lumbar mid support (in/out position). 0 = Innermost position. 100 = Outermost position.
+
+Backrest.LumbarSupportBottom:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Lumbar bottom support (in/out position). 0 = Innermost position. 100 = Outermost position.
 
 Backrest.Lumbar.Height:
   datatype: uint8
@@ -175,11 +235,40 @@ Backrest.SideBolsterSupport:
   description: Side bolster support. 0 = Minimum support (widest side bolster setting).
                100 = Maximum support.
 
+Backrest.SideBolsterSupportLeft:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Side bolster support left. 0 = Minimum support (widest side bolster setting).
+               100 = Maximum support.
+
+Backrest.SideBolsterSupportRight:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Side bolster support right. 0 = Minimum support (widest side bolster setting).
+               100 = Maximum support.
+
+Backrest.UpperShoulderSupport:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Upper shoulder support. 0 = Minimum support (widest side bolster setting).
+               100 = Maximum support.
+
 Seating:
   type: branch
   description: Describes signals related to the seat bottom of the seat.
   comment: Seating is here considered as the part of the seat that supports the thighs.
            Additional cushions (if any) for support of lower legs is not covered by this branch.
+
+#include include/ItemHeatingCooling.vspec Seating
 
 Seating.Length:
   datatype: uint16
@@ -188,6 +277,24 @@ Seating.Length:
   unit: mm
   description: Length adjustment of seating. 0 = Adjustable part of seating in rearmost position
                (Shortest length of seating).
+
+Seating.SideBolsterSupportRight:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Seat bottom side bolster support right. 0 = Minimum support (widest side bolster setting).
+               100 = Maximum support.
+
+Seating.SideBolsterSupportLeft:
+  datatype: float
+  type: actuator
+  unit: percent
+  min: 0
+  max: 100
+  description: Seat bottom side bolster support left. 0 = Minimum support (widest side bolster setting).
+               100 = Maximum support.
 
 Headrest:
   type: branch
@@ -211,10 +318,23 @@ Airbag:
   type: branch
   description: Airbag signals.
 
+Airbag.IsEnabled:
+  datatype: boolean
+  type: sensor
+  description: Airbag enabled status. True = Airbag enabled. False = Airbag not enabled.
+
 Airbag.IsDeployed:
   datatype: boolean
   type: sensor
   description: Airbag deployment status. True = Airbag deployed. False = Airbag not deployed.
+
+NeckScarf:
+  type: branch
+  description: NeckScarf settings.
+
+#include include/ItemHeatingCooling.vspec NeckScarf
+
+#include include/ItemFanSpeed.vspec NeckScarf
 
 
 #---------------------- SWITCHES ----------------------
