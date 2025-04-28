@@ -91,7 +91,7 @@ MassageStatus:
 SupportedMassageTypes:
   datatype: string[]
   type: attribute
-  ALLOWED:  ['ROLL','KNEAD','ANTI FATIGUE','PULSE','STRETCH','LUMBAR','SHOULDER','WAVE','RELIEF','GLIDE']
+  allowed:  ['ROLL','KNEAD','ANTI FATIGUE','PULSE','STRETCH','LUMBAR','SHOULDER','WAVE','RELIEF','GLIDE']
   description:  Type of massage.
 
 MassageType:
