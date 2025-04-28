@@ -9,5 +9,6 @@
 FanSpeed:
   datatype: string
   type: actuator
-  allowed: ['AUTO', 'Level1', 'Level2','Level3','Level4','Level5']
+  allowed: ['AUTO', 'LEVEL1', 'LEVEL2','LEVEL3','LEVEL4','LEVEL5']
   description: Speed of the fan.
+
