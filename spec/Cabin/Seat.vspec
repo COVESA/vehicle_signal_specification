@@ -31,7 +31,7 @@ IsOccupied:
 OccupancyStatus:
   datatype: string
   type: sensor
-  allowed: ['Unknown', 'Occupied', 'Empty']
+  allowed: ['UNKNOW', 'OCCUPIED', 'EMPTY']
   description: Occupancy status of the seat.
 
 
@@ -63,7 +63,7 @@ SeatBeltHeight:
 HasMassageCapability:
   datatype: boolean
   type: attribute
-  description: Is the belt engaged.
+  description: True if the seat have the massage capability
 
 Massage:
   datatype: uint8
@@ -91,13 +91,13 @@ MassageStatus:
 SupportedMassageTypes:
   datatype: string[]
   type: attribute
-  allowed:  ['Off','Roll','Knead','Anti Fatigue','Pulse','Stretch','Lumbar','Shoulder','Wave','Relief','Glide']
+  ALLOWED:  ['ROLL','KNEAD','ANTI FATIGUE','PULSE','STRETCH','LUMBAR','SHOULDER','WAVE','RELIEF','GLIDE']
   description:  Type of massage.
 
 MassageType:
   datatype: string
   type: actuator
-  allowed:  ['Off','Roll','Knead','Anti Fatigue','Pulse','Stretch','Lumbar','Shoulder','Wave','Relief','Glide']
+  allowed:  ['ROLL','KNEAD','ANTI FATIGUE','PULSE','STRETCH','LUMBAR','SHOULDER','WAVE','RELIEF','GLIDE']
   description: Type of massage active.  
   comment:  Must match the SupportedMassageTypes.  
 
