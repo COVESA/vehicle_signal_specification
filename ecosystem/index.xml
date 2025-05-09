@@ -20,7 +20,7 @@
       <link>https://covesa.github.io/vehicle_signal_specification/ecosystem/standards/index.html</link>
       <pubDate>Thu, 18 May 2023 13:29:46 +0000</pubDate>
       <guid>https://covesa.github.io/vehicle_signal_specification/ecosystem/standards/index.html</guid>
-      <description>Other standards or specifications sometimes reference VSS.&#xA;W3C VISS When using VSS in an automotive tech stack, a question is which protocols and technologies to use to access VSS signals.&#xA;The W3C Vehicle Information Service Specification (VISS) is an open standard, specifying a protocol to access VSS data via websocket (VISSv1, VISSv2) or HTTP/MQTT (VISSv2).&#xA;To learn more check&#xA;Vehicle Information Service Specification (VISS) V1 published as a Discontinued Draft. Vehicle Information Service Specification (VISS) V2, feature complete and in process to enter the Candidate Recommendation stage.</description>
+      <description>Other standards or specifications sometimes reference VSS.&#xA;COVESA VISS When using VSS in an automotive tech stack, a question is which protocols and technologies to use to access VSS signals.&#xA;The COVESA Vehicle Information Service Specification (VISS) is an open standard, specifying a protocol to access VSS data using JSON messages on transport protocols like websocket (VISSv1), HTTP, MQTT (+VISSv2), or gRPC (+VISSv3).&#xA;To learn more check&#xA;Vehicle Information Service Specification (VISS) V1 published as a Discontinued Draft.</description>
     </item>
     <item>
       <title>Software &amp; Solutions</title>
