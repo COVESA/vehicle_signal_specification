@@ -16,6 +16,26 @@ jobs:
         with:
           submodules: true
 
+      - name: Install vss-tools
+        run: |
+          pip install git+https://github.com/Giaccomole/vss-tools-statistics-py-scripts@stat-scripts
+
+      - name: Generate statistics
+        run: |
+          vspec stats piechart -s spec/VehicleSignalSpecification.vspec -o docs-gen/static/data/piechart.csv
+          vspec stats sankey -s spec/VehicleSignalSpecification.vspec -o docs-gen/static/data/sankey.csv
+          vspec stats radial -s spec/VehicleSignalSpecification.vspec -o docs-gen/static/data/radial.json
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs-gen/static/data
+          git diff-index --quiet HEAD || git commit -m "Update generated data files"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install hugo
         env:
           HUGO_VER : 0.129.0
