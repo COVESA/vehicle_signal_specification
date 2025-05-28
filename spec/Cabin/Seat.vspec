@@ -31,7 +31,7 @@ IsOccupied:
 OccupancyStatus:
   datatype: string
   type: sensor
-  allowed: ['UNKNOW', 'OCCUPIED', 'EMPTY']
+  allowed: ['UNKNOWN', 'OCCUPIED', 'EMPTY']
   description: Occupancy status of the seat.
 
 
@@ -91,8 +91,8 @@ MassageStatus:
 SupportedMassageTypes:
   datatype: string[]
   type: attribute
-  allowed:  ['ROLL','KNEAD','ANTI_FATIGUE','PULSE','STRETCH','LUMBAR','SHOULDER','WAVE','RELIEF','GLIDE']
   description:  Type of massage.
+  comment: OEMs may define a list of identifiers for supported massage types using the allowed keyword
 
 MassageType:
   datatype: string
