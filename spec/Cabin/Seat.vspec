@@ -97,9 +97,8 @@ SupportedMassageTypes:
 MassageType:
   datatype: string
   type: actuator
-  allowed:  ['ROLL','KNEAD','ANTI_FATIGUE','PULSE','STRETCH','LUMBAR','SHOULDER','WAVE','RELIEF','GLIDE']
   description: Type of massage active.  
-  comment:  Must match the SupportedMassageTypes.  
+  comment: OEMs may define a list of identifiers for supported massage types using the allowed keyword 
 
 Position:
   datatype: uint16
