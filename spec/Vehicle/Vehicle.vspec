@@ -21,7 +21,7 @@ VersionVSS:
 VersionVSS.Major:
   datatype: uint32
   type: attribute
-  default: 6
+  default: 5
   description: Supported Version of VSS - Major version.
 
 VersionVSS.Minor:
