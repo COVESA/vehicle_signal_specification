@@ -14,7 +14,7 @@ permissions:
   packages: write
 
 jobs:
-  call_kuksa_databroker_build:
+  call_vss_build:
     uses: ./.github/workflows/buildcheck.yml
     with:
       vss-version: ${{ inputs.vss-version }}
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       [
-        call_kuksa_databroker_build
+        call_vss_build
       ]
     steps:
       - name: Checkout
