@@ -1,0 +1,37 @@
+name: Documentation Generation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  docgen:
+    name: Generate and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install hugo
+        env:
+          HUGO_VER : 0.129.0
+        run: |
+          curl -LO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VER}/hugo_${HUGO_VER}_linux-amd64.deb
+          sudo dpkg -i hugo_${HUGO_VER}_linux-amd64.deb
+
+      - name: Make docs
+        run: |
+          hugo -s ./docs-gen
+
+      - name: Deploy docs
+        # Only deploy docs if this was a push to master
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: docs # The folder the action should deploy.
+          commit-message: Auto-deploy docs built from commit ${{ github.sha }}

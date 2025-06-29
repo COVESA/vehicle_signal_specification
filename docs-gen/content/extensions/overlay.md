@@ -1,6 +1,5 @@
 ---
-title: "Overlay"
-date: 2019-08-04T12:46:30+02:00
+title: "VSS Overlay Mechanism"
 weight: 7
 ---
 
@@ -16,16 +15,6 @@ Configurations may differ slightly (e.g. the instantiation of number of availabl
 1. **Adding new key/value pairs as additional metadata:**
 Extending the model with richer information is a fundamental feature enabled by the layer concept.  For example, deploying VSS into a specific scenario or with a particular binding/technology often needs some additional information.
 1. **Multiple layer files:** VSS layers can be split into several files in order to clearly separate concerns. Layering allows all the features above to be applied in a composable manner. In order to keep a determinstic result a clear order has to remain.
-
-### Scenarios for using Overlays
-
-The standard catalog is specified within COVESA and defines a common view of the major
-attributes, sensors and actuators of vehicles. This is used in many different scenarios,
-protocols and environments. Additional meta data might be required for data-governance,
--quality or -sources. The instantiation of branches might not fit your vehicle.
-Proprietary signals might be needed for extending the specification for your own use-cases.
-Up to now you were on your own in these scenarios. Overlays give you the chance to change
-and modify the standard catalog in a standardized way.
 
 ### How does it work?
 
@@ -146,16 +135,3 @@ Nodes deleted, given=6, overall=18
 The number for `given` represents number of nodes (branches/sensors/actuators/attributes) explicitly removed.
 The `overall` number represents total number, including child nodes for explicitly removed branches.
 More detailed output is given in debug mode.
-
-### Overlays in the standard catalog
-
-With the feature of overlays, we introduced a new folder in the
-repository called `overlays`. In there you'll find two additional folders:
-
-* `profiles`: Larger overlays to adapt VSS to a specific vehicle category, like motorbikes.
-* `extensions`: Smaller overlays typically to be applied after applying profiles (if any).
-
-{{% notice warning %}}
-**DISCLAIMER:** Use of overlays is a new concept for VSS.
-The overlays in those folders shall currently be seen as examples only, and are not part of the official VSS specification.
-{{% /notice %}}

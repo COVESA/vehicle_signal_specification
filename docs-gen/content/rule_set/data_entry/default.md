@@ -1,13 +1,16 @@
 ---
-title: "Attributes"
+title: "Default Values"
 date: 2019-08-04T12:37:31+02:00
 weight: 40
 ---
 
-An attribute is an entity that has a default value, specified by
-its ```default``` member.
+VSS supports default values by the `default` attribute.
+The intention is to provide a mechanism to provide initial values for data entries already when loading a VSS catalog.
+This could typically be useful for attributes that never or rarely change, like [vehicle VIN](https://en.wikipedia.org/wiki/Vehicle_identification_number) or vehicle color.
+
 The standard Vehicle Signal Specification does not include default values for all attributes.
-If a default value has not been specified then the OEM must define a default value matching the actual vehicle.
+If a default value has not been specified then the OEM must define a default value matching the actual vehicle,
+either by using the `default` concept, or by the same other mechanism.
 If the standard defines a default value but it does not fit the actual vehicle,
 then the OEM must override the standard default value.
 
@@ -51,4 +54,4 @@ SeatPosCount:
   description: Number of seats across each row from the front to the rear
 ```
 
-Using default values for structs is not allowed!
+Default values can also be defined for [structs](/vehicle_signal_specification/rule_set/data_entry/data_types_struct/).

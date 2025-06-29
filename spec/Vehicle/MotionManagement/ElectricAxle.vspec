@@ -1,0 +1,87 @@
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# See vehicle_motion_management.md for more info
+
+Torque:
+  type: sensor
+  datatype: int16
+  unit: Nm
+  description: Axle torque, positive sign for torque in forward direction,
+               negative sign for torque in backward direction.
+
+TorqueTarget:
+  type: actuator
+  datatype: int16
+  unit: Nm
+  description: Target axle torque in torque control mode, positive sign for torque in forward direction,
+               negative sign for torque in backward direction (ISO8855).
+
+TorqueMaximum:
+  type: sensor
+  datatype: int16
+  unit: Nm
+  description: Maximum momentarily available eAxle torque, positive sign for torque in forward direction,
+               negative sign for torque in backward direction.
+
+TorqueMinimum:
+  type: sensor
+  datatype: int16
+  unit: Nm
+  description: Minimum momentarily available eAxle torque, positive sign for torque in forward direction,
+               negative sign for torque in backward direction.
+
+TorqueMaximumLimit:
+  type: actuator
+  datatype: int16
+  unit: Nm
+  description: Maximum allowed eAxle torque in rotation speed control mode, positive sign for torque in forward direction,
+               negative sign unused.
+
+TorqueMinimumLimit:
+  type: actuator
+  datatype: int16
+  unit: Nm
+  description: Minimum allowed axle torque in rotation speed control mode, positive sign unused,
+               negative sign for torque in backward direction (ISO8855).
+
+RotationalSpeed:
+  type: sensor
+  datatype: int16
+  unit: rpm
+  description: Rotational speed for the specified axle,
+               positive sign for rotation in forward direction, negative sign for rotation in backward direction.
+
+RotationalSpeedTarget:
+  type: actuator
+  datatype: int16
+  unit: rpm
+  description: Target axle rotational speed in rotation speed control mode,
+               positive sign for rotation in forward direction, negative sign for rotation in backward direction.
+
+RotationalSpeedMaximumLimit:
+  type: actuator
+  datatype: int16
+  unit: rpm
+  description: Maximum allowed axle rotational speed in torque control mode, positive sign for rotation in forward direction,
+               negative sign for rotation in backward direction.
+
+RotationalSpeedMinimumLimit:
+  type: actuator
+  datatype: int16
+  unit: rpm
+  description: Minimum allowed axle rotational speed in torque control mode, positive sign for rotation in forward direction,
+               negative sign for rotation in backward direction.

@@ -158,7 +158,7 @@ Structs in parent branches will not be visible, in those cases absolute path nee
 
 *The reference by leaf name is applicable only for structs referencing other structs!*
 
-## Expectations on VSS implementations (e.g. VISS, KUKSA.val)
+## Expectations on VSS implementations (e.g. VISS, KUKSA)
 
 It is expected of implementations to support atomic read/write/subscribe of complete signals defined with struct datatype.
 They may support read of parts of signal, e.g. `DeliveryList.Receiver`
@@ -271,19 +271,63 @@ Inline/anonymous structs are not allowed!
 
 ## Default Values
 
-VSS supports [default values](/vehicle_signal_specification/rule_set/data_entry/attributes/).
+VSS supports [default values](/vehicle_signal_specification/rule_set/data_entry/default/).
 
-Default values are not allowed for signals of struct datatype.
-This also mean that VSS does not need to specify notation for struct values.
-An exception is arrays of struct-datatypes, where "empty array", i.e. `[]` shall be supported as default value.
+Default values are also allowed for signals of struct datatype.
 
-It shall be possible to define default values for properties (unless the item is of struct datatype).
+It is also possible to define default values for properties.
 If all items of a struct datatype have default values,
 then a signal (or item) using the struct datatype is also considered to have a default value.
+
+Default values are given in Yaml syntax, two examples are given below
+
+```yaml
+ReturnAddress:
+  datatype: Types.DeliveryInfo
+  type: attribute
+  description: Where to send returns
+  default:
+    Address: "221B Baker Street"
+    Receiver: "Sherlock Holmes"
+    Open:
+        Open: 9
+        Close: 17
+```
+
+```yaml
+ReturnAddresses:
+  datatype: Types.DeliveryInfo[]
+  type: attribute
+  description: Where to send returns
+  default:
+    - Address: "221B Baker Street"
+      Receiver: "Sherlock Holmes"
+      Open:
+          Open: 9
+          Close: 17
+    - Address: "742 Evergreen Terrace"
+      Receiver: "Homer Simpson"
+      Open:
+          Open: 15
+          Close: 16
+
+```
+
+As a special case, `[]` can be used as default value to denote an empty array.
+
+```yaml
+DeliveryAddresses:
+  datatype: Types.DeliveryInfo[]
+  type: sensors
+  description: List of deliveries
+  default: []
+```
+
+It is also possible to use JSON syntax to specify default values for structs.
 
 ## Allowed Values
 
 VSS supports [specification of allowed values](/vehicle_signal_specification/rule_set/data_entry/allowed/).
 
 Using `allowed` for `type: property` is allowed (if `allowed` is supported for the used datatype).
-Using `allowed` for signals and items of struct datatype or array of struct datatype is not allowed.
+Using `allowed` for signals and items of struct datatype or array of struct datatype is allowed.

@@ -35,11 +35,24 @@ When expanded this corresponds to:
      which defines the number of instances.
      `Position[1,4]` results into 4 instances of every following
      data entry in the path, named `Position1`, `Position2`, `Position3`
-     and `Position4`. It is in VSS recommended to use `1` as start index for the first row/axle/position/...
+     and `Position4`.
 4. If multiple instances occur in one node or on the path to a data entry,
    the instances get combined, by the order of occurrence. Following the example above,
    four position instances will be created for each of the 'DriverSide' and 'PasengerSide' instances,
    resulting into a total number of 8 instances.
+
+### Use of instances in VSS Standard Catalog
+
+The VSS standard catalog is configured to represent a typical passenger vehicle,
+with two axles and two rows of seats. For other vehicles, see [recommendations on instance mismatch]({{% ref "#recommendation-instance-mismatch" %}} ) below.
+
+Typical naming conventions used in VSS standard catalog include:
+
+* When instances are defined by a range, e.g., `Position[m,n]`, VSS standard catalog uses `1` as start index for the first instance.
+* The instance definition `Row[n,m]`, e.g., `Row[1,2]`, is used to indicate that there are multiple rows of the entity. Rows are counted from the front of the vehicle.
+* For items located on either left or right side of the vehicle VSS standard catalog uses two different conventions:
+  * In some cases instances are defined relative to driver position, e.g., `["DriverSide", "PassengerSide"]`.
+  * In other cases instances are defined based on physical position, e.g., `["Left","Right"]`.
 
 ### How can I exclude child-nodes from instantiation?
 
@@ -116,7 +129,7 @@ Vehicle.Cabin.Door:
 
 ## Recommendations
 
-VSS is designed to cover a wide range of vehicles.
+VSS standard catalog is designed to cover a wide range of vehicles.
 This means that the default instantiation used in VSS may not fit every vehicle.
 An example can be seen in the windshield signals defined in `Body.vspec`, parts of them are shown below.
 VSS offers the possibility to control windshield heating separately for front and rear windshield,
@@ -157,7 +170,7 @@ If a vehicle does not have as many instances as specified in VSS then one
 of the following methods are recommended:
 
 - Redefine the branch. If a vehicle for example does not have a rear windshield
-then append a redefinition at the end of the VSS:
+then change instance definition in an [overlay]({{% ref "overlay" %}} ) :
 
 ```yaml
 Vehicle.Body.Windshield:
@@ -166,8 +179,8 @@ Vehicle.Body.Windshield:
   description: Windshield signals
 ```
 
-- Accept that a `branch Vehicle.Body.Windshield.Rear` will exist in the generated VSS representation,
-  use mechanisms outside VSS to ignore that branch
+- Accept that a `branch Vehicle.Body.Windshield.Rear` will exist in the generated VSS representation.
+  Use mechanisms outside VSS to ignore that branch.
 
 ### Recommendation: Features shared among instances
 

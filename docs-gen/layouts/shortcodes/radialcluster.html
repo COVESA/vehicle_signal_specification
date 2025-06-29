@@ -1,0 +1,192 @@
+<div id="chart-container" style="width: 100%; height: 100vh; text-align: center;"></div>
+<script type="module">
+  import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+  async function createChart() {
+    const data = await d3.json("/vehicle_signal_specification/data/outputplus.json");
+
+    const width = 800; // Adjust the width as needed
+    const radius = width / 2;
+
+    const radial = d3.linkRadial()
+      .angle(d => d.x)
+      .radius(d => d.y);
+
+    const tree = d3.tree()
+      .size([2 * Math.PI, radius / 1.7])
+      .separation((a, b) => (a.parent == b.parent ? 1 : 2) / a.depth);
+
+    const root = d3.hierarchy(data);
+    root.x0 = 0;
+    root.y0 = 0;
+
+    // Collapse all descendants of the root node, except for the first level
+    root.descendants().forEach((d, i) => {
+      d.id = i;
+      if (d.depth && d.children) {
+        d._children = d.children;
+        d.children = null;
+      }
+    });
+
+    const svg = d3.create("svg")
+      .style("font", "12px sans-serif")
+      .style("user-select", "none");
+
+    const g = svg.append("g")
+      .attr("transform", `translate(${width / 2}, ${width / 2})`);
+
+    const colorMap = {
+      Vehicle: "#7C298C",
+      hasChildren: "#26547C",
+      actuator: "#EF476F",
+      attribute: "#06D6A0",
+      sensor: "#FFD166"
+    };
+
+    const legendData = [
+      { type: "branch", color: colorMap.hasChildren },
+      { type: "actuator", color: colorMap.actuator },
+      { type: "attribute", color: colorMap.attribute },
+      { type: "sensor", color: colorMap.sensor }
+    ];
+
+    const legend = svg.append("g")
+      .attr("transform", "translate(20, 20)")
+      .selectAll("g")
+      .data(legendData)
+      .enter()
+      .append("g")
+      .attr("transform", (d, i) => `translate(0, ${i * 20})`);
+
+    legend.append("rect")
+      .attr("width", 18)
+      .attr("height", 18)
+      .attr("fill", d => d.color);
+
+    legend.append("text")
+      .attr("x", 24)
+      .attr("y", 9)
+      .attr("dy", "0.35em")
+      .text(d => d.type);
+
+    const gLink = g.append("g")
+      .attr("fill", "none")
+      .attr("stroke", "#555")
+      .attr("stroke-opacity", 0.4)
+      .attr("stroke-width", 1.5);
+
+    const gNode = g.append("g")
+      .attr("cursor", "pointer")
+      .attr("pointer-events", "all");
+
+    function update(event, source) {
+      const duration = event && event.altKey ? 2500 : 250;
+      const nodes = root.descendants().reverse();
+      const links = root.links();
+
+      // Compute the new tree layout.
+      tree(root);
+
+      const transition = svg.transition()
+        .duration(duration)
+        .attr("viewBox", [0, 0, width, width]);
+
+      // Update the nodes…
+      const node = gNode.selectAll("g").data(nodes, d => d.id);
+
+      // Enter any new nodes at the parent's previous position.
+      const nodeEnter = node.enter().append("g")
+        .attr("transform", d => `
+          rotate(${(source.x0 * 180) / Math.PI - 90})
+          translate(${source.y0}, 0)
+        `)
+        .attr("fill-opacity", 0)
+        .attr("stroke-opacity", 0)
+        .on("click", (event, d) => {
+          if (d.depth === 0) return;
+          d.children = d.children ? null : d._children;
+          update(event, d);
+        });
+
+      nodeEnter.append("circle")
+        .attr("r", 4.5)
+        .attr("fill", d => {
+          if (d.data.type === "sensor") return colorMap.sensor;
+          if (d.data.type === "actuator") return colorMap.actuator;
+          if (d.data.type === "attribute") return colorMap.attribute;
+          if (d._children) return colorMap.hasChildren;
+          return colorMap.Vehicle;
+        })
+        .attr("stroke-width", 10);
+
+      nodeEnter.append("text")
+        .attr("transform", d => `
+          rotate(${d.x >= Math.PI ? 180 : 0})
+        `)
+        .attr("dy", "0.31em")
+        .attr("x", d => (d.x < Math.PI === !d.children ? 6 : -6))
+        .attr("text-anchor", d => d.x < Math.PI === !d.children ? "start" : "end")
+        .text(d => d.data.name)
+        .clone(true)
+        .lower()
+        .attr("stroke-linejoin", "round")
+        .attr("stroke-width", 5)
+        .attr("stroke", "white");
+
+      nodeEnter.raise();
+
+      // Transition nodes to their new position.
+      const nodeUpdate = node.merge(nodeEnter).transition(transition)
+        .attr("transform", d => `
+          rotate(${(d.x * 180) / Math.PI - 90})
+          translate(${d.y}, 0)
+        `)
+        .attr("fill-opacity", 1)
+        .attr("stroke-opacity", 1);
+
+      // Transition exiting nodes to the parent's new position.
+      const nodeExit = node.exit().transition(transition)
+        .remove()
+        .attr("transform", d => `
+          rotate(${(source.x * 180) / Math.PI - 90})
+          translate(${source.y}, 0)
+        `)
+        .attr("fill-opacity", 0)
+        .attr("stroke-opacity", 0);
+
+      // Update the links…
+      const link = gLink.selectAll("path").data(links, d => d.target.id);
+
+      // Enter any new links at the parent's previous position.
+      const linkEnter = link.enter().append("path")
+        .attr("d", d => {
+          const o = { x: source.x0, y: source.y0 };
+          return radial({ source: o, target: o });
+        });
+
+      // Transition links to their new position.
+      link.merge(linkEnter).transition(transition).attr("d", radial);
+
+      // Transition exiting nodes to the parent's new position.
+      link.exit().transition(transition)
+        .remove()
+        .attr("d", d => {
+          const o = { x: source.x, y: source.y };
+          return radial({ source: o, target: o });
+        });
+
+      // Stash the old positions for transition.
+      root.eachBefore(d => {
+        d.x0 = d.x;
+        d.y0 = d.y;
+      });
+    }
+
+    update(null, root);
+
+    document.getElementById("chart-container").appendChild(svg.node());
+  }
+
+  createChart();
+</script>

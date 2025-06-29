@@ -1,0 +1,40 @@
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# Copyright (c) 2024 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# See vehicle_motion_management.md for more info
+
+# Steering related info divided into two branches
+# Rationale is that there in some vehicles may be multiple steerable axis, and then
+# MotionManagement.SteeringRack may be instanstiated with multiple axles.
+
+
+SteeringWheel:
+  type: branch
+  description: MotionManagement related to steering wheel.
+#include Steering/SteeringWheel.vspec SteeringWheel
+
+
+# The VSS standard catalog is prepared to support steering on multiple axles
+# but the default instantiation is to have only a single steerable axis, i.e. Row[1,1]
+
+Axle:
+  type: branch
+  instances:
+    - Row[1,1]
+  description: MotionManagement related to a specific axle.
+  comment: The instantiation only considers axles that are steerable.
+           Row[1,1] indicates that one axle is steerable, but does not indicate which axle.
+#include Steering/Axle.vspec Axle

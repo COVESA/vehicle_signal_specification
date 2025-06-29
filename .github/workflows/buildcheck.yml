@@ -14,6 +14,11 @@ on:
         required: false
         type: string
 
+
+env:
+  PYTHON_VERSION: "3.10.6" # keep in sync with vss-tools
+                           # Note: Currently cyclonedds does not support 3.11
+
 jobs:
   buildtest:
     name: Build Test
@@ -21,8 +26,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          submodules: true
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install vss-tools dependencies
         run: |
@@ -47,7 +53,7 @@ jobs:
           path: |
             vss.csv
             vss.fidl
-            vss.grapql.ts
+            vss.graphql.ts
             vss.idl
             vss.json
             vss.jsonschema
@@ -78,23 +84,3 @@ jobs:
       - name: Test optional targets. NOTE - always succeeds
         run: |
           make -k optional_targets || true
-
-      - name: Install hugo
-        env:
-          HUGO_VER : 0.129.0
-        run: |
-          curl -LO https://github.com/gohugoio/hugo/releases/download/v${HUGO_VER}/hugo_${HUGO_VER}_linux-amd64.deb
-          sudo dpkg -i hugo_${HUGO_VER}_linux-amd64.deb
-
-      - name: Make docs
-        run: |
-          hugo -s ./docs-gen
-
-      - name: Deploy docs
-        # Only deploy docs if this was a push to master
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: docs # The folder the action should deploy.
-          commit-message: Auto-deploy docs built from commit ${{ github.sha }}

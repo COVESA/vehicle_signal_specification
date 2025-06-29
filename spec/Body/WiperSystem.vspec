@@ -23,7 +23,7 @@
 #   serving two electronically connected wiper blades.
 #
 # For now VSS by default only support a single instance of wipersystem.
-# If a vehicle needs to support two wiper systems for a window it shall preferably by handld by a layer extension
+# If a vehicle needs to support two wiper systems for a window it shall preferably be handled by a layer extension
 # specifying that two instances exist, as shown below:
 #
 # Windshield.Wiping.System:

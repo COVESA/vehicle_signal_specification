@@ -4,8 +4,6 @@ weight: 15
 chapter: false
 ---
 
-# Governance
-
 The Vehicle Signal Specification (VSS) project is an initiative by [COVESA](https://covesa.global/) to define a syntax and a catalog for vehicle signals.
 
 The artifacts maintained by the VSS project consist of:
@@ -62,6 +60,20 @@ The VSS project aims to keep backward compatibility as far as feasible.
 VSS is however an evolving syntax and catalog and there are still areas where changes are need to fit the need of users.
 Changes that breaks backward compatibility are typically introduced only in major releases (e.g. `X.0`) and shall be documented in release notes.
 This concerns changes to syntax and signals, but also to tools.
+
+Changes considered as backward incompatible include:
+
+* Signals have been deleted, renamed or change of datatype or unit.
+* New data entry attributes have been added to standard VSS catalog, only accepted by an updated VSS-tools version.
+* VSS-tools CLI changed, for example arguments renamed or new mandatory arguments added.
+* Columns/fields removed from VSS-tools exporter output.
+
+
+Changes NOT considered as backward incompatible include:
+
+* New signals, units or quanties added to VSS standard catalog.
+* New VSS-tools exporters added.
+* Columns/fields added to VSS-tools exporter output.
 
 The VSS project has introduced a [deprecation concept]({{% ref "../rule_set/basics.md#deprecation-since-version-21" %}}).
 If possible, when e.g. renaming or moving a signal or changing tools the old signal or parameter set shall be kept but marked as deprecated.
