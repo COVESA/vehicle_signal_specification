@@ -44,34 +44,6 @@ TorqueMinimum:
   description: Minimum momentarily available eAxle torque, positive sign for torque in forward direction,
                negative sign for torque in backward direction.
 
-TorqueLongTermMaximum:
-  type: sensor
-  datatype: int16
-  unit: Nm
-  description: Maximum long-term available eAxle torque, default time horizon = 10 sec, positive sign for torque in forward direction,
-              negative sign for torque in backward direction.
-
-TorqueLongTermMinimum:
-  type: sensor
-  datatype: int16
-  unit: Nm
-  description: Minimum long-term available eAxle torque, default time horizon = 10 sec, positive sign for torque in forward direction,
-               negative sign for torque in backward direction.
-
-TorqueShortTermMaximum:
-  type: sensor
-  datatype: int16
-  unit: Nm
-  description: Maximum short-term available eAxle torque, default time horizon = 1 sec, positive sign for torque in forward direction,
-               negative sign for torque in backward direction.
-
-TorqueShortTermMinimum:
-  type: sensor
-  datatype: int16
-  unit: Nm
-  description: Minimum short-term available eAxle torque, default time horizon = 1 sec, positive sign for torque in forward direction,
-               negative sign for torque in backward direction.
-
 TorqueMaximumLimit:
   type: actuator
   datatype: int16
