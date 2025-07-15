@@ -7,8 +7,9 @@
 # SPDX-License-Identifier: MPL-2.0
 
 FanSpeed:
-  datatype: string
   type: actuator
-  allowed: ['AUTO', 'LEVEL1', 'LEVEL2','LEVEL3','LEVEL4','LEVEL5']
+  datatype: int8
+  min: 0
+  max: 100
+  unit: percent
   description: Speed of the fan.
-
