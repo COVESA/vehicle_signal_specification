@@ -15,14 +15,10 @@ The `Vehicle.OBD` branch is now removed. If needed there is an OBD overlay in th
 
 ## VSS 5.1
 
-### Support for new `pattern` keyword
+### Signal Updates
 
-String types can now be restricted by a RegExp pattern.
-
-### Support for `default` for signals and properties using struct types.
-
-Previously the documentation stated that default values could not be given for struct types.
-That is now supported.
+* Vehicle Motion Management Signals added
+* New names related seat signals added, old kept for backward compatibility
 
 ## VSS 5.0
 
