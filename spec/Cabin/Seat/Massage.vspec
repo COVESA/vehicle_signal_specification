@@ -1,0 +1,39 @@
+# Copyright (c) 2025 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+
+IsAvailable:
+  datatype: boolean
+  type: attribute
+  description: True if the seat have the massage capability
+
+Level:
+  datatype: uint8
+  type: actuator
+  min: 0
+  max: 100
+  unit: percent
+  description: Seat massage level. 0 = off. 100 = max massage.
+
+Status:
+  datatype: string
+  type: sensor
+  allowed: ['ON', 'OFF']
+  description: Massage status.
+
+SupportedTypes:
+  datatype: string[]
+  type: attribute
+  description:  Type of massage.
+  comment: OEMs may define a list of identifiers for supported massage types using the allowed keyword
+
+TypeActive:
+  datatype: string
+  type: actuator
+  description: Type of massage active.
+  comment: OEMs may define a list of identifiers for supported massage types using the allowed keyword

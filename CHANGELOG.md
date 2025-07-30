@@ -22,6 +22,10 @@ String types can now be restricted by a RegExp pattern.
 Previously the documentation stated that default values could not be given for struct types.
 That is now supported.
 
+### Signal Updates
+
+* Signals for seats refacored (backward incompatible change)
+
 ## VSS 5.0
 
 ### Signal Updates
