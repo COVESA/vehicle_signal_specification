@@ -18,13 +18,29 @@ Tilt:
   type: actuator
   description: Mirror tilt as a percent. 0 = Center Position. 100 = Fully Upward Position. -100 = Fully Downward Position.
 
+
 Pan:
+  deprecation: v6.0 Replaced with Yaw - Note that direction changes!
   datatype: int8
   type: actuator
   unit: percent
   min: -100
   max: 100
   description: Mirror pan as a percent. 0 = Center Position. 100 = Fully Left Position. -100 = Fully Right Position.
+
+Yaw:
+  datatype: int8
+  type: actuator
+  unit: percent
+  min: -100
+  max: 100
+  description: Relative mirror yaw angle, measured from the vehicle sprung mass X-axis as defined by ISO 23150:2023
+               to the mirror X-axis, around the vehicle Z-axis (right-hand rule).
+               0 = Mirror in default position. Exact position (yaw relative to vehicle X-axis) is vehicle dependent.
+               100 = Maximum yaw. Mirror rotated clockwise as much as possible around Z-axis.
+               -100 = Minimum yaw. Mirror rotated counter-clockwise as much as possible around Z-axis.
+  comment: A positive yaw indicates that the mirror has been adjusted to get a better view on objects
+           on the right side of the vehicle.
 
 IsHeatingOn:
   datatype: boolean
