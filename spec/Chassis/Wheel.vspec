@@ -50,7 +50,6 @@ Tire.Pressure:
   type: sensor
   unit: kPa
   description: Tire pressure in kilo-Pascal.
-
 Tire.IsPressureLow:
   datatype: boolean
   type: sensor
@@ -61,7 +60,19 @@ Tire.Temperature:
   type: sensor
   unit: celsius
   description: Tire temperature in Celsius.
+  deprecation: v6.0 - use RubberTemperature or AirTemperature instead.
 
+Tire.RubberTemperature:
+  datatype: float
+  type: sensor
+  unit: celsius
+  description: Rubber temperature of the tire in Celsius.
+
+Tire.AirTemperature:
+  datatype: float
+  type: sensor
+  unit: celsius
+  description: Air temperature inside the tire in Celsius.
 
 #
 # Wheel signals
