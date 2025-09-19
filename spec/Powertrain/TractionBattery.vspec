@@ -110,13 +110,13 @@ CellVoltage.CellVoltages:
 GrossCapacity:
   datatype: uint16
   type: attribute
-  unit: kWh
+  unit: Ah
   description: Gross capacity of the battery.
 
 NetCapacity:
   datatype: uint16
   type: sensor
-  unit: kWh
+  unit: Ah
   description: Total net capacity of the battery considering aging.
 
 StateOfHealth:
