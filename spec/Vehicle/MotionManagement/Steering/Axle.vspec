@@ -16,19 +16,27 @@
 
 # See vehicle_motion_management.md for more info
 
-RackPositionOffsetTarget:
-  datatype: int16
-  type: actuator
-  unit: mm
-  description: Rack position offset request to the axle steering actuator (for steer-by-wire),
-               added to the actuator internal calculated set-point.
-               Positive values without internal calculated set point change lead to a left movement of the vehicle (based on ISO8855).
+#########################################################################################
+# General settings, used regardless of whether the vehicle use RackPosition or SteerAngle
+#########################################################################################
 
-RackPositionOffsetTargetMode:
+PositionTargetMode:
+  datatype: uint8
+  type: actuator
+  description: Mode used for controlling position interface of axle steering actuator.
+               0 indicates interface disabled. Other values activate vehicle specific modes.
+
+
+PositionOffsetTargetMode:
   datatype: uint8
   type: actuator
   description: Mode used for controlling rack position offset interface of axle steering actuator.
                0 indicates interface disabled. Other values activate vehicle specific modes.
+
+
+#########################################################################################
+# RackPosition signals
+#########################################################################################
 
 RackPosition:
   datatype: int16
@@ -37,6 +45,15 @@ RackPosition:
   description: Represents the current position of the steering rack on axle steering actuator.
                Positive values leads to a left turn of the vehicle (based on ISO8855).
 
+# Note: Old signals kept for now, can be removed first in next major release
+
+RackPositionTargetMode:
+  deprecation: v5.2 - Replaced by PositionTargetMode.
+  datatype: uint8
+  type: actuator
+  description: Mode used for controlling rack position interface of axle steering actuator.
+               0 indicates interface disabled. Other values activate vehicle specific modes.
+
 RackPositionTarget:
   datatype: int16
   type: actuator
@@ -44,8 +61,53 @@ RackPositionTarget:
   description: Rack position request to the axle steering actuator (external set-point).
                Positive values lead to a left turn of the vehicle (based on ISO8855).
 
-RackPositionTargetMode:
+RackPositionOffsetTargetMode:
+  deprecation: v5.2 - Replaced by PositionOffsetTarget.
   datatype: uint8
   type: actuator
-  description: Mode used for controlling rack position interface of axle steering actuator.
+  description: Mode used for controlling position offset interface of axle steering actuator.
                0 indicates interface disabled. Other values activate vehicle specific modes.
+
+RackPositionOffsetTarget:
+  datatype: int16
+  type: actuator
+  unit: mm
+  description: Rack position offset request to the axle steering actuator (for steer-by-wire),
+               added to the actuator internal calculated set-point.
+               Positive values without internal calculated set point change lead to a left movement of the vehicle (based on ISO8855).
+
+
+#########################################################################################
+# SteerAngle signals
+#########################################################################################
+
+
+# TODO 1 - Discuss if we want both the one below and Vehicle.Chassis.Axle.RowX.SteeringAngle
+# We have previously for VMM duplicated signals in some cases
+# see e.g. Vehicle.MotionManagement.Steering.SteeringWheel.Angle vs.
+# Vehicle.Chassis.SteeringWheel.Angle
+
+SteerAngle:
+  datatype: float
+  type: sensor
+  unit: degrees
+  description: Represents the current actuated steering angle of the steered wheels.
+               Signal orientation according ISO8855, single track model.
+  comment: Alternative signal to RackPosition.
+
+SteerAngleTarget:
+  datatype: float
+  type: actuator
+  unit: degrees
+  description: Steer angle request to the axle steering actuator (external set-point).
+               Signal orientation according ISO8855, single track model.
+  comment: Alternative signal to RackPositionTarget.
+
+SteerAngleOffsetTarget:
+  datatype: float
+  type: actuator
+  unit: degrees
+  description: Steer angle offset request to the axle steering actuator (for steer-by-wire),
+               added to the actuator internal calculated set-point.
+               Signal orientation according ISO8855, single track model.
+  comment: Alternative signal to RackPositionOffsetTarget.

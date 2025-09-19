@@ -100,6 +100,7 @@ A rotational speed request (e.g., 1000rpm) is realized by the eAxle. This mode i
 The defined steering signals are the main signals for interacting between vehicle motion features and the steering system on the front axle and are widely used in automotive industry.
 These signals are specified in a generic way to support various steering systems like electric power steering as well as Steer-by-Wire. Therefore, not all signals must necessarily be available/applicable.
 The signal specification supports requests on steering wheel (torque and angle) and the steering rack position which is linked to the steered wheels of the vehicle.
+As an alternative to steering rack position it is possible to use steer angle (single track model).
 The signal requests are further divided in "offset" and "target" signals, where an offset value is used additive to the functionality of the steering system and a "target" value is used as absolute external set-point for steering actuation.
 The different requests are controlled by dedicated "mode" signals for enabling and disabling the steering requests.
 
