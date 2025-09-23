@@ -7,13 +7,23 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #
-# Software supervision attributes and signals
+# Software supervision attributes and signals, based on AUTOSAR standard
 #
 
-IsAliveOrDeadline:
+IsAliveTriggered:
   datatype: boolean
   type: sensor
-  description: xxxxxxxxxxxxx
+  description: Whether the alive supervision was triggered
+
+IsDeadlineTriggered:
+  datatype: boolean
+  type: sensor
+  description: Whether the deadline supervision was triggered
+
+IsLogicalTriggered:
+  datatype: boolean
+  type: sensor
+  description: Whether the logical supervision was triggered
 
 IsWatchdogTriggered:
   datatype: boolean
