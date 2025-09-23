@@ -1,0 +1,43 @@
+# Copyright (c) 2025 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Resources attributes and signals
+#
+
+Power:
+  datatype: float
+  type: sensor
+  unit: W
+  description: Power consumption
+
+Temperature:
+  datatype: float
+  type: sensor
+  unit: celsius
+  description: Instance temperature
+
+Utilization:
+  type: branch
+  description: Resources utilization branch
+
+Utilization.CPU:
+  datatype: float
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: CPU utilization
+
+Utilization.Memory:
+  datatype: float
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Memory utilization
