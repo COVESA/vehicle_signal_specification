@@ -7,13 +7,14 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #
-# Root of the vehicle health management branch
+# Zonal control unit attributes and signals
 #
-ControlUnits:
-  type: branch
-  description: Root of the vehicle health management branch
 
-ControlUnits.CentralControlUnit:
+#include Generic.vspec
+
+End:
   type: branch
-  description: Central control unit
-#include ControlUnit/CentralControlUnit.vspec ControlUnits.CentralControlUnit
+  instances:
+    - [1,3]
+  description: End control unit
+#include Generic.vspec End

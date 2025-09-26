@@ -10,10 +10,10 @@
 # Generic control unit attributes and signals
 #
 
-LocalHealth:
+Health:
   type: branch
-  description: LocalHealth attributes and signals
-#include LocalHealth/LocalHealth.vspec LocalHealth
+  description: Health attributes and signals
+#include Health/Health.vspec Health
 
 ID:
   datatype: uint8

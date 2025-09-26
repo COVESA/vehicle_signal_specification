@@ -16,19 +16,23 @@ Power:
   unit: W
   description: Power consumption
 
-Temp:
+Temperature:
   datatype: float
   type: sensor
   unit: celsius
   description: Instance temperature
 
-CpuUtil:
+Utilization:
+  type: branch
+  description: Resources utilization branch
+
+Utilization.CPU:
   datatype: float
   type: sensor
   unit: percent
   description: CPU utilization
 
-MemUtil:
+Utilization.Memory:
   datatype: float
   type: sensor
   unit: percent

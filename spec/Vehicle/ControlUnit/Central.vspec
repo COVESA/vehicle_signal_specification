@@ -7,15 +7,16 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #
-# Network attributes and signals
+# Central control unit attributes and signals
 #
 
-IsCANTrafficOk:
-  datatype: boolean
-  type: sensor
-  description: CAN traffic status
+#include Generic.vspec
 
-IsETHTrafficOk:
-  datatype: boolean
-  type: sensor
-  description: Ethernet traffic status
+Zonal:
+  type: branch
+  instances:
+    - [Front, Rear]
+    - [Left, Right]
+  description: Zonal control unit
+#include Zonal.vspec Zonal
+

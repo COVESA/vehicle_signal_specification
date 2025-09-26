@@ -7,17 +7,13 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #
-# Zonal control unit attributes and signals
+# Control unit branch
 #
-
-EndControlUnit:
+ControlUnit:
   type: branch
-  instances:
-    - EndControlUnit[1,3]
-  description: End control unit
-#include GenericControlUnit.vspec EndControlUnit
+  description: Root of the control unit branch
 
-Unit:
+ControlUnit.Central:
   type: branch
-  description: generic control unit attributes and signals
-#include GenericControlUnit.vspec Unit
+  description: Central control unit
+#include Central.vspec ControlUnit.Central

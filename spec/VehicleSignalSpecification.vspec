@@ -209,4 +209,4 @@ Vehicle.Connectivity:
 
 #include Vehicle/MotionManagement.vspec Vehicle
 
-#include Vehicle/HealthManagement/HealthManagement.vspec Vehicle
+#include Vehicle/ControlUnit/ControlUnit.vspec Vehicle
