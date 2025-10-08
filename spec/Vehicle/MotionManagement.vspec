@@ -32,3 +32,8 @@ MotionManagement.Steering:
   type: branch
   description: MotionManagement related to steering.
 #include MotionManagement/Steering.vspec MotionManagement.Steering
+
+MotionManagement.Suspension:
+  type: branch
+  description: MotionManagement related to suspension.
+#include MotionManagement/Suspension.vspec MotionManagement.Suspension

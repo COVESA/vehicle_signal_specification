@@ -10,7 +10,7 @@ In modern vehicles multiple electronic controlled systems are interacting to rea
 Typically, the driver gives input e.g. using the steering wheel and the accelerator and brake pedals, but additional vehicle functions may have also requests towards the motion actuators.
 One example is that a traction control system may want to limit the performance due to slippery road conditions or that the emergency braking system requests braking.
 
-A number of signals have been added to VSS related to powertrain (eAxle), steering and braking.
+A number of signals have been added to VSS related to powertrain (eAxle), steering, suspension and braking.
 These signals may be used to define actuator interfaces to support a highly flexible functional deployment on different electronic control units.
 Vehicle motion functions like driver brake request, cooperative regenerative braking and traction control system may request target values for longitudinal control on vehicle, axle and wheel level.
 Therefore, generic interface signals for the braking systems are introduced which support an arbitration of the requested target values by minimum and maximum values.
@@ -51,6 +51,11 @@ If nothing else is specified, the following definitions and assumptions apply
   This means that a positive torque yields to a force in vehicle forward direction and a negative torque yields to a force in backward direction.
   Omega limits for eAxle system defined according. Positive sign for rotation in forward direction, negative sign for rotation in backward direction.
   So the sign of current omega of a eAxle indicated the current driving direction.
+
+* Signal orientation suspension system:
+  Requests are defined according to ISO 8855.
+  This means that a positive damping force is pointing upwards and a negative force is pointing downwards.
+  A positive roll torque indicates a torque that tends to depress the right-hand side of the vehicle and lift the left-hand side.
 
 * All signals are defined in an automotive safety context, i.e. ISO 26262 has to be considered while using specified signals in vehicle applications.
 
