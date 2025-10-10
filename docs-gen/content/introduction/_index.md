@@ -10,7 +10,7 @@ chapter: false
 The diagram below shows a generated tree of the VSS. Here you can see a mapping for the current catalog of signals related to vehicles. Click a Branch Node to expand or collapse the tree. (Slower animation while pressing the altKey ("option" key for Mac OS-X).)
 
 
-{{< radialcluster >}}
+{{< radial >}}
 
 ---
 ## Current Population of the model - in respect to VSS Types and Datatypes
@@ -18,11 +18,11 @@ The diagram below shows a generated tree of the VSS. Here you can see a mapping 
 
 Click on the nodes to highlight the links, or hover over the links to see their exact population.
 
-{{< parallelsets >}}
+{{< sankey >}}
 
 ---
 ## Releases and types
 
 How the model changed in major releases.
 
-{{< donut_chart >}}
+{{< piechart >}}
