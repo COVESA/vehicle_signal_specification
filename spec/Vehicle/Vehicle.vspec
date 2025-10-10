@@ -204,15 +204,15 @@ Speed:
   description: Vehicle speed.
 
 TraveledDistance:
-  datatype: float
+  datatype: uint32
   type: sensor
-  unit: km
+  unit: m
   description: Odometer reading, total distance traveled during the lifetime of the vehicle.
 
 TraveledDistanceSinceStart:
-  datatype: float
+  datatype: uint32
   type: sensor
-  unit: km
+  unit: m
   description: Distance traveled since start of current trip.
   comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
            A trip is considered to end when engine is no longer enabled.
@@ -240,9 +240,9 @@ TripDuration:
            A trip is considered to end when engine is no longer enabled.
 
 TripMeterReading:
-  datatype: float
+  datatype: uint32
   type: actuator
-  unit: km
+  unit: m
   description: Trip meter reading.
   comment: The trip meter is an odometer that can be manually reset by the driver
 
