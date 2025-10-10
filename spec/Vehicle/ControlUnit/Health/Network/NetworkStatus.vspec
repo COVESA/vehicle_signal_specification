@@ -10,7 +10,7 @@
 # Generic network attributes and signals
 #
 
-IsTrafficOk:
+IsNetworkOK:
   datatype: boolean
   type: sensor
-  description: Traffic status
+  description: Network status. True = No network problems detected. False = Network problems detected.

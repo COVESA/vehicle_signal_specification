@@ -30,10 +30,14 @@ Utilization.CPU:
   datatype: float
   type: sensor
   unit: percent
+  min: 0
+  max: 100
   description: CPU utilization
 
 Utilization.Memory:
   datatype: float
   type: sensor
   unit: percent
+  min: 0
+  max: 100
   description: Memory utilization
