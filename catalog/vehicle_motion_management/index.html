@@ -23,20 +23,20 @@
     <meta itemprop="description" content="Introduction In modern vehicles multiple electronic controlled systems are interacting to realize the overall vehicle motion in all physical directions. Typically, the driver gives input e.g. using the steering wheel and the accelerator and brake pedals, but additional vehicle functions may have also requests towards the motion actuators. One example is that a traction control system may want to limit the performance due to slippery road conditions or that the emergency braking system requests braking.">
     <meta itemprop="datePublished" content="2019-08-04T12:46:30+02:00">
     <meta itemprop="dateModified" content="2019-08-04T12:46:30+02:00">
-    <meta itemprop="wordCount" content="1405">
+    <meta itemprop="wordCount" content="1422">
     <title>Vehicle Motion Management :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
 
-    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1759845612" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1759845612" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/nucleus.css?1759845612" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/auto-complete.css?1759845612" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1759845612" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1759845612" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/fonts.css?1759845612" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1759845612" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/theme.css?1759845612" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/theme-blue.css?1759845612" rel="stylesheet" id="R-variant-style">
-    <link href="/vehicle_signal_specification/css/chroma-learn.css?1759845612" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="/vehicle_signal_specification/css/variant.css?1759845612" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/print.css?1759845612" rel="stylesheet" media="print">
-    <script src="/vehicle_signal_specification/js/variant.js?1759845612"></script>
+    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1760364533" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1760364533" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/nucleus.css?1760364533" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/auto-complete.css?1760364533" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1760364533" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1760364533" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/fonts.css?1760364533" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1760364533" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/theme.css?1760364533" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/theme-blue.css?1760364533" rel="stylesheet" id="R-variant-style">
+    <link href="/vehicle_signal_specification/css/chroma-learn.css?1760364533" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/vehicle_signal_specification/css/variant.css?1760364533" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/print.css?1760364533" rel="stylesheet" media="print">
+    <script src="/vehicle_signal_specification/js/variant.js?1760364533"></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..';
@@ -211,6 +211,7 @@ There may be a transmission/gearbox between the electrical axle and the actual w
 <p>The defined steering signals are the main signals for interacting between vehicle motion features and the steering system on the front axle and are widely used in automotive industry.
 These signals are specified in a generic way to support various steering systems like electric power steering as well as Steer-by-Wire. Therefore, not all signals must necessarily be available/applicable.
 The signal specification supports requests on steering wheel (torque and angle) and the steering rack position which is linked to the steered wheels of the vehicle.
+As an alternative to steering rack position it is possible to use steer angle (single track model).
 The signal requests are further divided in &ldquo;offset&rdquo; and &ldquo;target&rdquo; signals, where an offset value is used additive to the functionality of the steering system and a &ldquo;target&rdquo; value is used as absolute external set-point for steering actuation.
 The different requests are controlled by dedicated &ldquo;mode&rdquo; signals for enabling and disabling the steering requests.</p>
 <p>Examples: Driving in a left curve and applying external requests to steering system.
@@ -301,12 +302,12 @@ Depending on the concrete use case a combination of parallel requested interface
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/vehicle_signal_specification/js/auto-complete.js?1759845612" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1759845612" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1759845612" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1759845612" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1759845612" defer></script>
-        <script src="/vehicle_signal_specification/js/search.js?1759845612" defer></script>
+        <script src="/vehicle_signal_specification/js/auto-complete.js?1760364533" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1760364533" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1760364533" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1760364533" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1760364533" defer></script>
+        <script src="/vehicle_signal_specification/js/search.js?1760364533" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation">
         <hr class="padding">
@@ -413,8 +414,8 @@ Depending on the concrete use case a combination of parallel requested interface
         </div>
       </div>
     </aside>
-    <script src="/vehicle_signal_specification/js/clipboard.min.js?1759845612" defer></script>
-    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1759845612" defer></script>
-    <script src="/vehicle_signal_specification/js/theme.js?1759845612" defer></script>
+    <script src="/vehicle_signal_specification/js/clipboard.min.js?1760364533" defer></script>
+    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1760364533" defer></script>
+    <script src="/vehicle_signal_specification/js/theme.js?1760364533" defer></script>
   </body>
 </html>
