@@ -123,3 +123,42 @@ IsFuelPortFlapOpen:
   datatype: boolean
   type: actuator
   description: Status of the fuel port flap(s). True if at least one is open.
+
+InstantantFuelEconomy:
+  datatype: float
+  type: sensor
+  unit: km/l
+  description: Real-time instantaneous fuel economy calculated over a short time window.
+  comment: This value represents the current fuel efficiency at any given moment during vehicle operation.
+           It is calculated based on the distance traveled and fuel consumed over a brief sampling period (typically around 500ms).
+           The calculation compares the vehicle state before and after the sampling window to determine instantaneous efficiency.
+           This metric refreshes frequently and can fluctuate significantly based on driving conditions, acceleration, and terrain.
+           Unlike average fuel economy measurements, this provides immediate feedback on current driving efficiency.
+
+CumulativeFuelEconomy:
+  datatype: float
+  type: sensor
+  unit: km/l
+  description: Cumulative average fuel economy calculated from vehicle start or last user reset.
+  comment: This represents the accumulated fuel economy over the entire period since the last reset.
+           Unlike trip-based measurements, this provides a long-term average of fuel efficiency.
+
+DriveFuelEconomy:
+  datatype: float
+  type: sensor
+  unit: km/l
+  description: Average fuel economy for the current drive cycle, calculated from engine start to current time.
+  comment: This represents the fuel efficiency during the active driving session.
+           The value is reset when the engine is no longer enabled or when the user manually initiates a drive fuel economy reset.
+           After reset, it is recalculated from zero when the engine restarts or the new drive cycle begins.
+           It provides real-time average fuel economy for the ongoing drive cycle.
+
+AfterRefuelingFuelEconomy:
+  datatype: float
+  type: sensor
+  unit: km/l
+  description: Average fuel economy calculated from the most recent refueling event to the current time.
+  comment: This value represents the fuel efficiency for the period between consecutive refueling events.
+           It is automatically reset to zero when refueling is detected and begins accumulating from that point.
+           The calculation continues until the next refueling occurs.
+           This metric is useful for tracking fuel efficiency improvements or changes between fill-ups.
