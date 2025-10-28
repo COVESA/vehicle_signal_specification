@@ -1,0 +1,64 @@
+# Copyright (c) 2025 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# See vehicle_motion_management.md for more info
+
+
+DampingPrioTarget:
+  type: actuator
+  datatype: uint8
+  unit: percent
+  min: 0
+  max: 100
+  description: Prioritization target for damping control
+               0% = damping control by damping actuator (e.g. base functions)
+               100% = damping control by VMM system (e.g. vehicle dynamics)
+
+RollTorqueTarget:
+  type: actuator
+  datatype: int16
+  unit: Nm
+  description: Roll torque request on vehicle level.
+               Signal orientation according to ISO8855.
+
+RollPrioTarget:
+  type: actuator
+  datatype: uint8
+  unit: percent
+  min: 0
+  max: 100
+  description: Prioritization target for anti-roll control
+               0% = anti-roll control by anti-roll actuator (e.g. base function)
+               100% = anti-roll control by VMM system (e.g. vehicle dynamics)
+
+RollTorqueDistributionFrontMaximum:
+  type: actuator
+  datatype: uint8
+  unit: percent
+  min: 0
+  max: 100
+  description: Maximum distribution range request of roll torque to front axle.
+               0% = Complete roll torque shall be shifted to rear axle
+               100% = Complete roll torque may be shifted to front axle
+
+RollTorqueDistributionFrontMinimum:
+  type: actuator
+  datatype: uint8
+  unit: percent
+  min: 0
+  max: 100
+  description: Minimum distribution range request of roll torque to front axle.
+               0% = Complete roll torque may be shifted to rear axle
+               100% = Complete roll torque shall be shifted to front axle
+
+Axle:
+  type: branch
+  instances:
+    - Row[1,2]
+  description: MotionManagement for suspension for a specific axle.
+#include Suspension/Axle.vspec Axle

@@ -6,14 +6,6 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-# Copyright (c) 2024 Contributors to COVESA
-#
-# This program and the accompanying materials are made available under the
-# terms of the Mozilla Public License 2.0 which is available at
-# https://www.mozilla.org/en-US/MPL/2.0/
-#
-# SPDX-License-Identifier: MPL-2.0
-
 # See vehicle_motion_management.md for more info
 
 #########################################################################################
@@ -44,6 +36,7 @@ RackPosition:
   unit: mm
   description: Represents the current position of the steering rack on axle steering actuator.
                Positive values leads to a left turn of the vehicle (based on ISO8855).
+  comment: Alternative signal to SteerAngle.
 
 RackPositionTargetMode:
   deprecation: v5.2 - Replaced by PositionTargetMode.
@@ -58,6 +51,7 @@ RackPositionTarget:
   unit: mm
   description: Rack position request to the axle steering actuator (external set-point).
                Positive values lead to a left turn of the vehicle (based on ISO8855).
+  comment: Alternative signal to SteerAngleTarget.
 
 RackPositionOffsetTargetMode:
   deprecation: v5.2 - Replaced by PositionOffsetTarget.
@@ -73,6 +67,7 @@ RackPositionOffsetTarget:
   description: Rack position offset request to the axle steering actuator (for steer-by-wire),
                added to the actuator internal calculated set-point.
                Positive values without internal calculated set point change lead to a left movement of the vehicle (based on ISO8855).
+  comment: Alternative signal to SteerAngleOffsetTarget.
 
 
 #########################################################################################
