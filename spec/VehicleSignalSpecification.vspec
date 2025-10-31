@@ -95,6 +95,14 @@ Vehicle.Powertrain.FuelSystem:
 # fuels system branch created above.
 #include Powertrain/FuelSystem.vspec Vehicle.Powertrain.FuelSystem
 
+#
+# The Range Extender branch for Extended Range Electric Vehicle (EREV) specific signals.
+#
+Vehicle.Powertrain.RangeExtender:
+  type: branch
+  description: Extended Range Electric Vehicle (EREV) specific data.
+
+#include Powertrain/RangeExtender.vspec Vehicle.Powertrain.RangeExtender
 
 
 #
