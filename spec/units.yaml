@@ -81,6 +81,12 @@ celsius:
   quantity: temperature
   allowed-datatypes: ['numeric']
 
+Fahrenheit:
+  definition: Temperature measured in degree Fahrenheit
+  unit: degree Fahrenheit
+  quantity: temperature
+  allowed-datatypes: ['numeric']
+
 # Angle
 
 degrees:
