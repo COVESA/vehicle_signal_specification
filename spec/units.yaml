@@ -321,15 +321,16 @@ mpg-uk:
   quantity: distance-per-volume
   allowed-datatypes: ['numeric']
 mpge:
-  definition: Miles per gallon gasoline equivalent for electric vehicles
-  unit: miles per gallon equivalent
+  definition: Miles per US gallon gasoline equivalent (33.7 kWh) for electric vehicles
+  unit: miles per US gallon equivalent
   quantity: distance-per-volume
   allowed-datatypes: ['numeric']
 mpg:
   definition: Alias for mpg-us (Distance per volume measured in miles per US gallon)
-  unit: miles per gallon
+  unit: miles per US gallon
   quantity: distance-per-volume
   allowed-datatypes: ['numeric']
+  deprecation: "Deprecated in V6.0 — replaced by 'mpg-us' to distinguish from 'mpg-uk'"
 km/l:
   definition: Distance per volume measured in kilometers per liter
   unit: kilometers per liter
