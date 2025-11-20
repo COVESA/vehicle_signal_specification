@@ -109,6 +109,14 @@ IsFuelLevelLow:
   type: sensor
   description: Indicates that the fuel level is low (e.g. <50km range).
 
+IsFuelLevelEmpty:
+  datatype: boolean
+  type: sensor
+  description: Indicates that the fuel gauge on the instrument cluster displays empty (0).
+  comment: When this signal is true, the fuel gauge displays empty (0), but the vehicle typically still has reserve fuel
+           allowing for some additional driving range depending on the vehicle design.
+           This represents the displayed empty state, not actual tank empty condition.
+
 RefuelPortPosition:
   datatype: string[]
   type: attribute
