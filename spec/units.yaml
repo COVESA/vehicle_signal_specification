@@ -310,11 +310,27 @@ l/h:
 
 # Distance per volume
 
-mpg:
-  definition: Distance per volume measured in miles per gallon
-  unit: miles per gallon
+mpg-us:
+  definition: Distance per volume measured in miles per US gallon (3.785 liters)
+  unit: miles per US gallon
   quantity: distance-per-volume
   allowed-datatypes: ['numeric']
+mpg-uk:
+  definition: Distance per volume measured in miles per Imperial gallon (4.546 liters)
+  unit: miles per Imperial gallon
+  quantity: distance-per-volume
+  allowed-datatypes: ['numeric']
+mpge:
+  definition: Miles per US gallon gasoline equivalent (33.7 kWh) for electric vehicles
+  unit: miles per US gallon equivalent
+  quantity: distance-per-volume
+  allowed-datatypes: ['numeric']
+mpg:
+  definition: Alias for mpg-us (Distance per volume measured in miles per US gallon)
+  unit: miles per US gallon
+  quantity: distance-per-volume
+  allowed-datatypes: ['numeric']
+  deprecation: "Deprecated in V6.0 — replaced by 'mpg-us' to distinguish from 'mpg-uk'"
 km/l:
   definition: Distance per volume measured in kilometers per liter
   unit: kilometers per liter
