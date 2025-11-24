@@ -58,20 +58,20 @@ Tire.IsPressureLow:
 Tire.Temperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Tire temperature in Celsius.
   deprecation: v6.0 - use RubberTemperature or AirTemperature instead.
 
 Tire.RubberTemperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Rubber temperature of the tire in Celsius.
 
 Tire.AirTemperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Air temperature inside the tire in Celsius.
 
 #

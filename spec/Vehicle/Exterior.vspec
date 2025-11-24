@@ -9,7 +9,7 @@
 AirTemperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Air temperature outside the vehicle.
 
 Humidity:

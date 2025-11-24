@@ -124,7 +124,7 @@ CoolantTemperature:
   deprecation: v5.0 OBD-branch is deprecated.
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: PID 05 - Coolant temperature
 
 ShortTermFuelTrim1:
@@ -194,7 +194,7 @@ IntakeTemp:
   deprecation: v5.0 OBD-branch is deprecated.
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: PID 0F - Intake temperature
 
 MAF:
@@ -392,14 +392,14 @@ Catalyst.Bank1.Temperature1:
   deprecation: v5.0 OBD-branch is deprecated.
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: PID 3C - Catalyst temperature from bank 1, sensor 1
 
 Catalyst.Bank1.Temperature2:
   deprecation: v5.0 OBD-branch is deprecated.
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: PID 3E - Catalyst temperature from bank 1, sensor 2
 
 Catalyst.Bank2:
@@ -411,14 +411,14 @@ Catalyst.Bank2.Temperature1:
   deprecation: v5.0 OBD-branch is deprecated.
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: PID 3D - Catalyst temperature from bank 2, sensor 1
 
 Catalyst.Bank2.Temperature2:
   deprecation: v5.0 OBD-branch is deprecated.
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: PID 3F - Catalyst temperature from bank 2, sensor 2
 
 DriveCycleStatus:
@@ -477,7 +477,7 @@ AmbientAirTemperature:
   deprecation: v5.0 OBD-branch is deprecated.
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: PID 46 - Ambient air temperature
 
 ThrottlePositionB:
@@ -653,7 +653,7 @@ OilTemperature:
   deprecation: v5.0 OBD-branch is deprecated.
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: PID 5C - Engine oil temperature
 
 FuelInjectionTiming:

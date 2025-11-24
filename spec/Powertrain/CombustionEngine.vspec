@@ -158,7 +158,7 @@ ECT:
   deprecation: v5.0 moved to EngineCoolant.Temperature
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Engine coolant temperature.
 
 #
@@ -168,7 +168,7 @@ EOT:
   deprecation: v5.0 moved to EngineOil.Temperature
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Engine oil temperature.
 
 #
@@ -208,7 +208,7 @@ EngineOil.LifeRemaining:
 EngineOil.Temperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: EOT, Engine oil temperature.
 
 #
@@ -325,7 +325,7 @@ DieselParticulateFilter:
 DieselParticulateFilter.InletTemperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Inlet temperature of Diesel Particulate Filter.
 
 #
@@ -334,7 +334,7 @@ DieselParticulateFilter.InletTemperature:
 DieselParticulateFilter.OutletTemperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Outlet temperature of Diesel Particulate Filter.
 
 #

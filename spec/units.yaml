@@ -75,11 +75,18 @@ cm^3:
 
 # Temperature
 
+Celsius:
+  definition: Temperature measured in degree Celsius
+  unit: degree Celsius
+  quantity: temperature
+  allowed-datatypes: ['numeric']
+
 celsius:
   definition: Temperature measured in degree celsius
   unit: degree celsius
   quantity: temperature
   allowed-datatypes: ['numeric']
+  deprecation: v6.0 - replaced with Celsius.
 
 # Angle
 
