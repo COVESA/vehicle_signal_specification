@@ -65,7 +65,7 @@ TimeInUse:
 Temperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Motor temperature.
 
 
@@ -76,7 +76,7 @@ CoolantTemperature:
   deprecation: v5.0 moved to EngineCoolant.Temperature
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Motor coolant temperature (if applicable).
 
 #

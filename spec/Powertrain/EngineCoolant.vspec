@@ -15,7 +15,7 @@ Capacity:
 Temperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Engine coolant temperature.
 
 Level:
