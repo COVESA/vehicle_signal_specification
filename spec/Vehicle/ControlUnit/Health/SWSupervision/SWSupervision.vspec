@@ -1,0 +1,31 @@
+# Copyright (c) 2025 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Software supervision attributes and signals, based on AUTOSAR standard
+#
+
+IsAliveTriggered:
+  datatype: boolean
+  type: sensor
+  description: Whether the alive supervision was triggered
+
+IsDeadlineTriggered:
+  datatype: boolean
+  type: sensor
+  description: Whether the deadline supervision was triggered
+
+IsLogicalTriggered:
+  datatype: boolean
+  type: sensor
+  description: Whether the logical supervision was triggered
+
+IsWatchdogTriggered:
+  datatype: boolean
+  type: sensor
+  description: Whether the watchdog deadline was triggered
