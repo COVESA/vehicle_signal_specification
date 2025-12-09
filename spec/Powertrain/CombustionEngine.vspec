@@ -131,7 +131,7 @@ IsRunning:
 # Engine rotations per minute
 #
 Speed:
-  datatype: uint16
+  datatype: float
   type: sensor
   unit: rpm
   description: Engine speed measured as rotations per minute.
