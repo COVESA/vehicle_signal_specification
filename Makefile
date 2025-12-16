@@ -45,9 +45,6 @@ franca:
 go:
 	vspec export go ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.go
 
-graphql:
-	vspec export graphql ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.graphql.ts
-
 id:
 	vspec export id ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.vspec
 
@@ -70,6 +67,8 @@ samm:
 	vspec export samm ${COMMON_ARGS} ${COMMON_VSPEC_ARG} --target-folder samm
 	cd samm && tar -czvf ../vss_samm.tar.gz * && cd ..
 
+s2dm:
+	vspec export s2dm ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.graphql
 yaml:
 	vspec export yaml ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.yaml
 

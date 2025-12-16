@@ -81,13 +81,6 @@ Celsius:
   quantity: temperature
   allowed-datatypes: ['numeric']
 
-celsius:
-  definition: Temperature measured in degree celsius
-  unit: degree celsius
-  quantity: temperature
-  allowed-datatypes: ['numeric']
-  deprecation: v6.0 - replaced with Celsius.
-
 Fahrenheit:
   definition: Temperature measured in degree Fahrenheit
   unit: degree Fahrenheit

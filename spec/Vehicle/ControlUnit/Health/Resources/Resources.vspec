@@ -19,7 +19,7 @@ Power:
 Temperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Instance temperature
 
 Utilization:
