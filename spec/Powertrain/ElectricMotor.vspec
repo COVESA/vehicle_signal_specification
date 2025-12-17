@@ -68,17 +68,6 @@ Temperature:
   unit: Celsius
   description: Motor temperature.
 
-
-#
-# Motor coolant temperature (if applicable)
-#
-CoolantTemperature:
-  deprecation: v5.0 moved to EngineCoolant.Temperature
-  datatype: float
-  type: sensor
-  unit: Celsius
-  description: Motor coolant temperature (if applicable).
-
 #
 # Engine coolant
 #

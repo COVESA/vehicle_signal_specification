@@ -151,18 +151,6 @@ Vehicle.Chassis:
 
 
 #
-# On-board Diagnostic (OBD) Branch
-#
-Vehicle.OBD:
-  type: branch
-  description: OBD data.
-
-# Include the OBD/OBD.vspec file and attach all its data under the
-# OBD branch created above.
-
-#include OBD/OBD.vspec Vehicle.OBD
-
-#
 # Driver
 #
 Vehicle.Driver:

@@ -24,7 +24,7 @@ vehicle implementation details.
 
 While the data in the VSS standard catalog aims to be vendor-independent,
 vendor specific extensions and adaptations complying with the VSS syntax rules can be specified
-(see [Overlays](/vehicle_signal_specification/rule_set/overlay/)).
+(see [Overlays](/vehicle_signal_specification/extensions/overlay/)).
 
 ### What's in
 * Standardized data definition for vehicle signals.
