@@ -64,20 +64,6 @@ CompressionRatio:
   type: attribute
   description: Engine compression ratio, specified in the format 'X:1', e.g. '9.2:1'.
 
-EngineOilCapacity:
-  deprecation: v5.0 moved to EngineOil.Capacity
-  datatype: float
-  type: attribute
-  description: Engine oil capacity in liters.
-  unit: l
-
-EngineCoolantCapacity:
-  deprecation: v5.0 moved to EngineCoolant.Capacity
-  datatype: float
-  type: attribute
-  description: Engine coolant capacity in liters.
-  unit: l
-
 MaxPower:
   datatype: uint16
   type: attribute
@@ -98,29 +84,6 @@ AspirationType:
   allowed: ['UNKNOWN', 'NATURAL', 'SUPERCHARGER', 'TURBOCHARGER']
   default: 'UNKNOWN'
   description: Type of aspiration (natural, turbocharger, supercharger etc).
-
-EngineOilLevel:
-  deprecation: v5.0 moved to EngineOil.Level
-  datatype: string
-  type: sensor
-  allowed: [
-    'CRITICALLY_LOW',  # Critically low, immediate action required
-    'LOW',             # Level below recommended range, but not critical
-    'NORMAL',          # Within normal range, no need for driver action
-    'HIGH',            # Level above recommended range, but not critical
-    'CRITICALLY_HIGH'  # Critically high, immediate action required
-    ]
-  description: Engine oil level.
-
-OilLifeRemaining:
-  deprecation: v5.0 moved to EngineOil.LifeRemaining
-  datatype: int32
-  type: sensor
-  description: Remaining engine oil life in seconds.
-               Negative values can be used to indicate that lifetime has been exceeded.
-  comment: In addition to this a signal a vehicle can report remaining time to service (including e.g. oil change)
-           by Vehicle.Service.TimeToService.
-  unit: s
 
 IsRunning:
   datatype: boolean
@@ -150,26 +113,6 @@ IdleHours:
   comment: Vehicles may calculate accumulated idle time for an engine.
            It might be based on engine speed (rpm) below a certain limit or any other mechanism.
   unit: h
-
-#
-# Engine coolant temperature
-#
-ECT:
-  deprecation: v5.0 moved to EngineCoolant.Temperature
-  datatype: float
-  type: sensor
-  unit: Celsius
-  description: Engine coolant temperature.
-
-#
-# Engine Oil Temperature
-#
-EOT:
-  deprecation: v5.0 moved to EngineOil.Temperature
-  datatype: float
-  type: sensor
-  unit: Celsius
-  description: Engine oil temperature.
 
 #
 # Engine oil

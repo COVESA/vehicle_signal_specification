@@ -29,16 +29,6 @@ OccupancyStatus:
   allowed: ['UNKNOWN', 'OCCUPIED', 'EMPTY']
   description: Occupancy status of the seat.
 
-Occupant:
-  deprecation: v5.0 - use data from Vehicle.Occupant.
-  type: branch
-  description: Occupant data.
-
-# Include the Cabin/Occupant.vspec file and attach all its data under the
-# Occupant branch created above.
-
-#include Seat/Occupant.vspec Occupant
-
 IsBelted:
   datatype: boolean
   type: sensor
@@ -107,20 +97,6 @@ Backrest.Recline:
 
 
 
-Backrest.Lumbar:
-  type: branch
-  description: Adjustable lumbar support mechanisms in seats allow the user to change the seat back shape.
-  deprecation: v5.0 - nested properties moved to Backrest.<Property>.
-
-Backrest.Lumbar.Support:
-  datatype: float
-  type: actuator
-  unit: percent
-  min: 0
-  max: 100
-  description: Lumbar support (in/out position). 0 = Innermost position. 100 = Outermost position.
-  deprecation: v5.0 - refactored to Backrest.LumbarSupport
-
 Backrest.LumbarSupport:
   datatype: float
   type: actuator
@@ -154,15 +130,6 @@ Backrest.BottomLumbarSupport:
   max: 100
   description: Bottom lumbar support (in/out position). 0 = Innermost position. 100 = Outermost position.
 
-Backrest.Lumbar.Height:
-  datatype: uint8
-  type: actuator
-  min: 0
-  unit: mm
-  description: Height of lumbar support. Position is relative within available movable range of the lumbar support.
-               0 = Lowermost position supported.
-  deprecation: v5.0 - refactored to Backrest.LumbarHeight
-
 Backrest.LumbarHeight:
   datatype: uint8
   type: actuator
@@ -170,21 +137,6 @@ Backrest.LumbarHeight:
   unit: mm
   description: Height of lumbar support. Position is relative within available movable range of the lumbar support.
                0 = Lowermost position supported.
-
-Backrest.SideBolster:
-  type: branch
-  description: Backrest side bolster (lumbar side support) settings.
-  deprecation: v5.0 - nested properties moved to Backrest.<Property>.
-
-Backrest.SideBolster.Support:
-  datatype: float
-  type: actuator
-  unit: percent
-  min: 0
-  max: 100
-  description: Side bolster support. 0 = Minimum support (widest side bolster setting).
-               100 = Maximum support.
-  deprecation: v5.0 - refactored to Backrest.SideBolsterSupport
 
 Backrest.SideBolsterSupport:
   datatype: float
@@ -299,28 +251,11 @@ NeckScarf:
 
 #---------------------- SWITCHES ----------------------
 
-Switch:
-  type: branch
-  description: Seat switch signals
-  deprecation: v5.0 - nested properties renamed.
-
-Switch.IsWarmerEngaged:
-  datatype: boolean
-  type: actuator
-  description: Warmer switch for Seat heater (HeatingCooling).
-  deprecation: v5.0 - refactored to IsWarmerSwitchEngaged
-
 IsWarmerSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Warmer switch for Seat heater.
   comment: Affects the property (HeatingCooling).
-
-Switch.IsCoolerEngaged:
-  datatype: boolean
-  type: actuator
-  description: Cooler switch for Seat heater (HeatingCooling).
-  deprecation: v5.0 - refactored to IsCoolerSwitchEngaged
 
 IsCoolerSwitchEngaged:
   datatype: boolean
@@ -328,23 +263,12 @@ IsCoolerSwitchEngaged:
   description: Cooler switch for Seat heater.
   comment: Affects the property (HeatingCooling).
 
-Switch.IsForwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seat forward switch engaged (Position).
-  deprecation: v5.0 - refactored to IsForwardSwitchEngaged
-
 IsForwardSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Seat forward switch engaged.
   comment: Affects the property (Position).
 
-Switch.IsBackwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seat backward switch engaged (Position).
-  deprecation: v5.0 - refactored to IsBackwardSwitchEngaged
 
 IsBackwardSwitchEngaged:
   datatype: boolean
@@ -352,23 +276,11 @@ IsBackwardSwitchEngaged:
   description: Seat backward switch engaged.
   comment: Affects the property (Position).
 
-Switch.IsUpEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seat up switch engaged (Height).
-  deprecation: v5.0 - refactored to IsUpSwitchEngaged
-
 IsUpSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Seat up switch engaged.
   comment: Affects the property (Height).
-
-Switch.IsDownEngaged:
-  datatype: boolean
-  type: actuator
-  description: Seat down switch engaged (Height).
-  deprecation: v5.0 - refactored to IsDownSwitchEngaged
 
 IsDownSwitchEngaged:
   datatype: boolean
@@ -376,24 +288,11 @@ IsDownSwitchEngaged:
   description: Seat down switch engaged.
   comment: Affects the property (Height).
 
-
-Switch.IsTiltForwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Tilt forward switch engaged (Tilt).
-  deprecation: v5.0 - refactored to IsTiltForwardSwitchEngaged
-
 IsTiltForwardSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Tilt forward switch engaged.
   comment: Affects the property (Tilt).
-
-Switch.IsTiltBackwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Tilt backward switch engaged (Tilt).
-  deprecation: v5.0 - refactored to IsTiltBackwardSwitchEngaged
 
 IsTiltBackwardSwitchEngaged:
   datatype: boolean
@@ -401,28 +300,11 @@ IsTiltBackwardSwitchEngaged:
   description: Tilt backward switch engaged.
   comment: Affects the property (Tilt).
 
-Switch.Backrest:
-  type: branch
-  description: Describes switches related to the backrest of the seat.
-  deprecation: v5.0 - nested properties refactored to Backrest.<Property>
-
-Switch.Backrest.IsReclineForwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Backrest recline forward switch engaged (Backrest.Recline).
-  deprecation: v5.0 - refactored to Backrest.IsReclineForwardSwitchEngaged
-
 Backrest.IsReclineForwardSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Backrest recline forward switch engaged.
   comment: Affects the property (Backrest.Recline).
-
-Switch.Backrest.IsReclineBackwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Backrest recline backward switch engaged (Backrest.Recline).
-  deprecation: v5.0 - refactored to Backrest.IsReclineBackwardSwitchEngaged
 
 Backrest.IsReclineBackwardSwitchEngaged:
   datatype: boolean
@@ -430,28 +312,11 @@ Backrest.IsReclineBackwardSwitchEngaged:
   description: Backrest recline backward switch engaged.
   comment: Affects the property (Backrest.Recline).
 
-Switch.Backrest.Lumbar:
-  type: branch
-  description: Switches for Backrest.Lumbar.
-  deprecation: v5.0 - nested properties refactored to Backrest.<Property>
-
-Switch.Backrest.Lumbar.IsMoreSupportEngaged:
-  datatype: boolean
-  type: actuator
-  description: Is switch for more lumbar support engaged (Backrest.Lumbar.Support).
-  deprecation: v5.0 - refactored to Backrest.IsMoreLumbarSupportSwitchEngaged
-
 Backrest.IsMoreLumbarSupportSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Is switch for more lumbar support engaged.
   comment: Affects the property (Backrest.LumbarSupport).
-
-Switch.Backrest.Lumbar.IsLessSupportEngaged:
-  datatype: boolean
-  type: actuator
-  description: Is switch for less lumbar support engaged (Backrest.Lumbar.Support).
-  deprecation: v5.0 - refactored to Backrest.IsLessLumbarSupportSwitchEngaged
 
 Backrest.IsLessLumbarSupportSwitchEngaged:
   datatype: boolean
@@ -459,23 +324,12 @@ Backrest.IsLessLumbarSupportSwitchEngaged:
   description: Is switch for less lumbar support engaged.
   comment: Affects the property (Backrest.LumbarSupport).
 
-Switch.Backrest.Lumbar.IsUpEngaged:
-  datatype: boolean
-  type: actuator
-  description: Lumbar up switch engaged (Backrest.Lumbar.Support).
-  deprecation: v5.0 - refactored to Backrest.IsLumbarUpSwitchEngaged
-
 Backrest.IsLumbarUpSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Lumbar up switch engaged.
   comment: Affects the property (Backrest.LumbarSupport).
 
-Switch.Backrest.Lumbar.IsDownEngaged:
-  datatype: boolean
-  type: actuator
-  description: Lumbar down switch engaged (Backrest.Lumbar.Support).
-  deprecation: v5.0 - refactored to Backrest.IsLumbarDownSwitchEngaged
 
 Backrest.IsLumbarDownSwitchEngaged:
   datatype: boolean
@@ -483,28 +337,11 @@ Backrest.IsLumbarDownSwitchEngaged:
   description: Lumbar down switch engaged.
   comment: Affects the property (Backrest.LumbarSupport).
 
-Switch.Backrest.SideBolster:
-  type: branch
-  description: Switches for Backrest.SideBolster.
-  deprecation: v5.0 - nested properties refactored to Backrest.<Property>
-
-Switch.Backrest.SideBolster.IsMoreSupportEngaged:
-  datatype: boolean
-  type: actuator
-  description: Is switch for more side bolster support engaged (Backrest.SideBolster.Support).
-  deprecation: v5.0 - refactored to Backrest.IsMoreSideBolsterSupportSwitchEngaged
-
 Backrest.IsMoreSideBolsterSupportSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Is switch for more side bolster support engaged.
   comment: Affects the property (Backrest.SideBolsterSupport).
-
-Switch.Backrest.SideBolster.IsLessSupportEngaged:
-  datatype: boolean
-  type: actuator
-  description: Is switch for less side bolster support engaged (Backrest.SideBolster.Support).
-  deprecation: v5.0 - refactored to Backrest.IsLessSideBolsterSupportSwitchEngaged
 
 Backrest.IsLessSideBolsterSupportSwitchEngaged:
   datatype: boolean
@@ -512,27 +349,11 @@ Backrest.IsLessSideBolsterSupportSwitchEngaged:
   description: Is switch for less side bolster support engaged.
   comment: Affects the property (Backrest.SideBolsterSupport).
 
-Switch.Seating:
-  type: branch
-  description: Describes switches related to the seating of the seat.
-  deprecation: v5.0 - nested properties moved to Seating.<Property>.
-
-Switch.Seating.IsForwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Is switch to increase seating length engaged (Seating.Length).
-  deprecation: v5.0 - refactored to Seating.IsForwardSwitchEngaged
-
 Seating.IsForwardSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Is switch to increase seating length engaged.
 
-Switch.Seating.IsBackwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Is switch to decrease seating length engaged (Seating.Length).
-  deprecation: v5.0 - refactored to Seating.IsBackwardSwitchEngaged
 
 Seating.IsBackwardSwitchEngaged:
   datatype: boolean
@@ -540,28 +361,11 @@ Seating.IsBackwardSwitchEngaged:
   description: Is switch to decrease seating length engaged.
   comment: Affects the property (Seating.Length).
 
-Switch.Headrest:
-  type: branch
-  description: Switches for Headrest.
-  deprecation: v5.0 - nested properties moved to to Headrest.<Property>
-
-Switch.Headrest.IsUpEngaged:
-  datatype: boolean
-  type: actuator
-  description: Headrest up switch engaged (Headrest.Height).
-  deprecation: v5.0 - refactored to to Headrest.IsUpSwitchEngaged
-
 Headrest.IsUpSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Headrest up switch engaged.
   comment: Affects the property (Headrest.Height).
-
-Switch.Headrest.IsDownEngaged:
-  datatype: boolean
-  type: actuator
-  description: Headrest down switch engaged (Headrest.Height).
-  deprecation: v5.0 - refactored to to Headrest.IsDownSwitchEngaged
 
 Headrest.IsDownSwitchEngaged:
   datatype: boolean
@@ -569,23 +373,11 @@ Headrest.IsDownSwitchEngaged:
   description: Headrest down switch engaged.
   comment: Affects the property (Headrest.Height).
 
-Switch.Headrest.IsForwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Headrest forward switch engaged (Headrest.Angle).
-  deprecation: v5.0 - refactored to Headrest.IsForwardSwitchEngaged
-
 Headrest.IsForwardSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Headrest forward switch engaged.
   comment: Affects the property (Headrest.Angle).
-
-Switch.Headrest.IsBackwardEngaged:
-  datatype: boolean
-  type: actuator
-  description: Headrest backward switch engaged (Headrest.Angle).
-  deprecation: v5.0 - refactored to to Headrest.IsBackwardSwitchEngaged
 
 Headrest.IsBackwardSwitchEngaged:
   datatype: boolean
@@ -593,28 +385,11 @@ Headrest.IsBackwardSwitchEngaged:
   description: Headrest backward switch engaged.
   comment: Affects the property (Headrest.Angle).
 
-Switch.Massage:
-  type: branch
-  description: Switches for Massage.
-  deprecation: v5.0 - nested properties reanmed
-
-Switch.Massage.IsIncreaseEngaged:
-  datatype: boolean
-  type: actuator
-  description: Increase massage level switch engaged (Massage.Level).
-  deprecation: v5.0 - refactored to IsIncreaseMassageLevelSwitchEngaged
-
 IsIncreaseMassageLevelSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Increase massage level switch engaged.
   comment: Affects the property (Massage.Level).
-
-Switch.Massage.IsDecreaseEngaged:
-  datatype: boolean
-  type: actuator
-  description: Decrease massage level switch engaged (Massage.Level).
-  deprecation: v5.0 - refactored to IsDecreaseMassageLevelSwitchEngaged
 
 IsDecreaseMassageLevelSwitchEngaged:
   datatype: boolean

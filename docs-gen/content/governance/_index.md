@@ -50,7 +50,6 @@ In addition to this the VSS repositores contain artifacts that currently are con
 * [VSS Github Wiki](https://github.com/COVESA/vehicle_signal_specification/wiki)
 * [VSS Tools Wiki](https://github.com/COVESA/vss-tools/wiki)
 * [Overlays and Profiles](https://github.com/COVESA/vehicle_signal_specification/tree/master/overlays)
-* [Contributed tools](https://github.com/COVESA/vss-tools/tree/master/contrib)
 
 The list of what is considered normative and non-normative is no static, it may change over time.
 

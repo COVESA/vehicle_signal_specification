@@ -38,13 +38,6 @@ RackPosition:
                Positive values leads to a left turn of the vehicle (based on ISO8855).
   comment: Alternative signal to SteerAngle.
 
-RackPositionTargetMode:
-  deprecation: v5.2 - Replaced by PositionTargetMode.
-  datatype: uint8
-  type: actuator
-  description: Mode used for controlling rack position interface of axle steering actuator.
-               0 indicates interface disabled. Other values activate vehicle specific modes.
-
 RackPositionTarget:
   datatype: int16
   type: actuator
@@ -52,13 +45,6 @@ RackPositionTarget:
   description: Rack position request to the axle steering actuator (external set-point).
                Positive values lead to a left turn of the vehicle (based on ISO8855).
   comment: Alternative signal to SteerAngleTarget.
-
-RackPositionOffsetTargetMode:
-  deprecation: v5.2 - Replaced by PositionOffsetTarget.
-  datatype: uint8
-  type: actuator
-  description: Mode used for controlling rack position offset interface of axle steering actuator.
-               0 indicates interface disabled. Other values activate vehicle specific modes.
 
 RackPositionOffsetTarget:
   datatype: int16
