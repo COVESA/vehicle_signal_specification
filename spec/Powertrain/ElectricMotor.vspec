@@ -47,7 +47,7 @@ MaxRegenTorque:
 # Motor rotations per minute
 #
 Speed:
-  datatype: int32
+  datatype: float
   type: sensor
   unit: rpm
   description: Motor rotational speed measured as rotations per minute. Negative values indicate reverse driving mode.
