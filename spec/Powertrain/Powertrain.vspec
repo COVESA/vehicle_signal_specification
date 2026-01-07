@@ -33,3 +33,99 @@ Type:
            be found in FuelSystem.SupportedFuelTypes and FuelSystem.SupportedFuels.
 
 #include include/PowerOptimize.vspec
+
+
+#
+# Internal combustion engine signals and attributes.
+#
+CombustionEngine:
+  type: branch
+  description: Engine-specific data, stopping at the bell housing.
+
+# Include the engine.vspec file and attach all its signals and attributes under the engine
+# branch created above.
+#include CombustionEngine.vspec CombustionEngine
+
+#
+# The transmission branch used to host the signals and attributes in transmission.vspec.
+#
+Transmission:
+  type: branch
+  description: Transmission-specific data, stopping at the drive shafts.
+
+# Include the transmission.vspec file and attach all its signals and attributes under the
+# transmission branch created above.
+#include Transmission.vspec Transmission
+
+
+#
+# The electric motor branch used to host the signals and attributes in ElectricMotor.vspec.
+#
+ElectricMotor:
+  type: branch
+  instances: ["Front","Rear","FrontLeft","FrontRight","RearLeft","RearRight"]
+  description: Electric Motor specific data.
+  comment: Instance Front to be used if the vehicle has a motor located at the front of the vehicle, serving front and possibly also rear axle.
+           Instance Rear to be used if the vehicle has a motor located at the rear of the vehicle, serving rear and possiblsy also front axle.
+           Instances with Left/Right intended to be used if vehicle has separate motors for left and right side.
+
+# Include the electric motor vspec file and attach all its signals and attributes under the
+# electric motor branch created above.
+#include ElectricMotor.vspec ElectricMotor
+
+
+#
+# The traction battery branch refers to signals and attributes related to the battery used by electrical
+# and hybrid vehicles for the electric motor.
+# It does not refer to signals and attributes related to the supply voltage battery used by
+# traditional vehicles with combustion engine
+#
+TractionBattery:
+  type: branch
+  description: Battery Management data.
+
+#include TractionBattery.vspec TractionBattery
+
+#
+# The Range Extender branch for Extended Range Electric Vehicle (EREV) specific signals.
+#
+RangeExtender:
+  type: branch
+  description: Extended Range Electric Vehicle (EREV) specific data.
+
+#include RangeExtender.vspec RangeExtender
+
+
+#
+# Default setup is a single (volume based) fuel system with a single tank
+# It can be customized as needed, see catalog/fuel_system.md
+
+FuelSystem:
+  type: branch
+  description: Fuel system data.
+#include VolumeFuelSystem.vspec FuelSystem
+# Tank integrated by default, not added to a separate branch
+#include FuelSystem/VolumeTank.vspec FuelSystem
+
+# See catalog/fuel_system.md for other examples
+
+FuelSystemType:
+  type: attribute
+  datatype: string
+  instantiate: false
+  default: "SINGLE_FUEL"
+  allowed: ["SINGLE_FUEL", "DUAL_FUEL", "BI_FUEL"]
+  description: defines the type of the fuel system in the vehicle;
+    SINGLE_FUEL - one fuel system with one fuel type
+    DUAL_FUEL - one fuel system with two fuel types
+    BI_FUEL - two fuel systems with one fuel type in each system
+
+
+#
+# The Range Extender branch for Extended Range Electric Vehicle (EREV) specific signals.
+#
+RangeExtender:
+  type: branch
+  description: Extended Range Electric Vehicle (EREV) specific data.
+
+#include RangeExtender.vspec RangeExtender

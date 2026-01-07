@@ -299,3 +299,15 @@ DieselParticulateFilter.DeltaPressure:
   type: sensor
   unit: Pa
   description: Delta Pressure of Diesel Particulate Filter.
+
+HybridType:
+  datatype: string
+  type: attribute
+  allowed: ['UNKNOWN', 'NOT_APPLICABLE', 'STOP_START', 'BELT_ISG', 'CIMG', 'PHEV']
+  default: 'UNKNOWN'
+  description: Defines the hybrid type of the vehicle.
+
+IsEngineStopStartEnabled:
+  datatype: boolean
+  type: sensor
+  description: Indicates whether eco start stop is currently enabled.
