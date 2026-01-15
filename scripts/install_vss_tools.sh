@@ -26,10 +26,10 @@
 # Either a released version or a pre-release, referenced with "--pre"
 # See https://pypi.org/project/vss-tools/
 #
-pip install --upgrade --pre vss-tools==6.0rc1
+# pip install --upgrade --pre vss-tools==6.0rc1
 #
 #
 # *********************** RELEASES ***************************
 # For releases we should link to specific released pypi version.
 #
-# pip install --upgrade vss-tools==5.0
+pip install --upgrade vss-tools==6.0
