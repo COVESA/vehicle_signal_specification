@@ -39,7 +39,7 @@ VersionVSS.Patch:
 VersionVSS.Label:
   datatype: string
   type: attribute
-  default: 'dev'
+  default: ''
   description: Label to further describe the version.
   comment: COVESA VSS project typically use dev for latest master, and empty string for released versions.
 

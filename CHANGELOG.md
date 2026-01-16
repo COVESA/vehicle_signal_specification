@@ -7,7 +7,7 @@ It includes changes that are included in released version, but also changes plan
 
 *This document only contains changes introduced in VSS 3.0 or later!*
 
-## Planned Changes VSS 6.0
+## VSS 6.0
 
 ### OBD Branch removed
 
@@ -22,9 +22,20 @@ String types can now be restricted by a RegExp pattern.
 Previously the documentation stated that default values could not be given for struct types.
 That is now supported.
 
+### Units Updates
+
+* `celsius` changed to `Celsius` (backward incompatible change)
+* `Fahrenheit` and some other units added
+* `mpg` unit deprecated
+
 ### Signal Updates
 
-* Signals for seats refacored (backward incompatible change)
+* Signals for seats refactored (backward incompatible change)
+* Engine speed signal unit changed to float (backward incompatible change)
+* Signals updated to use `Celsius` instead of `celsius` (backward incompatible change)
+* TraveledDistance and TripMeter signals changed to uint32 and meters (backward incompatible change)
+* Vehicle Health Management Signals added
+* Mirror signals reworked (backward incompatible change)
 
 ## VSS 5.0
 
