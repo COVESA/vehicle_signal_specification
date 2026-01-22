@@ -11,7 +11,7 @@
 # ************ MASTER *************''
 # For master (ongoing development) we typically rely on latest master of vss-tools
 #
-# pip install --upgrade git+https://github.com/COVESA/vss-tools@master
+pip install --upgrade git+https://github.com/COVESA/vss-tools@master
 
 # Examples for other scenarios below
 #
@@ -32,4 +32,4 @@
 # *********************** RELEASES ***************************
 # For releases we should link to specific released pypi version.
 #
-pip install --upgrade vss-tools==6.0
+# pip install --upgrade vss-tools==6.0

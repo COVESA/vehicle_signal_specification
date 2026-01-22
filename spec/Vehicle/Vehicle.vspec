@@ -21,7 +21,7 @@ VersionVSS:
 VersionVSS.Major:
   datatype: uint32
   type: attribute
-  default: 6
+  default: 7
   description: Supported Version of VSS - Major version.
 
 VersionVSS.Minor:
@@ -39,7 +39,7 @@ VersionVSS.Patch:
 VersionVSS.Label:
   datatype: string
   type: attribute
-  default: ''
+  default: 'dev'
   description: Label to further describe the version.
   comment: COVESA VSS project typically use dev for latest master, and empty string for released versions.
 
