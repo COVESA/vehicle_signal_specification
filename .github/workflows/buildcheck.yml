@@ -53,7 +53,7 @@ jobs:
           path: |
             vss.csv
             vss.fidl
-            vss.graphql.ts
+            vss.graphql
             vss.idl
             vss.json
             vss.jsonschema
