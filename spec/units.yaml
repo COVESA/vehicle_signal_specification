@@ -178,7 +178,7 @@ ns:
   quantity: duration
   allowed-datatypes: ['numeric']
 us:
-  definition: Duration measured in mikroseconds
+  definition: Duration measured in microseconds
   unit: mikrosecond
   quantity: duration
   allowed-datatypes: ['numeric']
