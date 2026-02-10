@@ -68,7 +68,7 @@ samm:
 	cd samm && tar -czvf ../vss_samm.tar.gz * && cd ..
 
 s2dm:
-	vspec export s2dm ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.graphql
+	vspec export s2dm ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o graphql
 yaml:
 	vspec export yaml ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.yaml
 
