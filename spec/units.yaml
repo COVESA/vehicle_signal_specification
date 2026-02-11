@@ -333,7 +333,7 @@ mpge:
   allowed-datatypes: ['numeric']
 mpg:
   definition: Alias for mpg-us (Distance per volume measured in miles per US gallon)
-  unit: miles per US gallon
+  unit: miles per US gallon (deprecated)
   quantity: distance-per-volume
   allowed-datatypes: ['numeric']
   deprecation: "Deprecated in V6.0 — replaced by 'mpg-us' to distinguish from 'mpg-uk'"
