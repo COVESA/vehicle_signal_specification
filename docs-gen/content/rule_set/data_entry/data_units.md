@@ -115,12 +115,14 @@ Unit files follow the syntax defined below:
 [
  <vss-unit-identifier>: # Typically unit abbreviation, like km/h or mm, but no special characters
     definition: <string>
-    [unit: <string>] # Full name of unit, optional, if not given assumed to be equal to vss-unit-identifier
+    [unit: <string>] # Full name of unit
     quantity: <string> # Quantity of the unit.
     [allowed-datatypes] : ['numeric', 'string', uint8', ...]] # Allowed datatypes in VSS standard catalog
     [deprecation: <reason>]
 ]*
 ```
+
+The `vss-unit-identifier` and the string specified as `unit` must be unique.
 
 The VSS term `quantity` corresponds roughly to the term `quantity` as defined in for example ISO 80000.
 Typical example are `length`, `mass` and `velocity` that all can be expressed in SI-units.
@@ -162,7 +164,7 @@ The reason should preferably list when and why the unit is deprecated, a hypothe
 ```yaml
   inch:
     definition: Distance measured in inches
-    unit: inch
+    unit: inch (deprecated)
     quantity: distance
     deprecation: V5.0 replaced by 'in'
   in:
@@ -170,6 +172,8 @@ The reason should preferably list when and why the unit is deprecated, a hypothe
     unit: inch
     quantity: distance
 ```
+
+Note that in the example above the `unit` field differs for the two signals, as unqiue names must be used.
 
 ## Quantity file syntax
 
