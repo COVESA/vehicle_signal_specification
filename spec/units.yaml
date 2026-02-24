@@ -236,7 +236,7 @@ posix-time:
   definition: Number of seconds which have passed since 00:00:00 UTC on Thursday, 1 January 1970
   unit: POSIX Timestamp
   quantity: datetime
-  allowed-datatypes: ['time_t']
+  allowed-datatypes: ['Time_t']
 
 # Pressure
 
