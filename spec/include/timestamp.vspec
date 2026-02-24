@@ -1,0 +1,23 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Identifier
+# Based on OAuth 2.0. Subject is the UserID inside the claim of the Issuer Domain.
+#
+
+Time_t:
+  type: struct
+
+Time_t.t_sec:
+  type: property
+  datatype: int64     # seconds (may use sentinel negative values)
+
+Time_t.t_nanosec:
+  type: property
+  datatype: uint32    # nanoseconds in [0, 1e9]
