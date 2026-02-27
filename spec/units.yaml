@@ -178,6 +178,7 @@ Ah:
   allowed-datatypes: ['numeric']
 
 # Duration
+
 ns:
   definition: Duration measured in nanoseconds
   unit: nanosecond
