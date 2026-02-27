@@ -178,7 +178,11 @@ Ah:
   allowed-datatypes: ['numeric']
 
 # Duration
-
+ns:
+  definition: Duration measured in nanoseconds
+  unit: nanosecond
+  quantity: duration
+  allowed-datatypes: ['numeric']
 ms:
   definition: Duration measured in milliseconds
   unit: millisecond
@@ -232,11 +236,6 @@ iso8601:
   unit: ISO 8601
   quantity: datetime
   allowed-datatypes: ['string']
-posix-time:
-  definition: Number of seconds which have passed since 00:00:00 UTC on Thursday, 1 January 1970
-  unit: POSIX Timestamp
-  quantity: datetime
-  allowed-datatypes: ['Time_t']
 
 # Pressure
 

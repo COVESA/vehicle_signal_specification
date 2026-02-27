@@ -16,8 +16,10 @@ Time_t:
 
 Time_t.t_sec:
   type: property
+  unit: unix-time
   datatype: int64     # seconds (may use sentinel negative values)
 
 Time_t.t_nanosec:
   type: property
-  datatype: uint32    # nanoseconds in [0, 1e9]
+  unit: ns
+  datatype: int64    # nanoseconds in [0, 1e9]
