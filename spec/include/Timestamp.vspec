@@ -20,4 +20,4 @@ Timestamp.nanoseconds:
   type: property
   unit: ns
   datatype: int64    # nanoseconds in [0, 1e9]
-  description: Nanosecond offset
+  description: Nanosecond offset within the second
