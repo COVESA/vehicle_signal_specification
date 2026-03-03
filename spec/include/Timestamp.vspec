@@ -14,7 +14,7 @@ Timestamp.seconds:
   type: property
   unit: unix-time
   datatype: int64     # seconds (may use sentinel negative values)
-  description: Unix epoch seconds
+  description: Unix epoch seconds.
 
 Timestamp.nanoseconds:
   type: property
