@@ -6,23 +6,18 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-#
-# Identifier
-# Based on OAuth 2.0. Subject is the UserID inside the claim of the Issuer Domain.
-#
-
-Time_t:
+Timestamp:
   type: struct
   description: A point in time
 
-Time_t.t_sec:
+Timestamp.seconds:
   type: property
   unit: unix-time
   datatype: int64     # seconds (may use sentinel negative values)
-  description: time measured in seconds
+  description: Unix epoch seconds.
 
-Time_t.t_nanosec:
+Timestamp.nanoseconds:
   type: property
   unit: ns
   datatype: int64    # nanoseconds in [0, 1e9]
-  description: time measured in nanoseconds
+  description: Nanosecond offset within the second.
