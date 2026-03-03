@@ -1,0 +1,23 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+Timestamp:
+  type: struct
+  description: A point in time
+
+Timestamp.seconds:
+  type: property
+  unit: unix-time
+  datatype: int64     # seconds (may use sentinel negative values)
+  description: Unix epoch seconds.
+
+Timestamp.nanoseconds:
+  type: property
+  unit: ns
+  datatype: int64    # nanoseconds in [0, 1e9]
+  description: Nanosecond offset within the second.
