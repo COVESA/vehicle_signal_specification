@@ -1,0 +1,21 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+
+# We could support a const datatype
+# Allowed to be used in all places where a value is defined, like default/min/max
+# Tooling could check that the value specified (here 3) match the defined datatyoe (here uint8)
+# If used, tooling could check that the type specified here (i.e. uint8) is allowed as value for the entry using it
+#
+# Example - An int const is allowed for a float value, but not in opposite direction.
+
+MyExampleConst:
+  datatype: uint8
+  type: const
+  value: 3
+  description: Some const

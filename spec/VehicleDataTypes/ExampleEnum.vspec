@@ -1,0 +1,28 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+
+# If we define enums like this exporters and downstream projects have two options
+#
+# 1. Just replace all uses of it with the base type and values specified here
+# 2. Keep the enum, represent it in whatever mechanism the target env supports for enums
+
+MyExampleEnum:
+    datadype: uint8
+    type: enum
+    description: Lorem ipsum.
+    enum:
+        - name: NOT_AVAILABLE
+          description: Information about not available
+          value: VehicleDataTypes.MyExampleConst
+        - name: VALUE_2
+          description: Something else
+          value: 2
+        - name: VALUE_3
+          description: Yet omething else
+          value: 7
