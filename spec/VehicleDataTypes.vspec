@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: MPL-2.0
 #
 # This file is the top-level entry point for VSS user-defined struct types.
-# It is kept intentionally separate from VehicleSignalSpecification.vspec 
+# It is kept intentionally separate from VehicleSignalSpecification.vspec
 # so that data-type definitions can evolve independently of signal definitions.
 #
 
