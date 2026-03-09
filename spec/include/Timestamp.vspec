@@ -8,7 +8,7 @@
 
 Timestamp:
   type: struct
-  description: A point in time
+  description: A point in time.
 
 Timestamp.seconds:
   type: property
@@ -27,6 +27,6 @@ Timestamp.nanoseconds:
   # this definition was historically adopted by the C standard.
   min: 0
   max: 999999999
-  # matches Protobuf Timestamp convention; range is [0, 1e9].
+  # matches Protobuf Timestamp convention; range is [0, 1e9).
   unit: ns
   description: Nanosecond offset within the second.
