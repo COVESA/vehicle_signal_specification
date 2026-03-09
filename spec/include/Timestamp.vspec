@@ -14,7 +14,7 @@ Timestamp.seconds:
   type: property
   datatype: int64
   # int64 allows sentinel negative values (e.g. -1 = unknown/invalid) and
-  # matches the timespec / Protobuf Timestamp / SOME/IP INT64 convention.
+  # matches the timespec / Protobuf Timestamp convention.
   unit: unix-time
   description: Unix epoch seconds.
 
@@ -24,7 +24,7 @@ Timestamp.nanoseconds:
   # int64 matches Protobuf Timestamp convention; range is [0, 1e9].
   # A uint32 would be sufficient numerically, but int64 avoids implicit
   # type-promotion issues when combining with the seconds field.
-  # Nanoseconds in struct timespec are defined as long , also in POSIX (and historically in the C standard)
+  # Nanoseconds in struct timespec are defined as long in POSIX, and this definition was historically adopted by the C standard.
   min: 0
   max: 999999999
   unit: ns

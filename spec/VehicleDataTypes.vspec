@@ -5,7 +5,6 @@
 # https://www.mozilla.org/en-US/MPL/2.0/
 #
 # SPDX-License-Identifier: MPL-2.0
-
 #
 # Vehicle Data Types — Type Tree Root
 #
@@ -13,12 +12,6 @@
 # It is passed to vspec export via the -t / --types flag and is kept
 # intentionally separate from VehicleSignalSpecification.vspec so that
 # data-type definitions can evolve independently of signal definitions.
-#
-# Usage example:
-#   vspec export json -u ./spec/units.yaml --strict \
-#       -s ./spec/VehicleSignalSpecification.vspec \
-#       -t ./spec/VehicleDataTypes.vspec \
-#       -o vss_with_datatypes.json
 #
 
 VehicleDataTypes:
@@ -28,5 +21,4 @@ VehicleDataTypes:
     Types defined here can be referenced as custom datatypes by signals
     in the main vehicle signal tree.
 
-# Include the Timestamp struct type and attach it under the VehicleDataTypes branch.
 #include include/Timestamp.vspec VehicleDataTypes
