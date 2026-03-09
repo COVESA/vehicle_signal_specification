@@ -1,0 +1,32 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+Timestamp:
+  type: struct
+  description: A point in time.
+
+Timestamp.seconds:
+  type: property
+  datatype: int64
+  # int64 allows sentinel negative values (e.g. -1 = unknown/invalid) and
+  # matches the timespec / Protobuf Timestamp convention.
+  unit: unix-time
+  description: Unix epoch seconds.
+
+Timestamp.nanoseconds:
+  type: property
+  datatype: int64
+  # A uint32 would be sufficient numerically, but int64 avoids implicit
+  # type-promotion issues when combining with the seconds field.
+  # Nanoseconds in struct timespec are defined as long in POSIX, and
+  # this definition was historically adopted by the C standard.
+  min: 0
+  max: 999999999
+  # matches Protobuf Timestamp convention; range is [0, 1e9).
+  unit: ns
+  description: Nanosecond offset within the second.
