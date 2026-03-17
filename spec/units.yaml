@@ -178,7 +178,16 @@ Ah:
   allowed-datatypes: ['numeric']
 
 # Duration
-
+ns:
+  definition: Duration measured in nanoseconds
+  unit: nanosecond
+  quantity: duration
+  allowed-datatypes: ['numeric']
+us:
+  definition: Duration measured in microseconds
+  unit: mikrosecond
+  quantity: duration
+  allowed-datatypes: ['numeric']
 ms:
   definition: Duration measured in milliseconds
   unit: millisecond
