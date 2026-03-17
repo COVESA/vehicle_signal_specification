@@ -14,6 +14,16 @@
 # VSS Versioning information
 #
 
+ExampleTimestamp:
+  datatype: VehicleDataTypes.Timestamp
+  type: sensor
+  description: Just an example.
+
+ExampleEnum:
+  datatype: VehicleDataTypes.MyExampleEnum
+  type: sensor
+  description: Just an example.
+
 VersionVSS:
   type: branch
   description: Supported Version of VSS.
