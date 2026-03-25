@@ -20,7 +20,9 @@ SteeringWheel.Position:
 
 ```
 
-If `allowed` is set, `min` or `max` cannot be defined.
+Note that VSS also supports [enum](/vehicle_signal_specification/rule_set/data_entry/enum/).as an alternative to allowed values.
+
+If `allowed` is set then `enum`, `min` or `max` cannot be defined.
 
 The `allowed` element is an array of values, all of which must be specified
 in a list.  Only values can be assigned to the data entry, which are
