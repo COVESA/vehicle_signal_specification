@@ -62,9 +62,14 @@ Vehicle.Powertrain.Transmission:
 #
 # The electric motor branch used to host the signals and attributes in ElectricMotor.vspec.
 #
+
 Vehicle.Powertrain.ElectricMotor:
   type: branch
+  instances: ["Front","Rear","FrontLeft","FrontRight","RearLeft","RearRight"]
   description: Electric Motor specific data.
+  comment: Instance Front to be used if the vehicle has a motor located at the front of the vehicle, serving front and possibly also rear axle.
+           Instance Rear to be used if the vehicle has a motor located at the rear of the vehicle, serving rear and possiblsy also front axle.
+           Instances with Left/Right intended to be used if vehicle has separate motors for left and right side.
 
 # Include the electric motor vspec file and attach all its signals and attributes under the
 # electric motor branch created above.
