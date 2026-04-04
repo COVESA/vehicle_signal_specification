@@ -30,3 +30,26 @@ LightIntensity:
   description: Light intensity outside the vehicle.
                0 = No light detected, 100 = Fully lit.
   comment: Mapping to physical units and calculation method is sensor specific.
+
+RoadSurfaceCondition:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'DRY',
+    'WET',
+    'SNOW',
+    'ICE',
+    'SLUSH',
+    'WET_ICE',
+    'LOOSE_GRAVEL'
+  ]
+  description: Assessed condition of the road surface beneath or ahead of the vehicle.
+  comment: >
+    Determination method is implementation specific. May be derived from
+    sensor fusion of Vehicle.ADAS.ESC.RoadFriction.MostProbable,
+    Vehicle.Exterior.AirTemperature, Vehicle.Body.Raindetection.Intensity,
+    and optional camera-based road surface classification.
+    UNKNOWN shall be used when the system cannot assess the road surface condition.
+    Primary consumers: navigation and ADAS safety systems.
+    Related to VSS issue #877 (Connected Safety signals).
