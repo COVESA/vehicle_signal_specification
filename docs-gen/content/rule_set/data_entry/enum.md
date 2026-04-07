@@ -18,12 +18,12 @@ It is however expected that VSS implementations has mechanisms to assure that on
 ## Basic syntax
 
 Enum delcarations can be used for `actuator`, `sensor`, `attribute` and for structs in `property`.
-The base type must be a numeric type, which means that e.g. `string` cannot be used as base type.
+The base type must be an integer type, which means that e.g. `string` cannot be used as base type.
 In the enum field a dict of string keys and integer values shall be given be given.
 The values must fit the defined datatype. In the example below it means that values 0-255 can be used.
 
 ```yaml
-Vehicle.Foo:
+Dogbreed:
   type: attribute
   description: Foo
   datatype: uint8
@@ -34,34 +34,23 @@ Vehicle.Foo:
 ```
 
 
-If `enum` is set then `allowed`, `pattern`, `min` or `max` cannot be defined.
-If `default` is used the numeric value shall be used.
+* Keys must match the pattern `[A-Z][A-Z_0-9]*`
+* Values are not allowed to be reused, E.g. a definition like `'A':1, 'B':1, 'C':2` is not allowed.
+* If `enum` is set then `allowed`, `pattern`, `min` or `max` cannot be defined.
+* If `default` is used the numeric value shall be used.
 
-### To be discussed
+### Recommendations
 
-* Shall it be allowed to "reuse" the same symbolic name twice, like "A:1, B:1, C:2". Maybe better to say no as behavior may be come a bit undefined
-* Shall we enforce a name pattern for symbols. Always or just for std catalog. Like that "'123': 456" shall not be allowed as it cannot be used as an enum identifier in many target languages.
-
-
-### Recommendations for symbolic names
-
-String symbols used for `enum` statements may contain characters from the printable subset of the Unicode character set.
-If using [COVESA VSS-tools](https://github.com/COVESA/vss-tools) it is recommended to use single quotes (`'`) around values as tooling otherwise might handle literals like `OFF` as boolean values with unexpected result.
-It is recommended not to specify a dedicated value corresponding to "unknown" or "undefined" unless there is a relevant use-case for that particular signal.
+If using [COVESA VSS-tools](https://github.com/COVESA/vss-tools) it is recommended to use single quotes (`'`) around keys as tooling otherwise might handle literals like `OFF` as boolean values with unexpected result.
+It is recommended not to specify a dedicated values corresponding to "unknown" or "undefined" unless there is a relevant use-case for that particular signal.
 The background is that a signal using enum shall be handled just as any other signal.
 If e.g. the value of current speed or vehicle weight is unknown, then the vehicle shall not publish the corresponding signal.
-Similarly, for the example above, if the steering wheel position is unknown then
-`SteeringWheel.Position` shall not be published.
-
-Optionally it is possible to define an array of `allowed` values, which will restrict the usage of the data entry in the implementation of the specification.
-It is expected, that any value not mentioned in the array is considered an error and the implementation of the specification shall react accordingly.
-The datatype of the array elements is the `datatype` defined for the data entry itself.
-For `attributes` it is possible to optionally set a default value.
-
+Similarly, for the example above, if the dog breed is unknown then
+`Dogbreed` shall not be published.
 
 ## Enum for array datatypes
 
-The `enum` keyword can also be used for signals of array datatype. In that case, `enum` specifies the only valid values for array elements.
+The `enum` keyword can also be used for signals of array datatype. In that case, `enum` specifies the valid values for array elements.
 The `default` statement (if present) defines the default array. In the example below the default array is `[AKITA, CHOW_CHOW]`.
 
 Example:
