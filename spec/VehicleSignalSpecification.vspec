@@ -144,7 +144,7 @@ Vehicle.ADAS:
 #include ADAS/ADAS.vspec Vehicle.ADAS
 
 #
-# THe safety branch for crash-relevant derived signals.
+# The safety branch for crash-relevant derived signals.
 #
 Vehicle.Safety:
   type: branch
