@@ -5,32 +5,26 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.129.0">
     <meta name="generator" content="Relearn 6.0.0">
-    <meta name="description" content="The Vehicle Signal Specification (VSS) is an initiative by COVESA to define a syntax and a catalog for vehicle signals. The source code and releases can be found in the VSS github repository. Some tools for parsing and converting VSS files can be found in the VSS-tools github repository.
-This documentation gives you an overview of VSS:
-Introduction Read this part if you want to know more about what the specification is all about, what’s in and out and how to quickly browse through the current status.">
+    <meta name="description" content="Specifying a signal as an enum VSS has introduced enum as an alternative to allowed values. In VSS allowed values have typically been used to restrict values for string signals, and most exporters and downstream projects have treated it as a string value. With enum the base type is an integer type and exporters and downstream projects are free to decide on how they want to use the symbolic names, like if they want to expose the symbolic names in APIs or generated assets, or if they just ignore the symbolic names.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Vehicle Signal Specification">
-    <meta name="twitter:description" content="The Vehicle Signal Specification (VSS) is an initiative by COVESA to define a syntax and a catalog for vehicle signals. The source code and releases can be found in the VSS github repository. Some tools for parsing and converting VSS files can be found in the VSS-tools github repository.
-This documentation gives you an overview of VSS:
-Introduction Read this part if you want to know more about what the specification is all about, what’s in and out and how to quickly browse through the current status.">
-    <meta property="og:url" content="https://covesa.github.io/vehicle_signal_specification/index.html">
+    <meta name="twitter:title" content="Enums :: Vehicle Signal Specification">
+    <meta name="twitter:description" content="Specifying a signal as an enum VSS has introduced enum as an alternative to allowed values. In VSS allowed values have typically been used to restrict values for string signals, and most exporters and downstream projects have treated it as a string value. With enum the base type is an integer type and exporters and downstream projects are free to decide on how they want to use the symbolic names, like if they want to expose the symbolic names in APIs or generated assets, or if they just ignore the symbolic names.">
+    <meta property="og:url" content="https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/enum/index.html">
     <meta property="og:site_name" content="Vehicle Signal Specification">
-    <meta property="og:title" content="Vehicle Signal Specification">
-    <meta property="og:description" content="The Vehicle Signal Specification (VSS) is an initiative by COVESA to define a syntax and a catalog for vehicle signals. The source code and releases can be found in the VSS github repository. Some tools for parsing and converting VSS files can be found in the VSS-tools github repository.
-This documentation gives you an overview of VSS:
-Introduction Read this part if you want to know more about what the specification is all about, what’s in and out and how to quickly browse through the current status.">
+    <meta property="og:title" content="Enums :: Vehicle Signal Specification">
+    <meta property="og:description" content="Specifying a signal as an enum VSS has introduced enum as an alternative to allowed values. In VSS allowed values have typically been used to restrict values for string signals, and most exporters and downstream projects have treated it as a string value. With enum the base type is an integer type and exporters and downstream projects are free to decide on how they want to use the symbolic names, like if they want to expose the symbolic names in APIs or generated assets, or if they just ignore the symbolic names.">
     <meta property="og:locale" content="en-us">
-    <meta property="og:type" content="website">
-    <meta itemprop="name" content="Vehicle Signal Specification">
-    <meta itemprop="description" content="The Vehicle Signal Specification (VSS) is an initiative by COVESA to define a syntax and a catalog for vehicle signals. The source code and releases can be found in the VSS github repository. Some tools for parsing and converting VSS files can be found in the VSS-tools github repository.
-This documentation gives you an overview of VSS:
-Introduction Read this part if you want to know more about what the specification is all about, what’s in and out and how to quickly browse through the current status.">
-    <meta itemprop="datePublished" content="2023-05-18T13:31:46+00:00">
-    <meta itemprop="dateModified" content="2023-05-18T13:31:46+00:00">
-    <meta itemprop="wordCount" content="170">
-    <title>Vehicle Signal Specification</title>
-    <link href="/vehicle_signal_specification/index.xml" rel="alternate" type="application/rss+xml" title="Vehicle Signal Specification"><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Rule Set">
+    <meta property="article:published_time" content="2019-08-04T12:37:12+02:00">
+    <meta property="article:modified_time" content="2019-08-04T12:37:12+02:00">
+    <meta itemprop="name" content="Enums :: Vehicle Signal Specification">
+    <meta itemprop="description" content="Specifying a signal as an enum VSS has introduced enum as an alternative to allowed values. In VSS allowed values have typically been used to restrict values for string signals, and most exporters and downstream projects have treated it as a string value. With enum the base type is an integer type and exporters and downstream projects are free to decide on how they want to use the symbolic names, like if they want to expose the symbolic names in APIs or generated assets, or if they just ignore the symbolic names.">
+    <meta itemprop="datePublished" content="2019-08-04T12:37:12+02:00">
+    <meta itemprop="dateModified" content="2019-08-04T12:37:12+02:00">
+    <meta itemprop="wordCount" content="423">
+    <title>Enums :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
 
     <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1776154901" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1776154901" rel="stylesheet"></noscript>
     <link href="/vehicle_signal_specification/css/nucleus.css?1776154901" rel="stylesheet">
@@ -45,8 +39,8 @@ Introduction Read this part if you want to know more about what the specificatio
     <script src="/vehicle_signal_specification/js/variant.js?1776154901"></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.relBasePath='.';
-      window.relearn.relBaseUri='..';
+      window.relearn.relBasePath='..\/..\/..';
+      window.relearn.relBaseUri='..\/..\/..\/..';
       window.relearn.absBaseUri='https:\/\/covesa.github.io\/vehicle_signal_specification';
       window.index_js_url="/vehicle_signal_specification/index.search.js";
       // variant stuff
@@ -62,7 +56,7 @@ Introduction Read this part if you want to know more about what the specificatio
       window.T_N_results_found = `{1} results found for "{0}"`;
     </script>
   </head>
-  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/vehicle_signal_specification/index.html">
+  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/vehicle_signal_specification/rule_set/data_entry/enum/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -73,21 +67,34 @@ Introduction Read this part if you want to know more about what the specificatio
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper"> 
+                <div class="topbar-content-wrapper"><nav class="TableOfContents">
+  <ul>
+    <li><a href="#specifying-a-signal-as-an-enum">Specifying a signal as an enum</a></li>
+    <li><a href="#basic-syntax">Basic syntax</a>
+      <ul>
+        <li><a href="#recommendations">Recommendations</a></li>
+      </ul>
+    </li>
+    <li><a href="#enum-for-array-datatypes">Enum for array datatypes</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Vehicle Signal Specification</span><meta itemprop="position" content="1"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/index.html"><span itemprop="name">Vehicle Signal Specification</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/rule_set/index.html"><span itemprop="name">Rule Set</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/rule_set/data_entry/index.html"><span itemprop="name">Data Entry</span></a><meta itemprop="position" content="3">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Enums</span><meta itemprop="position" content="4"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
 				
-            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/_index.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/rule_set/data_entry/enum.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
             </div>
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><span class="topbar-control"><i class="fa-fw fas fa-chevron-left"></i></span>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/rule_set/data_entry/default/index.html" title="Default Values (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/introduction/index.html" title="Introduction (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html" title="Value Restrictions (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -101,31 +108,61 @@ Introduction Read this part if you want to know more about what the specificatio
         </div>
       </nav>
       <div id="R-main-overlay"></div>
-      <main id="R-body-inner" class="highlightable home" tabindex="-1">
+      <main id="R-body-inner" class="highlightable default" tabindex="-1">
         <div class="flex-block-wrapper">
-          <article class="home">
+          <article class="default">
             <header class="headline">
             </header>
 
-<h1 id="vehicle-signal-specification">Vehicle Signal Specification</h1>
+<h1 id="enums">Enums</h1>
 
-<p>The Vehicle Signal Specification (VSS) is an initiative by <a href="https://covesa.global/" rel="external" target="_blank">COVESA</a> to define a syntax and a catalog for vehicle signals.
-The source code and releases can be found in the <a href="https://github.com/COVESA/vehicle_signal_specification" rel="external" target="_blank">VSS github repository</a>.
-Some tools for parsing and converting VSS files can be found in the <a href="https://github.com/COVESA/vss-tools" rel="external" target="_blank">VSS-tools github repository</a>.</p>
-<p>This documentation gives you an overview of VSS:</p>
-<ul>
-<li><a href="/vehicle_signal_specification/introduction/">Introduction</a> </br> Read this part if you want to know more
-about what the specification is all about, what&rsquo;s in and out and how to quickly
-browse through the current status.</li>
-<li><a href="/vehicle_signal_specification/governance/">Governance</a> </br> Introduction to VSS governance model and change log.</li>
-<li><a href="/vehicle_signal_specification/rule_set/">Rule Set</a> </br> Get familiar with the rule set behind the
-specification, the structure, the format and concepts.</li>
-<li><a href="/vehicle_signal_specification/catalog/">VSS Catalog</a> </br> Information on content and design decisions related to the VSS catalog.</li>
-<li><a href="/vehicle_signal_specification/extensions/">Extending and Customizing VSS</a>  </br> How can you extend and customize the VSS Catalog for use in your environment.</li>
-<li><a href="/vehicle_signal_specification/license/">License</a> </br> Information on the VSS license.</li>
-<li><a href="/vehicle_signal_specification/ecosystem/">Ecosystem</a> </br> How to use the specification? Check out the existing tools and standards to transform or make use of VSS.</li>
+<h2 id="specifying-a-signal-as-an-enum">Specifying a signal as an enum</h2>
+<p>VSS has introduced <code>enum</code> as an alternative to <a href="/vehicle_signal_specification/rule_set/data_entry/allowed/">allowed values</a>.
+In VSS allowed values have typically been used to restrict values for string signals, and most exporters and downstream projects have treated it as a string value.
+With enum the base type is an integer type and exporters and downstream projects are free to decide on how they want to use the symbolic names,
+like if they want to expose the symbolic names in APIs or generated assets, or if they just ignore the symbolic names.</p>
+<p>It is however expected that VSS implementations has mechanisms to assure that only values matching the specified enums can be used for the related signals.</p>
+<h2 id="basic-syntax">Basic syntax</h2>
+<p>Enum declarations can be used for <code>actuator</code>, <code>sensor</code>, <code>attribute</code> and for structs in <code>property</code>.
+The base type must be an integer type, which means that e.g. <code>string</code> cannot be used as base type.
+In the enum field a dict of string keys and integer values shall be given be given.
+The values must fit the defined datatype. In the example below it means that values 0-255 can be used.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Dogbreed</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">attribute</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">Foo</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">uint8</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enum</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#39;AKITA&#39;</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#39;BOXER&#39;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">default</span>: <span style="color:#ae81ff">0</span></span></span></code></pre></div><ul>
+<li>Keys must match the pattern <code>[A-Z][A-Z_0-9]*</code></li>
+<li>Values are not allowed to be reused, E.g. a definition like <code>'A':1, 'B':1, 'C':2</code> is not allowed.</li>
+<li>If <code>enum</code> is set then <code>allowed</code>, <code>pattern</code>, <code>min</code> or <code>max</code> cannot be defined.</li>
+<li>If <code>default</code> is used the numeric value shall be used.</li>
 </ul>
-
+<h3 id="recommendations">Recommendations</h3>
+<p>If using <a href="https://github.com/COVESA/vss-tools" rel="external" target="_blank">COVESA VSS-tools</a> it is recommended to use single quotes (<code>'</code>) around keys as tooling otherwise might handle literals like <code>OFF</code> as boolean values with unexpected result.
+It is recommended not to specify a dedicated values corresponding to &ldquo;unknown&rdquo; or &ldquo;undefined&rdquo; unless there is a relevant use-case for that particular signal.
+The background is that a signal using enum shall be handled just as any other signal.
+If e.g. the value of current speed or vehicle weight is unknown, then the vehicle shall not publish the corresponding signal.
+Similarly, for the example above, if the dog breed is unknown then
+<code>Dogbreed</code> shall not be published.</p>
+<h2 id="enum-for-array-datatypes">Enum for array datatypes</h2>
+<p>The <code>enum</code> keyword can also be used for signals of array datatype. In that case, <code>enum</code> specifies the valid values for array elements.
+The <code>default</code> statement (if present) defines the default array. In the example below the default array is <code>[AKITA, CHOW_CHOW]</code>.</p>
+<p>Example:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">DogBreeds</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">attribute</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">Bar</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">uint8[]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">enum</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#39;AKITA&#39;</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#39;BOXER&#39;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#39;CHOW_CHOW&#39;</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#39;DACHSHUND&#39;</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">default</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">2</span></span></span></code></pre></div>
             <footer class="footline">
             </footer>
           </article>
@@ -170,16 +207,16 @@ specification, the structure, the format and concepts.</li>
           <li data-nav-id="/vehicle_signal_specification/introduction/overview/index.html" class=""><a class="padding" href="/vehicle_signal_specification/introduction/overview/index.html">Overview</a></li>
           <li data-nav-id="/vehicle_signal_specification/introduction/taxonomy/index.html" class=""><a class="padding" href="/vehicle_signal_specification/introduction/taxonomy/index.html">Taxonomies</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/governance/index.html" class=""><a class="padding" href="/vehicle_signal_specification/governance/index.html">Governance</a></li>
-          <li data-nav-id="/vehicle_signal_specification/rule_set/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/index.html">Rule Set</a><ul id="R-subsections-816430a737ffa7bef5da453d8c2d55d4" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/rule_set/index.html" class="parent "><a class="padding" href="/vehicle_signal_specification/rule_set/index.html">Rule Set</a><ul id="R-subsections-816430a737ffa7bef5da453d8c2d55d4" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/rule_set/basics/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/basics/index.html">Basic Rules</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/branches/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/branches/index.html">Branch Entry</a></li>
-          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/index.html" class="alwaysopen"><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/index.html">Data Entry</a><ul id="R-subsections-ba77ba218fcc0133bc138c588fbb6eb9" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/index.html" class="parent alwaysopen"><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/index.html">Data Entry</a><ul id="R-subsections-ba77ba218fcc0133bc138c588fbb6eb9" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/data_types/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/data_types/index.html">Datatypes</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/data_types_struct/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/data_types_struct/index.html">Struct Types</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/data_units/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/data_units/index.html">Data Units</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/sensor_actuator/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/sensor_actuator/index.html">Sensors, Actuators and Attributes</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/default/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/default/index.html">Default Values</a></li>
-          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/enum/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/enum/index.html">Enums</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/enum/index.html" class="active"><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/enum/index.html">Enums</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html">Value Restrictions</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/instances/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/instances/index.html">Instances</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/includes/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/includes/index.html">Includes</a></li></ul></li>
@@ -215,7 +252,7 @@ specification, the structure, the format and concepts.</li>
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/vehicle_signal_specification/index.html" lang="en-us" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/vehicle_signal_specification/rule_set/data_entry/enum/index.html" lang="en-us" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>

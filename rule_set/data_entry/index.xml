@@ -44,6 +44,13 @@
       <description>VSS supports default values by the default attribute. The intention is to provide a mechanism to provide initial values for data entries already when loading a VSS catalog. This could typically be useful for attributes that never or rarely change, like vehicle VIN or vehicle color.&#xA;The standard Vehicle Signal Specification does not include default values for all attributes. If a default value has not been specified then the OEM must define a default value matching the actual vehicle, either by using the default concept, or by the same other mechanism.</description>
     </item>
     <item>
+      <title>Enums</title>
+      <link>https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/enum/index.html</link>
+      <pubDate>Sun, 04 Aug 2019 12:37:12 +0200</pubDate>
+      <guid>https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/enum/index.html</guid>
+      <description>Specifying a signal as an enum VSS has introduced enum as an alternative to allowed values. In VSS allowed values have typically been used to restrict values for string signals, and most exporters and downstream projects have treated it as a string value. With enum the base type is an integer type and exporters and downstream projects are free to decide on how they want to use the symbolic names, like if they want to expose the symbolic names in APIs or generated assets, or if they just ignore the symbolic names.</description>
+    </item>
+    <item>
       <title>Value Restrictions</title>
       <link>https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/allowed/index.html</link>
       <pubDate>Sun, 04 Aug 2019 12:37:12 +0200</pubDate>

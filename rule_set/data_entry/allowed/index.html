@@ -23,20 +23,20 @@
     <meta itemprop="description" content="Specifying allowed values Optionally it is possible to define an array of allowed values, which will restrict the usage of the data entry in the implementation of the specification. It is expected, that any value not mentioned in the array is considered an error and the implementation of the specification shall react accordingly. The datatype of the array elements is the datatype defined for the data entry itself. For attributes it is possible to optionally set a default value.">
     <meta itemprop="datePublished" content="2019-08-04T12:37:12+02:00">
     <meta itemprop="dateModified" content="2019-08-04T12:37:12+02:00">
-    <meta itemprop="wordCount" content="418">
+    <meta itemprop="wordCount" content="431">
     <title>Value Restrictions :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
 
-    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1774969684" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1774969684" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/nucleus.css?1774969684" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/auto-complete.css?1774969684" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1774969684" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1774969684" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/fonts.css?1774969684" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1774969684" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/theme.css?1774969684" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/theme-blue.css?1774969684" rel="stylesheet" id="R-variant-style">
-    <link href="/vehicle_signal_specification/css/chroma-learn.css?1774969684" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="/vehicle_signal_specification/css/variant.css?1774969684" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/print.css?1774969684" rel="stylesheet" media="print">
-    <script src="/vehicle_signal_specification/js/variant.js?1774969684"></script>
+    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1776154901" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1776154901" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/nucleus.css?1776154901" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/auto-complete.css?1776154901" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1776154901" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1776154901" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/fonts.css?1776154901" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1776154901" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/theme.css?1776154901" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/theme-blue.css?1776154901" rel="stylesheet" id="R-variant-style">
+    <link href="/vehicle_signal_specification/css/chroma-learn.css?1776154901" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/vehicle_signal_specification/css/variant.css?1776154901" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/print.css?1776154901" rel="stylesheet" media="print">
+    <script src="/vehicle_signal_specification/js/variant.js?1776154901"></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
@@ -89,7 +89,7 @@
 				
             <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/rule_set/data_entry/allowed.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
             </div>
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/rule_set/data_entry/default/index.html" title="Default Values (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/rule_set/data_entry/enum/index.html" title="Enums (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
             <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/rule_set/instances/index.html" title="Instances (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
@@ -123,7 +123,8 @@ For <code>attributes</code> it is possible to optionally set a default value.</p
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">attribute</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">default</span>: <span style="color:#e6db74">&#39;FRONT_LEFT&#39;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">allowed</span>: [<span style="color:#e6db74">&#39;FRONT_LEFT&#39;</span>, <span style="color:#e6db74">&#39;FRONT_RIGHT&#39;</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">Position of the steering wheel on the left or right side of the vehicle.</span></span></span></code></pre></div><p>If <code>allowed</code> is set, <code>min</code> or <code>max</code> cannot be defined.</p>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">Position of the steering wheel on the left or right side of the vehicle.</span></span></span></code></pre></div><p>Note that VSS also supports <a href="/vehicle_signal_specification/rule_set/data_entry/enum/">enum</a>.as an alternative to allowed values.</p>
+<p>If <code>allowed</code> is set then <code>enum</code>, <code>min</code> or <code>max</code> cannot be defined.</p>
 <p>The <code>allowed</code> element is an array of values, all of which must be specified
 in a list.  Only values can be assigned to the data entry, which are
 specified in this list.</p>
@@ -180,12 +181,12 @@ The actual value of the signal is expected to contain a subset of the values spe
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/vehicle_signal_specification/js/auto-complete.js?1774969684" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1774969684" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1774969684" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1774969684" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1774969684" defer></script>
-        <script src="/vehicle_signal_specification/js/search.js?1774969684" defer></script>
+        <script src="/vehicle_signal_specification/js/auto-complete.js?1776154901" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1776154901" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1776154901" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1776154901" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1776154901" defer></script>
+        <script src="/vehicle_signal_specification/js/search.js?1776154901" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation">
         <hr class="padding">
@@ -206,6 +207,7 @@ The actual value of the signal is expected to contain a subset of the values spe
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/data_units/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/data_units/index.html">Data Units</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/sensor_actuator/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/sensor_actuator/index.html">Sensors, Actuators and Attributes</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/default/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/default/index.html">Default Values</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/enum/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/enum/index.html">Enums</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html" class="active"><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html">Value Restrictions</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/instances/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/instances/index.html">Instances</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/includes/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/includes/index.html">Includes</a></li></ul></li>
@@ -292,8 +294,8 @@ The actual value of the signal is expected to contain a subset of the values spe
         </div>
       </div>
     </aside>
-    <script src="/vehicle_signal_specification/js/clipboard.min.js?1774969684" defer></script>
-    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1774969684" defer></script>
-    <script src="/vehicle_signal_specification/js/theme.js?1774969684" defer></script>
+    <script src="/vehicle_signal_specification/js/clipboard.min.js?1776154901" defer></script>
+    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1776154901" defer></script>
+    <script src="/vehicle_signal_specification/js/theme.js?1776154901" defer></script>
   </body>
 </html>
