@@ -17,7 +17,7 @@ It is however expected that VSS implementations has mechanisms to assure that on
 
 ## Basic syntax
 
-Enum delcarations can be used for `actuator`, `sensor`, `attribute` and for structs in `property`.
+Enum declarations can be used for `actuator`, `sensor`, `attribute` and for structs in `property`.
 The base type must be an integer type, which means that e.g. `string` cannot be used as base type.
 In the enum field a dict of string keys and integer values shall be given be given.
 The values must fit the defined datatype. In the example below it means that values 0-255 can be used.
