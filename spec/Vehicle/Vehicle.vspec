@@ -322,6 +322,43 @@ AngularVelocity.Yaw:
   description: Vehicle rotation rate along Z (vertical).
 
 #
+# Spatial Orientation
+#
+Orientation:
+  type: branch
+  description: Spatial orientation. Axis definitions according to ISO 8855.
+
+Orientation.Roll:
+  datatype: float
+  type: sensor
+  unit: degrees
+  description: Vehicle rotation (tilt) around X (longitudinal). Positive values = right side down.
+  comment: >
+    Reference is the vehicle at rest on a level surface.
+    Useful for rollover detection and off-road applications.
+    Related to VSS Issue #877 (Connected Safety Signals).
+
+Orientation.Pitch:
+  datatype: float
+  type: sensor
+  unit: degrees
+  description: Vehicle rotation (tilt) around Y (lateral). Positive values = nose up.
+  comment: >
+    Reference is the vehicle at rest on a level surface.
+    Useful for incline detection and trailer loading applications.
+    Related to VSS Issue #877 (Connected Safety Signals).
+
+Orientation.Yaw:
+  datatype: float
+  type: sensor
+  unit: degrees
+  description: Vehicle rotation around Z (vertical) relative to geographic north.
+  comment: >
+    0 = North, 90 = East, 180 = South, 270 = West.
+    Complements CurrentLocation.Heading by providing IMU-derived orientation rather than GNSS-derived heading.
+    Related to VSS issue #877 (Connected Safety Signals).
+
+#
 # Schema from schema.org
 #
 
