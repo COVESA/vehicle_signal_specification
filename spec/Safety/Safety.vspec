@@ -32,7 +32,7 @@ RolloverDetected:
   datatype: string
   type: sensor
   allowed: [
-    'NONE',
+    'UNKNOWN',
     'RISK',
     'DETECTED',
     'UNKNOWN'
