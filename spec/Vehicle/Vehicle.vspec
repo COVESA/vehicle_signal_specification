@@ -332,6 +332,8 @@ Orientation.Roll:
   datatype: float
   type: sensor
   unit: degrees
+  min: -180
+  max: 180
   description: Vehicle rotation (tilt) around X (longitudinal). Positive values = right side down.
   comment: >
     Reference is the vehicle at rest on a level surface.
@@ -342,6 +344,8 @@ Orientation.Pitch:
   datatype: float
   type: sensor
   unit: degrees
+  min: -180
+  max: 180
   description: Vehicle rotation (tilt) around Y (lateral). Positive values = nose up.
   comment: >
     Reference is the vehicle at rest on a level surface.
@@ -352,6 +356,8 @@ Orientation.Yaw:
   datatype: float
   type: sensor
   unit: degrees
+  min: 0
+  max: 360
   description: Vehicle rotation around Z (vertical) relative to geographic north.
   comment: >
     0 = North, 90 = East, 180 = South, 270 = West.
