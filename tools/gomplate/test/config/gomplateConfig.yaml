@@ -1,0 +1,7 @@
+templates:
+  tmplCommon:
+    url: .\tools\gomplate\src\templates
+
+datasources:
+  Specification:
+    url: .\tools\gomplate\test\dummySpec\Specification.vspec?type=application/yaml

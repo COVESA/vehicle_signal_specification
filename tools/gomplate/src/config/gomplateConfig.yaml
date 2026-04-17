@@ -1,0 +1,34 @@
+templates:
+  tmplCommon:
+    url: .\tools\gomplate\src\templates
+#The datasources list makes it possible to switch it anytime in the .vspec3 files and
+#pick the signals from any .vspec file into the .vspec3 file
+datasources:
+  VehicleSignalSpecification:
+    url: external\COVESA\spec\VehicleSignalSpecification.vspec?type=application/yaml
+  Vehicle:
+    url: external\COVESA\spec\Vehicle\Vehicle.vspec?type=application/yaml
+  FuelSystem:
+    url: external\COVESA\spec\Powertrain\FuelSystem.vspec?type=application/yaml
+  CombustionEngine:
+    url: external\COVESA\spec\Powertrain\CombustionEngine.vspec?type=application/yaml
+  EngineCoolant:
+    url: external\COVESA\spec\Powertrain\EngineCoolant.vspec?type=application/yaml
+  Exterior:
+    url: external\COVESA\spec\Vehicle\Exterior.vspec?type=application/yaml
+  Chassis:
+    url: external\COVESA\spec\Chassis\Chassis.vspec?type=application/yaml
+  Wheel:
+    url: external\COVESA\spec\Chassis\Wheel.vspec?type=application/yaml
+  TractionBattery:
+    url: external\COVESA\spec\Powertrain\TractionBattery.vspec?type=application/yaml
+  Transmission:
+    url: external\COVESA\spec\Powertrain\Transmission.vspec?type=application/yaml
+  ADAS:
+    url: external\COVESA\spec\ADAS\ADAS.vspec?type=application/yaml
+  Service:
+    url: external\COVESA\spec\Vehicle\Service.vspec?type=application/yaml
+  Cabin:
+    url: external\COVESA\spec\Cabin\Cabin.vspec?type=application/yaml
+  HVAC:
+    url: external\COVESA\spec\Cabin\HVAC.vspec?type=application/yaml

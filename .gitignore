@@ -5,3 +5,6 @@
 
 # Generated vspec files
 generated/
+tools/**/__pycache__
+.tools/
+.pytest_*
