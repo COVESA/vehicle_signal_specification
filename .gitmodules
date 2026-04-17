@@ -1,0 +1,3 @@
+[submodule "external/COVESA"]
+	path = external/COVESA
+	url = https://github.com/COVESA/vehicle_signal_specification.git
