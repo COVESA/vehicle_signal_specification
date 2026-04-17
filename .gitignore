@@ -3,5 +3,5 @@
 /codeStyles/codeStyleConfig.xml
 *.id
 
-# Generated files
-vss_rel_*
+# Generated vspec files
+generated/
