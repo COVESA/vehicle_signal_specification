@@ -157,12 +157,13 @@ EngineOil.Temperature:
 EngineOil.PressureStatus:
   type: sensor
   description: Engine oil pressure status.  
-  datatype: uint8
-  enum: 
-    'NORMAL': 0  # Oil pressure as expected, within the nominal operating range.
-    'WARNING': 1 # Oil pressure is marginal or fluctuating; system may be operating in a degraded state.
-    'ALERT': 2   # Oil pressure has dropped below the critical safety threshold; immediate action required.
-    'ERROR': 3   # Invalid data received, sensor failure or electrical circuit fault.
+  datatype: string
+  allowed: [ 
+    'NORMAL',   # Oil pressure as expected, within the nominal operating range.
+    'WARNING',  # Oil pressure is marginal or fluctuating; system may be operating in a degraded state.
+    'ALERT',    # Oil pressure has dropped below the critical safety threshold; immediate action required.
+    'ERROR'     # Invalid data received, sensor failure or electrical circuit fault.
+  ]
 
 #
 # Engine coolant
