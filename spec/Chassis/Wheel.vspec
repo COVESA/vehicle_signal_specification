@@ -91,3 +91,12 @@ AngularSpeed:
   description: Angular (Rotational) speed of a vehicle's wheel.
   comment: Positive if wheel is trying to drive vehicle forward.
            Negative if wheel is trying to drive vehicle backward.
+
+Torque:
+  datatype: int16
+  type: sensor
+  unit: Nm
+  description: Torque provided by drivetrain, excluding torque provided by friction brakes.
+               Negative values indicate regen mode.
+  comment: This is typically the torque provided by the differential,
+           or by a motor dedicated for this wheel, after reduction gear if present.

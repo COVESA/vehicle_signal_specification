@@ -1,0 +1,21 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+# This file is the top-level entry point for VSS user-defined struct types.
+# It is kept intentionally separate from VehicleSignalSpecification.vspec
+# so that data-type definitions can evolve independently of signal definitions.
+#
+
+VehicleDataTypes:
+  type: branch
+  description: >
+    Top-level branch for COVESA VSS user-defined data types.
+    Types defined here can be referenced as custom datatypes by signals
+    in the main vehicle signal tree.
+
+#include include/Timestamp.vspec VehicleDataTypes

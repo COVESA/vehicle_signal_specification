@@ -17,7 +17,6 @@ on:
 
 env:
   PYTHON_VERSION: "3.10.6" # keep in sync with vss-tools
-                           # Note: Currently cyclonedds does not support 3.11
 
 jobs:
   buildtest:
@@ -65,9 +64,9 @@ jobs:
 
       - name: Test that ddsidl is correct
         run: |
-          pip install cyclonedds
+          # Backward incompatible changes in CycloneDDS 11.0, so stick to old version
+          pip install cyclonedds==0.10.5
           idlc vss*.idl
-
 
       - name: Prepare for CSV check
         uses: actions/setup-go@v6
