@@ -154,6 +154,17 @@ EngineOil.Temperature:
   unit: Celsius
   description: EOT, Engine oil temperature.
 
+EngineOil.PressureStatus:
+  type: sensor
+  description: Engine oil pressure status.
+  datatype: string
+  allowed: [
+    'NORMAL',   # Oil pressure as expected, within the nominal operating range.
+    'WARNING',  # Oil pressure is marginal or fluctuating; system may be operating in a degraded state.
+    'ALERT',    # Oil pressure has dropped below the critical safety threshold; immediate action required.
+    'ERROR'     # Invalid data received, sensor failure or electrical circuit fault.
+  ]
+
 #
 # Engine coolant
 #
