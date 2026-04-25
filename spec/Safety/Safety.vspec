@@ -1,0 +1,50 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+IsFire:
+  datatype: boolean
+  type: sensor
+  description: Indicates whether a fire has been detected in or on the vehicle.
+  comment: >
+    Determination method is implementation specific. May be derived from
+    temperature sensors, battery thermal runaway detection,
+    or dedicated fire/smoke detection systems.
+    Primary consumers: emergency dispatch and first responder systems.
+    Related to VSS issue #877 (Connected Safety signals).
+
+IsSubmersed:
+  datatype: boolean
+  type: sensor
+  description: Indicates whether the vehicle is partially or fully submersed in water.
+  comment: >
+    Determination method is implementation specific. May be derived from
+    pressure sensors, water contact sensors, door seal sensors,
+    or anomalous rain detection intensity readings.
+    Primary consumers: emergency dispatch and first responder systems.
+    Related to VSS issue #877 (Connected Safety signals).
+
+Rollover:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'RISK',
+    'DETECTED',
+    'UNKNOWN'
+  ]
+  description: Indicates whether the vehicle has rolled over or is at risk of rollover.
+  comment: >
+    May be derived from Vehicle.AngularVelocity, Vehicle.Orientation.Roll,
+    and Vehicle.Orientation.Pitch signals.
+    NONE indicates normal orientation.
+    RISK indicates the vehicle is at elevated risk of rollover.
+    DETECTED indicates a rollover event has occurred.
+    UNKNOWN shall be used when the system cannot assess rollover status.
+    Criteria for each state may be OEM specific.
+    Primary consumers: emergency dispatch and first responder systems.
+    Related to VSS issue #877 (Connected Safety signals).
