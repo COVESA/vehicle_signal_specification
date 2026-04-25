@@ -28,7 +28,7 @@ IsSubmersed:
     Primary consumers: emergency dispatch and first responder systems.
     Related to VSS issue #877 (Connected Safety signals).
 
-RolloverDetected:
+Rollover:
   datatype: string
   type: sensor
   allowed: [
