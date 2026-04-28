@@ -35,7 +35,6 @@ Rollover:
     'UNKNOWN',
     'RISK',
     'DETECTED',
-    'UNKNOWN'
   ]
   description: Indicates whether the vehicle has rolled over or is at risk of rollover.
   comment: >
