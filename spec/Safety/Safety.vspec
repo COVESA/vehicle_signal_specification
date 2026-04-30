@@ -33,8 +33,9 @@ Rollover:
   type: sensor
   allowed: [
     'UNKNOWN',
+    'NONE',
     'RISK',
-    'DETECTED',
+    'DETECTED'
   ]
   description: Indicates whether the vehicle has rolled over or is at risk of rollover.
   comment: >
