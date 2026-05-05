@@ -51,7 +51,6 @@ jobs:
           # Listing all artifacts that shall be managed as release artifacts
           path: |
             vss.csv
-            vss.fidl
             vss.graphql
             vss.idl
             vss.json
