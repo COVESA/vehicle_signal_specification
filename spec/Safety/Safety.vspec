@@ -48,3 +48,51 @@ Rollover:
     Criteria for each state may be OEM specific.
     Primary consumers: emergency dispatch and first responder systems.
     Related to VSS issue #877 (Connected Safety signals).
+
+WhiteoutRisk:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'NONE',
+    'RISK',
+    'DETECTED'
+  ]
+  description: Indicates whether the vehicle is in or approaching whiteout driving conditions (severely reduced visibility from blowing snow).
+  comment: >
+    May be derived from sensor fusion of Vehicle.Body.Raindetection.Intensity,
+    forward-camera visibility metrics, Vehicle.Exterior.AirTemperature, and
+    Vehicle.Exterior.RoadSurfaceCondition (SNOW state).
+    NONE indicates normal visibility.
+    RISK indicates conditions suggest whiteout may occur (e.g. heavy snow with wind).
+    DETECTED indicates whiteout currently degrades driver visibility below safe operating range.
+    UNKNOWN shall be used when the system cannot assess whiteout status.
+    Criteria for each state may be OEM specific.
+    Primary consumers: ADAS warning systems, navigation re-routing,
+    and driver-alert subsystems.
+    Related to VSS issue #877 (Connected Safety signals).
+
+RoadIcingRisk:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'NONE',
+    'RISK',
+    'DETECTED'
+  ]
+  description: Indicates the forecast or imminent risk of road-surface icing conditions ahead of or beneath the vehicle.
+  comment: >
+    Complements Vehicle.Exterior.RoadSurfaceCondition (which describes the
+    currently-detected surface state) by providing a predictive risk level.
+    May be derived from Vehicle.Exterior.AirTemperature trending toward freezing,
+    Vehicle.Body.Raindetection.Intensity history, dew-point estimation,
+    weather-service overlays, or upstream-vehicle telemetry sharing.
+    NONE indicates no current or imminent icing risk.
+    RISK indicates conditions suggest icing may form (e.g. near-freezing with moisture).
+    DETECTED indicates icing is currently forming or imminent on the driving surface.
+    UNKNOWN shall be used when the system cannot assess icing risk.
+    Criteria for each state may be OEM specific.
+    Primary consumers: ADAS predictive-braking systems, navigation re-routing,
+    and driver-alert subsystems.
+    Related to VSS issue #877 (Connected Safety signals).
