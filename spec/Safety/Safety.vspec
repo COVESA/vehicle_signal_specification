@@ -48,3 +48,69 @@ Rollover:
     Criteria for each state may be OEM specific.
     Primary consumers: emergency dispatch and first responder systems.
     Related to VSS issue #877 (Connected Safety signals).
+
+WhiteoutRisk:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'NONE',
+    'RISK',
+    'DETECTED'
+  ]
+  description: Indicates whether the vehicle is currently affected by whiteout conditions (severe visibility loss from heavy snow, blowing snow, or fog) or is at risk of entering such conditions.
+  comment: >
+    May be derived from Vehicle.Exterior.RoadSurfaceCondition,
+    Vehicle.Exterior.AirTemperature, Vehicle.Body.Raindetection.Intensity,
+    Vehicle.ADAS.* visibility-class signals, and optional camera-based
+    visibility classification.
+    NONE indicates normal visibility conditions.
+    RISK indicates elevated risk of visibility loss (e.g., heavy snow
+    onset, blowing snow conditions developing).
+    DETECTED indicates active whiteout conditions are affecting the vehicle.
+    UNKNOWN shall be used when the system cannot assess visibility-loss
+    risk (e.g., relevant sensors unavailable or input data confidence
+    below threshold).
+    Criteria for each state may be OEM specific.
+    Primary consumers: driver-warning systems, navigation systems
+    (re-routing on whiteout), and emergency dispatch systems
+    (incident-response prioritization).
+    Related to VSS issue #877 (Connected Safety signals).
+
+RoadIcingState:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'NONE',
+    'RISK',
+    'DETECTED'
+  ]
+  description: Indicates whether the vehicle is currently at risk of icing-related loss of control or has detected such conditions affecting traction.
+  comment: >
+    Derived assessment distinct from Vehicle.Exterior.RoadSurfaceCondition.
+    RoadSurfaceCondition reports observed surface state (DRY/WET/SNOW/ICE/...);
+    RoadIcingState reports the derived risk of icing-related loss of control.
+    RoadIcingState.RISK can be elevated even when RoadSurfaceCondition reports
+    DRY (black-ice, freezing rain onset), and RoadIcingState.NONE can hold even
+    when RoadSurfaceCondition reports SNOW (low-speed packed-snow with adequate
+    winter-tire grip).
+    May be derived from Vehicle.Exterior.RoadSurfaceCondition,
+    Vehicle.Exterior.AirTemperature, Vehicle.ADAS.ESC.RoadFriction.MostProbable,
+    and dew-point / road-surface-temperature differential signals.
+    NONE indicates no elevated icing risk.
+    RISK indicates conditions favor ice formation or onset of icing-related
+    traction loss.
+    DETECTED indicates active icing-related loss of control has been observed
+    and requires corroborating environmental signal (low ambient temperature,
+    prior wet/snow observation) in addition to friction-loss observation; ESC
+    intervention alone is insufficient evidence absent environmental
+    corroboration.
+    UNKNOWN shall be used when the system cannot assess icing risk
+    (e.g., relevant sensors unavailable or input data confidence below
+    threshold).
+    Criteria for each state may be OEM specific.
+    Primary consumers: driver-warning systems, ADAS interventions
+    (slip-rate-aware torque shaping), and navigation systems
+    (re-routing away from elevated-risk segments).
+    Related to VSS issue #877 (Connected Safety signals).
