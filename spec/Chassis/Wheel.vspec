@@ -105,7 +105,8 @@ Tire.WinterStatus:
     snow / mountain-pass routing and advisory thresholds to the grip the vehicle
     actually has. Combined with per-wheel placement, allows detection of mismatched
     or partially-fitted winter tire sets.
-    Criteria for each state may be OEM specific.
+    Criteria for each state may be OEM-, market-, or jurisdiction-specific
+    (e.g. national winter-tire regulations differ).
     Related to VSS issue #877 (Connected Safety signals).
 
 #
