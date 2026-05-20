@@ -49,7 +49,7 @@ Rollover:
     Primary consumers: emergency dispatch and first responder systems.
     Related to VSS issue #877 (Connected Safety signals).
 
-WhiteoutRisk:
+Whiteout:
   datatype: string
   type: sensor
   allowed: [
@@ -61,9 +61,9 @@ WhiteoutRisk:
   description: Indicates whether the vehicle is currently affected by whiteout conditions (severe visibility loss from heavy snow, blowing snow, or fog) or is at risk of entering such conditions.
   comment: >
     May be derived from Vehicle.Exterior.RoadSurfaceCondition,
-    Vehicle.Exterior.AirTemperature, Vehicle.Body.Raindetection.Intensity,
-    Vehicle.ADAS.* visibility-class signals, and optional camera-based
-    visibility classification.
+    Vehicle.Exterior.AirTemperature, and Vehicle.Body.Raindetection.Intensity,
+    optionally combined with camera-based visibility classification.
+    The camera-based classification method is implementation specific.
     NONE indicates normal visibility conditions.
     RISK indicates elevated risk of visibility loss (e.g., heavy snow
     onset, blowing snow conditions developing).
