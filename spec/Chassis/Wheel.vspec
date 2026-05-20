@@ -74,6 +74,40 @@ Tire.AirTemperature:
   unit: Celsius
   description: Air temperature inside the tire in Celsius.
 
+Tire.WinterStatus:
+  datatype: string
+  type: attribute
+  allowed: [
+    'UNKNOWN',
+    'NON_WINTER',
+    'WINTER'
+  ]
+  default: 'UNKNOWN'
+  description: Winter (cold-weather / snow) capability class of the tire currently fitted to this wheel.
+  comment: >
+    Describes the cold-weather grip capability of the fitted tire, which is the
+    primary determinant of available traction on snow and ice. Modelled as an
+    attribute because it is a property of the mounted equipment that changes only
+    when tires are swapped, not a continuously varying measurement.
+    WINTER indicates a dedicated winter / snow tire (e.g. carrying the
+    three-peak-mountain-snowflake 3PMSF marking), designed for cold-weather rubber
+    compounds and tread patterns that retain grip below approximately 7 degrees
+    Celsius and on snow / ice.
+    NON_WINTER covers summer and all-season tires alike: neither is a dedicated
+    winter tire, and from a snow-traction standpoint both leave the vehicle with
+    materially reduced cold-weather grip. The summer-vs-all-season distinction is
+    a longevity / comfort property that does not change the snow-safety answer and
+    is therefore intentionally not split here.
+    UNKNOWN shall be used when the fitted-tire winter capability cannot be
+    determined (e.g. no tire-identification data available, or input confidence
+    below threshold).
+    Primary consumers: driver-warning systems and navigation systems that adapt
+    snow / mountain-pass routing and advisory thresholds to the grip the vehicle
+    actually has. Combined with per-wheel placement, allows detection of mismatched
+    or partially-fitted winter tire sets.
+    Criteria for each state may be OEM specific.
+    Related to VSS issue #877 (Connected Safety signals).
+
 #
 # Wheel signals
 #
