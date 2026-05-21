@@ -133,6 +133,18 @@ IsFuelPortFlapOpen:
   description: Status of the fuel port flap(s). True if at least one is open.
 
 InstantantFuelEconomy:
+  deprecation: v6.1 - spelling correction fixed, replaced with InstantFuelEconomy
+  datatype: float
+  type: sensor
+  unit: km/l
+  description: Real-time instantaneous fuel economy calculated over a short time window.
+  comment: This value represents the current fuel efficiency at any given moment during vehicle operation.
+           It is calculated based on the distance traveled and fuel consumed over a brief sampling period (typically around 500ms).
+           The calculation compares the vehicle state before and after the sampling window to determine instantaneous efficiency.
+           This metric refreshes frequently and can fluctuate significantly based on driving conditions, acceleration, and terrain.
+           Unlike average fuel economy measurements, this provides immediate feedback on current driving efficiency.
+
+InstantFuelEconomy:
   datatype: float
   type: sensor
   unit: km/l
