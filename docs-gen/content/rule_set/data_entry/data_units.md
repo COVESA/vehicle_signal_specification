@@ -107,6 +107,12 @@ please create a pull request where the new unit is added to
 If the unit is needed for a new signal in the VSS standard catalog you can propose the new signal and the new unit
 in the same Pull Request.
 
+## Reusing existing units and quantity kinds from QUDT
+
+
+
+The introduction of optional QUDT mappings in the unit definitions enables direct reuse of the extensive standard vocabulary provided by [QUDT (Quantities, Units, Dimensions, and Data Types)](https://qudt.org). By referencing QUDT units and quantity kinds, VSS can benefit from the rich metadata, standardized definitions, and available transformation formulas maintained by the QUDT community. This not only improves semantic interoperability but also allows for easier integration with external systems and tools that already leverage QUDT. With this approach, it is now possible to specify explicit mappings to QUDT units and quantity kinds, making it easier to leverage existing resources and ensure consistency across domains.
+
 ## Unit file syntax
 
 Unit files follow the syntax defined below:
@@ -117,8 +123,12 @@ Unit files follow the syntax defined below:
     definition: <string>
     [unit: <string>] # Full name of unit
     quantity: <string> # Quantity of the unit.
-    [allowed-datatypes] : ['numeric', 'string', uint8', ...]] # Allowed datatypes in VSS standard catalog
+    [allowed-datatypes] : ['numeric', 'string', 'uint8', ...] # Allowed datatypes in VSS standard catalog
     [deprecation: <reason>]
+    [qudt:                # Optional QUDT mapping for this unit
+      unit: <string>      # QUDT unit URI
+      quantity-kind: <string> # QUDT quantity kind URI
+    ]
 ]*
 ```
 
@@ -130,6 +140,7 @@ However, from a VSS perspective quantities do not need to correspond to physical
 It could be an arbitrary term, but it is generally expected that it is possible to convert between values
 using different units but defined with the same quantity.
 
+
 Example:
 
 ```yaml
@@ -138,12 +149,18 @@ m:
   unit: meter
   quantity: length
   allowed-datatypes: ['numeric']
+  qudt:
+    unit: http://qudt.org/vocab/unit/M
+    quantity-kind: https://qudt.org/vocab/quantitykind/Length
 
 mm:
   definition: Length measured in millimeters
   unit: millimeter
   quantity: length
   allowed-datatypes: ['numeric']
+  qudt:
+    unit: http://qudt.org/vocab/unit/MilliM
+    quantity-kind: https://qudt.org/vocab/quantitykind/Length
 ```
 
 As `m` and `mm` are defined with the same quantity it is expected that you can convert a value from `m` to `mm`.
