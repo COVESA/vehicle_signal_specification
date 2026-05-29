@@ -177,11 +177,17 @@ ns:
   unit: nanosecond
   quantity: duration
   allowed-datatypes: ['numeric']
+  qudt:
+    unit: http://qudt.org/vocab/unit/NanoSEC
+    quantity-kind: https://qudt.org/vocab/quantitykind/Time
 us:
   definition: Duration measured in microseconds
-  unit: mikrosecond
+  unit: microsecond
   quantity: duration
   allowed-datatypes: ['numeric']
+  qudt:
+    unit: https://qudt.org/vocab/unit/MicroSEC
+    quantity-kind: https://qudt.org/vocab/quantitykind/Time
 ms:
   definition: Duration measured in milliseconds
   unit: millisecond
