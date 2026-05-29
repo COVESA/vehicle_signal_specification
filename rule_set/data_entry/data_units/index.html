@@ -27,20 +27,20 @@ Vehicle.Speed: datatype: float type: sensor unit: km/h description: Vehicle spee
 Vehicle.Speed: datatype: float type: sensor unit: km/h description: Vehicle speed.The ambition when selecting data unit for signals in VSS standard catalog has been to use either a unit based on SI-units, or a unit commonly used within the vehicle industry.">
     <meta itemprop="datePublished" content="2019-08-04T12:36:12+02:00">
     <meta itemprop="dateModified" content="2019-08-04T12:36:12+02:00">
-    <meta itemprop="wordCount" content="1595">
+    <meta itemprop="wordCount" content="1737">
     <title>Data Units :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
 
-    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1779804807" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1779804807" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/nucleus.css?1779804807" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/auto-complete.css?1779804807" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1779804807" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1779804807" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/fonts.css?1779804807" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1779804807" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/theme.css?1779804807" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/theme-blue.css?1779804807" rel="stylesheet" id="R-variant-style">
-    <link href="/vehicle_signal_specification/css/chroma-learn.css?1779804807" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="/vehicle_signal_specification/css/variant.css?1779804807" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/print.css?1779804807" rel="stylesheet" media="print">
-    <script src="/vehicle_signal_specification/js/variant.js?1779804807"></script>
+    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1780039766" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1780039766" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/nucleus.css?1780039766" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/auto-complete.css?1780039766" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1780039766" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1780039766" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/fonts.css?1780039766" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1780039766" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/theme.css?1780039766" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/theme-blue.css?1780039766" rel="stylesheet" id="R-variant-style">
+    <link href="/vehicle_signal_specification/css/chroma-learn.css?1780039766" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/vehicle_signal_specification/css/variant.css?1780039766" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/print.css?1780039766" rel="stylesheet" media="print">
+    <script src="/vehicle_signal_specification/js/variant.js?1780039766"></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..\/..';
@@ -83,6 +83,7 @@ Vehicle.Speed: datatype: float type: sensor unit: km/h description: Vehicle spee
         <li><a href="#addition-of-new-data-units-to-vss-standard-catalog">Addition of new Data Units to VSS standard catalog</a></li>
       </ul>
     </li>
+    <li><a href="#reusing-existing-units-and-quantity-kinds-from-qudt">Reusing existing units and quantity kinds from QUDT</a></li>
     <li><a href="#unit-file-syntax">Unit file syntax</a></li>
     <li><a href="#quantity-file-syntax">Quantity file syntax</a>
       <ul>
@@ -200,6 +201,8 @@ please create a pull request where the new unit is added to
 <a href="https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/units.yaml" rel="external" target="_blank">units.yaml</a>.</p>
 <p>If the unit is needed for a new signal in the VSS standard catalog you can propose the new signal and the new unit
 in the same Pull Request.</p>
+<h2 id="reusing-existing-units-and-quantity-kinds-from-qudt">Reusing existing units and quantity kinds from QUDT</h2>
+<p>The introduction of optional QUDT mappings in the unit definitions enables direct reuse of the extensive standard vocabulary provided by <a href="https://qudt.org" rel="external" target="_blank">QUDT (Quantities, Units, Dimensions, and Data Types)</a>. By referencing QUDT units and quantity kinds, VSS can benefit from the rich metadata, standardized definitions, and available transformation formulas maintained by the QUDT community. This not only improves semantic interoperability but also allows for easier integration with external systems and tools that already leverage QUDT. With this approach, it is now possible to specify explicit mappings to QUDT units and quantity kinds, making it easier to leverage existing resources and ensure consistency across domains.</p>
 <h2 id="unit-file-syntax">Unit file syntax</h2>
 <p>Unit files follow the syntax defined below:</p>
 <div class="highlight wrap-code"><pre tabindex="0"><code>[
@@ -207,8 +210,12 @@ in the same Pull Request.</p>
     definition: &lt;string&gt;
     [unit: &lt;string&gt;] # Full name of unit
     quantity: &lt;string&gt; # Quantity of the unit.
-    [allowed-datatypes] : [&#39;numeric&#39;, &#39;string&#39;, uint8&#39;, ...]] # Allowed datatypes in VSS standard catalog
+    [allowed-datatypes] : [&#39;numeric&#39;, &#39;string&#39;, &#39;uint8&#39;, ...] # Allowed datatypes in VSS standard catalog
     [deprecation: &lt;reason&gt;]
+    [qudt:                # Optional QUDT mapping for this unit
+      unit: &lt;string&gt;      # QUDT unit URI
+      quantity-kind: &lt;string&gt; # QUDT quantity kind URI
+    ]
 ]*</code></pre></div><p>The <code>vss-unit-identifier</code> and the string specified as <code>unit</code> must be unique.</p>
 <p>The VSS term <code>quantity</code> corresponds roughly to the term <code>quantity</code> as defined in for example ISO 80000.
 Typical example are <code>length</code>, <code>mass</code> and <code>velocity</code> that all can be expressed in SI-units.
@@ -221,12 +228,18 @@ using different units but defined with the same quantity.</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">unit</span>: <span style="color:#ae81ff">meter</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">quantity</span>: <span style="color:#ae81ff">length</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">allowed-datatypes</span>: [<span style="color:#e6db74">&#39;numeric&#39;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">qudt</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">unit</span>: <span style="color:#ae81ff">http://qudt.org/vocab/unit/M</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">quantity-kind</span>: <span style="color:#ae81ff">https://qudt.org/vocab/quantitykind/Length</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">mm</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">definition</span>: <span style="color:#ae81ff">Length measured in millimeters</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">unit</span>: <span style="color:#ae81ff">millimeter</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">quantity</span>: <span style="color:#ae81ff">length</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">allowed-datatypes</span>: [<span style="color:#e6db74">&#39;numeric&#39;</span>]</span></span></code></pre></div><p>As <code>m</code> and <code>mm</code> are defined with the same quantity it is expected that you can convert a value from <code>m</code> to <code>mm</code>.</p>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">allowed-datatypes</span>: [<span style="color:#e6db74">&#39;numeric&#39;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">qudt</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">unit</span>: <span style="color:#ae81ff">http://qudt.org/vocab/unit/MilliM</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">quantity-kind</span>: <span style="color:#ae81ff">https://qudt.org/vocab/quantitykind/Length</span></span></span></code></pre></div><p>As <code>m</code> and <code>mm</code> are defined with the same quantity it is expected that you can convert a value from <code>m</code> to <code>mm</code>.</p>
 <p>The <code>allowed-datatypes</code> attributes can be used to specify which VSS datatypes can contain values of a particular unit.
 For most units the symbolic datatype <code>numeric</code> meaning any float or integer datatype can be used.
 As an example, both <code>uint8</code> and <code>float</code> can be used to represent a length value.
@@ -306,12 +319,12 @@ of furlong to other units.</p>
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/vehicle_signal_specification/js/auto-complete.js?1779804807" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1779804807" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1779804807" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1779804807" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1779804807" defer></script>
-        <script src="/vehicle_signal_specification/js/search.js?1779804807" defer></script>
+        <script src="/vehicle_signal_specification/js/auto-complete.js?1780039766" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1780039766" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1780039766" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1780039766" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1780039766" defer></script>
+        <script src="/vehicle_signal_specification/js/search.js?1780039766" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation">
         <hr class="padding">
@@ -419,8 +432,8 @@ of furlong to other units.</p>
         </div>
       </div>
     </aside>
-    <script src="/vehicle_signal_specification/js/clipboard.min.js?1779804807" defer></script>
-    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1779804807" defer></script>
-    <script src="/vehicle_signal_specification/js/theme.js?1779804807" defer></script>
+    <script src="/vehicle_signal_specification/js/clipboard.min.js?1780039766" defer></script>
+    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1780039766" defer></script>
+    <script src="/vehicle_signal_specification/js/theme.js?1780039766" defer></script>
   </body>
 </html>
