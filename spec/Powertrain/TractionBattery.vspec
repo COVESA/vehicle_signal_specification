@@ -52,19 +52,19 @@ Temperature:
 Temperature.Average:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Current average temperature of the battery cells.
 
 Temperature.Min:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Current minimum temperature of the battery cells, i.e. temperature of the coldest cell.
 
 Temperature.Max:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Current maximum temperature of the battery cells, i.e. temperature of the hottest cell.
 
 Temperature.CellTemperature:
@@ -459,7 +459,7 @@ Charging.PowerLoss:
 Charging.Temperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Current temperature of AC/DC converter converting grid voltage to battery voltage.
 
 Charging.ChargeRate:
@@ -514,7 +514,7 @@ DCDC.PowerLoss:
 DCDC.Temperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Current temperature of DC/DC converter converting battery high voltage
                to vehicle low voltage (typically 12 Volts).
 

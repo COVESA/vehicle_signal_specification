@@ -10,7 +10,7 @@ In modern vehicles multiple electronic controlled systems are interacting to rea
 Typically, the driver gives input e.g. using the steering wheel and the accelerator and brake pedals, but additional vehicle functions may have also requests towards the motion actuators.
 One example is that a traction control system may want to limit the performance due to slippery road conditions or that the emergency braking system requests braking.
 
-A number of signals have been added to VSS related to powertrain (eAxle), steering and braking.
+A number of signals have been added to VSS related to powertrain (eAxle), steering, suspension and braking.
 These signals may be used to define actuator interfaces to support a highly flexible functional deployment on different electronic control units.
 Vehicle motion functions like driver brake request, cooperative regenerative braking and traction control system may request target values for longitudinal control on vehicle, axle and wheel level.
 Therefore, generic interface signals for the braking systems are introduced which support an arbitration of the requested target values by minimum and maximum values.
@@ -51,6 +51,11 @@ If nothing else is specified, the following definitions and assumptions apply
   This means that a positive torque yields to a force in vehicle forward direction and a negative torque yields to a force in backward direction.
   Omega limits for eAxle system defined according. Positive sign for rotation in forward direction, negative sign for rotation in backward direction.
   So the sign of current omega of a eAxle indicated the current driving direction.
+
+* Signal orientation suspension system:
+  Requests are defined according to ISO 8855.
+  This means that a positive damping force is pointing upwards and a negative force is pointing downwards.
+  A positive roll torque indicates a torque that tends to depress the right-hand side of the vehicle and lift the left-hand side.
 
 * All signals are defined in an automotive safety context, i.e. ISO 26262 has to be considered while using specified signals in vehicle applications.
 
@@ -100,6 +105,7 @@ A rotational speed request (e.g., 1000rpm) is realized by the eAxle. This mode i
 The defined steering signals are the main signals for interacting between vehicle motion features and the steering system on the front axle and are widely used in automotive industry.
 These signals are specified in a generic way to support various steering systems like electric power steering as well as Steer-by-Wire. Therefore, not all signals must necessarily be available/applicable.
 The signal specification supports requests on steering wheel (torque and angle) and the steering rack position which is linked to the steered wheels of the vehicle.
+As an alternative to steering rack position it is possible to use steer angle (single track model).
 The signal requests are further divided in "offset" and "target" signals, where an offset value is used additive to the functionality of the steering system and a "target" value is used as absolute external set-point for steering actuation.
 The different requests are controlled by dedicated "mode" signals for enabling and disabling the steering requests.
 

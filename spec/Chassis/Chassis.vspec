@@ -112,6 +112,15 @@ Axle.TireAspectRatio:
   unit: percent
   description: Aspect ratio between tire section height and tire section width, as per ETRTO / TRA standard.
 
+Axle.Torque:
+  datatype: int16
+  type: sensor
+  unit: Nm
+  description: Incoming axle torque to differential. Negative values indicate regen mode.
+  comment: For combustion engine this typically corresponds to the output torque of the multi-speed gearbox.
+           For electrical motor this typically corresponds to the output torque of the single-speed reduction-gear.
+           This signal is typically not used if there is separate electrical motors for left and right wheels.
+
 #
 # Wheels on Axles
 #

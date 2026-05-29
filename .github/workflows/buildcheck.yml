@@ -17,7 +17,6 @@ on:
 
 env:
   PYTHON_VERSION: "3.10.6" # keep in sync with vss-tools
-                           # Note: Currently cyclonedds does not support 3.11
 
 jobs:
   buildtest:
@@ -25,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
@@ -46,14 +45,14 @@ jobs:
           make mandatory_targets
 
       - name: "Uploading  artifacts"
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: vss-artifacts
           # Listing all artifacts that shall be managed as release artifacts
           path: |
             vss.csv
             vss.fidl
-            vss.graphql.ts
+            vss.graphql
             vss.idl
             vss.json
             vss.jsonschema
@@ -65,12 +64,12 @@ jobs:
 
       - name: Test that ddsidl is correct
         run: |
-          pip install cyclonedds
+          # Backward incompatible changes in CycloneDDS 11.0, so stick to old version
+          pip install cyclonedds==0.10.5
           idlc vss*.idl
 
-
       - name: Prepare for CSV check
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: 'stable'
           cache: false

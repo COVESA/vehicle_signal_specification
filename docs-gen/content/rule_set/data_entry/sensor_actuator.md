@@ -85,4 +85,5 @@ Attribute    | Description                 | Comment
 `pattern` | Can be used for datatype `string` and `string[]`  to specify a regular expression that limits allowed values for the data entry. The expression must be supported by [Python Regular Expressions](https://docs.python.org/3/howto/regex.html) | *since version 6.0*
 `default` | Default value for the data entry. See [Default Values](/vehicle_signal_specification/rule_set/data_entry/default/).
 `allowed`| Allowed values for the data entry. See [Allowed Values](/vehicle_signal_specification/rule_set/data_entry/allowed/).
+`enum`| Enum values for the data entry. See [Enums](/vehicle_signal_specification/rule_set/data_entry/enum/).
 `arraysize`| If the `datatype`is an array, this atrribute can be used to specify the size of the array. See [datatype](/vehicle_signal_specification/rule_set/data_entry/data_types/)

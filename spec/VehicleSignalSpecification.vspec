@@ -62,9 +62,14 @@ Vehicle.Powertrain.Transmission:
 #
 # The electric motor branch used to host the signals and attributes in ElectricMotor.vspec.
 #
+
 Vehicle.Powertrain.ElectricMotor:
   type: branch
+  instances: ["Front","Rear","FrontLeft","FrontRight","RearLeft","RearRight"]
   description: Electric Motor specific data.
+  comment: Instance Front to be used if the vehicle has a motor located at the front of the vehicle, serving front and possibly also rear axle.
+           Instance Rear to be used if the vehicle has a motor located at the rear of the vehicle, serving rear and possiblsy also front axle.
+           Instances with Left/Right intended to be used if vehicle has separate motors for left and right side.
 
 # Include the electric motor vspec file and attach all its signals and attributes under the
 # electric motor branch created above.
@@ -95,6 +100,14 @@ Vehicle.Powertrain.FuelSystem:
 # fuels system branch created above.
 #include Powertrain/FuelSystem.vspec Vehicle.Powertrain.FuelSystem
 
+#
+# The Range Extender branch for Extended Range Electric Vehicle (EREV) specific signals.
+#
+Vehicle.Powertrain.RangeExtender:
+  type: branch
+  description: Extended Range Electric Vehicle (EREV) specific data.
+
+#include Powertrain/RangeExtender.vspec Vehicle.Powertrain.RangeExtender
 
 
 #
@@ -130,6 +143,14 @@ Vehicle.ADAS:
 
 #include ADAS/ADAS.vspec Vehicle.ADAS
 
+#
+# The safety branch for crash-relevant derived signals.
+#
+Vehicle.Safety:
+  type: branch
+  description: Safety-related derived signals for crash detection and emergency response.
+
+#include Safety/Safety.vspec Vehicle.Safety
 
 #
 # Chassis signals and attributes.
@@ -141,18 +162,6 @@ Vehicle.Chassis:
 
 #include Chassis/Chassis.vspec Vehicle.Chassis
 
-
-#
-# On-board Diagnostic (OBD) Branch
-#
-Vehicle.OBD:
-  type: branch
-  description: OBD data.
-
-# Include the OBD/OBD.vspec file and attach all its data under the
-# OBD branch created above.
-
-#include OBD/OBD.vspec Vehicle.OBD
 
 #
 # Driver
@@ -208,3 +217,5 @@ Vehicle.Connectivity:
 #include Vehicle/Diagnostics.vspec Vehicle
 
 #include Vehicle/MotionManagement.vspec Vehicle
+
+#include Vehicle/ControlUnit/ControlUnit.vspec Vehicle

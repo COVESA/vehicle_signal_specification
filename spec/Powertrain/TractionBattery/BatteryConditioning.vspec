@@ -80,7 +80,7 @@ BatteryConditioning.TargetTime:
 BatteryConditioning.TargetTemperature:
   datatype: float
   type: actuator
-  unit: celsius
+  unit: Celsius
   description: Target temperature for battery conditioning.
   comment: Target temperature possibly differs between different modes as well as other factors.
            Allowed deviation from target temperature is implementation dependent.

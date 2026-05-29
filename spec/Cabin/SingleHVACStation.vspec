@@ -21,7 +21,7 @@ FanSpeed:
 Temperature:
   datatype: float
   type: actuator
-  unit: celsius
+  unit: Celsius
   description: Temperature
 
 AirDistribution:

@@ -58,20 +58,20 @@ Tire.IsPressureLow:
 Tire.Temperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Tire temperature in Celsius.
   deprecation: v6.0 - use RubberTemperature or AirTemperature instead.
 
 Tire.RubberTemperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Rubber temperature of the tire in Celsius.
 
 Tire.AirTemperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Air temperature inside the tire in Celsius.
 
 #
@@ -91,3 +91,12 @@ AngularSpeed:
   description: Angular (Rotational) speed of a vehicle's wheel.
   comment: Positive if wheel is trying to drive vehicle forward.
            Negative if wheel is trying to drive vehicle backward.
+
+Torque:
+  datatype: int16
+  type: sensor
+  unit: Nm
+  description: Torque provided by drivetrain, excluding torque provided by friction brakes.
+               Negative values indicate regen mode.
+  comment: This is typically the torque provided by the differential,
+           or by a motor dedicated for this wheel, after reduction gear if present.
