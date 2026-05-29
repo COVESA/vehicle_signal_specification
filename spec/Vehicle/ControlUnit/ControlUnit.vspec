@@ -1,0 +1,18 @@
+# Copyright (c) 2025 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Control unit branch
+#
+ControlUnit:
+  type: branch
+  instances:
+    - ["Central", "FrontLeft", "FrontRight","RearLeft1", "RearLeft2", "Trunk"]
+  description: Root of the control unit branch
+  comment: The listed instances in the VSS standard catalog shall be seen as an example and can be customized as needed
+#include Generic.vspec ControlUnit

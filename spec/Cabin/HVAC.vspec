@@ -41,7 +41,7 @@ IsAirConditioningActive:
 AmbientAirTemperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Ambient air temperature inside the vehicle.
 
 #include include/PowerOptimize.vspec

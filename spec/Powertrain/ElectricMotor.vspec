@@ -47,7 +47,7 @@ MaxRegenTorque:
 # Motor rotations per minute
 #
 Speed:
-  datatype: int32
+  datatype: float
   type: sensor
   unit: rpm
   description: Motor rotational speed measured as rotations per minute. Negative values indicate reverse driving mode.
@@ -65,19 +65,8 @@ TimeInUse:
 Temperature:
   datatype: float
   type: sensor
-  unit: celsius
+  unit: Celsius
   description: Motor temperature.
-
-
-#
-# Motor coolant temperature (if applicable)
-#
-CoolantTemperature:
-  deprecation: v5.0 moved to EngineCoolant.Temperature
-  datatype: float
-  type: sensor
-  unit: celsius
-  description: Motor coolant temperature (if applicable).
 
 #
 # Engine coolant

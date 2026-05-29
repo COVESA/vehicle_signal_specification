@@ -1,0 +1,47 @@
+# Copyright (c) 2025 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# See vehicle_motion_management.md for more info
+
+DampingRateTarget:
+  type: actuator
+  datatype: uint8
+  min: 0
+  max: 100
+  unit: percent
+  description: Damping rate request at given wheel.
+               0% = lowest possible damping rate
+               100% = highest possible damping rate
+  comment: Alternative signal to DampingForceTarget.
+
+DampingRate:
+  type: sensor
+  datatype: uint8
+  min: 0
+  max: 100
+  unit: percent
+  description: Actuated damping rate at given wheel.
+               0% = lowest possible damping rate
+               100% = highest possible damping rate
+  comment: Alternative signal to DampingForce.
+
+DampingForceTarget:
+  type: actuator
+  datatype: int16
+  unit: N
+  description: Damping force request at given wheel.
+               Signal orientation according ISO8855, meaning positive force is pointing upwards.
+  comment: Alternative signal to DampingRateTarget.
+
+DampingForce:
+  type: sensor
+  datatype: int16
+  unit: N
+  description: Actuated damping force at given wheel.
+               Signal orientation according ISO8855, meaning positive force is pointing upwards.
+  comment: Alternative signal to DampingRate.
