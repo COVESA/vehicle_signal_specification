@@ -53,3 +53,183 @@ RoadSurfaceCondition:
     UNKNOWN shall be used when the system cannot assess the road surface condition.
     Primary consumers: navigation and ADAS safety systems.
     Related to VSS issue #877 (Connected Safety signals).
+
+RoadSurfaceContaminant:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'NONE',
+    'MUD',
+    'CHIPPINGS',
+    'OIL',
+    'FUEL'
+  ]
+  description: Detected non-weather surface contaminant on the road beneath or ahead of the vehicle.
+  comment: >
+    Reports road surface contaminants that are distinct from weather-related
+    surface state (covered by Vehicle.Exterior.RoadSurfaceCondition) and
+    road obstruction objects (tree, rockfall, etc.).
+    NONE indicates no surface contaminant detected.
+    UNKNOWN shall be used when the system cannot assess surface contamination.
+    OIL and FUEL indicate liquid hydrocarbon contamination (slip hazard and
+    fire risk). CHIPPINGS indicates loose aggregate (tire damage risk,
+    reduced road holding).
+    Determination method is implementation specific.
+    Compliant with SENSORIS v1.6 RoadSurfaceCondition.TypeAndConfidence
+    and TPEG-TEC road surface condition taxonomy.
+    Related to VSS issue #877 (Connected Safety signals).
+
+RoadObstruction:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'NONE',
+    'TREE',
+    'AVALANCHE',
+    'ROCKFALLS',
+    'SHED_LOAD',
+    'LAND_SLIP',
+    'ANIMAL',
+    'ANIMAL_LARGE',
+    'ANIMAL_HERD',
+    'FLOODING'
+  ]
+  description: Type of road obstruction detected ahead of the vehicle.
+  comment: >
+    Reports the category of road obstruction detected by the vehicle's
+    perception systems. NONE indicates no obstruction detected.
+    UNKNOWN shall be used when obstruction type cannot be classified.
+    ANIMAL covers small animals (cat, dog); ANIMAL_LARGE covers large animals
+    (deer, horse, livestock); ANIMAL_HERD covers groups of animals on road.
+    FLOODING indicates standing water sufficient to obstruct passage (distinct
+    from WET surface state in Vehicle.Exterior.RoadSurfaceCondition).
+    SHED_LOAD covers cargo fallen from another vehicle.
+    Determination method is implementation specific (camera, radar, lidar).
+    Compliant with SENSORIS v1.6 RoadObstructionCondition.TypeAndConfidence
+    and TPEG-TEC road obstruction taxonomy.
+    Primary consumers: navigation systems (dynamic re-routing), ADAS safety
+    systems, and emergency dispatch systems.
+    Related to VSS issue #877 (Connected Safety signals).
+
+VisibilityCondition:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'CLEAR',
+    'MIST',
+    'LOW_FOG',
+    'LOW_HEAVY_RAIN',
+    'LOW_HEAVY_SNOW',
+    'LOW_SMOKE',
+    'LOW_SUN_GLARE'
+  ]
+  description: Assessed visibility condition outside the vehicle.
+  comment: >
+    Reports the dominant cause of reduced visibility. CLEAR indicates no
+    significant visibility reduction. LOW_* values indicate conditions that
+    materially reduce driver or sensor visibility range.
+    UNKNOWN shall be used when visibility condition cannot be assessed
+    (e.g., camera unavailable or confidence below threshold).
+    Determination method is implementation specific. May be derived from
+    camera-based classification, Vehicle.Body.Raindetection.Intensity,
+    Vehicle.Exterior.AirTemperature, and Vehicle.Body.Windshield.Wiping.Mode.
+    Complements Vehicle.Exterior.VisibilityDistance for quantitative range.
+    Related to SENSORIS v1.6 VisibilityCondition.TypeAndConfidence.
+    Primary consumers: ADAS systems, navigation (dynamic re-routing), and
+    emergency dispatch systems.
+    Related to VSS issue #877 (Connected Safety signals).
+
+VisibilityDistance:
+  datatype: float
+  type: sensor
+  unit: m
+  min: 0
+  description: Estimated visible distance ahead of the vehicle in current conditions.
+  comment: >
+    Forward visibility range in meters as assessed by the vehicle's sensing
+    systems. 0 indicates near-zero visibility. Value may be limited by sensor
+    range rather than actual atmospheric visibility; see VisibilityCondition
+    for the qualitative assessment.
+    Determination method is implementation specific. May be derived from
+    camera-based visibility estimation, lidar range reduction, or
+    radar clutter analysis.
+    Related to SENSORIS v1.6 VisibilityCondition.visible_distance_and_accuracy.
+    Related to VSS issue #877 (Connected Safety signals).
+
+PrecipitationType:
+  datatype: string
+  type: sensor
+  allowed: [
+    'UNKNOWN',
+    'NONE',
+    'RAIN',
+    'MIXED_RAIN_SNOW',
+    'SNOW',
+    'HAIL'
+  ]
+  description: Type of precipitation currently detected outside the vehicle.
+  comment: >
+    Discriminates precipitation type from Vehicle.Body.Raindetection.Intensity,
+    which reports intensity for rain only. NONE indicates no precipitation
+    detected. HAIL includes sleet and freezing rain as a precipitation
+    type (distinct from black ice formation on the road surface, which is
+    reported by Vehicle.Safety.RoadIcingState when available).
+    UNKNOWN shall be used when precipitation type cannot be assessed.
+    Determination method is implementation specific.
+    Related to SENSORIS v1.6 Precipitation.TypeAndConfidence.
+    Related to VSS issue #877 (Connected Safety signals).
+
+PrecipitationIntensity:
+  datatype: float
+  type: sensor
+  unit: mm/h
+  min: 0
+  description: Precipitation intensity in millimeters per hour.
+  comment: >
+    Provides an absolute intensity measurement complementing
+    Vehicle.Body.Raindetection.Intensity (which is a relative 0-100 percent
+    scale). Applies to all precipitation types reported by
+    Vehicle.Exterior.PrecipitationType; value is 0 when PrecipitationType
+    is NONE. Measurement method is sensor specific.
+    Related to SENSORIS v1.6 Precipitation.absolute_intensity_and_accuracy.
+    Related to VSS issue #877 (Connected Safety signals).
+
+AirPressure:
+  datatype: float
+  type: sensor
+  unit: hPa
+  description: Atmospheric air pressure outside the vehicle.
+  comment: >
+    Static ambient air pressure measured by the vehicle's barometric sensor.
+    May be used for altitude estimation, weather trend detection, and HVAC
+    pressurization management.
+    Related to SENSORIS v1.6 AtmosphereCondition.static_air_pressure.
+
+WindSpeed:
+  datatype: float
+  type: sensor
+  unit: m/s
+  min: 0
+  description: Wind speed outside the vehicle.
+  comment: >
+    Measured or estimated wind speed in meters per second.
+    May be derived from anemometer sensors, aerodynamic load estimation,
+    or external weather service input.
+    Related to SENSORIS v1.6 WindCondition.speed_and_accuracy.
+
+WindDirection:
+  datatype: float
+  type: sensor
+  unit: degrees
+  min: 0
+  max: 360
+  description: Wind direction in degrees (meteorological convention, 0 = North, 90 = East).
+  comment: >
+    Wind direction from which wind is blowing, using meteorological convention
+    (0 = from North, 90 = from East, 180 = from South, 270 = from West).
+    Only meaningful when WindSpeed is above a minimum threshold; value when
+    WindSpeed is near 0 is implementation specific.
+    Related to SENSORIS v1.6 WindCondition.direction_and_accuracy.
