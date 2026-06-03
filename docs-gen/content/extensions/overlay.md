@@ -15,6 +15,7 @@ Configurations may differ slightly (e.g. the instantiation of number of availabl
 1. **Adding new key/value pairs as additional metadata:**
 Extending the model with richer information is a fundamental feature enabled by the layer concept.  For example, deploying VSS into a specific scenario or with a particular binding/technology often needs some additional information.
 1. **Multiple layer files:** VSS layers can be split into several files in order to clearly separate concerns. Layering allows all the features above to be applied in a composable manner. In order to keep a determinstic result a clear order has to remain.
+1. **Wildcard keys:** A single overlay entry can be applied to multiple nodes at once using glob-style `*` wildcards.
 
 ### How does it work?
 
@@ -103,6 +104,34 @@ Vehicle.Speed:
 Vehicle.Occupant.Row1.DriverSide.HeadPosition.Yaw:
   unit: mm
 ```
+
+### Wildcard keys
+
+An overlay key containing `*` is treated as a glob pattern and expanded against the accumulated spec before merging.
+Each `*` matches any substring, including dots, so a single entry can span multiple path segments.
+
+```yaml
+# Add a comment to every door lock signal across all rows and sides.
+"Vehicle.Cabin.Door.*.*.IsLocked":
+  comment: Managed by central locking policy.
+
+# Override the unit for all speed signals directly under Vehicle.ADAS.
+"Vehicle.ADAS.*.Speed":
+  unit: m/s
+```
+
+The attributes in the wildcard entry are applied independently to each matching node — equivalent to writing one entry per match.
+The expansion order follows the order nodes appear in the base spec, so results are deterministic.
+
+If a glob matches no nodes, a warning is logged and processing continues successfully, allowing forward-compatible overlays that reference signals not yet present in the base spec.
+
+```yaml
+# Logs a warning if no nodes match, but does not fail.
+"Vehicle.NewFeature.*.Status":
+  comment: Placeholder for future signals.
+```
+
+Glob keys can be combined with `delete:` in the usual way.
 
 ### Deleting nodes
 
