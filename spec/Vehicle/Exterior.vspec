@@ -32,113 +32,109 @@ LightIntensity:
   comment: Mapping to physical units and calculation method is sensor specific.
 
 RoadSurfaceCondition:
-  datatype: string
+  datatype: uint8
   type: sensor
-  enum: [
-    'UNKNOWN',
-    'DRY',
-    'WET',
-    'SNOW',
-    'ICE',
-    'SLUSH',
-    'WET_ICE',
-    'LOOSE_GRAVEL'
-  ]
+  enum:
+    UNKNOWN: 0
+    DRY: 1
+    WET: 2
+    SNOW: 3
+    ICE: 4
+    SLUSH: 5
+    WET_ICE: 6
+    LOOSE_GRAVEL: 7
   description: Assessed condition of the road surface beneath or ahead of the vehicle.
   comment: >
     Determination method is implementation specific. May be derived from
     sensor fusion of Vehicle.ADAS.ESC.RoadFriction.MostProbable,
     Vehicle.Exterior.AirTemperature, Vehicle.Body.Raindetection.Intensity,
     and optional camera-based road surface classification.
-    UNKNOWN shall be used when the system cannot assess the road surface condition.
+    UNKNOWN (0) shall be used when the system cannot assess the road surface condition.
     Primary consumers: navigation and ADAS safety systems.
     Related to VSS issue #877 (Connected Safety signals).
 
 RoadSurfaceContaminant:
-  datatype: string
+  datatype: uint8
   type: sensor
-  enum: [
-    'UNKNOWN',
-    'NONE',
-    'MUD',
-    'CHIPPINGS',
-    'OIL',
-    'FUEL'
-  ]
+  enum:
+    UNKNOWN: 0
+    MUD: 1
+    CHIPPINGS: 2
+    OIL: 3
+    FUEL: 4
+    NONE: 5
   description: Detected non-weather surface contaminant on the road beneath or ahead of the vehicle.
   comment: >
     Reports road surface contaminants that are distinct from
     weather-related surface state (covered by
     Vehicle.Exterior.RoadSurfaceCondition) and road obstruction
-    objects (tree, rockfall, etc.). UNKNOWN shall be used when the
-    system cannot assess surface contamination. NONE indicates no
-    surface contaminant detected. MUD indicates wet dirt. CHIPPINGS
-    indicates loose aggregate (tire damage risk, reduced road
-    holding). OIL and FUEL indicate liquid hydrocarbon contamination
-    (slip hazard and fire risk).  Determination method is
-    implementation specific.  Compliant with SENSORIS v1.6
-    RoadSurfaceCondition.TypeAndConfidence and TPEG-TEC road surface
-    condition taxonomy.
+    objects (tree, rockfall, etc.). UNKNOWN (0) shall be used when the
+    system cannot assess surface contamination. NONE (5) indicates no
+    surface contaminant detected. MUD (1) indicates wet dirt. CHIPPINGS
+    (2) indicates loose aggregate (tire damage risk, reduced road
+    holding). OIL (3) and FUEL (4) indicate liquid hydrocarbon
+    contamination (slip hazard and fire risk). Values 1-4 are aligned
+    with SENSORIS v1.6 RoadSurfaceCondition.TypeAndConfidence.
+    Determination method is implementation specific.
 
 RoadObstruction:
-  datatype: string
+  datatype: uint8
   type: sensor
-  enum: [
-    'UNKNOWN',
-    'NONE',
-    'TREE',
-    'AVALANCHE',
-    'ROCKFALLS',
-    'SHED_LOAD',
-    'LAND_SLIP',
-    'ANIMAL',
-    'ANIMAL_LARGE',
-    'ANIMAL_HERD',
-    'FLOODING'
-  ]
+  enum:
+    UNKNOWN: 0
+    TREE: 1
+    AVALANCHE: 2
+    ROCKFALLS: 3
+    SHED_LOAD: 4
+    LAND_SLIP: 5
+    ANIMAL: 6
+    ANIMAL_LARGE: 7
+    ANIMAL_HERD: 8
+    NONE: 9
+    FLOODING: 10
   description: Type of road obstruction detected ahead of the vehicle.
   comment: >
     Reports the category of road obstruction detected by the vehicle's
-    perception systems. UNKNOWN shall be used when obstruction type
-    cannot be classified. NONE indicates no obstruction detected.
-    SHED_LOAD covers cargo fallen from another vehicle. LAND_SLIP or
-    landslide is ground material that has slid down slope into
-    road. ANIMAL covers small animals (cat, dog); ANIMAL_LARGE covers
-    large animals (deer, horse, livestock); ANIMAL_HERD covers groups
-    of animals on road.  FLOODING indicates standing water sufficient
+    perception systems. UNKNOWN (0) shall be used when obstruction type
+    cannot be classified. NONE (9) indicates no obstruction detected.
+    SHED_LOAD (4) covers cargo fallen from another vehicle. LAND_SLIP (5)
+    or landslide is ground material that has slid down slope into road.
+    ANIMAL (6) covers small animals (cat, dog); ANIMAL_LARGE (7) covers
+    large animals (deer, horse, livestock); ANIMAL_HERD (8) covers groups
+    of animals on road. FLOODING (10) indicates standing water sufficient
     to obstruct passage (distinct from WET surface state in
-    Vehicle.Exterior.RoadSurfaceCondition). Determination method is
-    implementation specific (camera, radar, lidar). Compliant with
+    Vehicle.Exterior.RoadSurfaceCondition). Values 1-8 are aligned with
     SENSORIS v1.6 RoadObstructionCondition.TypeAndConfidence and
-    TPEG-TEC road obstruction taxonomy.  Primary consumers: navigation
-    systems (dynamic re-routing), ADAS safety systems, and emergency
-    dispatch systems.
+    TPEG-TEC road obstruction taxonomy. Determination method is
+    implementation specific (camera, radar, lidar). Primary consumers:
+    navigation systems (dynamic re-routing), ADAS safety systems, and
+    emergency dispatch systems.
 
 VisibilityCondition:
-  datatype: string
+  datatype: uint8
   type: sensor
-  enum: [
-    'UNKNOWN',
-    'CLEAR',
-    'MIST',
-    'LOW_FOG',
-    'LOW_HEAVY_RAIN',
-    'LOW_HEAVY_SNOW',
-    'LOW_SMOKE',
-    'LOW_SUN_GLARE'
-  ]
+  enum:
+    UNKNOWN: 0
+    CLEAR: 1
+    MIST: 2
+    LOW_HEAVY_RAIN: 3
+    LOW_HEAVY_SNOW: 4
+    LOW_SMOKE: 5
+    LOW_FOG: 6
+    LOW_SUN_GLARE: 7
   description: Assessed visibility condition outside the vehicle.
   comment: >
-    Reports the dominant cause of reduced visibility.  UNKNOWN shall
+    Reports the dominant cause of reduced visibility. UNKNOWN (0) shall
     be used when visibility condition cannot be assessed (e.g., camera
-    unavailable or confidence below threshold).  CLEAR indicates no
+    unavailable or confidence below threshold). CLEAR (1) indicates no
     significant visibility reduction. LOW_* values indicate conditions
-    that materially reduce driver or sensor visibility range.
+    that materially reduce driver or sensor visibility range. Values are
+    aligned with SENSORIS v1.6 VisibilityCondition.TypeAndConfidence.
     Determination method is implementation specific. May be derived
     from camera-based classification,
     Vehicle.Body.Raindetection.Intensity,
     Vehicle.Exterior.AirTemperature, and
-    Vehicle.Body.Windshield.Wiping.Mode.  Complements
+    Vehicle.Body.Windshield.Wiping.Mode. Complements
     Vehicle.Exterior.VisibilityDistance for quantitative range.
     Primary consumers: ADAS systems, navigation (dynamic re-routing),
     and emergency dispatch systems.
@@ -159,25 +155,25 @@ VisibilityDistance:
     radar clutter analysis.
 
 PrecipitationType:
-  datatype: string
+  datatype: uint8
   type: sensor
-  enum: [
-    'UNKNOWN',
-    'NONE',
-    'RAIN',
-    'MIXED_RAIN_SNOW',
-    'SNOW',
-    'HAIL'
-  ]
+  enum:
+    UNKNOWN: 0
+    NONE: 1
+    RAIN: 2
+    MIXED_RAIN_SNOW: 3
+    SNOW: 4
+    HAIL: 5
   description: Type of precipitation currently detected outside the vehicle.
   comment: >
     Discriminates precipitation type from
     Vehicle.Body.Raindetection.Intensity, which reports intensity for
-    rain only. UNKNOWN shall be used when precipitation type cannot
-    be assessed. NONE indicates no precipitation detected. HAIL
+    rain only. UNKNOWN (0) shall be used when precipitation type cannot
+    be assessed. NONE (1) indicates no precipitation detected. HAIL (5)
     includes sleet and freezing rain as a precipitation type (distinct
     from black ice formation on the road surface, which is reported by
-    Vehicle.Safety.RoadIcingState when available).
+    Vehicle.Safety.RoadIcingState when available). Values are aligned
+    with SENSORIS v1.6 Precipitation.TypeAndConfidence.
     Determination method is implementation specific.
 
 PrecipitationIntensity:
@@ -227,4 +223,3 @@ WindDirection:
     (0 = from North, 90 = from East, 180 = from South, 270 = from West).
     Only meaningful when WindSpeed is above a minimum threshold; value when
     WindSpeed is near 0 is implementation specific.
-
