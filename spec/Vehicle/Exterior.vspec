@@ -205,7 +205,7 @@ WindSpeed:
   type: sensor
   unit: m/s
   min: 0
-  description: Wind speed outside the vehicle.
+  description: Surface wind speed outside the vehicle.
   comment: >
     Measured or estimated wind speed in meters per second.
     May be derived from anemometer sensors, aerodynamic load estimation,
