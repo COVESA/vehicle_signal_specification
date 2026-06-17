@@ -387,6 +387,14 @@ psi:
   qudt:
     unit: http://qudt.org/vocab/unit/PSI
     quantity-kind: https://qudt.org/vocab/quantitykind/VaporPressure
+hPa:
+  definition: Pressure measured in hectopascal
+  unit: hectopascal
+  quantity: pressure
+  allowed-datatypes: ['numeric']
+  qudt:
+    unit: http://qudt.org/vocab/unit/HectoPA
+    quantity-kind: https://qudt.org/vocab/quantitykind/AtmosphericPressure
 
 # Rating
 
@@ -454,7 +462,6 @@ l/h:
   qudt:
     unit: http://qudt.org/vocab/unit/L-PER-HR
     quantity-kind: https://qudt.org/vocab/quantitykind/VolumeFlowRate
-
 # Distance per volume
 
 mpg-us:
@@ -483,6 +490,17 @@ km/l:
   unit: kilometers per liter
   quantity: distance-per-volume
   allowed-datatypes: ['numeric']
+
+# Precipitation Rate
+
+mm/h:
+  definition: Precipitation intensity measured in millimeters per hour
+  unit: millimeter per hour
+  quantity: precipitation-rate
+  allowed-datatypes: ['numeric']
+  qudt:
+    unit: http://qudt.org/vocab/unit/MilliM-PER-HR
+    quantity-kind: https://qudt.org/vocab/quantitykind/PrecipitationRate
 
 # Force
 
