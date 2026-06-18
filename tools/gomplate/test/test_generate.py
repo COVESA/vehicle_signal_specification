@@ -67,19 +67,19 @@ class TestVspec3Conversion:
         vspec3_input = read_input_test_data()
         expected_output = read_output_test_data()
 
+        templates_dir = workspace["templates"]
         spec_dir = workspace["spec"]
-        generated_dir = workspace["generated"]
         root_dir = workspace["root"]
 
-        input_file = spec_dir / "test.vspec3"
+        input_file = templates_dir / "test.vspec3"
         input_file.write_text(vspec3_input, encoding="utf-8")
 
         gomplate_config = read_config_test_data()
-        gomplate_config_file = spec_dir / "gomplate_config.yaml"
+        gomplate_config_file = templates_dir / "gomplate_config.yaml"
         gomplate_config_file.write_text(gomplate_config, encoding="utf-8")
 
+        monkeypatch.setattr(gen_module, "TEMPLATES_DIR", templates_dir)
         monkeypatch.setattr(gen_module, "SPEC_DIR", spec_dir)
-        monkeypatch.setattr(gen_module, "GENERATED_DIR", generated_dir)
         monkeypatch.setattr(gen_module, "CONFIG_PATH", gomplate_config_file)
         monkeypatch.setattr(gen_module, "ROOT_DIR", root_dir)
 
@@ -87,7 +87,7 @@ class TestVspec3Conversion:
         convert_vspec3_files(gomplate_cmd)
 
         # check the output
-        output_file = generated_dir / "test.vspec"
+        output_file = spec_dir / "test.vspec"
         assert output_file.exists(), f"Expected output not found: {output_file}"
 
         actual = normalize(output_file.read_text(encoding="utf-8"))
@@ -107,19 +107,19 @@ class TestVspec3Conversion:
         # Prepare the environment and dummy input data
         vspec3_input = read_input_test_data()
 
+        templates_dir = workspace["templates"]
         spec_dir = workspace["spec"]
-        generated_dir = workspace["generated"]
         root_dir = workspace["root"]
 
-        input_file = spec_dir / "test.vspec3"
+        input_file = templates_dir / "test.vspec3"
         input_file.write_text(vspec3_input, encoding="utf-8")
 
         gomplate_config = read_config_test_data()
-        gomplate_config_file = spec_dir / "gomplate_config.yaml"
+        gomplate_config_file = templates_dir / "gomplate_config.yaml"
         gomplate_config_file.write_text(gomplate_config, encoding="utf-8")
 
+        monkeypatch.setattr(gen_module, "TEMPLATES_DIR", templates_dir)
         monkeypatch.setattr(gen_module, "SPEC_DIR", spec_dir)
-        monkeypatch.setattr(gen_module, "GENERATED_DIR", generated_dir)
         monkeypatch.setattr(gen_module, "CONFIG_PATH", gomplate_config_file)
         monkeypatch.setattr(gen_module, "ROOT_DIR", root_dir)
 
@@ -127,8 +127,8 @@ class TestVspec3Conversion:
         convert_vspec3_files(gomplate_cmd)
 
         # check the output
-        vspec3_outputs = list(generated_dir.rglob("*.vspec3"))
-        vspec_outputs = list(generated_dir.rglob("*.vspec"))
+        vspec3_outputs = list(spec_dir.rglob("*.vspec3"))
+        vspec_outputs = list(spec_dir.rglob("*.vspec"))
 
         assert len(vspec3_outputs) == 0, "No .vspec3 files should exist in generated/"
         assert len(vspec_outputs) == 1, "Exactly one .vspec file should be generated"
@@ -139,14 +139,14 @@ class TestVspec3Conversion:
         """When spec/ has no .vspec3 files, conversion should skip without error."""
 
         # Prepare the environment and dummy input data
+        monkeypatch.setattr(gen_module, "TEMPLATES_DIR", workspace["templates"])
         monkeypatch.setattr(gen_module, "SPEC_DIR", workspace["spec"])
-        monkeypatch.setattr(gen_module, "GENERATED_DIR", workspace["generated"])
-        monkeypatch.setattr(gen_module, "ROOT_DIR", workspace["spec"])
+        monkeypatch.setattr(gen_module, "ROOT_DIR", workspace["templates"])
         # convert the vspec3 input dummy file
         convert_vspec3_files(gomplate_cmd)
 
         # check the output
-        generated_files = list(workspace["generated"].rglob("*"))
+        generated_files = list(workspace["spec"].rglob("*"))
         assert len(generated_files) == 0, "No files should be generated from empty spec/"
 
     def test_subdirectory_structure_preserved(
@@ -158,21 +158,21 @@ class TestVspec3Conversion:
         vspec3_input = read_input_test_data()
 
         root_dir = workspace["root"]
+        templates_dir = workspace["templates"]
         spec_dir = workspace["spec"]
-        generated_dir = workspace["generated"]
 
-        nested_dir = spec_dir / "sub" / "dir"
+        nested_dir = templates_dir / "sub" / "dir"
         nested_dir.mkdir(parents=True)
 
         input_file = nested_dir / "test.vspec3"
         input_file.write_text(vspec3_input, encoding="utf-8")
 
         gomplate_config = read_config_test_data()
-        gomplate_config_file = spec_dir / "gomplate_config.yaml"
+        gomplate_config_file = templates_dir / "gomplate_config.yaml"
         gomplate_config_file.write_text(gomplate_config, encoding="utf-8")
 
+        monkeypatch.setattr(gen_module, "TEMPLATES_DIR", templates_dir)
         monkeypatch.setattr(gen_module, "SPEC_DIR", spec_dir)
-        monkeypatch.setattr(gen_module, "GENERATED_DIR", generated_dir)
         monkeypatch.setattr(gen_module, "CONFIG_PATH", gomplate_config_file)
         monkeypatch.setattr(gen_module, "ROOT_DIR", root_dir)
 
@@ -180,7 +180,7 @@ class TestVspec3Conversion:
         convert_vspec3_files(gomplate_cmd)
 
         # check the output
-        output_file = generated_dir / "sub" / "dir" / "test.vspec"
+        output_file = spec_dir / "sub" / "dir" / "test.vspec"
         assert output_file.exists(), f"Nested output not found: {output_file}"
 
     def test_conversion_produces_failed_output(
@@ -191,19 +191,19 @@ class TestVspec3Conversion:
         # Prepare the environment and dummy input data
         vspec3_input = read_input_test_data_2()
 
+        templates_dir = workspace["templates"]
         spec_dir = workspace["spec"]
-        generated_dir = workspace["generated"]
         root_dir = workspace["root"]
 
-        input_file = spec_dir / "test.vspec3"
+        input_file = templates_dir / "test.vspec3"
         input_file.write_text(vspec3_input, encoding="utf-8")
 
         gomplate_config = read_config_test_data()
-        gomplate_config_file = spec_dir / "gomplate_config.yaml"
+        gomplate_config_file = templates_dir / "gomplate_config.yaml"
         gomplate_config_file.write_text(gomplate_config, encoding="utf-8")
 
+        monkeypatch.setattr(gen_module, "TEMPLATES_DIR", templates_dir)
         monkeypatch.setattr(gen_module, "SPEC_DIR", spec_dir)
-        monkeypatch.setattr(gen_module, "GENERATED_DIR", generated_dir)
         monkeypatch.setattr(gen_module, "CONFIG_PATH", gomplate_config_file)
         monkeypatch.setattr(gen_module, "ROOT_DIR", root_dir)
 

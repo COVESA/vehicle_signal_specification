@@ -52,7 +52,7 @@ jobs:
         with:
           name: acea-vss-artifacts
           path: |
-            generated/
+            spec/
           if-no-files-found: error
 
       - name: Run Tests

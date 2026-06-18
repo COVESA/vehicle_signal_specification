@@ -1,7 +1,8 @@
 # Building and Using the ACEA-VSS Catalog
 
-As a user you have two options - either your project directly consumes the source files (`*.vspec`) generated in this repository, see [Generate VSPEC files](#generate-vspec-files),
-or you convert it to some other format using [VSS-tools](https://github.com/COVESA/vss-tools/), see [Generate artifacts using VSS tools](#generate-artifacts-using-vss-tools).
+As a user you can download the prebuilt ACEA VSS tree directly, see [Download the pre-built tree](#download-the-pre-built-tree). You can also directly build the project in your local environment either by:
+- Directly consumes the source files (`*.vspec`) generated in this repository, see [Generate VSPEC files](#generate-vspec-files).
+- Convert it to some other format using [VSS-tools](https://github.com/COVESA/vss-tools/), see [Generate artifacts using VSS tools](#generate-artifacts-using-vss-tools).
 
 ## Set up your development environment
 
@@ -33,7 +34,7 @@ You can build the default tree by running the `make` command on the root reposit
 
 ```console
 user@debian:~/vehicle_signal_specification$ python tools/gomplate/src/generate.py
-user@debian:~/vehicle_signal_specification$ vspec export yaml -u ./generated/units.yaml --strict -e metadata -s ./generated/VehicleSignalSpecification.vspec -o generated/vss.yaml
+user@debian:~/vehicle_signal_specification$ vspec export yaml -u ./spec/units.yaml --strict -e metadata -s ./spec/VehicleSignalSpecification.vspec -o spec/vss.yaml
 ```
 
 ## Enable Verbose logging
@@ -50,7 +51,7 @@ user@debian:~/vehicle_signal_specification$ make VERBOSE=1
 
 The sections below provide some guidance on how to use the tools provided in this repo to convert the ACEA tree into VSS catalog. See [set up your development environment](#set-up-your-development-environment)
 
-The ACEA specification defined under the folder spec/ are templated using [Gomplate](https://github.com/hairyhenderson/gomplate), you can generate the VSPEC files according to the VSS catalog by running the below command, the output will be under folder generated/:
+The ACEA specification defined under the folder templates/ are templated using [Gomplate](https://github.com/hairyhenderson/gomplate), you can generate the VSPEC files according to the VSS catalog by running the below command, the output will be under folder spec/:
 
 ```console
 user@debian:~/vehicle_signal_specification$ make preprocessing
@@ -67,19 +68,19 @@ The sections below provide some guidance on how to use the tools provided in thi
 If you want to generate the artifact in YAML format, you can do that with `make yaml`.
 Check the [Makefile](Makefile) for available commands.
 
-An example to generate yaml from the *.vspec3 files under the folder spec/:
+An example to generate yaml from the *.vspec3 files under the folder templates/:
 
 ```console
 user@debian:~/vehicle_signal_specification$ make yaml
 /usr/bin/python3 tools/gomplate/src/generate.py
-vspec export yaml -u ./generated/units.yaml --strict -e metadata -s ./generated/VehicleSignalSpecification.vspec -o generated/vss.yaml
+vspec export yaml -u ./spec/units.yaml --strict -e metadata -s ./spec/VehicleSignalSpecification.vspec -o spec/vss.yaml
 [11:13:37] INFO     User defined extra attributes: ('metadata',)
-           INFO     Loaded 'VSSQuantity', file=/home/foobar/vehicle_signal_specification/generated/quantities.yaml, elements=30
-           INFO     Loaded 'VSSUnit', file=/home/foobar/vehicle_signal_specification/generated/units.yaml, elements=69
+           INFO     Loaded 'VSSQuantity', file=/home/foobar/vehicle_signal_specification/spec/quantities.yaml, elements=30
+           INFO     Loaded 'VSSUnit', file=/home/foobar/vehicle_signal_specification/spec/units.yaml, elements=69
            INFO     VSpecs loaded, amount=36
 [11:13:38] INFO     Generating YAML output...
-user@debian:~/vehicle_signal_specification$ ls generated/vss.yaml
-generated/vss.yaml
+user@debian:~/vehicle_signal_specification$ ls spec/vss.yaml
+spec/vss.yaml
 ```
 
 ### Generate Tree in other format
@@ -92,7 +93,7 @@ Similarly to the YAML target in the [Makefile](Makefile), other VSS-tools suppor
 
 ```
 binary:
-	vspec export binary ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o generated/vss.binary
+	vspec export binary ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o spec/vss.binary
 ```
 
 ### Run the VSS-tools on the generated VSPEC files
@@ -104,10 +105,10 @@ An example to generate csv from the *.vspec3 files under the folder spec/:
 ```
 user@debian:~/vehicle_signal_specification$ make preprocessing
 /usr/bin/python3 tools/gomplate/src/generate.py
-user@debian:~/vehicle_signal_specification$ vspec export csv -u ./generated/units.yaml --strict -e metadata -s ./generated/VehicleSignalSpecification.vspec -o generated/vss.csv
+user@debian:~/vehicle_signal_specification$ vspec export csv -u ./spec/units.yaml --strict -e metadata -s ./spec/VehicleSignalSpecification.vspec -o spec/vss.csv
 [11:25:42] INFO     User defined extra attributes: ('metadata',)
-           INFO     Loaded 'VSSQuantity', file=/home/a398755/playground/acea/repo/vehicle_signal_specification/generated/quantities.yaml, elements=30
-           INFO     Loaded 'VSSUnit', file=/home/a398755/playground/acea/repo/vehicle_signal_specification/generated/units.yaml, elements=69
+           INFO     Loaded 'VSSQuantity', file=/home/foobar/vehicle_signal_specification/spec/quantities.yaml, elements=30
+           INFO     Loaded 'VSSUnit', file=/home/foobar/vehicle_signal_specification/spec/units.yaml, elements=69
            INFO     VSpecs loaded, amount=36
            INFO     Generating CSV output...
 ```

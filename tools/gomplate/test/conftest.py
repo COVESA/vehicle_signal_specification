@@ -16,13 +16,13 @@ from dependencies import resolve_gomplate_tool  # noqa: E402
 @pytest.fixture()
 def workspace(tmp_path: Path) -> dict[str, Path]:
     """Create a temporary directory."""
+    templates_dir = tmp_path / "templates"
     spec_dir = tmp_path / "spec"
-    generated_dir = tmp_path / "generated"
     config_dir = tmp_path / "config"
+    templates_dir.mkdir()
     spec_dir.mkdir()
-    generated_dir.mkdir()
     config_dir.mkdir()
-    return {"root": tmp_path, "spec": spec_dir, "generated": generated_dir, "config": config_dir}
+    return {"root": tmp_path, "templates": templates_dir, "spec": spec_dir, "config": config_dir}
 
 
 @pytest.fixture(scope="session")

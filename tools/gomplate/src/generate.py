@@ -16,8 +16,8 @@ from dependencies import resolve_gomplate_tool
 
 # ── Constants ───
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent.parent
+TEMPLATES_DIR = ROOT_DIR / "templates"
 SPEC_DIR = ROOT_DIR / "spec"
-GENERATED_DIR = ROOT_DIR / "generated"
 CONFIG_PATH = ROOT_DIR / "tools" / "gomplate" / "src" / "config" / "gomplateConfig.yaml"
 LOCAL_BIN_DIR = ROOT_DIR / ".tools" / "bin"
 
@@ -56,12 +56,12 @@ def _resolved_gomplate_config() -> str:
 def convert_vspec3_files(gomplate_cmd: str) -> None:
     """Render vspec3 in spec via gomplate."""
 
-    vspec3_files = sorted(SPEC_DIR.rglob("*.vspec3"))
+    vspec3_files = sorted(TEMPLATES_DIR.rglob("*.vspec3"))
     if not vspec3_files:
-        log.debug(f"No .vspec3 files found in {SPEC_DIR}")
+        log.debug(f"No .vspec3 files found in {TEMPLATES_DIR}")
         return
 
-    log.debug(f"Found {len(vspec3_files)} .vspec3 files in {SPEC_DIR}")
+    log.debug(f"Found {len(vspec3_files)} .vspec3 files in {TEMPLATES_DIR}")
 
     for f in vspec3_files:
         log.debug(f"  {f}")
@@ -77,7 +77,7 @@ def convert_vspec3_files(gomplate_cmd: str) -> None:
     created_dirs: set[Path] = set()
     try:
         for src in vspec3_files:
-            dst = (GENERATED_DIR / src.relative_to(SPEC_DIR)).with_suffix(".vspec")
+            dst = (SPEC_DIR / src.relative_to(TEMPLATES_DIR)).with_suffix(".vspec")
             _ensure_dirs(dst, created_dirs)
 
             cmd = [gomplate_cmd, "-f", str(src), "-o", str(dst), "--config", str(tmp_path)]
@@ -104,20 +104,20 @@ def convert_vspec3_files(gomplate_cmd: str) -> None:
 def copy_yaml_files() -> None:
     """Copy Quantities / Units YAML files from spec"""
 
-    yaml_files = sorted(SPEC_DIR.rglob("*.yaml"))
+    yaml_files = sorted(TEMPLATES_DIR.rglob("*.yaml"))
 
     if not yaml_files:
-        log.debug(f"No .yaml files found in {SPEC_DIR}")
+        log.debug(f"No .yaml files found in {TEMPLATES_DIR}")
         return
 
-    log.debug(f"Found {len(yaml_files)} .yaml files in {SPEC_DIR}")
+    log.debug(f"Found {len(yaml_files)} .yaml files in {TEMPLATES_DIR}")
 
     for f in yaml_files:
         log.debug(f"  {f}")
 
     created_dirs: set[Path] = set()
     for src in yaml_files:
-        dst = GENERATED_DIR / src.relative_to(SPEC_DIR)
+        dst = SPEC_DIR / src.relative_to(TEMPLATES_DIR)
         _ensure_dirs(dst, created_dirs)
         shutil.copy2(src, dst)
 
@@ -130,8 +130,8 @@ def main() -> None:
 
     log.setLevel(logging.DEBUG if args.verbose else logging.WARNING)
 
-    if not SPEC_DIR.is_dir():
-        _error(f"Spec directory not found: {SPEC_DIR}")
+    if not TEMPLATES_DIR.is_dir():
+        _error(f"Spec directory not found: {TEMPLATES_DIR}")
 
     gomplate_cmd = resolve_gomplate_tool(LOCAL_BIN_DIR, args.verbose)
     convert_vspec3_files(gomplate_cmd)
