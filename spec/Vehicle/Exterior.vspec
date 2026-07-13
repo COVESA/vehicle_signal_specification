@@ -53,6 +53,24 @@ RoadSurfaceCondition:
     Primary consumers: navigation and ADAS safety systems.
     Related to VSS issue #877 (Connected Safety signals).
 
+RoadSurfaceTemperature:
+  datatype: float
+  type: sensor
+  unit: Celsius
+  description: Temperature of the road surface beneath or ahead of the vehicle.
+  comment: >
+    Distinct from Vehicle.Exterior.AirTemperature: the road surface can sit
+    several degrees below the air, most notably on bridge decks and in shaded
+    cuttings, so surface temperature is the determining input for icing risk
+    when the air reads above freezing while the road is still frozen.
+    A natural fusion input to Vehicle.Exterior.RoadSurfaceCondition alongside
+    air temperature and Vehicle.ADAS.ESC.RoadFriction.MostProbable, and to
+    Vehicle.Safety.RoadIcingState where available.
+    Measurement method is implementation specific (typically infrared
+    pyrometer) and the value may also originate from external road-weather
+    infrastructure.
+    Related to VSS issue #877 (Connected Safety signals).
+
 RoadSurfaceContaminant:
   datatype: uint8
   type: sensor

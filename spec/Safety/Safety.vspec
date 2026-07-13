@@ -99,7 +99,7 @@ RoadIcingState:
     adequate winter-tire grip).
     May be derived from Vehicle.Exterior.RoadSurfaceCondition,
     Vehicle.Exterior.AirTemperature, Vehicle.ADAS.ESC.RoadFriction.MostProbable,
-    and road-surface-temperature signals.
+    and Vehicle.Exterior.RoadSurfaceTemperature.
     NONE indicates no elevated icing risk.
     RISK indicates conditions favor ice formation or onset of icing-related
     traction loss.
