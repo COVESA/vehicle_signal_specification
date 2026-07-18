@@ -1,0 +1,22 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+A.B:
+  description: Branch B.
+  type: branch
+
+A.B.C:
+  datatype: uint16
+  description: sensor C.
+  type: sensor
+  unit: V
+
+A.B.D:
+  datatype: float
+  description: attribute D.
+  type: attribute

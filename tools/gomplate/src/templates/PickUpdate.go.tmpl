@@ -1,0 +1,43 @@
+{{- /* #USAGE: Picked up from the ADAS.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"ADAS\",\"Name\":\"CruiseControl.IsActive\",\"comment\":\"COMMENT TEXT\",\"description\":\"DESCRIPTION TEXT\",\"datatype\":\"DATATYPE(e.g. boolean)\",\"type\":\"TYPE(e.g. sensor)\",\"unit\":\"UNIT(e.g. km)\"}" }} */ -}}
+{{- $input := data.JSON . -}}
+{{- assert (printf "No DataSource found, it's mandatory!") (has $input "DataSource") -}}
+{{- assert (printf "No Name found, it's mandatory!") (has $input "Name") -}}
+{{- $found := false -}}
+{{- range $key, $value := (datasource $input.DataSource) -}}
+  {{- if eq $key $input.Name -}}
+    {{- $found = true -}}
+{{ "\n" }}{{ $key }}:{{ "\n" }}
+    {{- $resValue := $value -}}
+    {{- $overridden := coll.Slice -}}
+    {{- if has $input "comment" }}
+      {{- $resValue = $resValue | coll.Merge (coll.Dict "comment" $input.comment) -}}
+      {{- $overridden = $overridden | append "comment" -}}
+    {{- end -}}
+    {{- if has $input "description" }}
+      {{- $resValue = $resValue | coll.Merge (coll.Dict "description" $input.description) -}}
+      {{- $overridden = $overridden | append "description" -}}
+    {{- end -}}
+    {{- if has $input "datatype" }}
+      {{- $resValue = $resValue | coll.Merge (coll.Dict "datatype" $input.datatype) -}}
+      {{- $overridden = $overridden | append "datatype" -}}
+    {{- end -}}
+    {{- if has $input "type" }}
+      {{- $resValue = $resValue | coll.Merge (coll.Dict "type" $input.type) -}}
+      {{- $overridden = $overridden | append "type" -}}
+    {{- end -}}
+    {{- if has $input "unit" }}
+      {{- $resValue = $resValue | coll.Merge (coll.Dict "unit" $input.unit) -}}
+      {{- $overridden = $overridden | append "unit" -}}
+    {{- end -}}
+    {{- if gt (len $overridden) 0 }}
+      {{- $metadata := coll.Dict "overridden" $overridden -}}
+      {{- if has $resValue "metadata" }}
+        {{- $metadata = $resValue.metadata | coll.Merge $metadata -}}
+      {{- end -}}
+      {{- $resValue = $resValue | coll.Merge (coll.Dict "metadata" $metadata) -}}
+    {{- end -}}
+    {{- $resValue | toYAML | indent 2 }}
+    {{- break -}}
+  {{- end -}}
+{{- end -}}
+{{- assert (printf "Key '%s' not found in DataSource '%s'" $input.Name $input.DataSource) $found -}}

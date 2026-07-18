@@ -26,7 +26,7 @@ if __name__ == '__main__':
         file = os.path.abspath(file)
         if os.path.isfile(file):
             ext = os.path.splitext(file)[1]
-            if ext in [".vspec", ".py"]:
+            if ext in [".vspec", ".vspec3"]:
                 if not string_exists(file, "Contributors to COVESA"):
                     print(f"No contribution statement found in {file}")
                     raise Exception("Check the output, some files have not the right contribution statement!")

@@ -3,5 +3,7 @@
 /codeStyles/codeStyleConfig.xml
 *.id
 
-# Generated files
-vss_rel_*
+# Generated vspec files
+tools/**/__pycache__
+.tools/
+.pytest_*

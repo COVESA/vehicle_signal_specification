@@ -1,79 +1,136 @@
-# Building and Using the VSS Standard Catalog
+# Building and Using the ACEA-VSS Catalog
 
-As a VSS user you have two options - either your project directly consumes the source files (`*.vspec`) in this repository,
-or you first convert it to some other format using [VSS Tools](https://github.com/COVESA/vss-tools).
+As a user you can download the prebuilt ACEA VSS tree directly, see [Download the pre-built tree](#download-the-pre-built-tree). You can also directly build the project in your local environment either by:
+- Directly consumes the source files (`*.vspec`) generated in this repository, see [Generate VSPEC files](#generate-vspec-files).
+- Convert it to some other format using [VSS-tools](https://github.com/COVESA/vss-tools/), see [Generate artifacts using VSS tools](#generate-artifacts-using-vss-tools).
 
-## Using the VSS source files
+## Set up your development environment
 
-If you intend to write your own VSS parser there are two files that you need to use as input.
-The root source file for the VSS standard catalog is [VehicleSignalSpecification.vspec](spec/VehicleSignalSpecification.vspec).
-It include all other `*.vspec` files in this repository (except overlays/profiles).
-Your parser may also be interested in using the [units.yaml](spec/units.yaml) file that list all units defined by the
-standard catalog documentation.
+You are free to use whatever development environment you want. For development a typical workflow to set up the development environment is as follows:
 
-## Using VSS-Tools
+1. Clone the branch acea-namespace in [VSS repository](https://github.com/COVESA/vehicle_signal_specification)
 
-Before writing your own parser it could be an idea to check if a suitable parser already has been created as part of
-[VSS-Tools](https://github.com/COVESA/vss-tools). This repository use some of the tools in VSS-Tools during Continuous
-Integration, and we also provide generated artifacts (CSV, Franca IDL, Graphql, DDS IDL, JSON, Yaml) for each
-[release](https://github.com/COVESA/vehicle_signal_specification/releases).
-The sections below provide some guidance on how to use VSS-Tools to convert the VSS standard catalog.
-Before creating a Pull Requst towards this repository it is recommended that you verify that your modified catalog
-can be used successfully with tools used in continuous integration.
+```console
+user@debian:~$ git clone --branch acea-namespace https://github.com/COVESA/vehicle_signal_specification
+```
 
-For detailed information on development environment and usage see [VSS-Tools](https://github.com/COVESA/vss-tools).
+2. Get all submodules
 
-### Set up your development environment
+```console
+user@debian:~/vehicle_signal_specification$ git submodule update --init
+```
 
-You are free to use whatever development environment you want, but tools in [VSS-tools](https://github.com/COVESA/vss-tools)
-have typically been tested only on Linux, and in continuous integration "ubuntu-latest" is used for testing.
+3. Follow the instructions in [VSS-tools](https://github.com/COVESA/vss-tools/blob/master/README.md) to prepare an environment suitable for vss-tools
+4. Install the needed dependencies: python v3.10.6 and Make
+5. Verify that your development environment is fully functional by running `make` from your `vehicle_signal_specification` folder.
 
-For development a typical workflow to set up the development environment is as follows:
+## Download the pre-built tree
 
-1. Clone the [VSS repository](https://github.com/COVESA/vehicle_signal_specification
-2. Get all submodules (`git submodule update --init`)
-3. Follow instructions in [VSS-tools](https://github.com/COVESA/vss-tools/blob/master/README.md) to prepare an environment suitable for vss-tools (for example a Python virtual environment)
-3. Run [scripts/install_vss_tools.sh](https://github.com/COVESA/vehicle_signal_specification/blob/master/scripts/install_vss_tools.sh) to install vss-tools.
-4. Verify that your development environment is fully functional by running `make` from your `vehicle_signal_specification` folder.
+You can download the acea-vss pre-built artifact from [Github Actions](https://github.com/COVESA/vehicle_signal_specification/actions?query=branch%3Aacea-namespace), the workflow runs everytime there is a new commit on the `acea-namespace` branch.
 
-### Generating artifacts
+## Build the ACEA-VSS tree
 
-If you want to generate VSS artifacts (JSON, CSV, ...) similar to what is included in
-[VSS-releases](https://github.com/COVESA/vehicle_signal_specification/releases) you can do that with `make`.
+You can build the default tree by running the `make` command on the root repository, alternatively you can run the python script directly as follow:
+
+```console
+user@debian:~/vehicle_signal_specification$ python tools/gomplate/src/generate.py
+user@debian:~/vehicle_signal_specification$ vspec export yaml -u ./spec/units.yaml --strict -e metadata -s ./spec/VehicleSignalSpecification.vspec -o spec/vss.yaml
+```
+
+## Enable Verbose logging
+
+By default, the build runs in quiet mode — only warnings and errors are shown.
+
+To enable verbose logging (debug + info messages), pass VERBOSE=1 to `make`:
+
+```console
+user@debian:~/vehicle_signal_specification$ make VERBOSE=1
+```
+
+## Generate VSPEC files
+
+The sections below provide some guidance on how to use the tools provided in this repo to convert the ACEA tree into VSS catalog. See [set up your development environment](#set-up-your-development-environment)
+
+The ACEA specification defined under the folder templates/ are templated using [Gomplate](https://github.com/hairyhenderson/gomplate), you can generate the VSPEC files according to the VSS catalog by running the below command, the output will be under folder spec/:
+
+```console
+user@debian:~/vehicle_signal_specification$ make preprocessing
+```
+
+Note: the python script under tools/ will install Gomplate tool if it cannot be found in your environment.
+
+## Generate artifacts using VSS tools
+
+The sections below provide some guidance on how to use the tools provided in this repo to convert ACEA specification and generate artifacts using VSS tools. See [set up your development environment](#set-up-your-development-environment)
+
+### Generate Tree in YAML format
+
+If you want to generate the artifact in YAML format, you can do that with `make yaml`.
 Check the [Makefile](Makefile) for available commands.
 
-An example to generate CSV from the *.vspec files in your current branch is:
+An example to generate yaml from the *.vspec3 files under the folder templates/:
+
+```console
+user@debian:~/vehicle_signal_specification$ make yaml
+/usr/bin/python3 tools/gomplate/src/generate.py
+vspec export yaml -u ./spec/units.yaml --strict -e metadata -s ./spec/VehicleSignalSpecification.vspec -o spec/vss.yaml
+[11:13:37] INFO     User defined extra attributes: ('metadata',)
+           INFO     Loaded 'VSSQuantity', file=/home/foobar/vehicle_signal_specification/spec/quantities.yaml, elements=30
+           INFO     Loaded 'VSSUnit', file=/home/foobar/vehicle_signal_specification/spec/units.yaml, elements=69
+           INFO     VSpecs loaded, amount=36
+[11:13:38] INFO     Generating YAML output...
+user@debian:~/vehicle_signal_specification$ ls spec/vss.yaml
+spec/vss.yaml
+```
+
+### Generate Tree in other format
+
+If you want to generate the artifact in other formats supported by the [VSS-tools](https://github.com/COVESA/vss-tools/) (JSON, CSV, ...), you have two options, either:
+
+### Add support for other format in the Makefile
+
+Similarly to the YAML target in the [Makefile](Makefile), other VSS-tools supported format can be extended and added to the Makefile directly, for example:
 
 ```
-user@debian:~/vehicle_signal_specification$ make csv
-vspec export csv -u ./spec/units.yaml --strict -s ./spec/VehicleSignalSpecification.vspec -o vss_rel_$(cat VERSION).csv
-[11:12:40] INFO     Added 30 quantities from /home/erik/vehicle_signal_specification/spec/quantities.yaml
-           INFO     Added 63 units from spec/units.yaml
-           INFO     Loading vspec from spec/VehicleSignalSpecification.vspec...
-[11:12:41] INFO     Check type usage
+binary:
+	vspec export binary ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o spec/vss.binary
+```
+
+### Run the VSS-tools on the generated VSPEC files
+
+Before you run the VSS tools, first you need to generate the VPSEC files from the ACEA templated files, you can do that by following instruction in section [Generate VSPEC files](#generate-vspec-files)
+
+An example to generate csv from the *.vspec3 files under the folder spec/:
+
+```
+user@debian:~/vehicle_signal_specification$ make preprocessing
+/usr/bin/python3 tools/gomplate/src/generate.py
+user@debian:~/vehicle_signal_specification$ vspec export csv -u ./spec/units.yaml --strict -e metadata -s ./spec/VehicleSignalSpecification.vspec -o spec/vss.csv
+[11:25:42] INFO     User defined extra attributes: ('metadata',)
+           INFO     Loaded 'VSSQuantity', file=/home/foobar/vehicle_signal_specification/spec/quantities.yaml, elements=30
+           INFO     Loaded 'VSSUnit', file=/home/foobar/vehicle_signal_specification/spec/units.yaml, elements=69
+           INFO     VSpecs loaded, amount=36
            INFO     Generating CSV output...
-user@debian:~/vehicle_signal_specification$ ls *.csv
-vss_rel_5.0-dev.csv
 ```
 
-### Make sure that your changes pass CI checks
+## Make sure that your changes pass CI checks
 
 Continuous Integration (CI) checks are defined in the [workflows](.github/workflows) folder.
-They consist of the following areas.
 
-#### Signoff
-All commits must be signed-off, see [CONTRIBUTING.md](CONTRIBUTING.md)
+### Signoff
 
-#### Build checks
-Make sure that `make travis-targets` succeeds. It is even better if all targets succeed (`make all`).
+All commits must be signed-off and carry the following sign-off line with your real name and email address:
 
-#### Pre-commit checks
+`Signed-off-by: Firstname Lastname <you@example.com>`
+
+### Pre-commit checks
+
 The repository has [configuration file](.pre-commit-config.yaml) with pre-commits hooks.
 It executes a number of checks that typically must pass for a new Pull Request to be accepted and merged.
 You must manually configure pre-commit to use the provided hooks by running `pre-commit install` from the
-respository top folder.
+repository top folder.
 
-```bash
-~/vehicle_signal_specification$: pip install pre-commit
-~/vehicle_signal_specification$: pre-commit install
+```console
+user@debian:~/vehicle_signal_specification$: pip install pre-commit
+user@debian:~/vehicle_signal_specification$: pre-commit install
 ```
