@@ -9,7 +9,7 @@
 #
 # In-Vehicle HMI Signals
 #
-#---TellTales branch 
+#---TellTales branch
 TellTales:
   instances:
     - TellTale[1,75]
@@ -17,4 +17,3 @@ TellTales:
   description: TellTales
 
 #include TellTales.vspec TellTales
-

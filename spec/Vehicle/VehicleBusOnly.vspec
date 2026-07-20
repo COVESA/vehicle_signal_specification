@@ -11,13 +11,13 @@
 #
 
 #---Acceleration branch (bus only)
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 Acceleration:
   description: Spatial acceleration. Axis definitions according to ISO 8855.
   type: branch
 
 #---Acceleration.Lateral (bus only)
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 Acceleration.Lateral:
   comment: ¤FMS¤ Corresponds to SAE J1939 signal PGN 0xF009(VDC2)/SPN 1809 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.10
   datatype: float
@@ -29,7 +29,7 @@ Acceleration.Lateral:
   unit: m/s^2
 
 #---Acceleration.Longitudinal (bus only)
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 Acceleration.Longitudinal:
   comment: ¤FMS¤ Corresponds to SAE J1939 signal PGN 0xF009(VDC2)/SPN 1810 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.10
   datatype: float
@@ -39,4 +39,3 @@ Acceleration.Longitudinal:
       - comment
   type: sensor
   unit: m/s^2
-

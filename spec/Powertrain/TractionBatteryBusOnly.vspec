@@ -12,14 +12,14 @@
 #
 
 #---TractionBattery.StateOfCharge branch (bus only)
-#Picked up from the TractionBattery.vspec 
+#Picked up from the TractionBattery.vspec
 StateOfCharge:
   description: Information on the state of charge of the vehicle's high voltage battery.
   type: branch
 
 
 #---TractionBattery.StateOfCharge.Displayed (bus only)
-#Picked up from the TractionBattery.vspec 
+#Picked up from the TractionBattery.vspec
 StateOfCharge.Displayed:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFCB7(VEP4)/SPN 5464 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.9
   datatype: float

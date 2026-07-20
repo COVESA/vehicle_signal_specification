@@ -28,14 +28,14 @@ Vehicle:
 #include Vehicle/VehicleBusOnly.vspec Vehicle
 
 #---Vehicle.Powertrain branch
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Powertrain:
   description: Powertrain data for battery management, etc.
   type: branch
 
 
 #---Vehicle.Powertrain.CombustionEngine branch
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Powertrain.CombustionEngine:
   description: Engine-specific data, stopping at the bell housing.
   type: branch
@@ -45,7 +45,7 @@ Vehicle.Powertrain.CombustionEngine:
 #include Powertrain/CombustionEngineTruckOnly.vspec Vehicle.Powertrain.CombustionEngine
 
 #---Vehicle.Powertrain.FuelSystem branch
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Powertrain.FuelSystem:
   description: Fuel system data.
   type: branch
@@ -54,7 +54,7 @@ Vehicle.Powertrain.FuelSystem:
 #include Powertrain/FuelSystemGaseous.vspec Vehicle.Powertrain.FuelSystem
 
 #---Vehicle.Powertrain.TractionBattery branch:
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Powertrain.TractionBattery:
   description: Battery Management data.
   type: branch
@@ -63,7 +63,7 @@ Vehicle.Powertrain.TractionBattery:
 #include Powertrain/TractionBatteryBusOnly.vspec Vehicle.Powertrain.TractionBattery
 
 #---Vehicle.Powertrain.Transmission branch:
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Powertrain.Transmission:
   description: Transmission-specific data, stopping at the drive shafts.
   type: branch
@@ -84,7 +84,7 @@ Vehicle.Powertrain.PropulsionSystem:
 # Chassis signals and attributes.
 # Includes steering, suspension, wheels, brakes, etc
 #---Vehicle.Chassis branch:
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Chassis:
   description: All data concerning steering, suspension, wheels, and brakes.
   type: branch
@@ -93,7 +93,7 @@ Vehicle.Chassis:
 #include Chassis/ChassisBusOnly.vspec Vehicle.Chassis
 
 #---Vehicle.Exterior branch:
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Exterior:
   description: Information about exterior measured by vehicle.
   type: branch
@@ -103,7 +103,7 @@ Vehicle.Exterior:
 
 # Advanced Driver Assist Systems signals and attributes.
 #---Vehicle.ADAS branch:
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.ADAS:
   description: All Advanced Driver Assist Systems data.
   type: branch
@@ -112,7 +112,7 @@ Vehicle.ADAS:
 
 # Service information (truck only)
 #---Vehicle.Service branch:
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Service:
   description: Service data.
   type: branch
@@ -121,7 +121,7 @@ Vehicle.Service:
 #include Vehicle/ServiceTruckOnly.vspec Vehicle.Service
 
 #---Vehicle.Cabin branch:
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Cabin:
   description: All in-cabin components, including doors.
   type: branch
@@ -129,7 +129,7 @@ Vehicle.Cabin:
 #include Cabin/Cabin.vspec Vehicle.Cabin
 
 #---Vehicle.Body branch:
-#Picked up from the VehicleSignalSpecification.vspec 
+#Picked up from the VehicleSignalSpecification.vspec
 Vehicle.Body:
   description: All body components.
   type: branch

@@ -11,7 +11,7 @@
 #
 
 #---RelativeLevel
-#Picked up from the FuelSystem.vspec 
+#Picked up from the FuelSystem.vspec
 RelativeLevel:
   comment: ¤FMS¤ Overridden by an overlay
   datatype: uint8
@@ -24,4 +24,3 @@ RelativeLevel:
   min: 0
   type: sensor
   unit: percent
-

@@ -21,9 +21,9 @@
 Brake.IsBrakePedalPressed:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF1(CCVS1)/SPN 597 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.2.1(truck) & 1.3.1(bus)
   datatype: boolean
-  description: Switch signal which indicates that the driver operated brake foot pedal is being pressed. 
-              This brake foot pedal is controlling the vehicles' service brake (total vehicle braking application, not park brakes). 
-              It is necessary for safe drivetrain behaviour that the switch activates before the physical braking components are activated 
+  description: Switch signal which indicates that the driver operated brake foot pedal is being pressed.
+              This brake foot pedal is controlling the vehicles' service brake (total vehicle braking application, not park brakes).
+              It is necessary for safe drivetrain behaviour that the switch activates before the physical braking components are activated
               (i.e. disengage the cruise control function prior to the activation of friction brakes).
   type: sensor
 
@@ -31,7 +31,7 @@ Brake.IsBrakePedalPressed:
 #---Chassis.AxleCount
 #Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"AxleCount\"}" }}
 
-#---Chassis.Axle branch 
+#---Chassis.Axle branch
 #ATTENTION! The number of axles below is just an example and should be adjusted to the actual vehicle configuration!
 Axle:
   instances:
@@ -49,7 +49,7 @@ Axle.Weight:
   type: sensor
   unit: kg
 
-#---Axle.Wheel branches 
+#---Axle.Wheel branches
 #ATTENTION! The number of wheels on each axle below is just an example and should be adjusted to the actual vehicle configuration!
 Axle.Row1.Wheel:
   instances: ["Pos7", "Pos9"]

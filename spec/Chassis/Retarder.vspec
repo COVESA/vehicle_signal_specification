@@ -13,7 +13,7 @@ RetarderTorqueMode:
   min: 0
   max: 15
   type: sensor
-  
+
 
 ActualRetarderPercentTorque:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xF000(ERC1)/SPN520 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.20
@@ -27,8 +27,8 @@ ActualRetarderPercentTorque:
 RetarderSelection:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xF000(ERC1)/SPN1716 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.20
   datatype: float
-  description: The position of the driver/'s selector for retarders that are not part of the engine system, expressed as percent and 
-              determined by the ratio of current position to the maximum possible position. The physical device may be a lever, rotary dial, combination of switches, or other device that the driver can 
+  description: The position of the driver/'s selector for retarders that are not part of the engine system, expressed as percent and
+              determined by the ratio of current position to the maximum possible position. The physical device may be a lever, rotary dial, combination of switches, or other device that the driver can
               use to select the type or amount of retardation needed.
   min: 0
   max: 100

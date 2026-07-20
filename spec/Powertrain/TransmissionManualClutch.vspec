@@ -13,6 +13,6 @@
 IsClutchPedalPressed:
   comment: ¤FMS¤Corresponds SAE J1939 signal PGN 0xFEF1(CCVS1)/SPN 598 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.2.1(truck) & 1.3.1(bus)
   datatype: boolean
-  description: Switch signal which indicates that the clutch pedal is being pressed. It is necessary for a safe drivetrain behaviour that the clutch 
+  description: Switch signal which indicates that the clutch pedal is being pressed. It is necessary for a safe drivetrain behaviour that the clutch
                 switch is set before the clutch is opened (cruise control function).
   type: sensor

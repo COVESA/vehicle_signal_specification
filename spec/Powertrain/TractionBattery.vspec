@@ -12,7 +12,7 @@
 #
 
 #---TractionBattery.Range
-#Picked up from the TractionBattery.vspec 
+#Picked up from the TractionBattery.vspec
 Range:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFC69(EVOI1)/SPN 15268 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.23
   datatype: float

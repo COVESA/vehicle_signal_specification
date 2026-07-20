@@ -7,13 +7,13 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #---Chassis.SteeringWheel branch
-#Picked up from the Chassis.vspec 
+#Picked up from the Chassis.vspec
 SteeringWheel:
   description: Steering wheel signals
   type: branch
 
 #---Chassis.SteeringWheel.Angle
-#Picked up from the Chassis.vspec 
+#Picked up from the Chassis.vspec
 SteeringWheel.Angle:
   comment: ¤FMS¤ Corresponds to SAE J1939 signal PGN 0xF009(VDC2)/SPN 1807 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.10
   datatype: float

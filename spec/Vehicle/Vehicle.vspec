@@ -12,33 +12,33 @@
 
 #
 #---VSS Versioning information
-##Picked up from the Vehicle.vspec 
+##Picked up from the Vehicle.vspec
 VersionVSS:
   description: Supported Version of VSS.
   type: branch
 
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 VersionVSS.Major:
   datatype: uint32
   default: 7
   description: Supported Version of VSS - Major version.
   type: attribute
 
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 VersionVSS.Minor:
   datatype: uint32
   default: 0
   description: Supported Version of VSS - Minor version.
   type: attribute
 
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 VersionVSS.Patch:
   datatype: uint32
   default: 0
   description: Supported Version of VSS - Patch version.
   type: attribute
 
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 VersionVSS.Label:
   comment: COVESA VSS project typically use dev for latest master, and empty string for released versions.
   datatype: string
@@ -79,13 +79,13 @@ VersionACEA.Label:
   type: attribute
 
 #---VehicleIdentification branch
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 VehicleIdentification:
   description: Attributes that identify a vehicle.
   type: branch
 
 #---VehicleIdentification.VIN
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 VehicleIdentification.VIN:
   comment: ¤FMS¤Corresponds SAE J1939 signal PGN 0xFEEC(VI)/SPN 237 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.5
   datatype: string
@@ -98,7 +98,7 @@ VehicleIdentification.VIN:
 
 
 #---TraveledDistance
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 TraveledDistance:
   comment: ¤FMS¤Corresponds SAE J1939 signal PGN 0xFEC1(VDHR)/SPN 917 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.7
   datatype: uint64
@@ -112,7 +112,7 @@ TraveledDistance:
 
 
 #---IsMoving
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 IsMoving:
   comment: ¤FMS¤Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1611 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
   datatype: boolean
@@ -124,7 +124,7 @@ IsMoving:
 
 
 #---Speed
-#Picked up from the Vehicle.vspec 
+#Picked up from the Vehicle.vspec
 Speed:
   comment: ¤FMS¤Corresponds SAE J1939 signal PGN 0xFEF1(CCVS1)/SPN 84 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.2.1(truck) & 1.3.1(bus)
   datatype: float
@@ -143,4 +143,3 @@ CurrentDateTime:
   unit: iso8601
   description: Current date and time provided by the vehicle's internal clock.
   type: sensor
-

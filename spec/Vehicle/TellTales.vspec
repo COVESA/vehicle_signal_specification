@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #
-# All TellTales signals 
+# All TellTales signals
 #
 Status:
   datatype: uint8
@@ -105,7 +105,7 @@ TellTale28.Status:
 
 TellTale29.Status:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 29 "Engine coolant level" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
-  
+
 TellTale30.Status:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 30 "Steering fluid level" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
 

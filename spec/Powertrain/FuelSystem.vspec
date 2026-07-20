@@ -31,7 +31,7 @@ FuelTypes.Fuel2.RelativeLevel:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEFC(DD1)/SPN 38 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.2
 
 #---InstantFuelEconomy
-#Picked up from the FuelSystem.vspec 
+#Picked up from the FuelSystem.vspec
 InstantFuelEconomy:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF2(LFE)/SPN 184 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.12
   datatype: float
@@ -44,7 +44,7 @@ InstantFuelEconomy:
 
 
 #---Range
-#Picked up from the FuelSystem.vspec 
+#Picked up from the FuelSystem.vspec
 Range:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEFF(OI)/SPN 8428 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.25
   datatype: uint32
@@ -63,10 +63,10 @@ FuelRate:
   datatype: float
   description: Amount of fuel consumed by engine per unit of time.
   min: 0
-  max: 3212.75  
+  max: 3212.75
   type: sensor
   unit: l/h
-  
+
 HighResTotalConsumption:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD09(HRLFC)/SPN 5054 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.14
   datatype: double
@@ -79,7 +79,7 @@ HighResTotalConsumption:
 CurrentFuelTypeUsed:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDC2(EEC14)/SPN 5837 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.18
   datatype: uint8
-  description: Type of fuel currently being utilized by the vehicle. 
+  description: Type of fuel currently being utilized by the vehicle.
   enum:
     'NONE': 0
     'GAS': 1
@@ -121,4 +121,3 @@ IsWaterInFuel:
   datatype: boolean
   description: Signal which indicates the presence of water in the fuel.
   type: sensor
-

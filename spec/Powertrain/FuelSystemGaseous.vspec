@@ -15,4 +15,3 @@ TotalConsumptionGaseous:
   description: Total fuel consumed (trip drive fuel + trip PTO governor moving fuel + trip PTO governor non-moving fuel + trip idle fuel) over the life of the engine.
   type: sensor
   unit: kg
-

@@ -7,9 +7,9 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #
-# All Tachograph signals 
+# All Tachograph signals
 #
-#---Drivers branch 
+#---Drivers branch
 Drivers:
   instances:
     - Driver[1,2]
@@ -55,11 +55,11 @@ Drivers.TimeRelatedState:
 
 Drivers.Driver1.TimeRelatedState:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1617 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
-  description: Indicates if the driver 1 approaches or exceeds working time limits (or other limits). 
+  description: Indicates if the driver 1 approaches or exceeds working time limits (or other limits).
 
 Drivers.Driver2.TimeRelatedState:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1618 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
-  description: Indicates if the driver 2 approaches or exceeds working time limits (or other limits). 
+  description: Indicates if the driver 2 approaches or exceeds working time limits (or other limits).
 Drivers.IsCardPresent:
   datatype: boolean
   type: sensor
@@ -84,13 +84,13 @@ Drivers.Driver1.Identification:
 Drivers.Driver2.Identification:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6B(DI)/SPN 1626 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.11
   description: Identifier of the driver 2 according to the tachograph card.
-  
+
 VehicleSpeed:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1624 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
   datatype: float
   description: Speed of the vehicle registered by the tachograph.
   type: sensor
-  unit: km/h  
+  unit: km/h
 
 DirectionIndicator:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1619 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
@@ -117,7 +117,7 @@ IsHandlingInformationPresent:
 IsSystemEventOccurred:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1622 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
   datatype: boolean
-  description: Indicates that a tachograph event has occurred. This may include power supply interruption, interruption of the speed sensor, 
+  description: Indicates that a tachograph event has occurred. This may include power supply interruption, interruption of the speed sensor,
               incorrect data on the driver card, driving without a driver card, illegal removal of a driver card, insertion of a driver card during driving,
               and time adjustment.
   type: sensor

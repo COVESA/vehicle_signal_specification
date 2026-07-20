@@ -27,7 +27,7 @@
 CruiseControl.IsSwitchedOn:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF1(CCVS1)/SPN 595 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.2.1(truck) & 1.3.1(bus)
   datatype: boolean
-  description: Cruise control is switched on. It is not ensured that the engine is controlled by cruise control, 
+  description: Cruise control is switched on. It is not ensured that the engine is controlled by cruise control,
               as in the case of a large driver's demand the engine is controlled by the driver while cruise control is active
               (maximum selection of cruise control and driver's demand). The cruise control is set to 0 if a switch off condition occurs.
   type: sensor

@@ -22,15 +22,15 @@ Doors.IsEnabledAtLeastOne:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE4E(DC1)/SPN3411 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.3
   instantiate: false
   datatype: boolean
-  description: Signal indicating the status of all bus doors. 
-              True if at least 1 bus door is enabled, False otherwise. 
+  description: Signal indicating the status of all bus doors.
+              True if at least 1 bus door is enabled, False otherwise.
               Enabled means the bus doors are able to be automatically opened or Closed.
   type: sensor
 
 # One signal for all the doors, not instantiated
 Doors.PositionOfDoors:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE4E(DC1)/SPN1821 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.3
-  instantiate: false  
+  instantiate: false
   datatype: uint8
   description: Signal indicating the actual position of the doors.
   enum:

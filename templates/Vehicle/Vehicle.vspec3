@@ -70,4 +70,3 @@ CurrentDateTime:
   unit: iso8601
   description: Current date and time provided by the vehicle's internal clock.
   type: sensor
-

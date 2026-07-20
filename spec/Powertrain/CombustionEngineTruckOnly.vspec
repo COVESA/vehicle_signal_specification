@@ -19,4 +19,3 @@ EnginePercentLoadAtCurrentSpeed:
   min: 0
   type: sensor
   unit: percent
-

@@ -17,4 +17,3 @@ GrossCombinationVehicleWeight:
   description: The total weight of the vehicle and all attached trailers.
   type: sensor
   unit: kg
-

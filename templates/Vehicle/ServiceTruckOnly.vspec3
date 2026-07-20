@@ -33,4 +33,3 @@
 
 #---Service.DistanceToService (truck only)
 #Picked up from the Service.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Service\",\"Name\":\"DistanceToService\",\"comment\":\"¤FMS¤Corresponds SAE J1939 signal PGN 0xFEC0(SERV)/SPN 914 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.2.3\"}" }}
-

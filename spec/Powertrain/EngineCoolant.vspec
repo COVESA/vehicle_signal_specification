@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #---EngineCoolant.Temperature
-#Picked up from the EngineCoolant.vspec 
+#Picked up from the EngineCoolant.vspec
 Temperature:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEEE(ET1)/SPN 110 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.9 (all) & 1.3.11 (bus)
   datatype: float
@@ -17,4 +17,3 @@ Temperature:
       - comment
   type: sensor
   unit: Celsius
-

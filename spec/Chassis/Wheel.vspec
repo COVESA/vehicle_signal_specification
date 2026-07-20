@@ -7,13 +7,13 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #---Wheel.Tire branch
-#Picked up from the Wheel.vspec 
+#Picked up from the Wheel.vspec
 Tire:
   description: Tire signals for wheel.
   type: branch
 
 #---Wheel.Tire.Pressure
-#Picked up from the Wheel.vspec 
+#Picked up from the Wheel.vspec
 Tire.Pressure:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF4(TIRE1)/SPN 241 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.24
   datatype: uint16
@@ -23,4 +23,3 @@ Tire.Pressure:
       - comment
   type: sensor
   unit: kPa
-

@@ -23,7 +23,7 @@ ActualPercentTorque:
   unit: percent
 
 #---CombustionEngine.Speed
-#Picked up from the CombustionEngine.vspec 
+#Picked up from the CombustionEngine.vspec
 Speed:
   comment: ¤FMS¤Corresponds SAE J1939 signal PGN 0xF004(EEC1)/SPN 190 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.3
   datatype: float
@@ -37,7 +37,7 @@ Speed:
 
 
 #---CombustionEngine.EngineHours
-#Picked up from the CombustionEngine.vspec 
+#Picked up from the CombustionEngine.vspec
 EngineHours:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEE5(LFC)/SPN 247 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.4
   datatype: float
@@ -50,7 +50,7 @@ EngineHours:
 
 
 #---CombustionEngine.EngineCoolant branch
-#Picked up from the CombustionEngine.vspec 
+#Picked up from the CombustionEngine.vspec
 EngineCoolant:
   description: Signals related to the engine coolant
   type: branch
@@ -58,14 +58,14 @@ EngineCoolant:
 #include EngineCoolant.vspec EngineCoolant
 
 #---CombustionEngine.DieselExhaustFluid branch
-#Picked up from the CombustionEngine.vspec 
+#Picked up from the CombustionEngine.vspec
 DieselExhaustFluid:
   comment: In retail and marketing other names are typically used for the fluid.
   description: Signals related to Diesel Exhaust Fluid (DEF). DEF is called AUS32 in ISO 22241.
   type: branch
 
 #---CombustionEngine.DieselExhaustFluid.Level
-#Picked up from the CombustionEngine.vspec 
+#Picked up from the CombustionEngine.vspec
 DieselExhaustFluid.Level:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE56(AT1T1I)/SPN 1761 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.15
   datatype: uint8
@@ -77,4 +77,3 @@ DieselExhaustFluid.Level:
   min: 0
   type: sensor
   unit: percent
-

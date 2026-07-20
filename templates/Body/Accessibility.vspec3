@@ -19,4 +19,3 @@ Accessibility.IsRampOrLiftOutside:
   datatype: boolean
   description: Signal indicating the actual position of the ramp / wheel chair lift.
   type: sensor
-
