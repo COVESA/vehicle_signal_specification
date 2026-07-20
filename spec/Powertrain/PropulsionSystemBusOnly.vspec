@@ -13,7 +13,6 @@
 IsReady:
   comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFCC2(HSS1)/SPN7315 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.15
   datatype: boolean
-  description:  Indicates the current status of the propulsion system. 
+  description:  Indicates the current status of the propulsion system.
                 True if the propulsion system is ready to move, or is moving the vehicle as commanded by operator.
   type: sensor
-
