@@ -1,0 +1,13 @@
+ServiceBrakeAirPressureCircuit1:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEAE(AIR1)/SPN 1087 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.13
+  datatype: uint16
+  description: The pneumatic pressure in the service brake circuit or reservoir #1.
+  type: sensor
+  unit: kPa
+
+ServiceBrakeAirPressureCircuit2:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEAE(AIR1)/SPN 1088 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.13
+  datatype: uint16
+  description: The pneumatic pressure in the service brake circuit or reservoir #2.
+  type: sensor
+  unit: kPa

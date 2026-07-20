@@ -1,0 +1,102 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Fuel system for ICE / hybrids
+#
+
+#Not found in the standard VSS spec
+TotalConsumption:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEE9(LFC)/SPN 250 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.1
+  datatype: float
+  description: Fuel consumption since the vehicle was built.
+  type: sensor
+  unit: l
+
+FuelTypes:
+  type: branch
+  instances:
+    - Fuel[1,2]
+  description: Vehicle fuel type data.
+#include FuelType.vspec FuelTypes
+
+FuelTypes.Fuel1.RelativeLevel:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEFC(DD1)/SPN 96 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.2
+FuelTypes.Fuel2.RelativeLevel:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEFC(DD1)/SPN 38 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.2
+
+#---InstantFuelEconomy
+#Picked up from the FuelSystem.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"FuelSystem\",\"Name\":\"InstantFuelEconomy\",\"comment\":\"¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF2(LFE)/SPN 184 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.12\"}" }}
+
+#---Range
+#Picked up from the FuelSystem.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"FuelSystem\",\"Name\":\"Range\",\"comment\":\"¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEFF(OI)/SPN 8428 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.25\", \"description\":\"Remaining range in kilometers using only fuel.\",\"unit\":\"km\"}" }}
+
+FuelRate:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF2(LFE)/SPN 183 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.12
+  datatype: float
+  description: Amount of fuel consumed by engine per unit of time.
+  min: 0
+  max: 3212.75  
+  type: sensor
+  unit: l/h
+  
+HighResTotalConsumption:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD09(HRLFC)/SPN 5054 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.14
+  datatype: double
+  description: Accumulated amount of fuel used during vehicle operation. High resolution used for calculations and fleet management systems.
+  min: 0
+  max: 4211081.215
+  type: sensor
+  unit: l
+
+CurrentFuelTypeUsed:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDC2(EEC14)/SPN 5837 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.18
+  datatype: uint8
+  description: Type of fuel currently being utilized by the vehicle. 
+  enum:
+    'NONE': 0
+    'GAS': 1
+    'METH': 2
+    'ETH': 3
+    'DSL': 4
+    'LPG': 5
+    'CNG': 6
+    'PROP': 7
+    'ELEC': 8
+    'BI_GAS': 9
+    'BI_METH': 10
+    'BI_ETH': 11
+    'BI_LPG': 12
+    'BI_CNG': 13
+    'BI_PROP': 14
+    'BI_ELEC': 15
+    'BI_MIX': 16
+    'HYB_GAS': 17
+    'HYB_ETH': 18
+    'HYB_DSL': 19
+    'HYB_ELEC': 20
+    'HYB_MIX': 21
+    'HYB_REG': 22
+    'NG': 23
+    'BI_NG': 24
+    'BI_DSL': 25
+    'NATURAL_GAS': 26
+    'DUAL_FUEL_DIESEL_CNG': 27
+    'DUAL_FUEL_DIESEL_LNG': 28
+    'FUEL_CELL_HYDROGEN': 29
+    'HYDROGEN_ICE': 30
+    'KEROSENE': 31
+    'HEAVY_FUEL_OIL': 32
+  type: sensor
+
+IsWaterInFuel:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEFF(OI)/SPN97 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.25
+  datatype: boolean
+  description: Signal which indicates the presence of water in the fuel.
+  type: sensor
+

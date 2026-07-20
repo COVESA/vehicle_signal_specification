@@ -28,26 +28,46 @@ Vehicle:
 #include Vehicle/VehicleBusOnly.vspec Vehicle
 
 #---Vehicle.Powertrain branch
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Powertrain\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Powertrain:
+  description: Powertrain data for battery management, etc.
+  type: branch
+
 
 #---Vehicle.Powertrain.CombustionEngine branch
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Powertrain.CombustionEngine\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Powertrain.CombustionEngine:
+  description: Engine-specific data, stopping at the bell housing.
+  type: branch
+
 #include Powertrain/CombustionEngine.vspec Vehicle.Powertrain.CombustionEngine
 #include Powertrain/CombustionEngineBusOnly.vspec Vehicle.Powertrain.CombustionEngine
 #include Powertrain/CombustionEngineTruckOnly.vspec Vehicle.Powertrain.CombustionEngine
 
 #---Vehicle.Powertrain.FuelSystem branch
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Powertrain.FuelSystem\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Powertrain.FuelSystem:
+  description: Fuel system data.
+  type: branch
+
 #include Powertrain/FuelSystem.vspec Vehicle.Powertrain.FuelSystem
 #include Powertrain/FuelSystemGaseous.vspec Vehicle.Powertrain.FuelSystem
 
 #---Vehicle.Powertrain.TractionBattery branch:
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Powertrain.TractionBattery\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Powertrain.TractionBattery:
+  description: Battery Management data.
+  type: branch
+
 #include Powertrain/TractionBattery.vspec Vehicle.Powertrain.TractionBattery
 #include Powertrain/TractionBatteryBusOnly.vspec Vehicle.Powertrain.TractionBattery
 
 #---Vehicle.Powertrain.Transmission branch:
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Powertrain.Transmission\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Powertrain.Transmission:
+  description: Transmission-specific data, stopping at the drive shafts.
+  type: branch
+
 #include Powertrain/Transmission.vspec Vehicle.Powertrain.Transmission
 #include Powertrain/TransmissionBusOnly.vspec Vehicle.Powertrain.Transmission
 
@@ -64,32 +84,56 @@ Vehicle.Powertrain.PropulsionSystem:
 # Chassis signals and attributes.
 # Includes steering, suspension, wheels, brakes, etc
 #---Vehicle.Chassis branch:
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Chassis\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Chassis:
+  description: All data concerning steering, suspension, wheels, and brakes.
+  type: branch
+
 #include Chassis/Chassis.vspec Vehicle.Chassis
 #include Chassis/ChassisBusOnly.vspec Vehicle.Chassis
 
 #---Vehicle.Exterior branch:
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Exterior\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Exterior:
+  description: Information about exterior measured by vehicle.
+  type: branch
+
 #include Vehicle/Exterior.vspec Vehicle.Exterior
 #---Can be included Vehicle/ExteriorTruckOnly.vspec and Vehicle/ExteriorBusOnly.vspec
 
 # Advanced Driver Assist Systems signals and attributes.
 #---Vehicle.ADAS branch:
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.ADAS\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.ADAS:
+  description: All Advanced Driver Assist Systems data.
+  type: branch
+
 #include ADAS/ADAS.vspec Vehicle.ADAS
 
 # Service information (truck only)
 #---Vehicle.Service branch:
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Service\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Service:
+  description: Service data.
+  type: branch
+
 #Truck only:
 #include Vehicle/ServiceTruckOnly.vspec Vehicle.Service
 
 #---Vehicle.Cabin branch:
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Cabin\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Cabin:
+  description: All in-cabin components, including doors.
+  type: branch
+
 #include Cabin/Cabin.vspec Vehicle.Cabin
 
 #---Vehicle.Body branch:
-#Picked up from the VehicleSignalSpecification.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"VehicleSignalSpecification\",\"Name\":\"Vehicle.Body\"}" }}
+#Picked up from the VehicleSignalSpecification.vspec 
+Vehicle.Body:
+  description: All body components.
+  type: branch
+
 #include Body/Body.vspec Vehicle.Body
 
 #---Vehicle.HMI branch:

@@ -1,0 +1,54 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Signals and attributes related to the traction battery in vehicles with electrical powertrain.
+# For some vehicles the traction battery is referred to as the high voltage battery.
+#
+
+#---TractionBattery.StateOfCharge branch (bus only)
+#Picked up from the TractionBattery.vspec 
+StateOfCharge:
+  description: Information on the state of charge of the vehicle's high voltage battery.
+  type: branch
+
+
+#---TractionBattery.StateOfCharge.Displayed (bus only)
+#Picked up from the TractionBattery.vspec 
+StateOfCharge.Displayed:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFCB7(VEP4)/SPN 5464 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.9
+  datatype: float
+  description: State of charge displayed to the customer.
+  max: 100
+  metadata:
+    overridden:
+      - comment
+  min: 0
+  type: sensor
+  unit: percent
+
+
+ThermalManagementSystemMode:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xF109(HVESSTS1)/SPN8235 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.13
+  datatype: uint8
+  description: Mode of the HVESS thermal management system.
+  enum:
+    'OFF': 0
+    'CIRCULATING': 1
+    'COOLING': 2
+    'HEATING': 3
+    'DRYING': 4
+  type: sensor
+
+TotalEnergyThroughput:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFC5E(HVESSHIST)/SPN8211 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.14
+  datatype: uint64
+  description: The total energy throughput which has flowed through High Voltage Energy Storage System.
+              This parameter is the sum of the absolute values of the Energy into and out of this HVES instance.
+  unit: Wh
+  type: sensor

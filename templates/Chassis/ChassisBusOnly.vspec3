@@ -1,0 +1,39 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#---Chassis.SteeringWheel branch
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"SteeringWheel\"}" }}
+#---Chassis.SteeringWheel.Angle
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"SteeringWheel.Angle\",\"comment\":\"¤FMS¤ Corresponds to SAE J1939 signal PGN 0xF009(VDC2)/SPN 1807 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.10\",\"description\":\"The main operator's steering wheel angle (on the steering column, not the actual wheel angle). The vehicle being steered to the left (counterclockwise) results in a positive steering wheel angle. This is the yaw angle of the steering wheel with the z-axis along the centerline of the steering column. This parameter is defined according to a Z-Up axis system and the sign of the value is in accordance to the right-hand rule, as specified in SAE J670. As specified in SAE J670, a Z-Up Axis System has positive X directed forward, positive Y to the left, and positive Z directed up.\",\"datatype\":\"float\",\"unit\":\"rad\"}" }}
+
+#--- Chassis.Suspension branch
+Suspension:
+  type: branch
+  description: Vehicle suspension system data.
+
+Suspension.Axles:
+  type: branch
+  instances:
+    - ["Front","Rear"]
+    - ["Left","Right"]
+  description: Vehicle axles suspension data.
+
+Suspension.Axles.BelowPressure:
+  datatype: float
+  description: Used for suspension bellow pressure information.
+  unit: kPa
+  type: sensor
+
+Suspension.Axles.Front.Left.BelowPressure:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE58(ASC4)/SPN1725 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.8
+Suspension.Axles.Front.Right.BelowPressure:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE58(ASC4)/SPN1726 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.8
+Suspension.Axles.Rear.Left.BelowPressure:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE58(ASC4)/SPN1727 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.8
+Suspension.Axles.Rear.Right.BelowPressure:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE58(ASC4)/SPN1728 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.8

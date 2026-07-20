@@ -3,7 +3,13 @@
 /codeStyles/codeStyleConfig.xml
 *.id
 
-# Generated vspec files
+# Ignore generated vspec files
+templates/**/*.vspec
+
+# Ignore Python cache and test artifacts
 tools/**/__pycache__
 .tools/
 .pytest_*
+
+# Ignore generated tree representations (yaml, json, etc.)
+spec/vss.yaml

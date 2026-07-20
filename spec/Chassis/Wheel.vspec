@@ -1,0 +1,26 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#---Wheel.Tire branch
+#Picked up from the Wheel.vspec 
+Tire:
+  description: Tire signals for wheel.
+  type: branch
+
+#---Wheel.Tire.Pressure
+#Picked up from the Wheel.vspec 
+Tire.Pressure:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF4(TIRE1)/SPN 241 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.24
+  datatype: uint16
+  description: Tire pressure in kilo-Pascal.
+  metadata:
+    overridden:
+      - comment
+  type: sensor
+  unit: kPa
+

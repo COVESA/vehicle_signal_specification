@@ -1,0 +1,18 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# TRANSMISSION SPECIFICATION FILE for buses
+#
+
+#---Transmission.SelectedGear (bus only)
+#Picked up from the Transmission.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Transmission\",\"Name\":\"SelectedGear\",\"comment\":\"¤FMS¤Corresponds SAE J1939 signal PGN 0xF005(ETC2)/SPN 524 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.7\",\"type\":\"sensor\"}" }}
+#---Transmission.CurrentGear (bus only)
+#Picked up from the Transmission.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Transmission\",\"Name\":\"CurrentGear\",\"comment\":\"¤FMS¤Corresponds SAE J1939 signal PGN 0xF005(ETC2)/SPN 523 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.7\"}" }}
+#---Transmission.Temperature (bus only)
+#Picked up from the Transmission.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Transmission\",\"Name\":\"Temperature\",\"comment\":\"¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEEF(EFL/P1)/SPN100 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.17\", \"description\":\"The current transmission fluid temperature.\"}" }}
