@@ -14,3 +14,5 @@ tools/**/__pycache__
 
 # Ignore generated tree representations (yaml, json, etc.)
 spec/vss.yaml
+spec/VehicleSignalSpecification.yaml
+templates/VehicleSignalSpecification.yaml
