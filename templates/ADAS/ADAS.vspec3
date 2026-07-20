@@ -45,4 +45,3 @@ CruiseControl.State:
     'SET': 5
     'ACCEL_OVERRIDE': 6
   type: sensor
-  
