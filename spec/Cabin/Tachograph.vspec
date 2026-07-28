@@ -1,0 +1,110 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# All Tachograph signals
+#
+
+#---Drivers branch
+Drivers:
+  type: branch
+  instances:
+    - Driver[1,2]
+  description: Driver signals
+
+Drivers.WorkingState:
+  datatype: uint8
+  enum:
+    'REST': 0
+    'DRIVER_AVAILABLE': 1
+    'WORK': 2
+    'DRIVE': 3
+  type: sensor
+  description: State of work of the driver.
+
+Drivers.Driver1.WorkingState:
+  description: State of work of the driver 1.
+
+Drivers.Driver2.WorkingState:
+  description: State of work of the driver 2.
+
+Drivers.TimeRelatedState:
+  datatype: uint8
+  enum:
+    'NORMAL': 0
+    'STATE_15_MIN_BEF_4_5_H': 1
+    'STATE_4_5_H_REACHED': 2
+    'STATE_15_MIN_BEF_9_H': 3
+    'STATE_9_H_REACHED': 4
+    'STATE_15_MIN_BEF_16_H': 5
+    'STATE_16_H_REACHED': 6
+  type: sensor
+
+Drivers.Driver1.TimeRelatedState:
+  description: Indicates if the driver 1 approaches or exceeds working time limits (or other limits).
+
+Drivers.Driver2.TimeRelatedState:
+  description: Indicates if the driver 2 approaches or exceeds working time limits (or other limits).
+
+Drivers.IsCardPresent:
+  datatype: boolean
+  type: sensor
+
+Drivers.Driver1.IsCardPresent:
+  description: Indicates the presence of a driver card in the driver slot.
+
+Drivers.Driver2.IsCardPresent:
+  description: Indicates the presence of a driver card in the Co-driver slot.
+
+Drivers.Identification:
+  datatype: string
+  type: sensor
+  description: Identifier of the driver according to the tachograph card.
+
+Drivers.Driver1.Identification:
+  description: Identifier of the driver 1 according to the tachograph card.
+
+Drivers.Driver2.Identification:
+  description: Identifier of the driver 2 according to the tachograph card.
+
+IsOverspeed:
+  datatype: boolean
+  type: sensor
+  description: Indicates whether the vehicle is exceeding the legal speed limit set in the tachograph.
+
+VehicleSpeed:
+  datatype: float
+  type: sensor
+  unit: km/h
+  description: Speed of the vehicle registered by the tachograph.
+
+DirectionIndicator:
+  datatype: uint8
+  enum:
+    'FORWARD': 0
+    'REVERSE': 1
+  type: sensor
+  description: Indicates the direction of the vehicle.
+
+IsPerformanceAnalysisActive:
+  datatype: boolean
+  type: sensor
+  description: Indicates the tachograph performance; including electronic or mechanical analysis, instrument analysis,
+              speed sensor analysis, mass storage analysis, and printer analysis.
+
+IsHandlingInformationPresent:
+  datatype: boolean
+  type: sensor
+  description: Indicates that handling information is present. Information could include 'no printer paper', 'no driver card', etc.
+
+IsSystemEventOccurred:
+  datatype: boolean
+  type: sensor
+  description: Indicates that a tachograph event has occurred. This may include power supply interruption, interruption of the speed sensor,
+              incorrect data on the driver card, driving without a driver card, illegal removal of a driver card, insertion of a driver card during driving,
+              and time adjustment.

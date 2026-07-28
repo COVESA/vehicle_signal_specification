@@ -189,3 +189,19 @@ Convertible.Status:
   description: Roof status on convertible vehicles.
 
 #include include/PowerOptimize.vspec
+
+##
+# Driver compartment signals
+##
+DriverCompartment:
+  type: branch
+  description: Driver compartment signals
+#include DriverCompartment_BusOnly.vspec DriverCompartment
+
+##
+# Tachograph signals
+##
+Tachograph:
+  type: branch
+  description: Tachograph
+#include Tachograph.vspec Tachograph
