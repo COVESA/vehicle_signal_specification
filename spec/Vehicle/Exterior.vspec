@@ -223,3 +223,8 @@ WindDirection:
     (0 = from North, 90 = from East, 180 = from South, 270 = from West).
     Only meaningful when WindSpeed is above a minimum threshold; value when
     WindSpeed is near 0 is implementation specific.
+
+AirQuality:
+  type: branch
+  description: Signals describing the composition of the ambient air outside the vehicle.
+#include ../include/AirComposition.vspec AirQuality

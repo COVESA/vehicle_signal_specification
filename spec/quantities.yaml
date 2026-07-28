@@ -84,3 +84,6 @@ illuminance:
 precipitation-rate:
   definition: Depth of precipitation accumulated per unit time (ISO 80000-3:2019 applied to meteorology)
   remark: Typically measured in millimeters per hour (mm/h). Applies to rain, snow (liquid equivalent), and mixed precipitation.
+mass-per-volume:
+  definition: Mass of a constituent divided by the volume of the mixture (ISO 80000-9:2019)
+  remark: Used for mass concentration of pollutants in air, e.g. particulate matter in micrograms per cubic meter.

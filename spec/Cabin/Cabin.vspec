@@ -30,6 +30,14 @@ HVAC:
 #include HVAC.vspec HVAC
 
 ##
+# Air quality signals
+##
+AirQuality:
+  type: branch
+  description: Signals describing the composition of the air inside the vehicle cabin.
+#include ../include/AirComposition.vspec AirQuality
+
+##
 # Infotainment
 ##
 Infotainment:

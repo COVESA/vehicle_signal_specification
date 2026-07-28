@@ -628,3 +628,30 @@ lx:
   qudt:
     unit: http://qudt.org/vocab/unit/LUX
     quantity-kind: https://qudt.org/vocab/quantitykind/LuminousFluxPerArea
+
+# Concentration
+
+ppm:
+  definition: Concentration measured in parts per million
+  unit: parts per million
+  quantity: relation
+  allowed-datatypes: ['numeric']
+  qudt:
+    unit: http://qudt.org/vocab/unit/PPM
+    quantity-kind: https://qudt.org/vocab/quantitykind/DimensionlessRatio
+ppb:
+  definition: Concentration measured in parts per billion
+  unit: parts per billion
+  quantity: relation
+  allowed-datatypes: ['numeric']
+  qudt:
+    unit: http://qudt.org/vocab/unit/PPB
+    quantity-kind: https://qudt.org/vocab/quantitykind/DimensionlessRatio
+ug/m^3:
+  definition: Mass concentration measured in micrograms per cubic meter
+  unit: microgram per cubic meter
+  quantity: mass-per-volume
+  allowed-datatypes: ['numeric']
+  qudt:
+    unit: http://qudt.org/vocab/unit/MicroGM-PER-M3
+    quantity-kind: https://qudt.org/vocab/quantitykind/MassDensity
