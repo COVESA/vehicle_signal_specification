@@ -21,6 +21,7 @@ Wheelbase:
 #
 # Axle definition
 #
+#ATTENTION! The number of axles below is just an example and should be adjusted to the actual vehicle configuration!
 Axle:
   instances:
     - Row[1,2]
@@ -32,7 +33,6 @@ AxleCount:
   type: attribute
   default: 2
   description: Number of axles on the vehicle
-
 
 #
 # Axle attributes
@@ -85,6 +85,13 @@ Axle.SteeringAngle:
   description: Single track two-axle model steering angle.
                Angle according to ISO 8855. Positive = degrees to the left. Negative = degrees to the right.
   comment: Single track two-axle model steering angle refers to the angle that a centrally mounted wheel would have.
+
+Axle.Weight:
+  datatype: uint16
+  type: sensor
+  unit: kg
+  description: The weight of the axle in kg.
+
 #
 # Tire attributes
 #
@@ -124,12 +131,18 @@ Axle.Torque:
 #
 # Wheels on Axles
 #
-Axle.Wheel:
-  instances: ["Left","Right"]
+#ATTENTION! The number of wheels on each axle below is just an example and should be adjusted to the actual vehicle configuration!
+Axle.Row1.Wheel:
+  instances: ["Pos7", "Pos9"]
   type: branch
   description: Wheel signals for axle
+#include Wheel.vspec Axle.Row1.Wheel
 
-#include Wheel.vspec Axle.Wheel
+Axle.Row2.Wheel:
+  instances: ["Pos6","Pos7", "Pos9", "Pos10"]
+  type: branch
+  description: Wheel signals for axle
+#include Wheel.vspec Axle.Row2.Wheel
 
 #
 # Parking Brake
@@ -215,3 +228,14 @@ Brake.IsDriverEmergencyBrakingDetected:
   description: Indicates if emergency braking initiated by driver is detected.
                True = Emergency braking detected. False = Emergency braking not detected.
   comment: Detection of emergency braking can trigger Emergency Brake Assist (EBA) to engage.
+
+Brake.IsBrakePedalPressed:
+  datatype: boolean
+  type: sensor
+  description: Switch signal which indicates that the driver operated brake foot pedal is being pressed.
+              This brake foot pedal is controlling the vehicles' service brake (total vehicle braking application, not park brakes).
+              It is necessary for safe drivetrain behaviour that the switch activates before the physical braking components are activated
+              (i.e. disengage the cruise control function prior to the activation of friction brakes).
+
+#include AirBrakeSystem.vspec Brake
+#include Retarder.vspec Brake

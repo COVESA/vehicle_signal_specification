@@ -161,7 +161,7 @@ Vehicle.Chassis:
   description: All data concerning steering, suspension, wheels, and brakes.
 
 #include Chassis/Chassis.vspec Vehicle.Chassis
-
+#include Chassis/ChassisBusOnly.vspec Vehicle.Chassis
 
 #
 # Driver
