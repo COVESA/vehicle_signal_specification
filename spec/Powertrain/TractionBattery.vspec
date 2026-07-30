@@ -157,6 +157,19 @@ StateOfCharge.CurrentEnergy:
   description: Physical state of charge of high voltage battery expressed in kWh.
   comment: Current energy could be calculated as .StateOfCharge.Current * .NetCapacity.
 
+ChargingState:
+  datatype: uint8
+  type: sensor
+  enum:
+    'IDLE': 0
+    'CHARGING': 1
+    'STANDBY': 2
+    'INITIALISING': 10
+    'PRE_CHARGE': 11
+    'TERMINATING': 12
+    'BATTERY_FAILURE': 13
+  description: Overall State of the DC charging system. The information is reported by the EVSE (Electric Vehicle Supply Equipment) beside status 0 and 15.
+
 NominalVoltage:
   datatype: uint16
   type: attribute
@@ -213,6 +226,13 @@ AccumulatedConsumedThroughput:
   type: sensor
   unit: Ah
   description: The accumulated charge throughput leaving HV battery for propulsion and auxiliary loads over lifetime of the battery.
+
+TotalEnergyThroughput:
+  datatype: uint64
+  type: sensor
+  unit: Wh
+  description: The total energy throughput which has flowed through High Voltage Energy Storage System.
+              This parameter is the sum of the absolute values of the Energy into and out of this HVES instance.
 
 PowerLoss:
   datatype: float
@@ -518,5 +538,15 @@ DCDC.Temperature:
   description: Current temperature of DC/DC converter converting battery high voltage
                to vehicle low voltage (typically 12 Volts).
 
+ThermalManagementSystemMode:
+  datatype: uint8
+  type: sensor  
+  enum:
+    'OFF': 0
+    'CIRCULATING': 1
+    'COOLING': 2
+    'HEATING': 3
+    'DRYING': 4
+  description: Mode of the HVESS thermal management system.
 
 #include TractionBattery/BatteryConditioning.vspec

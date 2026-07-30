@@ -60,6 +60,11 @@ Vehicle.Powertrain.Transmission:
 
 
 #
+# The power take-off branch.
+#
+#include Powertrain/PowerTakeOff.vspec Vehicle.Powertrain
+
+#
 # The electric motor branch used to host the signals and attributes in ElectricMotor.vspec.
 #
 
@@ -109,6 +114,15 @@ Vehicle.Powertrain.RangeExtender:
 
 #include Powertrain/RangeExtender.vspec Vehicle.Powertrain.RangeExtender
 
+#
+# Bus only variant, alternator signals
+#
+#include Powertrain/AlternatorBusOnly.vspec Vehicle.Powertrain
+
+Vehicle.Powertrain.PropulsionSystem:
+  description: Propulsion system information.
+  type: branch
+#include Powertrain/PropulsionSystem.vspec Vehicle.Powertrain.PropulsionSystem
 
 #
 # The Body branch used to host the signals and attributes Body/Body.vspec.

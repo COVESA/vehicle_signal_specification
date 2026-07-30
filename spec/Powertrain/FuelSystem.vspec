@@ -27,6 +27,46 @@ SupportedFuel:
                with additional suffix for octane (RON) where relevant.
   comment: RON 95 is sometimes referred to as Super, RON 98 as Super Plus.
 
+# SHOULD be synced with the supported fuel types above!!!
+CurrentFuelTypeUsed:
+  datatype: uint8
+  type: sensor  
+  enum:
+    'NONE': 0
+    'GAS': 1
+    'METH': 2
+    'ETH': 3
+    'DSL': 4
+    'LPG': 5
+    'CNG': 6
+    'PROP': 7
+    'ELEC': 8
+    'BI_GAS': 9
+    'BI_METH': 10
+    'BI_ETH': 11
+    'BI_LPG': 12
+    'BI_CNG': 13
+    'BI_PROP': 14
+    'BI_ELEC': 15
+    'BI_MIX': 16
+    'HYB_GAS': 17
+    'HYB_ETH': 18
+    'HYB_DSL': 19
+    'HYB_ELEC': 20
+    'HYB_MIX': 21
+    'HYB_REG': 22
+    'NG': 23
+    'BI_NG': 24
+    'BI_DSL': 25
+    'NATURAL_GAS': 26
+    'DUAL_FUEL_DIESEL_CNG': 27
+    'DUAL_FUEL_DIESEL_LNG': 28
+    'FUEL_CELL_HYDROGEN': 29
+    'HYDROGEN_ICE': 30
+    'KEROSENE': 31
+    'HEAVY_FUEL_OIL': 32
+  description: Type of fuel currently being utilized by the vehicle. 
+
 HybridType:
   datatype: string
   type: attribute
@@ -53,6 +93,20 @@ RelativeLevel:
   min: 0
   max: 100
   description: Level in fuel tank as percent of capacity. 0 = empty. 100 = full.
+
+FuelTypes:
+  type: branch
+  instances:
+    - Fuel[1,2]
+  description: Vehicle fuel type data.
+
+FuelTypes.RelativeLevel:
+  datatype: uint8
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Level of the fuel type as percent of capacity. 0 = empty. 100 = full.
 
 Range:
   datatype: uint32
@@ -99,6 +153,36 @@ ConsumptionSinceLastRefuel:
   description: Fuel consumption since last refueling.
   comment: Amount of fuel consumed since last refueling.
 
+TotalConsumption:
+  datatype: float
+  type: sensor
+  unit: l
+  description: Fuel consumption since the vehicle was built.
+
+HighResTotalConsumption:
+  datatype: double
+  type: sensor  
+  min: 0
+  max: 4211081.215
+  unit: l
+  description: Accumulated amount of fuel used during vehicle operation. 
+              High resolution used for calculations and fleet management systems.
+
+TotalConsumptionGaseous:
+  datatype: double
+  type: sensor
+  unit: kg
+  description: Total fuel consumed (trip drive fuel + trip PTO governor moving fuel + trip PTO governor 
+              non-moving fuel + trip idle fuel) over the life of the engine.
+
+FuelRate:
+  datatype: float
+  type: sensor
+  min: 0
+  max: 3212.75
+  unit: l/h  
+  description: Amount of fuel consumed by engine per unit of time.
+
 IsEngineStopStartEnabled:
   datatype: boolean
   type: sensor
@@ -116,6 +200,11 @@ IsFuelLevelEmpty:
   comment: When this signal is true, the fuel gauge displays empty (0), but the vehicle typically still has reserve fuel
            allowing for some additional driving range depending on the vehicle design.
            This represents the displayed empty state, not actual tank empty condition.
+
+IsWaterInFuel:
+  datatype: boolean
+  type: sensor
+  description: Signal which indicates the presence of water in the fuel.  
 
 RefuelPortPosition:
   datatype: string[]
