@@ -233,3 +233,11 @@ Vehicle.Connectivity:
 #include Vehicle/MotionManagement.vspec Vehicle
 
 #include Vehicle/ControlUnit/ControlUnit.vspec Vehicle
+
+#
+# HMI information
+#
+Vehicle.HMI:
+  description: Vehicle HMI signals
+  type: branch
+#include Vehicle/HMI.vspec Vehicle.HMI
