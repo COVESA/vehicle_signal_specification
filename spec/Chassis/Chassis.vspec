@@ -239,3 +239,4 @@ Brake.IsBrakePedalPressed:
 
 #include AirBrakeSystem.vspec Brake
 #include Retarder.vspec Brake
+#include Suspension.vspec

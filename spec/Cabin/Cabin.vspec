@@ -196,7 +196,12 @@ Convertible.Status:
 DriverCompartment:
   type: branch
   description: Driver compartment signals
-#include DriverCompartment_BusOnly.vspec DriverCompartment
+
+DriverCompartment.InteriorTemperature:
+  datatype: float
+  type: sensor
+  unit: Celsius
+  description: Temperature of air inside the part of the vehicle that encloses the driver and vehicle operating controls.
 
 ##
 # Tachograph signals
