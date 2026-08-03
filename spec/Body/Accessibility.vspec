@@ -13,8 +13,8 @@
 Accessibility:
   type: branch
   description: Accessibility equipment information.
-  
+
 Accessibility.IsRampOrLiftOutside:
   datatype: boolean
   type: sensor
-  description: Signal indicating the actual position of the ramp / wheel chair lift.  
+  description: Signal indicating the actual position of the ramp / wheel chair lift.

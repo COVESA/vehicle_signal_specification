@@ -540,7 +540,7 @@ DCDC.Temperature:
 
 ThermalManagementSystemMode:
   datatype: uint8
-  type: sensor  
+  type: sensor
   enum:
     'OFF': 0
     'CIRCULATING': 1

@@ -30,7 +30,7 @@ SupportedFuel:
 # SHOULD be synced with the supported fuel types above!!!
 CurrentFuelTypeUsed:
   datatype: uint8
-  type: sensor  
+  type: sensor
   enum:
     'NONE': 0
     'GAS': 1
@@ -65,7 +65,7 @@ CurrentFuelTypeUsed:
     'HYDROGEN_ICE': 30
     'KEROSENE': 31
     'HEAVY_FUEL_OIL': 32
-  description: Type of fuel currently being utilized by the vehicle. 
+  description: Type of fuel currently being utilized by the vehicle.
 
 HybridType:
   datatype: string
@@ -161,18 +161,18 @@ TotalConsumption:
 
 HighResTotalConsumption:
   datatype: double
-  type: sensor  
+  type: sensor
   min: 0
   max: 4211081.215
   unit: l
-  description: Accumulated amount of fuel used during vehicle operation. 
+  description: Accumulated amount of fuel used during vehicle operation.
               High resolution used for calculations and fleet management systems.
 
 TotalConsumptionGaseous:
   datatype: double
   type: sensor
   unit: kg
-  description: Total fuel consumed (trip drive fuel + trip PTO governor moving fuel + trip PTO governor 
+  description: Total fuel consumed (trip drive fuel + trip PTO governor moving fuel + trip PTO governor
               non-moving fuel + trip idle fuel) over the life of the engine.
 
 FuelRate:
@@ -180,7 +180,7 @@ FuelRate:
   type: sensor
   min: 0
   max: 3212.75
-  unit: l/h  
+  unit: l/h
   description: Amount of fuel consumed by engine per unit of time.
 
 IsEngineStopStartEnabled:
@@ -204,7 +204,7 @@ IsFuelLevelEmpty:
 IsWaterInFuel:
   datatype: boolean
   type: sensor
-  description: Signal which indicates the presence of water in the fuel.  
+  description: Signal which indicates the presence of water in the fuel.
 
 RefuelPortPosition:
   datatype: string[]
