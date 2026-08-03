@@ -44,6 +44,7 @@ Drivers.TimeRelatedState:
     'STATE_15_MIN_BEF_16_H': 5
     'STATE_16_H_REACHED': 6
   type: sensor
+  description: Indicates if the driver approaches or exceeds working time limits (or other limits).
 
 Drivers.Driver1.TimeRelatedState:
   description: Indicates if the driver 1 approaches or exceeds working time limits (or other limits).
@@ -54,6 +55,7 @@ Drivers.Driver2.TimeRelatedState:
 Drivers.IsCardPresent:
   datatype: boolean
   type: sensor
+  description: Indicates the presence of a driver card.
 
 Drivers.Driver1.IsCardPresent:
   description: Indicates the presence of a driver card in the driver slot.
