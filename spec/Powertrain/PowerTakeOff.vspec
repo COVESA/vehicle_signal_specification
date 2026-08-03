@@ -12,16 +12,10 @@
 
 PowerTakeOffs:
   type: branch
-  instances:
-    - PTO[1,1]
   description: PTO information.
 
-# Temporarily delete the branch instance, as it is not used in FMS and causes confusion. Will be added back if needed in the future.
-PowerTakeOffs.PTO1:
-  delete: true
-
+#Use "instantiate: false" when the branch will eventually contain PTO instances.
 PowerTakeOffs.IsEngagedAtLeastOne:
   datatype: boolean
-  instantiate: false
   type: sensor
   description: Indicates that at least one PTO is engaged
