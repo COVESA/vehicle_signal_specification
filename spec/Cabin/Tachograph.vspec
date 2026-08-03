@@ -27,12 +27,6 @@ Drivers.WorkingState:
   type: sensor
   description: State of work of the driver.
 
-Drivers.Driver1.WorkingState:
-  description: State of work of the driver 1.
-
-Drivers.Driver2.WorkingState:
-  description: State of work of the driver 2.
-
 Drivers.TimeRelatedState:
   datatype: uint8
   enum:
@@ -46,33 +40,15 @@ Drivers.TimeRelatedState:
   type: sensor
   description: Indicates if the driver approaches or exceeds working time limits (or other limits).
 
-Drivers.Driver1.TimeRelatedState:
-  description: Indicates if the driver 1 approaches or exceeds working time limits (or other limits).
-
-Drivers.Driver2.TimeRelatedState:
-  description: Indicates if the driver 2 approaches or exceeds working time limits (or other limits).
-
 Drivers.IsCardPresent:
   datatype: boolean
   type: sensor
   description: Indicates the presence of a driver card.
 
-Drivers.Driver1.IsCardPresent:
-  description: Indicates the presence of a driver card in the driver slot.
-
-Drivers.Driver2.IsCardPresent:
-  description: Indicates the presence of a driver card in the Co-driver slot.
-
 Drivers.Identification:
   datatype: string
   type: sensor
   description: Identifier of the driver according to the tachograph card.
-
-Drivers.Driver1.Identification:
-  description: Identifier of the driver 1 according to the tachograph card.
-
-Drivers.Driver2.Identification:
-  description: Identifier of the driver 2 according to the tachograph card.
 
 IsOverspeed:
   datatype: boolean
