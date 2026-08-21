@@ -36,7 +36,7 @@ CurrentGear:
 #---Transmission.Temperature (bus only)
 #Picked up from the Transmission.vspec
 Temperature:
-  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEEF(EFL/P1)/SPN100 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.17
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF8(TRF1)/SPN177 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.17
   datatype: float
   description: The current transmission fluid temperature.
   metadata:

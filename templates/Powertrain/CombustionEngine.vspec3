@@ -26,7 +26,7 @@ ActualPercentTorque:
 #Picked up from the CombustionEngine.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"CombustionEngine\",\"Name\":\"Speed\",\"comment\":\"¤FMS¤Corresponds SAE J1939 signal PGN 0xF004(EEC1)/SPN 190 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.3\", \"datatype\":\"float\"}" }}
 
 #---CombustionEngine.EngineHours
-#Picked up from the CombustionEngine.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"CombustionEngine\",\"Name\":\"EngineHours\",\"comment\":\"¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEE5(LFC)/SPN 247 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.4\"}" }}
+#Picked up from the CombustionEngine.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"CombustionEngine\",\"Name\":\"EngineHours\",\"comment\":\"¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEE5(HOURS)/SPN 247 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.4\"}" }}
 
 #---CombustionEngine.EngineCoolant branch
 #Picked up from the CombustionEngine.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"CombustionEngine\",\"Name\":\"EngineCoolant\"}" }}
