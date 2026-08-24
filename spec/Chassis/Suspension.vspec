@@ -18,7 +18,7 @@ Suspension.Axles:
     - ["Left","Right"]
   description: Vehicle axles suspension data.
 
-Suspension.Axles.BelowPressure:
+Suspension.Axles.BellowPressure:
   datatype: float
   type: sensor
   unit: kPa
