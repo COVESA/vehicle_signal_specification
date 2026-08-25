@@ -16,7 +16,7 @@ on:
 
 
 env:
-  PYTHON_VERSION: "3.10.6" # keep in sync with vss-tools
+  PYTHON_VERSION: "3.14" # keep in sync with vss-tools
 
 jobs:
   buildtest:
