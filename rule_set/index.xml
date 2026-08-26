@@ -41,7 +41,7 @@
       <link>https://covesa.github.io/vehicle_signal_specification/rule_set/includes/index.html</link>
       <pubDate>Sun, 04 Aug 2019 12:59:44 +0200</pubDate>
       <guid>https://covesa.github.io/vehicle_signal_specification/rule_set/includes/index.html</guid>
-      <description>An include directive in a vspec file will read the file it refers to and the contents of that file will be inserted into the current buffer in place of the include directive. The included file will, in its turn, be scanned for include directives to be replaced, effectively forming a tree of included files.&#xA;See Fig 6 for an example of such a tree.&#xA;Fig 6. Include directives&#xA;The include directive has the following format:</description>
+      <description>Includes can be defined in two different ways.&#xA;When omitting the file extension, we will search all include paths for the file candidates:&#xA;&lt;filename&gt;.vspec &lt;filename&gt;.yaml &lt;filename&gt;.yml Directive An include directive in a vspec file will read the file it refers to and the contents of that file will be inserted into the current buffer in place of the include directive. The included file will, in its turn, be scanned for include directives to be replaced, effectively forming a tree of included files.</description>
     </item>
   </channel>
 </rss>
