@@ -1,0 +1,76 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Air composition (air quality) signals.
+#
+# This file is intended to be included with a branch prefix so that the same
+# set of measurements can be reported for cabin (interior) air and for
+# ambient (exterior) air, e.g.:
+#
+#   #include ../include/AirComposition.vspec AirQuality
+#
+# All signals are concentrations of pollutants relevant to occupant health
+# and to HVAC automation (recirculation control, cabin filter monitoring,
+# air purifier control).
+#
+
+PM1:
+  datatype: float
+  type: sensor
+  unit: ug/m^3
+  min: 0
+  description: Mass concentration of particulate matter with aerodynamic diameter
+               of 1 micrometer or less (PM1.0).
+
+PM25:
+  datatype: float
+  type: sensor
+  unit: ug/m^3
+  min: 0
+  description: Mass concentration of particulate matter with aerodynamic diameter
+               of 2.5 micrometers or less (PM2.5).
+
+PM10:
+  datatype: float
+  type: sensor
+  unit: ug/m^3
+  min: 0
+  description: Mass concentration of particulate matter with aerodynamic diameter
+               of 10 micrometers or less (PM10).
+
+CO2:
+  datatype: float
+  type: sensor
+  unit: ppm
+  min: 0
+  description: Carbon dioxide (CO2) concentration.
+  comment: If the sensor reports an estimated CO2 level (eCO2/CO2eq) derived from
+           other gas measurements rather than a direct CO2 measurement, the
+           estimated value may be reported here.
+
+NO2:
+  datatype: float
+  type: sensor
+  unit: ppb
+  min: 0
+  description: Nitrogen dioxide (NO2) concentration.
+
+Ozone:
+  datatype: float
+  type: sensor
+  unit: ppb
+  min: 0
+  description: Ozone (O3) concentration.
+
+TVOC:
+  datatype: float
+  type: sensor
+  unit: ppb
+  min: 0
+  description: Total volatile organic compounds (TVOC) concentration.

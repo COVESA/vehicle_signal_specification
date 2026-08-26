@@ -8,7 +8,7 @@ all: clean mandatory_targets optional_targets
 
 # All mandatory targets that shall be built and pass on each pull request for
 # vehicle-signal-specification or vss-tools
-mandatory_targets: clean apigear avro binary csv datatypes ddsidl franca go id json json-noexpand jsonschema overlays plantuml samm s2dm yaml
+mandatory_targets: clean apigear avro binary compose csv datatypes ddsidl franca go id json json-noexpand jsonschema overlays plantuml samm s2dm yaml
 
 # Additional targets that shall be built by travis, but where it is not mandatory
 # that the builds shall pass.
@@ -39,6 +39,10 @@ avro:
 
 binary:
 	vspec export binary ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.binary
+
+compose:
+	vspec compose --vspec spec/VehicleSignalSpecification.vspec --units spec/units.yaml --quantities spec/quantities.yaml -o compose
+	cd compose && tar -czvf ../vss_compose.tar.gz * && cd ..
 
 csv:
 	vspec export csv ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.csv
@@ -91,4 +95,5 @@ clean:
 	rm -f vss.*
 	rm -f vss_with_datatypes.json
 	rm -rf apigear
+	rm -rf compose
 	rm -rf samm

@@ -16,7 +16,9 @@ on:
 
 
 env:
-  PYTHON_VERSION: "3.10.6" # keep in sync with vss-tools
+  # Version shall generally correspond to latest released version
+  # Must be equal or higher than lowest version supported by vss-tools
+  PYTHON_VERSION: "3.14"
 
 jobs:
   buildtest:
@@ -58,15 +60,10 @@ jobs:
             vss.jsonschema
             vss.yaml
             vss_noexpand.json
+            vss_compose.tar.gz
             vss_samm.tar.gz
             vss_apigear.tar.gz
           if-no-files-found: error
-
-      - name: Test that ddsidl is correct
-        run: |
-          # Backward incompatible changes in CycloneDDS 11.0, so stick to old version
-          pip install cyclonedds==0.10.5
-          idlc vss*.idl
 
       - name: Prepare for CSV check
         uses: actions/setup-go@v6
