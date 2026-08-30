@@ -133,6 +133,41 @@ If a glob matches no nodes, a warning is logged and processing continues success
 
 Glob keys can be combined with `delete:` in the usual way.
 
+### Declaring overlay intent with `overlay:`
+
+By default, overlays are permissive: a node that exists in the base spec is modified, and a node that does not exist is created as a new one.
+This means a simple typo — writing `Vehicle.Speeed` instead of `Vehicle.Speed` — silently produces a spurious new signal rather than an error.
+The optional `overlay:` attribute lets overlay authors declare their intent explicitly, turning mismatches into immediate errors.
+
+`overlay:` is stripped before the tree is built and has no effect on the output; it is purely a validation guard.
+
+#### `overlay: edit` — assert the node exists (modify intent)
+
+Use `overlay: edit` when an overlay entry is intended to modify an existing node.
+The tooling will error if the key is absent from the base spec, catching typos and nodes that have been renamed or removed upstream.
+
+```yaml
+# Fails with an error if Vehicle.Speed does not exist in the base spec.
+Vehicle.Speed:
+  overlay: edit
+  unit: m/s
+```
+
+This is particularly useful when updating to a newer version of VSS: any signal that was renamed or removed will surface immediately rather than being silently re-created.
+
+#### `overlay: add` — assert the node does not exist (create intent)
+
+Use `overlay: add` when an overlay entry introduces a node that must not already be present in the base spec.
+The tooling will error if the key already exists, guarding against future naming collisions when the standard catalog is updated.
+
+```yaml
+# Fails with an error if Vehicle.OEM.MyCustomSignal already exists in the base spec.
+Vehicle.OEM.MyCustomSignal:
+  overlay: add
+  type: sensor
+  datatype: uint8
+  description: A proprietary signal.
+```
 ### Deleting nodes
 
 It is possible to delete nodes using the `delete` attribute.
