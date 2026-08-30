@@ -414,6 +414,14 @@ g/s:
   qudt:
     unit: http://qudt.org/vocab/unit/GM-PER-SEC
     quantity-kind: https://qudt.org/vocab/quantitykind/MassFlowRate
+kg/s:
+  definition: Mass per time measured in kilograms per second
+  unit: kilograms per second
+  quantity: mass-per-time
+  allowed-datatypes: ['numeric']
+  qudt:
+    unit: https://qudt.org/vocab/unit/KiloGM-PER-SEC
+    quantity-kind: https://qudt.org/vocab/quantitykind/MassFlowRate
 
 # Mass per distance
 

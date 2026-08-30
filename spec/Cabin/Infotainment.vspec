@@ -84,6 +84,13 @@ Navigation:
   type: branch
   description: All navigation actions
 
+
+Navigation.IsDestinationReached:
+  datatype: boolean
+  type: sensor
+  description: Indicates if destination has been reached.
+               Shall be set to False is navigation is active and destination has not been reached.
+
 Navigation.DestinationSet:
   type: branch
   description: A navigation has been selected.
