@@ -29,6 +29,10 @@ You can find current call coordinates and dates in [our wiki](https://github.com
 
 For detailed information see our [contribution guide](CONTRIBUTING.md)!
 
+### Machine-readable node schema
+
+`schemas/vspec-node.schema.json` is a [JSON Schema 2020-12](https://json-schema.org/draft/2020-12/schema) document that describes every field a vspec YAML node may carry. Third-party tooling authors can validate against it so that unknown or misspelled fields are caught at parse time, and any future field additions to the spec are automatically a visible, reviewable diff to the schema. The `additionalProperties: false` constraint is intentional — it makes the schema normative rather than just descriptive.
+
 ### VSS version and release handling
 
 Both VSS (this repository) and [VSS-tools](https://github.com/COVESA/vss-tools) use a [PEP](https://peps.python.org/pep-0440/)
