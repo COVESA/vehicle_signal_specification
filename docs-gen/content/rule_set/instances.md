@@ -127,6 +127,133 @@ Vehicle.Cabin.Door:
   description: All doors, including windows and switches
 ```
 
+## Instance Relationship
+
+Historically VSS instances has always been generated as children to the concerned branch.
+From 6.1 onwards it is also supported to indicate that they shall be treated as siblings, see examples below.
+It has been agreed in the VSS project to NOT start using the new concept in 6.x releases of the standard catalog as that may give problem for downstream projects.
+For 7.0 onwards it will be acceptable to start using the new concept also in standard catalog, if considered feasible.
+
+### Child Relationship
+
+Child relationship is default, but can also be explictly requested by `instances_relation: child`.
+This is the classic approach, and gives for the example below two instantiated signals, `A.Y.Y1.W` and `A.Y.Y2.W`.
+You also get one signal that is not instantiated, `A.Y.X`.
+
+
+```yaml
+A:
+  type: branch
+
+A.Y:
+  type: branch
+  instances: Y[1,2]
+  instances_relation: child
+
+A.Y.W:
+  type: sensor
+  datatype: float
+  description: W signal
+
+A.Y.X:
+  type: sensor
+  datatype: float
+  instantiate: false
+  description: X signal
+```
+
+Expanded structure:
+
+```yaml
+A:
+  type: branch
+
+A.Y:
+  type: branch
+
+A.Y.X:
+  type: sensor
+  description: X signal
+  datatype: float
+
+A.Y.Y1:
+  type: branch
+
+A.Y.Y1.W:
+  type: sensor
+  description: W signal
+  datatype: float
+
+A.Y.Y2:
+  type: branch
+
+A.Y.Y2.W:
+  type: sensor
+  description: W signal
+  datatype: float
+
+```
+
+### Sibling Relationship
+
+
+Sibling relationship is explictly requested by `instances_relation: csibling`.
+With this approach, we get for the same example the two instantiated signals, `A.Y1.W` and `A.Y2.W`.
+The signal that is not instantiated is unchanged.
+
+```yaml
+A:
+  type: branch
+
+A.Y:
+  type: branch
+  instances: Y[1,2]
+  instances_relation: sibling
+
+A.Y.W:
+  type: sensor
+  datatype: float
+  description: W signal
+
+A.Y.X:
+  type: sensor
+  datatype: float
+  instantiate: false
+  description: X signal
+```
+
+Expanded structure:
+
+```yaml
+A:
+  type: branch
+
+A.Y:
+  type: branch
+
+A.Y.X:
+  type: sensor
+  description: X signal
+  datatype: float
+
+A.Y1:
+  type: branch
+
+A.Y1.W:
+  type: sensor
+  description: W signal
+  datatype: float
+
+A.Y2:
+  type: branch
+
+A.Y2.W:
+  type: sensor
+  description: W signal
+  datatype: float
+
+```
+
 ## Recommendations
 
 VSS standard catalog is designed to cover a wide range of vehicles.
