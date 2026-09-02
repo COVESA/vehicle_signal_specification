@@ -23,20 +23,20 @@
     <meta itemprop="description" content="VSS resembles primarily the physical structure of the vehicle, so quite often there is a need to repeat branches and data entries (e.g. doors, axles, etc). To avoid hard-coded repetitions of branches and data entries in the specification an instance-concept is supported. Instances remove the need of repeating definitions, by defining at the node itself how often it occurs in the resulting tree. They are meant as a short-cut in the specification and interpreted by the tools.">
     <meta itemprop="datePublished" content="2019-07-31T15:27:36+02:00">
     <meta itemprop="dateModified" content="2019-07-31T15:27:36+02:00">
-    <meta itemprop="wordCount" content="1018">
+    <meta itemprop="wordCount" content="1306">
     <title>Instances :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
 
-    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1787736026" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1787736026" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/nucleus.css?1787736026" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/auto-complete.css?1787736026" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1787736026" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1787736026" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/fonts.css?1787736026" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1787736026" rel="stylesheet"></noscript>
-    <link href="/vehicle_signal_specification/css/theme.css?1787736026" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/theme-blue.css?1787736026" rel="stylesheet" id="R-variant-style">
-    <link href="/vehicle_signal_specification/css/chroma-learn.css?1787736026" rel="stylesheet" id="R-variant-chroma-style">
-    <link href="/vehicle_signal_specification/css/variant.css?1787736026" rel="stylesheet">
-    <link href="/vehicle_signal_specification/css/print.css?1787736026" rel="stylesheet" media="print">
-    <script src="/vehicle_signal_specification/js/variant.js?1787736026"></script>
+    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1788378559" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1788378559" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/nucleus.css?1788378559" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/auto-complete.css?1788378559" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1788378559" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1788378559" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/fonts.css?1788378559" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1788378559" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/theme.css?1788378559" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/theme-blue.css?1788378559" rel="stylesheet" id="R-variant-style">
+    <link href="/vehicle_signal_specification/css/chroma-learn.css?1788378559" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/vehicle_signal_specification/css/variant.css?1788378559" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/print.css?1788378559" rel="stylesheet" media="print">
+    <script src="/vehicle_signal_specification/js/variant.js?1788378559"></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.relBasePath='..\/..';
@@ -78,6 +78,12 @@
     </li>
     <li><a href="#example">Example</a></li>
     <li><a href="#redefinition">Redefinition</a></li>
+    <li><a href="#instance-relationship">Instance Relationship</a>
+      <ul>
+        <li><a href="#child-relationship">Child Relationship</a></li>
+        <li><a href="#sibling-relationship">Sibling Relationship</a></li>
+      </ul>
+    </li>
     <li><a href="#recommendations">Recommendations</a>
       <ul>
         <li><a href="#recommendation-instance-mismatch">Recommendation: Instance Mismatch</a></li>
@@ -132,12 +138,12 @@ Instances remove the need of repeating definitions, by defining at the node itse
 the resulting tree. They are meant as a short-cut in the specification and
 interpreted by the tools. As an example is shown below for doors:</p>
 <!-- Image source in docs-gen/image_source/instance_tree.puml -->
-<p><a href="#R-image-78648344f93650f4f52863c9d1e78fe8" class="lightbox-link"><img alt="Example tree" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree.png" style=" height: auto; width: auto;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-78648344f93650f4f52863c9d1e78fe8"><img alt="Example tree" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree.png"></a></p>
+<p><a href="#R-image-4a1fc7a908d2d132366af84699a16a91" class="lightbox-link"><img alt="Example tree" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree.png" style=" height: auto; width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-4a1fc7a908d2d132366af84699a16a91"><img alt="Example tree" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree.png"></a></p>
 <p>When expanded this corresponds to:</p>
 <!-- Image source in docs-gen/image_source/instance_tree_expand.puml -->
-<p><a href="#R-image-30996553fbe1a60ce80d481eb9665e60" class="lightbox-link"><img alt="Example tree" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc" style=" height: auto; width: 60pc;"></a>
-<a href="javascript:history.back();" class="lightbox-back" id="R-image-30996553fbe1a60ce80d481eb9665e60"><img alt="Example tree" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc"></a></p>
+<p><a href="#R-image-888173159c7940b039a6ae6b4b16b301" class="lightbox-link"><img alt="Example tree" class="noborder lazy lightbox noshadow figure-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc" style=" height: auto; width: 60pc;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-888173159c7940b039a6ae6b4b16b301"><img alt="Example tree" class="noborder lazy lightbox noshadow lightbox-image" loading="lazy" src="/vehicle_signal_specification/images/instance_tree_expand.png?width=60pc"></a></p>
 <h2 id="definition">Definition</h2>
 <h3 id="how-can-i-create-instances-for-my-branch">How can I create instances for my <code>branch</code>?</h3>
 <ol>
@@ -223,7 +229,106 @@ can be overridden by redefining the Door branch as shown in the example below.</
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">instances</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">Row[1,3]</span>
 </span></span><span style="display:flex;"><span>    - [<span style="color:#e6db74">&#34;DriverSide&#34;</span>,<span style="color:#e6db74">&#34;PassengerSide&#34;</span>]
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">All doors, including windows and switches</span></span></span></code></pre></div><h2 id="recommendations">Recommendations</h2>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">All doors, including windows and switches</span></span></span></code></pre></div><h2 id="instance-relationship">Instance Relationship</h2>
+<p>Historically VSS instances has always been generated as children to the concerned branch.
+From 6.1 onwards it is also supported to indicate that they shall be treated as siblings, see examples below.
+It has been agreed in the VSS project to NOT start using the new concept in 6.x releases of the standard catalog as that may give problem for downstream projects.
+For 7.0 onwards it will be acceptable to start using the new concept also in standard catalog, if considered feasible.</p>
+<h3 id="child-relationship">Child Relationship</h3>
+<p>Child relationship is default, but can also be explictly requested by <code>instances_relation: child</code>.
+This is the classic approach, and gives for the example below two instantiated signals, <code>A.Y.Y1.W</code> and <code>A.Y.Y2.W</code>.
+You also get one signal that is not instantiated, <code>A.Y.X</code>.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">A</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">instances</span>: <span style="color:#66d9ef">Y</span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">instances_relation</span>: <span style="color:#ae81ff">child</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.W</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">W signal</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.X</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">instantiate</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">X signal</span></span></span></code></pre></div><p>Expanded structure:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">A</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.X</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">X signal</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.Y1</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.Y1.W</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">W signal</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.Y2</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.Y2.W</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">W signal</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span></span></span></code></pre></div><h3 id="sibling-relationship">Sibling Relationship</h3>
+<p>Sibling relationship is explictly requested by <code>instances_relation: csibling</code>.
+With this approach, we get for the same example the two instantiated signals, <code>A.Y1.W</code> and <code>A.Y2.W</code>.
+The signal that is not instantiated is unchanged.</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">A</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">instances</span>: <span style="color:#66d9ef">Y</span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">instances_relation</span>: <span style="color:#ae81ff">sibling</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.W</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">W signal</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.X</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">instantiate</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">X signal</span></span></span></code></pre></div><p>Expanded structure:</p>
+<div class="highlight wrap-code"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">A</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y.X</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">X signal</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y1</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y1.W</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">W signal</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y2</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">branch</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A.Y2.W</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">sensor</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">description</span>: <span style="color:#ae81ff">W signal</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">datatype</span>: <span style="color:#ae81ff">float</span></span></span></code></pre></div><h2 id="recommendations">Recommendations</h2>
 <p>VSS standard catalog is designed to cover a wide range of vehicles.
 This means that the default instantiation used in VSS may not fit every vehicle.
 An example can be seen in the windshield signals defined in <code>Body.vspec</code>, parts of them are shown below.
@@ -306,12 +411,12 @@ to ignore <code>Vehicle.Body.Windshield.Front.Heating</code>.</p>
         <script>
           var contentLangs=['en'];
         </script>
-        <script src="/vehicle_signal_specification/js/auto-complete.js?1787736026" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1787736026" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1787736026" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1787736026" defer></script>
-        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1787736026" defer></script>
-        <script src="/vehicle_signal_specification/js/search.js?1787736026" defer></script>
+        <script src="/vehicle_signal_specification/js/auto-complete.js?1788378559" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1788378559" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1788378559" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1788378559" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1788378559" defer></script>
+        <script src="/vehicle_signal_specification/js/search.js?1788378559" defer></script>
       </div>
       <div id="R-homelinks" class="default-animation">
         <hr class="padding">
@@ -419,8 +524,8 @@ to ignore <code>Vehicle.Body.Windshield.Front.Heating</code>.</p>
         </div>
       </div>
     </aside>
-    <script src="/vehicle_signal_specification/js/clipboard.min.js?1787736026" defer></script>
-    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1787736026" defer></script>
-    <script src="/vehicle_signal_specification/js/theme.js?1787736026" defer></script>
+    <script src="/vehicle_signal_specification/js/clipboard.min.js?1788378559" defer></script>
+    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1788378559" defer></script>
+    <script src="/vehicle_signal_specification/js/theme.js?1788378559" defer></script>
   </body>
 </html>
