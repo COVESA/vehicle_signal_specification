@@ -80,6 +80,7 @@ samm:
 
 s2dm:
 	vspec export s2dm ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o graphql
+	cd graphql && tar -czvf ../vss_graphql.tar.gz * && cd ..
 yaml:
 	vspec export yaml ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.yaml
 
@@ -97,3 +98,4 @@ clean:
 	rm -rf apigear
 	rm -rf compose
 	rm -rf samm
+	rm -rf graphql
