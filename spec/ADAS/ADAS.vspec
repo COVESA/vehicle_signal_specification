@@ -103,6 +103,26 @@ CruiseControl.AdaptiveIntervalSet:
   type: actuator
   description: Follow distance setting, commonly 1-5 with 1 being closest.
 
+CruiseControl.IsSwitchedOn:
+  datatype: boolean
+  type: sensor
+  description: Cruise control is switched on. It is not ensured that the engine is controlled by cruise control,
+              as in the case of a large driver's demand the engine is controlled by the driver while cruise control is active
+              (maximum selection of cruise control and driver's demand). The cruise control is set to 0 if a switch off condition occurs.
+
+CruiseControl.State:
+  datatype: uint8
+  type: sensor
+  enum:
+    'OFF_DISABLED': 0
+    'HOLD': 1
+    'ACCELERATE': 2
+    'DECELERATE': 3
+    'RESUME': 4
+    'SET': 5
+    'ACCEL_OVERRIDE': 6
+  description: State of the cruise control system.
+
 #
 # Lane Departure Detection System
 #

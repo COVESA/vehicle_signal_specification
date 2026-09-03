@@ -119,6 +119,12 @@ Temperature:
 #
 # Clutch
 #
+IsClutchPedalPressed:
+  datatype: boolean
+  type: sensor
+  description: Switch signal which indicates that the clutch pedal is being pressed. It is necessary for a safe drivetrain behaviour that the clutch
+                switch is set before the clutch is opened (cruise control function).
+
 ClutchEngagement:
   datatype: float
   type: actuator

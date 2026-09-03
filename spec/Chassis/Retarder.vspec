@@ -1,0 +1,32 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+RetarderTorqueMode:
+  datatype: uint8
+  type: sensor
+  min: 0
+  max: 15
+  description: State signal which indicates which retarder torque mode is currently generating, limiting or controlling the torque. 0 = No Request, 1-14 = torque request or identified function controls retarder.
+
+ActualRetarderPercentTorque:
+  datatype: uint8
+  type: sensor
+  unit: percent
+  min: 0
+  max: 125
+  description: Actual braking torque of the retarder as a percent of retarder configuration reference torque SPN 556
+
+RetarderSelection:
+  datatype: float
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: The position of the driver/'s selector for retarders that are not part of the engine system, expressed as percent and
+              determined by the ratio of current position to the maximum possible position. The physical device may be a lever, rotary dial, combination of switches, or other device that the driver can
+              use to select the type or amount of retardation needed.

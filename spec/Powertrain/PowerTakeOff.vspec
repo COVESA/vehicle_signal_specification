@@ -1,0 +1,21 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Signals and attributes related to the vehicle PTOs.
+#
+
+PowerTakeOffs:
+  type: branch
+  description: PTO information.
+
+#Use "instantiate: false" when the branch will eventually contain PTO instances.
+PowerTakeOffs.IsEngagedAtLeastOne:
+  datatype: boolean
+  type: sensor
+  description: Indicates that at least one PTO is engaged

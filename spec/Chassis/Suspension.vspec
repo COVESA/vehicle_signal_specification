@@ -1,0 +1,25 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#--- Chassis.Suspension branch
+Suspension:
+  type: branch
+  description: Vehicle suspension system data.
+
+Suspension.Axles:
+  type: branch
+  instances:
+    - ["Front","Rear"]
+    - ["Left","Right"]
+  description: Vehicle axles suspension data.
+
+Suspension.Axles.BellowPressure:
+  datatype: float
+  type: sensor
+  unit: kPa
+  description: Used for suspension bellow pressure information.

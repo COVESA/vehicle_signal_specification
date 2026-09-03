@@ -412,6 +412,12 @@ GrossWeight:
   unit: kg
   description: Curb weight of vehicle, including all liquids and full tank of fuel and full load of cargo and passengers.
 
+GrossCombinationVehicleWeight:
+  datatype: uint32
+  type: sensor
+  unit: kg
+  description: The total weight of the vehicle and all attached trailers.
+
 MaxTowWeight:
   datatype: uint16
   type: attribute
@@ -581,5 +587,11 @@ CurrentLocation.GNSSReceiver.MountingPosition.Z:
   description: Mounting position of GNSS receiver on Z-axis.
                Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
                Positive values = above center of rear axle. Negative values = below center of rear axle.
+
+CurrentDateTime:
+  datatype: string
+  type: sensor
+  unit: iso8601
+  description: Current date and time provided by the vehicle's internal clock.
 
 #include include/PowerOptimize.vspec
