@@ -1,0 +1,147 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# All body signals for bus doors.
+#
+
+# Doors branch
+Doors:
+  description: Bus door information.
+  type: branch
+  instances:
+    - Door[1,10]
+
+# One signal for all the doors, not instantiated
+Doors.IsEnabledAtLeastOne:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE4E(DC1)/SPN3411 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.3
+  instantiate: false
+  datatype: boolean
+  description: Signal indicating the status of all bus doors.
+              True if at least 1 bus door is enabled, False otherwise.
+              Enabled means the bus doors are able to be automatically opened or Closed.
+  type: sensor
+
+# One signal for all the doors, not instantiated
+Doors.PositionOfDoors:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE4E(DC1)/SPN1821 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.3
+  instantiate: false
+  datatype: uint8
+  description: Signal indicating the actual position of the doors.
+  enum:
+    'AT_LEAST_ONE_DOOR_OPEN': 0
+    'CLOSING_LAST_DOOR': 1
+    'ALL_DOORS_CLOSED': 2
+  type: sensor
+
+# Per door signals, instantiated for each door
+Doors.IsLocked:
+  datatype: boolean
+  description: Indication of the lock status of the door. Doors cannot be operated by the driver or a passenger when locked.
+  type: sensor
+
+Doors.IsOpen:
+  datatype: boolean
+  description: Indication of the open status of the door.
+  type: sensor
+
+Doors.IsEnabled:
+  datatype: boolean
+  description:  Indication of the enablement status of the door. Door can be opened by a passenger when enabled.
+  type: sensor
+
+# The comments for each door signal
+Doors.Door1.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3412 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door1.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3413 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door1.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3414 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door2.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3415 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door2.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3416 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door2.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3417 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door3.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3418 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door3.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3419 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door3.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3420 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door4.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3421 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door4.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3422 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door4.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3423 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door5.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3424 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door5.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3425 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door5.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3426 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door6.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3427 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door6.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3428 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door6.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3429 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door7.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3430 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door7.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3431 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door7.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3432 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door8.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3433 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door8.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3434 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door8.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3435 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door9.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3436 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door9.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3437 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door9.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3438 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door10.IsLocked:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3439 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door10.IsOpen:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3440 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4
+
+Doors.Door10.IsEnabled:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFDA5(DC2)/SPN3441 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.3.4

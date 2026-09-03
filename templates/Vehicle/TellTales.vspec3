@@ -1,0 +1,245 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# All TellTales signals
+#
+Status:
+  datatype: uint8
+  description: Status of the telltale. The interpretation of the status is manufacturer dependant.
+  type: sensor
+  enum:
+    'OFF': 0
+    'COND_RED': 1
+    'COND_YELLOW': 2
+    'COND_INFO': 3
+
+TellTale1.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 1 "Cooling air conditioning" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale2.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 2 "High beam, main beam" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale3.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 3 "Low beam, dipped beam" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale4.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 4 "Turn signals" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale5.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 5 "Hazard warning" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale6.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 6 "Provision for the disabled or handicapped persons" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale7.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 7 "Parking Brake" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale8.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 8 "Brake failure/brake system malfunction" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale9.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 9 "Hatch open" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale10.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 10 "Fuel level" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale11.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 11 "Engine coolant temperature" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale12.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 12 "Battery charging condition" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale13.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 13 "Engine oil" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale14.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 14 "Position lights,side lights" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale15.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 15 "Front fog light" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale16.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 16 "Rear fog light" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale17.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 17 "Park Heating" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale18.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 18 "Engine / Mil indicator" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale19.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 19 "Service, call for maintenance" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale20.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 20 "Transmission fluid temperature" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale21.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 21 "Transmission failure/malfunction" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale22.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 22 "Anti-lock brake system failure" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale23.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 23 "Worn brake linings" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale24.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 24 "Windscreen washer fluid/windshield washer fluid" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale25.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 25 "Tire failure/malfunction" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale26.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 26 "Malfunction/general failure" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale27.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 27 "Engine oil temperature" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale28.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 28 "Engine oil level" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale29.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 29 "Engine coolant level" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale30.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 30 "Steering fluid level" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale31.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 31 "Steering failure" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale32.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 32 "Height Control (Levelling)" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale33.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 33 "Retarder" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale34.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 34 "Engine Emission system failure (Mil indicator)" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale35.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 35 "ESC indication" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale36.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 36 "Brake lights" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale37.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 37 "Articulation" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale38.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 38 "Stop Request" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale39.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 39 "Pram request" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale40.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 40 "Bus stop brake" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale41.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 41 "AdBlue level" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale42.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 42 "Raising" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale43.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 43 "Lowering" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale44.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 44 "Kneeling" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale45.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 45 "Engine compartment temperature" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale46.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 46 "Auxillary air pressure" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale47.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 47 "Air filter clogged" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale48.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 48 "Fuel filter differential pressure" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale49.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 49 "Seat belt" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale50.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 50 "EBS" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale51.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 51 "Lane departure indication" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale52.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 52 "Advanced emergency braking system" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale53.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 53 "ACC" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale54.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 54 "Trailer connected" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale55.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 55 "ABS Trailer 1,2" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale56.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 56 "Airbag" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale57.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 57 "EBS Trailer 1,2" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale58.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 58 "Tachograph indication" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale59.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 59 "ESC switched off" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale60.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 60 "Lane departure warning switched off" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale61.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 61 "Engine emission filter (Soot Filter)" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale62.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 62 "Electric motor failures" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale63.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 63 "AdBlue tampering" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale64.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 64 "Multiplex System" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale65.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 65 "Battery pack" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale66.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 66 "High voltage system caution" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale67.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 67 "Battery pack temperature" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale68.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 68 "Limited performance electric motor" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale69.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 69 "Battery pack cooling" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale70.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 70 "Charging status" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale71.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 71 "Traction battery balancing" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale72.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 72 "Pantograph status" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale73.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 73 "Fire detection / alarm" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale74.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 74 "Recuperation disturbed" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16
+
+TellTale75.Status:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFD7D(FMS1) TellTaleId 75 "High Voltage Battery Thermal Event" in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.16

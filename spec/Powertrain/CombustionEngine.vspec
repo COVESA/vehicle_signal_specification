@@ -1,0 +1,79 @@
+# Copyright (c) 2016 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# ENGINE SPECIFICATION FILE
+#
+# This vehicle specification file, included by the top level
+# root.vspec file, contains all engine-based signals.
+#
+
+#Not found in the standard VSS spec, only MaxTorque and Torque in Nm are found
+ActualPercentTorque:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xF004(EEC1)/SPN 513 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.3
+  datatype: uint8
+  description: The calculated output torque of the engine as a percent of reference engine torque.
+  max: 100
+  type: sensor
+  unit: percent
+
+#---CombustionEngine.Speed
+#Picked up from the CombustionEngine.vspec
+Speed:
+  comment: ¤FMS¤Corresponds SAE J1939 signal PGN 0xF004(EEC1)/SPN 190 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.3
+  datatype: float
+  description: Engine speed measured as rotations per minute.
+  metadata:
+    overridden:
+      - comment
+      - datatype
+  type: sensor
+  unit: rpm
+
+
+#---CombustionEngine.EngineHours
+#Picked up from the CombustionEngine.vspec
+EngineHours:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEE5(HOURS)/SPN 247 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.4
+  datatype: float
+  description: Accumulated time during engine lifetime with 'engine speed (rpm) > 0'.
+  metadata:
+    overridden:
+      - comment
+  type: sensor
+  unit: h
+
+
+#---CombustionEngine.EngineCoolant branch
+#Picked up from the CombustionEngine.vspec
+EngineCoolant:
+  description: Signals related to the engine coolant
+  type: branch
+
+#include EngineCoolant.vspec EngineCoolant
+
+#---CombustionEngine.DieselExhaustFluid branch
+#Picked up from the CombustionEngine.vspec
+DieselExhaustFluid:
+  comment: In retail and marketing other names are typically used for the fluid.
+  description: Signals related to Diesel Exhaust Fluid (DEF). DEF is called AUS32 in ISO 22241.
+  type: branch
+
+#---CombustionEngine.DieselExhaustFluid.Level
+#Picked up from the CombustionEngine.vspec
+DieselExhaustFluid.Level:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE56(AT1T1I)/SPN 1761 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.15
+  datatype: uint8
+  description: Level of the Diesel Exhaust Fluid tank as percent of capacity. 0 = empty. 100 = full.
+  max: 100
+  metadata:
+    overridden:
+      - comment
+  min: 0
+  type: sensor
+  unit: percent

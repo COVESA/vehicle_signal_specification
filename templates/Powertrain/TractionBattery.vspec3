@@ -1,0 +1,29 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Signals and attributes related to the traction battery in vehicles with electrical powertrain.
+# For some vehicles the traction battery is referred to as the high voltage battery.
+#
+
+#---TractionBattery.Range
+#Picked up from the TractionBattery.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"TractionBattery\",\"Name\":\"Range\",\"comment\":\"¤FMS¤ Corresponds SAE J1939 signal PGN 0xFC69(EVOI1)/SPN 15268 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.23\",\"description\":\"Remaining range in kilometers using only battery.\",\"datatype\":\"float\",\"unit\":\"km\"}" }}
+
+ChargingState:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFAB8(EVSE1DCS1)/SPN13171 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.22
+  datatype: uint8
+  description: Overall State of the DC charging system. The information is reported by the EVSE (Electric Vehicle Supply Equipment) beside status 0 and 15.
+  enum:
+    'IDLE': 0
+    'CHARGING': 1
+    'STANDBY': 2
+    'INITIALISING': 10
+    'PRE_CHARGE': 11
+    'TERMINATING': 12
+    'BATTERY_FAILURE': 13
+  type: sensor

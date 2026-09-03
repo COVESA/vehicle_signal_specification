@@ -1,0 +1,9 @@
+# This file defines constants supported in the VSS standard catalog
+# See VSS documentation for information on syntax and intended content
+
+# Standard signal values
+
+NOT_AVAILABLE:
+  definition: The value is not available, e.g. due to a sensor error or because the vehicle does not support this signal.
+  value: 0
+  allowed-datatypes: ['numeric']

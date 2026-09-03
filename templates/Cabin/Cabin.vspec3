@@ -1,0 +1,25 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# All in-cabin originated signals and attributes
+#
+##
+# Driver compartment signals
+##
+#--- Driver compartment branch
+DriverCompartment:
+  description: Driver compartment signals
+  type: branch
+#include DriverCompartment_BusOnly.vspec DriverCompartment
+
+#---Tachograph branch
+Tachograph:
+  description: Tachograph
+  type: branch
+#include Tachograph.vspec Tachograph

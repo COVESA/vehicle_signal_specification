@@ -1,0 +1,74 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Chassis signals and attributes
+#
+
+#---Chassis.Brake branch
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"Brake\"}" }}
+#include AirBrakeSystem.vspec Brake
+#include Retarder.vspec Brake
+
+#---Chassis.Brake.PedalPosition
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"Brake.PedalPosition\",\"comment\":\"¤FMS¤ Corresponds SAE J1939 signal PGN 0xF001(EBC1)/SPN 521 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.17\"}" }}
+
+Brake.IsBrakePedalPressed:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF1(CCVS1)/SPN 597 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.2.1(truck) & 1.3.1(bus)
+  datatype: boolean
+  description: Switch signal which indicates that the driver operated brake foot pedal is being pressed.
+              This brake foot pedal is controlling the vehicles' service brake (total vehicle braking application, not park brakes).
+              It is necessary for safe drivetrain behaviour that the switch activates before the physical braking components are activated
+              (i.e. disengage the cruise control function prior to the activation of friction brakes).
+  type: sensor
+
+
+#---Chassis.AxleCount
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"AxleCount\"}" }}
+
+#---Chassis.Axle branch
+#ATTENTION! The number of axles below is just an example and should be adjusted to the actual vehicle configuration!
+Axle:
+  instances:
+    - Row[1,2]
+  type: branch
+  description: Axle signals
+
+#---Chassis.Axle.WheelCount
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"Axle.WheelCount\"}" }}
+
+Axle.Weight:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEEA(VW)/SPN 582 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.21
+  datatype: uint16
+  description: The weight of the axle in kg.
+  type: sensor
+  unit: kg
+
+#---Axle.Wheel branches
+#ATTENTION! The number of wheels on each axle below is just an example and should be adjusted to the actual vehicle configuration!
+Axle.Row1.Wheel:
+  instances: ["Pos7", "Pos9"]
+  type: branch
+  description: Wheel signals for axle
+#include Wheel.vspec Axle.Row1.Wheel
+
+Axle.Row2.Wheel:
+  instances: ["Pos6","Pos7", "Pos9", "Pos10"]
+  type: branch
+  description: Wheel signals for axle
+#include Wheel.vspec Axle.Row2.Wheel
+
+#---Chassis.ParkingBrake branch
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"ParkingBrake\"}" }}
+#---Chassis.ParkingBrake.IsEngaged
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"ParkingBrake.IsEngaged\",\"comment\":\"¤FMS¤ Corresponds SAE J1939 signal PGN 0xFEF1(CCVS1)/SPN 70 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.2.1(truck) & 1.3.1(bus)\", \"type\":\"sensor\"}" }}
+
+#---Chassis.Accelerator branch
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"Accelerator\"}" }}
+#---Chassis.Accelerator.PedalPosition
+#Picked up from the Chassis.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Chassis\",\"Name\":\"Accelerator.PedalPosition\",\"comment\":\"¤FMS¤ Corresponds SAE J1939 signal PGN 0xF003(EEC2)/SPN 91 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.2.2(truck) & 1.3.2(bus)\"}" }}

@@ -1,0 +1,35 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# Service data
+#
+# This file contains signals relevant for service/maintenance of the vehicle,
+# giving information on when service is needed.
+# As of now VSS does not make any assumptions on what is included in a "service".
+# A "service" is anything that needs to be done by a technician at a garage.
+# It can include e.g. inspection, lubrication as well as replacement of fluids or other parts.
+#
+# For TimeToService int32 and seconds are used, allowing service intervals of up to
+# 68 years to be represented.
+#
+# The signals support negative values, but use of negative values are optional.
+# Once a signal reach 0 (i.e. vehicle is due for service) the vehicle might
+# either stop decreasing the signal, or continue decreasing using negative values
+# to indicate overdue distance/time.
+#
+
+#
+# Service Due Indicator
+# Indicates that it is now or in the near future time to bring the vehicle to a garage for service (of any kind).
+# The criteria for setting "ServiceDue" is not specified by VSS.
+# It may, but do not need to, be based on DistanceToService and TimeToService.
+#
+
+#---Service.DistanceToService (truck only)
+#Picked up from the Service.vspec {{ template "tmplCommon/PickUpdate.go.tmpl" "{\"DataSource\":\"Service\",\"Name\":\"DistanceToService\",\"comment\":\"¤FMS¤Corresponds SAE J1939 signal PGN 0xFEC0(SERV)/SPN 914 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.2.3\"}" }}

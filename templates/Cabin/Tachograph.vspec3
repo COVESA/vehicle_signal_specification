@@ -1,0 +1,123 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+#
+# All Tachograph signals
+#
+#---Drivers branch
+Drivers:
+  instances:
+    - Driver[1,2]
+  type: branch
+  description: Driver signals
+
+Drivers.WorkingState:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1612 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  datatype: uint8
+  description: State of work of the driver.
+  enum:
+    'REST': 0
+    'DRIVER_AVAILABLE': 1
+    'WORK': 2
+    'DRIVE': 3
+  type: sensor
+
+Drivers.Driver1.WorkingState:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1612 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  description: State of work of the driver 1.
+
+Drivers.Driver2.WorkingState:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1613 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  description: State of work of the driver 2.
+
+IsOverspeed:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1614 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  datatype: boolean
+  description: Indicates whether the vehicle is exceeding the legal speed limit set in the tachograph.
+  type: sensor
+
+Drivers.TimeRelatedState:
+  datatype: uint8
+  enum:
+    'NORMAL': 0
+    'STATE_15_MIN_BEF_4_5_H': 1
+    'STATE_4_5_H_REACHED': 2
+    'STATE_15_MIN_BEF_9_H': 3
+    'STATE_9_H_REACHED': 4
+    'STATE_15_MIN_BEF_16_H': 5
+    'STATE_16_H_REACHED': 6
+  type: sensor
+
+Drivers.Driver1.TimeRelatedState:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1617 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  description: Indicates if the driver 1 approaches or exceeds working time limits (or other limits).
+
+Drivers.Driver2.TimeRelatedState:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1618 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  description: Indicates if the driver 2 approaches or exceeds working time limits (or other limits).
+Drivers.IsCardPresent:
+  datatype: boolean
+  type: sensor
+
+Drivers.Driver1.IsCardPresent:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1615 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  description: Indicates the presence of a driver card in the driver slot.
+
+Drivers.Driver2.IsCardPresent:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1616 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  description: Indicates the presence of a driver card in the Co-driver slot.
+
+Drivers.Identification:
+  datatype: string
+  description: Identifier of the driver according to the tachograph card.
+  type: sensor
+
+Drivers.Driver1.Identification:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6B(DI)/SPN 1625 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.11
+  description: Identifier of the driver 1 according to the tachograph card.
+
+Drivers.Driver2.Identification:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6B(DI)/SPN 1626 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.11
+  description: Identifier of the driver 2 according to the tachograph card.
+
+VehicleSpeed:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1624 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  datatype: float
+  description: Speed of the vehicle registered by the tachograph.
+  type: sensor
+  unit: km/h
+
+DirectionIndicator:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1619 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  datatype: uint8
+  description: Indicates the direction of the vehicle.
+  enum:
+    'FORWARD': 0
+    'REVERSE': 1
+  type: sensor
+
+IsPerformanceAnalysisActive:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1620 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  datatype: boolean
+  description: Indicates the tachograph performance; including electronic or mechanical analysis, instrument analysis,
+              speed sensor analysis, mass storage analysis, and printer analysis.
+  type: sensor
+
+IsHandlingInformationPresent:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1621 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  datatype: boolean
+  description: Indicates that handling information is present. Information could include 'no printer paper', 'no driver card', etc.
+  type: sensor
+
+IsSystemEventOccurred:
+  comment: ¤FMS¤ Corresponds SAE J1939 signal PGN 0xFE6C(TCO1)/SPN 1622 in ACEA FMS-Standard description version 05 11.11.2025 chapter 1.1.8
+  datatype: boolean
+  description: Indicates that a tachograph event has occurred. This may include power supply interruption, interruption of the speed sensor,
+              incorrect data on the driver card, driving without a driver card, illegal removal of a driver card, insertion of a driver card during driving,
+              and time adjustment.
+  type: sensor
