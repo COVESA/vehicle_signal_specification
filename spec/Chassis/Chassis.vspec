@@ -121,15 +121,60 @@ Axle.Torque:
            For electrical motor this typically corresponds to the output torque of the single-speed reduction-gear.
            This signal is typically not used if there is separate electrical motors for left and right wheels.
 
+
+#
+# Brake
+#
+
+# Some vehicles, like motorbikes, may have different brake fluid containers for front and rear axle
+
+Axle.Brake:
+  type: branch
+  description: Brake signals for axle
+
+Axle.Brake.FluidLevel:
+  datatype: uint8
+  type: sensor
+  unit: percent
+  max: 100
+  description: Brake fluid level as percent. 0 = Empty. 100 = Full.
+
+Axle.Brake.IsFluidLevelLow:
+  datatype: boolean
+  type: sensor
+  description: Brake fluid level status. True = Brake fluid level low. False = Brake fluid level OK.
+
 #
 # Wheels on Axles
 #
+# Wheels shall be identified using ISO 11992-2
+# Pos8 represents centre wheel (e.g. motorcycle)
+# First wheel on left side seen from centre is Pos7, next Pos6 and so on down to Pos1
+# First wheel on right side seen from centre is Pos9, next Pos10 and so on up to Pos15
+# Standard VSS catalog assumes two wheels (left adn right) on each axle
 Axle.Wheel:
-  instances: ["Left","Right"]
+  instances: ["Pos7","Pos9"]
   type: branch
   description: Wheel signals for axle
 
 #include Wheel.vspec Axle.Wheel
+
+# Some signals are related to "Half axle" rather than wheels
+# For example torque and brake system status will not be doubled just because there are twin wheels mounted
+# For those Left and Right are used as indicators.
+# Represented without instance concept to get shorter paths
+
+Axle.Left:
+  type: branch
+  description: Left half axle
+
+#include HalfAxle.vspec Axle.Left
+
+Axle.Right:
+  type: branch
+  description: Right half axle
+
+#include HalfAxle.vspec Axle.Right
 
 #
 # Parking Brake
