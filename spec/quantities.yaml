@@ -62,6 +62,8 @@ volume-per-distance:
 volume-flow-rate:
   definition: Scalar quantity characterizing the total flow through the two-dimensional domain A with
               the normal vector en of a flowing fluid with velocity v as an integral (ISO 80000-4:2019)
+distance-per-mass:
+  definition: TBD
 distance-per-volume:
   definition: TBD
 force:

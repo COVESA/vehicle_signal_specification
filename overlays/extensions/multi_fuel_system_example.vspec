@@ -1,0 +1,61 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# Example extension on how to customize fuel system, for use in e.g. heavy duty vehicles
+
+# If customizing it is recommended to remove the standard branch rather than customizing it
+# As you then do not need to delete/replace individual signals
+Vehicle.Powertrain.FuelSystem:
+  type: branch
+  delete: true
+
+# The example setup contains 3 example systems running in parallel
+# All references are relavtive to root vspec (spec/VehicleSignalSpecification.vspec)
+
+# First one - a gas system, where tank is integrated in the tree to mimic standard catalog
+
+Vehicle.Powertrain.GasFuelSystem:
+  type: branch
+  description: Fuel system data.
+#include Powertrain/MassFuelSystem.vspec Vehicle.Powertrain.GasFuelSystem
+# Tank integrated, not using separate branch
+#include Powertrain/FuelSystem/MassTank.vspec Vehicle.Powertrain.GasFuelSystem
+
+# Second one - volume based with two fuel tanks, volume metrics makes sensor
+
+Vehicle.Powertrain.MultiFuelSystem1:
+  type: branch
+  description: Fuel system data.
+#include Powertrain/VolumeFuelSystem.vspec Vehicle.Powertrain.MultiFuelSystem1
+
+Vehicle.Powertrain.MultiFuelSystem1.Tank1:
+  type: branch
+  description: Fuel tank data.
+#include Powertrain/FuelSystem/VolumeTank.vspec Vehicle.Powertrain.MultiFuelSystem1.Tank1
+Vehicle.Powertrain.MultiFuelSystem1.Tank2:
+  type: branch
+  description: Fuel tank data.
+#include Powertrain/FuelSystem/VolumeTank.vspec Vehicle.Powertrain.MultiFuelSystem1.Tank2
+
+
+# Third one - one gas tank and one volume tank, metrics does not make sense
+
+Vehicle.Powertrain.MultiFuelSystem2:
+  type: branch
+  description: Fuel system data.
+#include Powertrain/FuelSystem.vspec Vehicle.Powertrain.MultiFuelSystem2
+# Tank integrated, not using separate branch
+
+Vehicle.Powertrain.MultiFuelSystem2.GasTank:
+  type: branch
+  description: Fuel tank data.
+#include Powertrain/FuelSystem/MassTank.vspec Vehicle.Powertrain.MultiFuelSystem2.GasTank
+Vehicle.Powertrain.MultiFuelSystem2.DieselTank:
+  type: branch
+  description: Fuel tank data.
+#include Powertrain/FuelSystem/VolumeTank.vspec Vehicle.Powertrain.MultiFuelSystem2.DieselTank

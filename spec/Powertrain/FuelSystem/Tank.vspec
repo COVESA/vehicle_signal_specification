@@ -1,0 +1,51 @@
+# Copyright (c) 2025 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# General tank information, all information that does not depend on whether signals use weight or volume for content
+
+TankId:
+  datatype: string
+  type: attribute
+  description: Free text description of this tank.
+  comment: Could be e.g. main tank, first tank or similar
+
+RelativeLevel:
+  datatype: uint8
+  type: sensor
+  unit: percent
+  min: 0
+  max: 100
+  description: Level in fuel tank as percent of capacity. 0 = empty. 100 = full.
+
+IsFuelLevelLow:
+  datatype: boolean
+  type: sensor
+  description: Indicates that the fuel level is low (e.g. <50km range).
+
+IsFuelLevelEmpty:
+  datatype: boolean
+  type: sensor
+  description: Indicates that the fuel gauge on the instrument cluster displays empty (0).
+  comment: When this signal is true, the fuel gauge displays empty (0), but the vehicle typically still has reserve fuel
+           allowing for some additional driving range depending on the vehicle design.
+           This represents the displayed empty state, not actual tank empty condition.
+
+RefuelPortPosition:
+  datatype: string
+  type: attribute
+  allowed: ['FRONT_LEFT', 'FRONT_MIDDLE', 'FRONT_RIGHT',
+            'REAR_LEFT', 'REAR_MIDDLE', 'REAR_RIGHT',
+            'LEFT_FRONT', 'LEFT_MIDDLE', 'LEFT_REAR',
+            'RIGHT_FRONT', 'RIGHT_MIDDLE', 'RIGHT_REAR']
+  description: Position of refuel port(s).
+               First part indicates side of vehicle, second part relative position on that side.
+
+IsFuelPortFlapOpen:
+  datatype: boolean
+  type: actuator
+  description: Status of the fuel port flap. True if open.

@@ -65,7 +65,7 @@ They consist of the following areas.
 All commits must be signed-off, see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 #### Build checks
-Make sure that `make travis-targets` succeeds. It is even better if all targets succeed (`make all`).
+Make sure that `make mandatory_targets` succeeds. It is even better if all targets succeed (`make all`).
 
 #### Pre-commit checks
 The repository has [configuration file](.pre-commit-config.yaml) with pre-commits hooks.

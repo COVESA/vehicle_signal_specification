@@ -10,19 +10,20 @@ all: clean mandatory_targets optional_targets
 # vehicle-signal-specification or vss-tools
 mandatory_targets: clean apigear avro binary compose csv datatypes ddsidl franca go id json json-noexpand jsonschema overlays plantuml samm s2dm yaml
 
-# Additional targets that shall be built by travis, but where it is not mandatory
+# Additional targets that shall be built, but where it is not mandatory
 # that the builds shall pass.
 # This is typically intended for less maintainted tools that are allowed to break
 # from time to time
-# Can be run from e.g. travis with "make -k optional_targets || true" to continue
-# even if errors occur and not do not halt travis build if errors occur
+# Can be run from CI with "make -k optional_targets || true" to continue
+# even if errors occur
 optional_targets: clean protobuf
 
 TOOLSDIR?=./vss-tools
 VSS_VERSION ?= 0.0
 COMMON_ARGS=-u ./spec/units.yaml --strict
-COMMON_VSPEC_ARG=-s ./spec/VehicleSignalSpecification.vspec
 COMMON_DATATYPES_ARG=-t ./spec/VehicleDataTypes.vspec
+# We explicitly give spec as input dir in order to allow overlays to find base files
+COMMON_VSPEC_ARG=-I ./spec -s ./spec/VehicleSignalSpecification.vspec
 
 
 # Exporters
@@ -89,6 +90,7 @@ yaml:
 overlays:
 	vspec export json ${COMMON_ARGS} -l overlays/profiles/motorbike.vspec ${COMMON_VSPEC_ARG} -o vss_motorbike.json
 	vspec export json ${COMMON_ARGS} -l overlays/extensions/dual_wiper_systems.vspec ${COMMON_VSPEC_ARG} -o vss_dualwiper.json
+	vspec export json ${COMMON_ARGS} -l overlays/extensions/multi_fuel_system_example.vspec ${COMMON_VSPEC_ARG} -o vss_multi_fuel.json
 	vspec export json ${COMMON_ARGS} -l overlays/extensions/OBD.vspec ${COMMON_VSPEC_ARG} -o vss_obd.json
 
 clean:
