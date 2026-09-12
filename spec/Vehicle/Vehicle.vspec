@@ -60,7 +60,9 @@ VehicleIdentification.VIN:
 VehicleIdentification.WMI:
   datatype: string
   type: attribute
-  description: 3-character World Manufacturer Identification (WMI) as defined by ISO 3780.
+  description: World Manufacturer Identifier (WMI) as defined by ISO 3780, three characters,
+               or six characters for a low-volume manufacturer (VIN positions 1-3 and 12-14).
+  pattern: ^[0-9A-HJ-NPR-Z]{3}(?:[0-9A-HJ-NPR-Z]{3})?$
 
 VehicleIdentification.Brand:
   datatype: string
