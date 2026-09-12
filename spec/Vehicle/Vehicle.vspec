@@ -91,6 +91,7 @@ VehicleIdentification.AcrissCode:
   datatype: string
   type: attribute
   description: The ACRISS Car Classification Code is a code used by many car rental companies.
+  pattern: ^[A-Z]{4}$
 
 VehicleIdentification.BodyType:
   datatype: string
