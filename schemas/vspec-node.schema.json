@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://covesa.github.io/vehicle_signal_specification/schemas/vspec-node.schema.json",
+  "title": "VSS vspec node",
+  "description": "A single node in a VSS vspec YAML file.",
+  "type": "object",
+  "required": ["type"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["branch", "sensor", "actuator", "attribute"],
+      "description": "Node kind. branch = non-leaf container; sensor/actuator/attribute = leaf."
+    },
+    "datatype": {
+      "type": "string",
+      "description": "Value type for leaf nodes, e.g. float, uint8, string, boolean. Required for sensor/actuator/attribute; not used on branch."
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the signal or branch."
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measure. Should be a value from the VSS unit catalogue (spec/units.yaml)."
+    },
+    "min": {
+      "description": "Minimum valid value (numeric). Applies to leaf nodes only."
+    },
+    "max": {
+      "description": "Maximum valid value (numeric). Applies to leaf nodes only."
+    },
+    "default": {
+      "description": "Default value for the signal at startup. Type must match datatype."
+    },
+    "comment": {
+      "type": "string",
+      "description": "Informative note, not part of the normative definition."
+    },
+    "deprecation": {
+      "type": "string",
+      "description": "Non-empty string indicates this node is deprecated; value is the deprecation notice including the version when it was deprecated."
+    },
+    "instances": {
+      "description": "Instance expansion expression (string or array of strings) for parameterised branches.",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+      ]
+    },
+    "allowed": {
+      "type": "array",
+      "description": "Enumerated allowed values for the signal. Items should match the datatype.",
+      "minItems": 1
+    },
+    "pattern": {
+      "type": "string",
+      "description": "Regular expression that the signal value must match."
+    }
+  },
+  "additionalProperties": false
+}
