@@ -7,6 +7,47 @@ It includes changes that are included in released version, but also changes plan
 
 *This document only contains changes introduced in VSS 3.0 or later!*
 
+
+## VSS 6.1
+
+### QUDT unit references added
+
+Most units now reference a QUDT unit
+
+### Enum support added
+
+VSS has introduced `enum` as an alternative to allowed values.
+In VSS allowed values have typically been used to restrict values for string signals, and most exporters and downstream projects have treated it as a string value.
+With enum the base type is an integer type and exporters and downstream projects are free to decide on how they want to use the symbolic names,
+like if they want to expose the symbolic names in APIs or generated assets, or if they just ignore the symbolic names.
+
+```yaml
+Dogbreed:
+  type: attribute
+  description: Foo
+  datatype: uint8
+  enum:
+    'AKITA': 0
+    'BOXER': 1
+  default: 0
+```
+
+
+### GraphQL format change
+
+Output format/structure has changed.
+Although strictly speaking a possibly backward incompatible change for downstream users,
+considered acceptable to be included in minor release as no known users that rely on old output structure.
+
+### Signal Updates
+
+Among others the following areas have been addressed:
+
+* Signals for Torque and Oil Pressure
+* Signals for Road Surface Conditions
+* Signals for Vehicle Orientation
+* Signals for Air Quality
+
 ## VSS 6.0
 
 ### OBD Branch removed

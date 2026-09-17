@@ -54,7 +54,6 @@ jobs:
           path: |
             vss.csv
             vss.fidl
-            vss.graphql
             vss.idl
             vss.json
             vss.jsonschema
@@ -63,6 +62,7 @@ jobs:
             vss_compose.tar.gz
             vss_samm.tar.gz
             vss_apigear.tar.gz
+            vss_graphql.tar.gz
           if-no-files-found: error
 
       - name: Prepare for CSV check
