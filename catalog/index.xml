@@ -9,6 +9,13 @@
     <lastBuildDate>Sun, 04 Aug 2019 12:46:30 +0200</lastBuildDate>
     <atom:link href="https://covesa.github.io/vehicle_signal_specification/catalog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Energy Management</title>
+      <link>https://covesa.github.io/vehicle_signal_specification/catalog/energy_management/index.html</link>
+      <pubDate>Sun, 04 Aug 2019 12:46:30 +0200</pubDate>
+      <guid>https://covesa.github.io/vehicle_signal_specification/catalog/energy_management/index.html</guid>
+      <description>Introduction The VSS energy management feature conditions the battery for fast charging at the end of the trip. Energy savings are achieved by minimizing the time when the battery is at the required temperature.&#xA;Logic When the feature is enabled (EnergyManagement.IsEnabled) optimized values for the battery temperature setpoint, the coolant mass flow and the heater power are downloaded into the vehicle. The values are the result of a predictive optimization that takes the current battery state and the route into account (Vehicle.</description>
+    </item>
+    <item>
       <title>Vehicle Motion Management</title>
       <link>https://covesa.github.io/vehicle_signal_specification/catalog/vehicle_motion_management/index.html</link>
       <pubDate>Sun, 04 Aug 2019 12:46:30 +0200</pubDate>
