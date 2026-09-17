@@ -250,3 +250,9 @@ RearMainSpoilerPosition:
   description: Rear spoiler position, 0% = Spoiler fully stowed. 100% = Spoiler fully exposed.
 
 #include include/PowerOptimize.vspec
+
+#Variant for buses only
+#include DoorsBusOnly.vspec
+
+#Accessibility variant
+#include Accessibility.vspec

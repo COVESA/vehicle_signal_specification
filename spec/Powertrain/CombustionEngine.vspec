@@ -78,6 +78,22 @@ MaxTorque:
   unit: Nm
   description: Peak torque, in newton meter, that the engine can generate.
 
+ActualPercentTorque:
+  datatype: uint8
+  type: sensor
+  max: 100
+  unit: percent
+  description: The calculated output torque of the engine as a percent of reference engine torque.
+
+EnginePercentLoadAtCurrentSpeed:
+  datatype: uint8
+  type: sensor
+  max: 125
+  min: 0
+  unit: percent
+  description: The ratio of actual engine percent torque (indicated) to maximum indicated torque available at the current engine speed,
+              clipped to zero torque during engine braking.
+
 AspirationType:
   datatype: string
   type: attribute
