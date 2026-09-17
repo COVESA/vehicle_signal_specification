@@ -11,4 +11,5 @@ Each signal in the VSS catalog has a `description` field and they may have a `co
 
 ## VSS Catalog Concepts
 
-* [Vehicle Motion Management](/vehicle_signal_specification/catalog/vehicle_motion_management/) Information on the VSS concept for motion management.
+* [Vehicle Motion Management](/vehicle_signal_specification/catalog/vehicle_motion_management) Information on the VSS concept for motion management.
+* [Energy Management](/vehicle_signal_specification/catalog/energy_management) Information on the VSS concept for energy management.

@@ -1,0 +1,94 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# Intended for energy management during a trip
+#
+# Please see energy_management.md in documentation for more information
+
+EnergyManagement:
+  type: branch
+  description: Energy Management Information.
+
+EnergyManagement.IsEnabled:
+  datatype: boolean
+  type: actuator
+  description: This flag will be used to enable the execution of predictive energy optimization functions.
+  comment: The feature can only be enabled if a destination has been set by Vehicle.Cabin.Infotainment.Navigation.
+
+EnergyManagement.IsRecalculationRequest:
+  datatype: boolean
+  type: actuator
+  description: This flag is used to request recalculation. The request shall be reset when a new prediction has been received.
+
+EnergyManagement.SetpointArraySize:
+  datatype: uint16
+  type: sensor
+  default: 100
+  description: Number of elements used in arrays related to setpoints.
+
+EnergyManagement.SetpointTimestamp:
+  datatype: uint32[]
+  type: sensor
+  unit: s
+  description: Time vector for setpoints.
+               Time is relative to activation of feature or trip.
+               Number of elements expected to correspond with SetpointArraySize.
+
+
+EnergyManagement.SetpointBatteryTemperature:
+  datatype: float[]
+  type: sensor
+  unit: Celsius
+  description: Desired average battery temperature at setpoints indicated by SetpointTimestamp.
+               Number of elements expected to correspond with SetpointArraySize.
+
+EnergyManagement.SetpointHeaterPower:
+  datatype: float[]
+  type: sensor
+  unit: W
+  description: Desired heating power at setpoints indicated by SetpointTimestamp.
+               Number of elements expected to correspond with SetpointArraySize.
+
+EnergyManagement.SetpointCoolantMassFlow:
+  datatype: float[]
+  type: sensor
+  unit: kg/s
+  description: Desired coolant mass flow through battery at setpoints indicated by SetpointTimestamp.
+               Number of elements expected to correspond with SetpointArraySize..
+
+EnergyManagement.TargetArraySize:
+  datatype: uint16
+  type: sensor
+  default: 20
+  description: Number of elements used in arrays related to checking if trip progress as expected.
+
+EnergyManagement.TargetTimestamp:
+  datatype: uint32[]
+  type: sensor
+  unit: s
+  description: Timestamps indicating when it shall be checked if trip progress as expected.
+               Time is relative to activation of feature or trip.
+               Number of elements expected to correspond with TargetArraySize.
+
+EnergyManagement.TargetLatitude:
+  datatype: double[]
+  type: sensor
+  min: -90
+  max: 90
+  unit: degrees
+  description: Expected latitude in WGS 84 geodetic coordinates at timestamps indicated by TargetTimestamp.
+               Number of elements expected to correspond with TargetArraySize.
+
+EnergyManagement.TargetLongitude:
+  datatype: double[]
+  type: sensor
+  min: -180
+  max: 180
+  unit: degrees
+  description: Expected longitude in WGS 84 geodetic coordinates at timestamps indicated by TargetTimestamp.
+               Number of elements expected to correspond with TargetArraySize.
