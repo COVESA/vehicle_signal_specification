@@ -13,7 +13,8 @@
 BodyType:
   datatype: string
   type: attribute
-  description: Body type code as defined by ISO 3779.
+  description: Body type code of the vehicle, from the type-approval or registration scheme it is subject to.
+  comment: ISO 3779 defines the VIN and no body type codes. VehicleIdentification.BodyType is the descriptive form.
 
 #
 # Hood description
