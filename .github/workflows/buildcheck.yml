@@ -4,16 +4,7 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-    inputs:
-      vss-version:
-        required: false
-        type: string
   workflow_call:
-    inputs:
-      vss-version:
-        required: false
-        type: string
-
 
 env:
   # Version shall generally correspond to latest released version
@@ -41,9 +32,6 @@ jobs:
 
       - name: Test mandatory targets
         run: |
-          if [ "${{ inputs.vss-version }}" != "" ]; then
-            export VSS_VERSION="${{ inputs.vss-version }}"
-          fi
           make mandatory_targets
 
       - name: "Uploading  artifacts"
@@ -53,7 +41,6 @@ jobs:
           # Listing all artifacts that shall be managed as release artifacts
           path: |
             vss.csv
-            vss.fidl
             vss.idl
             vss.json
             vss.jsonschema

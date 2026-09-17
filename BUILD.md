@@ -15,7 +15,7 @@ standard catalog documentation.
 
 Before writing your own parser it could be an idea to check if a suitable parser already has been created as part of
 [VSS-Tools](https://github.com/COVESA/vss-tools). This repository use some of the tools in VSS-Tools during Continuous
-Integration, and we also provide generated artifacts (CSV, Franca IDL, Graphql, DDS IDL, JSON, Yaml) for each
+Integration, and we also provide generated artifacts (CSV, Graphql, DDS IDL, JSON, Yaml) for each
 [release](https://github.com/COVESA/vehicle_signal_specification/releases).
 The sections below provide some guidance on how to use VSS-Tools to convert the VSS standard catalog.
 Before creating a Pull Requst towards this repository it is recommended that you verify that your modified catalog
