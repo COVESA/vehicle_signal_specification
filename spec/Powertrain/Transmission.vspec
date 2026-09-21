@@ -30,9 +30,12 @@ GearCount:
 DriveType:
   datatype: string
   type: attribute
-  allowed: ['UNKNOWN', 'FORWARD_WHEEL_DRIVE', 'REAR_WHEEL_DRIVE', 'ALL_WHEEL_DRIVE']
+  allowed: ['UNKNOWN', 'FORWARD_WHEEL_DRIVE', 'REAR_WHEEL_DRIVE', 'ALL_WHEEL_DRIVE', 'FOUR_WHEEL_DRIVE']
   default: 'UNKNOWN'
   description: Drive type.
+  comment: ALL_WHEEL_DRIVE and FOUR_WHEEL_DRIVE are recorded as distinct values in registration
+           and type data. Assignment follows the manufacturer's or registration authority's
+           designation.
 
 
 #
