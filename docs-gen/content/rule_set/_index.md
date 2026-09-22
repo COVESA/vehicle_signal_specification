@@ -1,5 +1,5 @@
 ---
-title: Rule Set
+title: VSS Rule Set
 weight: 20
 chapter: false
 ---
