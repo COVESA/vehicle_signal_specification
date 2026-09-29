@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VSS Design Policy :: Vehicle Signal Specification</title>
+    <link>https://covesa.github.io/vehicle_signal_specification/policies/index.html</link>
+    <description>In addition to the rules for the VSS langage the VSS project has agreed on policies for the VSS standard catalog. When someone wants to add new signals to the VSS catalog it shall be verified that the contribution follows the policies for the VSS Standard catalog.&#xA;Legacy signals may exist that does not follow the policies. Those signals or the characteristics of those signals shall preferably be listed as exceptions in the corresponding policies.</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Aug 2019 12:46:30 +0200</lastBuildDate>
+    <atom:link href="https://covesa.github.io/vehicle_signal_specification/policies/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unit and Datatype Policy</title>
+      <link>https://covesa.github.io/vehicle_signal_specification/policies/unit_datatype/index.html</link>
+      <pubDate>Sun, 04 Aug 2019 12:46:30 +0200</pubDate>
+      <guid>https://covesa.github.io/vehicle_signal_specification/policies/unit_datatype/index.html</guid>
+      <description>Introduction Each signal in VSS has a datatype and unless it only represent a counter also a unit. The VSS standard catalog includes a large number of units in the unit definition file, but not all are intended to be used in the VSS standard catalog.&#xA;Unit Policy VSS signals typically use the unit used by humans when talking about the value, but prefers SI-units or derived SI-units when feasible. Prefixed units, like millimeter or kilometer are acceptable to get a value that is easier to understand for a human or that better fits requirements on datatypes or assumed precision.</description>
+    </item>
+  </channel>
+</rss>

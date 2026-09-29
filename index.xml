@@ -23,18 +23,25 @@
       <description>The Vehicle Signal Specification (VSS) project is an initiative by COVESA to define a syntax and a catalog for vehicle signals.&#xA;The artifacts maintained by the VSS project consist of:&#xA;Source code, documentation and releases in the VSS github repository. Tools for parsing and converting VSS files in the VSS-tools github repository. The VSS project has an informal structure with a chair and github maintainers appointed by COVESA. Tasks for the chair includes hosting regular meeting to discuss incoming pull requests and issues, as well as roadmap and release planning.</description>
     </item>
     <item>
-      <title>Rule Set</title>
+      <title>VSS Rule Set</title>
       <link>https://covesa.github.io/vehicle_signal_specification/rule_set/index.html</link>
       <pubDate>Sun, 04 Aug 2019 13:05:11 +0200</pubDate>
       <guid>https://covesa.github.io/vehicle_signal_specification/rule_set/index.html</guid>
       <description>The Rule Set of a domain taxonomy is used to describe how to write the data definition syntactically.&#xA;This chapter defines and describes the rule set for VSS. Tools in the vss-tools repository can be used to validate that a specification follows the rule set for VSS, but those tools may have limitations and may not check all rules stated in this document. In case of conflict, what is stated in the rule set in this documentation is considered to have precedence over tool implementations.</description>
     </item>
     <item>
-      <title>VSS Catalog</title>
+      <title>VSS Design Policy</title>
+      <link>https://covesa.github.io/vehicle_signal_specification/policies/index.html</link>
+      <pubDate>Sun, 04 Aug 2019 12:46:30 +0200</pubDate>
+      <guid>https://covesa.github.io/vehicle_signal_specification/policies/index.html</guid>
+      <description>In addition to the rules for the VSS langage the VSS project has agreed on policies for the VSS standard catalog. When someone wants to add new signals to the VSS catalog it shall be verified that the contribution follows the policies for the VSS Standard catalog.&#xA;Legacy signals may exist that does not follow the policies. Those signals or the characteristics of those signals shall preferably be listed as exceptions in the corresponding policies.</description>
+    </item>
+    <item>
+      <title>VSS Standard Catalog</title>
       <link>https://covesa.github.io/vehicle_signal_specification/catalog/index.html</link>
       <pubDate>Sun, 04 Aug 2019 12:46:30 +0200</pubDate>
       <guid>https://covesa.github.io/vehicle_signal_specification/catalog/index.html</guid>
-      <description>The source for the COVESA VSS Catalog can be found in *.vspec files in the COVESA VSS Repository. Released versions of the catalog in various formats can be found at release artifacts.&#xA;Each signal in the VSS catalog has a description field and they may have a comment field. In some cases that is not sufficient to explain the rationale for the signal and how it is intended to be used.</description>
+      <description>The source for the COVESA VSS Catalog can be found in *.vspec files in the COVESA VSS Repository. Released versions of the catalog in various formats can be found at release artifacts.&#xA;VSS Catalog Concepts Each signal in the VSS catalog has a description field and they may have a comment field. In some cases that is not sufficient to explain the rationale for the signal and how it is intended to be used.</description>
     </item>
     <item>
       <title>Extending and Customizing VSS</title>

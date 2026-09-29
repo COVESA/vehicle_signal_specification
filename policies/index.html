@@ -5,18 +5,28 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.129.0">
     <meta name="generator" content="Relearn 6.0.0">
-    <meta name="description" content="">
+    <meta name="description" content="In addition to the rules for the VSS langage the VSS project has agreed on policies for the VSS standard catalog. When someone wants to add new signals to the VSS catalog it shall be verified that the contribution follows the policies for the VSS Standard catalog.
+Legacy signals may exist that does not follow the policies. Those signals or the characteristics of those signals shall preferably be listed as exceptions in the corresponding policies.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Categories :: Vehicle Signal Specification">
-    <meta property="og:url" content="https://covesa.github.io/vehicle_signal_specification/categories/index.html">
+    <meta name="twitter:title" content="VSS Design Policy :: Vehicle Signal Specification">
+    <meta name="twitter:description" content="In addition to the rules for the VSS langage the VSS project has agreed on policies for the VSS standard catalog. When someone wants to add new signals to the VSS catalog it shall be verified that the contribution follows the policies for the VSS Standard catalog.
+Legacy signals may exist that does not follow the policies. Those signals or the characteristics of those signals shall preferably be listed as exceptions in the corresponding policies.">
+    <meta property="og:url" content="https://covesa.github.io/vehicle_signal_specification/policies/index.html">
     <meta property="og:site_name" content="Vehicle Signal Specification">
-    <meta property="og:title" content="Categories :: Vehicle Signal Specification">
+    <meta property="og:title" content="VSS Design Policy :: Vehicle Signal Specification">
+    <meta property="og:description" content="In addition to the rules for the VSS langage the VSS project has agreed on policies for the VSS standard catalog. When someone wants to add new signals to the VSS catalog it shall be verified that the contribution follows the policies for the VSS Standard catalog.
+Legacy signals may exist that does not follow the policies. Those signals or the characteristics of those signals shall preferably be listed as exceptions in the corresponding policies.">
     <meta property="og:locale" content="en-us">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Categories :: Vehicle Signal Specification">
-    <title>Categories :: Vehicle Signal Specification</title>
-    <link href="/vehicle_signal_specification/categories/index.xml" rel="alternate" type="application/rss+xml" title="Categories :: Vehicle Signal Specification"><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
+    <meta itemprop="name" content="VSS Design Policy :: Vehicle Signal Specification">
+    <meta itemprop="description" content="In addition to the rules for the VSS langage the VSS project has agreed on policies for the VSS standard catalog. When someone wants to add new signals to the VSS catalog it shall be verified that the contribution follows the policies for the VSS Standard catalog.
+Legacy signals may exist that does not follow the policies. Those signals or the characteristics of those signals shall preferably be listed as exceptions in the corresponding policies.">
+    <meta itemprop="datePublished" content="2019-08-04T12:46:30+02:00">
+    <meta itemprop="dateModified" content="2019-08-04T12:46:30+02:00">
+    <meta itemprop="wordCount" content="568">
+    <title>VSS Design Policy :: Vehicle Signal Specification</title>
+    <link href="/vehicle_signal_specification/policies/index.xml" rel="alternate" type="application/rss+xml" title="VSS Design Policy :: Vehicle Signal Specification"><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
 
     <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1790691282" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1790691282" rel="stylesheet"></noscript>
     <link href="/vehicle_signal_specification/css/nucleus.css?1790691282" rel="stylesheet">
@@ -48,7 +58,7 @@
       window.T_N_results_found = `{1} results found for "{0}"`;
     </script>
   </head>
-  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/vehicle_signal_specification/categories/index.html">
+  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/vehicle_signal_specification/policies/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -59,20 +69,34 @@
             </div>
             <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
               <div class="topbar-content">
-                <div class="topbar-content-wrapper">
-<nav class="TableOfContents"></nav>
+                <div class="topbar-content-wrapper"><nav class="TableOfContents">
+  <ul>
+    <li><a href="#license-header">License Header</a></li>
+    <li><a href="#vss-signals-shall-be-generic">VSS Signals shall be generic</a></li>
+    <li><a href="#logical-path">Logical path</a></li>
+    <li><a href="#consider-adding-a-new-file-if-adding-a-large-number-of-signals">Consider adding a new file if adding a large number of signals</a></li>
+    <li><a href="#signals-shall-have-a-clear-definition-without-ambiguities">Signals shall have a clear definition without ambiguities</a></li>
+    <li><a href="#no-duplicates">No duplicates</a></li>
+    <li><a href="#use-existing-style">Use existing style</a></li>
+    <li><a href="#unit-and-datatype-policy">Unit and Datatype Policy</a></li>
+    <li><a href="#avoid-backward-incompatible-changes">Avoid backward incompatible changes</a></li>
+  </ul>
+</nav>
                 </div>
               </div>
             </div>
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/index.html"><span itemprop="name">Vehicle Signal Specification</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Categories</span><meta itemprop="position" content="2"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">VSS Design Policy</span><meta itemprop="position" content="2"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/index.html" title="Vehicle Signal Specification (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+				
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/policies/_index.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><span class="topbar-control"><i class="fa-fw fas fa-chevron-right"></i></span>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/rule_set/includes/index.html" title="Includes (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/policies/unit_datatype/index.html" title="Unit and Datatype Policy (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -88,14 +112,67 @@
       <div id="R-main-overlay"></div>
       <main id="R-body-inner" class="highlightable default" tabindex="-1">
         <div class="flex-block-wrapper">
-          <article>
+          <article class="default">
             <header class="headline">
             </header>
-<h1 id="categories">Categories</h1>
+
+<h1 id="vss-design-policy">VSS Design Policy</h1>
+
+<p>In addition to the rules for the VSS langage the VSS project has agreed on policies for the VSS standard catalog. When someone wants to add new signals to the VSS catalog it shall be verified that the contribution follows the policies for the VSS Standard catalog.</p>
+<p>Legacy signals may exist that does not follow the policies. Those signals or the characteristics of those signals shall preferably be listed as exceptions in the corresponding policies. There it shall also preferably be stated if the signals better shall be refactored in the future or if they by some are excempted from the policy.</p>
+<h2 id="license-header">License Header</h2>
+<p>For certain files it is requested that a copyright and license statement is added as file header.
+This currently applies to the following file types:</p>
+<ul>
+<li>VSS source files (<code>*.vspec</code>)</li>
+<li>Python files (vss-tools, <code>*.py</code>)</li>
+</ul>
+<p>Those files shall have copyright statement of the following form, inspired by the <a href="https://www.eclipse.org/projects/handbook/#ip-copyright-headers" rel="external" target="_blank">Eclipse generic copyright header</a>.
+Copyright/License-statement may also be added to other files if considered relevant.</p>
+<div class="highlight wrap-code"><pre tabindex="0"><code># Copyright (c) {year} Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0</code></pre></div><p>Where {year} is the year the file was originally created. No need to update or append new years or a range of years later.</p>
+<h2 id="vss-signals-shall-be-generic">VSS Signals shall be generic</h2>
+<p>Signals added to standard VSS shall be generic, i.e. it shall be possible for other manufacturers to reuse the signal.
+Manufacturer-specific signals shall preferably be part of private overlays and not part of standard VSS.</p>
+<h2 id="logical-path">Logical path</h2>
+<p>VSS aims to put all signals in a logical path based on physical topology of the vehicle.
+As an example, signals related to wheels should typically reside under <code>Vehicle.Chassis.Axle</code>.
+When proposing a new signal, reuse an existing path if a relevant path exists.</p>
+<h2 id="consider-adding-a-new-file-if-adding-a-large-number-of-signals">Consider adding a new file if adding a large number of signals</h2>
+<p>VSS has no strict rules that every branch must have its own file,
+but if a file becomes too big you can consider splitting it if feasible.</p>
+<h2 id="signals-shall-have-a-clear-definition-without-ambiguities">Signals shall have a clear definition without ambiguities</h2>
+<p>It shall be possible to interpret a signal value by reading the signal description.
+Describe if needed how the value shall be calculated/interpreted,
+for example if it is based on a standard or if it is up to the manufacturer to select algorithm/method.</p>
+<ul>
+<li>Example: A signal Vehicle.Weight would be ambiguous unless you specify that it refers to gross weight or curb weight.</li>
+<li>Example: Specifying an allowed value <code>MODE_2</code> is ambiguous unless you also specify what <code>MODE_2</code> means, e.g. by referring to a standard.</li>
+</ul>
+<h2 id="no-duplicates">No duplicates</h2>
+<p>VSS generally avoids to have duplicates in the signal tree, i.e. signals with same purpose and description in different part of the tree.</p>
+<h2 id="use-existing-style">Use existing style</h2>
+<p>Try to reuse the same style as used for existing signals.
+Only specify min/max-values if there is a logical reason to limit the range.
+Boolean signals should start with <code>Is</code>, as in <code>IsOpen</code>.
+American English is preferred over British English.
+No trailing blanks.
+Follow the style guide in the <a href="https://covesa.github.io/vehicle_signal_specification/rule_set/basics/#style-guide" rel="external" target="_blank">documentation</a>.</p>
+<h2 id="unit-and-datatype-policy">Unit and Datatype Policy</h2>
+<p>See <a href="/vehicle_signal_specification/policies/unit_datatype">Unit and Datatype Policy</a> .</p>
+<h2 id="avoid-backward-incompatible-changes">Avoid backward incompatible changes</h2>
+<p>VSS sometimes change or remove existing signals, but only if there is a good reason.
+Merging can be delayed, as VSS may decide to wait with the change until the next major release is prepared.</p>
 
             <footer class="footline">
             </footer>
-          </article>        </div>
+          </article>
+        </div>
       </main>
     </div>
     <aside id="R-sidebar" class="default-animation">
@@ -149,7 +226,7 @@
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html">Value Restrictions</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/instances/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/instances/index.html">Instances</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/includes/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/includes/index.html">Includes</a></li></ul></li>
-          <li data-nav-id="/vehicle_signal_specification/policies/index.html" class=""><a class="padding" href="/vehicle_signal_specification/policies/index.html">VSS Design Policy</a><ul id="R-subsections-305615410f40802ad71dde0994916cc5" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/policies/index.html" class="active parent "><a class="padding" href="/vehicle_signal_specification/policies/index.html">VSS Design Policy</a><ul id="R-subsections-305615410f40802ad71dde0994916cc5" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/policies/unit_datatype/index.html" class=""><a class="padding" href="/vehicle_signal_specification/policies/unit_datatype/index.html">Unit and Datatype Policy</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/catalog/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/index.html">VSS Standard Catalog</a><ul id="R-subsections-665f6cae1c56b0dcfe0d69bfe3f4be93" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/catalog/energy_management/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/energy_management/index.html">Energy Management</a></li>
@@ -184,7 +261,7 @@
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/vehicle_signal_specification/categories/index.html" lang="en-us" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/vehicle_signal_specification/policies/index.html" lang="en-us" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>

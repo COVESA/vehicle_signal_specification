@@ -5,26 +5,30 @@
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.129.0">
     <meta name="generator" content="Relearn 6.0.0">
-    <meta name="description" content="Introduction In modern vehicles multiple electronic controlled systems are interacting to realize the overall vehicle motion in all physical directions. Typically, the driver gives input e.g. using the steering wheel and the accelerator and brake pedals, but additional vehicle functions may have also requests towards the motion actuators. One example is that a traction control system may want to limit the performance due to slippery road conditions or that the emergency braking system requests braking.">
+    <meta name="description" content="Introduction Each signal in VSS has a datatype and unless it only represent a counter also a unit. The VSS standard catalog includes a large number of units in the unit definition file, but not all are intended to be used in the VSS standard catalog.
+Unit Policy VSS signals typically use the unit used by humans when talking about the value, but prefers SI-units or derived SI-units when feasible. Prefixed units, like millimeter or kilometer are acceptable to get a value that is easier to understand for a human or that better fits requirements on datatypes or assumed precision.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Vehicle Motion Management :: Vehicle Signal Specification">
-    <meta name="twitter:description" content="Introduction In modern vehicles multiple electronic controlled systems are interacting to realize the overall vehicle motion in all physical directions. Typically, the driver gives input e.g. using the steering wheel and the accelerator and brake pedals, but additional vehicle functions may have also requests towards the motion actuators. One example is that a traction control system may want to limit the performance due to slippery road conditions or that the emergency braking system requests braking.">
-    <meta property="og:url" content="https://covesa.github.io/vehicle_signal_specification/catalog/vehicle_motion_management/index.html">
+    <meta name="twitter:title" content="Unit and Datatype Policy :: Vehicle Signal Specification">
+    <meta name="twitter:description" content="Introduction Each signal in VSS has a datatype and unless it only represent a counter also a unit. The VSS standard catalog includes a large number of units in the unit definition file, but not all are intended to be used in the VSS standard catalog.
+Unit Policy VSS signals typically use the unit used by humans when talking about the value, but prefers SI-units or derived SI-units when feasible. Prefixed units, like millimeter or kilometer are acceptable to get a value that is easier to understand for a human or that better fits requirements on datatypes or assumed precision.">
+    <meta property="og:url" content="https://covesa.github.io/vehicle_signal_specification/policies/unit_datatype/index.html">
     <meta property="og:site_name" content="Vehicle Signal Specification">
-    <meta property="og:title" content="Vehicle Motion Management :: Vehicle Signal Specification">
-    <meta property="og:description" content="Introduction In modern vehicles multiple electronic controlled systems are interacting to realize the overall vehicle motion in all physical directions. Typically, the driver gives input e.g. using the steering wheel and the accelerator and brake pedals, but additional vehicle functions may have also requests towards the motion actuators. One example is that a traction control system may want to limit the performance due to slippery road conditions or that the emergency braking system requests braking.">
+    <meta property="og:title" content="Unit and Datatype Policy :: Vehicle Signal Specification">
+    <meta property="og:description" content="Introduction Each signal in VSS has a datatype and unless it only represent a counter also a unit. The VSS standard catalog includes a large number of units in the unit definition file, but not all are intended to be used in the VSS standard catalog.
+Unit Policy VSS signals typically use the unit used by humans when talking about the value, but prefers SI-units or derived SI-units when feasible. Prefixed units, like millimeter or kilometer are acceptable to get a value that is easier to understand for a human or that better fits requirements on datatypes or assumed precision.">
     <meta property="og:locale" content="en-us">
     <meta property="og:type" content="article">
-    <meta property="article:section" content="VSS Standard Catalog">
+    <meta property="article:section" content="VSS Design Policy">
     <meta property="article:published_time" content="2019-08-04T12:46:30+02:00">
     <meta property="article:modified_time" content="2019-08-04T12:46:30+02:00">
-    <meta itemprop="name" content="Vehicle Motion Management :: Vehicle Signal Specification">
-    <meta itemprop="description" content="Introduction In modern vehicles multiple electronic controlled systems are interacting to realize the overall vehicle motion in all physical directions. Typically, the driver gives input e.g. using the steering wheel and the accelerator and brake pedals, but additional vehicle functions may have also requests towards the motion actuators. One example is that a traction control system may want to limit the performance due to slippery road conditions or that the emergency braking system requests braking.">
+    <meta itemprop="name" content="Unit and Datatype Policy :: Vehicle Signal Specification">
+    <meta itemprop="description" content="Introduction Each signal in VSS has a datatype and unless it only represent a counter also a unit. The VSS standard catalog includes a large number of units in the unit definition file, but not all are intended to be used in the VSS standard catalog.
+Unit Policy VSS signals typically use the unit used by humans when talking about the value, but prefers SI-units or derived SI-units when feasible. Prefixed units, like millimeter or kilometer are acceptable to get a value that is easier to understand for a human or that better fits requirements on datatypes or assumed precision.">
     <meta itemprop="datePublished" content="2019-08-04T12:46:30+02:00">
     <meta itemprop="dateModified" content="2019-08-04T12:46:30+02:00">
-    <meta itemprop="wordCount" content="1473">
-    <title>Vehicle Motion Management :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
+    <meta itemprop="wordCount" content="351">
+    <title>Unit and Datatype Policy :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
 
     <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1790691282" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1790691282" rel="stylesheet"></noscript>
     <link href="/vehicle_signal_specification/css/nucleus.css?1790691282" rel="stylesheet">
@@ -56,7 +60,7 @@
       window.T_N_results_found = `{1} results found for "{0}"`;
     </script>
   </head>
-  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html">
+  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/vehicle_signal_specification/policies/unit_datatype/index.html">
     <div id="R-body" class="default-animation">
       <div id="R-body-overlay"></div>
       <nav id="R-topbar">
@@ -69,22 +73,12 @@
               <div class="topbar-content">
                 <div class="topbar-content-wrapper"><nav class="TableOfContents">
   <ul>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#definitions-and-assumptions">Definitions and Assumptions</a></li>
-    <li><a href="#sensors-vs-actuators">Sensors vs. Actuators</a></li>
-    <li><a href="#braking-system">Braking System</a>
+    <li><a href="#introduction">Introduction</a>
       <ul>
-        <li><a href="#example-1---vehicle-force-requests-vehiclemotionmanagementbrakevehicleforcemaximum">Example 1 - vehicle force requests (<code>Vehicle.MotionManagement.Brake.VehicleForceMaximum</code>)</a></li>
+        <li><a href="#unit-policy">Unit Policy</a></li>
+        <li><a href="#datatype-policy">Datatype Policy</a></li>
       </ul>
     </li>
-    <li><a href="#example-2-distribution-request-vehiclemotionmanagementbrakevehicleforcedistributionfrontminimum-maximum">Example 2 distribution request (<code>Vehicle.MotionManagement.Brake.VehicleForceDistributionFrontMinimum</code>/ <code>Maximum</code>)</a></li>
-    <li><a href="#powertrain-system-electrical-axle">Powertrain System (Electrical Axle)</a>
-      <ul>
-        <li><a href="#torque-control">Torque Control</a></li>
-        <li><a href="#speed-control">Speed Control</a></li>
-      </ul>
-    </li>
-    <li><a href="#steering-system">Steering System</a></li>
   </ul>
 </nav>
                 </div>
@@ -93,16 +87,16 @@
           </div>
           <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
             itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/index.html"><span itemprop="name">Vehicle Signal Specification</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/catalog/index.html"><span itemprop="name">VSS Standard Catalog</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
-            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Vehicle Motion Management</span><meta itemprop="position" content="3"></li>
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/policies/index.html"><span itemprop="name">VSS Design Policy</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Unit and Datatype Policy</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
 				
-            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/catalog/vehicle_motion_management.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/policies/unit_datatype.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
             </div>
-            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/catalog/energy_management/index.html" title="Energy Management (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/policies/index.html" title="VSS Design Policy (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
             </div>
-            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/extensions/index.html" title="Extending and Customizing VSS (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/catalog/index.html" title="VSS Standard Catalog (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
             </div>
             <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
               <div class="topbar-content">
@@ -122,164 +116,30 @@
             <header class="headline">
             </header>
 
-<h1 id="vehicle-motion-management">Vehicle Motion Management</h1>
+<h1 id="unit-and-datatype-policy">Unit and Datatype Policy</h1>
 
 <h2 id="introduction">Introduction</h2>
-<p>In modern vehicles multiple electronic controlled systems are interacting to realize the overall vehicle motion in all physical directions.
-Typically, the driver gives input e.g. using the steering wheel and the accelerator and brake pedals, but additional vehicle functions may have also requests towards the motion actuators.
-One example is that a traction control system may want to limit the performance due to slippery road conditions or that the emergency braking system requests braking.</p>
-<p>A number of signals have been added to VSS related to powertrain (eAxle), steering, suspension and braking.
-These signals may be used to define actuator interfaces to support a highly flexible functional deployment on different electronic control units.
-Vehicle motion functions like driver brake request, cooperative regenerative braking and traction control system may request target values for longitudinal control on vehicle, axle and wheel level.
-Therefore, generic interface signals for the braking systems are introduced which support an arbitration of the requested target values by minimum and maximum values.
-The signal definitions for powertrain and steering are based on state-of-the art interfaces which are widely used in the automotive industry.
-VSS does not specify the implementation of the interface signals and the arbitration cascade, but possible examples are given below.</p>
-<h2 id="definitions-and-assumptions">Definitions and Assumptions</h2>
-<p>If nothing else is specified, the following definitions and assumptions apply</p>
+<p>Each signal in VSS has a datatype and unless it only represent a counter also a unit.
+The VSS standard catalog includes a large number of units in the <a href="https://github.com/COVESA/vehicle_signal_specification/blob/master/spec/units.yaml" rel="external" target="_blank">unit definition file</a>, but not all are intended to be used in the VSS standard catalog.</p>
+<h3 id="unit-policy">Unit Policy</h3>
+<p>VSS signals typically use the unit used by humans when talking about the value, but prefers SI-units or derived SI-units when feasible. Prefixed units, like millimeter or kilometer are acceptable to get a value that is easier to understand for a human or that better fits requirements on datatypes or assumed precision.</p>
+<h4 id="examples-and-exceptions">Examples and Exceptions</h4>
 <ul>
-<li>
-<p>The specified data types are chosen based on state-of-the art interfaces for vehicle internal communication between chassis ECUs.
-All datatypes int/uint may represent decimal numbers, therefore additional computational methods could be specified in upcoming VSS releases.</p>
-</li>
-<li>
-<p>Main guiding units for vehicle motion brake control:</p>
+<li>For time <code>hour</code> is an accepted unit when <code>second</code> precision typically is not needed, like signals recording vehicle life time or combined units like <code>Ah</code> and <code>km/h</code></li>
+<li>For speed <code>km/h</code> is the preferred unit for vehicle speed, as that is the common unit to present speed to (European) drivers</li>
+<li>Inches as unit are acceptable when the signal correspond to a size rather than a measurement and the size typically is measured in inches, also in countries typically using SI-units. A typical example is <code>Axle.WheelDiameter</code></li>
+<li>Celsius shall be used as  temperature unit</li>
+</ul>
+<h3 id="datatype-policy">Datatype Policy</h3>
+<p>VSS provides a default datatype for each signal. VSS is not concerned with how signals are transmitted and does not consider scaling/offset typically used in transport protocols. An implementation may use a different datatype than specified in the VSS standard catalog.</p>
+<p>The selected combination of unit and datatype shall cover likely expectations on value range and precision.
+If it is unlikely that someone is interested in decimals for the value for the selected unit, select a signed or unsigned integer type.
+Select a size which with reasonable margins can cover all vehicles.
+If it is likely that decimal values are needed, select float or, if relevant, double.</p>
+<h4 id="examples">Examples</h4>
 <ul>
-<li>Vehicle level: Force requests</li>
-<li>Axle level: Torque requests</li>
-<li>Wheel level: Torque requests, omega limits (wheel-spin velocity according to ISO 8855)</li>
+<li><code>Vehicle.TraveledDistance</code> uses <code>meter</code> and <code>uint32</code>. This has been selected as meter resolution is assumed to be sufficient (no need for decimals), and <code>uint32</code> gives for vehicles with high mileage better precision that <code>float</code>. It is unlikely that the signal will wrap around, so no need for <code>uint64</code>.</li>
 </ul>
-<p>Brake forces on vehicle level are defined by the sum of all wheel forces that control the vehicle along the driving path.
-Brake torques on axle level are defined as the sum of torques on all wheels on that axle.
-Brake torques and omega limits on wheel level are defined for each individual wheel of the vehicle.</p>
-</li>
-<li>
-<p>Signal orientation brake system:
-Requests are positive in desired path direction of the vehicle.
-The desired path direction is defined by the intended driving selection (P,R,D,N).
-This means that a positive value indicates acceleration, a negative value deceleration with respect to the intended driving selection.</p>
-</li>
-<li>
-<p>Omega limits for brake system defined as relative to actual driving direction. This means that omega is never negative.</p>
-</li>
-<li>
-<p>Torque and Force distribution signals (between front/rear axle or left/right wheel) are based on the assumption that all wheels/axles exercise torque in the same direction, i.e. a single axle/wheel cannot fulfil more than 100% of the total request.</p>
-</li>
-<li>
-<p>Signal orientation steering system:
-Requests are defined according to ISO 8855.
-For steering related signals, a positive request on the front axle unless otherwise stated yields to steer the vehicle to the left.</p>
-</li>
-<li>
-<p>Signal orientation eAxle system:
-Requests are defined according to ISO 8855.
-This means that a positive torque yields to a force in vehicle forward direction and a negative torque yields to a force in backward direction.
-Omega limits for eAxle system defined according. Positive sign for rotation in forward direction, negative sign for rotation in backward direction.
-So the sign of current omega of a eAxle indicated the current driving direction.</p>
-</li>
-<li>
-<p>Signal orientation suspension system:
-Requests are defined according to ISO 8855.
-This means that a positive damping force is pointing upwards and a negative force is pointing downwards.
-A positive roll torque indicates a torque that tends to depress the right-hand side of the vehicle and lift the left-hand side.</p>
-</li>
-<li>
-<p>All signals are defined in an automotive safety context, i.e. ISO 26262 has to be considered while using specified signals in vehicle applications.</p>
-</li>
-</ul>
-<hr>
-<h2 id="sensors-vs-actuators">Sensors vs. Actuators</h2>
-<p>The type <code>actuator</code> is selected to define that the signal may be used as a &ldquo;request&rdquo; by vehicle systems/services towards the actuator.
-The type <code>sensor</code> is selected for signals that are processed by the actuator and may be used as actuator feedback towards the requesting vehicle systems/services.</p>
-<h2 id="braking-system">Braking System</h2>
-<p>The defined braking signals are the main signals for interacting between vehicle motion features and the braking system including the arbitration of longitudinal vehicle requests.
-The interface signals are specified on vehicle-, axle- and wheel-level and the arbitration concept supports a flexible integration of vehicle motion features on different ECUs.
-The arbitration of multiple vehicle motion features can result in a sophisticated arbitration logic to ensure the vehicle stability and driver safety, which is not part of VSS signal catalogue.
-However, the specified vehicle signals shall support different arbitration logics.
-The following section shows some hypothetical examples for arbitration.</p>
-<h3 id="example-1---vehicle-force-requests-vehiclemotionmanagementbrakevehicleforcemaximum">Example 1 - vehicle force requests (<code>Vehicle.MotionManagement.Brake.VehicleForceMaximum</code>)</h3>
-<p>Driver request via brake pedal -2000N.
-Advanced driving assistance system for automated emergency brake has a request of -3000N.
-As a result, a vehicle force of -3000N would be applied, to ensure maximum deceleration.</p>
-<h2 id="example-2-distribution-request-vehiclemotionmanagementbrakevehicleforcedistributionfrontminimum-maximum">Example 2 distribution request (<code>Vehicle.MotionManagement.Brake.VehicleForceDistributionFrontMinimum</code>/ <code>Maximum</code>)</h2>
-<p>Vehicle force request of -3000N of example 1.</p>
-<p>A vehicle energy function requests a AxlePercentRangeDistributionFrontMaximum of 100% to be most energy efficient.
-The vehicle stability function could limit this distribution of 20% &lt; x &lt; 80% due to the current driving situation.
-As a result, only 80% axle distribution would be arbitrated, e.g. -600N force (braking) on rear axle and -2400N force (braking) on front axle.</p>
-<h2 id="powertrain-system-electrical-axle">Powertrain System (Electrical Axle)</h2>
-<p>A vehicle may have an arbitrary number of electrical axles. Rotational speed and torque for an electrical axle refer to the axle coming out of the electrical axle unit.
-There may be a transmission/gearbox between the electrical axle and the actual wheels served by the electrical axle.</p>
-<p>There are two operation modes of an eAxle: torque control or speed control.</p>
-<h3 id="torque-control">Torque Control</h3>
-<p>A torque request (e.g. 50Nm) is realized by the eAxle. In addition, limit for the rotational speed can be defined, e.g. -5000 rpm &hellip; +5000 rpm. These limits are useful to avoid too high wheelspin when the vehicle is on a slippery road. This mode is used most of the time, when the eAxle is active.</p>
-<h3 id="speed-control">Speed Control</h3>
-<p>A rotational speed request (e.g., 1000rpm) is realized by the eAxle. This mode is useful for low speed till standstill, because so the vehicle can be controlled easier to a standstill, especially on a rough road.</p>
-<h2 id="steering-system">Steering System</h2>
-<p>The defined steering signals are the main signals for interacting between vehicle motion features and the steering system on the front axle and are widely used in automotive industry.
-These signals are specified in a generic way to support various steering systems like electric power steering as well as Steer-by-Wire. Therefore, not all signals must necessarily be available/applicable.
-The signal specification supports requests on steering wheel (torque and angle) and the steering rack position which is linked to the steered wheels of the vehicle.
-As an alternative to steering rack position it is possible to use steer angle (single track model).
-The signal requests are further divided in &ldquo;offset&rdquo; and &ldquo;target&rdquo; signals, where an offset value is used additive to the functionality of the steering system and a &ldquo;target&rdquo; value is used as absolute external set-point for steering actuation.
-The different requests are controlled by dedicated &ldquo;mode&rdquo; signals for enabling and disabling the steering requests.</p>
-<p>Examples: Driving in a left curve and applying external requests to steering system.
-Based on the stationary driving without external request (config 1) the principle effects of the different steering interface signals are explained for each interface signal exlusively (config 2&hellip;6).
-Depending on the concrete use case a combination of parallel requested interface signals is applicable.</p>
-<table>
-<thead>
-<tr>
-<th>Config</th>
-<th>Current.SteeringWheelTorque (Torque Applied by Driver)</th>
-<th>Current.SteeringWheelAngle</th>
-<th>Current.RackPositionFrontAxle</th>
-<th>Result/Comment</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>1</code>: Regular turn - No external request</td>
-<td>3 Nm</td>
-<td>20 degree</td>
-<td>4 mm</td>
-<td>&ldquo;Steering support&rdquo; (e.g. power steering) require driver to apply 3 Nm to continue turning with same radius.</td>
-</tr>
-<tr>
-<td><code>2</code>. Lane Assist Intervention - <code>SteeringWheelTorqueOffsetTarget = 2 Nm</code></td>
-<td>5 Nm*</td>
-<td>20 degree</td>
-<td>4 mm</td>
-<td>Driver torque needs to be increased to continue turning with same radius</td>
-</tr>
-<tr>
-<td><code>3</code>. Torque Target Changed - <code>SteeringWheelTorqueTarget = 2 Nm</code></td>
-<td>2 Nm*</td>
-<td>20 degree</td>
-<td>4 mm</td>
-<td>Required driver torque set to 2 Nm (e.g. external steering feel for steer by wire), offset ignored.</td>
-</tr>
-<tr>
-<td><code>4</code>. Autonomuos Driving - <code>SteeringWheelAngleTarget = 0 deg</code></td>
-<td>&mdash;**</td>
-<td>0 degree</td>
-<td>4 mm</td>
-<td>Steering wheel set to 0 deg (e.g. automated driving with steer by wire and fixed steering wheel)</td>
-</tr>
-<tr>
-<td><code>5</code>. Stability intervention - <code>RackPositionOffsetFrontAxleTarget = 3 mm</code></td>
-<td>3 Nm</td>
-<td>20 degree</td>
-<td>7 mm</td>
-<td>Rack position increased by 3mm (e.g. vehicle stability intervention with steer by wire)</td>
-</tr>
-<tr>
-<td><code>6</code>. Autonomuous Driving - <code>RackPositionFrontAxleTarget = 3 mm</code></td>
-<td>&mdash;**</td>
-<td>0 degree</td>
-<td>3 mm</td>
-<td>Rack position set to 3 mm (e.g. automated driving), offset ignored</td>
-</tr>
-</tbody>
-</table>
-<p><code>*</code> Assumption is that driver is holding the steering wheel at the same position as without external request</p>
-<p><code>**</code> Steering wheel torque depending on driver input. Target request may be ignored if driver is applying torque (driver override).</p>
 
             <footer class="footline">
             </footer>
@@ -338,11 +198,11 @@ Depending on the concrete use case a combination of parallel requested interface
           <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html">Value Restrictions</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/instances/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/instances/index.html">Instances</a></li>
           <li data-nav-id="/vehicle_signal_specification/rule_set/includes/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/includes/index.html">Includes</a></li></ul></li>
-          <li data-nav-id="/vehicle_signal_specification/policies/index.html" class=""><a class="padding" href="/vehicle_signal_specification/policies/index.html">VSS Design Policy</a><ul id="R-subsections-305615410f40802ad71dde0994916cc5" class="morespace collapsible-menu">
-          <li data-nav-id="/vehicle_signal_specification/policies/unit_datatype/index.html" class=""><a class="padding" href="/vehicle_signal_specification/policies/unit_datatype/index.html">Unit and Datatype Policy</a></li></ul></li>
-          <li data-nav-id="/vehicle_signal_specification/catalog/index.html" class="parent "><a class="padding" href="/vehicle_signal_specification/catalog/index.html">VSS Standard Catalog</a><ul id="R-subsections-665f6cae1c56b0dcfe0d69bfe3f4be93" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/policies/index.html" class="parent "><a class="padding" href="/vehicle_signal_specification/policies/index.html">VSS Design Policy</a><ul id="R-subsections-305615410f40802ad71dde0994916cc5" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/policies/unit_datatype/index.html" class="active"><a class="padding" href="/vehicle_signal_specification/policies/unit_datatype/index.html">Unit and Datatype Policy</a></li></ul></li>
+          <li data-nav-id="/vehicle_signal_specification/catalog/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/index.html">VSS Standard Catalog</a><ul id="R-subsections-665f6cae1c56b0dcfe0d69bfe3f4be93" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/catalog/energy_management/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/energy_management/index.html">Energy Management</a></li>
-          <li data-nav-id="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html" class="active"><a class="padding" href="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html">Vehicle Motion Management</a></li></ul></li>
+          <li data-nav-id="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html">Vehicle Motion Management</a></li></ul></li>
           <li data-nav-id="/vehicle_signal_specification/extensions/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/index.html">Extending and Customizing VSS</a><ul id="R-subsections-6bd9c98d69baa9a2d1581189a2aaf28a" class="morespace collapsible-menu">
           <li data-nav-id="/vehicle_signal_specification/extensions/overlay/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/overlay/index.html">VSS Overlay Mechanism</a></li>
           <li data-nav-id="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html">Cybersecurity Profile</a></li>
@@ -373,7 +233,7 @@ Depending on the concrete use case a combination of parallel requested interface
                   <div class="control-style">
                     <label class="a11y-only" for="R-select-language">Language</label>
                     <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
-                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html" lang="en-us" selected></option>
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/vehicle_signal_specification/policies/unit_datatype/index.html" lang="en-us" selected></option>
                     </select>
                   </div>
                   <div class="clear"></div>

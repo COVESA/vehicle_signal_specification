@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rule Set :: Vehicle Signal Specification</title>
+    <title>VSS Rule Set :: Vehicle Signal Specification</title>
     <link>https://covesa.github.io/vehicle_signal_specification/rule_set/index.html</link>
     <description>The Rule Set of a domain taxonomy is used to describe how to write the data definition syntactically.&#xA;This chapter defines and describes the rule set for VSS. Tools in the vss-tools repository can be used to validate that a specification follows the rule set for VSS, but those tools may have limitations and may not check all rules stated in this document. In case of conflict, what is stated in the rule set in this documentation is considered to have precedence over tool implementations.</description>
     <generator>Hugo</generator>
