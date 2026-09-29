@@ -11,10 +11,10 @@ This documentation gives you an overview of VSS:
 * [Introduction](/vehicle_signal_specification/introduction/) </br> Read this part if you want to know more
 about what the specification is all about, what's in and out and how to quickly
  browse through the current status.
-* [Governance](/vehicle_signal_specification/governance/) </br> Introduction to VSS governance model and change log.
-* [Rule Set](/vehicle_signal_specification/rule_set/) </br> Get familiar with the rule set behind the
-specification, the structure, the format and concepts.
-* [VSS Catalog](/vehicle_signal_specification/catalog/) </br> Information on content and design decisions related to the VSS catalog.
+* [VSS Project Governance](/vehicle_signal_specification/governance/) </br> Information on the VSS project governance process.
+* [VSS Rule Set](/vehicle_signal_specification/rule_set/) </br> Information on the rules that apply to a VSS model. Note that additionapolicies applies for the VSS standard catalog
+* [VSS Design Policy](/vehicle_signal_specification/policies/) </br> Design policies for the VSS standard catalog.
+* [VSS Standard Catalog Overview](/vehicle_signal_specification/catalog/) </br> Information on content and design chices of the VSS standard catalog.
 * [Extending and Customizing VSS](/vehicle_signal_specification/extensions/)  </br> How can you extend and customize the VSS Catalog for use in your environment.
 * [License](/vehicle_signal_specification/license/) </br> Information on the VSS license.
 * [Ecosystem](/vehicle_signal_specification/ecosystem/) </br> How to use the specification? Check out the existing tools and standards to transform or make use of VSS.
