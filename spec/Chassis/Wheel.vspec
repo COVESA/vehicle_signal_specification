@@ -6,36 +6,6 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-#
-# Brake
-#
-Brake:
-  type: branch
-  description: Brake signals for wheel
-
-Brake.FluidLevel:
-  datatype: uint8
-  type: sensor
-  unit: percent
-  max: 100
-  description: Brake fluid level as percent. 0 = Empty. 100 = Full.
-
-Brake.IsFluidLevelLow:
-  datatype: boolean
-  type: sensor
-  description: Brake fluid level status. True = Brake fluid level low. False = Brake fluid level OK.
-
-Brake.PadWear:
-  datatype: uint8
-  type: sensor
-  unit: percent
-  max: 100
-  description: Brake pad wear as percent. 0 = No Wear. 100 = Worn.
-
-Brake.IsBrakesWorn:
-  datatype: boolean
-  type: sensor
-  description: Brake pad wear status. True = Worn. False = Not Worn.
 
 
 #
@@ -108,30 +78,3 @@ Tire.WinterStatus:
     Criteria for each state may be OEM-, market-, or jurisdiction-specific
     (e.g. national winter-tire regulations differ).
     Related to VSS issue #877 (Connected Safety signals).
-
-#
-# Wheel signals
-#
-
-Speed:
-  datatype: float
-  type: sensor
-  unit: km/h
-  description: Linear speed of a vehicle's wheel.
-
-AngularSpeed:
-  datatype: float
-  type: sensor
-  unit: degrees/s
-  description: Angular (Rotational) speed of a vehicle's wheel.
-  comment: Positive if wheel is trying to drive vehicle forward.
-           Negative if wheel is trying to drive vehicle backward.
-
-Torque:
-  datatype: int16
-  type: sensor
-  unit: Nm
-  description: Torque provided by drivetrain, excluding torque provided by friction brakes.
-               Negative values indicate regen mode.
-  comment: This is typically the torque provided by the differential,
-           or by a motor dedicated for this wheel, after reduction gear if present.
