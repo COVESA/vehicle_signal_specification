@@ -94,20 +94,6 @@ RelativeLevel:
   max: 100
   description: Level in fuel tank as percent of capacity. 0 = empty. 100 = full.
 
-FuelTypes:
-  type: branch
-  instances:
-    - Fuel[1,2]
-  description: Vehicle fuel type data.
-
-FuelTypes.RelativeLevel:
-  datatype: uint8
-  type: sensor
-  unit: percent
-  min: 0
-  max: 100
-  description: Level of the fuel type as percent of capacity. 0 = empty. 100 = full.
-
 Range:
   datatype: uint32
   type: sensor
