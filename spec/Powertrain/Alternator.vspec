@@ -7,14 +7,14 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #
-# Bus alternator signals
+# Alternator signals, up to 4 alternators according to the SAE J1939 message AS PGN FED5
 #
 
 Alternators:
   type: branch
   instances:
     - Alternator[1,4]
-  description: Bus alternators.
+  description: Alternators.
 
 Alternators.IsCharging:
   datatype: boolean

@@ -115,9 +115,9 @@ Vehicle.Powertrain.RangeExtender:
 #include Powertrain/RangeExtender.vspec Vehicle.Powertrain.RangeExtender
 
 #
-# Bus only variant, alternator signals
+# Alternator signals
 #
-#include Powertrain/AlternatorBusOnly.vspec Vehicle.Powertrain
+#include Powertrain/Alternator.vspec Vehicle.Powertrain
 
 Vehicle.Powertrain.PropulsionSystem:
   description: Propulsion system information.
