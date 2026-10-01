@@ -11,7 +11,8 @@
 #
 
 #---TellTales branch
-# Telltales signals according to the SAE J1939 FMS1 CAN message
+# Telltales signals according to the SAE J1939 FMS1 CAN message PGN FD7D
+# For detailed information, see the telltales section of the ACEA CAN FMS specification
 TellTales:
   type: branch
   instances:
