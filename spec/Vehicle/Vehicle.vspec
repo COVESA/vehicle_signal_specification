@@ -592,6 +592,6 @@ CurrentDateTime:
   datatype: string
   type: sensor
   unit: iso8601
-  description: Current date and time provided by the vehicle's internal clock.
+  description: Current date and time provided by the vehicle's internal clock. The time base is OEM dependent.
 
 #include include/PowerOptimize.vspec

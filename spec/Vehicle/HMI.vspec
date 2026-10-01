@@ -11,6 +11,7 @@
 #
 
 #---TellTales branch
+# Telltales signals according to the SAE J1939 FMS1 CAN message
 TellTales:
   type: branch
   instances:

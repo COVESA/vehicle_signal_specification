@@ -65,7 +65,7 @@ CurrentFuelTypeUsed:
     'HYDROGEN_ICE': 30
     'KEROSENE': 31
     'HEAVY_FUEL_OIL': 32
-  description: Type of fuel currently being utilized by the vehicle.
+  description: Type of fuel currently being utilized by the vehicle according to the SAE J1939 message PGN FDC2, SPN 5837.
 
 HybridType:
   datatype: string

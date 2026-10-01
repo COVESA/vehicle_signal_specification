@@ -90,7 +90,7 @@ Axle.Weight:
   datatype: uint16
   type: sensor
   unit: kg
-  description: The weight of the axle in kg.
+  description: Total mass imposed by the tires on the road surface at the specified axle measured in kg.
 
 #
 # Tire attributes

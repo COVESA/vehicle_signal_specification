@@ -10,7 +10,7 @@ RetarderTorqueMode:
   datatype: uint8
   type: sensor
   min: 0
-  max: 15
+  max: 14
   description: State signal which indicates which retarder torque mode is currently generating, limiting or controlling the torque. 0 = No Request, 1-14 = torque request or identified function controls retarder.
 
 ActualRetarderPercentTorque:

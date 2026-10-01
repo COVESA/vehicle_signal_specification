@@ -7,7 +7,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 #
-# All Tachograph signals
+# Tachograph signals according to the SAE J1939 TCO1 CAN message
 #
 
 #---Drivers branch
