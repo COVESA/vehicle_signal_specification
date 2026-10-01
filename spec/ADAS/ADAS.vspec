@@ -103,6 +103,8 @@ CruiseControl.AdaptiveIntervalSet:
   type: actuator
   description: Follow distance setting, commonly 1-5 with 1 being closest.
 
+
+# Unlike some other CruiseControl signals, CruiseControl.IsSwitchedOn refers to the physical position of the switch and not to the operational status of the cruise control system.
 CruiseControl.IsSwitchedOn:
   datatype: boolean
   type: sensor
