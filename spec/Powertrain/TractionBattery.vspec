@@ -168,7 +168,7 @@ ChargingState:
     'PRE_CHARGE': 11
     'TERMINATING': 12
     'BATTERY_FAILURE': 13
-    'EVSE_FAULT': 14    
+    'EVSE_FAULT': 14
   description: Overall State of the DC charging system according to SAE J1939 PGN FAB8, SPN 13171. The information is reported by the EVSE (Electric Vehicle Supply Equipment) beside status 0.
 
 NominalVoltage:
