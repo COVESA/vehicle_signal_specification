@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
 """Deterministic helper for the vss-description-review skill (stdlib only, no deps).
 
 Replaces the "read every .vspec file by hand" and "hand-craft one string-replace per
@@ -201,6 +208,26 @@ def scan(paths):
 # apply
 # ---------------------------------------------------------------------------
 
+_UNSAFE_PLAIN_RE = re.compile(r":(\s|$)|\s#")
+_UNSAFE_START_CHARS = tuple("!&*?|>%@`\"'#-[]{},")
+
+
+def yaml_scalar(value):
+    """Quote a replacement value if writing it unquoted would change its YAML meaning
+    (e.g. a colon-space inside a plain scalar is parsed as a new mapping key, which
+    silently corrupts the file without raising an error in our own line-based parser)."""
+    needs_quoting = (
+        value == ""
+        or value != value.strip()
+        or value[0] in _UNSAFE_START_CHARS
+        or bool(_UNSAFE_PLAIN_RE.search(value))
+    )
+    if not needs_quoting:
+        return value
+    escaped = value.replace("\\", "\\\\").replace('"', '\\"')
+    return f'"{escaped}"'
+
+
 def field_extent(lines, field_line, block_end):
     """Return the exclusive end index of a field's value, including folded continuation lines
     (mirrors the continuation-consuming logic in iter_entries - a multi-line description/comment
@@ -213,6 +240,7 @@ def field_extent(lines, field_line, block_end):
 
 
 def set_field(lines, start, end, key, value):
+    value = yaml_scalar(value)
     pattern = re.compile(rf"^  {re.escape(key)}:")
     for i in range(start + 1, end):
         if pattern.match(lines[i]):
@@ -307,7 +335,9 @@ def status_list():
         entry = data.get(f)
         if entry:
             pr_suffix = f", {entry['pr']}" if entry.get("pr") else ""
-            print(f"[x] {f}  (reviewed {entry['reviewed_at']} by {entry['model']}, open flags: {entry.get('flags_open', '?')}{pr_suffix})")
+            flags_open = entry.get("flags_open", "?")
+            print(f"[x] {f}  (reviewed {entry['reviewed_at']} by {entry['model']}, "
+                  f"open flags: {flags_open}{pr_suffix})")
         else:
             print(f"[ ] {f}")
 
@@ -345,10 +375,11 @@ def main():
         apply_edits(sys.argv[2])
     elif command == "status":
         rest = sys.argv[2:]
+        status_usage = "usage: vspec_desc_tool.py status mark <file> --model <name> [--flags-open N] [--pr <url>]"
         if rest and rest[0] == "mark":
             args = rest[1:]
             if not args:
-                print("usage: vspec_desc_tool.py status mark <file> --model <name> [--flags-open N] [--pr <url>]", file=sys.stderr)
+                print(status_usage, file=sys.stderr)
                 sys.exit(1)
             file_rel, opts = args[0], args[1:]
             model, flags_open, pr = None, 0, None
@@ -361,7 +392,7 @@ def main():
                 elif opt == "--pr":
                     pr = next(it, None)
             if not model:
-                print("usage: vspec_desc_tool.py status mark <file> --model <name> [--flags-open N] [--pr <url>]", file=sys.stderr)
+                print(status_usage, file=sys.stderr)
                 sys.exit(1)
             status_mark(file_rel, model, flags_open, pr)
         else:

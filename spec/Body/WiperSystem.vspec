@@ -67,7 +67,7 @@ TargetPosition:
   unit: degrees
   type: actuator
   description: Requested position of the main wiper blade for the wiper system, relative to a vehicle-specific reference position.
-  comment: Location of the reference position (0 degrees) and the sign of positive/negative degrees are vehicle specific. Behavior depends on Mode and IsEndingWipeCycle: if IsEndingWipeCycle=True, wipers complete the current movement before actuating a new TargetPosition; if IsEndingWipeCycle=False, wipers change destination immediately. Supported values are vehicle specific and might be dynamically corrected. Default parking position might be used as reference position.
+  comment: Location of the reference position (0 degrees) and the sign of positive/negative degrees are vehicle specific. Behavior depends on Mode and IsEndingWipeCycle - if IsEndingWipeCycle=True, wipers complete the current movement before actuating a new TargetPosition; if IsEndingWipeCycle=False, wipers change destination immediately. Supported values are vehicle specific and might be dynamically corrected. Default parking position might be used as reference position.
 
 ActualPosition:
   datatype: float
