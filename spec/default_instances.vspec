@@ -1,0 +1,33 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# The default instance file shall reflect typical setup for a "normal" passenger car
+# The instance pattern in this file is non-normative, but shall be seen as a recommendation
+
+# Instance recommendations
+
+# If using Row[x,y]
+
+
+
+Vehicle.Chassis.Axle:
+  type: branch
+  instances:
+    - Row[1,2]
+
+
+Vehicle.Chassis.Axle.Wheel:
+  type: branch
+  instances: ["Left","Right"]
+
+
+Vehicle.Cabin.Seat:
+  type: branch
+  instances:
+    - Row[1,2]
+    - ["DriverSide","Middle","PassengerSide"]
