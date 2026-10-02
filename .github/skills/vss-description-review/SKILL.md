@@ -101,6 +101,14 @@ rewrites `description:`/`comment:` in place, and inserts
 skipped (entry not found) so typos in `entries.json` are caught immediately instead of silently failing.
 Review the resulting diff before committing.
 
+**Watch for colons in free text.** `apply` quotes a replacement value (via `yaml_scalar()`) when it contains
+a colon-space, a leading YAML-special character, or leading/trailing whitespace, because an unquoted colon
+inside a plain YAML scalar is parsed as a new mapping key and silently corrupts the file (this previously
+broke `Standard Build Check` with `mapping values are not allowed here` — the quoting guard exists because of
+that incident). The guard only needs to kick in rarely; prefer rephrasing to avoid a bare `Word: ` in
+`description`/`comment` text over relying on the quoting path, since quoted strings look inconsistent with
+the catalog's otherwise-unquoted style.
+
 ## Step 6 — Applying to newly proposed elements
 
 When reviewing a PR or draft branch instead of the existing catalog, run the scan against only the
@@ -115,8 +123,19 @@ pointing at the specific lines instead of pushing commits directly.
 2. Commit with a sign-off line per [CONTRIBUTING.md](../../../CONTRIBUTING.md)
    (`Signed-off-by: Firstname Lastname <you@example.com>`, i.e. `git commit -s`).
 3. Before pushing, suggest running `make travis-targets` and `pre-commit run --all-files` (see
-   [BUILD.md](../../../BUILD.md)) to catch unrelated CI failures.
-4. Push and open a Pull Request (use the GitHub PR tools/skill available in this environment).
+   [BUILD.md](../../../BUILD.md)) to catch unrelated CI failures. If this skill's own files
+   (`scripts/*.py`) were changed, they are also subject to two repo-wide CI checks that don't show up in a
+   local `.vspec`-only workflow:
+   - **`check-header`**: every `.py`/`.vspec` file must contain `Contributors to COVESA` and
+     `SPDX-License-Identifier: MPL-2.0` somewhere (see the header already at the top of
+     [scripts/vspec_desc_tool.py](./scripts/vspec_desc_tool.py) for the exact block to copy).
+     `.md`/`.json` files are exempt.
+   - **`pre-commit` → flake8**: 120-character line length limit on `.py` files.
+4. Push and open a Pull Request (use the GitHub PR tools/skill available in this environment). If
+   `github-pull-request_create_pull_request` fails with `no GitHub remotes` (seen even when `git remote -v`
+   clearly lists GitHub SSH remotes), fall back to the `gh` CLI: `gh pr create --repo <owner>/<repo> --base
+   <base> --head <fork-owner>:<branch> --title "..." --body-file <file>` (write the body to a temp file
+   first — inline here-strings over the terminal tool have been unreliable).
    - **PR title must include the LLM model used for the review**, e.g.
      `Description review: spec/Body/Body.vspec (model: <model name>)`.
    - The PR description must include:
@@ -131,6 +150,9 @@ pointing at the specific lines instead of pushing commits directly.
    ```
    Commit `review-status.json` as part of the same PR (or a quick follow-up commit on the same branch) so
    the next sweep knows this file is already covered.
+6. Watch the PR's checks (`gh pr checks <number>`) once CI starts; fix and push promptly rather than leaving
+   a red PR. If `gh` output seems to hang, it's opened a pager — rerun with `$env:GH_PAGER=''` (PowerShell) or
+   pipe through `| cat`.
 
 ## Safety notes
 
