@@ -2,7 +2,7 @@
   "spec/Body/WiperSystem.vspec": {
     "flags_open": 0,
     "model": "Claude Sonnet 5",
-    "pr": null,
+    "pr": "https://github.com/COVESA/vehicle_signal_specification/pull/948",
     "reviewed_at": "2026-10-02"
   }
 }
