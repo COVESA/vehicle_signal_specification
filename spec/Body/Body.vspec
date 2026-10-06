@@ -252,7 +252,7 @@ RearMainSpoilerPosition:
 #include include/PowerOptimize.vspec
 
 #Variant for buses only
-#include DoorsBusOnly.vspec
+#include BusDoors.vspec
 
 #Accessibility variant
 #include Accessibility.vspec

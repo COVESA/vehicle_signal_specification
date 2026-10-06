@@ -10,15 +10,15 @@
 # All body signals for bus doors.
 #
 
-# Doors branch
-Doors:
+# Bus doors branch
+BusDoors:
   type: branch
   instances:
     - Door[1,10]
   description: Bus door information.
 
 # One signal for all the doors, not instantiated
-Doors.IsEnabledAtLeastOne:
+BusDoors.IsEnabledAtLeastOne:
   instantiate: false
   datatype: boolean
   type: sensor
@@ -27,7 +27,7 @@ Doors.IsEnabledAtLeastOne:
               Enabled means the bus doors are able to be automatically opened or Closed.
 
 # One signal for all the doors, not instantiated
-Doors.PositionOfDoors:
+BusDoors.PositionOfDoors:
   instantiate: false
   datatype: uint8
   enum:
@@ -38,17 +38,17 @@ Doors.PositionOfDoors:
   description: Signal indicating the actual position of the doors.
 
 # Per door signals, instantiated for each door
-Doors.IsLocked:
+BusDoors.IsLocked:
   datatype: boolean
   type: sensor
   description: Indication of the lock status of the door. Doors cannot be operated by the driver or a passenger when locked.
 
-Doors.IsOpen:
+BusDoors.IsOpen:
   datatype: boolean
   type: sensor
   description: Indication of the open status of the door.
 
-Doors.IsEnabled:
+BusDoors.IsEnabled:
   datatype: boolean
   type: sensor
   description:  Indication of the enablement status of the door. Door can be opened by a passenger when enabled.
