@@ -189,6 +189,15 @@ PS:
 
 # Work
 
+Wh:
+  definition: Energy consumption measured in watt hours
+  unit: watt hours
+  quantity: work
+  allowed-datatypes: ['numeric']
+  qudt:
+    unit: http://qudt.org/vocab/unit/W-HR
+    quantity-kind: https://qudt.org/vocab/quantitykind/Energy
+
 kWh:
   definition: Energy consumption measured in kilowatt hours
   unit: kilowatt hours
