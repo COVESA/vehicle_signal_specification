@@ -49,12 +49,8 @@ Mode:
   datatype: string
   type: actuator
   allowed: ['STOP_HOLD', 'WIPE', 'PLANT_MODE', 'EMERGENCY_STOP']
-  description: Requested mode of wiper system.
-               STOP_HOLD means that the wipers shall move to position given by TargetPosition and then hold the position.
-               WIPE means that wipers shall move to the position given by TargetPosition and then hold the position
-               if no new TargetPosition is requested.
-               PLANT_MODE means that wiping is disabled. Exact behavior is vehicle specific.
-               EMERGENCY_STOP means that wiping shall be immediately stopped without holding the position.
+  description: Requested mode of the wiper system.
+  comment: STOP_HOLD - wipers move to TargetPosition and hold. WIPE - wipers move to TargetPosition and hold unless a new TargetPosition is requested. PLANT_MODE - wiping is disabled; exact behavior is vehicle specific. EMERGENCY_STOP - wiping stops immediately without holding position.
 
 Frequency:
   datatype: uint8
@@ -70,13 +66,8 @@ TargetPosition:
   datatype: float
   unit: degrees
   type: actuator
-  description: Requested position of main wiper blade for the wiper system relative to reference position.
-               Location of reference position (0 degrees) and direction of positive/negative degrees is vehicle specific.
-               System behavior when receiving TargetPosition depends on Mode and IsEndingWipeCycle.
-               Supported values are vehicle specific and might be dynamically corrected.
-               If IsEndingWipeCycle=True then wipers will complete current movement before actuating new TargetPosition.
-               If IsEndingWipeCycle=False then wipers will directly change destination if the TargetPosition is changed.
-  comment:     Default parking position might be used as reference position.
+  description: Requested position of the main wiper blade for the wiper system, relative to a vehicle-specific reference position.
+  comment: Location of the reference position (0 degrees) and the sign of positive/negative degrees are vehicle specific. Behavior depends on Mode and IsEndingWipeCycle - if IsEndingWipeCycle=True, wipers complete the current movement before actuating a new TargetPosition; if IsEndingWipeCycle=False, wipers change destination immediately. Supported values are vehicle specific and might be dynamically corrected. Default parking position might be used as reference position.
 
 ActualPosition:
   datatype: float
@@ -96,33 +87,23 @@ DriveCurrent:
 IsWiping:
   datatype: boolean
   type: sensor
-  description: Indicates wiper movement. True if wiper blades are moving.
-               Change of direction shall be considered as IsWiping if wipers will continue to move
-               directly after the change of direction.
+  description: Indicates whether the wiper blades are moving. True = blades are moving, including immediately after a change of direction if they continue moving; False = blades are not moving.
 
 IsEndingWipeCycle:
   datatype: boolean
   type: sensor
-  description: Indicates if current wipe movement is completed or near completion.
-               True = Movement is completed or near completion. Changes to RequestedPosition will be executed
-               first after reaching previous RequestedPosition, if it has not already been reached.
-               False = Movement is not near completion. Any change to RequestedPosition will be
-               executed immediately. Change of direction may not be allowed.
-  comment:     In continuous wiping between A and B this sensor can be used a trigger to update TargetPosition.
+  description: Indicates whether the current wipe movement is completed or near completion. True = completed or near completion; False = not near completion.
+  comment: When True, a change to RequestedPosition is executed only after the previous RequestedPosition has been reached (if not already reached); when False, a change to RequestedPosition is executed immediately, though a change of direction may not be allowed. In continuous wiping between A and B this sensor can be used a trigger to update TargetPosition.
 
 IsWiperError:
   datatype: boolean
   type: sensor
-  description: Indicates system failure. True if wiping is disabled due to system failure.
+  description: Indicates whether wiping is disabled due to a system failure. True = disabled due to failure; False = no failure detected.
 
 IsPositionReached:
   datatype: boolean
   type: sensor
-  description: Indicates if a requested position has been reached.
-               IsPositionReached refers to the previous position in case the
-               TargetPosition is updated while IsEndingWipeCycle=True.
-               True = Current or Previous TargetPosition reached.
-               False = Position not (yet) reached, or wipers have moved away from the reached position.
+  description: Indicates whether a requested position has been reached; the previous position applies if TargetPosition was updated while IsEndingWipeCycle=True. True = Current or Previous TargetPosition reached. False = Position not (yet) reached, or wipers have moved away from the reached position.
 
 IsBlocked:
   datatype: boolean
