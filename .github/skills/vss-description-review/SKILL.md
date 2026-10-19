@@ -1,20 +1,40 @@
 ---
 name: vss-description-review
-description: 'Review VSS data entries (branches, sensors, actuators, attributes) in spec/**/*.vspec files, rewrite `description`/`comment` fields to comply with the Description Guidelines, and open a Pull Request with the results. Flags entries that are too vague to fix without guessing. Use when: asked to review/update/unify/audit VSS descriptions, check a .vspec file or branch for description-guideline compliance, or review newly proposed/changed VSS elements before merge.'
-argument-hint: 'Optional: file(s)/path or branch/PR to review; omit for a scoping discussion'
+description: 'Review VSS data entries (branches, sensors, actuators, attributes) in `*.vspec` files, rewrite `description` and `comment` fields to comply with the description guidelines. Flags entries that are too vague. Use when: asked to review/update/unify/audit VSS descriptions, check a `vspec` file or branch for description guideline compliance, or review newly proposed/changed elements'
+argument-hint: 'Optional: file(s)/path or branch to review; omit for a scoping discussion'
 ---
 
 # VSS Description Review
 
-Reviews `description:` (and `comment:`) fields of VSS data entries against the project's
-[Description Guidelines](../../../docs-gen/content/rule_set/data_entry/description.md) and either fixes them
-or flags them for a human. Works both as a retroactive audit of existing catalog entries and as a pre-merge
-check on newly proposed VSS elements.
+Checks the `description:` and `comment:` fields of VSS data entries against the
+[description guidelines](../../../docs-gen/content/rule_set/data_entry/description.md), then fixes them or flags them for a human.
+
+## Boundaries — read first
+
+This skill does **one thing**: review descriptions and edit `description`/`comment` in the **working tree**.
+It never publishes anything. While running this skill you must **not**:
+
+- create branches, commit, amend, or push,
+- open or update pull requests or issues, or post PR/review comments (no GitHub write tools, no `gh pr ...`),
+- edit anything other than `description`/`comment` text and `# Human check of description required` comments.
+
+When finished, report the findings in the chat and leave the diff to the user, who reviews it and decides
+what to commit and submit (see [CONTRIBUTING.md](../../../CONTRIBUTING.md)). If asked to commit, push or open a PR as well, say that this is
+outside the skill and let the user do it.
+
+The skill can serve as the description check of a `/review` task. When reviewing someone else's change,
+only report findings in the chat; the human decides what to post.
+
+## Prerequisites
+
+[uv](https://docs.astral.sh/uv/) runs the helper script and installs its dependency (PyYAML) automatically,
+so no manual setup is needed for the skill itself. To verify the result, install vss-tools, see
+[BUILD.md](../../../BUILD.md) and [scripts/install_vss_tools.sh](../../../scripts/install_vss_tools.sh) (use a virtual environment).
 
 ## When to Use
 
 - "Review/update/fix/unify descriptions in `spec/...`"
-- "Check this PR's new signals for description compliance"
+- "Check the new signals in my branch for description compliance"
 - "Audit `Vehicle.X` for description guideline violations"
 
 ## Step 1 — Load the baseline
@@ -24,35 +44,31 @@ single source of truth. Do not rely on a memorized copy of the rules, since this
 
 ## Step 2 — Determine scope
 
-**One `.vspec` file = one PR.** Never bundle edits to multiple files into a single PR; if the requested
-scope spans several files, work through them one at a time, each ending in its own branch and PR.
-
-Before picking a file, check [review-status.json](./review-status.json) (read via
-`python scripts/vspec_desc_tool.py status`) — files already marked reviewed should be skipped on a repeat
-sweep unless the user explicitly asks to re-review them (e.g. after a guideline change).
-
 Ask if not already clear:
 
-- **Specific file(s)/branch path** given by the user → review those `.vspec` files, one PR each.
-- **"New" / "proposed" elements, or a PR/branch** → diff against `master` (e.g.
-  `git diff master...<branch> -- spec/**/*.vspec`) and review only added/changed entries, per file.
-- **Whole catalog** → this touches dozens of files; confirm with the user before starting, then work
-  through `status`'s unreviewed list one file (one PR) at a time.
+- **Specific file(s) or entries** given by the user → review those.
+- **Changed or newly proposed elements** → diff against the target branch (e.g.
+  `git diff upstream/master...HEAD -- 'spec/**/*.vspec'`) and review only the added/changed entries.
+- **Whole catalog** → this touches dozens of files; confirm with the user before starting. Work through the files
+  one at a time and report per file, so the user can review and commit them separately.
+  `uv run .github/skills/vss-description-review/scripts/vspec_desc_tool.py status` lists the files recorded as
+  reviewed (in `review-status.json`, created by `status mark`); skip those unless asked to re-review them.
 
 ## Step 3 — Scan instead of reading raw files
 
-Run [scripts/vspec_desc_tool.py](./scripts/vspec_desc_tool.py) (stdlib-only Python, no install needed) to get
+Run [scripts/vspec_desc_tool.py](./scripts/vspec_desc_tool.py) to get
 a structured, pre-extracted dataset instead of grepping/reading every `.vspec` file by hand:
 
 ```
-python .github/skills/vss-description-review/scripts/vspec_desc_tool.py scan [path-or-glob ...] > entries.jsonl
+uv run .github/skills/vss-description-review/scripts/vspec_desc_tool.py scan [path-or-glob ...] > entries.jsonl
 ```
 
 With no arguments it scans all of `spec/**/*.vspec`. Each output line is one JSON entry:
 `file`, `entry` (dotted name), `line`, `type`, `datatype`, `description`, `comment`, `allowed`,
 `parent`/`parent_description`/`parent_comment`, `reusable_include_template`, and `rule_flags` — a list of
 mechanically-detectable issues (`missing_description`, `boolean_casing:*`, `boolean_missing_true_false`,
-`value_casing:<VALUE>`, `too_many_sentences`, `possible_instance_reference:<word>`). Reason over this JSONL,
+`value_casing:<VALUE>`, `too_many_sentences`, `possible_instance_reference:<name>` — an instance name declared
+by `instances:` somewhere in the catalog). Reason over this JSONL,
 not the original files — it contains the `description`/`comment` text already, so opening the `.vspec`
 source is rarely needed.
 
@@ -67,6 +83,8 @@ the JSONL without a second lookup pass. Two caveats:
 - `parent` can be `null` for a root-level entry, or for a leaf whose real parent is only assembled at
   include-time (prefix added by the including file) rather than written as a literal dotted name anywhere —
   in that case fall back to reading the including file's `#include ... <Prefix>` line for context.
+- If the nearest ancestor name is defined in several files (and not in the scanned file), `parent` is `null`
+  and `parent_ambiguous_in` lists those files — look at the including file instead of guessing.
 
 `rule_flags` only catches the mechanical rules. Still judge the semantic rules the script cannot check
 (dictionary-style first sentence, self-containment, modular/loose branch wording) — but do this by reading
@@ -92,72 +110,37 @@ when its precise meaning is uncertain — leave it as-is and only add the flag.
 ## Step 5 — Apply edits with the script
 
 ```
-python .github/skills/vss-description-review/scripts/vspec_desc_tool.py apply edits.json
+uv run .github/skills/vss-description-review/scripts/vspec_desc_tool.py apply edits.json
 ```
 
 This locates every entry by its exact dotted name (fresh per edit, so directive order never matters),
-rewrites `description:`/`comment:` in place, and inserts
-`# Human check of description required: <reason>` directly above flagged entries. It prints which edits were
-skipped (entry not found) so typos in `entries.json` are caught immediately instead of silently failing.
-Review the resulting diff before committing.
+rewrites `description:`/`comment:` in place and leaves the rest of the file untouched. Text is written via
+PyYAML, so special characters such as `: ` are quoted correctly, and text longer than 120 characters becomes a
+folded block scalar (`>-`). It inserts `# Human check of description required: <reason>` directly above flagged
+entries and prints which edits were skipped (entry not found), so typos in `edits.json` are caught immediately.
+The edits stay in the working tree for the user to review.
 
-**Watch for colons in free text.** `apply` quotes a replacement value (via `yaml_scalar()`) when it contains
-a colon-space, a leading YAML-special character, or leading/trailing whitespace, because an unquoted colon
-inside a plain YAML scalar is parsed as a new mapping key and silently corrupts the file (this previously
-broke `Standard Build Check` with `mapping values are not allowed here` — the quoting guard exists because of
-that incident). The guard only needs to kick in rarely; prefer rephrasing to avoid a bare `Word: ` in
-`description`/`comment` text over relying on the quoting path, since quoted strings look inconsistent with
-the catalog's otherwise-unquoted style.
+## Step 6 — Report and hand back
 
-## Step 6 — Applying to newly proposed elements
+Do not commit, push, or open a PR (see [Boundaries](#boundaries--read-first)). Instead, tell the user:
 
-When reviewing a PR or draft branch instead of the existing catalog, run the scan against only the
-added/changed files from the diff, then apply the same Step 4–5 procedure restricted to the added/changed
-entries. If you are not the PR author, prefer leaving GitHub PR review comments (via the PR review tools)
-pointing at the specific lines instead of pushing commits directly.
+- which entries were changed and which rule(s) each change addresses, grouped by file (derive this from
+  `edits.json` rather than re-deriving it from the diff),
+- every `# Human check of description required` flag that was added, with file path and node name,
+- that the diff is ready for their review, and that before submitting they should run
+  `make mandatory_targets` (needs vss-tools) and `pre-commit run --all-files` (see [BUILD.md](../../../BUILD.md)).
 
-## Step 7 — Commit and open the PR
+Only if the user asks for it, record the file as reviewed in the local tracker (the user commits it):
 
-1. Create a local branch for the review, scoped to the **single `.vspec` file** being reviewed (do not
-   commit directly on `master`, and do not mix in a second file — see Step 2).
-2. Commit with a sign-off line per [CONTRIBUTING.md](../../../CONTRIBUTING.md)
-   (`Signed-off-by: Firstname Lastname <you@example.com>`, i.e. `git commit -s`).
-3. Before pushing, suggest running `make travis-targets` and `pre-commit run --all-files` (see
-   [BUILD.md](../../../BUILD.md)) to catch unrelated CI failures. If this skill's own files
-   (`scripts/*.py`) were changed, they are also subject to two repo-wide CI checks that don't show up in a
-   local `.vspec`-only workflow:
-   - **`check-header`**: every `.py`/`.vspec` file must contain `Contributors to COVESA` and
-     `SPDX-License-Identifier: MPL-2.0` somewhere (see the header already at the top of
-     [scripts/vspec_desc_tool.py](./scripts/vspec_desc_tool.py) for the exact block to copy).
-     `.md`/`.json` files are exempt.
-   - **`pre-commit` → flake8**: 120-character line length limit on `.py` files.
-4. Push and open a Pull Request (use the GitHub PR tools/skill available in this environment). If
-   `github-pull-request_create_pull_request` fails with `no GitHub remotes` (seen even when `git remote -v`
-   clearly lists GitHub SSH remotes), fall back to the `gh` CLI: `gh pr create --repo <owner>/<repo> --base
-   <base> --head <fork-owner>:<branch> --title "..." --body-file <file>` (write the body to a temp file
-   first — inline here-strings over the terminal tool have been unreliable).
-   - **PR title must include the LLM model used for the review**, e.g.
-     `Description review: spec/Body/Body.vspec (model: <model name>)`.
-   - The PR description must include:
-     - which rule(s) each changed entry now complies with (brief, grouped by file) — derive this from
-       `edits.json` rather than re-deriving it from the diff,
-     - a dedicated list of every `# Human check of description required` flag added, with file path and
-       node name, so maintainers can resolve them quickly.
-5. After opening the PR, update the tracker:
-   ```
-   python .github/skills/vss-description-review/scripts/vspec_desc_tool.py status mark <file> \
-     --model "<model name>" --flags-open <count> --pr <PR URL>
-   ```
-   Commit `review-status.json` as part of the same PR (or a quick follow-up commit on the same branch) so
-   the next sweep knows this file is already covered.
-6. Watch the PR's checks (`gh pr checks <number>`) once CI starts; fix and push promptly rather than leaving
-   a red PR. If `gh` output seems to hang, it's opened a pager — rerun with `$env:GH_PAGER=''` (PowerShell) or
-   pipe through `| cat`.
+```
+uv run .github/skills/vss-description-review/scripts/vspec_desc_tool.py status mark <file> \
+  --model "<model name>" --flags-open <count>
+```
 
 ## Safety notes
 
-- A full-catalog sweep touches dozens of files — confirm scope before starting, and always split into one
-  PR per `.vspec` file (Step 2), never one giant PR.
+- The skill never commits, pushes, opens PRs, or posts comments (see [Boundaries](#boundaries--read-first)).
+- A full-catalog sweep touches dozens of files — confirm scope before starting and work file by file.
 - When uncertain, flag per Step 4 instead of guessing; a wrong rewrite that silently changes signal meaning
   is worse than an unreviewed description.
 - `rule_flags` from the scanner are heuristics (e.g. `possible_instance_reference` and `value_casing` can be

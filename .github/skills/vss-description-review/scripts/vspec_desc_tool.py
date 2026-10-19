@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
 # Copyright (c) 2026 Contributors to COVESA
 #
 # This program and the accompanying materials are made available under the
@@ -6,146 +6,200 @@
 # https://www.mozilla.org/en-US/MPL/2.0/
 #
 # SPDX-License-Identifier: MPL-2.0
-"""Deterministic helper for the vss-description-review skill (stdlib only, no deps).
+#
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["pyyaml>=6.0.2"]
+# ///
+"""Print VSS data entries of `*.vspec` files as JSON and write edited description/comment fields back.
 
-Replaces the "read every .vspec file by hand" and "hand-craft one string-replace per
-entry" parts of the review with scriptable passes:
+Commands:
 
-  scan   - parse spec/**/*.vspec and emit one JSON object per data entry (its
-           description/comment/type/datatype/allowed/enum, a 'line' number, and
-           the immediate parent branch's description/comment for self-containment
-           checks), plus mechanically-detectable rule_flags (boolean casing,
-           value-list casing, sentence count, possible instance-name leakage,
-           missing description). This is the input an LLM should reason over
-           instead of re-reading raw files.
+  scan   Print one JSON object per data entry: file, line, type, datatype, description, comment, allowed
+         values, nearest parent entry, and rule_flags (boolean casing, allowed-value casing, sentence count,
+         instance names in the description, missing description).
 
-  apply  - take a JSON array of edit directives (produced after reasoning over
-           the scan output) and rewrite the files: set description/comment on a
-           named entry, or insert a "Human check of description required" flag
-           comment above it. Entries are located by exact dotted name on every
-           single edit, so ordering of the input array never matters.
+  apply  Read a JSON array of edits and rewrite the named entries in place. An edit sets `description` and/or
+         `comment`, or adds a `# Human check of description required: <reason>` comment above the entry
+         (`flag`). Only the affected fields are replaced; the rest of the file stays unchanged.
 
-  status - track which .vspec files have already been reviewed, in
-           review-status.json next to this skill, so repeated full-catalog
-           sweeps don't redo work already covered by a merged PR.
+  status Show or record which files have been reviewed, in review-status.json next to the skill.
 
-vspec data entries are flat top-level keys (e.g. "Trunk.AbsoluteVolume:") with a
-2-space-indented field block, so a lightweight line parser is enough - no YAML
-library or vss-tools install required.
+The tool only reads and writes files in the working tree. It does not run git or access the network.
 
 Usage:
-    python vspec_desc_tool.py scan [path-or-glob ...] > entries.jsonl
-    python vspec_desc_tool.py apply edits.json
-    python vspec_desc_tool.py status [list]
-    python vspec_desc_tool.py status mark <file> --model "<model name>" [--flags-open N] [--pr <url>]
+    uv run vspec_desc_tool.py scan [path-or-glob ...] > entries.jsonl
+    uv run vspec_desc_tool.py apply edits.json
+    uv run vspec_desc_tool.py status [list]
+    uv run vspec_desc_tool.py status mark <file> --model "<model name>" [--flags-open N] [--pr <url>]
 """
 import datetime as dt
 import json
 import re
 import sys
+import textwrap
 from pathlib import Path
+from typing import Any, NamedTuple
+
+import yaml
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 DEFAULT_GLOB = "spec/**/*.vspec"
 STATUS_FILE = Path(__file__).resolve().parent.parent / "review-status.json"
+MAX_LINE_LENGTH = 120
 
-ENTRY_RE = re.compile(r"^([A-Za-z][\w.]*):\s*$")
-FIELD_RE = re.compile(r"^  (\w+):\s?(.*)$")
 FLAG_PREFIX = "# Human check of description required"
+INSTANCE_RANGE_RE = re.compile(r"^(\w*)\[(\d+),\s*(\d+)\]$")
 
-# Conservative instance-name markers from docs-gen/content/rule_set/data_entry/description.md
-INSTANCE_WORD_RE = re.compile(
-    r"\b(left|right|driver|passenger|front|rear|center|row\d|pos\d)\b", re.IGNORECASE
-)
+
+class Entry(NamedTuple):
+    """A top-level vspec entry. Line indexes are 0-based and `end` is exclusive."""
+
+    name: str
+    start: int
+    end: int
+    fields: dict[str, Any]
+    extents: dict[str, tuple[int, int]]  # field name -> (start, end) lines
+
+
+class Catalog(NamedTuple):
+    # Entry name -> one record per file defining it.
+    index: dict[str, list[dict[str, Any]]]
+    # Instance names declared via `instances:` anywhere in the catalog, e.g. Left, Row1.
+    instance_names: set[str]
 
 
 # ---------------------------------------------------------------------------
 # Parsing
 # ---------------------------------------------------------------------------
 
-def iter_entries(lines):
-    """Yield (name, start_line_1based, end_line_exclusive, fields) for each top-level entry."""
-    i, n = 0, len(lines)
-    while i < n:
-        m = ENTRY_RE.match(lines[i])
-        if not m:
-            i += 1
-            continue
-        name = m.group(1)
-        start = i
-        i += 1
-        fields = {}
-        while i < n:
-            line = lines[i]
-            if line.strip() == "" or line.lstrip().startswith("#"):
-                i += 1
-                continue
-            if not line.startswith("  "):
-                break
-            fm = FIELD_RE.match(line)
-            if not fm:
-                i += 1
-                continue
-            key, val = fm.group(1), fm.group(2)
-            j = i + 1
-            extra = []
-            while j < n and lines[j].strip() != "" and lines[j].startswith("  ") and not FIELD_RE.match(lines[j]):
-                extra.append(lines[j].strip())
-                j += 1
-            if extra:
-                val = (val + " " + " ".join(extra)).strip()
-                i = j
-            else:
-                i += 1
-            fields[key] = val
-        yield name, start + 1, i, fields  # 1-based start line, exclusive end index
+def _trim_trailing(lines: list[str], start: int, end: int, comments_too: bool) -> int:
+    while end - 1 > start and (
+        lines[end - 1].strip() == "" or (comments_too and lines[end - 1].lstrip().startswith("#"))
+    ):
+        end -= 1
+    return end
 
 
-def find_entry(lines, entry_name):
-    for name, start_1based, end, fields in iter_entries(lines):
-        if name == entry_name:
-            return start_1based - 1, end, fields  # 0-based start index
+def parse_entries(lines: list[str]) -> list[Entry]:
+    """Parse vspec lines with PyYAML and return the top-level entries."""
+    loader = yaml.SafeLoader("\n".join(lines) + "\n")
+    try:
+        root = loader.get_single_node()
+        if not isinstance(root, yaml.MappingNode):
+            return []
+        top = root.value
+        entries = []
+        for idx, (key_node, value_node) in enumerate(top):
+            start = key_node.start_mark.line
+            next_start = top[idx + 1][0].start_mark.line if idx + 1 < len(top) else len(lines)
+            end = _trim_trailing(lines, start, next_start, comments_too=True)
+            fields: dict[str, Any] = {}
+            extents: dict[str, tuple[int, int]] = {}
+            if isinstance(value_node, yaml.MappingNode):
+                for field_key, field_value in value_node.value:
+                    name = field_key.value
+                    fields[name] = loader.construct_object(field_value, deep=True)
+                    field_start = field_key.start_mark.line
+                    field_end = field_value.end_mark.line + (1 if field_value.end_mark.column > 0 else 0)
+                    field_end = _trim_trailing(lines, field_start, min(field_end, end), comments_too=False)
+                    extents[name] = (field_start, max(field_end, field_start + 1))
+            entries.append(Entry(key_node.value, start, end, fields, extents))
+        return entries
+    finally:
+        loader.dispose()
+
+
+def find_entry(lines: list[str], entry_name: str) -> Entry | None:
+    for entry in parse_entries(lines):
+        if entry.name == entry_name:
+            return entry
     return None
 
 
-def build_index(glob_pattern=DEFAULT_GLOB):
-    """Map every entry name in the catalog to its file/description/comment, for parent lookups."""
-    index = {}
+def read_lines(path: Path) -> list[str]:
+    return path.read_text(encoding="utf-8").splitlines()
+
+
+def write_lines(path: Path, lines: list[str]) -> None:
+    with open(path, "w", encoding="utf-8", newline="\n") as handle:
+        handle.write("\n".join(lines) + "\n")
+
+
+def expand_instance(item: str) -> list[str]:
+    """Expand a vspec instance declaration: `Row[1,3]` gives Row1, Row2, Row3; other names are kept."""
+    match = INSTANCE_RANGE_RE.match(item.strip())
+    if not match:
+        return [item.strip()]
+    prefix, low, high = match.group(1), int(match.group(2)), int(match.group(3))
+    return [f"{prefix}{number}" for number in range(low, high + 1)]
+
+
+def flatten_instances(raw: Any) -> list[str]:
+    if isinstance(raw, str):
+        return expand_instance(raw)
+    if isinstance(raw, list):
+        return [name for item in raw for name in flatten_instances(item)]
+    return []
+
+
+def build_catalog(glob_pattern: str = DEFAULT_GLOB) -> Catalog:
+    index: dict[str, list[dict[str, Any]]] = {}
+    instance_names: set[str] = set()
     for path in sorted(REPO_ROOT.glob(glob_pattern)):
         rel = str(path.relative_to(REPO_ROOT)).replace("\\", "/")
-        lines = path.read_text(encoding="utf-8").splitlines()
-        for name, _start, _end, fields in iter_entries(lines):
-            index[name] = {
+        for entry in parse_entries(read_lines(path)):
+            index.setdefault(entry.name, []).append({
                 "file": rel,
-                "type": fields.get("type"),
-                "description": fields.get("description"),
-                "comment": fields.get("comment"),
-            }
-    return index
+                "type": entry.fields.get("type"),
+                "description": entry.fields.get("description"),
+                "comment": entry.fields.get("comment"),
+            })
+            instance_names.update(flatten_instances(entry.fields.get("instances")))
+    return Catalog(index, instance_names)
 
 
-def resolve_parent(entry_name, index):
-    """Walk up the dotted name to the nearest ancestor that exists as its own entry."""
+def resolve_parent(
+    entry_name: str, file_rel: str, index: dict[str, list[dict[str, Any]]]
+) -> tuple[str | None, dict[str, Any] | None, list[str]]:
+    """Walk up the dotted name to the nearest ancestor entry.
+
+    Returns (name, info, ambiguous_files). A name defined in several files is resolved to the
+    definition in the same file if there is one; otherwise it is reported as ambiguous instead of guessed.
+    """
     parts = entry_name.split(".")
     for cut in range(len(parts) - 1, 0, -1):
         candidate = ".".join(parts[:cut])
-        if candidate in index:
-            return candidate, index[candidate]
-    return None, None
+        matches = index.get(candidate)
+        if not matches:
+            continue
+        same_file = [m for m in matches if m["file"] == file_rel]
+        if same_file:
+            return candidate, same_file[0], []
+        if len(matches) == 1:
+            return candidate, matches[0], []
+        return None, None, sorted(m["file"] for m in matches)
+    return None, None, []
 
 
 # ---------------------------------------------------------------------------
 # scan
 # ---------------------------------------------------------------------------
 
-def check_entry(fields):
-    flags = []
-    desc = fields.get("description", "")
-    etype = fields.get("type", "")
-    datatype = fields.get("datatype", "")
-    allowed = fields.get("allowed", "") or fields.get("enum", "")
+def allowed_values(fields: dict[str, Any]) -> list[str]:
+    raw = fields.get("allowed") or fields.get("enum") or []
+    if isinstance(raw, dict):
+        raw = list(raw)
+    return [str(value) for value in raw] if isinstance(raw, list) else []
 
-    if etype != "branch" and not desc:
+
+def check_entry(fields: dict[str, Any], instance_names: set[str]) -> list[str]:
+    flags = []
+    desc = str(fields.get("description") or "")
+    entry_type = fields.get("type", "")
+    datatype = fields.get("datatype", "")
+
+    if entry_type != "branch" and not desc:
         flags.append("missing_description")
         return flags  # nothing else to check without a description
 
@@ -157,41 +211,40 @@ def check_entry(fields):
         if not re.search(r"\bTrue\b", desc) or not re.search(r"\bFalse\b", desc):
             flags.append("boolean_missing_true_false")
 
-    if allowed:
-        for value in re.findall(r"['\"]([A-Z0-9_]+)['\"]", allowed):
-            if len(value) < 3:
-                continue  # too short to word-match reliably (e.g. single-letter engine shapes 'V', 'W')
-            if re.search(rf"\b{re.escape(value.lower())}\b", desc.lower()) and value not in desc:
-                flags.append(f"value_casing:{value}")
+    for value in allowed_values(fields):
+        if not re.fullmatch(r"[A-Z0-9_]+", value) or len(value) < 3:
+            continue  # too short to word-match reliably (e.g. single-letter engine shapes 'V', 'W')
+        if re.search(rf"\b{re.escape(value.lower())}\b", desc.lower()) and value not in desc:
+            flags.append(f"value_casing:{value}")
 
-    sentence_count = len(re.findall(r"\.(?:\s|$)", desc))
-    if sentence_count > 3:
+    if len(re.findall(r"\.(?:\s|$)", desc)) > 3:
         flags.append("too_many_sentences")
 
-    for match in INSTANCE_WORD_RE.finditer(desc):
-        flags.append(f"possible_instance_reference:{match.group(1).lower()}")
+    for name in sorted(instance_names):
+        if re.search(rf"\b{re.escape(name)}\b", desc):
+            flags.append(f"possible_instance_reference:{name}")
 
     return sorted(set(flags))
 
 
-def scan(paths):
-    index = build_index()
+def scan(paths: list[Path]) -> None:
+    catalog = build_catalog()
     for path in paths:
         rel = path.relative_to(REPO_ROOT) if path.is_absolute() else path
         rel_str = str(rel).replace("\\", "/")
         is_template = rel_str.startswith("spec/include/")
-        lines = path.read_text(encoding="utf-8").splitlines()
-        for name, start_line, _end, fields in iter_entries(lines):
-            parent_name, parent_info = resolve_parent(name, index)
+        for entry in parse_entries(read_lines(path)):
+            fields = entry.fields
+            parent_name, parent_info, ambiguous = resolve_parent(entry.name, rel_str, catalog.index)
             record = {
                 "file": rel_str,
-                "entry": name,
-                "line": start_line,
+                "entry": entry.name,
+                "line": entry.start + 1,
                 "type": fields.get("type"),
                 "datatype": fields.get("datatype"),
                 "description": fields.get("description"),
                 "comment": fields.get("comment"),
-                "allowed": fields.get("allowed") or fields.get("enum"),
+                "allowed": allowed_values(fields) or None,
                 "parent": parent_name,
                 "parent_description": parent_info["description"] if parent_info else None,
                 "parent_comment": parent_info["comment"] if parent_info else None,
@@ -199,8 +252,10 @@ def scan(paths):
                 # different parents via '#include ... <Prefix>' - they must stay generic,
                 # NOT fold in the meaning of whichever single parent happens to be resolved above.
                 "reusable_include_template": is_template,
-                "rule_flags": check_entry(fields),
+                "rule_flags": check_entry(fields, catalog.instance_names),
             }
+            if ambiguous:
+                record["parent_ambiguous_in"] = ambiguous
             print(json.dumps(record))
 
 
@@ -208,90 +263,67 @@ def scan(paths):
 # apply
 # ---------------------------------------------------------------------------
 
-_UNSAFE_PLAIN_RE = re.compile(r":(\s|$)|\s#")
-_UNSAFE_START_CHARS = tuple("!&*?|>%@`\"'#-[]{},")
+def render_field(key: str, value: str) -> list[str]:
+    """Render a 2-space indented YAML field; long text becomes a folded block scalar (>-).
+
+    PyYAML decides the quoting, so special characters such as ': ' can never corrupt the file.
+    The block form is re-parsed and must round-trip to the exact same string.
+    """
+    flat = yaml.safe_dump({key: value}, default_flow_style=False, width=10 ** 6, allow_unicode=True).rstrip("\n")
+    flat = "  " + flat
+    if len(flat) <= MAX_LINE_LENGTH and "\n" not in flat:
+        return [flat]
+    if "\n" in value:
+        block = [f"  {key}: |-"] + [f"    {line}".rstrip() for line in value.split("\n")]
+    else:
+        wrapped = textwrap.wrap(value, width=MAX_LINE_LENGTH - 4, break_long_words=False, break_on_hyphens=False)
+        block = [f"  {key}: >-"] + [f"    {line}" for line in wrapped]
+    if yaml.safe_load("\n".join(block)).get(key) == value:
+        return block
+    return flat.split("\n")
 
 
-def yaml_scalar(value):
-    """Quote a replacement value if writing it unquoted would change its YAML meaning
-    (e.g. a colon-space inside a plain scalar is parsed as a new mapping key, which
-    silently corrupts the file without raising an error in our own line-based parser)."""
-    needs_quoting = (
-        value == ""
-        or value != value.strip()
-        or value[0] in _UNSAFE_START_CHARS
-        or bool(_UNSAFE_PLAIN_RE.search(value))
-    )
-    if not needs_quoting:
-        return value
-    escaped = value.replace("\\", "\\\\").replace('"', '\\"')
-    return f'"{escaped}"'
-
-
-def field_extent(lines, field_line, block_end):
-    """Return the exclusive end index of a field's value, including folded continuation lines
-    (mirrors the continuation-consuming logic in iter_entries - a multi-line description/comment
-    must have ALL of its lines removed when rewritten, not just the first, or the stale
-    continuation text would silently fold into the new YAML scalar)."""
-    j = field_line + 1
-    while j < block_end and lines[j].strip() != "" and lines[j].startswith("  ") and not FIELD_RE.match(lines[j]):
-        j += 1
-    return j
-
-
-def set_field(lines, start, end, key, value):
-    value = yaml_scalar(value)
-    pattern = re.compile(rf"^  {re.escape(key)}:")
-    for i in range(start + 1, end):
-        if pattern.match(lines[i]):
-            field_end = field_extent(lines, i, end)
-            lines[i:field_end] = [f"  {key}: {value}"]
-            return
-    insert_at = end
-    for i in range(start + 1, end):
-        if lines[i].startswith("  description:"):
-            insert_at = field_extent(lines, i, end)
-            break
-    lines.insert(insert_at, f"  {key}: {value}")
-
-
-def add_flag(lines, start, reason):
-    if start > 0 and lines[start - 1].strip().startswith(FLAG_PREFIX):
-        indent = lines[start - 1][: len(lines[start - 1]) - len(lines[start - 1].lstrip())]
-        lines[start - 1] = f"{indent}{FLAG_PREFIX}: {reason}"
+def set_field(lines: list[str], entry: Entry, key: str, value: str) -> None:
+    rendered = render_field(key, value.strip())
+    if key in entry.extents:
+        start, end = entry.extents[key]
+        lines[start:end] = rendered
         return
-    indent = lines[start][: len(lines[start]) - len(lines[start].lstrip())]
-    lines.insert(start, f"{indent}{FLAG_PREFIX}: {reason}")
+    insert_at = entry.extents["description"][1] if "description" in entry.extents else entry.end
+    lines[insert_at:insert_at] = rendered
 
 
-def apply_edits(edits_path):
-    edits = json.loads(Path(edits_path).read_text(encoding="utf-8"))
-    by_file = {}
+def add_flag(lines: list[str], entry: Entry, reason: str) -> None:
+    start = entry.start
+    if start > 0 and lines[start - 1].strip().startswith(FLAG_PREFIX):
+        lines[start - 1] = f"{FLAG_PREFIX}: {reason}"
+        return
+    lines.insert(start, f"{FLAG_PREFIX}: {reason}")
+
+
+def apply_edits(edits_path: str) -> None:
+    edits = json.loads(Path(edits_path).read_text(encoding="utf-8-sig"))
+    by_file: dict[str, list[dict[str, str]]] = {}
     for edit in edits:
         by_file.setdefault(edit["file"], []).append(edit)
 
-    applied, skipped = 0, []
+    applied = 0
+    skipped = []
     for file_rel, file_edits in by_file.items():
         path = REPO_ROOT / file_rel
-        lines = path.read_text(encoding="utf-8").splitlines()
+        lines = read_lines(path)
         for edit in file_edits:
-            found = find_entry(lines, edit["entry"])
-            if found is None:
+            if find_entry(lines, edit["entry"]) is None:
                 skipped.append(edit)
                 continue
-            start, end, _fields = found
-            if "description" in edit:
-                set_field(lines, start, end, "description", edit["description"])
-                found = find_entry(lines, edit["entry"])
-                start, end, _fields = found
-            if "comment" in edit:
-                set_field(lines, start, end, "comment", edit["comment"])
-                found = find_entry(lines, edit["entry"])
-                start, end, _fields = found
+            # Re-parse after every change so line numbers are always fresh.
+            for key in ("description", "comment"):
+                if key in edit:
+                    set_field(lines, find_entry(lines, edit["entry"]), key, edit[key])
             if "flag" in edit:
-                add_flag(lines, start, edit["flag"])
+                add_flag(lines, find_entry(lines, edit["entry"]), edit["flag"])
             applied += 1
-        path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        write_lines(path, lines)
 
     print(f"Applied {applied} edit(s).", file=sys.stderr)
     if skipped:
@@ -304,17 +336,17 @@ def apply_edits(edits_path):
 # status
 # ---------------------------------------------------------------------------
 
-def load_status():
+def load_status() -> dict[str, dict[str, Any]]:
     if STATUS_FILE.exists():
         return json.loads(STATUS_FILE.read_text(encoding="utf-8"))
     return {}
 
 
-def save_status(data):
+def save_status(data: dict[str, dict[str, Any]]) -> None:
     STATUS_FILE.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
-def status_mark(file_rel, model, flags_open, pr=None):
+def status_mark(file_rel: str, model: str, flags_open: int, pr: str | None = None) -> None:
     data = load_status()
     data[file_rel] = {
         "reviewed_at": dt.date.today().isoformat(),
@@ -326,42 +358,42 @@ def status_mark(file_rel, model, flags_open, pr=None):
     print(f"Marked {file_rel} as reviewed (model={model}, flags_open={flags_open}, pr={pr}).", file=sys.stderr)
 
 
-def status_list():
+def status_list() -> None:
     data = load_status()
     all_files = sorted(
         str(p.relative_to(REPO_ROOT)).replace("\\", "/") for p in REPO_ROOT.glob(DEFAULT_GLOB)
     )
-    for f in all_files:
-        entry = data.get(f)
+    for file_rel in all_files:
+        entry = data.get(file_rel)
         if entry:
             pr_suffix = f", {entry['pr']}" if entry.get("pr") else ""
             flags_open = entry.get("flags_open", "?")
-            print(f"[x] {f}  (reviewed {entry['reviewed_at']} by {entry['model']}, "
+            print(f"[x] {file_rel}  (reviewed {entry['reviewed_at']} by {entry['model']}, "
                   f"open flags: {flags_open}{pr_suffix})")
         else:
-            print(f"[ ] {f}")
+            print(f"[ ] {file_rel}")
 
 
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
-def resolve_paths(args):
+def resolve_paths(args: list[str]) -> list[Path]:
     if not args:
         return sorted(REPO_ROOT.glob(DEFAULT_GLOB))
-    paths = []
+    paths: list[Path] = []
     for arg in args:
-        p = Path(arg)
-        if p.is_absolute() and p.is_file():
-            paths.append(p)
-        elif p.is_file():
-            paths.append((REPO_ROOT / p) if not p.exists() else p)
+        path = Path(arg)
+        if path.is_absolute() and path.is_file():
+            paths.append(path)
+        elif path.is_file():
+            paths.append((REPO_ROOT / path) if not path.exists() else path)
         else:
             paths.extend(sorted(REPO_ROOT.glob(arg)))
     return paths
 
 
-def main():
+def main() -> None:
     if len(sys.argv) < 2 or sys.argv[1] not in ("scan", "apply", "status"):
         print(__doc__)
         sys.exit(1)
@@ -382,7 +414,9 @@ def main():
                 print(status_usage, file=sys.stderr)
                 sys.exit(1)
             file_rel, opts = args[0], args[1:]
-            model, flags_open, pr = None, 0, None
+            model: str | None = None
+            flags_open = 0
+            pr: str | None = None
             it = iter(opts)
             for opt in it:
                 if opt == "--model":
