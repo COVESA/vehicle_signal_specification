@@ -28,7 +28,20 @@ Vehicle.Chassis.Axle:
 # Changed instantiation
 Vehicle.Chassis.Axle.Wheel:
     type: branch
-    instances: ["Center"]
+    instances: ["Pos8"]
+
+
+# For bikes we put brakewear on axle level
+
+Vehicle.Chassis.Axle.Left:
+  type: branch
+  delete: True
+
+Vehicle.Chassis.Axle.Right:
+  type: branch
+  delete: True
+
+#include ../../spec/Chassis/HalfAxle.vspec Vehicle.Chassis.Axle
 
 # Branches used for the structure, not adopted in any way
 Vehicle.Cabin:

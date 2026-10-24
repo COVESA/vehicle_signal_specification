@@ -1,0 +1,67 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+# This file contains adoptions to the main spec concering motorbikes.
+# It mainly addresses istantiation issues (e.g. wheels) and
+# additional signals, which are motorbike specific (e.g. handlebars).
+#
+# Currently this file serves as a very early draft, which serves
+# more as an example of overlays and is not considered a part of the
+# official specification.
+
+
+
+# Testing an 8x4 config
+# Two front axles with two wheels each
+# Two rear axles with 4 wheels each
+# Changed default instantiation for axles and wheels
+# Axle definitions from ISO 11992-2 and SAE J1939-71
+# Axles are numbered 1, 2, 3... from the front of the direction of the travel.
+# Wheel numbering starts at the vehicle centerline.
+# Centre wheel: 8.
+# Left side: 7 nearest the centreline, then 6, 5 outward.
+# Right side: 9 nearest the centreline, then 10, 11 outward.
+Vehicle.Chassis.Axle:
+    type: branch
+    instances: Row[1,4]
+Vehicle.Chassis.Axle.Row1.Wheel:
+    type: branch
+    instances: ["Pos7", "Pos9"]
+Vehicle.Chassis.Axle.Row2.Wheel:
+    type: branch
+    instances: ["Pos7", "Pos9"]
+Vehicle.Chassis.Axle.Row3.Wheel:
+    type: branch
+    instances: ["Pos6","Pos7", "Pos9", "Pos10"]
+Vehicle.Chassis.Axle.Row4.Wheel:
+    type: branch
+    instances: ["Pos6","Pos7", "Pos9", "Pos10"]
+
+Vehicle.Cabin.Door:
+  type: branch
+  delete: True
+
+Vehicle.Body.Doors:
+  type: branch
+  instances:
+    - Door[1,10]
+  description: Bus door information.
+
+# One signal for all the doors, not instantiated
+Vehicle.Body.Doors.IsEnabledAtLeastOne:
+  instantiate: false
+  datatype: boolean
+  type: sensor
+  description: Signal indicating the status of all bus doors.
+              True if at least 1 bus door is enabled, False otherwise.
+              Enabled means the bus doors are able to be automatically opened or Closed.
+
+Vehicle.Body.Doors.IsLocked:
+  datatype: boolean
+  type: sensor
+  description: Indication of the lock status of the door. Doors cannot be operated by the driver or a passenger when locked.
