@@ -75,6 +75,12 @@ Follow the style guide in the [documentation](https://covesa.github.io/vehicle_s
 
 See [Unit and Datatype Policy](/vehicle_signal_specification/policies/unit_datatype) .
 
+## Descriptions shall follow the Description Guidelines
+
+New and changed `description` and `comment` fields shall follow the
+[Description Guidelines](/vehicle_signal_specification/rule_set/data_entry/description/).
+Check them before submitting with the [Description Review Skill](/vehicle_signal_specification/policies/description_review_skill).
+
 ## Avoid backward incompatible changes
 
 VSS sometimes change or remove existing signals, but only if there is a good reason.
