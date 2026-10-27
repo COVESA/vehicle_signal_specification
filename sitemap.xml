@@ -56,6 +56,10 @@
     <loc>https://covesa.github.io/vehicle_signal_specification/extensions/overlay/index.html</loc>
   </url>
   <url>
+    <loc>https://covesa.github.io/vehicle_signal_specification/policies/description_review_skill/index.html</loc>
+    <lastmod>2026-10-19T00:00:00+00:00</lastmod>
+  </url>
+  <url>
     <loc>https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/data_types/index.html</loc>
     <lastmod>2019-08-04T11:11:48+02:00</lastmod>
   </url>
@@ -75,7 +79,7 @@
   </url>
   <url>
     <loc>https://covesa.github.io/vehicle_signal_specification/rule_set/index.html</loc>
-    <lastmod>2019-08-04T13:05:11+02:00</lastmod>
+    <lastmod>2026-10-01T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/data_units/index.html</loc>
@@ -86,7 +90,7 @@
   </url>
   <url>
     <loc>https://covesa.github.io/vehicle_signal_specification/policies/index.html</loc>
-    <lastmod>2019-08-04T12:46:30+02:00</lastmod>
+    <lastmod>2026-10-19T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://covesa.github.io/vehicle_signal_specification/catalog/index.html</loc>
@@ -101,6 +105,10 @@
   </url>
   <url>
     <loc>https://covesa.github.io/vehicle_signal_specification/license/index.html</loc>
+  </url>
+  <url>
+    <loc>https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/description/index.html</loc>
+    <lastmod>2026-10-01T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://covesa.github.io/vehicle_signal_specification/ecosystem/index.html</loc>
@@ -120,7 +128,7 @@
   </url>
   <url>
     <loc>https://covesa.github.io/vehicle_signal_specification/index.html</loc>
-    <lastmod>2023-05-18T13:31:46+00:00</lastmod>
+    <lastmod>2026-10-19T00:00:00+00:00</lastmod>
   </url>
   <url>
     <loc>https://covesa.github.io/vehicle_signal_specification/categories/index.html</loc>

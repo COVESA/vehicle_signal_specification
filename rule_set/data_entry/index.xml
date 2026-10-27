@@ -6,7 +6,7 @@
     <description>Leaf nodes of the tree contain metadata describing the data associated to the node. In order to help application developers, who are using the specification, it makes a distinction between three types of signals:&#xA;sensor actuator attribute Examples and more information you’ll find in the Sensors, Actuators and Attributes chapter.</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Aug 2019 12:37:31 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 01 Oct 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Datatypes</title>
@@ -35,6 +35,13 @@
       <pubDate>Sun, 04 Aug 2019 12:37:03 +0200</pubDate>
       <guid>https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/sensor_actuator/index.html</guid>
       <description>Property Types Overview sensor type Sensors are properties that, from a VSS-perspective, are read-only. The values of a sensor property typically change over time and within an ignition cycle (i.e., a driving journey). Reading a sensor shall return the actual value of the related property (e.g., the current speed or the current position of the seat).&#xA;actuator type Similarly, actuators are properties that, from a VSS-perspective, can be read and written.</description>
+    </item>
+    <item>
+      <title>Description Guidelines</title>
+      <link>https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/description/index.html</link>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://covesa.github.io/vehicle_signal_specification/rule_set/data_entry/description/index.html</guid>
+      <description>Description Guidelines Guidelines for description and comment attributes&#xA;Golden Rules Consistent across all data entries — same structure, same tone. Dictionary-style, max 3 sentences: sentence 1 defines what the entry is (a concise noun phrase, not a narrative about usage); sentence 2 explains ranges/values if needed; sentence 3 adds a specific note only when relevant. Most entries only need one sentence — do not pad. Self-contained: fold in the meaning of the parent branch/sub-system so the description stands alone.</description>
     </item>
     <item>
       <title>Default Values</title>

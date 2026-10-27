@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" itemscope itemtype="http://schema.org/Article">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.129.0">
+    <meta name="generator" content="Relearn 6.0.0">
+    <meta name="description" content="Introduction The Description Guidelines define how description and comment fields shall be written. To make it easy to follow them, the repository contains an agent skill named vss-description-review in .github/skills/vss-description-review/. The skill lets an AI coding assistant check and fix descriptions in *.vspec files.
+Contributions that add or change descriptions shall follow the Description Guidelines. Using the skill is the recommended way to check this before submitting. Contributions that do not follow the guidelines may be rejected.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Description Review Skill :: Vehicle Signal Specification">
+    <meta name="twitter:description" content="Introduction The Description Guidelines define how description and comment fields shall be written. To make it easy to follow them, the repository contains an agent skill named vss-description-review in .github/skills/vss-description-review/. The skill lets an AI coding assistant check and fix descriptions in *.vspec files.
+Contributions that add or change descriptions shall follow the Description Guidelines. Using the skill is the recommended way to check this before submitting. Contributions that do not follow the guidelines may be rejected.">
+    <meta property="og:url" content="https://covesa.github.io/vehicle_signal_specification/policies/description_review_skill/index.html">
+    <meta property="og:site_name" content="Vehicle Signal Specification">
+    <meta property="og:title" content="Description Review Skill :: Vehicle Signal Specification">
+    <meta property="og:description" content="Introduction The Description Guidelines define how description and comment fields shall be written. To make it easy to follow them, the repository contains an agent skill named vss-description-review in .github/skills/vss-description-review/. The skill lets an AI coding assistant check and fix descriptions in *.vspec files.
+Contributions that add or change descriptions shall follow the Description Guidelines. Using the skill is the recommended way to check this before submitting. Contributions that do not follow the guidelines may be rejected.">
+    <meta property="og:locale" content="en-us">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="VSS Design Policy">
+    <meta property="article:published_time" content="2026-10-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-10-19T00:00:00+00:00">
+    <meta itemprop="name" content="Description Review Skill :: Vehicle Signal Specification">
+    <meta itemprop="description" content="Introduction The Description Guidelines define how description and comment fields shall be written. To make it easy to follow them, the repository contains an agent skill named vss-description-review in .github/skills/vss-description-review/. The skill lets an AI coding assistant check and fix descriptions in *.vspec files.
+Contributions that add or change descriptions shall follow the Description Guidelines. Using the skill is the recommended way to check this before submitting. Contributions that do not follow the guidelines may be rejected.">
+    <meta itemprop="datePublished" content="2026-10-19T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-10-19T00:00:00+00:00">
+    <meta itemprop="wordCount" content="517">
+    <title>Description Review Skill :: Vehicle Signal Specification</title><link rel="shortcut icon" href="/vehicle_signal_specification/images/fav.png" type="image/x-icon" />
+
+    <link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1793092862" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fontawesome-all.min.css?1793092862" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/nucleus.css?1793092862" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/auto-complete.css?1793092862" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/auto-complete.css?1793092862" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/perfect-scrollbar.min.css?1793092862" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/fonts.css?1793092862" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/vehicle_signal_specification/css/fonts.css?1793092862" rel="stylesheet"></noscript>
+    <link href="/vehicle_signal_specification/css/theme.css?1793092862" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/theme-blue.css?1793092862" rel="stylesheet" id="R-variant-style">
+    <link href="/vehicle_signal_specification/css/chroma-learn.css?1793092862" rel="stylesheet" id="R-variant-chroma-style">
+    <link href="/vehicle_signal_specification/css/variant.css?1793092862" rel="stylesheet">
+    <link href="/vehicle_signal_specification/css/print.css?1793092862" rel="stylesheet" media="print">
+    <script src="/vehicle_signal_specification/js/variant.js?1793092862"></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..\/..';
+      window.relearn.absBaseUri='https:\/\/covesa.github.io\/vehicle_signal_specification';
+      window.index_js_url="/vehicle_signal_specification/index.search.js";
+      // variant stuff
+      window.variants && variants.init( [ 'blue' ] );
+      // translations
+      window.T_Copy_to_clipboard = `Copy to clipboard`;
+      window.T_Copied_to_clipboard = `Copied to clipboard!`;
+      window.T_Copy_link_to_clipboard = `Copy link to clipboard`;
+      window.T_Link_copied_to_clipboard = `Copied link to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+    </script>
+  </head>
+  <body class="mobile-support html disableInlineCopyToClipboard" data-url="/vehicle_signal_specification/policies/description_review_skill/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar">
+        <div class="topbar-wrapper">
+          <div class="topbar-sidebar-divider"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide"><button class="topbar-control" onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button>
+            </div>
+            <div class="topbar-button topbar-button-toc" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper"><nav class="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#what-the-skill-does-and-does-not-do">What the skill does and does not do</a></li>
+    <li><a href="#getting-started">Getting started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#run-a-review">Run a review</a></li>
+        <li><a href="#check-the-result">Check the result</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#limitations">Limitations</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/index.html"><span itemprop="name">Vehicle Signal Specification</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><a itemprop="item" href="/vehicle_signal_specification/policies/index.html"><span itemprop="name">VSS Design Policy</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li
+            itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement"><span itemprop="name">Description Review Skill</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+				
+            <div class="topbar-button topbar-button-edit" data-content-empty="disable" data-width-s="area-more" data-width-m="show" data-width-l="show"><a class="topbar-control" href="https://github.com/covesa/vehicle_signal_specification/edit/master/docs-gen/content/policies/description_review_skill.md" target="_blank" title="Edit (CTRL&#43;ALT&#43;w)"><i class="fa-fw fas fa-pen"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-prev" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/policies/unit_datatype/index.html" title="Unit and Datatype Policy (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-next" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show"><a class="topbar-control" href="/vehicle_signal_specification/catalog/index.html" title="VSS Standard Catalog (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a>
+            </div>
+            <div class="topbar-button topbar-button-more" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show"><button class="topbar-control" onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable default" tabindex="-1">
+        <div class="flex-block-wrapper">
+          <article class="default">
+            <header class="headline">
+            </header>
+
+<h1 id="description-review-skill">Description Review Skill</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>The <a href="/vehicle_signal_specification/rule_set/data_entry/description/">Description Guidelines</a> define how <code>description</code>
+and <code>comment</code> fields shall be written. To make it easy to follow them, the repository contains an
+<a href="https://code.visualstudio.com/docs/agent-customization/agent-skills" rel="external" target="_blank">agent skill</a> named <code>vss-description-review</code>
+in <code>.github/skills/vss-description-review/</code>. The skill lets an AI coding assistant check and fix descriptions
+in <code>*.vspec</code> files.</p>
+<p>Contributions that add or change descriptions shall follow the Description Guidelines. Using the skill is the
+recommended way to check this before submitting. Contributions that do not follow the guidelines may be rejected.</p>
+<h2 id="what-the-skill-does-and-does-not-do">What the skill does and does not do</h2>
+<p>The skill does one thing: it reviews descriptions in your working tree.</p>
+<ul>
+<li>It rewrites <code>description</code> and <code>comment</code> fields that do not comply with the guidelines.</li>
+<li>It adds a <code># Human check of description required: &lt;reason&gt;</code> comment above entries that are too vague to fix
+without guessing, so that a person familiar with the signal can decide.</li>
+<li>It reports what it changed and which entries were flagged.</li>
+</ul>
+<p>The skill never creates branches, commits, pushes, or opens or comments on pull requests.
+You review the resulting changes and decide what to commit and submit, as described in
+<a href="https://github.com/COVESA/vehicle_signal_specification/blob/master/CONTRIBUTING.md" rel="external" target="_blank">CONTRIBUTING.md</a>.</p>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>An AI coding assistant that supports agent skills, for example <a href="https://github.com/features/copilot" rel="external" target="_blank">GitHub Copilot</a>
+in agent mode in VS Code. Skills in <code>.github/skills/</code> are discovered automatically.</li>
+<li><a href="https://docs.astral.sh/uv/" rel="external" target="_blank">uv</a>, which runs the helper script of the skill and installs its dependency (PyYAML)
+automatically.</li>
+<li>To verify your changes: vss-tools, see
+<a href="https://github.com/COVESA/vehicle_signal_specification/blob/master/BUILD.md" rel="external" target="_blank">BUILD.md</a>. Create a Python virtual
+environment and run <code>scripts/install_vss_tools.sh</code>.</li>
+</ul>
+<h3 id="run-a-review">Run a review</h3>
+<ol>
+<li>Create a branch and make your changes to the <code>*.vspec</code> files as usual.</li>
+<li>Open the repository in your editor and start a chat with the assistant in agent mode.</li>
+<li>Ask it to use the skill, for example:
+<ul>
+<li><code>Review the descriptions of the changed *.vspec files in my branch with the vss-description-review skill.</code></li>
+<li><code>Review the descriptions in spec/Cabin/SingleDoor.vspec with the vss-description-review skill.</code></li>
+<li><code>Audit the descriptions of Vehicle.Cabin.Door with the vss-description-review skill.</code></li>
+</ul>
+</li>
+<li>If the scope is unclear, for example a request for the whole catalog, the assistant asks you before it starts.</li>
+</ol>
+<h3 id="check-the-result">Check the result</h3>
+<ol>
+<li>Inspect the changes, for example with <code>git diff</code>. The skill only edits <code>description</code> and <code>comment</code> text.</li>
+<li>Resolve every <code># Human check of description required</code> comment: clarify the description yourself or ask someone
+who knows the signal, then remove the comment.</li>
+<li>Verify the result before submitting, as for any other change (see <a href="https://github.com/COVESA/vehicle_signal_specification/blob/master/BUILD.md" rel="external" target="_blank">BUILD.md</a>):
+<ul>
+<li><code>make mandatory_targets</code></li>
+<li><code>pre-commit run --all-files</code></li>
+</ul>
+</li>
+<li>Commit with sign-off (<code>git commit -s</code>) and open the pull request yourself.</li>
+</ol>
+<h2 id="how-it-works">How it works</h2>
+<p>The assistant runs <code>.github/skills/vss-description-review/scripts/vspec_desc_tool.py</code>:</p>
+<ul>
+<li><code>scan</code> extracts every entry with its description, comment, parent branch and mechanically detectable problems
+(for example boolean casing or instance names in a description). The assistant reasons over this output.</li>
+<li><code>apply</code> writes the agreed edits into the <code>*.vspec</code> files and changes nothing else in the file.</li>
+</ul>
+<p>The tool does not use git or network access. The full workflow is described in
+<a href="https://github.com/COVESA/vehicle_signal_specification/blob/master/.github/skills/vss-description-review/SKILL.md" rel="external" target="_blank">SKILL.md</a>.</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>The result is generated by an AI model. Always review it; the model is instructed to flag entries it cannot
+fix without guessing, but it can still be wrong.</li>
+<li>The skill checks descriptions only. Datatypes, units, allowed values, and node names are never changed.</li>
+</ul>
+
+            <footer class="footline">
+            </footer>
+          </article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <div id="R-header" class="default-animation">
+<a id="logo" href="https://covesa.github.io/vehicle_signal_specification/">
+  <img src="/vehicle_signal_specification/images/vss.png">
+</a>
+
+        </div>
+
+        <search><form action="/vehicle_signal_specification/search.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+        <script>
+          var contentLangs=['en'];
+        </script>
+        <script src="/vehicle_signal_specification/js/auto-complete.js?1793092862" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.min.js?1793092862" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.stemmer.support.min.js?1793092862" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.multi.min.js?1793092862" defer></script>
+        <script src="/vehicle_signal_specification/js/lunr/lunr.en.min.js?1793092862" defer></script>
+        <script src="/vehicle_signal_specification/js/search.js?1793092862" defer></script>
+      </div>
+      <div id="R-homelinks" class="default-animation">
+        <hr class="padding">
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div id="R-topics">
+          <ul class="enlarge morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/introduction/index.html" class=""><a class="padding" href="/vehicle_signal_specification/introduction/index.html">Introduction</a><ul id="R-subsections-f5db5b284a3d023503978d00824e9c16" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/introduction/overview/index.html" class=""><a class="padding" href="/vehicle_signal_specification/introduction/overview/index.html">Overview</a></li>
+          <li data-nav-id="/vehicle_signal_specification/introduction/taxonomy/index.html" class=""><a class="padding" href="/vehicle_signal_specification/introduction/taxonomy/index.html">Taxonomies</a></li></ul></li>
+          <li data-nav-id="/vehicle_signal_specification/governance/index.html" class=""><a class="padding" href="/vehicle_signal_specification/governance/index.html">Governance</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/index.html">VSS Rule Set</a><ul id="R-subsections-816430a737ffa7bef5da453d8c2d55d4" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/rule_set/basics/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/basics/index.html">Basic Rules</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/branches/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/branches/index.html">Branch Entry</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/index.html" class="alwaysopen"><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/index.html">Data Entry</a><ul id="R-subsections-ba77ba218fcc0133bc138c588fbb6eb9" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/data_types/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/data_types/index.html">Datatypes</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/data_types_struct/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/data_types_struct/index.html">Struct Types</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/data_units/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/data_units/index.html">Data Units</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/sensor_actuator/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/sensor_actuator/index.html">Sensors, Actuators and Attributes</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/description/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/description/index.html">Description Guidelines</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/default/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/default/index.html">Default Values</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/enum/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/enum/index.html">Enums</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/data_entry/allowed/index.html">Value Restrictions</a></li></ul></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/instances/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/instances/index.html">Instances</a></li>
+          <li data-nav-id="/vehicle_signal_specification/rule_set/includes/index.html" class=""><a class="padding" href="/vehicle_signal_specification/rule_set/includes/index.html">Includes</a></li></ul></li>
+          <li data-nav-id="/vehicle_signal_specification/policies/index.html" class="parent "><a class="padding" href="/vehicle_signal_specification/policies/index.html">VSS Design Policy</a><ul id="R-subsections-305615410f40802ad71dde0994916cc5" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/policies/unit_datatype/index.html" class=""><a class="padding" href="/vehicle_signal_specification/policies/unit_datatype/index.html">Unit and Datatype Policy</a></li>
+          <li data-nav-id="/vehicle_signal_specification/policies/description_review_skill/index.html" class="active"><a class="padding" href="/vehicle_signal_specification/policies/description_review_skill/index.html">Description Review Skill</a></li></ul></li>
+          <li data-nav-id="/vehicle_signal_specification/catalog/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/index.html">VSS Standard Catalog</a><ul id="R-subsections-665f6cae1c56b0dcfe0d69bfe3f4be93" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/catalog/energy_management/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/energy_management/index.html">Energy Management</a></li>
+          <li data-nav-id="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html" class=""><a class="padding" href="/vehicle_signal_specification/catalog/vehicle_motion_management/index.html">Vehicle Motion Management</a></li></ul></li>
+          <li data-nav-id="/vehicle_signal_specification/extensions/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/index.html">Extending and Customizing VSS</a><ul id="R-subsections-6bd9c98d69baa9a2d1581189a2aaf28a" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/extensions/overlay/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/overlay/index.html">VSS Overlay Mechanism</a></li>
+          <li data-nav-id="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/cybersecurity_profile/index.html">Cybersecurity Profile</a></li>
+          <li data-nav-id="/vehicle_signal_specification/extensions/network_serialization_profile/index.html" class=""><a class="padding" href="/vehicle_signal_specification/extensions/network_serialization_profile/index.html">Network Serialization Profile</a></li></ul></li>
+          <li data-nav-id="/vehicle_signal_specification/license/index.html" class=""><a class="padding" href="/vehicle_signal_specification/license/index.html">License</a></li>
+          <li data-nav-id="/vehicle_signal_specification/ecosystem/index.html" class=""><a class="padding" href="/vehicle_signal_specification/ecosystem/index.html">Ecosystem</a><ul id="R-subsections-30d29cf6aaa7fb1e0e056430337d3cd8" class="morespace collapsible-menu">
+          <li data-nav-id="/vehicle_signal_specification/ecosystem/tools/index.html" class=""><a class="padding" href="/vehicle_signal_specification/ecosystem/tools/index.html">Official VSS-Tools</a></li>
+          <li data-nav-id="/vehicle_signal_specification/ecosystem/standards/index.html" class=""><a class="padding" href="/vehicle_signal_specification/ecosystem/standards/index.html">Related Standards</a></li>
+          <li data-nav-id="/vehicle_signal_specification/ecosystem/software/index.html" class=""><a class="padding" href="/vehicle_signal_specification/ecosystem/software/index.html">Software &amp; Solutions</a></li></ul></li>
+          </ul>
+        </div>
+        <div id="R-shortcuts">
+          <div class="nav-title padding">More</div>
+          <ul class="space">
+            <li><a class="padding" href="https://github.com/covesa/vehicle_signal_specification"><i class='fab fa-github'></i> Github repo</a></li>
+            <li><a class="padding" href="https://github.com/covesa/vehicle_signal_specification/releases"><i class='fas fa-download'></i> Releases</a></li>
+          </ul>
+        </div>
+        <div class="padding footermargin footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter"></div>
+        <div id="R-menu-footer">
+          <hr class="padding default-animation footerLangSwitch footerVariantSwitch footerVisitedLinks footerFooter showFooter">
+          <div id="R-prefooter" class="footerLangSwitch footerVariantSwitch footerVisitedLinks">
+            <ul>
+              <li id="R-select-language-container" class="footerLangSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-language"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-language">Language</label>
+                    <select id="R-select-language" onchange="location = this.querySelector( this.value ).dataset.url;">
+                      <option id="R-select-language-en" value="#R-select-language-en" data-url="/vehicle_signal_specification/policies/description_review_skill/index.html" lang="en-us" selected></option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+              <li id="R-select-variant-container" class="footerVariantSwitch">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-paint-brush"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <label class="a11y-only" for="R-select-variant">Theme</label>
+                    <select id="R-select-variant" onchange="window.variants && variants.changeVariant( this.value );">
+                      <option id="R-select-variant-blue" value="blue" selected>Blue</option>
+                    </select>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+                <script>window.variants && variants.markSelectedVariant();</script>
+              </li>
+              <li class="footerVisitedLinks">
+                <div class="padding menu-control">
+                  <i class="fa-fw fas fa-history"></i>
+                  <span>&nbsp;</span>
+                  <div class="control-style">
+                    <button onclick="clearHistory();">Clear History</button>
+                  </div>
+                  <div class="clear"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="R-footer" class="footerFooter showFooter"><center>
+    
+    <a class="github-button" href="https://github.com/covesa/vehicle_signal_specification/archive/master.zip" data-icon="octicon-cloud-download" aria-label="Download covesa/vehicle_signal_specification on GitHub">Download</a>
+
+    
+    <a class="github-button" href="https://github.com/covesa/vehicle_signal_specification" data-icon="octicon-star" data-show-count="true" aria-label="Star covesa/vehicle_signal_specification on GitHub">Star</a>
+
+    
+    <a class="github-button" href="https://github.com/covesa/vehicle_signal_specification/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork matcornic/hugo-theme-learn on GitHub">Fork</a>
+
+    Latest Released Version: 6.1
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+          </div>
+        </div>
+      </div>
+    </aside>
+    <script src="/vehicle_signal_specification/js/clipboard.min.js?1793092862" defer></script>
+    <script src="/vehicle_signal_specification/js/perfect-scrollbar.min.js?1793092862" defer></script>
+    <script src="/vehicle_signal_specification/js/theme.js?1793092862" defer></script>
+  </body>
+</html>
