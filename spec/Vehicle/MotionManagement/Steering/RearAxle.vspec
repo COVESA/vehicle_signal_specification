@@ -8,7 +8,6 @@
 
 # See vehicle_motion_management.md for more info
 
-
 #########################################################################################
 # SteerAngle signals
 #########################################################################################
@@ -17,20 +16,22 @@ SteerAngle:
   datatype: int16
   type: sensor
   unit: degrees
-  description: Represents the current actuated steering angle of the steered wheels on rear axle.
-               Signal orientation according ISO8855, single track model.
+  description:
+    Represents the current actuated steering angle of the steered wheels on rear axle.
+    Signal orientation according ISO8855, single track model.
 
 SteerAngleTarget:
   datatype: int16
   type: actuator
   unit: degrees
-  description: Steer angle request to the rear axle steering actuator (external set-point).
-               Signal orientation according ISO8855, single track model.
+  description:
+    Steer angle request to the rear axle steering actuator (external set-point).
+    Signal orientation according ISO8855, single track model.
 
 SteerAngleVelocityTarget:
   datatype: int16
   type: actuator
   unit: degrees/s
   description: Requested velocity for steer angle change.
-               Signal orientation according ISO8855.
-               Optional signal to adapt rear wheel steering closed loop control gain.
+    Signal orientation according ISO8855.
+    Optional signal to adapt rear wheel steering closed loop control gain.

@@ -25,24 +25,27 @@ PM1:
   type: sensor
   unit: ug/m^3
   min: 0
-  description: Mass concentration of particulate matter with aerodynamic diameter
-               of 1 micrometer or less (PM1.0).
+  description:
+    Mass concentration of particulate matter with aerodynamic diameter
+    of 1 micrometer or less (PM1.0).
 
 PM25:
   datatype: float
   type: sensor
   unit: ug/m^3
   min: 0
-  description: Mass concentration of particulate matter with aerodynamic diameter
-               of 2.5 micrometers or less (PM2.5).
+  description:
+    Mass concentration of particulate matter with aerodynamic diameter
+    of 2.5 micrometers or less (PM2.5).
 
 PM10:
   datatype: float
   type: sensor
   unit: ug/m^3
   min: 0
-  description: Mass concentration of particulate matter with aerodynamic diameter
-               of 10 micrometers or less (PM10).
+  description:
+    Mass concentration of particulate matter with aerodynamic diameter
+    of 10 micrometers or less (PM10).
 
 CO2:
   datatype: float
@@ -50,9 +53,10 @@ CO2:
   unit: ppm
   min: 0
   description: Carbon dioxide (CO2) concentration.
-  comment: If the sensor reports an estimated CO2 level (eCO2/CO2eq) derived from
-           other gas measurements rather than a direct CO2 measurement, the
-           estimated value may be reported here.
+  comment:
+    If the sensor reports an estimated CO2 level (eCO2/CO2eq) derived from
+    other gas measurements rather than a direct CO2 measurement, the
+    estimated value may be reported here.
 
 NO2:
   datatype: float

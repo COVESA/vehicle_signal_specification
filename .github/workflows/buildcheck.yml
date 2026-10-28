@@ -22,6 +22,9 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: check vspec format
+        run: npx prettier --check spec --parser yaml
+
       - name: Install vss-tools dependencies
         run: |
           python -V

@@ -6,7 +6,6 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-
 #
 # Definition of a single door. Start position for Door is Closed.
 #
@@ -29,8 +28,9 @@ Window:
 IsChildLockActive:
   datatype: boolean
   type: sensor
-  description: Is door child lock active. True = Door cannot be opened from inside.
-               False = Door can be opened from inside.
+  description:
+    Is door child lock active. True = Door cannot be opened from inside.
+    False = Door can be opened from inside.
 
 #
 # Window shade / curtain status
@@ -38,7 +38,7 @@ IsChildLockActive:
 Shade:
   type: branch
   description: Side window shade. Open = Retracted, Closed = Deployed.
-               Start position for Shade is Open/Retracted.
+    Start position for Shade is Open/Retracted.
 
 # Include the standard shade definition used by sunroof
 # and rear shade.

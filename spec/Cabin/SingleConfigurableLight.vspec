@@ -6,7 +6,6 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-
 #
 # Generic specification for a light whose color and brightness can be configured.
 #

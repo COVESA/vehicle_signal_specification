@@ -14,8 +14,8 @@ Suspension:
 Suspension.Axles:
   type: branch
   instances:
-    - ["Front","Rear"]
-    - ["Left","Right"]
+    - ["Front", "Rear"]
+    - ["Left", "Right"]
   description: Vehicle axles suspension data.
 
 Suspension.Axles.BellowPressure:

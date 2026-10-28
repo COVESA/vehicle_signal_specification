@@ -31,12 +31,7 @@ IsSubmersed:
 Rollover:
   datatype: string
   type: sensor
-  allowed: [
-    'UNKNOWN',
-    'NONE',
-    'RISK',
-    'DETECTED'
-  ]
+  allowed: ["UNKNOWN", "NONE", "RISK", "DETECTED"]
   description: Indicates whether the vehicle has rolled over or is at risk of rollover.
   comment: >
     May be derived from Vehicle.AngularVelocity, Vehicle.Orientation.Roll,
@@ -52,12 +47,7 @@ Rollover:
 VisibilityImpairment:
   datatype: string
   type: sensor
-  allowed: [
-    'UNKNOWN',
-    'NONE',
-    'RISK',
-    'DETECTED'
-  ]
+  allowed: ["UNKNOWN", "NONE", "RISK", "DETECTED"]
   description: Indicates whether reduced exterior visibility is currently creating a driving-safety risk, or such a condition has been detected.
   comment: >
     Derived safety assessment layered on the Exterior observational signals
@@ -83,12 +73,7 @@ VisibilityImpairment:
 RoadIcingState:
   datatype: string
   type: sensor
-  allowed: [
-    'UNKNOWN',
-    'NONE',
-    'RISK',
-    'DETECTED'
-  ]
+  allowed: ["UNKNOWN", "NONE", "RISK", "DETECTED"]
   description: Indicates whether the vehicle is currently at risk of icing-related loss of control or has detected such conditions affecting traction.
   comment: >
     Derived assessment distinct from Vehicle.Exterior.RoadSurfaceCondition,

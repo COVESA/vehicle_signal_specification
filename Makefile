@@ -83,6 +83,9 @@ yaml:
 
 # Other
 
+format:
+	npx prettier --write spec --parser yaml
+
 # Verifies that supported overlay combinations are syntactically correct.
 overlays:
 	vspec export json ${COMMON_ARGS} -l overlays/profiles/motorbike.vspec ${COMMON_VSPEC_ARG} -o vss_motorbike.json

@@ -26,7 +26,7 @@
 OccupancyStatus:
   datatype: string
   type: sensor
-  allowed: ['UNKNOWN', 'OCCUPIED', 'EMPTY']
+  allowed: ["UNKNOWN", "OCCUPIED", "EMPTY"]
   description: Occupancy status of the seat.
 
 IsBelted:
@@ -39,8 +39,8 @@ SeatBeltHeight:
   type: actuator
   unit: mm
   description: Seat belt position on vehicle z-axis.
-               Position is relative within available movable range of the seat belt.
-               0 = Lowermost position supported.
+    Position is relative within available movable range of the seat belt.
+    0 = Lowermost position supported.
 
 #include include/ItemHeatingCooling.vspec
 
@@ -55,28 +55,30 @@ Position:
   type: actuator
   min: 0
   unit: mm
-  description: Seat position on vehicle x-axis. Position is relative to the frontmost position supported by the seat.
-               0 = Frontmost position supported.
-
+  description:
+    Seat position on vehicle x-axis. Position is relative to the frontmost position supported by the seat.
+    0 = Frontmost position supported.
 
 Height:
   datatype: uint16
   type: actuator
   min: 0
   unit: mm
-  description: Seat position on vehicle z-axis. Position is relative within available movable range of the seating.
-               0 = Lowermost position supported.
+  description:
+    Seat position on vehicle z-axis. Position is relative within available movable range of the seating.
+    0 = Lowermost position supported.
 
 Tilt:
   datatype: float
   type: actuator
   unit: degrees
-  description: Tilting of seat (seating and backrest) relative to vehicle x-axis.
-               0 = seat bottom is flat, seat bottom and vehicle x-axis are parallel.
-               Positive degrees = seat tilted backwards, seat x-axis tilted upward, seat z-axis is tilted backward.
-  comment: In VSS it is assumed that tilting a seat affects both seating (seat bottom) and backrest, i.e. the angle
-           between seating and backrest will not be affected when changing Tilt.
-
+  description:
+    Tilting of seat (seating and backrest) relative to vehicle x-axis.
+    0 = seat bottom is flat, seat bottom and vehicle x-axis are parallel.
+    Positive degrees = seat tilted backwards, seat x-axis tilted upward, seat z-axis is tilted backward.
+  comment:
+    In VSS it is assumed that tilting a seat affects both seating (seat bottom) and backrest, i.e. the angle
+    between seating and backrest will not be affected when changing Tilt.
 
 Backrest:
   type: branch
@@ -89,13 +91,12 @@ Backrest.Recline:
   type: actuator
   unit: degrees
   description: Backrest recline compared to seat z-axis (seat vertical axis).
-               0 degrees = Upright/Vertical backrest.
-               Negative degrees for forward recline. Positive degrees for backward recline.
-  comment:     Seat z-axis depends on seat tilt. This means that movement of backrest due to seat tilting will not
-               affect Backrest.Recline as long as the angle between Seating and Backrest are constant.
-               Absolute recline relative to vehicle z-axis can be calculated as Tilt + Backrest.Recline.
-
-
+    0 degrees = Upright/Vertical backrest.
+    Negative degrees for forward recline. Positive degrees for backward recline.
+  comment:
+    Seat z-axis depends on seat tilt. This means that movement of backrest due to seat tilting will not
+    affect Backrest.Recline as long as the angle between Seating and Backrest are constant.
+    Absolute recline relative to vehicle z-axis can be calculated as Tilt + Backrest.Recline.
 
 Backrest.LumbarSupport:
   datatype: float
@@ -135,8 +136,9 @@ Backrest.LumbarHeight:
   type: actuator
   min: 0
   unit: mm
-  description: Height of lumbar support. Position is relative within available movable range of the lumbar support.
-               0 = Lowermost position supported.
+  description:
+    Height of lumbar support. Position is relative within available movable range of the lumbar support.
+    0 = Lowermost position supported.
 
 Backrest.SideBolsterSupport:
   datatype: float
@@ -144,8 +146,9 @@ Backrest.SideBolsterSupport:
   unit: percent
   min: 0
   max: 100
-  description: Side bolster support. 0 = Minimum support (widest side bolster setting).
-               100 = Maximum support.
+  description:
+    Side bolster support. 0 = Minimum support (widest side bolster setting).
+    100 = Maximum support.
 
 Backrest.SideBolsterSupportLeft:
   datatype: float
@@ -153,8 +156,9 @@ Backrest.SideBolsterSupportLeft:
   unit: percent
   min: 0
   max: 100
-  description: Side bolster support left. 0 = Minimum support (widest side bolster setting).
-               100 = Maximum support.
+  description:
+    Side bolster support left. 0 = Minimum support (widest side bolster setting).
+    100 = Maximum support.
 
 Backrest.SideBolsterSupportRight:
   datatype: float
@@ -162,8 +166,9 @@ Backrest.SideBolsterSupportRight:
   unit: percent
   min: 0
   max: 100
-  description: Side bolster support right. 0 = Minimum support (widest side bolster setting).
-               100 = Maximum support.
+  description:
+    Side bolster support right. 0 = Minimum support (widest side bolster setting).
+    100 = Maximum support.
 
 Backrest.UpperShoulderSupport:
   datatype: float
@@ -171,14 +176,16 @@ Backrest.UpperShoulderSupport:
   unit: percent
   min: 0
   max: 100
-  description: Upper shoulder support. 0 = Minimum support (widest side bolster setting).
-               100 = Maximum support.
+  description:
+    Upper shoulder support. 0 = Minimum support (widest side bolster setting).
+    100 = Maximum support.
 
 Seating:
   type: branch
   description: Describes signals related to the seat bottom of the seat.
-  comment: Seating is here considered as the part of the seat that supports the thighs.
-           Additional cushions (if any) for support of lower legs is not covered by this branch.
+  comment:
+    Seating is here considered as the part of the seat that supports the thighs.
+    Additional cushions (if any) for support of lower legs is not covered by this branch.
 
 #include include/ItemHeatingCooling.vspec Seating
 
@@ -187,8 +194,9 @@ Seating.Length:
   type: actuator
   min: 0
   unit: mm
-  description: Length adjustment of seating. 0 = Adjustable part of seating in rearmost position
-               (Shortest length of seating).
+  description:
+    Length adjustment of seating. 0 = Adjustable part of seating in rearmost position
+    (Shortest length of seating).
 
 Seating.SideBolsterSupportRight:
   datatype: float
@@ -196,8 +204,9 @@ Seating.SideBolsterSupportRight:
   unit: percent
   min: 0
   max: 100
-  description: Seat bottom side bolster support right. 0 = Minimum support (widest side bolster setting).
-               100 = Maximum support.
+  description:
+    Seat bottom side bolster support right. 0 = Minimum support (widest side bolster setting).
+    100 = Maximum support.
 
 Seating.SideBolsterSupportLeft:
   datatype: float
@@ -205,8 +214,9 @@ Seating.SideBolsterSupportLeft:
   unit: percent
   min: 0
   max: 100
-  description: Seat bottom side bolster support left. 0 = Minimum support (widest side bolster setting).
-               100 = Maximum support.
+  description:
+    Seat bottom side bolster support left. 0 = Minimum support (widest side bolster setting).
+    100 = Maximum support.
 
 Headrest:
   type: branch
@@ -223,8 +233,9 @@ Headrest.Angle:
   datatype: float
   type: actuator
   unit: degrees
-  description: Headrest angle, relative to backrest, 0 degrees if parallel to backrest,
-               Positive degrees = tilted forward.
+  description:
+    Headrest angle, relative to backrest, 0 degrees if parallel to backrest,
+    Positive degrees = tilted forward.
 
 Airbag:
   type: branch
@@ -248,7 +259,6 @@ NeckScarf:
 
 #include include/ItemFanSpeed.vspec NeckScarf
 
-
 #---------------------- SWITCHES ----------------------
 
 IsWarmerSwitchEngaged:
@@ -268,7 +278,6 @@ IsForwardSwitchEngaged:
   type: actuator
   description: Seat forward switch engaged.
   comment: Affects the property (Position).
-
 
 IsBackwardSwitchEngaged:
   datatype: boolean
@@ -330,7 +339,6 @@ Backrest.IsLumbarUpSwitchEngaged:
   description: Lumbar up switch engaged.
   comment: Affects the property (Backrest.LumbarSupport).
 
-
 Backrest.IsLumbarDownSwitchEngaged:
   datatype: boolean
   type: actuator
@@ -353,7 +361,6 @@ Seating.IsForwardSwitchEngaged:
   datatype: boolean
   type: actuator
   description: Is switch to increase seating length engaged.
-
 
 Seating.IsBackwardSwitchEngaged:
   datatype: boolean

@@ -16,7 +16,16 @@ Media:
 Media.Action:
   datatype: string
   type: actuator
-  allowed: ['UNKNOWN', 'STOP', 'PLAY', 'FAST_FORWARD', 'FAST_BACKWARD', 'SKIP_FORWARD', 'SKIP_BACKWARD']
+  allowed:
+    [
+      "UNKNOWN",
+      "STOP",
+      "PLAY",
+      "FAST_FORWARD",
+      "FAST_BACKWARD",
+      "SKIP_FORWARD",
+      "SKIP_BACKWARD",
+    ]
   description: Tells if the media was
 
 Media.Played:
@@ -26,7 +35,24 @@ Media.Played:
 Media.Played.Source:
   datatype: string
   type: actuator
-  allowed: ['UNKNOWN', 'SIRIUS_XM', 'AM', 'FM', 'DAB', 'TV', 'CD', 'DVD', 'AUX', 'USB', 'DISK', 'BLUETOOTH', 'INTERNET', 'VOICE', 'BEEP']
+  allowed:
+    [
+      "UNKNOWN",
+      "SIRIUS_XM",
+      "AM",
+      "FM",
+      "DAB",
+      "TV",
+      "CD",
+      "DVD",
+      "AUX",
+      "USB",
+      "DISK",
+      "BLUETOOTH",
+      "INTERNET",
+      "VOICE",
+      "BEEP",
+    ]
   description: Media selected for playback
 
 Media.Played.Genre:
@@ -58,9 +84,10 @@ Media.Played.PlaybackRate:
   datatype: float
   type: actuator
   description: Current playback rate of media being played.
-  comment: The normal playback rate is multiplied by this value to obtain the current rate, so a value of 1.0 indicates normal speed.
-           Values of lower than 1.0 make the media play slower than normal.
-           Values of higher than 1.0 make the media play faster than normal.
+  comment:
+    The normal playback rate is multiplied by this value to obtain the current rate, so a value of 1.0 indicates normal speed.
+    Values of lower than 1.0 make the media play slower than normal.
+    Values of higher than 1.0 make the media play faster than normal.
 
 Media.DeclinedURI:
   datatype: string
@@ -84,12 +111,11 @@ Navigation:
   type: branch
   description: All navigation actions
 
-
 Navigation.IsDestinationReached:
   datatype: boolean
   type: sensor
   description: Indicates if destination has been reached.
-               Shall be set to False is navigation is active and destination has not been reached.
+    Shall be set to False is navigation is active and destination has not been reached.
 
 Navigation.DestinationSet:
   type: branch
@@ -114,7 +140,7 @@ Navigation.DestinationSet.Longitude:
 Navigation.Mute:
   datatype: string
   type: actuator
-  allowed: ['MUTED', 'ALERT_ONLY', 'UNMUTED']
+  allowed: ["MUTED", "ALERT_ONLY", "UNMUTED"]
   description: Navigation mute state that was selected.
 
 Navigation.Volume:
@@ -128,7 +154,7 @@ Navigation.Volume:
 Navigation.GuidanceVoice:
   datatype: string
   type: actuator
-  allowed: ['STANDARD_MALE', 'STANDARD_FEMALE', 'ETC']
+  allowed: ["STANDARD_MALE", "STANDARD_FEMALE", "ETC"]
   description: Navigation guidance state that was selected.
   comment: ETC indicates a voice alternative not covered by the explicitly listed alternatives.
 
@@ -141,7 +167,7 @@ Navigation.Map.IsAutoScaleModeUsed:
   type: actuator
   description: Used to select auto-scaling mode. This feature dynamically adjusts the zoom level of the map to provide an optimal view based on the current speed of the vehicle
   comment: If true, then auto-scaling mode is used.
-           If false, then manual-scaling mode is used.
+    If false, then manual-scaling mode is used.
 
 HMI:
   type: branch
@@ -155,70 +181,94 @@ HMI.CurrentLanguage:
 HMI.FontSize:
   datatype: string
   type: actuator
-  allowed: ['STANDARD', 'LARGE', 'EXTRA_LARGE']
+  allowed: ["STANDARD", "LARGE", "EXTRA_LARGE"]
   description: Font size used in the current HMI
 
 HMI.DateFormat:
   datatype: string
   type: actuator
-  allowed: ['YYYY_MM_DD', 'DD_MM_YYYY', 'MM_DD_YYYY', 'YY_MM_DD', 'DD_MM_YY', 'MM_DD_YY']
+  allowed:
+    [
+      "YYYY_MM_DD",
+      "DD_MM_YYYY",
+      "MM_DD_YYYY",
+      "YY_MM_DD",
+      "DD_MM_YY",
+      "MM_DD_YY",
+    ]
   description: Date format used in the current HMI
 
 HMI.TimeFormat:
   datatype: string
   type: actuator
-  allowed: ['HR_12', 'HR_24']
+  allowed: ["HR_12", "HR_24"]
   description: Time format used in the current HMI
 
 HMI.DistanceUnit:
   datatype: string
   type: actuator
-  allowed: ['MILES', 'KILOMETERS']
+  allowed: ["MILES", "KILOMETERS"]
   description: Distance unit used in the current HMI
 
 HMI.FuelVolumeUnit:
   datatype: string
   type: actuator
-  allowed: ['LITER', 'GALLON_US', 'GALLON_UK']
+  allowed: ["LITER", "GALLON_US", "GALLON_UK"]
   description: Fuel volume unit used in the current HMI
 
 HMI.FuelEconomyUnits:
   datatype: string
   type: actuator
-  allowed: ['MPG_UK', 'MPG_US', 'MILES_PER_LITER', 'KILOMETERS_PER_LITER', 'LITERS_PER_100_KILOMETERS']
+  allowed:
+    [
+      "MPG_UK",
+      "MPG_US",
+      "MILES_PER_LITER",
+      "KILOMETERS_PER_LITER",
+      "LITERS_PER_100_KILOMETERS",
+    ]
   description: Fuel economy unit used in the current HMI
 
 HMI.EVEconomyUnits:
   datatype: string
   type: actuator
-  allowed: ['MILES_PER_KILOWATT_HOUR', 'KILOMETERS_PER_KILOWATT_HOUR', 'KILOWATT_HOURS_PER_100_MILES', 'KILOWATT_HOURS_PER_100_KILOMETERS', 'WATT_HOURS_PER_MILE', 'WATT_HOURS_PER_KILOMETER']
+  allowed:
+    [
+      "MILES_PER_KILOWATT_HOUR",
+      "KILOMETERS_PER_KILOWATT_HOUR",
+      "KILOWATT_HOURS_PER_100_MILES",
+      "KILOWATT_HOURS_PER_100_KILOMETERS",
+      "WATT_HOURS_PER_MILE",
+      "WATT_HOURS_PER_KILOMETER",
+    ]
   description: EV fuel economy unit used in the current HMI
 
 HMI.TemperatureUnit:
   datatype: string
   type: actuator
-  allowed: ['C', 'F']
+  allowed: ["C", "F"]
   description: Temperature unit used in the current HMI
 
 HMI.TirePressureUnit:
   datatype: string
   type: actuator
-  allowed: ['PSI', 'KPA', 'BAR']
+  allowed: ["PSI", "KPA", "BAR"]
   description: Tire pressure unit used in the current HMI
 
 HMI.SpeedUnit:
   datatype: string
   type: actuator
-  allowed: ['METERS_PER_SECOND', 'MILES_PER_HOUR', 'KILOMETERS_PER_HOUR']
+  allowed: ["METERS_PER_SECOND", "MILES_PER_HOUR", "KILOMETERS_PER_HOUR"]
   description: Speed unit used in the current HMI
 
 HMI.EVEnergyUnits:
   datatype: string
   type: actuator
-  allowed: ['WATT_HOURS','AMPERE_HOURS', 'KILOWATT_HOURS']
+  allowed: ["WATT_HOURS", "AMPERE_HOURS", "KILOWATT_HOURS"]
   description: EV energy unit used in the current HMI
-  comment: Ampere hours is by definition not an energy unit, but can be used as a measurement of energy
-           if the voltage, like nominal voltage of the battery, is known.
+  comment:
+    Ampere hours is by definition not an energy unit, but can be used as a measurement of energy
+    if the voltage, like nominal voltage of the battery, is known.
 
 HMI.Brightness:
   datatype: float
@@ -227,15 +277,15 @@ HMI.Brightness:
   min: 0
   max: 100
   description: Brightness of the HMI, relative to supported range.
-               0 = Lowest brightness possible.
-               100 = Maximum Brightness possible.
+    0 = Lowest brightness possible.
+    100 = Maximum Brightness possible.
   comment: The value 0 does not necessarily correspond to a turned off HMI,
-           as it may not be allowed/supported to turn off the HMI completely.
+    as it may not be allowed/supported to turn off the HMI completely.
 
 HMI.DayNightMode:
   datatype: string
   type: actuator
-  allowed: ['DAY', 'NIGHT']
+  allowed: ["DAY", "NIGHT"]
   description: Current display theme
 
 HMI.IsScreenAlwaysOn:
@@ -264,21 +314,21 @@ SmartphoneProjection:
 SmartphoneProjection.Active:
   datatype: string
   type: actuator
-  allowed: [ 'NONE', 'ACTIVE',  'INACTIVE' ]
+  allowed: ["NONE", "ACTIVE", "INACTIVE"]
   description: Projection activation info.
   comment: NONE indicates that projection is not supported.
 
 SmartphoneProjection.Source:
   datatype: string
   type: actuator
-  allowed: ['USB', 'BLUETOOTH', 'WIFI']
+  allowed: ["USB", "BLUETOOTH", "WIFI"]
   description: Connectivity source selected for projection.
   comment: Smartphone projection exposes or controls specific applications on the Smartphone on the vehicle infotainment system.
 
 SmartphoneProjection.SupportedMode:
   datatype: string[]
   type: attribute
-  allowed: [ 'ANDROID_AUTO', 'APPLE_CARPLAY', 'MIRROR_LINK', 'OTHER' ]
+  allowed: ["ANDROID_AUTO", "APPLE_CARPLAY", "MIRROR_LINK", "OTHER"]
   description: Supportable list for projection.
 
 SmartphoneScreenMirroring:
@@ -289,14 +339,14 @@ SmartphoneScreenMirroring:
 SmartphoneScreenMirroring.Active:
   datatype: string
   type: actuator
-  allowed: [ 'NONE', 'ACTIVE', 'INACTIVE' ]
+  allowed: ["NONE", "ACTIVE", "INACTIVE"]
   description: Mirroring activation info.
   comment: NONE indicates that mirroring is not supported.
 
 SmartphoneScreenMirroring.Source:
   datatype: string
   type: actuator
-  allowed: ['USB', 'BLUETOOTH', 'WIFI']
+  allowed: ["USB", "BLUETOOTH", "WIFI"]
   description: Connectivity source selected for mirroring.
 
 #include include/PowerOptimize.vspec

@@ -14,7 +14,7 @@ VehicleForceMaximum:
   unit: N
   max: 0
   description: Maximum longitudinal brake force request (FxWhlSum).
-               Sum of all tyre longitudinal forces. Brake Force < 0N.
+    Sum of all tyre longitudinal forces. Brake Force < 0N.
 
 VehicleForceElectricMinimumArbitrated:
   type: sensor
@@ -37,9 +37,9 @@ VehicleForceDistributionFrontMaximum:
   min: 0
   max: 100
   description: Maximum distribution range request of FxWhlSum to front axle.
-               0% = Complete longitudinal brake force shall be shifted to rear axle.
-               50% = At most 50% shall be shifted to front axle.
-               100%  = Complete longitudinal brake force may be shifted to front axle.
+    0% = Complete longitudinal brake force shall be shifted to rear axle.
+    50% = At most 50% shall be shifted to front axle.
+    100%  = Complete longitudinal brake force may be shifted to front axle.
 
 VehicleForceDistributionFrontMinimum:
   type: actuator
@@ -48,9 +48,9 @@ VehicleForceDistributionFrontMinimum:
   min: 0
   max: 100
   description: Minimum distribution range request of FxWhlSum to front axle.
-               0% = Complete longitudinal brake force may be shifted to rear axle.
-               50% = At least 50% shall be shifted to front axle.
-               100% = Complete longitudinal brake force shall be shifted to front axle.
+    0% = Complete longitudinal brake force may be shifted to rear axle.
+    50% = At least 50% shall be shifted to front axle.
+    100% = Complete longitudinal brake force shall be shifted to front axle.
 
 Axle:
   type: branch

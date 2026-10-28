@@ -16,7 +16,7 @@
 RearShade:
   type: branch
   description: Rear window shade. Open = Retracted, Closed = Deployed.
-               Start position for RearShade is Open/Retracted.
+    Start position for RearShade is Open/Retracted.
 
 # Include the same shade spec used for sunroof and side windows.
 #include ../include/MovableItem.vspec RearShade
@@ -44,7 +44,6 @@ Infotainment:
   type: branch
   description: Infotainment system.
 
-
 #include Infotainment.vspec Infotainment
 
 ##
@@ -68,13 +67,22 @@ Sunroof.Position:
 Sunroof.Switch:
   datatype: string
   type: actuator
-  allowed: ['INACTIVE', 'CLOSE', 'OPEN', 'ONE_SHOT_CLOSE', 'ONE_SHOT_OPEN', 'TILT_UP', 'TILT_DOWN']
+  allowed:
+    [
+      "INACTIVE",
+      "CLOSE",
+      "OPEN",
+      "ONE_SHOT_CLOSE",
+      "ONE_SHOT_OPEN",
+      "TILT_UP",
+      "TILT_DOWN",
+    ]
   description: Switch controlling sliding action such as window, sunroof, or shade.
 
 Sunroof.Shade:
   type: branch
   description: Sun roof shade status. Open = Retracted, Closed = Deployed.
-               Start position for Sunroof.Shade is Open/Retracted.
+    Start position for Sunroof.Shade is Open/Retracted.
 
 # Include shade specification also used by side and rear window.
 #include ../include/MovableItem.vspec Sunroof.Shade
@@ -93,7 +101,6 @@ RearviewMirror.DimmingLevel:
   max: 100
   description: Dimming level of rear-view mirror. 0 = Undimmed. 100 = Fully dimmed.
 
-
 ##
 # Interior lights signals and sensors
 ##
@@ -102,7 +109,6 @@ Light:
   description: Light that is part of the Cabin.
   comment: V4.0 branch renamed from "Lights" to "Light" to comply with singular naming of entities. Use SingleConfigurableLight.vspec to describe interior lights that can be configured.
 #include InteriorLights.vspec Light
-
 
 ##
 # Door signals and attributes
@@ -120,7 +126,7 @@ Door:
   type: branch
   instances:
     - Row[1,2]
-    - ["DriverSide","PassengerSide"]
+    - ["DriverSide", "PassengerSide"]
   description: All doors, including windows and switches.
 #include SingleDoor.vspec Door
 
@@ -131,13 +137,13 @@ DoorCount:
   default: 4
   description: Number of doors in vehicle.
 
-
 IsWindowChildLockEngaged:
   datatype: boolean
   type: actuator
   description: Is window child lock engaged. True = Engaged. False = Disengaged.
-  comment: Window child lock refers to the functionality to disable the move window button next to most windows,
-           so that they only can be operated by the driver.
+  comment:
+    Window child lock refers to the functionality to disable the move window button next to most windows,
+    so that they only can be operated by the driver.
 
 ##
 # Seat signals and attributes
@@ -154,7 +160,7 @@ Seat:
   type: branch
   instances:
     - Row[1,2]
-    - ["DriverSide","Middle","PassengerSide"]
+    - ["DriverSide", "Middle", "PassengerSide"]
   description: All seats.
 #include Seat.vspec Seat
 
@@ -164,7 +170,7 @@ Seat:
 DriverPosition:
   datatype: string
   type: attribute
-  allowed: ['LEFT', 'MIDDLE', 'RIGHT']
+  allowed: ["LEFT", "MIDDLE", "RIGHT"]
   description: The position of the driver seat in row 1.
   comment: Some signals use DriverSide and PassengerSide as instances. If this signal specifies that DriverPosition is LEFT or MIDDLE, then DriverSide refers to left side and PassengerSide to right side. If this signal specifies that DriverPosition is RIGHT, then DriverSide refers to right side and PassengerSide to left side.
 
@@ -174,7 +180,6 @@ SeatRowCount:
   default: 2
   description: Number of seat rows in vehicle.
   comment: Default value corresponds to two rows of seats.
-
 
 SeatPosCount:
   datatype: uint8[]
@@ -193,7 +198,7 @@ Convertible:
 Convertible.Status:
   datatype: string
   type: sensor
-  allowed: ['UNDEFINED', 'CLOSED', 'OPEN', 'CLOSING', 'OPENING', 'STALLED']
+  allowed: ["UNDEFINED", "CLOSED", "OPEN", "CLOSING", "OPENING", "STALLED"]
   description: Roof status on convertible vehicles.
 
 #include include/PowerOptimize.vspec

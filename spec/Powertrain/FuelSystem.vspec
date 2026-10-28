@@ -13,18 +13,35 @@
 SupportedFuelTypes:
   datatype: string[]
   type: attribute
-  allowed: ['GASOLINE', 'DIESEL', 'E85', 'LPG', 'CNG', 'LNG', 'H2', 'OTHER']
+  allowed: ["GASOLINE", "DIESEL", "E85", "LPG", "CNG", "LNG", "H2", "OTHER"]
   description: High level information of fuel types supported
   comment: If a vehicle also has an electric drivetrain (e.g. hybrid) that will be obvious from the PowerTrain.Type signal.
 
 SupportedFuel:
   datatype: string[]
   type: attribute
-  allowed: ['E5_95', 'E5_98', 'E10_95', 'E10_98', 'E85', 'B7', 'B10', 'B20', 'B30', 'B100',
-            'XTL', 'LPG', 'CNG', 'LNG', 'H2', 'OTHER']
+  allowed:
+    [
+      "E5_95",
+      "E5_98",
+      "E10_95",
+      "E10_98",
+      "E85",
+      "B7",
+      "B10",
+      "B20",
+      "B30",
+      "B100",
+      "XTL",
+      "LPG",
+      "CNG",
+      "LNG",
+      "H2",
+      "OTHER",
+    ]
   description: Detailed information on fuels supported by the vehicle.
-               Identifiers originating from DIN EN 16942:2021-08, appendix B,
-               with additional suffix for octane (RON) where relevant.
+    Identifiers originating from DIN EN 16942:2021-08, appendix B,
+    with additional suffix for octane (RON) where relevant.
   comment: RON 95 is sometimes referred to as Super, RON 98 as Super Plus.
 
 # SHOULD be synced with the supported fuel types above!!!
@@ -32,46 +49,47 @@ CurrentFuelTypeUsed:
   datatype: uint8
   type: sensor
   enum:
-    'NONE': 0
-    'GAS': 1
-    'METH': 2
-    'ETH': 3
-    'DSL': 4
-    'LPG': 5
-    'CNG': 6
-    'PROP': 7
-    'ELEC': 8
-    'BI_GAS': 9
-    'BI_METH': 10
-    'BI_ETH': 11
-    'BI_LPG': 12
-    'BI_CNG': 13
-    'BI_PROP': 14
-    'BI_ELEC': 15
-    'BI_MIX': 16
-    'HYB_GAS': 17
-    'HYB_ETH': 18
-    'HYB_DSL': 19
-    'HYB_ELEC': 20
-    'HYB_MIX': 21
-    'HYB_REG': 22
-    'NG': 23
-    'BI_NG': 24
-    'BI_DSL': 25
-    'NATURAL_GAS': 26
-    'DUAL_FUEL_DIESEL_CNG': 27
-    'DUAL_FUEL_DIESEL_LNG': 28
-    'FUEL_CELL_HYDROGEN': 29
-    'HYDROGEN_ICE': 30
-    'KEROSENE': 31
-    'HEAVY_FUEL_OIL': 32
+    "NONE": 0
+    "GAS": 1
+    "METH": 2
+    "ETH": 3
+    "DSL": 4
+    "LPG": 5
+    "CNG": 6
+    "PROP": 7
+    "ELEC": 8
+    "BI_GAS": 9
+    "BI_METH": 10
+    "BI_ETH": 11
+    "BI_LPG": 12
+    "BI_CNG": 13
+    "BI_PROP": 14
+    "BI_ELEC": 15
+    "BI_MIX": 16
+    "HYB_GAS": 17
+    "HYB_ETH": 18
+    "HYB_DSL": 19
+    "HYB_ELEC": 20
+    "HYB_MIX": 21
+    "HYB_REG": 22
+    "NG": 23
+    "BI_NG": 24
+    "BI_DSL": 25
+    "NATURAL_GAS": 26
+    "DUAL_FUEL_DIESEL_CNG": 27
+    "DUAL_FUEL_DIESEL_LNG": 28
+    "FUEL_CELL_HYDROGEN": 29
+    "HYDROGEN_ICE": 30
+    "KEROSENE": 31
+    "HEAVY_FUEL_OIL": 32
   description: Type of fuel currently being utilized by the vehicle according to the SAE J1939 message PGN FDC2, SPN 5837.
 
 HybridType:
   datatype: string
   type: attribute
-  allowed: ['UNKNOWN', 'NOT_APPLICABLE', 'STOP_START', 'BELT_ISG', 'CIMG', 'PHEV']
-  default: 'UNKNOWN'
+  allowed:
+    ["UNKNOWN", "NOT_APPLICABLE", "STOP_START", "BELT_ISG", "CIMG", "PHEV"]
+  default: "UNKNOWN"
   description: Defines the hybrid type of the vehicle.
 
 TankCapacity:
@@ -128,9 +146,10 @@ ConsumptionSinceStart:
   type: sensor
   unit: l
   description: Fuel amount in liters consumed since start of current trip.
-  comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
-           A trip is considered to end when engine is no longer enabled.
-           The signal may however keep the value of the last trip until a new trip is started.
+  comment:
+    A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+    A trip is considered to end when engine is no longer enabled.
+    The signal may however keep the value of the last trip until a new trip is started.
 
 ConsumptionSinceLastRefuel:
   datatype: float
@@ -152,14 +171,15 @@ HighResTotalConsumption:
   max: 4211081.215
   unit: l
   description: Accumulated amount of fuel used during vehicle operation.
-              High resolution used for calculations and fleet management systems.
+    High resolution used for calculations and fleet management systems.
 
 TotalConsumptionGaseous:
   datatype: double
   type: sensor
   unit: kg
-  description: Total fuel consumed (trip drive fuel + trip PTO governor moving fuel + trip PTO governor
-              non-moving fuel + trip idle fuel) over the life of the engine.
+  description:
+    Total fuel consumed (trip drive fuel + trip PTO governor moving fuel + trip PTO governor
+    non-moving fuel + trip idle fuel) over the life of the engine.
 
 FuelRate:
   datatype: float
@@ -183,9 +203,10 @@ IsFuelLevelEmpty:
   datatype: boolean
   type: sensor
   description: Indicates that the fuel gauge on the instrument cluster displays empty (0).
-  comment: When this signal is true, the fuel gauge displays empty (0), but the vehicle typically still has reserve fuel
-           allowing for some additional driving range depending on the vehicle design.
-           This represents the displayed empty state, not actual tank empty condition.
+  comment:
+    When this signal is true, the fuel gauge displays empty (0), but the vehicle typically still has reserve fuel
+    allowing for some additional driving range depending on the vehicle design.
+    This represents the displayed empty state, not actual tank empty condition.
 
 IsWaterInFuel:
   datatype: boolean
@@ -195,12 +216,23 @@ IsWaterInFuel:
 RefuelPortPosition:
   datatype: string[]
   type: attribute
-  allowed: ['FRONT_LEFT', 'FRONT_MIDDLE', 'FRONT_RIGHT',
-            'REAR_LEFT', 'REAR_MIDDLE', 'REAR_RIGHT',
-            'LEFT_FRONT', 'LEFT_MIDDLE', 'LEFT_REAR',
-            'RIGHT_FRONT', 'RIGHT_MIDDLE', 'RIGHT_REAR']
+  allowed:
+    [
+      "FRONT_LEFT",
+      "FRONT_MIDDLE",
+      "FRONT_RIGHT",
+      "REAR_LEFT",
+      "REAR_MIDDLE",
+      "REAR_RIGHT",
+      "LEFT_FRONT",
+      "LEFT_MIDDLE",
+      "LEFT_REAR",
+      "RIGHT_FRONT",
+      "RIGHT_MIDDLE",
+      "RIGHT_REAR",
+    ]
   description: Position of refuel port(s).
-               First part indicates side of vehicle, second part relative position on that side.
+    First part indicates side of vehicle, second part relative position on that side.
 
 IsFuelPortFlapOpen:
   datatype: boolean
@@ -213,47 +245,52 @@ InstantantFuelEconomy:
   type: sensor
   unit: km/l
   description: Real-time instantaneous fuel economy calculated over a short time window.
-  comment: This value represents the current fuel efficiency at any given moment during vehicle operation.
-           It is calculated based on the distance traveled and fuel consumed over a brief sampling period (typically around 500ms).
-           The calculation compares the vehicle state before and after the sampling window to determine instantaneous efficiency.
-           This metric refreshes frequently and can fluctuate significantly based on driving conditions, acceleration, and terrain.
-           Unlike average fuel economy measurements, this provides immediate feedback on current driving efficiency.
+  comment:
+    This value represents the current fuel efficiency at any given moment during vehicle operation.
+    It is calculated based on the distance traveled and fuel consumed over a brief sampling period (typically around 500ms).
+    The calculation compares the vehicle state before and after the sampling window to determine instantaneous efficiency.
+    This metric refreshes frequently and can fluctuate significantly based on driving conditions, acceleration, and terrain.
+    Unlike average fuel economy measurements, this provides immediate feedback on current driving efficiency.
 
 InstantFuelEconomy:
   datatype: float
   type: sensor
   unit: km/l
   description: Real-time instantaneous fuel economy calculated over a short time window.
-  comment: This value represents the current fuel efficiency at any given moment during vehicle operation.
-           It is calculated based on the distance traveled and fuel consumed over a brief sampling period (typically around 500ms).
-           The calculation compares the vehicle state before and after the sampling window to determine instantaneous efficiency.
-           This metric refreshes frequently and can fluctuate significantly based on driving conditions, acceleration, and terrain.
-           Unlike average fuel economy measurements, this provides immediate feedback on current driving efficiency.
+  comment:
+    This value represents the current fuel efficiency at any given moment during vehicle operation.
+    It is calculated based on the distance traveled and fuel consumed over a brief sampling period (typically around 500ms).
+    The calculation compares the vehicle state before and after the sampling window to determine instantaneous efficiency.
+    This metric refreshes frequently and can fluctuate significantly based on driving conditions, acceleration, and terrain.
+    Unlike average fuel economy measurements, this provides immediate feedback on current driving efficiency.
 
 CumulativeFuelEconomy:
   datatype: float
   type: sensor
   unit: km/l
   description: Cumulative average fuel economy calculated from vehicle start or last user reset.
-  comment: This represents the accumulated fuel economy over the entire period since the last reset.
-           Unlike trip-based measurements, this provides a long-term average of fuel efficiency.
+  comment:
+    This represents the accumulated fuel economy over the entire period since the last reset.
+    Unlike trip-based measurements, this provides a long-term average of fuel efficiency.
 
 DriveFuelEconomy:
   datatype: float
   type: sensor
   unit: km/l
   description: Average fuel economy for the current drive cycle, calculated from engine start to current time.
-  comment: This represents the fuel efficiency during the active driving session.
-           The value is reset when the engine is no longer enabled or when the user manually initiates a drive fuel economy reset.
-           After reset, it is recalculated from zero when the engine restarts or the new drive cycle begins.
-           It provides real-time average fuel economy for the ongoing drive cycle.
+  comment:
+    This represents the fuel efficiency during the active driving session.
+    The value is reset when the engine is no longer enabled or when the user manually initiates a drive fuel economy reset.
+    After reset, it is recalculated from zero when the engine restarts or the new drive cycle begins.
+    It provides real-time average fuel economy for the ongoing drive cycle.
 
 AfterRefuelingFuelEconomy:
   datatype: float
   type: sensor
   unit: km/l
   description: Average fuel economy calculated from the most recent refueling event to the current time.
-  comment: This value represents the fuel efficiency for the period between consecutive refueling events.
-           It is automatically reset to zero when refueling is detected and begins accumulating from that point.
-           The calculation continues until the next refueling occurs.
-           This metric is useful for tracking fuel efficiency improvements or changes between fill-ups.
+  comment:
+    This value represents the fuel efficiency for the period between consecutive refueling events.
+    It is automatically reset to zero when refueling is detected and begins accumulating from that point.
+    The calculation continues until the next refueling occurs.
+    This metric is useful for tracking fuel efficiency improvements or changes between fill-ups.

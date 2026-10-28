@@ -27,5 +27,5 @@ Temperature:
 AirDistribution:
   datatype: string
   type: actuator
-  allowed: ['UP', 'MIDDLE', 'DOWN']
+  allowed: ["UP", "MIDDLE", "DOWN"]
   description: Direction of airstream

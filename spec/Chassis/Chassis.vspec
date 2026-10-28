@@ -17,7 +17,6 @@ Wheelbase:
   unit: mm
   description: Overall wheelbase, in mm.
 
-
 #
 # Axle definition
 #
@@ -42,16 +41,18 @@ Axle.TreadWidth:
   datatype: uint16
   type: attribute
   unit: mm
-  description: The lateral distance between the centerlines of the base tires at ground, including camber angle.
-               If there are dual rear wheels, measure from the midway points between the inner and outer tires.
+  description:
+    The lateral distance between the centerlines of the base tires at ground, including camber angle.
+    If there are dual rear wheels, measure from the midway points between the inner and outer tires.
   comment: Corresponds to SAE J1100-2009 W101.
 
 Axle.TrackWidth:
   datatype: uint16
   type: attribute
   unit: mm
-  description: The lateral distance between the centers of the wheels, measured along the spindle, or axle axis.
-               If there are dual rear wheels, measure from the midway points between the inner and outer tires.
+  description:
+    The lateral distance between the centers of the wheels, measured along the spindle, or axle axis.
+    If there are dual rear wheels, measure from the midway points between the inner and outer tires.
   comment: Corresponds to SAE J1100-2009 W102.
 
 Axle.AxleWidth:
@@ -83,7 +84,7 @@ Axle.SteeringAngle:
   type: sensor
   unit: degrees
   description: Single track two-axle model steering angle.
-               Angle according to ISO 8855. Positive = degrees to the left. Negative = degrees to the right.
+    Angle according to ISO 8855. Positive = degrees to the left. Negative = degrees to the right.
   comment: Single track two-axle model steering angle refers to the angle that a centrally mounted wheel would have.
 
 Axle.Weight:
@@ -124,15 +125,16 @@ Axle.Torque:
   type: sensor
   unit: Nm
   description: Incoming axle torque to differential. Negative values indicate regen mode.
-  comment: For combustion engine this typically corresponds to the output torque of the multi-speed gearbox.
-           For electrical motor this typically corresponds to the output torque of the single-speed reduction-gear.
-           This signal is typically not used if there is separate electrical motors for left and right wheels.
+  comment:
+    For combustion engine this typically corresponds to the output torque of the multi-speed gearbox.
+    For electrical motor this typically corresponds to the output torque of the single-speed reduction-gear.
+    This signal is typically not used if there is separate electrical motors for left and right wheels.
 
 #
 # Wheels on Axles
 #
 Axle.Wheel:
-  instances: ["Left","Right"]
+  instances: ["Left", "Right"]
   type: branch
   description: Wheel signals for axle
 
@@ -200,7 +202,6 @@ Accelerator.PedalPosition:
   unit: percent
   description: Accelerator pedal position as percent. 0 = Not depressed. 100 = Fully depressed.
 
-
 #
 # Brake
 #
@@ -220,16 +221,17 @@ Brake.IsDriverEmergencyBrakingDetected:
   datatype: boolean
   type: sensor
   description: Indicates if emergency braking initiated by driver is detected.
-               True = Emergency braking detected. False = Emergency braking not detected.
+    True = Emergency braking detected. False = Emergency braking not detected.
   comment: Detection of emergency braking can trigger Emergency Brake Assist (EBA) to engage.
 
 Brake.IsBrakePedalPressed:
   datatype: boolean
   type: sensor
-  description: Switch signal which indicates that the driver operated brake foot pedal is being pressed.
-              This brake foot pedal is controlling the vehicles' service brake (total vehicle braking application, not park brakes).
-              It is necessary for safe drivetrain behaviour that the switch activates before the physical braking components are activated
-              (i.e. disengage the cruise control function prior to the activation of friction brakes).
+  description:
+    Switch signal which indicates that the driver operated brake foot pedal is being pressed.
+    This brake foot pedal is controlling the vehicles' service brake (total vehicle braking application, not park brakes).
+    It is necessary for safe drivetrain behaviour that the switch activates before the physical braking components are activated
+    (i.e. disengage the cruise control function prior to the activation of friction brakes).
 
 #include AirBrakeSystem.vspec Brake
 #include Retarder.vspec Brake

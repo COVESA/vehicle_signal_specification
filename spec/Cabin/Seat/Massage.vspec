@@ -6,7 +6,6 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-
 IsAvailable:
   datatype: boolean
   type: attribute
@@ -23,13 +22,13 @@ Level:
 Status:
   datatype: string
   type: sensor
-  allowed: ['ON', 'OFF']
+  allowed: ["ON", "OFF"]
   description: Massage status.
 
 SupportedTypes:
   datatype: string[]
   type: attribute
-  description:  Type of massage.
+  description: Type of massage.
   comment: OEMs may define a list of identifiers for supported massage types using the allowed keyword
 
 TypeActive:

@@ -15,8 +15,8 @@ DampingRateTarget:
   max: 100
   unit: percent
   description: Damping rate request at given wheel.
-               0% = lowest possible damping rate
-               100% = highest possible damping rate
+    0% = lowest possible damping rate
+    100% = highest possible damping rate
   comment: Alternative signal to DampingForceTarget.
 
 DampingRate:
@@ -26,8 +26,8 @@ DampingRate:
   max: 100
   unit: percent
   description: Actuated damping rate at given wheel.
-               0% = lowest possible damping rate
-               100% = highest possible damping rate
+    0% = lowest possible damping rate
+    100% = highest possible damping rate
   comment: Alternative signal to DampingForce.
 
 DampingForceTarget:
@@ -35,7 +35,7 @@ DampingForceTarget:
   datatype: int16
   unit: N
   description: Damping force request at given wheel.
-               Signal orientation according ISO8855, meaning positive force is pointing upwards.
+    Signal orientation according ISO8855, meaning positive force is pointing upwards.
   comment: Alternative signal to DampingRateTarget.
 
 DampingForce:
@@ -43,5 +43,5 @@ DampingForce:
   datatype: int16
   unit: N
   description: Actuated damping force at given wheel.
-               Signal orientation according ISO8855, meaning positive force is pointing upwards.
+    Signal orientation according ISO8855, meaning positive force is pointing upwards.
   comment: Alternative signal to DampingRate.
