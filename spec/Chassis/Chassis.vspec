@@ -23,8 +23,6 @@ Wheelbase:
 #
 #ATTENTION! The number of axles below is just an example and should be adjusted to the actual vehicle configuration!
 Axle:
-  instances:
-    - Row[1,2]
   type: branch
   description: Axle signals
 
@@ -132,7 +130,6 @@ Axle.Torque:
 # Wheels on Axles
 #
 Axle.Wheel:
-  instances: ["Left","Right"]
   type: branch
   description: Wheel signals for axle
 
