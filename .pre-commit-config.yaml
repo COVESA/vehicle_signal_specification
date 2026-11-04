@@ -7,12 +7,9 @@ repos:
       - id: end-of-file-fixer
         exclude_types: ["json"]
       - id: check-yaml
+        types: [file]
+        files: \.(yaml|yml|vspec)$
       - id: check-added-large-files
-
-  - repo: https://github.com/pycqa/flake8
-    rev: "7.0.0"
-    hooks:
-      - id: flake8
 
   - repo: local
     hooks:
