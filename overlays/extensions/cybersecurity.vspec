@@ -1,0 +1,89 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+# Example overlay: cybersecurity properties.
+#
+# ILLUSTRATIVE ONLY. The values below show the syntax of the cybersecurity
+# Cybersecurity Profile (docs-gen/content/extensions/cybersecurity_profile.md).
+# They are not recommendations, not ratings and not conformity evidence for
+# any vehicle. The same signal can need different protection in different
+# vehicles; real values come from the use case and the vehicle's own risk
+# assessment.
+#
+# Usage:
+#   vspec export json -s spec/VehicleSignalSpecification.vspec \
+#     -l overlays/extensions/cybersecurity.vspec \
+#     -e cybersecurity -o vss_cybersecurity.json
+
+Vehicle.Speed:
+  cybersecurity:
+    confidentiality: not_required
+    integrity: required
+    availability: required
+    extensions:
+      authenticity: required
+    impact_profiles: [safety, operational]
+
+Vehicle.Chassis.Brake.PedalPosition:
+  cybersecurity:
+    confidentiality: not_required
+    integrity: required
+    availability: required
+    extensions:
+      authenticity: required
+      timeliness: required
+    impact_profiles: [safety]
+
+Vehicle.Cabin.Door.Row1.DriverSide.IsLocked:
+  cybersecurity:
+    confidentiality: not_required
+    integrity: required
+    availability: required
+    extensions:
+      authenticity: required
+      non_repudiation: not_assessed
+      authorization: required
+      access_control: required
+    impact_profiles: [safety, financial]
+    sesip_sfrs:
+      - authenticated_access_control
+      - secure_communication_support
+      - secure_communication_enforcement
+
+Vehicle.CurrentLocation.Latitude:
+  cybersecurity:
+    confidentiality: required
+    integrity: required
+    availability: not_required
+    extensions:
+      privacy: required
+    impact_profiles: [privacy]
+
+Vehicle.VehicleIdentification.VIN:
+  cybersecurity:
+    confidentiality: required
+    integrity: required
+    availability: not_required
+    extensions:
+      privacy: required
+    impact_profiles: [privacy, financial]
+    sesip_sfrs: [secure_confidential_storage, residual_information_purging]
+
+Vehicle.Powertrain.TractionBattery.StateOfCharge.Current:
+  cybersecurity:
+    confidentiality: not_required
+    integrity: required
+    availability: required
+    impact_profiles: [operational]
+
+Vehicle.Cabin.Infotainment.Media.Volume:
+  cybersecurity:
+    confidentiality: not_required
+    integrity: not_assessed
+    availability: not_required
+    impact_profiles: []
