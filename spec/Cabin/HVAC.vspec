@@ -14,7 +14,7 @@ Station:
   type: branch
   instances:
     - Row[1,4]
-    - ["Driver","Passenger"]
+    - ["Driver", "Passenger"]
   description: HVAC for single station in the vehicle
 #include SingleHVACStation.vspec Station
 

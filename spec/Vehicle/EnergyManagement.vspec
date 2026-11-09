@@ -36,30 +36,32 @@ EnergyManagement.SetpointTimestamp:
   type: sensor
   unit: s
   description: Time vector for setpoints.
-               Time is relative to activation of feature or trip.
-               Number of elements expected to correspond with SetpointArraySize.
-
+    Time is relative to activation of feature or trip.
+    Number of elements expected to correspond with SetpointArraySize.
 
 EnergyManagement.SetpointBatteryTemperature:
   datatype: float[]
   type: sensor
   unit: Celsius
-  description: Desired average battery temperature at setpoints indicated by SetpointTimestamp.
-               Number of elements expected to correspond with SetpointArraySize.
+  description:
+    Desired average battery temperature at setpoints indicated by SetpointTimestamp.
+    Number of elements expected to correspond with SetpointArraySize.
 
 EnergyManagement.SetpointHeaterPower:
   datatype: float[]
   type: sensor
   unit: W
-  description: Desired heating power at setpoints indicated by SetpointTimestamp.
-               Number of elements expected to correspond with SetpointArraySize.
+  description:
+    Desired heating power at setpoints indicated by SetpointTimestamp.
+    Number of elements expected to correspond with SetpointArraySize.
 
 EnergyManagement.SetpointCoolantMassFlow:
   datatype: float[]
   type: sensor
   unit: kg/s
-  description: Desired coolant mass flow through battery at setpoints indicated by SetpointTimestamp.
-               Number of elements expected to correspond with SetpointArraySize..
+  description:
+    Desired coolant mass flow through battery at setpoints indicated by SetpointTimestamp.
+    Number of elements expected to correspond with SetpointArraySize..
 
 EnergyManagement.TargetArraySize:
   datatype: uint16
@@ -71,9 +73,10 @@ EnergyManagement.TargetTimestamp:
   datatype: uint32[]
   type: sensor
   unit: s
-  description: Timestamps indicating when it shall be checked if trip progress as expected.
-               Time is relative to activation of feature or trip.
-               Number of elements expected to correspond with TargetArraySize.
+  description:
+    Timestamps indicating when it shall be checked if trip progress as expected.
+    Time is relative to activation of feature or trip.
+    Number of elements expected to correspond with TargetArraySize.
 
 EnergyManagement.TargetLatitude:
   datatype: double[]
@@ -81,8 +84,9 @@ EnergyManagement.TargetLatitude:
   min: -90
   max: 90
   unit: degrees
-  description: Expected latitude in WGS 84 geodetic coordinates at timestamps indicated by TargetTimestamp.
-               Number of elements expected to correspond with TargetArraySize.
+  description:
+    Expected latitude in WGS 84 geodetic coordinates at timestamps indicated by TargetTimestamp.
+    Number of elements expected to correspond with TargetArraySize.
 
 EnergyManagement.TargetLongitude:
   datatype: double[]
@@ -90,5 +94,6 @@ EnergyManagement.TargetLongitude:
   min: -180
   max: 180
   unit: degrees
-  description: Expected longitude in WGS 84 geodetic coordinates at timestamps indicated by TargetTimestamp.
-               Number of elements expected to correspond with TargetArraySize.
+  description:
+    Expected longitude in WGS 84 geodetic coordinates at timestamps indicated by TargetTimestamp.
+    Number of elements expected to correspond with TargetArraySize.

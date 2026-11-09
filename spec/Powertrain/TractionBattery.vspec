@@ -16,7 +16,7 @@ Id:
   type: attribute
   description: Battery Identification Number as assigned by OEM.
   comment: This could be serial number, part number plus serial number, UUID,
-           or any other identifier that the OEM want to use to uniquely identify the battery individual.
+    or any other identifier that the OEM want to use to uniquely identify the battery individual.
 
 ProductionDate:
   datatype: string
@@ -28,22 +28,25 @@ ErrorCodes:
   datatype: string[]
   type: sensor
   description: Current error codes related to the battery, if any.
-  comment:     Error code format is not defined, it may be DTCs according to OBD II (SAE-J2012DA_201812)
-               standard ([P|C|B|U]XXXXX ) or any other format.
+  comment:
+    Error code format is not defined, it may be DTCs according to OBD II (SAE-J2012DA_201812)
+    standard ([P|C|B|U]XXXXX ) or any other format.
 
 IsPowerConnected:
   datatype: boolean
   type: sensor
   description: Indicating if the power (positive terminator) of the traction battery is connected to the powertrain.
-  comment: It might be possible to disconnect the traction battery used by an electric powertrain.
-           This is achieved by connectors, typically one for plus and one for minus.
+  comment:
+    It might be possible to disconnect the traction battery used by an electric powertrain.
+    This is achieved by connectors, typically one for plus and one for minus.
 
 IsGroundConnected:
   datatype: boolean
   type: sensor
   description: Indicating if the ground (negative terminator) of the traction battery is connected to the powertrain.
-  comment: It might be possible to disconnect the traction battery used by an electric powertrain.
-           This is achieved by connectors, typically one for plus and one for minus.
+  comment:
+    It might be possible to disconnect the traction battery used by an electric powertrain.
+    This is achieved by connectors, typically one for plus and one for minus.
 
 Temperature:
   type: branch
@@ -127,7 +130,7 @@ StateOfHealth:
   max: 100
   description: Calculated battery state of health at standard conditions.
   comment: Exact formula is implementation dependent.
-           Could be e.g. current capacity at 20 degrees Celsius divided with original capacity at the same temperature.
+    Could be e.g. current capacity at 20 degrees Celsius divided with original capacity at the same temperature.
 
 StateOfCharge:
   type: branch
@@ -139,8 +142,9 @@ StateOfCharge.Current:
   datatype: float
   min: 0
   max: 100.00
-  description: Physical state of charge of the high voltage battery, relative to net capacity.
-               This is not necessarily the state of charge being displayed to the customer.
+  description:
+    Physical state of charge of the high voltage battery, relative to net capacity.
+    This is not necessarily the state of charge being displayed to the customer.
 
 StateOfCharge.Displayed:
   type: sensor
@@ -161,14 +165,14 @@ ChargingState:
   datatype: uint8
   type: sensor
   enum:
-    'IDLE': 0
-    'CHARGING': 1
-    'STANDBY': 2
-    'INITIALISING': 10
-    'PRE_CHARGE': 11
-    'TERMINATING': 12
-    'BATTERY_FAILURE': 13
-    'EVSE_FAULT': 14
+    "IDLE": 0
+    "CHARGING": 1
+    "STANDBY": 2
+    "INITIALISING": 10
+    "PRE_CHARGE": 11
+    "TERMINATING": 12
+    "BATTERY_FAILURE": 13
+    "EVSE_FAULT": 14
   description: Overall State of the DC charging system according to SAE J1939 PGN FAB8, SPN 13171. The information is reported by the EVSE (Electric Vehicle Supply Equipment) beside status 0.
 
 NominalVoltage:
@@ -194,15 +198,17 @@ CurrentCurrent:
   datatype: float
   type: sensor
   unit: A
-  description: Current current flowing in/out of battery. Positive = Current flowing in to battery, e.g. during charging.
-               Negative = Current flowing out of battery, e.g. during driving.
+  description:
+    Current current flowing in/out of battery. Positive = Current flowing in to battery, e.g. during charging.
+    Negative = Current flowing out of battery, e.g. during driving.
 
 CurrentPower:
   datatype: float
   type: sensor
   unit: W
-  description: Current electrical energy flowing in/out of battery. Positive = Energy flowing in to battery, e.g. during charging.
-               Negative = Energy flowing out of battery, e.g. during driving.
+  description:
+    Current electrical energy flowing in/out of battery. Positive = Energy flowing in to battery, e.g. during charging.
+    Negative = Energy flowing out of battery, e.g. during driving.
 
 AccumulatedChargedEnergy:
   datatype: float
@@ -232,8 +238,9 @@ TotalEnergyThroughput:
   datatype: uint64
   type: sensor
   unit: Wh
-  description: The total energy throughput which has flowed through High Voltage Energy Storage System.
-              This parameter is the sum of the absolute values of the Energy into and out of this HVES instance.
+  description:
+    The total energy throughput which has flowed through High Voltage Energy Storage System.
+    This parameter is the sum of the absolute values of the Energy into and out of this HVES instance.
 
 PowerLoss:
   datatype: float
@@ -260,42 +267,52 @@ Charging:
 Charging.ChargingPort:
   type: branch
   instances:
-    - ["FrontLeft", "FrontMiddle", "FrontRight", "RearLeft", "RearMiddle", "RearRight", "AnyPosition"]
+    - [
+        "FrontLeft",
+        "FrontMiddle",
+        "FrontRight",
+        "RearLeft",
+        "RearMiddle",
+        "RearRight",
+        "AnyPosition",
+      ]
   description: Properties related to a particular charging port available in the vehicle.
   comment: If a vehicle has a single charging port, then use the instance AnyPosition.
 
 Charging.ChargingPort.SupportedInletTypes:
   datatype: string[]
   type: attribute
-  allowed: [
-    'IEC_TYPE_1_AC',
-    'IEC_TYPE_2_AC',
-    'IEC_TYPE_3_AC',
-    'IEC_TYPE_4_DC',
-    'IEC_TYPE_1_CCS_DC',
-    'IEC_TYPE_2_CCS_DC',
-    'TESLA_ROADSTER',
-    'TESLA_HPWC',
-    'TESLA_SUPERCHARGER',
-    'GBT_AC',
-    'GBT_DC',
-    'OTHER'
+  allowed:
+    [
+      "IEC_TYPE_1_AC",
+      "IEC_TYPE_2_AC",
+      "IEC_TYPE_3_AC",
+      "IEC_TYPE_4_DC",
+      "IEC_TYPE_1_CCS_DC",
+      "IEC_TYPE_2_CCS_DC",
+      "TESLA_ROADSTER",
+      "TESLA_HPWC",
+      "TESLA_SUPERCHARGER",
+      "GBT_AC",
+      "GBT_DC",
+      "OTHER",
     ]
-  description: A list of the supported (i.e., available) charging inlets in a particular charging port.
-               IEC types refer to IEC 62196,  GBT refers to  GB/T 20234.
-  comment:     A vehicle may have multiple charging ports.
-               IEC_TYPE_1_AC refers to Type 1 as defined in IEC 62196-2. Also known as Yazaki or J1772 connector.
-               IEC_TYPE_2_AC refers to Type 2 as defined in IEC 62196-2. Also known as Mennekes connector.
-               IEC_TYPE_3_AC refers to Type 3 as defined in IEC 62196-2. Also known as Scame connector.
-               IEC_TYPE_4_DC refers to AA configuration as defined in IEC 62196-3. Also known as Type 4 or CHAdeMO connector.
-               IEC_TYPE_1_CCS_DC refers to EE Configuration as defined in IEC 62196-3. Also known as CCS1 or Combo1 connector.
-               IEC_TYPE_2_CCS_DC refers to FF Configuration as defined in IEC 62196-3. Also known as CCS2 or Combo2 connector.
-               TESLA_ROADSTER, TESLA_HPWC (High Power Wall Connector) and TESLA_SUPERCHARGER refer to non-standardized charging
-               ports/methods used by Tesla.
-               GBT_AC refers to connector specified in GB/T 20234.2.
-               GBT_DC refers to connector specified in GB/T 20234.3. Also specified as BB Configuration in IEC 62196-3.
-               OTHER shall be used for charging ports not included in the list above.
-               For additional information see https://en.wikipedia.org/wiki/IEC_62196.
+  description:
+    A list of the supported (i.e., available) charging inlets in a particular charging port.
+    IEC types refer to IEC 62196,  GBT refers to  GB/T 20234.
+  comment: A vehicle may have multiple charging ports.
+    IEC_TYPE_1_AC refers to Type 1 as defined in IEC 62196-2. Also known as Yazaki or J1772 connector.
+    IEC_TYPE_2_AC refers to Type 2 as defined in IEC 62196-2. Also known as Mennekes connector.
+    IEC_TYPE_3_AC refers to Type 3 as defined in IEC 62196-2. Also known as Scame connector.
+    IEC_TYPE_4_DC refers to AA configuration as defined in IEC 62196-3. Also known as Type 4 or CHAdeMO connector.
+    IEC_TYPE_1_CCS_DC refers to EE Configuration as defined in IEC 62196-3. Also known as CCS1 or Combo1 connector.
+    IEC_TYPE_2_CCS_DC refers to FF Configuration as defined in IEC 62196-3. Also known as CCS2 or Combo2 connector.
+    TESLA_ROADSTER, TESLA_HPWC (High Power Wall Connector) and TESLA_SUPERCHARGER refer to non-standardized charging
+    ports/methods used by Tesla.
+    GBT_AC refers to connector specified in GB/T 20234.2.
+    GBT_DC refers to connector specified in GB/T 20234.3. Also specified as BB Configuration in IEC 62196-3.
+    OTHER shall be used for charging ports not included in the list above.
+    For additional information see https://en.wikipedia.org/wiki/IEC_62196.
 
 Charging.ChargingPort.IsFlapOpen:
   type: actuator
@@ -355,18 +372,18 @@ Charging.IsCharging:
   datatype: boolean
   type: sensor
   description: True if charging is ongoing.
-               Charging is considered to be ongoing if energy is flowing from charger to vehicle.
+    Charging is considered to be ongoing if energy is flowing from charger to vehicle.
 
 Charging.IsDischarging:
   datatype: boolean
   type: sensor
   description: True if discharging (vehicle to grid) is ongoing.
-               Discharging is considered to be ongoing if energy is flowing from vehicle to charger/grid.
+    Discharging is considered to be ongoing if energy is flowing from vehicle to charger/grid.
 
 Charging.StartStopCharging:
   datatype: string
   type: actuator
-  allowed: ['START', 'STOP']
+  allowed: ["START", "STOP"]
   description: Start or stop the charging process.
 
 Charging.ChargeCurrent:
@@ -446,8 +463,9 @@ Charging.EvseId:
 Charging.Location:
   type: branch
   description: Location of last or current charging event.
-  comment: This may depending on implementation represent the location of (the charge port of) the vehicle during charging,
-           or the actual location of the charger/load connected to the vehicle.
+  comment:
+    This may depending on implementation represent the location of (the charge port of) the vehicle during charging,
+    or the actual location of the charger/load connected to the vehicle.
 
 Charging.Location.Latitude:
   datatype: double
@@ -493,11 +511,12 @@ Charging.TimeToComplete:
   datatype: uint32
   type: sensor
   unit: s
-  description: The time needed for the current charging process to reach Charging.ChargeLimit.
-               0 if charging is complete or no charging process is active or planned.
+  description:
+    The time needed for the current charging process to reach Charging.ChargeLimit.
+    0 if charging is complete or no charging process is active or planned.
   comment: Shall consider time set by Charging.Timer.Time.
-           E.g. if charging shall start in 3 hours and 2 hours of charging is needed,
-           then Charging.TimeToComplete shall report 5 hours.
+    E.g. if charging shall start in 3 hours and 2 hours of charging is needed,
+    then Charging.TimeToComplete shall report 5 hours.
 
 Charging.Timer:
   type: branch
@@ -506,25 +525,27 @@ Charging.Timer:
 Charging.Timer.Mode:
   datatype: string
   type: actuator
-  allowed: ['INACTIVE', 'START_TIME', 'END_TIME']
+  allowed: ["INACTIVE", "START_TIME", "END_TIME"]
   description: "Defines timer mode for charging:
-               INACTIVE - no timer set, charging may start as soon as battery is connected to a charger.
-               START_TIME - charging shall start at Charging.Timer.Time.
-               END_TIME - charging shall be finished (reach Charging.ChargeLimit) at Charging.Timer.Time.
-               When charging is completed the vehicle shall change mode to 'inactive' or set a new Charging.Timer.Time.
-               Charging shall start immediately if mode is 'starttime' or 'endtime' and Charging.Timer.Time is a time in the past."
+    INACTIVE - no timer set, charging may start as soon as battery is connected to a charger.
+    START_TIME - charging shall start at Charging.Timer.Time.
+    END_TIME - charging shall be finished (reach Charging.ChargeLimit) at Charging.Timer.Time.
+    When charging is completed the vehicle shall change mode to 'inactive' or set a new Charging.Timer.Time.
+    Charging shall start immediately if mode is 'starttime' or 'endtime' and Charging.Timer.Time is a time in the past."
 
 Charging.Timer.Time:
   datatype: string
   type: actuator
   unit: iso8601
-  description: Time for next charging-related action, formatted according to ISO 8601 with UTC time zone.
-               Value has no significance if Charging.Timer.Mode is 'inactive'.
+  description:
+    Time for next charging-related action, formatted according to ISO 8601 with UTC time zone.
+    Value has no significance if Charging.Timer.Mode is 'inactive'.
 
 DCDC:
   type: branch
-  description: Properties related to DC/DC converter converting high voltage (from high voltage battery)
-               to vehicle low voltage (supply voltage, typically 12 Volts).
+  description:
+    Properties related to DC/DC converter converting high voltage (from high voltage battery)
+    to vehicle low voltage (supply voltage, typically 12 Volts).
 
 DCDC.PowerLoss:
   datatype: float
@@ -536,18 +557,19 @@ DCDC.Temperature:
   datatype: float
   type: sensor
   unit: Celsius
-  description: Current temperature of DC/DC converter converting battery high voltage
-               to vehicle low voltage (typically 12 Volts).
+  description:
+    Current temperature of DC/DC converter converting battery high voltage
+    to vehicle low voltage (typically 12 Volts).
 
 ThermalManagementSystemMode:
   datatype: uint8
   type: sensor
   enum:
-    'OFF': 0
-    'CIRCULATING': 1
-    'COOLING': 2
-    'HEATING': 3
-    'DRYING': 4
+    "OFF": 0
+    "CIRCULATING": 1
+    "COOLING": 2
+    "HEATING": 3
+    "DRYING": 4
   description: Mode of the HVESS thermal management system.
 
 #include TractionBattery/BatteryConditioning.vspec

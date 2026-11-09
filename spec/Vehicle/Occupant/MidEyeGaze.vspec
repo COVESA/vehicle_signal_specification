@@ -33,10 +33,11 @@ Azimuth:
   unit: degrees
   min: -180
   max: 180
-  description: Mid eye azimuth gaze (right-hand rule) on vehicle sprung mass Z-axis as defined by ISO 23150:2023
-               0 = Driver looking forward.
-               Positive values = Driver looking at something on the left side of driver.
-               Negative values = Driver looking at something on the right side of driver.
+  description:
+    Mid eye azimuth gaze (right-hand rule) on vehicle sprung mass Z-axis as defined by ISO 23150:2023
+    0 = Driver looking forward.
+    Positive values = Driver looking at something on the left side of driver.
+    Negative values = Driver looking at something on the right side of driver.
 
 Elevation:
   datatype: float
@@ -45,8 +46,8 @@ Elevation:
   min: -90
   max: 90
   description: Elevation to observed object measured
-               as angle between vehicle sprung mass XY-plane as defined by ISO 23150:2023
-               at driver mid eye position and object.
-               0 = Driver looking at something at same height as mid eye position.
-               Positive values = Driver looking at something above mid eye position.
-               Negative values = Driver looking at something below mid eye position.
+    as angle between vehicle sprung mass XY-plane as defined by ISO 23150:2023
+    at driver mid eye position and object.
+    0 = Driver looking at something at same height as mid eye position.
+    Positive values = Driver looking at something above mid eye position.
+    Negative values = Driver looking at something below mid eye position.

@@ -39,7 +39,7 @@ VersionVSS.Patch:
 VersionVSS.Label:
   datatype: string
   type: attribute
-  default: 'dev'
+  default: "dev"
   description: Label to further describe the version.
   comment: COVESA VSS project typically use dev for latest master, and empty string for released versions.
 
@@ -60,8 +60,9 @@ VehicleIdentification.VIN:
 VehicleIdentification.WMI:
   datatype: string
   type: attribute
-  description: World Manufacturer Identifier (WMI) as defined by ISO 3780, three characters,
-               or six characters for a low-volume manufacturer (VIN positions 1-3 and 12-14).
+  description:
+    World Manufacturer Identifier (WMI) as defined by ISO 3780, three characters,
+    or six characters for a low-volume manufacturer (VIN positions 1-3 and 12-14).
   pattern: ^[0-9A-HJ-NPR-Z]{3}(?:[0-9A-HJ-NPR-Z]{3})?$
 
 VehicleIdentification.Brand:
@@ -78,7 +79,6 @@ VehicleIdentification.Year:
   datatype: uint16
   type: attribute
   description: Model year of the vehicle.
-
 
 #
 # Imports from https://schema.org/Car
@@ -181,12 +181,12 @@ LowVoltageSystemState:
   datatype: string
   type: sensor
   allowed: [
-    'UNDEFINED', # State of low voltage system not known
-    'LOCK',      # Low voltage system off, steering lock or equivalent engaged
-    'OFF',       # Low voltage system off, steering lock or equivalent not engaged
-    'ACC',       # Vehicle Accessories on/living
-    'ON',        # Engine start enabled (e.g. ignition on, diesel pre-heating, electrical drive released)
-    'START'      # Engine starter relay closed (not applicable for electrical vehicles)
+      "UNDEFINED", # State of low voltage system not known
+      "LOCK", # Low voltage system off, steering lock or equivalent engaged
+      "OFF", # Low voltage system off, steering lock or equivalent not engaged
+      "ACC", # Vehicle Accessories on/living
+      "ON", # Engine start enabled (e.g. ignition on, diesel pre-heating, electrical drive released)
+      "START", # Engine starter relay closed (not applicable for electrical vehicles)
     ]
   description: State of the supply voltage of the control units (usually 12V).
 
@@ -198,7 +198,6 @@ LowVoltageBattery:
   description: Signals related to low voltage battery.
 
 #include Battery.vspec LowVoltageBattery
-
 
 Speed:
   datatype: float
@@ -217,30 +216,32 @@ TraveledDistanceSinceStart:
   type: sensor
   unit: m
   description: Distance traveled since start of current trip.
-  comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
-           A trip is considered to end when engine is no longer enabled.
-           The signal may however keep the value of the last trip until a new trip is started.
+  comment:
+    A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+    A trip is considered to end when engine is no longer enabled.
+    The signal may however keep the value of the last trip until a new trip is started.
 
 StartTime:
   datatype: string
   type: attribute
-  default: '0000-01-01T00:00Z'
+  default: "0000-01-01T00:00Z"
   unit: iso8601
   description: Start time of current or latest trip, formatted according to ISO 8601 with UTC time zone.
   comment: This signal is supposed to be set whenever a new trip starts.
-           A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
-           A trip is considered to end when engine is no longer enabled.
-           The default value indicates that the vehicle never has been started, or that latest start time is unknown.
+    A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+    A trip is considered to end when engine is no longer enabled.
+    The default value indicates that the vehicle never has been started, or that latest start time is unknown.
 
 TripDuration:
   datatype: float
   type: sensor
   unit: s
   description: Duration of latest trip.
-  comment: This signal is not assumed to be continuously updated, but instead set to 0 when a trip starts
-           and set to the actual duration of the trip when a trip ends.
-           A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
-           A trip is considered to end when engine is no longer enabled.
+  comment:
+    This signal is not assumed to be continuously updated, but instead set to 0 when a trip starts
+    and set to the actual duration of the trip when a trip ends.
+    A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+    A trip is considered to end when engine is no longer enabled.
 
 TripMeterReading:
   datatype: uint32
@@ -252,10 +253,11 @@ TripMeterReading:
 IsBrokenDown:
   datatype: boolean
   type: sensor
-  description: Vehicle breakdown or any similar event causing vehicle to stop on the road,
-               that might pose a risk to other road users.
-               True = Vehicle broken down on the road, due to e.g. engine problems, flat tire, out of gas, brake problems.
-               False = Vehicle not broken down.
+  description:
+    Vehicle breakdown or any similar event causing vehicle to stop on the road,
+    that might pose a risk to other road users.
+    True = Vehicle broken down on the road, due to e.g. engine problems, flat tire, out of gas, brake problems.
+    False = Vehicle not broken down.
   comment: Actual criteria and method used to decide if a vehicle is broken down is implementation specific.
 
 IsMoving:
@@ -268,10 +270,11 @@ AverageSpeed:
   type: sensor
   unit: km/h
   description: Average speed for the current trip.
-  comment: A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
-           A trip is considered to end when engine is no longer enabled.
-           The signal may however keep the value of the last trip until a new trip is started.
-           Calculation of average speed may exclude periods when the vehicle for example is not moving or transmission is in neutral.
+  comment:
+    A new trip is considered to start when engine gets enabled (e.g. LowVoltageSystemState in ON or START mode).
+    A trip is considered to end when engine is no longer enabled.
+    The signal may however keep the value of the last trip until a new trip is started.
+    Calculation of average speed may exclude periods when the vehicle for example is not moving or transmission is in neutral.
 
 #
 # Spatial Acceleration
@@ -297,7 +300,6 @@ Acceleration.Vertical:
   type: sensor
   unit: m/s^2
   description: Vehicle acceleration in Z (vertical acceleration).
-
 
 #
 # Spatial Rotation
@@ -389,7 +391,6 @@ EmissionsCO2:
   type: attribute
   description: The CO2 emissions.
   unit: g/km
-
 
 #
 # Vehicle Weight and Dimension attributes
@@ -523,7 +524,7 @@ CurrentLocation.Heading:
   max: 360
   unit: degrees
   description: Current heading relative to geographic north.
-               0 = North, 90 = East, 180 = South, 270 = West.
+    0 = North, 90 = East, 180 = South, 270 = West.
 
 CurrentLocation.HorizontalAccuracy:
   datatype: double
@@ -550,46 +551,52 @@ CurrentLocation.GNSSReceiver:
 CurrentLocation.GNSSReceiver.FixType:
   datatype: string
   type: sensor
-  allowed: ['NONE',
-            'TWO_D',
-            'TWO_D_SATELLITE_BASED_AUGMENTATION',
-            'TWO_D_GROUND_BASED_AUGMENTATION',
-            'TWO_D_SATELLITE_AND_GROUND_BASED_AUGMENTATION',
-            'THREE_D',
-            'THREE_D_SATELLITE_BASED_AUGMENTATION',
-            'THREE_D_GROUND_BASED_AUGMENTATION',
-            'THREE_D_SATELLITE_AND_GROUND_BASED_AUGMENTATION']
+  allowed:
+    [
+      "NONE",
+      "TWO_D",
+      "TWO_D_SATELLITE_BASED_AUGMENTATION",
+      "TWO_D_GROUND_BASED_AUGMENTATION",
+      "TWO_D_SATELLITE_AND_GROUND_BASED_AUGMENTATION",
+      "THREE_D",
+      "THREE_D_SATELLITE_BASED_AUGMENTATION",
+      "THREE_D_GROUND_BASED_AUGMENTATION",
+      "THREE_D_SATELLITE_AND_GROUND_BASED_AUGMENTATION",
+    ]
   description: Fix status of GNSS receiver.
 
 CurrentLocation.GNSSReceiver.MountingPosition:
   type: branch
-  description: Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
-               Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
+  description:
+    Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
+    Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
 
 CurrentLocation.GNSSReceiver.MountingPosition.X:
   datatype: int16
   type: attribute
   unit: mm
-  description: Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
-               Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
-               Positive values = forward of rear axle. Negative values = backward of rear axle.
+  description:
+    Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
+    Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
+    Positive values = forward of rear axle. Negative values = backward of rear axle.
 
 CurrentLocation.GNSSReceiver.MountingPosition.Y:
   datatype: int16
   type: attribute
   unit: mm
-  description: Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
-               Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
-               Positive values = left of origin. Negative values = right of origin.
-               Left/Right is as seen from driver perspective, i.e. by a person looking forward.
+  description:
+    Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
+    Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
+    Positive values = left of origin. Negative values = right of origin.
+    Left/Right is as seen from driver perspective, i.e. by a person looking forward.
 
 CurrentLocation.GNSSReceiver.MountingPosition.Z:
   datatype: int16
   type: attribute
   unit: mm
   description: Mounting position of GNSS receiver on Z-axis.
-               Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
-               Positive values = above center of rear axle. Negative values = below center of rear axle.
+    Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
+    Positive values = above center of rear axle. Negative values = below center of rear axle.
 
 CurrentDateTime:
   datatype: string

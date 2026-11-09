@@ -20,23 +20,23 @@ Drivers:
 Drivers.WorkingState:
   datatype: uint8
   enum:
-    'REST': 0
-    'DRIVER_AVAILABLE': 1
-    'WORK': 2
-    'DRIVE': 3
+    "REST": 0
+    "DRIVER_AVAILABLE": 1
+    "WORK": 2
+    "DRIVE": 3
   type: sensor
   description: State of work of the driver.
 
 Drivers.TimeRelatedState:
   datatype: uint8
   enum:
-    'NORMAL': 0
-    'STATE_15_MIN_BEF_4_5_H': 1
-    'STATE_4_5_H_REACHED': 2
-    'STATE_15_MIN_BEF_9_H': 3
-    'STATE_9_H_REACHED': 4
-    'STATE_15_MIN_BEF_16_H': 5
-    'STATE_16_H_REACHED': 6
+    "NORMAL": 0
+    "STATE_15_MIN_BEF_4_5_H": 1
+    "STATE_4_5_H_REACHED": 2
+    "STATE_15_MIN_BEF_9_H": 3
+    "STATE_9_H_REACHED": 4
+    "STATE_15_MIN_BEF_16_H": 5
+    "STATE_16_H_REACHED": 6
   type: sensor
   description: Indicates if the driver approaches or exceeds working time limits (or other limits).
 
@@ -64,16 +64,17 @@ VehicleSpeed:
 DirectionIndicator:
   datatype: uint8
   enum:
-    'FORWARD': 0
-    'REVERSE': 1
+    "FORWARD": 0
+    "REVERSE": 1
   type: sensor
   description: Indicates the direction of the vehicle.
 
 IsPerformanceAnalysisActive:
   datatype: boolean
   type: sensor
-  description: Indicates the tachograph performance; including electronic or mechanical analysis, instrument analysis,
-              speed sensor analysis, mass storage analysis, and printer analysis.
+  description:
+    Indicates the tachograph performance; including electronic or mechanical analysis, instrument analysis,
+    speed sensor analysis, mass storage analysis, and printer analysis.
 
 IsHandlingInformationPresent:
   datatype: boolean
@@ -83,6 +84,7 @@ IsHandlingInformationPresent:
 IsSystemEventOccurred:
   datatype: boolean
   type: sensor
-  description: Indicates that a tachograph event has occurred. This may include power supply interruption, interruption of the speed sensor,
-              incorrect data on the driver card, driving without a driver card, illegal removal of a driver card, insertion of a driver card during driving,
-              and time adjustment.
+  description:
+    Indicates that a tachograph event has occurred. This may include power supply interruption, interruption of the speed sensor,
+    incorrect data on the driver card, driving without a driver card, illegal removal of a driver card, insertion of a driver card during driving,
+    and time adjustment.

@@ -39,16 +39,15 @@ Spotlight:
   type: branch
   instances:
     - Row[1,4]
-    - ["DriverSide","PassengerSide"]
+    - ["DriverSide", "PassengerSide"]
   description: Spotlight for a specific area in the vehicle.
 #include SingleConfigurableLight.vspec Spotlight
-
 
 AmbientLight:
   type: branch
   instances:
     - Row[1,2]
-    - ["DriverSide","PassengerSide"]
+    - ["DriverSide", "PassengerSide"]
   description: Decorative coloured light inside the cabin, usually mounted on the door, ceiling, etc.
 #include SingleConfigurableLight.vspec AmbientLight
 

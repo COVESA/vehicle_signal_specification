@@ -16,10 +16,9 @@
 Type:
   datatype: string
   type: attribute
-  allowed: ['UNKNOWN', 'SEQUENTIAL', 'H', 'AUTOMATIC', 'DSG', 'CVT']
-  default: 'UNKNOWN'
+  allowed: ["UNKNOWN", "SEQUENTIAL", "H", "AUTOMATIC", "DSG", "CVT"]
+  default: "UNKNOWN"
   description: Transmission type.
-
 
 GearCount:
   datatype: int8
@@ -30,13 +29,20 @@ GearCount:
 DriveType:
   datatype: string
   type: attribute
-  allowed: ['UNKNOWN', 'FORWARD_WHEEL_DRIVE', 'REAR_WHEEL_DRIVE', 'ALL_WHEEL_DRIVE', 'FOUR_WHEEL_DRIVE']
-  default: 'UNKNOWN'
+  allowed:
+    [
+      "UNKNOWN",
+      "FORWARD_WHEEL_DRIVE",
+      "REAR_WHEEL_DRIVE",
+      "ALL_WHEEL_DRIVE",
+      "FOUR_WHEEL_DRIVE",
+    ]
+  default: "UNKNOWN"
   description: Drive type.
-  comment: ALL_WHEEL_DRIVE and FOUR_WHEEL_DRIVE are recorded as distinct values in registration
-           and type data. Assignment follows the manufacturer's or registration authority's
-           designation.
-
+  comment:
+    ALL_WHEEL_DRIVE and FOUR_WHEEL_DRIVE are recorded as distinct values in registration
+    and type data. Assignment follows the manufacturer's or registration authority's
+    designation.
 
 #
 # Current odometer reading for the transmission
@@ -78,16 +84,19 @@ IsLowRangeEngaged:
   datatype: boolean
   type: actuator
   description: Is gearbox in low range mode or not. False = Normal/High range engaged. True = Low range engaged.
-  comment: The possibility to switch between low and high gear range is typically only available
-           in heavy vehicles and off-road vehicles.
+  comment:
+    The possibility to switch between low and high gear range is typically only available
+    in heavy vehicles and off-road vehicles.
 
 IsElectricalPowertrainEngaged:
   datatype: boolean
   type: actuator
-  description: Is electrical powertrain mechanically connected/engaged to the drivetrain or not.
-               False = Disconnected/Disengaged. True = Connected/Engaged.
-  comment: In some hybrid solutions it is possible to disconnect/disengage the electrical powertrain mechanically
-           to avoid induced voltage reaching a too high level when driving at high speed.
+  description:
+    Is electrical powertrain mechanically connected/engaged to the drivetrain or not.
+    False = Disconnected/Disengaged. True = Connected/Engaged.
+  comment:
+    In some hybrid solutions it is possible to disconnect/disengage the electrical powertrain mechanically
+    to avoid induced voltage reaching a too high level when driving at high speed.
 
 #
 # Current mode
@@ -95,9 +104,8 @@ IsElectricalPowertrainEngaged:
 PerformanceMode:
   datatype: string
   type: actuator
-  allowed: ['NORMAL', 'SPORT', 'ECONOMY', 'SNOW', 'RAIN']
+  allowed: ["NORMAL", "SPORT", "ECONOMY", "SNOW", "RAIN"]
   description: Current gearbox performance mode.
-
 
 #
 # Current gearchange mode
@@ -105,9 +113,8 @@ PerformanceMode:
 GearChangeMode:
   datatype: string
   type: actuator
-  allowed: ['MANUAL', 'AUTOMATIC']
+  allowed: ["MANUAL", "AUTOMATIC"]
   description: Is the gearbox in automatic or manual (paddle) mode.
-
 
 #
 # Gearbox temperature
@@ -118,15 +125,15 @@ Temperature:
   unit: Celsius
   description: The current gearbox temperature.
 
-
 #
 # Clutch
 #
 IsClutchPedalPressed:
   datatype: boolean
   type: sensor
-  description: Switch signal which indicates that the clutch pedal is being pressed. It is necessary for a safe drivetrain behaviour that the clutch
-                switch is set before the clutch is opened (cruise control function).
+  description:
+    Switch signal which indicates that the clutch pedal is being pressed. It is necessary for a safe drivetrain behaviour that the clutch
+    switch is set before the clutch is opened (cruise control function).
 
 ClutchEngagement:
   datatype: float
@@ -166,4 +173,4 @@ TorqueDistribution:
   min: -100
   max: 100
   description: Torque distribution between front and rear axle in percent.
-               -100% = Full torque to front axle, 0% = 50:50 Front/Rear, 100% = Full torque to rear axle.
+    -100% = Full torque to front axle, 0% = 50:50 Front/Rear, 100% = Full torque to rear axle.

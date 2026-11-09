@@ -26,7 +26,6 @@ Vehicle:
 
 #include Vehicle/Vehicle.vspec Vehicle
 
-
 #
 # The power train branch used to host the signals and attributes.
 #
@@ -34,7 +33,6 @@ Vehicle.Powertrain:
   type: branch
   description: Powertrain data for battery management, etc.
 #include Powertrain/Powertrain.vspec Vehicle.Powertrain
-
 
 #
 # Internal combustion engine signals and attributes.
@@ -58,7 +56,6 @@ Vehicle.Powertrain.Transmission:
 # transmission branch created above.
 #include Powertrain/Transmission.vspec Vehicle.Powertrain.Transmission
 
-
 #
 # The power take-off branch.
 #
@@ -70,16 +67,17 @@ Vehicle.Powertrain.Transmission:
 
 Vehicle.Powertrain.ElectricMotor:
   type: branch
-  instances: ["Front","Rear","FrontLeft","FrontRight","RearLeft","RearRight"]
+  instances:
+    ["Front", "Rear", "FrontLeft", "FrontRight", "RearLeft", "RearRight"]
   description: Electric Motor specific data.
-  comment: Instance Front to be used if the vehicle has a motor located at the front of the vehicle, serving front and possibly also rear axle.
-           Instance Rear to be used if the vehicle has a motor located at the rear of the vehicle, serving rear and possiblsy also front axle.
-           Instances with Left/Right intended to be used if vehicle has separate motors for left and right side.
+  comment:
+    Instance Front to be used if the vehicle has a motor located at the front of the vehicle, serving front and possibly also rear axle.
+    Instance Rear to be used if the vehicle has a motor located at the rear of the vehicle, serving rear and possiblsy also front axle.
+    Instances with Left/Right intended to be used if vehicle has separate motors for left and right side.
 
 # Include the electric motor vspec file and attach all its signals and attributes under the
 # electric motor branch created above.
 #include Powertrain/ElectricMotor.vspec Vehicle.Powertrain.ElectricMotor
-
 
 #
 # The traction battery branch refers to signals and attributes related to the battery used by electrical
@@ -92,7 +90,6 @@ Vehicle.Powertrain.TractionBattery:
   description: Battery Management data.
 
 #include Powertrain/TractionBattery.vspec Vehicle.Powertrain.TractionBattery
-
 
 #
 # The fuels system signals and attributes used to host the signals in FuelSystem.vspec.
@@ -133,7 +130,6 @@ Vehicle.Body:
 
 #include Body/Body.vspec Vehicle.Body
 
-
 #
 # The Cabin branch and its included signals and attributes from Cabin/Cabin.vspec
 #
@@ -141,12 +137,10 @@ Vehicle.Cabin:
   type: branch
   description: All in-cabin components, including doors.
 
-
 # Include the Cabin/Cabin.vspec file and attach all its signals and attributes under the
 # Cabin branch created above.
 
 #include Cabin/Cabin.vspec Vehicle.Cabin
-
 
 #
 # Advanced Driver Assist Systems signals and attributes.
@@ -196,7 +190,7 @@ Vehicle.Occupant:
   type: branch
   instances:
     - Row[1,2]
-    - ["DriverSide","Middle","PassengerSide"]
+    - ["DriverSide", "Middle", "PassengerSide"]
   description: Occupant (Driver or Passenger) data.
 #include Vehicle/Occupant.vspec Vehicle.Occupant
 

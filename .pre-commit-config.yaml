@@ -1,17 +1,22 @@
-# See https://pre-commit.com for more information
-# See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
     hooks:
-    -   id: trailing-whitespace
+      - id: trailing-whitespace
         exclude_types: ["csv"]
-    -   id: end-of-file-fixer
+      - id: end-of-file-fixer
         exclude_types: ["json"]
-    -   id: check-yaml
-    -   id: check-added-large-files
+      - id: check-yaml
+        types: [file]
+        files: \.(yaml|yml|vspec)$
+      - id: check-added-large-files
 
--   repo: https://github.com/pycqa/flake8
-    rev: '7.0.0'
+  - repo: local
     hooks:
-    -   id: flake8
+      - id: prettier
+        name: prettier
+        entry: prettier
+        language: node
+        additional_dependencies: ["prettier@3.9.10"]
+        files: ^spec/.*\.vspec$
+        args: ["--write", "--parser", "yaml"]

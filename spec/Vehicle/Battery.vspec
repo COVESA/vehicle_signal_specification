@@ -35,6 +35,7 @@ CurrentCurrent:
   datatype: float
   type: sensor
   unit: A
-  description: Current current flowing in/out of the low voltage battery. Positive = Current flowing in to battery,
-               e.g. during charging or driving.
-               Negative = Current flowing out of battery, e.g. when using the battery to start a combustion engine.
+  description:
+    Current current flowing in/out of the low voltage battery. Positive = Current flowing in to battery,
+    e.g. during charging or driving.
+    Negative = Current flowing out of battery, e.g. when using the battery to start a combustion engine.

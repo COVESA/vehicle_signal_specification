@@ -22,9 +22,9 @@ Level:
   datatype: string
   type: sensor
   allowed: [
-    'CRITICALLY_LOW',  # Critically low, immediate action required
-    'LOW',             # Level below recommended range, but not critical
-    'NORMAL',          # Within normal range, no need for driver action
+      "CRITICALLY_LOW", # Critically low, immediate action required
+      "LOW", # Level below recommended range, but not critical
+      "NORMAL", # Within normal range, no need for driver action
     ]
   description: Engine coolant level.
 
@@ -32,7 +32,8 @@ LifeRemaining:
   datatype: int32
   type: sensor
   description: Remaining engine coolant life in seconds.
-               Negative values can be used to indicate that lifetime has been exceeded.
-  comment: In addition to this a signal a vehicle can report remaining time to service (including e.g. coolant change)
-           by Vehicle.Service.TimeToService.
+    Negative values can be used to indicate that lifetime has been exceeded.
+  comment:
+    In addition to this a signal a vehicle can report remaining time to service (including e.g. coolant change)
+    by Vehicle.Service.TimeToService.
   unit: s

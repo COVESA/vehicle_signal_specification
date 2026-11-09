@@ -37,79 +37,87 @@
 OperatingMode:
   datatype: string
   type: sensor
-  allowed: ['CHARGE_DEPLETING', 'CHARGE_SUSTAINING', 'BLENDED']
+  allowed: ["CHARGE_DEPLETING", "CHARGE_SUSTAINING", "BLENDED"]
   description: Current operating mode of the Extended Range Electric Vehicle.
-  comment: CHARGE_DEPLETING (CD) - Vehicle operates primarily on battery power, battery SOC decreases.
-           CHARGE_SUSTAINING (CS) - Engine operates as generator to maintain battery charge level.
-           BLENDED - Both battery and engine are used simultaneously, typically during high power demands.
-           The mode transition typically occurs automatically based on battery state of charge thresholds.
+  comment:
+    CHARGE_DEPLETING (CD) - Vehicle operates primarily on battery power, battery SOC decreases.
+    CHARGE_SUSTAINING (CS) - Engine operates as generator to maintain battery charge level.
+    BLENDED - Both battery and engine are used simultaneously, typically during high power demands.
+    The mode transition typically occurs automatically based on battery state of charge thresholds.
 
 ChargeDepleting:
   type: branch
   description: Signals related to Charge Depleting (CD) mode operation.
-  comment: CD mode represents the electric-only or electric-primary operation of the EREV.
-           During this mode, the vehicle maximizes the use of battery energy before the engine is engaged.
+  comment:
+    CD mode represents the electric-only or electric-primary operation of the EREV.
+    During this mode, the vehicle maximizes the use of battery energy before the engine is engaged.
 
 ChargeDepleting.EnergyConsumption:
   datatype: float
   type: sensor
   unit: kWh/100km
   description: Current electric energy consumption rate during Charge Depleting mode operation.
-  comment: This value represents the instantaneous or short-term average electric energy consumption
-           while the vehicle is operating in CD mode. It is calculated based on the electrical energy
-           drawn from the traction battery per distance traveled. This metric is analogous to
-           fuel consumption but measured in electrical energy units. A lower value indicates
-           more efficient electric operation.
+  comment:
+    This value represents the instantaneous or short-term average electric energy consumption
+    while the vehicle is operating in CD mode. It is calculated based on the electrical energy
+    drawn from the traction battery per distance traveled. This metric is analogous to
+    fuel consumption but measured in electrical energy units. A lower value indicates
+    more efficient electric operation.
 
 ChargeDepleting.Range:
   datatype: uint32
   type: sensor
   unit: m
   description: Estimated remaining distance that can be traveled in Charge Depleting mode using available battery energy.
-  comment: This range estimate is calculated based on the current battery state of charge and
-           the recent energy consumption patterns in CD mode. The estimate may vary based on
-           driving conditions, terrain, climate control usage, and other factors affecting
-           battery consumption. When this range approaches zero, the vehicle will typically
-           transition to Charge Sustaining mode.
+  comment:
+    This range estimate is calculated based on the current battery state of charge and
+    the recent energy consumption patterns in CD mode. The estimate may vary based on
+    driving conditions, terrain, climate control usage, and other factors affecting
+    battery consumption. When this range approaches zero, the vehicle will typically
+    transition to Charge Sustaining mode.
 
 ChargeSustaining:
   type: branch
   description: Signals related to Charge Sustaining (CS) mode operation.
-  comment: CS mode represents the range-extended operation where the internal combustion engine
-           operates as a generator to maintain battery charge and provide extended driving range.
-           During this mode, fuel consumption becomes the primary energy source metric.
+  comment:
+    CS mode represents the range-extended operation where the internal combustion engine
+    operates as a generator to maintain battery charge and provide extended driving range.
+    During this mode, fuel consumption becomes the primary energy source metric.
 
 ChargeSustaining.FuelEconomy:
   datatype: float
   type: sensor
   unit: km/l
   description: Current fuel economy during Charge Sustaining mode operation.
-  comment: This value represents the fuel efficiency when the engine is operating as a generator
-           to maintain battery charge. It differs from conventional vehicle fuel economy because
-           the engine is optimized to run at efficient generator speeds rather than varying speeds
-           for direct wheel propulsion. The actual fuel economy in CS mode may be different from
-           the vehicle's rated CS mode fuel economy depending on driving conditions and power demands.
+  comment:
+    This value represents the fuel efficiency when the engine is operating as a generator
+    to maintain battery charge. It differs from conventional vehicle fuel economy because
+    the engine is optimized to run at efficient generator speeds rather than varying speeds
+    for direct wheel propulsion. The actual fuel economy in CS mode may be different from
+    the vehicle's rated CS mode fuel economy depending on driving conditions and power demands.
 
 ChargeSustaining.Range:
   datatype: uint32
   type: sensor
   unit: m
   description: Estimated remaining distance that can be traveled in Charge Sustaining mode using available fuel.
-  comment: This range estimate is calculated based on the current fuel level and recent fuel
-           consumption patterns in CS mode. It represents the extended range capability provided
-           by the internal combustion engine. The total vehicle range is the sum of CD mode range
-           and CS mode range.
+  comment:
+    This range estimate is calculated based on the current fuel level and recent fuel
+    consumption patterns in CS mode. It represents the extended range capability provided
+    by the internal combustion engine. The total vehicle range is the sum of CD mode range
+    and CS mode range.
 
 CombinedFuelEconomy:
   datatype: float
   type: sensor
   unit: km/l
   description: Combined fuel economy equivalent that accounts for both electric energy and fuel consumption.
-  comment: This metric provides a unified measure of overall vehicle efficiency by converting
-           electric energy consumption to a fuel-equivalent value and combining it with actual
-           fuel consumption. The calculation typically follows regulatory standards (such as EPA MPGe)
-           that define the equivalence between electrical energy and liquid fuel energy.
-           For example, EPA defines 33.7 kWh as equivalent to one gallon of gasoline.
-           This combined metric is useful for comparing EREV efficiency with conventional vehicles
-           and understanding the overall energy cost of operation. The value is weighted based on
-           the proportion of driving in CD versus CS modes.
+  comment:
+    This metric provides a unified measure of overall vehicle efficiency by converting
+    electric energy consumption to a fuel-equivalent value and combining it with actual
+    fuel consumption. The calculation typically follows regulatory standards (such as EPA MPGe)
+    that define the equivalence between electrical energy and liquid fuel energy.
+    For example, EPA defines 33.7 kWh as equivalent to one gallon of gasoline.
+    This combined metric is useful for comparing EREV efficiency with conventional vehicles
+    and understanding the overall energy cost of operation. The value is weighted based on
+    the proportion of driving in CD versus CS modes.

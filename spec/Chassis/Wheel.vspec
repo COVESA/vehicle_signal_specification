@@ -37,7 +37,6 @@ Brake.IsBrakesWorn:
   type: sensor
   description: Brake pad wear status. True = Worn. False = Not Worn.
 
-
 #
 # Tire
 #
@@ -77,12 +76,8 @@ Tire.AirTemperature:
 Tire.WinterStatus:
   datatype: string
   type: attribute
-  allowed: [
-    'UNKNOWN',
-    'NON_WINTER',
-    'WINTER'
-  ]
-  default: 'UNKNOWN'
+  allowed: ["UNKNOWN", "NON_WINTER", "WINTER"]
+  default: "UNKNOWN"
   description: Winter (cold-weather / snow) capability class of the tire currently fitted to this wheel.
   comment: >
     Describes the cold-weather grip capability of the fitted tire, which is the
@@ -125,13 +120,14 @@ AngularSpeed:
   unit: degrees/s
   description: Angular (Rotational) speed of a vehicle's wheel.
   comment: Positive if wheel is trying to drive vehicle forward.
-           Negative if wheel is trying to drive vehicle backward.
+    Negative if wheel is trying to drive vehicle backward.
 
 Torque:
   datatype: int16
   type: sensor
   unit: Nm
-  description: Torque provided by drivetrain, excluding torque provided by friction brakes.
-               Negative values indicate regen mode.
+  description:
+    Torque provided by drivetrain, excluding torque provided by friction brakes.
+    Negative values indicate regen mode.
   comment: This is typically the torque provided by the differential,
-           or by a motor dedicated for this wheel, after reduction gear if present.
+    or by a motor dedicated for this wheel, after reduction gear if present.

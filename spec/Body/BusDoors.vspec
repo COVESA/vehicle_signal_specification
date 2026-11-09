@@ -23,17 +23,17 @@ BusDoors.IsEnabledAtLeastOne:
   datatype: boolean
   type: sensor
   description: Signal indicating the status of all bus doors.
-              True if at least 1 bus door is enabled, False otherwise.
-              Enabled means the bus doors are able to be automatically opened or Closed.
+    True if at least 1 bus door is enabled, False otherwise.
+    Enabled means the bus doors are able to be automatically opened or Closed.
 
 # One signal for all the doors, not instantiated
 BusDoors.PositionOfDoors:
   instantiate: false
   datatype: uint8
   enum:
-    'AT_LEAST_ONE_DOOR_OPEN': 0
-    'CLOSING_LAST_DOOR': 1
-    'ALL_DOORS_CLOSED': 2
+    "AT_LEAST_ONE_DOOR_OPEN": 0
+    "CLOSING_LAST_DOOR": 1
+    "ALL_DOORS_CLOSED": 2
   type: sensor
   description: Signal indicating the actual position of the doors.
 
@@ -51,4 +51,4 @@ BusDoors.IsOpen:
 BusDoors.IsEnabled:
   datatype: boolean
   type: sensor
-  description:  Indication of the enablement status of the door. Door can be opened by a passenger when enabled.
+  description: Indication of the enablement status of the door. Door can be opened by a passenger when enabled.

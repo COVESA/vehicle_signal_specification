@@ -6,16 +6,15 @@
 #
 # SPDX-License-Identifier: MPL-2.0
 
-
 RollTorque:
   type: sensor
   datatype: int16
   unit: Nm
   description: Actuated roll torque on this axle by anti-roll actuator.
-               Signal orientation according to ISO8855.
+    Signal orientation according to ISO8855.
 
 Wheel:
   type: branch
-  instances: ["Left","Right"]
+  instances: ["Left", "Right"]
   description: MotionManagement signals for a specific wheel.
 #include Axle/Wheel.vspec Wheel

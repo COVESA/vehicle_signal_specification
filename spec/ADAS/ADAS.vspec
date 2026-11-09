@@ -24,39 +24,42 @@
 ActiveAutonomyLevel:
   datatype: string
   type: sensor
-  allowed: [
-    'SAE_0',
-    'SAE_1',
-    'SAE_2_DISENGAGING',
-    'SAE_2',
-    'SAE_3_DISENGAGING',
-    'SAE_3',
-    'SAE_4_DISENGAGING',
-    'SAE_4',
-    'SAE_5_DISENGAGING',
-    'SAE_5'
-  ]
-  description: Indicates the currently active level of driving automation according to
-               the SAE J3016 (Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles).
-  comment: Complies with https://www.sae.org/standards/content/j3016_202104/ and https://www.sae.org/blog/sae-j3016-update.
-           Level 5 and 4 ADS (Automated driving system) disengage, if appropriate, only after it achieves a minimal risk condition or a driver is performing the DDT.
-           Level 3 ADS disengages either an appropriate time after issuing a request to intervene or immediately upon user request.
-           Level 2 DAS (Driving automation system) disengages immediately upon driver request.
-           However, since many Level 2 DAS, often termed "Level 2.5", warn the driver shortly before reaching their operational limits,
-           the VSS also supports the DISENGAGING state for SAE_2.
-           Nevertheless, it should be noted that the SAE J3016 states that it is incorrect to describe driving automation features using fractional levels.
+  allowed:
+    [
+      "SAE_0",
+      "SAE_1",
+      "SAE_2_DISENGAGING",
+      "SAE_2",
+      "SAE_3_DISENGAGING",
+      "SAE_3",
+      "SAE_4_DISENGAGING",
+      "SAE_4",
+      "SAE_5_DISENGAGING",
+      "SAE_5",
+    ]
+  description:
+    Indicates the currently active level of driving automation according to
+    the SAE J3016 (Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles).
+  comment:
+    Complies with https://www.sae.org/standards/content/j3016_202104/ and https://www.sae.org/blog/sae-j3016-update.
+    Level 5 and 4 ADS (Automated driving system) disengage, if appropriate, only after it achieves a minimal risk condition or a driver is performing the DDT.
+    Level 3 ADS disengages either an appropriate time after issuing a request to intervene or immediately upon user request.
+    Level 2 DAS (Driving automation system) disengages immediately upon driver request.
+    However, since many Level 2 DAS, often termed "Level 2.5", warn the driver shortly before reaching their operational limits,
+    the VSS also supports the DISENGAGING state for SAE_2.
+    Nevertheless, it should be noted that the SAE J3016 states that it is incorrect to describe driving automation features using fractional levels.
 
 SupportedAutonomyLevel:
   datatype: string
   type: attribute
   allowed: [
-    'SAE_0', # No Driving Automation
-    'SAE_1', # Driver Assistance
-    'SAE_2', # Partial Driving Automation
-    'SAE_3', # Conditional Driving Automation
-    'SAE_4', # High Driving Automation
-    'SAE_5'  # Full Driving Automation
-  ]
+      "SAE_0", # No Driving Automation
+      "SAE_1", # Driver Assistance
+      "SAE_2", # Partial Driving Automation
+      "SAE_3", # Conditional Driving Automation
+      "SAE_4", # High Driving Automation
+      "SAE_5", # Full Driving Automation
+    ]
   description: Indicates the highest level of driving automation according to the SAE J3016 taxonomy the vehicle is capable of.
 
 CruiseControl:
@@ -66,14 +69,16 @@ CruiseControl:
 CruiseControl.IsEnabled:
   datatype: boolean
   type: actuator
-  description: Indicates if cruise control system is enabled (e.g. ready to receive configurations and settings)
-               True = Enabled. False = Disabled.
+  description:
+    Indicates if cruise control system is enabled (e.g. ready to receive configurations and settings)
+    True = Enabled. False = Disabled.
 
 CruiseControl.IsActive:
   datatype: boolean
   type: actuator
-  description: Indicates if cruise control system is active (i.e. actively controls speed).
-               True = Active. False = Inactive.
+  description:
+    Indicates if cruise control system is active (i.e. actively controls speed).
+    True = Active. False = Inactive.
 
 CruiseControl.SpeedSet:
   datatype: float
@@ -103,26 +108,26 @@ CruiseControl.AdaptiveIntervalSet:
   type: actuator
   description: Follow distance setting, commonly 1-5 with 1 being closest.
 
-
 # Unlike some other CruiseControl signals, CruiseControl.IsSwitchedOn refers to the physical position of the switch and not to the operational status of the cruise control system.
 CruiseControl.IsSwitchedOn:
   datatype: boolean
   type: sensor
-  description: Cruise control is switched on. It is not ensured that the engine is controlled by cruise control,
-              as in the case of a large driver's demand the engine is controlled by the driver while cruise control is active
-              (maximum selection of cruise control and driver's demand). The cruise control is set to 0 if a switch off condition occurs.
+  description:
+    Cruise control is switched on. It is not ensured that the engine is controlled by cruise control,
+    as in the case of a large driver's demand the engine is controlled by the driver while cruise control is active
+    (maximum selection of cruise control and driver's demand). The cruise control is set to 0 if a switch off condition occurs.
 
 CruiseControl.State:
   datatype: uint8
   type: sensor
   enum:
-    'OFF_DISABLED': 0
-    'HOLD': 1
-    'ACCELERATE': 2
-    'DECELERATE': 3
-    'RESUME': 4
-    'SET': 5
-    'ACCEL_OVERRIDE': 6
+    "OFF_DISABLED": 0
+    "HOLD": 1
+    "ACCELERATE": 2
+    "DECELERATE": 3
+    "RESUME": 4
+    "SET": 5
+    "ACCEL_OVERRIDE": 6
   description: State of the cruise control system.
 
 #
@@ -160,8 +165,9 @@ ObstacleDetection:
 ObstacleDetection.IsEnabled:
   datatype: boolean
   type: actuator
-  description: Indicates if obstacle sensor system is enabled (i.e. monitoring for obstacles).
-               True = Enabled. False = Disabled.
+  description:
+    Indicates if obstacle sensor system is enabled (i.e. monitoring for obstacles).
+    True = Enabled. False = Disabled.
 
 ObstacleDetection.IsWarning:
   datatype: boolean
@@ -190,9 +196,9 @@ ObstacleDetection.WarningType:
   datatype: string
   type: sensor
   allowed: [
-    'UNDEFINED',      # Object detection warning not further categorized
-    'CROSS_TRAFFIC',  # Detected object is on an indirect trajectory that may intersect
-    'BLIND_SPOT',     # Detected object may not be in driver line of sight, including from mirrors
+      "UNDEFINED", # Object detection warning not further categorized
+      "CROSS_TRAFFIC", # Detected object is on an indirect trajectory that may intersect
+      "BLIND_SPOT", # Detected object may not be in driver line of sight, including from mirrors
     ]
   description: Indicates the type of obstacle warning detected as some track not only the presence of an obstacle but potential intercepting trajectory or other characteristics.
   comment: Undefined obstacle warning type would merely alert of presence of obstacle and may measure distance.
@@ -219,7 +225,6 @@ ABS.IsEngaged:
   type: sensor
   description: Indicates if ABS is currently regulating brake pressure. True = Engaged. False = Not Engaged.
 
-
 #
 # Traction Control System
 #
@@ -241,7 +246,6 @@ TCS.IsEngaged:
   datatype: boolean
   type: sensor
   description: Indicates if TCS is currently regulating traction. True = Engaged. False = Not Engaged.
-
 
 #
 # Electronic Stability Control System
@@ -269,7 +273,7 @@ ESC.IsStrongCrossWindDetected:
   datatype: boolean
   type: sensor
   description: Indicates if the ESC system is detecting strong cross winds.
-               True = Strong cross winds detected. False = No strong cross winds detected.
+    True = Strong cross winds detected. False = No strong cross winds detected.
 
 ESC.RoadFriction:
   type: branch
@@ -282,8 +286,8 @@ ESC.RoadFriction.MostProbable:
   min: 0
   max: 100
   description: Most probable road friction, as calculated by the ESC system.
-               Exact meaning of most probable is implementation specific.
-               0 = no friction, 100 = maximum friction.
+    Exact meaning of most probable is implementation specific.
+    0 = no friction, 100 = maximum friction.
 
 ESC.RoadFriction.LowerBound:
   datatype: float
@@ -292,8 +296,8 @@ ESC.RoadFriction.LowerBound:
   min: 0
   max: 100
   description: Lower bound road friction, as calculated by the ESC system.
-               5% possibility that road friction is below this value.
-               0 = no friction, 100 = maximum friction.
+    5% possibility that road friction is below this value.
+    0 = no friction, 100 = maximum friction.
 
 ESC.RoadFriction.UpperBound:
   datatype: float
@@ -302,8 +306,8 @@ ESC.RoadFriction.UpperBound:
   min: 0
   max: 100
   description: Upper bound road friction, as calculated by the ESC system.
-               95% possibility that road friction is below this value.
-               0 = no friction, 100 = maximum friction.
+    95% possibility that road friction is below this value.
+    0 = no friction, 100 = maximum friction.
 
 #
 # Electronic Brakeforce Distribution (EBD)
@@ -325,8 +329,9 @@ EBD.IsError:
 EBD.IsEngaged:
   datatype: boolean
   type: sensor
-  description: Indicates if EBD is currently regulating vehicle brakeforce distribution.
-               True = Engaged. False = Not Engaged.
+  description:
+    Indicates if EBD is currently regulating vehicle brakeforce distribution.
+    True = Engaged. False = Not Engaged.
 
 #
 # Emergency Brake Assist (EBA)

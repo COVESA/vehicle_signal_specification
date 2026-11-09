@@ -14,8 +14,8 @@ Status:
   datatype: uint8
   type: sensor
   enum:
-    'OFF': 0
-    'COND_RED': 1
-    'COND_YELLOW': 2
-    'COND_INFO': 3
+    "OFF": 0
+    "COND_RED": 1
+    "COND_YELLOW": 2
+    "COND_INFO": 3
   description: Status of the telltale. The interpretation of the status is manufacturer dependant.

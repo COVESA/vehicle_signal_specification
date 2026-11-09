@@ -7,7 +7,7 @@ mm:
   definition: Length measured in millimeters
   unit: millimeter
   quantity: length
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/MilliM
     quantity-kind: https://qudt.org/vocab/quantitykind/Length
@@ -15,7 +15,7 @@ cm:
   definition: Length measured in centimeters
   unit: centimeter
   quantity: length
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/CentiM
     quantity-kind: https://qudt.org/vocab/quantitykind/Length
@@ -23,7 +23,7 @@ m:
   definition: Length measured in meters
   unit: meter
   quantity: length
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/M
     quantity-kind: https://qudt.org/vocab/quantitykind/Length
@@ -31,7 +31,7 @@ km:
   definition: Length measured in kilometers
   unit: kilometer
   quantity: length
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/KiloM
     quantity-kind: https://qudt.org/vocab/quantitykind/Length
@@ -39,7 +39,7 @@ inch:
   definition: Distance measured in inches
   unit: inch
   quantity: length
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/IN
     quantity-kind: https://qudt.org/vocab/quantitykind/Length
@@ -50,7 +50,7 @@ km/h:
   definition: Velocity measured in kilometers per hours
   unit: kilometer per hour
   quantity: velocity
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/KiloM-PER-HR
     quantity-kind: https://qudt.org/vocab/quantitykind/Velocity
@@ -58,7 +58,7 @@ m/s:
   definition: Speed measured in meters per second
   unit: meters per second
   quantity: velocity
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/M-PER-SEC
     quantity-kind: https://qudt.org/vocab/quantitykind/Velocity
@@ -69,7 +69,7 @@ m/s^2:
   definition: Acceleration measured in meters per second squared
   unit: meters per second squared
   quantity: acceleration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/M-PER-SEC2
     quantity-kind: https://qudt.org/vocab/quantitykind/Acceleration
@@ -77,7 +77,7 @@ cm/s^2:
   definition: Acceleration measured in centimeters per second squared
   unit: centimeters per second squared
   quantity: acceleration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/CentiM-PER-SEC2
     quantity-kind: https://qudt.org/vocab/quantitykind/Acceleration
@@ -88,7 +88,7 @@ ml:
   definition: Volume measured in milliliters
   unit: milliliter
   quantity: volume
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/MilliL
     quantity-kind: https://qudt.org/vocab/quantitykind/Volume
@@ -96,7 +96,7 @@ l:
   definition: Volume measured in liters
   unit: liter
   quantity: volume
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/L
     quantity-kind: https://qudt.org/vocab/quantitykind/Volume
@@ -104,7 +104,7 @@ cm^3:
   definition: Volume measured in cubic centimeters
   unit: cubic centimeters
   quantity: volume
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/CentiM3
     quantity-kind: https://qudt.org/vocab/quantitykind/Volume
@@ -115,7 +115,7 @@ Celsius:
   definition: Temperature measured in degree Celsius
   unit: degree Celsius
   quantity: temperature
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/DEG_C
     quantity-kind: https://qudt.org/vocab/quantitykind/Temperature
@@ -124,7 +124,7 @@ Fahrenheit:
   definition: Temperature measured in degree Fahrenheit
   unit: degree Fahrenheit
   quantity: temperature
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/DEG_F
     quantity-kind: https://qudt.org/vocab/quantitykind/Temperature
@@ -135,7 +135,7 @@ degrees:
   definition: Angle measured in degrees
   unit: degree
   quantity: angle
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/Degree
     quantity-kind: https://qudt.org/vocab/quantitykind/Angle
@@ -146,7 +146,7 @@ degrees/s:
   definition: Angular speed measured in degrees per second
   unit: degree per second
   quantity: angular-speed
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/DEG-PER-SEC
     quantity-kind: https://qudt.org/vocab/quantitykind/AngularVelocity
@@ -154,11 +154,10 @@ rad/s:
   definition: Angular speed measured in radians per second
   unit: radians per second
   quantity: angular-speed
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/RAD-PER-SEC
     quantity-kind: https://qudt.org/vocab/quantitykind/AngularVelocity
-
 
 # Power
 
@@ -166,7 +165,7 @@ W:
   definition: Power measured in watts
   unit: watt
   quantity: power
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/W
     quantity-kind: https://qudt.org/vocab/quantitykind/Power
@@ -174,7 +173,7 @@ kW:
   definition: Power measured in kilowatts
   unit: kilowatt
   quantity: power
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/KiloW
     quantity-kind: https://qudt.org/vocab/quantitykind/Power
@@ -182,7 +181,7 @@ PS:
   definition: Power measured in horsepower
   unit: horsepower
   quantity: power
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/HP
     quantity-kind: https://qudt.org/vocab/quantitykind/Power
@@ -193,7 +192,7 @@ Wh:
   definition: Energy consumption measured in watt hours
   unit: watt hours
   quantity: work
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/W-HR
     quantity-kind: https://qudt.org/vocab/quantitykind/Energy
@@ -202,7 +201,7 @@ kWh:
   definition: Energy consumption measured in kilowatt hours
   unit: kilowatt hours
   quantity: work
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/KiloW-HR
     quantity-kind: https://qudt.org/vocab/quantitykind/Energy
@@ -213,7 +212,7 @@ g:
   definition: Mass measured in grams
   unit: gram
   quantity: mass
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/GM
     quantity-kind: https://qudt.org/vocab/quantitykind/Mass
@@ -221,7 +220,7 @@ kg:
   definition: Mass measured in kilograms
   unit: kilogram
   quantity: mass
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/KiloGM
     quantity-kind: https://qudt.org/vocab/quantitykind/Mass
@@ -229,7 +228,7 @@ lbs:
   definition: Mass measured in pounds
   unit: pound
   quantity: mass
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/LB
     quantity-kind: https://qudt.org/vocab/quantitykind/Mass
@@ -240,7 +239,7 @@ V:
   definition: Electric potential measured in volts
   unit: volt
   quantity: voltage
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/V
     quantity-kind: https://qudt.org/vocab/quantitykind/Voltage
@@ -251,7 +250,7 @@ A:
   definition: Electric current measured in amperes
   unit: ampere
   quantity: electric-current
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/A
     quantity-kind: https://qudt.org/vocab/quantitykind/ElectricCurrent
@@ -262,7 +261,7 @@ Ah:
   definition: Electric charge measured in ampere hours
   unit: ampere hours
   quantity: electric-charge
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/A_HR
     quantity-kind: https://qudt.org/vocab/quantitykind/ElectricCharge
@@ -272,7 +271,7 @@ ns:
   definition: Duration measured in nanoseconds
   unit: nanosecond
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/NanoSEC
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -280,7 +279,7 @@ us:
   definition: Duration measured in microseconds
   unit: microsecond
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: https://qudt.org/vocab/unit/MicroSEC
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -288,7 +287,7 @@ ms:
   definition: Duration measured in milliseconds
   unit: millisecond
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/MilliSEC
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -296,7 +295,7 @@ s:
   definition: Duration measured in seconds
   unit: second
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/SEC
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -304,7 +303,7 @@ min:
   unit: minute
   definition: Duration measured in minutes
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/MIN
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -312,7 +311,7 @@ h:
   definition: Duration measured in hours
   unit: hour
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/HR
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -320,7 +319,7 @@ day:
   definition: Duration measured in days
   unit: days
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/DAY
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -328,7 +327,7 @@ weeks:
   definition: Duration measured in weeks
   unit: weeks
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/WK
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -336,7 +335,7 @@ months:
   definition: Duration measured in months
   unit: months
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/MO
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -344,7 +343,7 @@ years:
   definition: Duration measured in years
   unit: years
   quantity: duration
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/YR
     quantity-kind: https://qudt.org/vocab/quantitykind/Time
@@ -355,12 +354,12 @@ unix-time:
   definition: Number of non-leap seconds which have passed since 00:00:00 UTC on Thursday, 1 January 1970
   unit: UNIX Timestamp
   quantity: datetime
-  allowed-datatypes: ['uint32','uint64','int64']
+  allowed-datatypes: ["uint32", "uint64", "int64"]
 iso8601:
   definition: Date and Time expressed as a string according to ISO 8601
   unit: ISO 8601
   quantity: datetime
-  allowed-datatypes: ['string']
+  allowed-datatypes: ["string"]
 
 # Pressure
 
@@ -368,7 +367,7 @@ mbar:
   definition: Pressure measured in millibars
   unit: millibar
   quantity: pressure
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/MilliBAR
     quantity-kind: https://qudt.org/vocab/quantitykind/VaporPressure
@@ -376,7 +375,7 @@ Pa:
   definition: Pressure measured in pascal
   unit: pascal
   quantity: pressure
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/PA
     quantity-kind: https://qudt.org/vocab/quantitykind/VaporPressure
@@ -384,7 +383,7 @@ kPa:
   definition: Pressure measured in kilopascal
   unit: kilopascal
   quantity: pressure
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/KiloPA
     quantity-kind: https://qudt.org/vocab/quantitykind/VaporPressure
@@ -392,7 +391,7 @@ psi:
   definition: Pressure measured in pounds per square inch
   unit: pounds per square inch
   quantity: pressure
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/PSI
     quantity-kind: https://qudt.org/vocab/quantitykind/VaporPressure
@@ -400,7 +399,7 @@ hPa:
   definition: Pressure measured in hectopascal
   unit: hectopascal
   quantity: pressure
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/HectoPA
     quantity-kind: https://qudt.org/vocab/quantitykind/AtmosphericPressure
@@ -411,7 +410,7 @@ stars:
   definition: Rating measured in stars
   unit: stars
   quantity: rating
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 
 # Mass per time
 
@@ -419,7 +418,7 @@ g/s:
   definition: Mass per time measured in grams per second
   unit: grams per second
   quantity: mass-per-time
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/GM-PER-SEC
     quantity-kind: https://qudt.org/vocab/quantitykind/MassFlowRate
@@ -427,7 +426,7 @@ kg/s:
   definition: Mass per time measured in kilograms per second
   unit: kilograms per second
   quantity: mass-per-time
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: https://qudt.org/vocab/unit/KiloGM-PER-SEC
     quantity-kind: https://qudt.org/vocab/quantitykind/MassFlowRate
@@ -438,7 +437,7 @@ g/km:
   definition: Mass per distance measured in grams per kilometers
   unit: grams per kilometer
   quantity: mass-per-distance
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/GM-PER-KiloM
     quantity-kind: https://qudt.org/vocab/quantitykind/MassPerLength
@@ -449,12 +448,12 @@ kWh/100km:
   definition: Energy consumption per distance measured in kilowatt hours per 100 kilometers
   unit: kilowatt hours per 100 kilometers
   quantity: energy-consumption-per-distance
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 Wh/km:
-  definition:  Energy consumption per distance measured in watt hours per kilometer
+  definition: Energy consumption per distance measured in watt hours per kilometer
   unit: watt hour per km
   quantity: energy-consumption-per-distance
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 
 # Volume per distance
 
@@ -462,12 +461,12 @@ ml/100km:
   definition: Volume per distance measured in milliliters per 100 kilometers
   unit: milliliter per 100 kilometers
   quantity: volume-per-distance
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 l/100km:
   definition: Volume per distance measured in liters per 100 kilometers
   unit: liter per 100 kilometers
   quantity: volume-per-distance
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 
 # Volume flow rate
 
@@ -475,7 +474,7 @@ l/h:
   definition: Flow measured in liters per hour
   unit: liter per hour
   quantity: volume-flow-rate
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/L-PER-HR
     quantity-kind: https://qudt.org/vocab/quantitykind/VolumeFlowRate
@@ -485,28 +484,28 @@ mpg-us:
   definition: Distance per volume measured in miles per US gallon (3.785 liters)
   unit: miles per US gallon
   quantity: distance-per-volume
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 mpg-uk:
   definition: Distance per volume measured in miles per Imperial gallon (4.546 liters)
   unit: miles per Imperial gallon
   quantity: distance-per-volume
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 mpge:
   definition: Miles per US gallon gasoline equivalent (33.7 kWh) for electric vehicles
   unit: miles per US gallon equivalent
   quantity: distance-per-volume
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 mpg:
   definition: Alias for mpg-us (Distance per volume measured in miles per US gallon)
   unit: miles per US gallon (deprecated)
   quantity: distance-per-volume
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   deprecation: "Deprecated in V6.0 — replaced by 'mpg-us' to distinguish from 'mpg-uk'"
 km/l:
   definition: Distance per volume measured in kilometers per liter
   unit: kilometers per liter
   quantity: distance-per-volume
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 
 # Precipitation Rate
 
@@ -514,7 +513,7 @@ mm/h:
   definition: Precipitation intensity measured in millimeters per hour
   unit: millimeter per hour
   quantity: precipitation-rate
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/MilliM-PER-HR
     quantity-kind: https://qudt.org/vocab/quantitykind/PrecipitationRate
@@ -525,7 +524,7 @@ N:
   definition: Force measured in newton
   unit: newton
   quantity: force
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/N
     quantity-kind: https://qudt.org/vocab/quantitykind/Force
@@ -533,7 +532,7 @@ kN:
   unit: kilo newton
   definition: Force measured in kilo newton
   quantity: force
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/KiloN
     quantity-kind: https://qudt.org/vocab/quantitykind/Force
@@ -544,7 +543,7 @@ Nm:
   definition: Torque measured in newton meters
   unit: newton meter
   quantity: torque
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/N-M
     quantity-kind: https://qudt.org/vocab/quantitykind/Torque
@@ -555,7 +554,7 @@ rpm:
   definition: Rotational speed measured in revolutions per minute
   unit: revolutions per minute
   quantity: rotational-speed
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/REV-PER-MIN
     quantity-kind: https://qudt.org/vocab/quantitykind/RotationalVelocity
@@ -566,7 +565,7 @@ Hz:
   definition: Frequency measured in hertz
   unit: Hertz
   quantity: frequency
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/HZ
     quantity-kind: https://qudt.org/vocab/quantitykind/Frequency
@@ -574,12 +573,12 @@ cpm:
   definition: Number of cycles per minute
   unit: cycles per minute
   quantity: frequency
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 bpm:
   definition: Number of human heart beats per minute
   unit: beats per minute
   quantity: frequency
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/BEAT-PER-MIN
     quantity-kind: https://qudt.org/vocab/quantitykind/HeartRate
@@ -590,7 +589,7 @@ ratio:
   definition: Relation measured as ratio
   unit: ratio
   quantity: relation
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/ONE-PER-ONE
     quantity-kind: https://qudt.org/vocab/quantitykind/DimensionlessRatio
@@ -598,7 +597,7 @@ percent:
   definition: Relation measured in percent
   unit: percent
   quantity: relation
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/PERCENT
     quantity-kind: https://qudt.org/vocab/quantitykind/DimensionlessRatio
@@ -606,12 +605,12 @@ nm/km:
   definition: nm/km
   unit: nano meter per kilometer
   quantity: relation
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
 dBm:
   definition: Power level expressed in decibels with reference to one milliwatt
   unit: decibel milliwatt
   quantity: relation
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/DeciB-MilliW
     quantity-kind: https://qudt.org/vocab/quantitykind/Unknown
@@ -619,7 +618,7 @@ dB:
   definition: Ratio of two values of a physical quantity, usually power or intensity, on a logarithmic scale.
   unit: decibel
   quantity: relation
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/DeciB
     quantity-kind: https://qudt.org/vocab/quantitykind/SoundPowerLevel
@@ -630,7 +629,7 @@ Ohm:
   definition: Electrical resistance measured in ohms
   unit: Ohm
   quantity: resistance
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/OHM
     quantity-kind: https://qudt.org/vocab/quantitykind/Resistance
@@ -641,7 +640,7 @@ lx:
   definition: Light intensity in Lux
   unit: lux
   quantity: illuminance
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/LUX
     quantity-kind: https://qudt.org/vocab/quantitykind/LuminousFluxPerArea
@@ -652,7 +651,7 @@ ppm:
   definition: Concentration measured in parts per million
   unit: parts per million
   quantity: relation
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/PPM
     quantity-kind: https://qudt.org/vocab/quantitykind/DimensionlessRatio
@@ -660,7 +659,7 @@ ppb:
   definition: Concentration measured in parts per billion
   unit: parts per billion
   quantity: relation
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/PPB
     quantity-kind: https://qudt.org/vocab/quantitykind/DimensionlessRatio
@@ -668,7 +667,7 @@ ug/m^3:
   definition: Mass concentration measured in micrograms per cubic meter
   unit: microgram per cubic meter
   quantity: mass-per-volume
-  allowed-datatypes: ['numeric']
+  allowed-datatypes: ["numeric"]
   qudt:
     unit: http://qudt.org/vocab/unit/MicroGM-PER-M3
     quantity-kind: https://qudt.org/vocab/quantitykind/MassDensity

@@ -20,12 +20,10 @@
 # Rationale is that there in some vehicles may be multiple steerable axis, and then
 # MotionManagement.SteeringRack may be instanstiated with multiple axles.
 
-
 SteeringWheel:
   type: branch
   description: MotionManagement related to steering wheel.
 #include Steering/SteeringWheel.vspec SteeringWheel
-
 
 # The VSS standard catalog is prepared to support steering on multiple axles
 # but the default instantiation is to have only a single steerable axis, i.e. Row[1,1]

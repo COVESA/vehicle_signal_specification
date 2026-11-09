@@ -19,7 +19,7 @@ Humidity:
   min: 0
   max: 100
   description: Relative humidity outside the vehicle.
-               0 = Dry, 100 = Air fully saturated.
+    0 = Dry, 100 = Air fully saturated.
 
 LightIntensity:
   datatype: float
@@ -28,7 +28,7 @@ LightIntensity:
   min: 0
   max: 100
   description: Light intensity outside the vehicle.
-               0 = No light detected, 100 = Fully lit.
+    0 = No light detected, 100 = Fully lit.
   comment: Mapping to physical units and calculation method is sensor specific.
 
 RoadSurfaceCondition:
