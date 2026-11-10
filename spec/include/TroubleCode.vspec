@@ -59,11 +59,11 @@ TroubleCode.Status:
   datatype: uint8
   type: property
   enum:
-    'Active': 0
-    'Pending': 1
-    'Inactive': 2
-    'Unknown': 3
-  description: Normalized state Active, Pending, Inactive, or Unknown; empty when HasStatus is false. Unknown means a status was supplied but could not be mapped.
+    'ACTIVE': 0
+    'PENDING': 1
+    'INACTIVE': 2
+    'UNKNOWN': 3
+  description: Normalized state ACTIVE, PENDING, INACTIVE, or UNKNOWN; empty when HasStatus is false. Unknown means a status was supplied but could not be mapped.
 
 TroubleCode.HasOccurrenceCount:
   datatype: boolean
