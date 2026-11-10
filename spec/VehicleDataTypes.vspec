@@ -19,3 +19,4 @@ VehicleDataTypes:
     in the main vehicle signal tree.
 
 #include include/Timestamp.vspec VehicleDataTypes
+#include include/TroubleCode.vspec VehicleDataTypes
