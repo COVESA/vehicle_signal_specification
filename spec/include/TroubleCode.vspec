@@ -1,0 +1,87 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+
+TroubleCode:
+  type: struct
+  description: Protocol-neutral diagnostic trouble-code record.
+
+TroubleCode.ID:
+  datatype: string
+  type: property
+  description: Identifier unique within one ECU and CodeSystem; the same ID may occur for another ECU or code system.
+
+TroubleCode.ECU:
+  datatype: string
+  type: property
+  description: Stable identifier of the reporting ECU or diagnostic source, unique within the vehicle.
+
+TroubleCode.CodeSystem:
+  datatype: string
+  type: property
+  description: Code-system identifier, such as SAE-J2012, SAE-J1939, or a globally unique vendor namespace.
+
+TroubleCode.HasCode:
+  datatype: boolean
+  type: property
+  description: True when Code contains a source-provided identifier in the representation defined by CodeSystem.
+
+TroubleCode.Code:
+  datatype: string
+  type: property
+  description: Source-provided trouble-code identifier; preserve it, or use an empty string when HasCode is false.
+
+TroubleCode.HasDetails:
+  datatype: boolean
+  type: property
+  description: True when Details contains a schema-defined JSON object.
+
+TroubleCode.DetailsSchema:
+  datatype: string
+  type: property
+  description: Versioned URI identifying the Details schema, or an empty string when HasDetails is false.
+
+TroubleCode.Details:
+  datatype: string
+  type: property
+  description: JSON object encoded as a string and defined by DetailsSchema; empty when HasDetails is false.
+
+TroubleCode.HasStatus:
+  datatype: boolean
+  type: property
+  description: True when Status is available and can be mapped to the normalized values below.
+
+TroubleCode.Status:
+  datatype: uint8
+  type: property
+  enum:
+    'UNKNOWN': 0  
+    'ACTIVE': 1
+    'PENDING': 2
+    'INACTIVE': 3
+  description: Normalized state ACTIVE, PENDING, INACTIVE, or UNKNOWN; empty when HasStatus is false.
+              UNKNOWN means a status was supplied but could not be mapped.
+
+TroubleCode.HasOccurrenceCount:
+  datatype: boolean
+  type: property
+  description: True when OccurrenceCount is available.
+
+TroubleCode.OccurrenceCount:
+  datatype: uint32
+  type: property
+  description: Occurrence count as reported or mapped; use zero when HasOccurrenceCount is false.
+
+TroubleCode.HasLastObserved:
+  datatype: boolean
+  type: property
+  description: True when LastObserved is available.
+
+TroubleCode.LastObserved:
+  datatype: string
+  type: property
+  description: ISO 8601 timestamp of the last observation; empty when HasLastObserved is false.
