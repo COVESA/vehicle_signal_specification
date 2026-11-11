@@ -1,0 +1,93 @@
+# Copyright (c) 2026 Contributors to COVESA
+#
+# This program and the accompanying materials are made available under the
+# terms of the Mozilla Public License 2.0 which is available at
+# https://www.mozilla.org/en-US/MPL/2.0/
+#
+# SPDX-License-Identifier: MPL-2.0
+#
+# Cybersecurity profile <-> GlobalPlatform SESIP (informative).
+#
+# Maps each property of the Cybersecurity Profile
+# (docs-gen/content/extensions/cybersecurity_profile.md) to the SESIP security
+# functional requirements that typically address it, and defines the
+# requirement ids that the optional per-signal `sesip_sfrs` attribute uses.
+#
+# Informative only. It does not select a SESIP profile, does not set a SESIP
+# level and is not conformity evidence. Which requirements a component must
+# meet, and at which level, follows from the vehicle's risk assessment.
+#
+# SESIP: GlobalPlatform, Security Evaluation Standard for IoT Platforms
+# (GP_FST_070). Requirement names as given there; ids are snake_case of the name.
+
+sesip_requirements:
+  verification_of_platform_identity: Verification of Platform Identity
+  verification_of_platform_instance_identity: Verification of Platform Instance Identity
+  attestation_of_platform_genuineness: Attestation of Platform Genuineness
+  attestation_of_platform_state: Attestation of Platform State
+  secure_initialization_of_platform: Secure Initialization of Platform
+  secure_update_of_platform: Secure Update of Platform
+  secure_update_of_application: Secure Update of Application
+  field_return_of_platform: Field Return of Platform
+  residual_information_purging: Residual Information Purging
+  secure_debugging: Secure Debugging
+  cryptographic_operation: Cryptographic Operation
+  cryptographic_keystore: Cryptographic KeyStore
+  cryptographic_key_generation: Cryptographic Key Generation
+  cryptographic_random_number_generation: Cryptographic Random Number Generation
+  isolation_of_platform: Isolation of Platform
+  isolation_of_application_parts: Isolation of Application Parts
+  isolation_of_platform_parts: Isolation of Platform Parts
+  physical_attacker_resistance: Physical Attacker Resistance
+  limited_physical_attacker_resistance: Limited Physical Attacker Resistance
+  secure_trusted_storage: Secure Trusted Storage
+  secure_confidential_storage: Secure Confidential Storage
+  secure_encrypted_storage: Secure Encrypted Storage
+  secure_data_serialization: Secure Data Serialization
+  secure_communication_support: Secure Communication Support
+  secure_communication_enforcement: Secure Communication Enforcement
+  audit_log_generation_and_storage: Audit Log Generation and Storage
+  authenticated_access_control: Authenticated Access Control
+  privileged_access_control: Privileged Access Control
+
+# Property -> SESIP requirements that typically address it. One property usually
+# leads to several requirements, and one requirement serves several properties.
+properties:
+  confidentiality:
+    - secure_communication_support
+    - secure_communication_enforcement
+    - secure_confidential_storage
+    - secure_encrypted_storage
+    - cryptographic_operation
+    - cryptographic_keystore
+  privacy:
+    - secure_confidential_storage
+    - residual_information_purging
+    - field_return_of_platform
+  integrity:
+    - secure_communication_support
+    - secure_communication_enforcement
+    - secure_trusted_storage
+    - secure_initialization_of_platform
+    - secure_update_of_platform
+  authenticity:
+    - verification_of_platform_identity
+    - verification_of_platform_instance_identity
+    - attestation_of_platform_genuineness
+    - secure_communication_support
+  non_repudiation:
+    - audit_log_generation_and_storage
+    - cryptographic_operation
+  authorization:
+    - authenticated_access_control
+    - privileged_access_control
+  availability:
+    - secure_update_of_platform
+    - isolation_of_platform_parts
+  access_control:
+    - authenticated_access_control
+    - isolation_of_platform
+    - isolation_of_application_parts
+  # No dedicated SESIP requirement: addressed at system level (network
+  # scheduling, isolation of time-critical parts).
+  timeliness: []
