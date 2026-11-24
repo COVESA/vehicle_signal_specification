@@ -22,7 +22,7 @@
 IsOpen:
   datatype: boolean
   type: actuator
-  description: Is item open or closed? True = Fully or partially open. False = Fully closed.
+  description: Indicates whether the item is open. True = fully or partially open; False = fully closed.
 
 Position:
   datatype: uint8
@@ -30,9 +30,10 @@ Position:
   min: 0
   max: 100
   unit: percent
-  description: Item position. 0 = Start position 100 = End position.
+  description: Position of the item. 0 = start position; 100 = end position.
   comment: Relationship between Open/Close and Start/End position is item dependent.
 
+# Human check of description required: ONE_SHOT_* values are cryptic and unexplained; semantics need confirmation
 Switch:
   datatype: string
   type: actuator

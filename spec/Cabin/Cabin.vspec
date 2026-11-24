@@ -26,7 +26,7 @@ RearShade:
 ##
 HVAC:
   type: branch
-  description: Climate control
+  description: Climate control.
 #include HVAC.vspec HVAC
 
 ##
@@ -51,7 +51,7 @@ Infotainment:
 ##
 Sunroof:
   type: branch
-  description: Sun roof status.
+  description: Sunroof status.
 
 Sunroof.Position:
   datatype: int8
@@ -59,7 +59,7 @@ Sunroof.Position:
   unit: percent
   min: -100
   max: 100
-  description: Sunroof position. 0 = Fully closed 100 = Fully opened. -100 = Fully tilted.
+  description: Sunroof position. 0 = Fully closed. 100 = Fully opened. -100 = Fully tilted.
 
 #
 # Sunroof controlling switch.
@@ -81,8 +81,8 @@ Sunroof.Switch:
 
 Sunroof.Shade:
   type: branch
-  description: Sun roof shade status. Open = Retracted, Closed = Deployed.
-    Start position for Sunroof.Shade is Open/Retracted.
+  description: >-
+    Sunroof shade status. Open = Retracted, Closed = Deployed. Start position for Sunroof.Shade is Open/Retracted.
 
 # Include shade specification also used by side and rear window.
 #include ../include/MovableItem.vspec Sunroof.Shade
@@ -140,7 +140,7 @@ DoorCount:
 IsWindowChildLockEngaged:
   datatype: boolean
   type: actuator
-  description: Is window child lock engaged. True = Engaged. False = Disengaged.
+  description: Indicates if the window child lock is engaged. True = Engaged. False = Disengaged.
   comment:
     Window child lock refers to the functionality to disable the move window button next to most windows,
     so that they only can be operated by the driver.
@@ -208,7 +208,7 @@ Convertible.Status:
 ##
 DriverCompartment:
   type: branch
-  description: Driver compartment signals
+  description: Driver compartment signals.
 
 DriverCompartment.InteriorTemperature:
   datatype: float
@@ -221,5 +221,5 @@ DriverCompartment.InteriorTemperature:
 ##
 Tachograph:
   type: branch
-  description: Tachograph
+  description: Tachograph signals.
 #include Tachograph.vspec Tachograph

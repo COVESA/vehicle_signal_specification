@@ -33,7 +33,7 @@ LifeRemaining:
   type: sensor
   description: Remaining engine coolant life in seconds.
     Negative values can be used to indicate that lifetime has been exceeded.
-  comment:
-    In addition to this a signal a vehicle can report remaining time to service (including e.g. coolant change)
-    by Vehicle.Service.TimeToService.
+  comment: >-
+    In addition to this signal, a vehicle can report remaining time to service (including e.g. coolant change) by
+    Vehicle.Service.TimeToService.
   unit: s

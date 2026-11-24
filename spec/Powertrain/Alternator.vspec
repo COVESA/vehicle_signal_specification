@@ -14,9 +14,9 @@ Alternators:
   type: branch
   instances:
     - Alternator[1,4]
-  description: Alternators.
+  description: Alternators of the vehicle. May contain elements such as charging status.
 
 Alternators.IsCharging:
   datatype: boolean
   type: sensor
-  description: Indicates the current status of the alternator.
+  description: Indicates whether the alternator is currently charging. True = charging; False = not charging.

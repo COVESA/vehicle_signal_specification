@@ -13,4 +13,6 @@
 IsNetworkOK:
   datatype: boolean
   type: sensor
-  description: Network status. True = No network problems detected. False = Network problems detected.
+  description: >-
+    Indicates whether the network of the control unit is operating without problems. True = no network problems
+    detected; False = network problems detected.

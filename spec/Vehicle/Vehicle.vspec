@@ -16,32 +16,32 @@
 
 VersionVSS:
   type: branch
-  description: Supported Version of VSS.
+  description: Version of the VSS specification supported by the vehicle.
 
 VersionVSS.Major:
   datatype: uint32
   type: attribute
   default: 7
-  description: Supported Version of VSS - Major version.
+  description: Major version number of the supported VSS version.
 
 VersionVSS.Minor:
   datatype: uint32
   type: attribute
   default: 0
-  description: Supported Version of VSS - Minor version.
+  description: Minor version number of the supported VSS version.
 
 VersionVSS.Patch:
   datatype: uint32
   type: attribute
   default: 0
-  description: Supported Version of VSS - Patch version.
+  description: Patch version number of the supported VSS version.
 
 VersionVSS.Label:
   datatype: string
   type: attribute
   default: "dev"
-  description: Label to further describe the version.
-  comment: COVESA VSS project typically use dev for latest master, and empty string for released versions.
+  description: Label further describing the supported VSS version.
+  comment: The COVESA VSS project typically uses 'dev' for latest master, and an empty string for released versions.
 
 #
 # Vehicle identification attributes.
@@ -90,19 +90,19 @@ VehicleIdentification.Year:
 VehicleIdentification.AcrissCode:
   datatype: string
   type: attribute
-  description: The ACRISS Car Classification Code is a code used by many car rental companies.
+  description: ACRISS Car Classification Code of the vehicle, a code used by many car rental companies.
   pattern: ^[A-Z]{4}$
 
 VehicleIdentification.BodyType:
   datatype: string
   type: attribute
-  description: Indicates the design and body style of the vehicle (e.g. station wagon, hatchback, etc.).
+  description: Design and body style of the vehicle, e.g. station wagon or hatchback.
 
 VehicleIdentification.DateVehicleFirstRegistered:
   datatype: string
   type: attribute
   unit: iso8601
-  description: The date in ISO 8601 format of the first registration of the vehicle with the respective public authorities.
+  description: Date of the first registration of the vehicle with the respective public authorities, in ISO 8601 format.
 
 VehicleIdentification.LicensePlate:
   datatype: string
@@ -113,25 +113,27 @@ VehicleIdentification.LicensePlate:
 VehicleIdentification.MeetsEmissionStandard:
   datatype: string
   type: attribute
-  description: Indicates that the vehicle meets the respective emission standard.
+  description: Emission standard that the vehicle meets.
 
 VehicleIdentification.ProductionDate:
   datatype: string
   type: attribute
   unit: iso8601
-  description: The date in ISO 8601 format of production of the item, e.g. vehicle.
+  description: Production date of the vehicle, in ISO 8601 format.
 
 VehicleIdentification.PurchaseDate:
   datatype: string
   type: attribute
   unit: iso8601
-  description: The date in ISO 8601 format of the item e.g. vehicle was purchased by the current owner.
+  description: Date the vehicle was purchased by the current owner, in ISO 8601 format.
 
 VehicleIdentification.VehicleModelDate:
   datatype: string
   type: attribute
   unit: iso8601
-  description: The release date in ISO 8601 format of a vehicle model (often used to differentiate versions of the same make and model).
+  description: >-
+    Release date of a vehicle model, in ISO 8601 format. Often used to differentiate versions of the same make and
+    model.
 
 VehicleIdentification.VehicleConfiguration:
   datatype: string
@@ -151,28 +153,28 @@ VehicleIdentification.VehicleSpecialUsage:
 VehicleIdentification.VehicleExteriorColor:
   datatype: string
   type: attribute
-  description: The main color of the exterior within the basic color palette (eg. red, blue, black, white, ...).
+  description: Main exterior color of the vehicle within the basic color palette, e.g. red, blue, black, or white.
 
 VehicleIdentification.VehicleInteriorColor:
   datatype: string
   type: attribute
-  description: The color or color combination of the interior of the vehicle.
+  description: Color or color combination of the vehicle interior.
 
 VehicleIdentification.VehicleInteriorType:
   datatype: string
   type: attribute
-  description: The type or material of the interior of the vehicle (e.g. synthetic fabric, leather, wood, etc.).
+  description: Type or material of the vehicle interior, e.g. synthetic fabric, leather, or wood.
 
 VehicleIdentification.KnownVehicleDamages:
   datatype: string
   type: attribute
-  description: A textual description of known damages, both repaired and unrepaired.
+  description: Textual description of known damages, both repaired and unrepaired.
 
 VehicleIdentification.OptionalExtras:
   datatype: string[]
   type: attribute
-  description: Optional extras refers to all car equipment options that are not installed as standard by the manufacturer.
-  comment: Allowed values are not standardized, each OEM can specify detail descriptions of array elements.
+  description: Car equipment options that are not installed as standard by the manufacturer.
+  comment: Allowed values are not standardized; each OEM can specify detailed descriptions of array elements.
 #
 # Vehicle signals
 #
@@ -203,7 +205,8 @@ Speed:
   datatype: float
   type: sensor
   unit: km/h
-  description: Vehicle speed.
+  description: Speed of the vehicle at its center of gravity.
+  comment: The linear speed of individual wheels is provided by Vehicle.Chassis.Axle.Wheel.Speed.
 
 TraveledDistance:
   datatype: uint32
@@ -248,22 +251,21 @@ TripMeterReading:
   type: actuator
   unit: m
   description: Trip meter reading.
-  comment: The trip meter is an odometer that can be manually reset by the driver
+  comment: The trip meter is an odometer that can be manually reset by the driver.
 
 IsBrokenDown:
   datatype: boolean
   type: sensor
-  description:
-    Vehicle breakdown or any similar event causing vehicle to stop on the road,
-    that might pose a risk to other road users.
-    True = Vehicle broken down on the road, due to e.g. engine problems, flat tire, out of gas, brake problems.
-    False = Vehicle not broken down.
+  description: >-
+    Indicates whether the vehicle has broken down or a similar event is causing it to stop on the road, possibly posing
+    a risk to other road users. True = vehicle broken down on the road, due to e.g. engine problems, flat tire, out of
+    gas, or brake problems; False = vehicle not broken down.
   comment: Actual criteria and method used to decide if a vehicle is broken down is implementation specific.
 
 IsMoving:
   datatype: boolean
   type: sensor
-  description: Indicates whether the vehicle is stationary or moving.
+  description: Indicates whether the vehicle is moving. True = moving; False = stationary.
 
 AverageSpeed:
   datatype: float
@@ -400,7 +402,7 @@ CurrentOverallWeight:
   datatype: uint16
   type: sensor
   unit: kg
-  description: Current overall Vehicle weight. Including passengers, cargo and other load inside the car.
+  description: Current overall weight of the vehicle, including passengers, cargo, and other load inside the vehicle.
 
 CurbWeight:
   datatype: uint16
@@ -414,7 +416,8 @@ GrossWeight:
   type: attribute
   default: 0
   unit: kg
-  description: Curb weight of vehicle, including all liquids and full tank of fuel and full load of cargo and passengers.
+  description: >-
+    Curb weight of vehicle, including all liquids and full tank of fuel and full load of cargo and passengers.
 
 GrossCombinationVehicleWeight:
   datatype: uint32
@@ -485,7 +488,7 @@ Trailer:
 Trailer.IsConnected:
   datatype: boolean
   type: sensor
-  description: Signal indicating if trailer is connected or not.
+  description: Indicates whether a trailer is connected to the vehicle. True = connected; False = not connected.
 
 #
 # Location
@@ -493,7 +496,7 @@ Trailer.IsConnected:
 
 CurrentLocation:
   type: branch
-  description: The current latitude and longitude of the vehicle.
+  description: Current geographic location of the vehicle, such as latitude and longitude.
 
 CurrentLocation.Timestamp:
   datatype: string
@@ -575,28 +578,29 @@ CurrentLocation.GNSSReceiver.MountingPosition.X:
   datatype: int16
   type: attribute
   unit: mm
-  description:
-    Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
-    Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
-    Positive values = forward of rear axle. Negative values = backward of rear axle.
+  description: >-
+    Mounting position of the GNSS receiver antenna along the X-axis of the vehicle coordinate system. Positive values =
+    forward of rear axle; negative values = backward of rear axle.
+  comment: Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
 
 CurrentLocation.GNSSReceiver.MountingPosition.Y:
   datatype: int16
   type: attribute
   unit: mm
-  description:
-    Mounting position of GNSS receiver antenna relative to vehicle coordinate system.
-    Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
-    Positive values = left of origin. Negative values = right of origin.
-    Left/Right is as seen from driver perspective, i.e. by a person looking forward.
+  description: >-
+    Mounting position of the GNSS receiver antenna along the Y-axis of the vehicle coordinate system. Positive values =
+    left of origin; negative values = right of origin. Left/right is as seen from driver perspective, i.e. by a person
+    looking forward.
+  comment: Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
 
 CurrentLocation.GNSSReceiver.MountingPosition.Z:
   datatype: int16
   type: attribute
   unit: mm
-  description: Mounting position of GNSS receiver on Z-axis.
-    Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
-    Positive values = above center of rear axle. Negative values = below center of rear axle.
+  description: >-
+    Mounting position of the GNSS receiver antenna along the Z-axis of the vehicle coordinate system. Positive values =
+    above center of rear axle; negative values = below center of rear axle.
+  comment: Axis definitions according to ISO 8855. Origin at center of (first) rear axle.
 
 CurrentDateTime:
   datatype: string

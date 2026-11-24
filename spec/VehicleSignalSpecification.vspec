@@ -31,7 +31,9 @@ Vehicle:
 #
 Vehicle.Powertrain:
   type: branch
-  description: Powertrain data for battery management, etc.
+  description: >-
+    Powertrain of the vehicle. May contain elements such as engine, electric motor, transmission, battery, and fuel
+    system.
 #include Powertrain/Powertrain.vspec Vehicle.Powertrain
 
 #
@@ -39,7 +41,7 @@ Vehicle.Powertrain:
 #
 Vehicle.Powertrain.CombustionEngine:
   type: branch
-  description: Engine-specific data, stopping at the bell housing.
+  description: Combustion engine specific data, stopping at the bell housing.
 
 # Include the engine.vspec file and attach all its signals and attributes under the engine
 # branch created above.
@@ -69,11 +71,12 @@ Vehicle.Powertrain.ElectricMotor:
   type: branch
   instances:
     ["Front", "Rear", "FrontLeft", "FrontRight", "RearLeft", "RearRight"]
-  description: Electric Motor specific data.
-  comment:
-    Instance Front to be used if the vehicle has a motor located at the front of the vehicle, serving front and possibly also rear axle.
-    Instance Rear to be used if the vehicle has a motor located at the rear of the vehicle, serving rear and possiblsy also front axle.
-    Instances with Left/Right intended to be used if vehicle has separate motors for left and right side.
+  description: Electric motor specific data.
+  comment: >-
+    Instance Front to be used if the vehicle has a motor located at the front of the vehicle, serving front and possibly
+    also rear axle. Instance Rear to be used if the vehicle has a motor located at the rear of the vehicle, serving rear
+    and possibly also front axle. Instances with Left/Right intended to be used if vehicle has separate motors for left
+    and right side.
 
 # Include the electric motor vspec file and attach all its signals and attributes under the
 # electric motor branch created above.
@@ -87,7 +90,7 @@ Vehicle.Powertrain.ElectricMotor:
 #
 Vehicle.Powertrain.TractionBattery:
   type: branch
-  description: Battery Management data.
+  description: Traction battery data, such as for battery management.
 
 #include Powertrain/TractionBattery.vspec Vehicle.Powertrain.TractionBattery
 
@@ -126,7 +129,7 @@ Vehicle.Powertrain.PropulsionSystem:
 #
 Vehicle.Body:
   type: branch
-  description: All body components.
+  description: Body components of the vehicle.
 
 #include Body/Body.vspec Vehicle.Body
 
@@ -135,7 +138,7 @@ Vehicle.Body:
 #
 Vehicle.Cabin:
   type: branch
-  description: All in-cabin components, including doors.
+  description: In-cabin components of the vehicle, such as doors.
 
 # Include the Cabin/Cabin.vspec file and attach all its signals and attributes under the
 # Cabin branch created above.
@@ -147,7 +150,7 @@ Vehicle.Cabin:
 #
 Vehicle.ADAS:
   type: branch
-  description: All Advanced Driver Assist Systems data.
+  description: Advanced Driver Assistance Systems (ADAS) data.
 
 #include ADAS/ADAS.vspec Vehicle.ADAS
 
@@ -166,7 +169,7 @@ Vehicle.Safety:
 #
 Vehicle.Chassis:
   type: branch
-  description: All data concerning steering, suspension, wheels, and brakes.
+  description: Chassis data, such as steering, suspension, wheels, and brakes.
 
 #include Chassis/Chassis.vspec Vehicle.Chassis
 
@@ -175,7 +178,7 @@ Vehicle.Chassis:
 #
 Vehicle.Driver:
   type: branch
-  description: Driver data.
+  description: Data about the driver of the vehicle.
 
 # Include the Driver/Driver.vspec file and attach all its data under the
 # Driver branch created above and will include Occupant attributes
@@ -191,7 +194,7 @@ Vehicle.Occupant:
   instances:
     - Row[1,2]
     - ["DriverSide", "Middle", "PassengerSide"]
-  description: Occupant (Driver or Passenger) data.
+  description: Data about the occupants of the vehicle.
 #include Vehicle/Occupant.vspec Vehicle.Occupant
 
 #
@@ -199,7 +202,7 @@ Vehicle.Occupant:
 #
 Vehicle.Exterior:
   type: branch
-  description: Information about exterior measured by vehicle.
+  description: Information about the exterior of the vehicle, as measured by the vehicle.
 
 #include Vehicle/Exterior.vspec Vehicle.Exterior
 
@@ -208,7 +211,7 @@ Vehicle.Exterior:
 #
 Vehicle.Service:
   type: branch
-  description: Service data.
+  description: Service-related data of the vehicle.
 
 #include Vehicle/Service.vspec Vehicle.Service
 
@@ -233,6 +236,6 @@ Vehicle.Connectivity:
 # HMI information
 #
 Vehicle.HMI:
-  description: Vehicle HMI signals
+  description: Human-machine interface (HMI) signals of the vehicle.
   type: branch
 #include Vehicle/HMI.vspec Vehicle.HMI

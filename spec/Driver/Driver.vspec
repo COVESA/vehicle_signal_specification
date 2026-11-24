@@ -21,12 +21,14 @@ DistractionLevel:
 IsEyesOnRoad:
   datatype: boolean
   type: sensor
-  description: Has driver the eyes on road or not?
+  description: Indicates whether the driver's eyes are on the road. True = eyes on road; False = eyes not on road.
 
 IsHandsOnWheel:
   datatype: boolean
   type: sensor
-  description: Are the driver's hands on the steering wheel or not?
+  description: >-
+    Indicates whether the driver's hands are on the steering wheel. True = hands on steering wheel; False = hands not on
+    steering wheel.
 
 AttentiveProbability:
   datatype: float

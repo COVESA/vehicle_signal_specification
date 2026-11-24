@@ -10,10 +10,10 @@ ServiceBrakeAirPressureCircuit1:
   datatype: uint16
   type: sensor
   unit: kPa
-  description: The pneumatic pressure in the service brake circuit or reservoir #1.
+  description: Pneumatic pressure in service brake circuit 1 or its reservoir.
 
 ServiceBrakeAirPressureCircuit2:
   datatype: uint16
   type: sensor
   unit: kPa
-  description: The pneumatic pressure in the service brake circuit or reservoir #2.
+  description: Pneumatic pressure in service brake circuit 2 or its reservoir.

@@ -69,22 +69,20 @@ CruiseControl:
 CruiseControl.IsEnabled:
   datatype: boolean
   type: actuator
-  description:
-    Indicates if cruise control system is enabled (e.g. ready to receive configurations and settings)
-    True = Enabled. False = Disabled.
+  description: >-
+    Indicates if the cruise control system is enabled (e.g. ready to receive configurations and settings). True =
+    Enabled. False = Disabled.
 
 CruiseControl.IsActive:
   datatype: boolean
   type: actuator
-  description:
-    Indicates if cruise control system is active (i.e. actively controls speed).
-    True = Active. False = Inactive.
+  description: Indicates if the cruise control system is actively controlling speed. True = Active. False = Inactive.
 
 CruiseControl.SpeedSet:
   datatype: float
   type: actuator
   unit: km/h
-  description: Set cruise control speed in kilometers per hour.
+  description: Set speed of the cruise control system in kilometers per hour.
 
 CruiseControl.IsError:
   datatype: boolean
@@ -94,14 +92,16 @@ CruiseControl.IsError:
 CruiseControl.IsAdaptive:
   datatype: boolean
   type: actuator
-  description: Indicates if cruise control system is adaptive (i.e. actively controls speed).
+  description: >-
+    Indicates whether the cruise control system is adaptive, i.e. keeps a distance to the lead vehicle. True = adaptive;
+    False = not adaptive.
 
 CruiseControl.AdaptiveDistanceSet:
   datatype: float
   type: actuator
   unit: m
   min: 0.0
-  description: Distance in meters to keep from lead vehicle
+  description: Distance in meters to keep from the lead vehicle.
 
 CruiseControl.AdaptiveIntervalSet:
   datatype: uint8
@@ -112,10 +112,11 @@ CruiseControl.AdaptiveIntervalSet:
 CruiseControl.IsSwitchedOn:
   datatype: boolean
   type: sensor
-  description:
-    Cruise control is switched on. It is not ensured that the engine is controlled by cruise control,
-    as in the case of a large driver's demand the engine is controlled by the driver while cruise control is active
-    (maximum selection of cruise control and driver's demand). The cruise control is set to 0 if a switch off condition occurs.
+  description: Indicates if cruise control is switched on. True = Switched on. False = Switched off.
+  comment: >-
+    It is not ensured that the engine is controlled by cruise control, as in the case of a large driver's demand the
+    engine is controlled by the driver while cruise control is active (maximum selection of cruise control and driver's
+    demand). The cruise control is set to 0 if a switch off condition occurs.
 
 CruiseControl.State:
   datatype: uint8
@@ -145,7 +146,9 @@ LaneDepartureDetection.IsEnabled:
 LaneDepartureDetection.IsWarning:
   datatype: boolean
   type: sensor
-  description: Indicates if lane departure detection registered a lane departure.
+  description: >-
+    Indicates if lane departure detection registered a lane departure. True = Lane departure registered. False = No lane
+    departure registered.
 
 LaneDepartureDetection.IsError:
   datatype: boolean
@@ -160,19 +163,20 @@ ObstacleDetection:
   instances:
     - ["Front", "Rear"]
     - ["Left", "Center", "Right"]
-  description: Signals form Obstacle Sensor System.
+  description: Signals from Obstacle Sensor System.
 
 ObstacleDetection.IsEnabled:
   datatype: boolean
   type: actuator
-  description:
-    Indicates if obstacle sensor system is enabled (i.e. monitoring for obstacles).
-    True = Enabled. False = Disabled.
+  description: >-
+    Indicates if the obstacle sensor system is enabled (monitoring for obstacles). True = Enabled. False = Disabled.
 
 ObstacleDetection.IsWarning:
   datatype: boolean
   type: sensor
-  description: Indicates if obstacle sensor system registered an obstacle.
+  description: >-
+    Indicates if the obstacle sensor system registered an obstacle. True = Obstacle registered. False = No obstacle
+    registered.
 
 ObstacleDetection.IsError:
   datatype: boolean
@@ -184,13 +188,13 @@ ObstacleDetection.Distance:
   type: sensor
   unit: m
   min: 0.0
-  description: Distance in meters to detected object
+  description: Distance in meters to the detected object.
 
 ObstacleDetection.TimeGap:
   datatype: uint32
   type: sensor
   unit: ms
-  description: Time in milliseconds before potential impact object
+  description: Time in milliseconds before potential impact with the detected object.
 
 ObstacleDetection.WarningType:
   datatype: string
@@ -200,8 +204,11 @@ ObstacleDetection.WarningType:
       "CROSS_TRAFFIC", # Detected object is on an indirect trajectory that may intersect
       "BLIND_SPOT", # Detected object may not be in driver line of sight, including from mirrors
     ]
-  description: Indicates the type of obstacle warning detected as some track not only the presence of an obstacle but potential intercepting trajectory or other characteristics.
-  comment: Undefined obstacle warning type would merely alert of presence of obstacle and may measure distance.
+  description: Type of obstacle warning detected.
+  comment: >-
+    Some systems track not only the presence of an obstacle but also a potential intercepting trajectory or other
+    characteristics. Undefined obstacle warning type would merely alert of presence of obstacle and may measure
+    distance.
 
 #
 # Antilock Braking System
@@ -370,7 +377,9 @@ DMS.IsEnabled:
 DMS.IsWarning:
   datatype: boolean
   type: sensor
-  description: Indicates if DMS has registered a driver alert condition.
+  description: >-
+    Indicates if DMS has registered a driver alert condition. True = Alert condition registered. False = No alert
+    condition registered.
 
 DMS.IsError:
   datatype: boolean

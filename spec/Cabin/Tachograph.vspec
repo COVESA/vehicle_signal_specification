@@ -15,7 +15,7 @@ Drivers:
   type: branch
   instances:
     - Driver[1,2]
-  description: Driver signals
+  description: Signals related to a driver as registered by the tachograph.
 
 Drivers.WorkingState:
   datatype: uint8
@@ -25,7 +25,7 @@ Drivers.WorkingState:
     "WORK": 2
     "DRIVE": 3
   type: sensor
-  description: State of work of the driver.
+  description: Current working state of the driver as registered by the tachograph.
 
 Drivers.TimeRelatedState:
   datatype: uint8
@@ -43,7 +43,7 @@ Drivers.TimeRelatedState:
 Drivers.IsCardPresent:
   datatype: boolean
   type: sensor
-  description: Indicates the presence of a driver card.
+  description: Indicates whether a driver card is present. True = present; False = not present.
 
 Drivers.Identification:
   datatype: string
@@ -53,7 +53,9 @@ Drivers.Identification:
 IsOverspeed:
   datatype: boolean
   type: sensor
-  description: Indicates whether the vehicle is exceeding the legal speed limit set in the tachograph.
+  description: >-
+    Indicates whether the vehicle is exceeding the legal speed limit set in the tachograph. True = exceeding; False =
+    not exceeding.
 
 VehicleSpeed:
   datatype: float
@@ -72,19 +74,22 @@ DirectionIndicator:
 IsPerformanceAnalysisActive:
   datatype: boolean
   type: sensor
-  description:
-    Indicates the tachograph performance; including electronic or mechanical analysis, instrument analysis,
-    speed sensor analysis, mass storage analysis, and printer analysis.
+  description: Indicates whether tachograph performance analysis is active. True = active; False = not active.
+  comment: >-
+    Analysis may include electronic or mechanical analysis, instrument analysis, speed sensor analysis, mass storage
+    analysis, and printer analysis.
 
 IsHandlingInformationPresent:
   datatype: boolean
   type: sensor
-  description: Indicates that handling information is present. Information could include 'no printer paper', 'no driver card', etc.
+  description: Indicates whether handling information is present. True = present; False = not present.
+  comment: Information could include 'no printer paper', 'no driver card', etc.
 
 IsSystemEventOccurred:
   datatype: boolean
   type: sensor
-  description:
-    Indicates that a tachograph event has occurred. This may include power supply interruption, interruption of the speed sensor,
-    incorrect data on the driver card, driving without a driver card, illegal removal of a driver card, insertion of a driver card during driving,
-    and time adjustment.
+  description: Indicates whether a tachograph event has occurred. True = occurred; False = not occurred.
+  comment: >-
+    Events may include power supply interruption, interruption of the speed sensor, incorrect data on the driver card,
+    driving without a driver card, illegal removal of a driver card, insertion of a driver card during driving, and time
+    adjustment.

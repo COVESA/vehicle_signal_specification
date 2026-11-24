@@ -22,4 +22,4 @@ Suspension.Axles.BellowPressure:
   datatype: float
   type: sensor
   unit: kPa
-  description: Used for suspension bellow pressure information.
+  description: Pressure of the suspension bellow.

@@ -48,35 +48,35 @@ Mode:
   datatype: string
   type: actuator
   allowed: ["STOP_HOLD", "WIPE", "PLANT_MODE", "EMERGENCY_STOP"]
-  description: Requested mode of wiper system.
-    STOP_HOLD means that the wipers shall move to position given by TargetPosition and then hold the position.
-    WIPE means that wipers shall move to the position given by TargetPosition and then hold the position
-    if no new TargetPosition is requested.
-    PLANT_MODE means that wiping is disabled. Exact behavior is vehicle specific.
-    EMERGENCY_STOP means that wiping shall be immediately stopped without holding the position.
+  description: >-
+    Requested mode of wiper system. STOP_HOLD = wipers move to the position given by TargetPosition and then hold the
+    position; WIPE = wipers move to the position given by TargetPosition and then hold the position if no new
+    TargetPosition is requested; PLANT_MODE = wiping is disabled; EMERGENCY_STOP = wiping is immediately stopped without
+    holding the position.
+  comment: Exact behavior is vehicle specific.
 
 Frequency:
   datatype: uint8
   unit: cpm
   type: actuator
-  description: Wiping frequency/speed, measured in cycles per minute.
-    The signal concerns the actual speed of the wiper blades when moving.
-    Intervals/pauses are excluded, i.e. the value corresponds to the number of cycles
-    that would be completed in 1 minute if wiping permanently over default range.
+  description: >-
+    Wiping frequency/speed, measured in cycles per minute. The signal concerns the actual speed of the wiper blades when
+    moving. Intervals/pauses are excluded; the value corresponds to the number of cycles that would be completed in 1
+    minute if wiping permanently over default range.
   comment: Examples - 0 = Wipers stopped, 80 = Wipers doing 80 cycles per minute (in WIPE mode).
 
 TargetPosition:
   datatype: float
   unit: degrees
   type: actuator
-  description:
-    Requested position of main wiper blade for the wiper system relative to reference position.
-    Location of reference position (0 degrees) and direction of positive/negative degrees is vehicle specific.
-    System behavior when receiving TargetPosition depends on Mode and IsEndingWipeCycle.
-    Supported values are vehicle specific and might be dynamically corrected.
-    If IsEndingWipeCycle=True then wipers will complete current movement before actuating new TargetPosition.
-    If IsEndingWipeCycle=False then wipers will directly change destination if the TargetPosition is changed.
-  comment: Default parking position might be used as reference position.
+  description: >-
+    Requested position of main wiper blade for the wiper system relative to reference position. Location of reference
+    position (0 degrees) and direction of positive/negative degrees is vehicle specific.
+  comment: >-
+    Default parking position might be used as reference position. System behavior when receiving TargetPosition depends
+    on Mode and IsEndingWipeCycle. Supported values are vehicle specific and might be dynamically corrected. If
+    IsEndingWipeCycle=True then wipers will complete current movement before actuating new TargetPosition. If
+    IsEndingWipeCycle=False then wipers will directly change destination if the TargetPosition is changed.
 
 ActualPosition:
   datatype: float
@@ -97,34 +97,37 @@ DriveCurrent:
 IsWiping:
   datatype: boolean
   type: sensor
-  description: Indicates wiper movement. True if wiper blades are moving.
-    Change of direction shall be considered as IsWiping if wipers will continue to move
-    directly after the change of direction.
+  description: >-
+    Indicates if the wiper blades are moving. True = Moving. False = Not moving. Change of direction shall be considered
+    as IsWiping if wipers will continue to move directly after the change of direction.
 
 IsEndingWipeCycle:
   datatype: boolean
   type: sensor
-  description:
-    Indicates if current wipe movement is completed or near completion.
-    True = Movement is completed or near completion. Changes to RequestedPosition will be executed
-    first after reaching previous RequestedPosition, if it has not already been reached.
-    False = Movement is not near completion. Any change to RequestedPosition will be
-    executed immediately. Change of direction may not be allowed.
-  comment: In continuous wiping between A and B this sensor can be used a trigger to update TargetPosition.
+  description: >-
+    Indicates if current wipe movement is completed or near completion. True = Movement is completed or near completion.
+    False = Movement is not near completion.
+  comment: >-
+    If True, changes to TargetPosition will be executed first after reaching previous TargetPosition, if it has not
+    already been reached. If False, any change to TargetPosition will be executed immediately. Change of direction may
+    not be allowed. In continuous wiping between A and B this sensor can be used a trigger to update TargetPosition.
 
 IsWiperError:
   datatype: boolean
   type: sensor
-  description: Indicates system failure. True if wiping is disabled due to system failure.
+  description: >-
+    Indicates if wiping is disabled due to a wiper system failure. True = Wiping disabled due to system failure. False =
+    No system failure.
 
 IsPositionReached:
   datatype: boolean
   type: sensor
-  description: Indicates if a requested position has been reached.
-    IsPositionReached refers to the previous position in case the
-    TargetPosition is updated while IsEndingWipeCycle=True.
-    True = Current or Previous TargetPosition reached.
-    False = Position not (yet) reached, or wipers have moved away from the reached position.
+  description: >-
+    Indicates if a requested position has been reached. True = Current or previous TargetPosition reached. False =
+    Position not (yet) reached, or wipers have moved away from the reached position.
+  comment: >-
+    IsPositionReached refers to the previous position in case the TargetPosition is updated while
+    IsEndingWipeCycle=True.
 
 IsBlocked:
   datatype: boolean

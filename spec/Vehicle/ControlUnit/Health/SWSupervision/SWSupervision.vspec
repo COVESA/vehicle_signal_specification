@@ -13,19 +13,25 @@
 IsAliveTriggered:
   datatype: boolean
   type: sensor
-  description: Whether the alive supervision was triggered
+  description: >-
+    Indicates whether the alive supervision of the control unit was triggered. True = triggered; False = not triggered.
 
 IsDeadlineTriggered:
   datatype: boolean
   type: sensor
-  description: Whether the deadline supervision was triggered
+  description: >-
+    Indicates whether the deadline supervision of the control unit was triggered. True = triggered; False = not
+    triggered.
 
 IsLogicalTriggered:
   datatype: boolean
   type: sensor
-  description: Whether the logical supervision was triggered
+  description: >-
+    Indicates whether the logical supervision of the control unit was triggered. True = triggered; False = not
+    triggered.
 
 IsWatchdogTriggered:
   datatype: boolean
   type: sensor
-  description: Whether the watchdog deadline was triggered
+  description: >-
+    Indicates whether the watchdog deadline of the control unit was triggered. True = triggered; False = not triggered.

@@ -9,7 +9,8 @@
 IsFire:
   datatype: boolean
   type: sensor
-  description: Indicates whether a fire has been detected in or on the vehicle.
+  description: >-
+    Indicates whether a fire has been detected in or on the vehicle. True = fire detected; False = no fire detected.
   comment: >
     Determination method is implementation specific. May be derived from
     temperature sensors, battery thermal runaway detection,
@@ -20,7 +21,8 @@ IsFire:
 IsSubmersed:
   datatype: boolean
   type: sensor
-  description: Indicates whether the vehicle is partially or fully submersed in water.
+  description: >-
+    Indicates whether the vehicle is partially or fully submersed in water. True = submersed; False = not submersed.
   comment: >
     Determination method is implementation specific. May be derived from
     pressure sensors, water contact sensors, door seal sensors,

@@ -13,7 +13,7 @@
 EngineCode:
   datatype: string
   type: attribute
-  description: Engine code designation, as specified by vehicle manufacturer.
+  description: Electric motor code designation, as specified by vehicle manufacturer.
 
 MaxPower:
   datatype: uint16
@@ -27,7 +27,7 @@ MaxTorque:
   type: attribute
   default: 0
   unit: Nm
-  description: Peak power, in newton meter, that the motor(s) can generate.
+  description: Peak torque, in newton meter, that the motor(s) can generate.
 
 MaxRegenPower:
   datatype: uint16
@@ -55,7 +55,7 @@ Speed:
 TimeInUse:
   datatype: float
   type: sensor
-  description: Accumulated time during engine lifetime when the vehicule state's is 'READY'.
+  description: Accumulated time during motor lifetime when the vehicle state is 'READY'.
   comment: Vehicles may define their READY state.
   unit: h
 
@@ -73,7 +73,8 @@ Temperature:
 #
 EngineCoolant:
   type: branch
-  description: Signals related to the engine coolant (if applicable).
+  description: >-
+    Engine coolant of the electric motor, if applicable. May contain elements such as capacity, temperature, and level.
 #include EngineCoolant.vspec EngineCoolant
 
 #

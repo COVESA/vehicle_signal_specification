@@ -21,7 +21,7 @@ BodyType:
 #
 Hood:
   type: branch
-  description: Hood status. Start position for Hood is Closed.
+  description: State of the vehicle's hood. Start position is closed.
   comment:
     The hood is the hinged cover over the engine compartment of a motor vehicles.
     Depending on vehicle, it can be either in the front or back of the vehicle.
@@ -35,7 +35,7 @@ Hood:
 Trunk:
   type: branch
   instances: ["Front", "Rear"]
-  description: Trunk status. Start position for Trunk is Closed.
+  description: State of the vehicle's trunk. Start position is closed.
   comment: A trunk is a luggage compartment in a vehicle.
     Depending on vehicle, it can be either in the front or back of the vehicle.
     Some vehicles may have trunks both at the front and at the rear of the vehicle.
@@ -45,7 +45,7 @@ Trunk:
 Trunk.IsLightOn:
   datatype: boolean
   type: actuator
-  description: Is trunk light on
+  description: Indicates if the trunk light is on. True = On. False = Off.
   comment: V4.0 Moved from Vehicle.Cabin.Lights.IsTrunkOn because Trunk is not defined as part of the Cabin.
 
 #
@@ -58,7 +58,7 @@ Horn:
 Horn.IsActive:
   datatype: boolean
   type: actuator
-  description: Horn active or inactive. True = Active. False = Inactive.
+  description: Indicates if the horn is active. True = Active. False = Inactive.
 
 #
 # Raindetection description
@@ -97,13 +97,12 @@ Windshield.Wiping.Mode:
 Windshield.Wiping.Intensity:
   datatype: uint8
   type: actuator
-  description:
-    Relative intensity/sensitivity for interval and rain sensor mode as requested by user/driver.
-    Has no significance if Windshield.Wiping.Mode is OFF/SLOW/MEDIUM/FAST
-    0 - wipers inactive.
-    1 - minimum intensity (lowest frequency/sensitivity, longest interval).
-    2/3/4/... - higher intensity (higher frequency/sensitivity, shorter interval).
-    Maximum value supported is vehicle specific.
+  description: >-
+    Relative intensity/sensitivity for interval and rain sensor mode as requested by user/driver. 0 = wipers inactive; 1
+    = minimum intensity (lowest frequency/sensitivity, longest interval); 2/3/4/... = higher intensity (higher
+    frequency/sensitivity, shorter interval).
+  comment: >-
+    Has no significance if Windshield.Wiping.Mode is OFF/SLOW/MEDIUM/FAST. Maximum value supported is vehicle specific.
 
 Windshield.Wiping.System:
   type: branch
@@ -121,11 +120,10 @@ Windshield.Wiping.WiperWear:
   type: sensor
   unit: percent
   max: 100
-  description: Wiper wear as percent.
-    0 = No Wear.
-    100 = Worn. Replacement required.
-    Method for calculating or estimating wiper wear is vehicle specific.
-    For windshields with multiple wipers the wear reported shall correspond to the most worn wiper.
+  description: Wiper wear as percent. 0 = No wear. 100 = Worn, replacement required.
+  comment: >-
+    Method for calculating or estimating wiper wear is vehicle specific. For windshields with multiple wipers the wear
+    reported shall correspond to the most worn wiper.
 
 Windshield.Wiping.IsWipersWorn:
   datatype: boolean
@@ -135,11 +133,11 @@ Windshield.Wiping.IsWipersWorn:
 Windshield.IsHeatingOn:
   datatype: boolean
   type: actuator
-  description: Windshield heater status. False - off, True - on.
+  description: Indicates if the windshield heater is on. True = On. False = Off.
 
 Windshield.WasherFluid:
   type: branch
-  description: Windshield washer fluid signals
+  description: Windshield washer fluid signals.
 
 Windshield.WasherFluid.IsLevelLow:
   datatype: boolean
@@ -249,7 +247,7 @@ RearMainSpoilerPosition:
   type: actuator
   min: 0
   max: 100
-  description: Rear spoiler position, 0% = Spoiler fully stowed. 100% = Spoiler fully exposed.
+  description: Position of the rear main spoiler. 0% = Spoiler fully stowed. 100% = Spoiler fully exposed.
 
 #include include/PowerOptimize.vspec
 

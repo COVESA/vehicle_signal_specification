@@ -13,8 +13,8 @@ VehicleForceMaximum:
   datatype: int16
   unit: N
   max: 0
-  description: Maximum longitudinal brake force request (FxWhlSum).
-    Sum of all tyre longitudinal forces. Brake Force < 0N.
+  description: >-
+    Maximum longitudinal brake force request (FxWhlSum). Sum of all tire longitudinal forces. Brake Force < 0N.
 
 VehicleForceElectricMinimumArbitrated:
   type: sensor
@@ -28,7 +28,7 @@ VehicleForceElectric:
   datatype: int16
   max: 0
   unit: N
-  description: Regenerative brake force request (FxWhlSum). Sum of all tyre longitudinal forces. Brake Force < 0N.
+  description: Regenerative brake force request (FxWhlSum). Sum of all tire longitudinal forces. Brake Force < 0N.
 
 VehicleForceDistributionFrontMaximum:
   type: actuator
@@ -36,10 +36,10 @@ VehicleForceDistributionFrontMaximum:
   unit: percent
   min: 0
   max: 100
-  description: Maximum distribution range request of FxWhlSum to front axle.
-    0% = Complete longitudinal brake force shall be shifted to rear axle.
-    50% = At most 50% shall be shifted to front axle.
-    100%  = Complete longitudinal brake force may be shifted to front axle.
+  description: >-
+    Maximum distribution range request of FxWhlSum to front axle. 0% = complete longitudinal brake force shall be
+    shifted to rear axle; 50% = at most 50% shall be shifted to front axle; 100% = complete longitudinal brake force may
+    be shifted to front axle.
 
 VehicleForceDistributionFrontMinimum:
   type: actuator
@@ -47,10 +47,10 @@ VehicleForceDistributionFrontMinimum:
   unit: percent
   min: 0
   max: 100
-  description: Minimum distribution range request of FxWhlSum to front axle.
-    0% = Complete longitudinal brake force may be shifted to rear axle.
-    50% = At least 50% shall be shifted to front axle.
-    100% = Complete longitudinal brake force shall be shifted to front axle.
+  description: >-
+    Minimum distribution range request of FxWhlSum to front axle. 0% = complete longitudinal brake force may be shifted
+    to rear axle; 50% = at least 50% shall be shifted to front axle; 100% = complete longitudinal brake force shall be
+    shifted to front axle.
 
 Axle:
   type: branch

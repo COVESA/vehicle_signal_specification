@@ -16,12 +16,12 @@
 IsGloveBoxOn:
   datatype: boolean
   type: actuator
-  description: Is glove box light on
+  description: Indicates whether the glove box light is on. True = on; False = off.
 
 IsDomeOn:
   datatype: boolean
   type: actuator
-  description: Is central dome light on
+  description: Indicates whether the central dome light is on. True = on; False = off.
 
 PerceivedAmbientLight:
   datatype: uint8
@@ -29,8 +29,13 @@ PerceivedAmbientLight:
   unit: percent
   min: 0
   max: 100
-  description: The percentage of ambient light that is measured (e.g., by a sensor) inside the cabin. 0 = No ambient light. 100 = Full brightness.
-  comment: V4.0 named changed from "AmbientLight" to "PerceivedAmbientLight". This is a read-only property that refers to the pre-existing light (e.g., natural light). If you are looking for the in-cabin decorative lights that sometimes are also called "AmbientLights", please refer to the branch Vehicle.Cabin.Light.AmbientLight.
+  description: >-
+    Percentage of ambient light measured inside the cabin (e.g., by a sensor). 0 = no ambient light; 100 = full
+    brightness.
+  comment: >-
+    V4.0 name changed from "AmbientLight" to "PerceivedAmbientLight". This is a read-only property that refers to the
+    pre-existing light (e.g., natural light). If you are looking for the in-cabin decorative lights that sometimes are
+    also called "AmbientLights", please refer to the branch Vehicle.Cabin.Light.AmbientLight.
 
 #
 # Configurable lights
@@ -48,16 +53,17 @@ AmbientLight:
   instances:
     - Row[1,2]
     - ["DriverSide", "PassengerSide"]
-  description: Decorative coloured light inside the cabin, usually mounted on the door, ceiling, etc.
+  description: Decorative colored light inside the cabin, usually mounted on the door, ceiling, etc.
 #include SingleConfigurableLight.vspec AmbientLight
 
 InteractiveLightBar:
   type: branch
-  description: Decorative coloured light bar that supports effects, usually mounted on the dashboard (e.g. BMW i7 Interactive bar).
+  description: Decorative colored light bar that supports effects, usually mounted on the dashboard.
+  comment: "Example: BMW i7 Interactive bar."
 #include SingleConfigurableLight.vspec InteractiveLightBar
 
 InteractiveLightBar.Effect:
   type: actuator
   datatype: string
-  description: Light effect selection from a predefined set of allowed values.
+  description: Selected light effect of the interactive light bar.
   comment: Default and allowed values are OEM-specific and should be defined accordingly (e.g. with the use of overlays).

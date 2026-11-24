@@ -25,11 +25,10 @@ TorqueDistributionFrictionRightMaximum:
   unit: percent
   min: 0
   max: 100
-  description:
-    Maximum distribution range of the friction brake request on the axle to the right wheel.
-    0% = Complete friction torque shall be shifted to the left wheel.
-    50% = At most 50% friction torque may be shifted to the right wheel.
-    100% = Complete friction torque may be shifted to the right wheel.
+  description: >-
+    Maximum distribution range of the friction brake request on the axle to the right wheel. 0% = complete friction
+    torque shall be shifted to the left wheel; 50% = at most 50% friction torque may be shifted to the right wheel; 100%
+    = complete friction torque may be shifted to the right wheel.
 
 TorqueDistributionFrictionRightMinimum:
   type: actuator
@@ -37,11 +36,10 @@ TorqueDistributionFrictionRightMinimum:
   unit: percent
   min: 0
   max: 100
-  description:
-    Minimum distribution range of the friction brake request on the axle to the right wheel.
-    0% = Complete friction torque may be shifted to the left wheel.
-    50% = At least 50% friction torque shall be shifted to the right wheel.
-    100% = Complete friction torque shall be shifted to the right wheel.
+  description: >-
+    Minimum distribution range of the friction brake request on the axle to the right wheel. 0% = complete friction
+    torque may be shifted to the left wheel; 50% = at least 50% friction torque shall be shifted to the right wheel;
+    100% = complete friction torque shall be shifted to the right wheel.
 
 Wheel:
   type: branch

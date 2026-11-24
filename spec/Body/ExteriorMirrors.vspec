@@ -16,7 +16,8 @@ Tilt:
   min: -100
   max: 100
   type: actuator
-  description: Mirror tilt as a percent. 0 = Center Position. 100 = Fully Upward Position. -100 = Fully Downward Position.
+  description: >-
+    Mirror tilt as a percent. 0 = Center position; 100 = Fully upward position; -100 = Fully downward position.
 
 Pan:
   deprecation: v6.0 Replaced with Yaw - Note that direction changes!
@@ -25,7 +26,7 @@ Pan:
   unit: percent
   min: -100
   max: 100
-  description: Mirror pan as a percent. 0 = Center Position. 100 = Fully Left Position. -100 = Fully Right Position.
+  description: Mirror pan as a percent. 0 = Center position; 100 = Fully left position; -100 = Fully right position.
 
 Yaw:
   datatype: int8
@@ -33,27 +34,27 @@ Yaw:
   unit: percent
   min: -100
   max: 100
-  description:
-    Relative mirror yaw angle, measured from the vehicle sprung mass X-axis as defined by ISO 23150:2023
-    to the mirror X-axis, around the vehicle Z-axis (right-hand rule).
-    0 = Mirror in default position. Exact position (yaw relative to vehicle X-axis) is vehicle dependent.
-    100 = Maximum yaw. Mirror rotated clockwise as much as possible around Z-axis.
-    -100 = Minimum yaw. Mirror rotated counter-clockwise as much as possible around Z-axis.
-  comment:
-    A positive yaw indicates that the mirror has been adjusted to get a better view on objects
-    on the right side of the vehicle.
+  description: >-
+    Relative mirror yaw angle, measured from the vehicle sprung mass X-axis as defined by ISO 23150:2023 to the mirror
+    X-axis, around the vehicle Z-axis (right-hand rule). 0 = Mirror in default position; 100 = Maximum yaw, mirror
+    rotated clockwise as much as possible around Z-axis; -100 = Minimum yaw, mirror rotated counter-clockwise as much as
+    possible around Z-axis.
+  comment: >-
+    The exact default position (yaw relative to vehicle X-axis) is vehicle dependent. A positive yaw indicates that the
+    mirror has been adjusted to get a better view on objects on the right side of the vehicle.
 
 IsHeatingOn:
   datatype: boolean
   type: actuator
-  description: Mirror Heater on or off. True = Heater On. False = Heater Off.
+  description: Indicates if the mirror heater is on. True = On. False = Off.
 
 IsLocked:
   datatype: boolean
   type: actuator
-  description: Is mirror movement locked? True = Locked, mirror will not react to Tilt/Pan change. False = Unlocked.
+  description: >-
+    Indicates if mirror movement is locked. True = Locked, mirror will not react to Tilt/Pan change. False = Unlocked.
 
 IsFolded:
   datatype: boolean
   type: actuator
-  description: Is mirror folded? True = Fully or partially folded. False = Fully unfolded.
+  description: Indicates if the mirror is folded. True = Fully or partially folded. False = Fully unfolded.
