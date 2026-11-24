@@ -12,10 +12,11 @@
 
 PowerTakeOffs:
   type: branch
-  description: PTO information.
+  description: Information on the vehicle's power take-offs (PTOs).
 
 #Use "instantiate: false" when the branch will eventually contain PTO instances.
 PowerTakeOffs.IsEngagedAtLeastOne:
   datatype: boolean
   type: sensor
-  description: Indicates that at least one PTO is engaged
+  description: >-
+    Indicates whether at least one power take-off (PTO) is engaged. True = at least one engaged; False = none engaged.

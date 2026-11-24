@@ -16,7 +16,7 @@ NominalVoltage:
   datatype: uint16
   type: attribute
   unit: V
-  description: Nominal Voltage of the battery.
+  description: Nominal voltage of the low voltage battery.
   comment: Nominal voltage typically refers to voltage of fully charged battery when delivering rated capacity.
 
 NominalCapacity:
@@ -29,13 +29,13 @@ CurrentVoltage:
   datatype: float
   type: sensor
   unit: V
-  description: Current Voltage of the low voltage battery.
+  description: Current voltage of the low voltage battery.
 
 CurrentCurrent:
   datatype: float
   type: sensor
   unit: A
-  description:
-    Current current flowing in/out of the low voltage battery. Positive = Current flowing in to battery,
-    e.g. during charging or driving.
-    Negative = Current flowing out of battery, e.g. when using the battery to start a combustion engine.
+  description: >-
+    Electric current flowing into or out of the low voltage battery. Positive = flowing into the battery, e.g. during
+    charging or driving; negative = flowing out of the battery, e.g. when using the battery to start a combustion
+    engine.

@@ -13,6 +13,6 @@ ControlUnit:
   type: branch
   instances:
     - ["Central", "FrontLeft", "FrontRight", "RearLeft1", "RearLeft2", "Trunk"]
-  description: Root of the control unit branch
+  description: Electronic control unit (ECU) of the vehicle.
   comment: The listed instances in the VSS standard catalog shall be seen as an example and can be customized as needed
 #include Generic.vspec ControlUnit

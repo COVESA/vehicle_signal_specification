@@ -12,15 +12,20 @@
 
 Network:
   type: branch
-  description: Network attributes and signals
+  description: >-
+    Network communication health of the control unit. May contain elements such as CAN and Ethernet network status.
 #include Network/Network.vspec Network
 
 Resources:
   type: branch
-  description: Resources attributes and signals
+  description: >-
+    Resource usage of the control unit. May contain elements such as power consumption, temperature, and utilization.
 #include Resources/Resources.vspec Resources
 
 SWSupervision:
   type: branch
-  description: SW supervision attributes and signals
+  description: >-
+    Software supervision of the control unit. May contain elements such as alive, deadline, logical, and watchdog
+    supervision results.
+
 #include SWSupervision/SWSupervision.vspec SWSupervision

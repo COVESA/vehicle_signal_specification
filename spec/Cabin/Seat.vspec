@@ -32,7 +32,7 @@ OccupancyStatus:
 IsBelted:
   datatype: boolean
   type: sensor
-  description: Is the belt engaged.
+  description: Indicates whether the seat belt is engaged. True = engaged; False = not engaged.
 
 SeatBeltHeight:
   datatype: uint16
@@ -82,7 +82,7 @@ Tilt:
 
 Backrest:
   type: branch
-  description: Describes signals related to the backrest of the seat.
+  description: Backrest of the seat.
 
 #include include/ItemHeatingCooling.vspec Backrest
 
@@ -90,9 +90,9 @@ Backrest.Recline:
   datatype: float
   type: actuator
   unit: degrees
-  description: Backrest recline compared to seat z-axis (seat vertical axis).
-    0 degrees = Upright/Vertical backrest.
-    Negative degrees for forward recline. Positive degrees for backward recline.
+  description: >-
+    Backrest recline compared to seat z-axis (seat vertical axis). 0 degrees = upright/vertical backrest; negative
+    degrees = forward recline; positive degrees = backward recline.
   comment:
     Seat z-axis depends on seat tilt. This means that movement of backrest due to seat tilting will not
     affect Backrest.Recline as long as the angle between Seating and Backrest are constant.
@@ -182,7 +182,7 @@ Backrest.UpperShoulderSupport:
 
 Seating:
   type: branch
-  description: Describes signals related to the seat bottom of the seat.
+  description: Seat bottom (seating) of the seat.
   comment:
     Seating is here considered as the part of the seat that supports the thighs.
     Additional cushions (if any) for support of lower legs is not covered by this branch.
@@ -220,37 +220,37 @@ Seating.SideBolsterSupportLeft:
 
 Headrest:
   type: branch
-  description: Headrest settings.
+  description: Headrest of the seat.
 
 Headrest.Height:
   datatype: uint8
   type: actuator
   min: 0
   unit: mm
-  description: Position of headrest relative to movable range of the head rest. 0 = Bottommost position supported.
+  description: Position of the headrest relative to its movable range. 0 = bottommost position supported.
 
 Headrest.Angle:
   datatype: float
   type: actuator
   unit: degrees
-  description:
-    Headrest angle, relative to backrest, 0 degrees if parallel to backrest,
-    Positive degrees = tilted forward.
+  description: >-
+    Headrest angle relative to the backrest. 0 degrees = parallel to backrest; positive degrees = tilted forward.
 
 Airbag:
   type: branch
-  description: Airbag signals.
+  description: Airbag signals of the seat.
 
 Airbag.IsEnabled:
   datatype: boolean
   type: sensor
-  description: Airbag enabled status. True = Airbag enabled. False = Airbag not enabled.
+  description: Indicates whether the airbag is enabled. True = enabled; False = not enabled.
 
 Airbag.IsDeployed:
   datatype: boolean
   type: sensor
-  description: Airbag deployment status. True = Airbag deployed. False = Airbag not deployed.
+  description: Indicates whether the airbag is deployed. True = deployed; False = not deployed.
 
+# Human check of description required: Description circular text; nature of the neck scarf needs a domain expert
 NeckScarf:
   type: branch
   description: NeckScarf settings.
@@ -264,142 +264,146 @@ NeckScarf:
 IsWarmerSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Warmer switch for Seat heater.
+  description: Indicates whether the warmer switch of the seat heater is engaged. True = engaged; False = not engaged.
   comment: Affects the property (HeatingCooling).
 
 IsCoolerSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Cooler switch for Seat heater.
+  description: Indicates whether the cooler switch of the seat heater is engaged. True = engaged; False = not engaged.
   comment: Affects the property (HeatingCooling).
 
 IsForwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Seat forward switch engaged.
+  description: Indicates whether the seat forward switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Position).
 
 IsBackwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Seat backward switch engaged.
+  description: Indicates whether the seat backward switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Position).
 
 IsUpSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Seat up switch engaged.
+  description: Indicates whether the seat up switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Height).
 
 IsDownSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Seat down switch engaged.
+  description: Indicates whether the seat down switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Height).
 
 IsTiltForwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Tilt forward switch engaged.
+  description: Indicates whether the seat tilt forward switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Tilt).
 
 IsTiltBackwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Tilt backward switch engaged.
+  description: Indicates whether the seat tilt backward switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Tilt).
 
 Backrest.IsReclineForwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Backrest recline forward switch engaged.
+  description: Indicates whether the backrest recline forward switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Backrest.Recline).
 
 Backrest.IsReclineBackwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Backrest recline backward switch engaged.
+  description: Indicates whether the backrest recline backward switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Backrest.Recline).
 
 Backrest.IsMoreLumbarSupportSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Is switch for more lumbar support engaged.
+  description: Indicates whether the switch for more lumbar support is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Backrest.LumbarSupport).
 
 Backrest.IsLessLumbarSupportSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Is switch for less lumbar support engaged.
+  description: Indicates whether the switch for less lumbar support is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Backrest.LumbarSupport).
 
 Backrest.IsLumbarUpSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Lumbar up switch engaged.
+  description: Indicates whether the lumbar up switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Backrest.LumbarSupport).
 
 Backrest.IsLumbarDownSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Lumbar down switch engaged.
+  description: Indicates whether the lumbar down switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Backrest.LumbarSupport).
 
 Backrest.IsMoreSideBolsterSupportSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Is switch for more side bolster support engaged.
+  description: >-
+    Indicates whether the switch for more side bolster support is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Backrest.SideBolsterSupport).
 
 Backrest.IsLessSideBolsterSupportSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Is switch for less side bolster support engaged.
+  description: >-
+    Indicates whether the switch for less side bolster support is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Backrest.SideBolsterSupport).
 
 Seating.IsForwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Is switch to increase seating length engaged.
+  description: Indicates whether the switch to increase seating length is engaged. True = engaged; False = not engaged.
 
 Seating.IsBackwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Is switch to decrease seating length engaged.
+  description: Indicates whether the switch to decrease seating length is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Seating.Length).
 
 Headrest.IsUpSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Headrest up switch engaged.
+  description: Indicates whether the headrest up switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Headrest.Height).
 
 Headrest.IsDownSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Headrest down switch engaged.
+  description: Indicates whether the headrest down switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Headrest.Height).
 
 Headrest.IsForwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Headrest forward switch engaged.
+  description: Indicates whether the headrest forward switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Headrest.Angle).
 
 Headrest.IsBackwardSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Headrest backward switch engaged.
+  description: Indicates whether the headrest backward switch is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Headrest.Angle).
 
 IsIncreaseMassageLevelSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Increase massage level switch engaged.
+  description: >-
+    Indicates whether the switch to increase the massage level is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Massage.Level).
 
 IsDecreaseMassageLevelSwitchEngaged:
   datatype: boolean
   type: actuator
-  description: Decrease massage level switch engaged.
+  description: >-
+    Indicates whether the switch to decrease the massage level is engaged. True = engaged; False = not engaged.
   comment: Affects the property (Massage.Level).

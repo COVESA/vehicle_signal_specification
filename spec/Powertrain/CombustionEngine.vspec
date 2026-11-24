@@ -26,19 +26,19 @@ EngineCode:
 Displacement:
   datatype: uint16
   type: attribute
-  description: Displacement in cubic centimetres.
+  description: Engine displacement in cubic centimeters.
   unit: cm^3
 
 StrokeLength:
   datatype: float
   type: attribute
-  description: Stroke length in millimetres.
+  description: Engine stroke length in millimeters.
   unit: mm
 
 Bore:
   datatype: float
   type: attribute
-  description: Bore in millimetres.
+  description: Bore diameter of the engine cylinders, in millimeters.
   unit: mm
 
 Configuration:
@@ -59,18 +59,18 @@ Configuration:
       "OPPOSED",
       "X",
     ]
-  description: Engine configuration.
+  description: Cylinder arrangement of the engine.
   default: "UNKNOWN"
 
 NumberOfCylinders:
   datatype: uint16
   type: attribute
-  description: Number of cylinders.
+  description: Number of cylinders of the engine.
 
 NumberOfValvesPerCylinder:
   datatype: uint16
   type: attribute
-  description: Number of valves per cylinder.
+  description: Number of valves per cylinder of the engine.
 
 CompressionRatio:
   datatype: string
@@ -113,12 +113,13 @@ AspirationType:
   type: attribute
   allowed: ["UNKNOWN", "NATURAL", "SUPERCHARGER", "TURBOCHARGER"]
   default: "UNKNOWN"
-  description: Type of aspiration (natural, turbocharger, supercharger etc).
+  description: Type of air aspiration of the engine.
 
 IsRunning:
   datatype: boolean
   type: sensor
-  description: Engine Running. True if engine is rotating (Speed > 0).
+  description: >-
+    Indicates whether the engine is running. True = engine is rotating (Speed > 0); False = engine is not rotating.
 
 #
 # Engine rotations per minute
@@ -149,7 +150,7 @@ IdleHours:
 #
 EngineOil:
   type: branch
-  description: Signals related to the engine oil
+  description: Engine oil of the combustion engine. May contain elements such as capacity, level, and temperature.
 
 EngineOil.Capacity:
   datatype: float
@@ -174,16 +175,16 @@ EngineOil.LifeRemaining:
   type: sensor
   description: Remaining engine oil life in seconds.
     Negative values can be used to indicate that lifetime has been exceeded.
-  comment:
-    In addition to this a signal a vehicle can report remaining time to service (including e.g. oil change)
-    by Vehicle.Service.TimeToService.
+  comment: >-
+    In addition to this signal, a vehicle can report remaining time to service (including e.g. oil change) by
+    Vehicle.Service.TimeToService.
   unit: s
 
 EngineOil.Temperature:
   datatype: float
   type: sensor
   unit: Celsius
-  description: EOT, Engine oil temperature.
+  description: Engine oil temperature (EOT).
 
 EngineOil.PressureStatus:
   type: sensor
@@ -201,7 +202,9 @@ EngineOil.PressureStatus:
 #
 EngineCoolant:
   type: branch
-  description: Signals related to the engine coolant
+  description: >-
+    Engine coolant of the combustion engine. May contain elements such as capacity, temperature, level, and remaining
+    life.
 #include EngineCoolant.vspec EngineCoolant
 
 #
@@ -220,7 +223,7 @@ MAF:
   datatype: uint16
   type: sensor
   unit: g/s
-  description: Grams of air drawn into engine per second.
+  description: Mass flow rate of air drawn into the engine, in grams per second.
 
 #
 # Throttle Position
@@ -248,7 +251,7 @@ Power:
   datatype: uint16
   type: sensor
   unit: kW
-  description: Current engine power output. Shall be reported as 0 during engine breaking.
+  description: Current engine power output. Shall be reported as 0 during engine braking.
 
 #
 # Current Torque
@@ -257,8 +260,8 @@ Torque:
   datatype: int16
   type: sensor
   unit: Nm
-  description: Current engine torque. Shall be reported as a negative number during engine breaking.
-  comment: During engine breaking the engine delivers a negative torque to the transmission.
+  description: Current engine torque. Shall be reported as a negative number during engine braking.
+  comment: During engine braking the engine delivers a negative torque to the transmission.
 
 #
 # Diesel Exhaust Fluid
@@ -266,9 +269,9 @@ Torque:
 
 DieselExhaustFluid:
   type: branch
-  description: Signals related to Diesel Exhaust Fluid (DEF).
-    DEF is called AUS32 in ISO 22241.
-  comment: In retail and marketing other names are typically used for the fluid.
+  description: >-
+    Diesel Exhaust Fluid (DEF) of the vehicle. May contain elements such as tank capacity, level, and remaining range.
+  comment: DEF is called AUS32 in ISO 22241. In retail and marketing other names are typically used for the fluid.
 
 DieselExhaustFluid.Capacity:
   datatype: float
@@ -293,16 +296,18 @@ DieselExhaustFluid.Range:
 DieselExhaustFluid.IsLevelLow:
   datatype: boolean
   type: sensor
-  description: Indicates if the Diesel Exhaust Fluid level is low.
-    True if level is low.
-    Definition of low is vehicle dependent.
+  description: >-
+    Indicates whether the Diesel Exhaust Fluid level is low. True = low; False = not low. Definition of low is vehicle
+    dependent.
 
 #
 # Diesel Particulate Filter
 #
 DieselParticulateFilter:
   type: branch
-  description: Diesel Particulate Filter signals.
+  description: >-
+    Diesel Particulate Filter (DPF) of the engine. May contain elements such as inlet and outlet temperature and
+    pressure difference.
 
 #
 # Current inlet Temperature of Diesel Particulate Filter
@@ -329,4 +334,4 @@ DieselParticulateFilter.DeltaPressure:
   datatype: float
   type: sensor
   unit: Pa
-  description: Delta Pressure of Diesel Particulate Filter.
+  description: Pressure difference between inlet and outlet of the Diesel Particulate Filter.

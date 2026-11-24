@@ -15,7 +15,7 @@
 #
 CAN:
   type: branch
-  description: CAN network attributes and signals
+  description: CAN network status of the control unit.
 #include NetworkStatus.vspec CAN
 
 #
@@ -23,5 +23,5 @@ CAN:
 #
 ETH:
   type: branch
-  description: Ethernet network attributes and signals
+  description: Ethernet network status of the control unit.
 #include NetworkStatus.vspec ETH

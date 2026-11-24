@@ -12,5 +12,6 @@ HeatingCooling:
   min: -100
   max: 100
   unit: percent
-  description: Heating or Cooling requsted for the Item.
-    -100 = Maximum cooling, 0 = Heating/cooling deactivated, 100 = Maximum heating.
+  description: >-
+    Requested heating or cooling level of the item. -100 = maximum cooling; 0 = heating/cooling deactivated; 100 =
+    maximum heating.

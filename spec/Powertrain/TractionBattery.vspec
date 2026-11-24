@@ -14,15 +14,16 @@
 Id:
   datatype: string
   type: attribute
-  description: Battery Identification Number as assigned by OEM.
-  comment: This could be serial number, part number plus serial number, UUID,
-    or any other identifier that the OEM want to use to uniquely identify the battery individual.
+  description: Identification number of the traction battery, as assigned by the OEM.
+  comment: >-
+    This could be serial number, part number plus serial number, UUID, or any other identifier that the OEM wants to use
+    to uniquely identify the individual battery.
 
 ProductionDate:
   datatype: string
   type: attribute
   unit: iso8601
-  description: Production date of battery in ISO8601 format, e.g. YYYY-MM-DD.
+  description: Production date of the traction battery in ISO 8601 format, e.g. YYYY-MM-DD.
 
 ErrorCodes:
   datatype: string[]
@@ -35,7 +36,9 @@ ErrorCodes:
 IsPowerConnected:
   datatype: boolean
   type: sensor
-  description: Indicating if the power (positive terminator) of the traction battery is connected to the powertrain.
+  description: >-
+    Indicates whether the power (positive terminal) of the traction battery is connected to the powertrain. True =
+    connected; False = disconnected.
   comment:
     It might be possible to disconnect the traction battery used by an electric powertrain.
     This is achieved by connectors, typically one for plus and one for minus.
@@ -43,14 +46,16 @@ IsPowerConnected:
 IsGroundConnected:
   datatype: boolean
   type: sensor
-  description: Indicating if the ground (negative terminator) of the traction battery is connected to the powertrain.
+  description: >-
+    Indicates whether the ground (negative terminal) of the traction battery is connected to the powertrain. True =
+    connected; False = disconnected.
   comment:
     It might be possible to disconnect the traction battery used by an electric powertrain.
     This is achieved by connectors, typically one for plus and one for minus.
 
 Temperature:
   type: branch
-  description: Temperature Information for the battery pack.
+  description: Temperature information for the traction battery pack.
 
 Temperature.Average:
   datatype: float
@@ -73,7 +78,7 @@ Temperature.Max:
 Temperature.CellTemperature:
   datatype: float[]
   type: sensor
-  description: Array of cell temperatures. Length or array shall correspond to number of cells in vehicle.
+  description: Array of cell temperatures. Length of the array shall correspond to the number of cells in the vehicle.
   comment: Cells are identified by relative position in array.
 
 CellVoltage:
@@ -107,7 +112,7 @@ CellVoltage.IdMax:
 CellVoltage.CellVoltages:
   datatype: float[]
   type: sensor
-  description: Array of cell voltages. Length or array shall correspond to number of cells in vehicle.
+  description: Array of cell voltages. Length of the array shall correspond to the number of cells in the vehicle.
   comment: Cells are identified by relative position in array.
 
 GrossCapacity:
@@ -161,6 +166,7 @@ StateOfCharge.CurrentEnergy:
   description: Physical state of charge of high voltage battery expressed in kWh.
   comment: Current energy could be calculated as .StateOfCharge.Current * .NetCapacity.
 
+# Human check of description required: 'status 0' reference is unclear, allowed values are strings
 ChargingState:
   datatype: uint8
   type: sensor
@@ -179,7 +185,7 @@ NominalVoltage:
   datatype: uint16
   type: attribute
   unit: V
-  description: Nominal Voltage of the battery.
+  description: Nominal voltage of the battery.
   comment: Nominal voltage typically refers to voltage of fully charged battery when delivering rated capacity.
 
 MaxVoltage:
@@ -192,23 +198,23 @@ CurrentVoltage:
   datatype: float
   type: sensor
   unit: V
-  description: Current Voltage of the battery.
+  description: Current voltage of the battery.
 
 CurrentCurrent:
   datatype: float
   type: sensor
   unit: A
-  description:
-    Current current flowing in/out of battery. Positive = Current flowing in to battery, e.g. during charging.
-    Negative = Current flowing out of battery, e.g. during driving.
+  description: >-
+    Electric current currently flowing in or out of the battery. Positive = current flowing into the battery, e.g.
+    during charging; negative = current flowing out of the battery, e.g. during driving.
 
 CurrentPower:
   datatype: float
   type: sensor
   unit: W
-  description:
-    Current electrical energy flowing in/out of battery. Positive = Energy flowing in to battery, e.g. during charging.
-    Negative = Energy flowing out of battery, e.g. during driving.
+  description: >-
+    Electrical power currently flowing in or out of the battery. Positive = power flowing into the battery, e.g. during
+    charging; negative = power flowing out of the battery, e.g. during driving.
 
 AccumulatedChargedEnergy:
   datatype: float
@@ -238,9 +244,9 @@ TotalEnergyThroughput:
   datatype: uint64
   type: sensor
   unit: Wh
-  description:
-    The total energy throughput which has flowed through High Voltage Energy Storage System.
-    This parameter is the sum of the absolute values of the Energy into and out of this HVES instance.
+  description: >-
+    Total energy throughput that has flowed through the high voltage energy storage system (HVES), calculated as the sum
+    of the absolute values of the energy into and out of it.
 
 PowerLoss:
   datatype: float
@@ -297,9 +303,9 @@ Charging.ChargingPort.SupportedInletTypes:
       "GBT_DC",
       "OTHER",
     ]
-  description:
-    A list of the supported (i.e., available) charging inlets in a particular charging port.
-    IEC types refer to IEC 62196,  GBT refers to  GB/T 20234.
+  description: >-
+    List of charging inlet types supported by a charging port. IEC types refer to IEC 62196; GBT types refer to GB/T
+    20234.
   comment: A vehicle may have multiple charging ports.
     IEC_TYPE_1_AC refers to Type 1 as defined in IEC 62196-2. Also known as Yazaki or J1772 connector.
     IEC_TYPE_2_AC refers to Type 2 as defined in IEC 62196-2. Also known as Mennekes connector.
@@ -317,18 +323,21 @@ Charging.ChargingPort.SupportedInletTypes:
 Charging.ChargingPort.IsFlapOpen:
   type: actuator
   datatype: boolean
-  description: Status of the charging port flap(s).
-  comment: True = at least one flap of this port is open, False = All flaps of this port are closed.
+  description: >-
+    Indicates whether the flap(s) of the charging port are open. True = at least one flap is open; False = all flaps are
+    closed.
 
 Charging.ChargingPort.IsChargingCableConnected:
   datatype: boolean
   type: sensor
-  description: Indicates whether a charging cable is physically connected to a particular charging port or not.
+  description: >-
+    Indicates whether a charging cable is physically connected to the charging port. True = connected; False = not
+    connected.
 
 Charging.ChargingPort.IsChargingCableLocked:
   datatype: boolean
   type: actuator
-  description: Is charging cable locked to prevent removal.
+  description: Indicates whether the charging cable is locked to prevent removal. True = locked; False = unlocked.
   comment: Locking of charging cable can be used to prevent unintentional removing during charging.
 
 Charging.ChargeLimit:
@@ -371,14 +380,16 @@ Charging.MaximumChargingCurrent.Phase3:
 Charging.IsCharging:
   datatype: boolean
   type: sensor
-  description: True if charging is ongoing.
-    Charging is considered to be ongoing if energy is flowing from charger to vehicle.
+  description: >-
+    Indicates whether charging is ongoing, i.e. energy is flowing from the charger to the vehicle. True = ongoing; False
+    = not ongoing.
 
 Charging.IsDischarging:
   datatype: boolean
   type: sensor
-  description: True if discharging (vehicle to grid) is ongoing.
-    Discharging is considered to be ongoing if energy is flowing from vehicle to charger/grid.
+  description: >-
+    Indicates whether discharging (vehicle to grid) is ongoing, i.e. energy is flowing from the vehicle to the charger
+    or grid. True = ongoing; False = not ongoing.
 
 Charging.StartStopCharging:
   datatype: string
@@ -458,7 +469,7 @@ Charging.EvseId:
   datatype: string
   type: sensor
   description: EVSE charging point ID (without separators) of last or current charging event according to ISO 15118-2 Annex H.
-  comment: Length of id between 7 and 37 characters. ZZ00000 to be used if SECC cannot provide id
+  comment: Length of id between 7 and 37 characters. ZZ00000 to be used if SECC cannot provide id.
 
 Charging.Location:
   type: branch
@@ -526,20 +537,21 @@ Charging.Timer.Mode:
   datatype: string
   type: actuator
   allowed: ["INACTIVE", "START_TIME", "END_TIME"]
-  description: "Defines timer mode for charging:
-    INACTIVE - no timer set, charging may start as soon as battery is connected to a charger.
-    START_TIME - charging shall start at Charging.Timer.Time.
-    END_TIME - charging shall be finished (reach Charging.ChargeLimit) at Charging.Timer.Time.
-    When charging is completed the vehicle shall change mode to 'inactive' or set a new Charging.Timer.Time.
-    Charging shall start immediately if mode is 'starttime' or 'endtime' and Charging.Timer.Time is a time in the past."
+  description: >-
+    Mode of the charging timer. INACTIVE = no timer set, charging may start as soon as the battery is connected to a
+    charger; START_TIME = charging shall start at Charging.Timer.Time; END_TIME = charging shall be finished (reach
+    Charging.ChargeLimit) at Charging.Timer.Time.
+  comment: >-
+    When charging is completed the vehicle shall change mode to INACTIVE or set a new Charging.Timer.Time. Charging
+    shall start immediately if mode is START_TIME or END_TIME and Charging.Timer.Time is a time in the past.
 
 Charging.Timer.Time:
   datatype: string
   type: actuator
   unit: iso8601
-  description:
-    Time for next charging-related action, formatted according to ISO 8601 with UTC time zone.
-    Value has no significance if Charging.Timer.Mode is 'inactive'.
+  description: >-
+    Time for next charging-related action, formatted according to ISO 8601 with UTC time zone. Value has no significance
+    if Charging.Timer.Mode is INACTIVE.
 
 DCDC:
   type: branch
@@ -570,6 +582,6 @@ ThermalManagementSystemMode:
     "COOLING": 2
     "HEATING": 3
     "DRYING": 4
-  description: Mode of the HVESS thermal management system.
+  description: Mode of the thermal management system of the high voltage energy storage system (HVESS).
 
 #include TractionBattery/BatteryConditioning.vspec

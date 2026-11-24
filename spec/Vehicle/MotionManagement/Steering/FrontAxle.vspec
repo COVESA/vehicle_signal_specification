@@ -34,9 +34,9 @@ RackPosition:
   datatype: int16
   type: sensor
   unit: mm
-  description:
-    Represents the current position of the steering rack on axle steering actuator.
-    Positive values leads to a left turn of the vehicle (based on ISO8855).
+  description: >-
+    Current position of the steering rack on the axle steering actuator. Positive values lead to a left turn of the
+    vehicle (based on ISO8855).
   comment: Alternative signal to SteerAngle.
 
 RackPositionTarget:
@@ -66,9 +66,8 @@ SteerAngle:
   datatype: int16
   type: sensor
   unit: degrees
-  description:
-    Represents the current actuated steering angle of the steered wheels.
-    Signal orientation according ISO8855, single track model.
+  description: >-
+    Current actuated steering angle of the steered wheels. Signal orientation according to ISO8855, single track model.
   comment: Alternative signal to RackPosition.
 
 SteerAngleTarget:

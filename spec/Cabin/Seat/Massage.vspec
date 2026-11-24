@@ -9,7 +9,7 @@
 IsAvailable:
   datatype: boolean
   type: attribute
-  description: True if the seat have the massage capability
+  description: Indicates whether the seat has massage capability. True = capable; False = not capable.
 
 Level:
   datatype: uint8
@@ -17,22 +17,22 @@ Level:
   min: 0
   max: 100
   unit: percent
-  description: Seat massage level. 0 = off. 100 = max massage.
+  description: Seat massage level. 0 = off; 100 = maximum massage.
 
 Status:
   datatype: string
   type: sensor
   allowed: ["ON", "OFF"]
-  description: Massage status.
+  description: Current status of the seat massage.
 
 SupportedTypes:
   datatype: string[]
   type: attribute
-  description: Type of massage.
+  description: Massage types supported by the seat.
   comment: OEMs may define a list of identifiers for supported massage types using the allowed keyword
 
 TypeActive:
   datatype: string
   type: actuator
-  description: Type of massage active.
+  description: Currently active massage type of the seat.
   comment: OEMs may define a list of identifiers for supported massage types using the allowed keyword

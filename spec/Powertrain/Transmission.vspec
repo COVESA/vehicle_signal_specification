@@ -18,7 +18,9 @@ Type:
   type: attribute
   allowed: ["UNKNOWN", "SEQUENTIAL", "H", "AUTOMATIC", "DSG", "CVT"]
   default: "UNKNOWN"
-  description: Transmission type.
+  description: >-
+    Transmission type. H = manual H-pattern gearbox; DSG = dual-clutch gearbox; CVT = continuously variable
+    transmission.
 
 GearCount:
   datatype: int8
@@ -38,7 +40,7 @@ DriveType:
       "FOUR_WHEEL_DRIVE",
     ]
   default: "UNKNOWN"
-  description: Drive type.
+  description: Drive type of the vehicle, describing which wheels are driven.
   comment:
     ALL_WHEEL_DRIVE and FOUR_WHEEL_DRIVE are recorded as distinct values in registration
     and type data. Assignment follows the manufacturer's or registration authority's
@@ -57,7 +59,7 @@ TravelledDistance:
   datatype: float
   type: sensor
   unit: km
-  description: Odometer reading, total distance travelled during the lifetime of the transmission.
+  description: Odometer reading, total distance traveled during the lifetime of the transmission.
 
 #
 # Current gear
@@ -65,7 +67,7 @@ TravelledDistance:
 CurrentGear:
   datatype: int8
   type: sensor
-  description: The current gear. 0=Neutral, 1/2/..=Forward, -1/-2/..=Reverse.
+  description: Current gear of the transmission. 0 = neutral; 1/2/... = forward gears; -1/-2/... = reverse gears.
 
 #
 # Selected gear
@@ -73,17 +75,20 @@ CurrentGear:
 SelectedGear:
   datatype: int8
   type: actuator
-  description: The selected gear. 0=Neutral, 1/2/..=Forward, -1/-2/..=Reverse, 126=Park, 127=Drive.
+  description: >-
+    Selected gear of the transmission. 0 = neutral; 1/2/... = forward gears; -1/-2/... = reverse gears; 126 = park; 127
+    = drive.
 
 IsParkLockEngaged:
   datatype: boolean
   type: actuator
-  description: Is the transmission park lock engaged or not. False = Disengaged. True = Engaged.
+  description: Indicates whether the transmission park lock is engaged. True = engaged; False = disengaged.
 
 IsLowRangeEngaged:
   datatype: boolean
   type: actuator
-  description: Is gearbox in low range mode or not. False = Normal/High range engaged. True = Low range engaged.
+  description: >-
+    Indicates whether the gearbox is in low range mode. True = low range engaged; False = normal/high range engaged.
   comment:
     The possibility to switch between low and high gear range is typically only available
     in heavy vehicles and off-road vehicles.
@@ -91,9 +96,9 @@ IsLowRangeEngaged:
 IsElectricalPowertrainEngaged:
   datatype: boolean
   type: actuator
-  description:
-    Is electrical powertrain mechanically connected/engaged to the drivetrain or not.
-    False = Disconnected/Disengaged. True = Connected/Engaged.
+  description: >-
+    Indicates whether the electrical powertrain is mechanically connected to the drivetrain. True = connected/engaged;
+    False = disconnected/disengaged.
   comment:
     In some hybrid solutions it is possible to disconnect/disengage the electrical powertrain mechanically
     to avoid induced voltage reaching a too high level when driving at high speed.
@@ -114,7 +119,7 @@ GearChangeMode:
   datatype: string
   type: actuator
   allowed: ["MANUAL", "AUTOMATIC"]
-  description: Is the gearbox in automatic or manual (paddle) mode.
+  description: Gear change mode of the gearbox, either automatic or manual (paddle).
 
 #
 # Gearbox temperature
@@ -123,7 +128,7 @@ Temperature:
   datatype: float
   type: sensor
   unit: Celsius
-  description: The current gearbox temperature.
+  description: Current temperature of the gearbox.
 
 #
 # Clutch
@@ -131,9 +136,12 @@ Temperature:
 IsClutchPedalPressed:
   datatype: boolean
   type: sensor
-  description:
-    Switch signal which indicates that the clutch pedal is being pressed. It is necessary for a safe drivetrain behaviour that the clutch
-    switch is set before the clutch is opened (cruise control function).
+  description: >-
+    Indicates whether the clutch pedal is pressed, as reported by the clutch switch. True = pressed; False = not
+    pressed.
+  comment: >-
+    It is necessary for safe drivetrain behavior that the clutch switch is set before the clutch is opened (cruise
+    control function).
 
 ClutchEngagement:
   datatype: float
@@ -141,7 +149,7 @@ ClutchEngagement:
   unit: percent
   min: 0
   max: 100
-  description: Clutch engagement. 0% = Clutch fully disengaged. 100% = Clutch fully engaged.
+  description: Degree of clutch engagement. 0% = clutch fully disengaged; 100% = clutch fully engaged.
 
 ClutchWear:
   datatype: uint8
@@ -156,7 +164,7 @@ DiffLockFrontEngagement:
   unit: percent
   min: 0
   max: 100
-  description: Front Diff Lock engagement. 0% = Diff lock fully disengaged. 100% = Diff lock fully engaged.
+  description: Engagement of the front differential lock. 0% = fully disengaged; 100% = fully engaged.
 
 DiffLockRearEngagement:
   datatype: float
@@ -164,7 +172,7 @@ DiffLockRearEngagement:
   unit: percent
   min: 0
   max: 100
-  description: Rear Diff Lock engagement. 0% = Diff lock fully disengaged. 100% = Diff lock fully engaged.
+  description: Engagement of the rear differential lock. 0% = fully disengaged; 100% = fully engaged.
 
 TorqueDistribution:
   datatype: float
@@ -172,5 +180,6 @@ TorqueDistribution:
   unit: percent
   min: -100
   max: 100
-  description: Torque distribution between front and rear axle in percent.
-    -100% = Full torque to front axle, 0% = 50:50 Front/Rear, 100% = Full torque to rear axle.
+  description: >-
+    Torque distribution between front and rear axle in percent. -100% = full torque to front axle; 0% = 50:50
+    front/rear; 100% = full torque to rear axle.

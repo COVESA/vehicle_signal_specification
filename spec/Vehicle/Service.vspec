@@ -33,7 +33,9 @@
 IsServiceDue:
   datatype: boolean
   type: sensor
-  description: Indicates if vehicle needs service (of any kind). True = Service needed now or in the near future. False = No known need for service.
+  description: >-
+    Indicates whether the vehicle needs service of any kind. True = service needed now or in the near future; False = no
+    known need for service.
 
 #
 # Remaining distance to service (of any kind).

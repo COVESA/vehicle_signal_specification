@@ -11,7 +11,7 @@
 #
 Brake:
   type: branch
-  description: Brake signals for wheel
+  description: Brake of the wheel. May contain elements such as fluid level and pad wear.
 
 Brake.FluidLevel:
   datatype: uint8
@@ -23,7 +23,7 @@ Brake.FluidLevel:
 Brake.IsFluidLevelLow:
   datatype: boolean
   type: sensor
-  description: Brake fluid level status. True = Brake fluid level low. False = Brake fluid level OK.
+  description: Indicates whether the brake fluid level is low. True = low; False = not low.
 
 Brake.PadWear:
   datatype: uint8
@@ -35,24 +35,24 @@ Brake.PadWear:
 Brake.IsBrakesWorn:
   datatype: boolean
   type: sensor
-  description: Brake pad wear status. True = Worn. False = Not Worn.
+  description: Indicates whether the brake pads are worn. True = worn; False = not worn.
 
 #
 # Tire
 #
 Tire:
   type: branch
-  description: Tire signals for wheel.
+  description: Tire of the wheel. May contain elements such as pressure and temperature.
 
 Tire.Pressure:
   datatype: uint16
   type: sensor
   unit: kPa
-  description: Tire pressure in kilo-Pascal.
+  description: Tire pressure in kilopascals.
 Tire.IsPressureLow:
   datatype: boolean
   type: sensor
-  description: Tire Pressure Status. True = Low tire pressure. False = Good tire pressure.
+  description: Indicates whether the tire pressure is low. True = low; False = not low.
 
 Tire.Temperature:
   datatype: float
@@ -78,7 +78,7 @@ Tire.WinterStatus:
   type: attribute
   allowed: ["UNKNOWN", "NON_WINTER", "WINTER"]
   default: "UNKNOWN"
-  description: Winter (cold-weather / snow) capability class of the tire currently fitted to this wheel.
+  description: Winter (cold-weather / snow) capability class of the tire currently fitted to the wheel.
   comment: >
     Describes the cold-weather grip capability of the fitted tire, which is the
     primary determinant of available traction on snow and ice. Modelled as an

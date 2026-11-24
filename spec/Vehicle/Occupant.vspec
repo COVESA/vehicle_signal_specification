@@ -12,15 +12,15 @@
 
 Identifier:
   type: branch
-  description: Identifier attributes based on OAuth 2.0.
+  description: Identifier attributes of the occupant, based on OAuth 2.0.
 #include ../include/Identifier.vspec Identifier
 
 HeadPosition:
   type: branch
-  description: The current position of the driver head on vehicle axis according to ISO 23150:2023.
+  description: Current position of the driver's head on the vehicle axes according to ISO 23150:2023.
 #include Occupant/HeadPosition.vspec HeadPosition
 
 MidEyeGaze:
   type: branch
-  description: Direction from mid eye position to object driver is looking at.
+  description: Gaze direction from the mid eye position to the object the driver is looking at.
 #include Occupant/MidEyeGaze.vspec MidEyeGaze

@@ -10,6 +10,7 @@
 # All TellTales signals
 #
 
+# Human check of description required: COND_* values are cryptic and unexplained; semantics need confirmation
 Status:
   datatype: uint8
   type: sensor
@@ -18,4 +19,4 @@ Status:
     "COND_RED": 1
     "COND_YELLOW": 2
     "COND_INFO": 3
-  description: Status of the telltale. The interpretation of the status is manufacturer dependant.
+  description: Status of the telltale. The interpretation of the status is manufacturer dependent.

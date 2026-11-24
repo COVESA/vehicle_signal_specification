@@ -13,5 +13,6 @@
 IsReady:
   datatype: boolean
   type: sensor
-  description: Indicates the current status of the propulsion system.
-    True if the propulsion system is ready to move, or is moving the vehicle as commanded by operator.
+  description: >-
+    Indicates whether the propulsion system is ready to move or is moving the vehicle as commanded by the operator. True
+    = ready or moving; False = not ready.

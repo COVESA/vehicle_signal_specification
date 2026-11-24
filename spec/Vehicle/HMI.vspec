@@ -17,6 +17,6 @@ TellTales:
   type: branch
   instances:
     - TellTale[1,75]
-  description: TellTales
+  description: Telltale (warning and indicator light) signals of the vehicle.
 
 #include TellTales.vspec TellTales

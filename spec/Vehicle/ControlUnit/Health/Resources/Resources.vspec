@@ -14,17 +14,18 @@ Power:
   datatype: float
   type: sensor
   unit: W
-  description: Power consumption
+  description: Power consumption of the control unit.
 
+# Human check of description required: unclear which temperature (chip, board, housing) is measured
 Temperature:
   datatype: float
   type: sensor
   unit: Celsius
-  description: Instance temperature
+  description: Temperature of the control unit.
 
 Utilization:
   type: branch
-  description: Resources utilization branch
+  description: Utilization of the control unit's resources. May contain elements such as CPU and memory utilization.
 
 Utilization.CPU:
   datatype: float
@@ -32,7 +33,7 @@ Utilization.CPU:
   unit: percent
   min: 0
   max: 100
-  description: CPU utilization
+  description: CPU utilization of the control unit.
 
 Utilization.Memory:
   datatype: float
@@ -40,4 +41,4 @@ Utilization.Memory:
   unit: percent
   min: 0
   max: 100
-  description: Memory utilization
+  description: Memory utilization of the control unit.

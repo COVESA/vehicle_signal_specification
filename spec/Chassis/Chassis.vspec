@@ -25,13 +25,14 @@ Axle:
   instances:
     - Row[1,2]
   type: branch
-  description: Axle signals
+  description: >-
+    Axle of the vehicle. May contain elements such as dimensions, wheel and tire properties, steering angle, and torque.
 
 AxleCount:
   datatype: uint8
   type: attribute
   default: 2
-  description: Number of axles on the vehicle
+  description: Number of axles on the vehicle.
 
 #
 # Axle attributes
@@ -65,7 +66,7 @@ Axle.AxleWidth:
 Axle.WheelCount:
   datatype: uint8
   type: attribute
-  description: Number of wheels on the axle
+  description: Number of wheels on the axle.
 
 Axle.WheelDiameter:
   datatype: float
@@ -83,15 +84,18 @@ Axle.SteeringAngle:
   datatype: float
   type: sensor
   unit: degrees
-  description: Single track two-axle model steering angle.
-    Angle according to ISO 8855. Positive = degrees to the left. Negative = degrees to the right.
-  comment: Single track two-axle model steering angle refers to the angle that a centrally mounted wheel would have.
+  description: >-
+    Steering angle of the axle in the single track two-axle model. Positive = degrees to the left; negative = degrees to
+    the right.
+  comment: >-
+    Single track two-axle model steering angle refers to the angle that a centrally mounted wheel would have. The angle
+    is defined according to ISO 8855.
 
 Axle.Weight:
   datatype: uint16
   type: sensor
   unit: kg
-  description: Total mass imposed by the tires on the road surface at the specified axle measured in kg.
+  description: Total mass imposed by the tires on the road surface at the axle, in kg.
 
 #
 # Tire attributes
@@ -136,7 +140,7 @@ Axle.Torque:
 Axle.Wheel:
   instances: ["Left", "Right"]
   type: branch
-  description: Wheel signals for axle
+  description: Wheel of an axle. May contain elements such as brake and tire properties, speed, and torque.
 
 #include Wheel.vspec Axle.Wheel
 
@@ -145,23 +149,26 @@ Axle.Wheel:
 #
 ParkingBrake:
   type: branch
-  description: Parking brake signals
+  description: >-
+    Parking brake of the vehicle. May contain elements such as engagement status and automatic application setting.
 
 ParkingBrake.IsEngaged:
   datatype: boolean
   type: actuator
-  description: Parking brake status. True = Parking Brake is Engaged. False = Parking Brake is not Engaged.
+  description: Indicates whether the parking brake is engaged. True = engaged; False = not engaged.
 
 ParkingBrake.IsAutoApplyEnabled:
   datatype: boolean
   type: actuator
-  description: Indicates if parking brake will be automatically engaged when the vehicle engine is turned off.
+  description: >-
+    Indicates whether the parking brake is automatically engaged when the vehicle engine is turned off. True = enabled;
+    False = disabled.
 #
 # Steering Wheel
 #
 SteeringWheel:
   type: branch
-  description: Steering wheel signals
+  description: Steering wheel of the vehicle. May contain elements such as angle, column tilt, and column extension.
 
 SteeringWheel.Angle:
   datatype: int16
@@ -192,7 +199,7 @@ SteeringWheel.Extension:
 #
 Accelerator:
   type: branch
-  description: Accelerator signals
+  description: Accelerator pedal of the vehicle. May contain elements such as pedal position.
 
 Accelerator.PedalPosition:
   datatype: uint8
@@ -207,7 +214,7 @@ Accelerator.PedalPosition:
 #
 Brake:
   type: branch
-  description: Brake system signals
+  description: Brake system of the vehicle. May contain elements such as pedal position and emergency braking detection.
 
 Brake.PedalPosition:
   datatype: uint8
@@ -227,11 +234,12 @@ Brake.IsDriverEmergencyBrakingDetected:
 Brake.IsBrakePedalPressed:
   datatype: boolean
   type: sensor
-  description:
-    Switch signal which indicates that the driver operated brake foot pedal is being pressed.
-    This brake foot pedal is controlling the vehicles' service brake (total vehicle braking application, not park brakes).
-    It is necessary for safe drivetrain behaviour that the switch activates before the physical braking components are activated
-    (i.e. disengage the cruise control function prior to the activation of friction brakes).
+  description: >-
+    Indicates whether the driver-operated brake foot pedal is being pressed. True = pressed; False = not pressed.
+  comment: >-
+    The brake foot pedal controls the vehicle's service brake (total vehicle braking application, not park brakes). It
+    is necessary for safe drivetrain behavior that the switch activates before the physical braking components are
+    activated (i.e. disengage the cruise control function prior to the activation of friction brakes).
 
 #include AirBrakeSystem.vspec Brake
 #include Retarder.vspec Brake

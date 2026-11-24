@@ -12,9 +12,9 @@ Angle:
   datatype: int16
   type: sensor
   unit: degrees
-  description: Represents the current input angle of the steering system,
-    typically corresponds to angle applied by driver on the steering-wheel.
-    Positive for angle in counterclockwise direction (based on ISO8855).
+  description: >-
+    Current input angle of the steering system, typically corresponding to the angle applied by the driver on the
+    steering wheel. Positive for angle in counterclockwise direction (based on ISO8855).
 
 AngleTarget:
   datatype: int16
@@ -65,6 +65,6 @@ Torque:
   datatype: int16
   type: sensor
   unit: Nm
-  description:
-    Represents the current input torque for steering system, typically corresponds to torque applied by driver on the steering wheel.
-    Positive for torque in counterclockwise direction (based on ISO8855).
+  description: >-
+    Current input torque of the steering system, typically corresponding to the torque applied by the driver on the
+    steering wheel. Positive for torque in counterclockwise direction (based on ISO8855).

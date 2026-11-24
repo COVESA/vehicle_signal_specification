@@ -35,9 +35,9 @@ BatteryConditioning:
 BatteryConditioning.IsActive:
   datatype: boolean
   type: sensor
-  description:
-    Indicates if battery conditioning is active (i.e. actively monitors battery temperature).
-    True = Active. False = Inactive.
+  description: >-
+    Indicates whether battery conditioning is active, i.e. actively monitors battery temperature. True = active; False =
+    inactive.
   comment:
     This signal is typically true when mode is not INACTIVE and time is within defined
     start/end times.
@@ -45,9 +45,9 @@ BatteryConditioning.IsActive:
 BatteryConditioning.IsOngoing:
   datatype: boolean
   type: sensor
-  description: Indicating if battery conditioning is currently ongoing.
-    Battery conditioning is considered ongoing when the battery conditioning system
-    is actively heating or cooling the battery, or requesting heating or cooling.
+  description: >-
+    Indicates whether battery conditioning is currently ongoing. True = the battery conditioning system is actively
+    heating or cooling the battery, or requesting heating or cooling; False = otherwise.
   comment:
     When battery conditioning is active, but temperature is already within acceptable range so that
     no cooling or heating is needed then IsOngoing shall report False.
@@ -56,10 +56,9 @@ BatteryConditioning.RequestedMode:
   datatype: string
   type: actuator
   allowed: ["INACTIVE", "FAST_CHARGING_PREPARATION", "DRIVING_PREPARATION"]
-  description: Defines requested mode for battery conditioning.
-    INACTIVE - Battery conditioning inactive.
-    FAST_CHARGING_PREPARATION - Battery conditioning for fast charging.
-    DRIVING_PREPARATION - Battery conditioning for driving.
+  description: >-
+    Requested mode for battery conditioning. FAST_CHARGING_PREPARATION = conditioning for fast charging;
+    DRIVING_PREPARATION = conditioning for driving.
   comment: The Mode and TargetTime can be used to calculate TargetTemperature and StartTime
 
 BatteryConditioning.StartTime:

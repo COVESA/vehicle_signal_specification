@@ -14,9 +14,8 @@ DampingRateTarget:
   min: 0
   max: 100
   unit: percent
-  description: Damping rate request at given wheel.
-    0% = lowest possible damping rate
-    100% = highest possible damping rate
+  description: >-
+    Damping rate request at given wheel. 0% = lowest possible damping rate; 100% = highest possible damping rate.
   comment: Alternative signal to DampingForceTarget.
 
 DampingRate:
@@ -25,9 +24,8 @@ DampingRate:
   min: 0
   max: 100
   unit: percent
-  description: Actuated damping rate at given wheel.
-    0% = lowest possible damping rate
-    100% = highest possible damping rate
+  description: >-
+    Actuated damping rate at given wheel. 0% = lowest possible damping rate; 100% = highest possible damping rate.
   comment: Alternative signal to DampingForce.
 
 DampingForceTarget:

@@ -25,7 +25,7 @@ MotionManagement.ElectricAxle:
 
 MotionManagement.Brake:
   type: branch
-  description: MotionManagement related to braking (both frictions brakes and contribution from electric axles).
+  description: MotionManagement related to braking (both friction brakes and contribution from electric axles).
 #include MotionManagement/Brake.vspec MotionManagement.Brake
 
 MotionManagement.Steering:

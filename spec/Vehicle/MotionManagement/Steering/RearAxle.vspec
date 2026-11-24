@@ -16,9 +16,9 @@ SteerAngle:
   datatype: int16
   type: sensor
   unit: degrees
-  description:
-    Represents the current actuated steering angle of the steered wheels on rear axle.
-    Signal orientation according ISO8855, single track model.
+  description: >-
+    Current actuated steering angle of the steered wheels on rear axle. Signal orientation according to ISO8855, single
+    track model.
 
 SteerAngleTarget:
   datatype: int16

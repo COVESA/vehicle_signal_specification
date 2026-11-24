@@ -14,7 +14,7 @@ SupportedFuelTypes:
   datatype: string[]
   type: attribute
   allowed: ["GASOLINE", "DIESEL", "E85", "LPG", "CNG", "LNG", "H2", "OTHER"]
-  description: High level information of fuel types supported
+  description: High-level information on the fuel types supported by the vehicle.
   comment: If a vehicle also has an electric drivetrain (e.g. hybrid) that will be obvious from the PowerTrain.Type signal.
 
 SupportedFuel:
@@ -40,9 +40,9 @@ SupportedFuel:
       "OTHER",
     ]
   description: Detailed information on fuels supported by the vehicle.
-    Identifiers originating from DIN EN 16942:2021-08, appendix B,
-    with additional suffix for octane (RON) where relevant.
-  comment: RON 95 is sometimes referred to as Super, RON 98 as Super Plus.
+  comment: >-
+    Identifiers originate from DIN EN 16942:2021-08, appendix B, with additional suffix for octane (RON) where relevant.
+    RON 95 is sometimes referred to as Super, RON 98 as Super Plus.
 
 # SHOULD be synced with the supported fuel types above!!!
 CurrentFuelTypeUsed:
@@ -82,15 +82,17 @@ CurrentFuelTypeUsed:
     "HYDROGEN_ICE": 30
     "KEROSENE": 31
     "HEAVY_FUEL_OIL": 32
-  description: Type of fuel currently being utilized by the vehicle according to the SAE J1939 message PGN FDC2, SPN 5837.
+  description: Type of fuel currently being utilized by the vehicle.
+  comment: Corresponds to the SAE J1939 message PGN FDC2, SPN 5837.
 
+# Human check of description required: cryptic allowed values (e.g. BELT_ISG, CIMG) are unexplained
 HybridType:
   datatype: string
   type: attribute
   allowed:
     ["UNKNOWN", "NOT_APPLICABLE", "STOP_START", "BELT_ISG", "CIMG", "PHEV"]
   default: "UNKNOWN"
-  description: Defines the hybrid type of the vehicle.
+  description: Hybrid type of the vehicle.
 
 TankCapacity:
   datatype: float
@@ -192,17 +194,19 @@ FuelRate:
 IsEngineStopStartEnabled:
   datatype: boolean
   type: sensor
-  description: Indicates whether eco start stop is currently enabled.
+  description: Indicates whether the eco start stop function is currently enabled. True = enabled; False = disabled.
 
 IsFuelLevelLow:
   datatype: boolean
   type: sensor
-  description: Indicates that the fuel level is low (e.g. <50km range).
+  description: Indicates whether the fuel level is low (e.g. <50 km range). True = low; False = not low.
 
 IsFuelLevelEmpty:
   datatype: boolean
   type: sensor
-  description: Indicates that the fuel gauge on the instrument cluster displays empty (0).
+  description: >-
+    Indicates whether the fuel gauge on the instrument cluster displays empty (0). True = displays empty; False = does
+    not display empty.
   comment:
     When this signal is true, the fuel gauge displays empty (0), but the vehicle typically still has reserve fuel
     allowing for some additional driving range depending on the vehicle design.
@@ -211,7 +215,7 @@ IsFuelLevelEmpty:
 IsWaterInFuel:
   datatype: boolean
   type: sensor
-  description: Signal which indicates the presence of water in the fuel.
+  description: Indicates whether water is present in the fuel. True = present; False = not present.
 
 RefuelPortPosition:
   datatype: string[]
@@ -237,7 +241,7 @@ RefuelPortPosition:
 IsFuelPortFlapOpen:
   datatype: boolean
   type: actuator
-  description: Status of the fuel port flap(s). True if at least one is open.
+  description: Status of the fuel port flap(s). True = at least one is open; False = all are closed.
 
 InstantantFuelEconomy:
   deprecation: v6.1 - spelling correction fixed, replaced with InstantFuelEconomy

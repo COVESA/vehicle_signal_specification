@@ -18,4 +18,6 @@ Diagnostics.DTCCount:
 Diagnostics.DTCList:
   datatype: string[]
   type: sensor
-  description: List of currently active DTCs formatted according OBD II (SAE-J2012DA_201812) standard ([P|C|B|U]XXXXX )
+  description: >-
+    List of currently active Diagnostic Trouble Codes (DTCs), formatted according to the OBD II (SAE-J2012DA_201812)
+    standard ([P|C|B|U]XXXXX).

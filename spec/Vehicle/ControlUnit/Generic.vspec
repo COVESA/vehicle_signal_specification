@@ -12,11 +12,12 @@
 
 Health:
   type: branch
-  description: Health attributes and signals
+  description: >-
+    Health of the control unit. May contain elements such as network status, resource usage, and software supervision.
 #include Health/Health.vspec Health
 
 ID:
   datatype: uint8
   type: attribute
   default: 0
-  description: Control unit ID
+  description: Identifier of the control unit.

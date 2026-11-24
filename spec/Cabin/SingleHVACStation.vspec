@@ -16,16 +16,16 @@ FanSpeed:
   min: 0
   max: 100
   unit: percent
-  description: Fan Speed, 0 = off. 100 = max
+  description: Fan speed of the HVAC station. 0 = off; 100 = maximum.
 
 Temperature:
   datatype: float
   type: actuator
   unit: Celsius
-  description: Temperature
+  description: Target temperature of the HVAC station.
 
 AirDistribution:
   datatype: string
   type: actuator
   allowed: ["UP", "MIDDLE", "DOWN"]
-  description: Direction of airstream
+  description: Direction of the airstream of the HVAC station.

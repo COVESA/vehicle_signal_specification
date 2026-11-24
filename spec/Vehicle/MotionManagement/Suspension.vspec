@@ -14,9 +14,9 @@ DampingPrioTarget:
   unit: percent
   min: 0
   max: 100
-  description: Prioritization target for damping control
-    0% = damping control by damping actuator (e.g. base functions)
-    100% = damping control by VMM system (e.g. vehicle dynamics)
+  description: >-
+    Prioritization target for damping control. 0% = damping control by damping actuator (e.g. base functions); 100% =
+    damping control by VMM system (e.g. vehicle dynamics).
 
 RollTorqueTarget:
   type: actuator
@@ -31,9 +31,9 @@ RollPrioTarget:
   unit: percent
   min: 0
   max: 100
-  description: Prioritization target for anti-roll control
-    0% = anti-roll control by anti-roll actuator (e.g. base function)
-    100% = anti-roll control by VMM system (e.g. vehicle dynamics)
+  description: >-
+    Prioritization target for anti-roll control. 0% = anti-roll control by anti-roll actuator (e.g. base function); 100%
+    = anti-roll control by VMM system (e.g. vehicle dynamics).
 
 RollTorqueDistributionFrontMaximum:
   type: actuator
@@ -41,9 +41,9 @@ RollTorqueDistributionFrontMaximum:
   unit: percent
   min: 0
   max: 100
-  description: Maximum distribution range request of roll torque to front axle.
-    0% = Complete roll torque shall be shifted to rear axle
-    100% = Complete roll torque may be shifted to front axle
+  description: >-
+    Maximum distribution range request of roll torque to front axle. 0% = complete roll torque shall be shifted to rear
+    axle; 100% = complete roll torque may be shifted to front axle.
 
 RollTorqueDistributionFrontMinimum:
   type: actuator
@@ -51,9 +51,9 @@ RollTorqueDistributionFrontMinimum:
   unit: percent
   min: 0
   max: 100
-  description: Minimum distribution range request of roll torque to front axle.
-    0% = Complete roll torque may be shifted to rear axle
-    100% = Complete roll torque shall be shifted to front axle
+  description: >-
+    Minimum distribution range request of roll torque to front axle. 0% = complete roll torque may be shifted to rear
+    axle; 100% = complete roll torque shall be shifted to front axle.
 
 Axle:
   type: branch
