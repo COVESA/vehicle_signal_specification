@@ -2,13 +2,13 @@
 # Makefile to generate specifications
 #
 
-.PHONY: clean all avro mandatory_targets json yaml csv ddsidl tests binary protobuf ttl s2dm ocf c overlays id jsonschema
+.PHONY: clean all avro mandatory_targets json yaml csv ddsidl tests binary protobuf ttl s2dm s2dm-modular ocf c overlays id jsonschema
 
 all: clean mandatory_targets optional_targets
 
 # All mandatory targets that shall be built and pass on each pull request for
 # vehicle-signal-specification or vss-tools
-mandatory_targets: clean apigear avro binary compose csv datatypes ddsidl go id json json-noexpand jsonschema overlays plantuml samm s2dm yaml
+mandatory_targets: clean apigear avro binary compose csv datatypes ddsidl go id json json-noexpand jsonschema overlays plantuml samm s2dm s2dm-modular yaml
 
 # Additional targets that shall be built by travis, but where it is not mandatory
 # that the builds shall pass.
@@ -78,6 +78,11 @@ samm:
 s2dm:
 	vspec export s2dm ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o graphql
 	cd graphql && tar -czvf ../vss_graphql.tar.gz * && cd ..
+
+s2dm-modular:
+	vspec export s2dm ${COMMON_ARGS} ${COMMON_VSPEC_ARG} --modular -o graphql_modular
+	cd graphql_modular && tar -czvf ../vss_graphql_modular.tar.gz * && cd ..
+
 yaml:
 	vspec export yaml ${COMMON_ARGS} ${COMMON_VSPEC_ARG} -o vss.yaml
 
@@ -99,3 +104,4 @@ clean:
 	rm -rf compose
 	rm -rf samm
 	rm -rf graphql
+	rm -rf graphql_modular
